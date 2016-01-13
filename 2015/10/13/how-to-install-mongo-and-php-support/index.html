@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | Suzf Blog</title>
+    <title>How-to: install mongo and php support | Suzf Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="Welcome to here! This is your very first post. 
-building   In building">
+    <meta name="description" content="MongoDB可以从开放源代码来建构与安装，更常见的是安装binary文件，目前有Windows, Linux, OS X和Solaris版本。许多Linux包管理系统现在已包含了MongoDB的包，包括CentOS和Fedora,[1] Debian和Ubuntu,[2] Gentoo[3]以及Arch Linux。[4] 同样可从官方网站获取。[5]
+MongoDB使用内存映射文件, 32位系统上限制大小为2GB的数据 (64-比特支持更大的数据).[6] MongoDB服务器只能用在小端序系统，虽然大部分公司会同时准备小端序和大端序系统。">
     
     
     
@@ -65,15 +65,15 @@ building   In building">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/01/13/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2015/10/13/how-to-install-mongo-and-php-support/" title="How-to: install mongo and php support" itemprop="url">How-to: install mongo and php support</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-01-13T06:43:49.000Z" itemprop="datePublished">2016-01-13</time>
-    更新日期:<time datetime="2016-01-13T06:43:26.000Z" itemprop="dateModified">2016-01-13</time>
+    <time datetime="2015-10-13T03:35:11.000Z" itemprop="datePublished">2015-10-13</time>
+    更新日期:<time datetime="2016-01-13T07:03:00.000Z" itemprop="dateModified">2016-01-13</time>
     
   </p>
 </header>
@@ -82,21 +82,47 @@ building   In building">
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#building"><span class="toc-number">1.</span> <span class="toc-text">building</span></a></li></ol>
+		
 		</div>
 		
-		<p>Welcome to <a href="http://blog.suzf.net">here</a>! This is your very first post. </p>
-<h2 id="building"><a href="#building" class="headerlink" title="building"></a>building</h2><p>   In building</p>
+		<p>MongoDB可以从开放源代码来建构与安装，更常见的是安装binary文件，目前有<a href="https://zh.wikipedia.org/wiki/Windows" title="Windows" target="_blank" rel="external">Windows</a>, <a href="https://zh.wikipedia.org/wiki/Linux" title="Linux" target="_blank" rel="external">Linux</a>, <a href="https://zh.wikipedia.org/wiki/OS_X" title="OS X" target="_blank" rel="external">OS X</a>和<a href="https://zh.wikipedia.org/wiki/Solaris" title="Solaris" target="_blank" rel="external">Solaris</a>版本。许多Linux包管理系统现在已包含了MongoDB的包，包括<a href="https://zh.wikipedia.org/wiki/CentOS" title="CentOS" target="_blank" rel="external">CentOS</a>和<a href="https://zh.wikipedia.org/wiki/Fedora" title="Fedora" target="_blank" rel="external">Fedora</a>,<sup id="cite_ref-redhat_1-0" class="reference"><a href="https://zh.wikipedia.org/wiki/MongoDB#cite_note-redhat-1" target="_blank" rel="external">[1]</a></sup> <a href="https://zh.wikipedia.org/wiki/Debian" title="Debian" target="_blank" rel="external">Debian</a>和<a href="https://zh.wikipedia.org/wiki/Ubuntu" title="Ubuntu" target="_blank" rel="external">Ubuntu</a>,<sup id="cite_ref-deb_2-0" class="reference"><a href="https://zh.wikipedia.org/wiki/MongoDB#cite_note-deb-2" target="_blank" rel="external">[2]</a></sup> <a href="https://zh.wikipedia.org/wiki/Gentoo" title="Gentoo" target="_blank" rel="external">Gentoo</a><sup id="cite_ref-gentoo_3-0" class="reference"><a href="https://zh.wikipedia.org/wiki/MongoDB#cite_note-gentoo-3" target="_blank" rel="external">[3]</a></sup>以及<a href="https://zh.wikipedia.org/wiki/Arch_Linux" title="Arch Linux" target="_blank" rel="external">Arch Linux</a>。<sup id="cite_ref-arch_4-0" class="reference"><a href="https://zh.wikipedia.org/wiki/MongoDB#cite_note-arch-4" target="_blank" rel="external">[4]</a></sup> 同样可从官方网站获取。<sup id="cite_ref-download_5-0" class="reference"><a href="https://zh.wikipedia.org/wiki/MongoDB#cite_note-download-5" target="_blank" rel="external">[5]</a></sup></p>
+<p>MongoDB使用<span class="ilh-all"><span class="ilh-page"><a href="https://zh.wikipedia.org/w/index.php?title=%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6&amp;action=edit&amp;redlink=1" title="%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6&amp;action=edit&amp;redlink=1" target="_blank" rel="external">内存映射文件</a></span></span>, 32位系统上限制大小为2GB的数据 (64-比特支持更大的数据).<sup id="cite_ref-filelimit32bit_6-0" class="reference"><a href="https://zh.wikipedia.org/wiki/MongoDB#cite_note-filelimit32bit-6" target="_blank" rel="external">[6]</a></sup> MongoDB服务器只能用在<a href="https://zh.wikipedia.org/wiki/%E5%AD%97%E8%8A%82%E5%BA%8F#.E5.B0.8F.E7.AB.AF.E5.BA.8F" title="字节序" target="_blank" rel="external">小端序</a>系统，虽然大部分公司会同时准备小端序和大端序系统。</p>
+<a id="more"></a>
+<p>一. 安装mongodb, php扩展</p>
+<p>[11:09:32][root@ocean-lab ~]$ yum install php-pecl-mongo mongodb mongodb-devel mongodb-server</p>
+<p>php扩展，mongodb服务端，mongodb客户就装好了。</p>
+<p>二. 配置/etc/mongodb.conf</p>
+<p>[11:12:05][root@ocean-lab ~]$ cat /etc/mongodb.conf |awk ‘{if($0 !~ /^$/ &amp;&amp; $0 !~ /^#/) {print $0}}’<br>bind_ip = 127.0.0.1                          # IP<br>port = 27017                                 # 端口<br>fork = true                                  # 后台运行<br>pidfilepath = /var/run/mongodb/mongodb.pid   # PID<br>logpath = /var/log/mongodb/mongodb.log       # Log<br>dbpath =/var/lib/mongodb                     # DB PATH<br>journal = true                               # Redo log<br>nohttpinterface = true                       # disable the http interface</p>
+<p>三. 启动mongodb服务端,并查看</p>
+<p>[11:13:30][root@ocean-lab ~]$ /etc/init.d/mongod start<br>Starting mongod:                                           [  OK  ]<br>[11:24:59][root@ocean-lab ~]$ netstat -ntlp | grep mongo<br>tcp        0      0 127.0.0.1:27017             0.0.0.0:*                   LISTEN      1747/mongod</p>
+<p>这样mongodb就能正常动作了。</p>
+<p>接下来看一下php扩展是不是装好了，<br>[11:25:08][root@ocean-lab ~]$ php -m | grep mongo<br>mongo</p>
+<p>四. 测试php mongodb扩展</p>
+<p>[11:28:37][root@ocean-lab ~]$ cat test_mongo.php<br>&lt;?php<br>$mongo = new Mongo();<br>$dbs = $mongo-&gt;listDBs();<br>print_r($dbs);<br>?&gt;</p>
+<p>[11:28:46][root@ocean-lab ~]$ php test_mongo.php<br>Array<br>(<br>[databases] =&gt; Array<br>(<br>[0] =&gt; Array<br>(<br>[name] =&gt; local<br>[sizeOnDisk] =&gt; 83886080<br>[empty] =&gt;<br>)</p>
+<p>)</p>
+<p>[totalSize] =&gt; 83886080<br>[ok] =&gt; 1<br>)</p>
+<p>至此 mongodb-server &amp; php support 安装完毕 ， 开启 Mongo 之旅吧 。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/MongoDB/">MongoDB</a><a href="/tags/NoSQL/">NoSQL</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/MongoDB/">MongoDB</a>
+</div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.suzf.net/2016/01/13/hello-world/" data-title="Hello World | Suzf Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://blog.suzf.net/2015/10/13/how-to-install-mongo-and-php-support/" data-title="How-to: install mongo and php support | Suzf Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -105,11 +131,19 @@ building   In building">
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2015/10/13/mongodb-e6-95-b0-e6-8d-ae-e5-a4-87-e4-bb-bd-e4-b8-8e-e8-bf-98-e5-8e-9f/" title="MongoDB 数据备份与还原">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  MongoDB 数据备份与还原</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/"  title="Hadoop 单节点_伪分布 安装手记">
+<a href="/2015/10/01/how-to-use-highcharts-to-build-a-monitor-of-website-daily-visitor/"  title="How-to: use highcharts and MySQL build easy monitor">
  <strong>NEXT:</strong><br/> 
- <span>Hadoop 单节点_伪分布 安装手记
+ <span>How-to: use highcharts and MySQL build easy monitor
 </span>
 </a>
 </div>
@@ -126,7 +160,7 @@ building   In building">
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#building"><span class="toc-number">1.</span> <span class="toc-text">building</span></a></li></ol>
+  
   </div>
 
 <div id="asidepart">
