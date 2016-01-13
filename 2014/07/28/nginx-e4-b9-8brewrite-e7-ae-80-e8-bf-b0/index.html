@@ -4,15 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>[ 译 ] Zabbix 之监控虚拟主机EXSI | Suzf Blog</title>
+    <title>Nginx之rewrite简述 | Suzf Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="概述
-Zabbix 从2.2.0版本开始支持支持监控VMware 虚拟机的可用性。
-Zabbix 可以使用low-level discovery 规则去自动发现 VMware hypervisors and virtual machines 之后创建主机并监控他们, 基于之前定义的主机规则.
-在Za">
+    <meta name="description" content="1、添加nginx第三方yum源cat &amp;gt; /etc/yum.repos.d/nginx.repo &amp;lt;&amp;lt;EOF[nginx]name=nginx repobaseurl=http://nginx.org/packages/centos/$releasever/$basearch/e">
     
     
     
@@ -67,15 +64,15 @@ Zabbix 可以使用low-level discovery 规则去自动发现 VMware hypervisors 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/08/14/e8-af-91-zabbix-e4-b9-8b-e7-9b-91-e6-8e-a7-e8-99-9a-e6-8b-9f-e4-b8-bb-e6-9c-baexsi/" title="[ 译 ] Zabbix 之监控虚拟主机EXSI" itemprop="url">[ 译 ] Zabbix 之监控虚拟主机EXSI</a>
+      <a href="/2014/07/28/nginx-e4-b9-8brewrite-e7-ae-80-e8-bf-b0/" title="Nginx之rewrite简述" itemprop="url">Nginx之rewrite简述</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-08-14T10:53:07.000Z" itemprop="datePublished">2014-08-14</time>
-    更新日期:<time datetime="2016-01-13T07:37:21.000Z" itemprop="dateModified">2016-01-13</time>
+    <time datetime="2014-07-28T09:47:29.000Z" itemprop="datePublished">2014-07-28</time>
+    更新日期:<time datetime="2016-01-13T07:22:14.000Z" itemprop="dateModified">2016-01-13</time>
     
   </p>
 </header>
@@ -87,75 +84,44 @@ Zabbix 可以使用low-level discovery 规则去自动发现 VMware hypervisors 
 		
 		</div>
 		
-		<p>概述</p>
-<p>Zabbix 从2.2.0版本开始支持支持监控VMware 虚拟机的可用性。</p>
-<p>Zabbix 可以使用low-level discovery 规则去自动发现 VMware hypervisors and virtual machines 之后创建主机并监控他们, 基于之前定义的主机规则.</p>
-<p>在Zabbix默认数据集提供了几个现成的模板或ESX hypervisor监测VMware vCenter。</p>
-<p>最小要求VMware vCenter或vSphere的版本是4.1。</p>
-<p>详情</p>
-<p>虚拟机监控是两个步骤。第一个数据是由VMware收集器Zabbix收集过程。这些过程中获取必要的信息从VMware的Web服务的SOAP协议，预处理并存储到Zabbix服务器共享内存。然后，数据用Zabbix简单检查VMware键对检索。</p>
-<p>数据收集从一个单一的Vmware服务通过一个单一的采集进程不能共享到多个数据收集进程。然而，个收集器可以处理多个虚拟机服务。因为推荐使用ESX hypervisor直接整个vCenter服务监控。</p>
-<p>配置</p>
-<p>Zabbix server 编译的是侯应该使用以下参数： –with-libxml2 and –with-libcurl</p>
-<p>下面这些参数可用于虚拟机的监控：</p>
-<p>选项                                  区间          默认值     说明</p>
-<p>StartVMwareCollectors  0-250            0               Number of pre-forked vmware collector instances.</p>
-<p>VMwareCacheSize        256K-2G      8M         Shared memory size for storing VMware data.<br>A VMware internal check zabbix[vmware,buffer,…] can be used to monitor the VMware cache usage (see Internal checks).<br>Note that shared memory is not allocated if there are no vmware collector instances configured to start.</p>
-<p>VMwareFrequency        10-86400     60         Delay in seconds between data gathering from a single VMware service.<br>This delay should be set to the least delay period of an</p>
-<p>&nbsp;</p>
-<p>发现</p>
-<p>Zabbix可以使用low-level 发现规则去自动发现VMware hypervisors and virtual machines.</p>
-<p><img src="http://s3.51cto.com/wyfs02/M02/45/DD/wKioL1Psljeyei24AAHPqV-X-CU196.jpg" alt=""></p>
-<p>&nbsp;</p>
-<p>在上面的截图中发现规则的键值是 vmware.hv.discovery[{$URL}].</p>
-<p>主机原型</p>
-<p>主机原型可以与低层次的发现的规则。当虚拟机被发现，这些原型成为真正主机。原型，在被发现前，不能有自己的项目和触发器，其他链接模板。发现主机将属于一个现有的主机，将现有的主机的IP的主机配置。</p>
-<p><img src="http://s3.51cto.com/wyfs02/M00/45/DD/wKioL1PslkWiw1HsAAG2oh4dciM247.jpg" alt=""></p>
-<p>在主机原型配置，LLD宏用于主机名称，可见的名称和主机组原型领域。主机状态，现有的主机组和模板连锁等都是不错的选择，可以设置。</p>
-<p><img src="http://s3.51cto.com/wyfs02/M02/45/DC/wKiom1PslTyD4RJIAAFxyD5mC8k234.jpg" alt=""></p>
-<p>发现主机的前缀，创造了他们发现规则的名称，在主机列表。发现主机可以手动删除。发现主机也会被自动删除，以保持失去资源期（天）发现规则的价值。大多数的配置选项是只读的，除了启用/禁用主机和主机库存。发现主机不能有自己的主机的原型。</p>
-<p>开始使用模板</p>
-<p>在Zabbix默认数据集提供了几个现成的模板，用于监测VMware vCenter或直接ESX hypervisor。</p>
-<p>这些模板包含预配置的LLD规则以及监测虚拟设备的一些内置的检查。</p>
-<p>请注意：</p>
-<p>“模板为VMware”模板可以用于VMware vCenter和ESX hypervisor监测。</p>
-<p>“模板为VMware虚拟机管理程序”和“模板为VMware客”模板被发现，通常不应该手动连接到主机。</p>
-<p>主机配置</p>
-<p>在使用简单检查前需要先定义一下宏命令：</p>
-<p>{$URL} - VMware service (vCenter or ESX hypervisor) SDK URL (<a href="https://servername/sdk" target="_blank" rel="external">https://servername/sdk</a>).</p>
-<p>{$USERNAME} - VMware service user name</p>
-<p>{$PASSWORD} - VMware service {$USERNAME} user password<br>Example</p>
-<p>下面的例子讲述的是如何对VMware主机进行监控</p>
-<p>编译zabbix server 必须有一下参数 –with-libxml2 and –with-libcurl</p>
-<p>在zabbix server设置StartVMwareCollectors 值为1 或更大</p>
-<p>新建主机</p>
-<p>设置为VMware认证所需的主机的宏：</p>
-<p><img src="http://s3.51cto.com/wyfs02/M01/45/DD/wKioL1PslmfCb3sFAAESZFVTEIA259.jpg" alt=""></p>
-<p>关联模板</p>
-<p><img src="http://s3.51cto.com/wyfs02/M00/45/DC/wKiom1PslVrRk8UvAACshB-K52k006.jpg" alt=""></p>
-<p>保存</p>
-<p>稍等就会自动出现在主机里了</p>
-<p><a href="http://s3.51cto.com/wyfs02/M00/45/DD/wKioL1PslofwinILAAA0kk42q5A649.jpg" target="_blank" rel="external">http://s3.51cto.com/wyfs02/M00/45/DD/wKioL1PslofwinILAAA0kk42q5A649.jpg</a></p>
+		<p>1、添加nginx第三方yum源<br>cat &gt; /etc/yum.repos.d/nginx.repo &lt;&lt;EOF<br>[nginx]<br>name=nginx repo<br>baseurl=<a href="http://nginx.org/packages/centos/$releasever/$basearch/" target="_blank" rel="external">http://nginx.org/packages/centos/$releasever/$basearch/</a><br>enabled=1<br>gpgcheck=0<br>EOF</p>
+<p>2、接下来就可以用yum来安装nginx了<br>yum install nginx -y</p>
+<p>3、 新建rewrite规则<br>[root@test ~]# cat /etc/nginx/conf.d/test.conf<br>upstream app_test {<br>    server   127.0.0.1:8080 weight=1 max_fails=2 fail_timeout=30s;<br>    }</p>
+<pre><code>server {
+    listen       80;
+    server_name   jeffery.com;
+    rewrite ^/$   http://jeffery.com/index.jsp permanent;
+
+    location / {
+     root   html;
+     index index.jsp index.php index.html index.htm;
+     proxy_set_header Host  $host;
+     proxy_set_header X-Real-IP $remote_addr;
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+     proxy_pass http://app_test;
+}
+</code></pre><p>  }</p>
+<p>接下来就可以通过80端口来访问tomcat应用了<br>可能你会问 为什么不直接修改server.xml文件中的端口号呢？<br>在现实 生活中tomcat可能会交予多人来维护，Linux默认不通用户无法开启1024一下端</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Exsi/">Exsi</a><a href="/tags/Zabbix/">Zabbix</a>
+  <span></span> <a href="/tags/Nginx/">Nginx</a><a href="/tags/rewrite/">rewrite</a><a href="/tags/tomcat/">tomcat</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Zabbix/">Zabbix</a>
+  <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.suzf.net/2014/08/14/e8-af-91-zabbix-e4-b9-8b-e7-9b-91-e6-8e-a7-e8-99-9a-e6-8b-9f-e4-b8-bb-e6-9c-baexsi/" data-title="[ 译 ] Zabbix 之监控虚拟主机EXSI | Suzf Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://blog.suzf.net/2014/07/28/nginx-e4-b9-8brewrite-e7-ae-80-e8-bf-b0/" data-title="Nginx之rewrite简述 | Suzf Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -165,18 +131,18 @@ Zabbix 可以使用low-level discovery 规则去自动发现 VMware hypervisors 
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/08/15/zabbix-e4-b9-8bjmx-e7-9b-91-e6-8e-a7tomcat/" title="Zabbix之JMX监控Tomcat">
+ <a href="/2014/08/01/zabbix-e4-b9-8bwindows-e4-b8-8b-e5-ae-89-e8-a3-85agent/" title="Zabbix 之windows下安装agent">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  Zabbix之JMX监控Tomcat</span>
+  Zabbix 之windows下安装agent</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/08/13/nginx-e4-b9-8b-e8-ae-bf-e9-97-ae-e6-8e-a7-e5-88-b6-e4-b8-8e-e7-8a-b6-e6-80-81-e6-9f-a5-e7-9c-8b/"  title="Nginx 之访问控制与状态查看">
+<a href="/2014/07/28/jdk-tomcat-e5-ae-89-e8-a3-85/"  title="JDK_Tomcat  安装">
  <strong>NEXT:</strong><br/> 
- <span>Nginx 之访问控制与状态查看
+ <span>JDK_Tomcat  安装
 </span>
 </a>
 </div>
