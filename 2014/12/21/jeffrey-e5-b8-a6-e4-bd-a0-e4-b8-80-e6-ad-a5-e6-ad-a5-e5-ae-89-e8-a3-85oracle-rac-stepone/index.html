@@ -1,0 +1,491 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Jeffrey带你一步步安装ORACLE_RAC STEP:ONE | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Copyright to Jeffrey.Su
+前言：
+文档编写日期追溯到13年10月，那时的自己还是一枚学生。基本上是三无人员 。听老湿说RAC很高大上，遂弄之。那是啥也不太懂 神马udev 神马 block 什么 ASM 等等 。一切从零开始 ， 开始网上收集文档 补充知识 。借鉴了很多文档 。">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/21/jeffrey-e5-b8-a6-e4-bd-a0-e4-b8-80-e6-ad-a5-e6-ad-a5-e5-ae-89-e8-a3-85oracle-rac-stepone/" title="Jeffrey带你一步步安装ORACLE_RAC STEP:ONE" itemprop="url">Jeffrey带你一步步安装ORACLE_RAC STEP:ONE</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-21T02:08:45.000Z" itemprop="datePublished">2014-12-21</time>
+    更新日期:<time datetime="2016-01-13T07:17:58.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Do_not_remove_the_following_line_2C_or_various_programs"><span class="toc-number">1.</span> <span class="toc-text">Do not remove the following line, or various programs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#that_require_network_functionality_will_fail"><span class="toc-number">2.</span> <span class="toc-text">that require network functionality will fail.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Enter_raw_device_bindings_here"><span class="toc-number">3.</span> <span class="toc-text">Enter raw device bindings here.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#An_example_would_be_3A"><span class="toc-number">4.</span> <span class="toc-text">An example would be:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACTION_3D_3D_u201Dadd_u201D_2C_KERNEL_3D_3D_u201Dsda_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw1__25N_u201D"><span class="toc-number">5.</span> <span class="toc-text">ACTION==”add”, KERNEL==”sda”, RUN+=”/bin/raw /dev/raw/raw1 %N”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#to_bind_/dev/raw/raw1_to_/dev/sda_2C_or"><span class="toc-number">6.</span> <span class="toc-text">to bind /dev/raw/raw1 to /dev/sda, or</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACTION_3D_3D_u201Dadd_u201D_2C_ENV_7BMAJOR_7D_3D_3D_u201D8_u201D_2C_ENV_7BMINOR_7D_3D_3D_u201D1_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw2__25M__25m_u201D"><span class="toc-number">7.</span> <span class="toc-text">ACTION==”add”, ENV{MAJOR}==”8”, ENV{MINOR}==”1”, RUN+=”/bin/raw /dev/raw/raw2 %M %m”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#to_bind_/dev/raw/raw2_to_the_device_with_major_8_2C_minor_1"><span class="toc-number">8.</span> <span class="toc-text">to bind /dev/raw/raw2 to the device with major 8, minor 1.</span></a></li></ol>
+		</div>
+		
+		<p>Copyright to Jeffrey.Su</p>
+<p>前言：</p>
+<pre><code>文档编写日期追溯到13年10月，那时的自己还是一枚学生。基本上是三无人员 。听老湿说RAC很高大上，遂弄之。那是啥也不太懂 神马udev 神马 block 什么 ASM 等等 。一切从零开始 ， 开始网上收集文档 补充知识 。借鉴了很多文档 。向开源的前辈致敬！ 再说说装备之简陋 ，可以称之为小米加步枪。整体装备 i5 2450 Ram 4G disk 5400/r . @_@
+</code></pre><p>这里内存是最要命的 官方说明rac 单机 物理内存至少是1.5G 。 都分1.5 的话 再加一个 openfiler 机器不就成蜗牛了吗？ 后通过实践 virtual box 的共享磁盘还是蛮方便的，就用它了 。 一点一点网上加内存呀  ！！ 最终 还是弄到 1.5G 囧囧囧 ， 之前是各种报错 。 历时 一周半 从无到有 测试环境算是出来了 ， 但是仅做了简单的测试 。 Cpu 风扇 都开始 往外吐灰尘了 。 这是什么节奏呀 @_@ </p>
+<p>文中难免出现纰漏，欢迎大家拍砖 。 </p>
+<p>下面回到正文：</p>
+<p>一、配置oracle 11g r2 RAC  </p>
+<p>1、环境介绍：</p>
+<p>Node Name     Oracle_SID    Databasename   MEM       OS</p>
+<p>OceanI        oceandb1       oceandb       1.5G      Rhel5.4</p>
+<p>OceanV        oceandb2                     1.5G      Rhel5.4</p>
+<p>这里系统安装建议对node2 不是clone system</p>
+<p>网络配置<br>Node Name Public IP      Private IP     Virtual IP   Scan Name   Scan IP       解析方式<br>OceanI    192.168.1.10   10.10.10.10    192.168.1.11  Ocean-rac  192.168.1.99  hosts<br>OceanV    192.168.1.20   10.10.10.20    192.168.1.21      </p>
+<p>Oracle 软件组件<br>软件组件      用户  主组      辅组                       主目录        Oracl基本目        Oracle主目录<br>Grid         grid  oinstall  asmadmin、asmdba、asmoper /home/grid    /u01/app/grid    /u01/app/11.2.0/grid<br>Oracle Rac   grid  oinstall  dba、oper、asmdba         /home/oracle  /u01/app/oracle  /u01/app/oracle/product/11.2.0/db_1</p>
+<p>存储组件<br>存储组件    文件系统  卷大小 ASM卷组名  ASM 冗余  Raw 卷名<br>OCR表决磁盘 ASM        2GB   +CRSV1     External  raw1<br>数据库文件  ASM        10GB  +DATEV1    External  raw2<br>快速恢复区  ASM        5GB   +FRAV1     External  raw3</p>
+<p> 在这里存储系统使用的是ASM,在 ASM 上存储 OCR 和表决磁盘文件，具体是存储在一个名为 +CRS 的磁盘组中，该磁盘组使用外部冗余配置，只有一个 OCR 位置和一个表决磁盘位置。ASM 磁盘组应在共享存储器上创建，大小至少为 2GB。Oracle 物理数据库文件（数据、联机重做日志、控制文件、存档重做日志）将安装在 ASM 上一个名为 +DATElv1 的 ASM 磁盘组中，而快速恢复区将在一个名为 +FRAlv1 的 ASM 磁盘组上创建。</p>
+<p>2、系统配置：<br>2.1、安装oracle RAC所需的linux软件包：</p>
+<p>查看安装的包<br>rpm -q binutils compat-libstdc++-33 elfutils-libelf elfutils-libelf-devel gcc gcc-c++ glibc glibc-common glibc-devel<br>rpm -q glibc-headers ksh libaio libaio-devel libgcc libstdc++ libstdc++-devel make numactl-devel sysstat </p>
+<p>yum -y install binutils compat-libstdc++ elfutils-libelf elfutils-libelf-devel elfutils-libelf-devel-static gcc gcc-c++ glibc glibc-common glibc-devel glibc-headers ksh libaio libaio-devel libgcc libgomp libstdc++ libstdc++-devel make sysstat unixODBC unixODBC-devel</p>
+<p>2.2、网络配置：</p>
+<p>分配IP地址：</p>
+<p>这里的 SCAN ip地址必须通过GNS或者DNS来解析的，这里使用的是DNS解析.其他地址都在hosts文件里定义。</p>
+<p>[root@OceanI ~]# cat /etc/hosts</p>
+<h1 id="Do_not_remove_the_following_line_2C_or_various_programs"><a href="#Do_not_remove_the_following_line_2C_or_various_programs" class="headerlink" title="Do not remove the following line, or various programs"></a>Do not remove the following line, or various programs</h1><h1 id="that_require_network_functionality_will_fail"><a href="#that_require_network_functionality_will_fail" class="headerlink" title="that require network functionality will fail."></a>that require network functionality will fail.</h1><p>127.0.0.1OceanI localhost.localdomain localhost</p>
+<p>#::1localhost6.localdomain6 localhost6</p>
+<p>192.168.1.10    OceanI<br>192.168.1.11    OceanI-vip      #未非配IP<br>10.10.10.10     OceanI-pri</p>
+<p>192.168.1.50    OceanV<br>192.168.1.51    OceanV-vip      #未非配IP<br>10.10.10.50     OceanV-pri</p>
+<p>192.168.1.99   Ocean-rac         #未非配IP</p>
+<p>2.3、集群时间同步服务：</p>
+<p>利用linux本身对时间进行同步</p>
+<p>service ntpd stop<br>chkconfig ntpd off<br>mv /etc/ntp.conf  /etc/ntp.conf.org<br>rm /var/run/ntpd.pid</p>
+<p>这步需要做 否则会影响rac稳定运行</p>
+<p>2.4、创建任务角色划分操作系统权限组、用户和目录:</p>
+<p>创建以下 O/S 组：</p>
+<p>wKioL1UlR9Dz4-00AAFpOn4hR2Y571.jpg<br>2.4.1 添加Oracle用户组</p>
+<p>groupadd -g 1001 oinstall<br>groupadd -g 1002 asmadmin<br>groupadd -g 1003 asmdba<br>groupadd -g 1004 asmoper<br>groupadd -g 1005 dba<br>groupadd -g 1006 oper</p>
+<p>2.4.2添加Oracle用户</p>
+<p>useradd oracle -u 600<br>useradd grid -u 601</p>
+<p>2.4.3  修改Oracle用户所属组</p>
+<p>useradd -g oinstall -G dba,asmadmin,asmdba,asmoper grid<br>useradd -g oinstall -G dba,oper,asmdba oracle</p>
+<p>分别在两节点使用 id grid /id oracle 查看用户ID、组ID 是否一致[之前未指定用户ID、组ID]</p>
+<p>2.4.4  设置密码</p>
+<p>passwd oracle   (oracle)<br>passwd grid (grid)</p>
+<p>2.5为 grid 用户帐户创建登录脚本</p>
+<p>vi /home/grid/.bash_profile</p>
+<p>注：在为每个 Oracle RAC 节点设置 Oracle 环境变量时，确保为每个 RAC 节点指定唯一的 Oracle SID。对于此示例，我使用：</p>
+<p>o OceanI：ORACLE_SID=+ASM1</p>
+<p>o OceanV：ORACLE_SID=+ASM2</p>
+<p>ORACLE_SID=+ASM1; export ORACLE_SID<br>ORACLE_BASE=/u01/app/grid; export ORACLE_BASE<br>ORACLE_HOME=/u01/app/11.2.0/grid; export ORACLE_HOME<br>export PATH=$ORACLE_HOME/bin:$PATH<br>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib:/lib:/usr/lib:/usr/local/lib<br>export TMP=/tmp<br>export CLASSPATH=$CLASSPATH:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib </p>
+<p>source /home/grid/.bash_profile</p>
+<p>2.6为 oracle 用户帐户创建登录脚本</p>
+<p>vi /home/oracle/.bash_profile</p>
+<p>注：在为每个 Oracle RAC 节点设置 Oracle 环境变量时，确保为每个 RAC 节点指定唯一的 Oracle SID。对于此示例，我使用： </p>
+<p>o OceanI：ORACLE_SID=oceandb1</p>
+<p>o OceanV：ORACLE_SID=oceandb2</p>
+<p>加入.bash_profile</p>
+<p>ORACLE_SID=oceandb1; export ORACLE_SID<br>ORACLE_UNQNAME=oceandb; export ORACLE_UNQNAME<br>ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE<br>ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1; export ORACLE_HOME<br>export PATH=$ORACLE_HOME/bin:$PATH<br>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib:/lib:/usr/lib:/usr/local/lib<br>export TMP=/tmp<br>export CLASSPATH=$CLASSPATH:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib<br>source /home/oracle/.bash_profile</p>
+<p>2.7 创建Oracle 基目录路径[两节点均执行相同操作]:</p>
+<p>mkdir -p /u01/app/grid<br>mkdir -p /u01/app/11.2.0/grid<br>chown -R grid.oinstall /u01/<br>mkdir -p /u01/app/oracle<br>chown -R oracle.oinstall /u01/app/oracle/<br>chmod -R 775 /u01/</p>
+<p>2.8 为 Oracle 软件安装用户设置资源限制:</p>
+<p>A:修改/etc/security/limits.conf文件，加入以下内容：</p>
+<p>#add by lcs for oracle<br>grid soft nproc 2047<br>grid hard nproc 16384<br>grid soft nofile 1024<br>grid hard nofile 65536<br>oracle soft nproc 2047<br>oracle hard nproc 16384<br>oracle soft nofile 1024<br>oracle hard nofile 65536</p>
+<p>B:vi /etc/pam.d/login ，加入以下内容：</p>
+<p>session required pam_limits.so</p>
+<p>C:根据您的 shell 环境，对默认的 shell 启动文件进行以下更改，以便更改所有 Oracle 安装所有者的 ulimit 设置（注意这里的示例显示 oracle 和 grid 用户）：</p>
+<p>对于 Bourne、Bash 或 Korn shell，通过运行以下命令将以下行添加到 /etc/profile 文件：</p>
+<p>#oracle<br>if [ $USER = “oracle” ] || [ $USER = “grid” ]; then<br>        if [ $SHELL = “/bin/ksh” ]; then<br>                ulimit -p 16384<br>                ulimit -n 65536<br>        else<br>                ulimit -u 16384 -n 65536<br>        fi<br>        umask 022<br>fi</p>
+<p>2.9 为 Oracle 配置 Linux 服务器：</p>
+<p>配置内核参数：</p>
+<p>向/etc/sysctl.conf，添加</p>
+<p>#kernel.shmall = 2097152（已有可不修改）</p>
+<p>#kernel.shmmax = 2147483648（已有可不修改）<br>kernel.shmmni = 4096<br>kernel.sem = 250 32000 100 128<br>net.core.rmem_default = 262144<br>net.core.rmem_max = 4194304<br>net.core.wmem_default = 262144<br>net.core.wmem_max = 1048576<br>net.ipv4.ip_local_port_range = 9000 65500<br>fs.suid_dumpable = 1<br>fs.file-max = 6815744<br>fs.aio-max-nr = 1048576</p>
+<p>/sbin/sysctl -p    #是修改参数立即生效<br>2.10 配置系统安全设置[两节点均执行]<br>iptables -F<br>/etc/init.d/iptables save<br>chkconfig iptables off<br>vim /etc/selinux/config<br>SELINUX=disabled</p>
+<p>2.11 修改tmpfs的大小</p>
+<p>umount tmpfs<br>mount -t tmpfs shmfs -o size=3000m /dev/shm<br>修改/etc/fstab文件，增加tmpfs大小<br>vi /etc/fstab<br>tmpfs                   /dev/shm                tmpfs defaults,size=3G  0 0</p>
+<p>2.12 配置RAC 节点以便可以使用 SSH 进行远程访问</p>
+<p>略………<br>2.13、共享磁盘配置：</p>
+<p>[注]：这里的共享磁盘选择固定大小 添加方式和添加其他虚拟硬盘方式一样 这里不做过多的说明。</p>
+<p>wKiom1UlR_6wxGz0AAMkF1efcxY446.jpg</p>
+<p>在共享磁盘上创建分区：</p>
+<p>只创建一个分区，在一个节点上执行即可，如下：</p>
+<p>2.14使用u_dev绑定裸设备:</p>
+<p>[root@OceanI ~]# vim /etc/udev/rules.d/60-raw.rules </p>
+<h1 id="Enter_raw_device_bindings_here"><a href="#Enter_raw_device_bindings_here" class="headerlink" title="Enter raw device bindings here."></a>Enter raw device bindings here.</h1><p>#</p>
+<h1 id="An_example_would_be_3A"><a href="#An_example_would_be_3A" class="headerlink" title="An example would be:"></a>An example would be:</h1><h1 id="ACTION_3D_3D_u201Dadd_u201D_2C_KERNEL_3D_3D_u201Dsda_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw1__25N_u201D"><a href="#ACTION_3D_3D_u201Dadd_u201D_2C_KERNEL_3D_3D_u201Dsda_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw1__25N_u201D" class="headerlink" title="ACTION==”add”, KERNEL==”sda”, RUN+=”/bin/raw /dev/raw/raw1 %N”"></a>ACTION==”add”, KERNEL==”sda”, RUN+=”/bin/raw /dev/raw/raw1 %N”</h1><h1 id="to_bind_/dev/raw/raw1_to_/dev/sda_2C_or"><a href="#to_bind_/dev/raw/raw1_to_/dev/sda_2C_or" class="headerlink" title="to bind /dev/raw/raw1 to /dev/sda, or"></a>to bind /dev/raw/raw1 to /dev/sda, or</h1><h1 id="ACTION_3D_3D_u201Dadd_u201D_2C_ENV_7BMAJOR_7D_3D_3D_u201D8_u201D_2C_ENV_7BMINOR_7D_3D_3D_u201D1_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw2__25M__25m_u201D"><a href="#ACTION_3D_3D_u201Dadd_u201D_2C_ENV_7BMAJOR_7D_3D_3D_u201D8_u201D_2C_ENV_7BMINOR_7D_3D_3D_u201D1_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw2__25M__25m_u201D" class="headerlink" title="ACTION==”add”, ENV{MAJOR}==”8”, ENV{MINOR}==”1”, RUN+=”/bin/raw /dev/raw/raw2 %M %m”"></a>ACTION==”add”, ENV{MAJOR}==”8”, ENV{MINOR}==”1”, RUN+=”/bin/raw /dev/raw/raw2 %M %m”</h1><h1 id="to_bind_/dev/raw/raw2_to_the_device_with_major_8_2C_minor_1"><a href="#to_bind_/dev/raw/raw2_to_the_device_with_major_8_2C_minor_1" class="headerlink" title="to bind /dev/raw/raw2 to the device with major 8, minor 1."></a>to bind /dev/raw/raw2 to the device with major 8, minor 1.</h1><p>ACTION==”add”, KERNEL==”sdb1”, RUN+=”/bin/raw /dev/raw/raw1 %N”<br>ACTION==”add”, KERNEL==”sdc1”, RUN+=”/bin/raw /dev/raw/raw2 %N”<br>ACTION==”add”, KERNEL==”sdd1”, RUN+=”/bin/raw /dev/raw/raw3 %N”<br>ACTION==”add”, KERNEL==”sde1”, RUN+=”/bin/raw /dev/raw/raw4 %N”</p>
+<p>KERNEL==”raw1”, OWNER==”grid”, GROUP==”asmadmin”, MODE=”660”<br>KERNEL==”raw2”, OWNER==”grid”, GROUP==”asmadmin”, MODE=”660”<br>KERNEL==”raw3”, OWNER==”grid”, GROUP==”asmadmin”, MODE=”660”<br>KERNEL==”raw4”, OWNER==”grid”, GROUP==”asmadmin”, MODE=”660”<br>然后启动udev服务生成RAW设备<br>[root@OceanI /]# start_udev<br>Starting udev:                                        [OK]<br>接着验证udev是否成功生成<br>[root@OceanI ~]# ls -l /dev/raw<br>total 0<br>crw-rw—- 1 grid asmadmin 162, 1 Sep 27 05:04 raw1<br>crw-rw—- 1 grid asmadmin 162, 2 Sep 27 05:04 raw2<br>crw-rw—- 1 grid asmadmin 162, 3 Sep 27 05:04 raw3<br>crw-rw—- 1 grid asmadmin 162, 4 Sep 27 05:04 raw4</p>
+<p>[root@OceanI ~]# scp /etc/udev/rules.d/60-raw.rules OceanV:/etc/udev/rules.d/60-raw.rules</p>
+<pre><code># start_udev
+</code></pre><p>2.15  重新启动系统</p>
+<p>Reboot</p>
+<p>检查之前配置</p>
+<p>到这里基本上环境都准备好了 ，下篇讲解 GRID 的安装 。</p>
+<p>本文出自 “Jeffrey Blog” 博客，转载请注明出处 ！</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Oracle/">Oracle</a><a href="/tags/RAC/">RAC</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Oracle/">Oracle</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2014/12/21/jeffrey-e5-b8-a6-e4-bd-a0-e4-b8-80-e6-ad-a5-e6-ad-a5-e5-ae-89-e8-a3-85oracle-rac-stepone/" data-title="Jeffrey带你一步步安装ORACLE_RAC STEP:ONE | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/22/jeffrey-e5-b8-a6-e4-bd-a0-e4-b8-80-e6-ad-a5-e6-ad-a5-e5-ae-89-e8-a3-85oracle-rac-steptwo/" title="Jeffrey带你一步步安装ORACLE_RAC STEP:TWO">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Jeffrey带你一步步安装ORACLE_RAC STEP:TWO</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/10/21/puppet-e4-b9-8b-nginx-e6-a8-a1-e5-9d-97-e7-bc-96-e5-86-99/"  title="Puppet Nginx module write">
+ <strong>NEXT:</strong><br/> 
+ <span>Puppet Nginx module write
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Do_not_remove_the_following_line_2C_or_various_programs"><span class="toc-number">1.</span> <span class="toc-text">Do not remove the following line, or various programs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#that_require_network_functionality_will_fail"><span class="toc-number">2.</span> <span class="toc-text">that require network functionality will fail.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Enter_raw_device_bindings_here"><span class="toc-number">3.</span> <span class="toc-text">Enter raw device bindings here.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#An_example_would_be_3A"><span class="toc-number">4.</span> <span class="toc-text">An example would be:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACTION_3D_3D_u201Dadd_u201D_2C_KERNEL_3D_3D_u201Dsda_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw1__25N_u201D"><span class="toc-number">5.</span> <span class="toc-text">ACTION==”add”, KERNEL==”sda”, RUN+=”/bin/raw /dev/raw/raw1 %N”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#to_bind_/dev/raw/raw1_to_/dev/sda_2C_or"><span class="toc-number">6.</span> <span class="toc-text">to bind /dev/raw/raw1 to /dev/sda, or</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACTION_3D_3D_u201Dadd_u201D_2C_ENV_7BMAJOR_7D_3D_3D_u201D8_u201D_2C_ENV_7BMINOR_7D_3D_3D_u201D1_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw2__25M__25m_u201D"><span class="toc-number">7.</span> <span class="toc-text">ACTION==”add”, ENV{MAJOR}==”8”, ENV{MINOR}==”1”, RUN+=”/bin/raw /dev/raw/raw2 %M %m”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#to_bind_/dev/raw/raw2_to_the_device_with_major_8_2C_minor_1"><span class="toc-number">8.</span> <span class="toc-text">to bind /dev/raw/raw2 to the device with major 8, minor 1.</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/tags/RAC/" title="RAC">RAC<sup>2</sup></a></li>
+		
+			<li><a href="/tags/bug/" title="bug">bug<sup>1</sup></a></li>
+		
+			<li><a href="/tags/couchbase/" title="couchbase">couchbase<sup>1</sup></a></li>
+		
+			<li><a href="/tags/diy/" title="diy">diy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/expect/" title="expect">expect<sup>1</sup></a></li>
+		
+			<li><a href="/tags/facter/" title="facter">facter<sup>1</sup></a></li>
+		
+			<li><a href="/tags/faq/" title="faq">faq<sup>4</sup></a></li>
+		
+			<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/highcharts/" title="highcharts">highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iso/" title="iso">iso<sup>1</sup></a></li>
+		
+			<li><a href="/tags/pip/" title="pip">pip<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
