@@ -1,0 +1,402 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>pip-faq: Error -5 while decompressing data: incomplete or truncated stream | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="在我执行 pip install flask-bootstrap 出现了一个这样的错误– error: Error -5 while decompressing data: incomplete or truncated stream
+安装/卸载其他包是正常的。唯独管理flask-bootstrap">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/" title="pip-faq: Error -5 while decompressing data: incomplete or truncated stream" itemprop="url">pip-faq: Error -5 while decompressing data: incomplete or truncated stream</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-12-30T08:04:51.000Z" itemprop="datePublished">2015-12-30</time>
+    更新日期:<time datetime="2016-01-13T07:17:03.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+		</div>
+		
+		<p>在我执行 <code>pip install flask-bootstrap</code> 出现了一个这样的错误<br>– error: Error -5 while decompressing data: incomplete or truncated stream</p>
+<p>安装/卸载其他包是正常的。唯独管理flask-bootstrap 出现了这样的错误。</p>
+<p>版本信息：</p>
+<p>#pip –version<br>pip 7.1.2 from /usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg (python 2.7)</p>
+<p>#python –version<br>Python 2.7.3</p>
+<p>完整的报错信息是：</p>
+<p><pre class="lang:default decode:true ">^_^[15:36:31][root@master01 ~]#pip install flask-bootstrap<br>Collecting flask-bootstrap<br>Exception:<br>Traceback (most recent call last):<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/basecommand.py”, line 211, in main<br>    status = self.run(options, args)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/commands/install.py”, line 294, in run<br>    requirement_set.prepare_files(finder)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_set.py”, line 334, in prepare_files<br>    functools.partial(self._prepare_file, finder))<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_set.py”, line 321, in _walk_req_to_install<br>    more_reqs = handler(req_to_install)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_set.py”, line 461, in _prepare_file<br>    req_to_install.populate_link(finder, self.upgrade)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_install.py”, line 250, in populate_link<br>    self.link = finder.find_requirement(self, upgrade)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 486, in find_requirement<br>    all_versions = self._find_all_versions(req.name)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 404, in _find_all_versions<br>    index_locations = self._get_index_urls_locations(project_name)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 378, in _get_index_urls_locations<br>    page = self._get_page(main_index_url)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 818, in _get_page<br>    return HTMLPage.get_page(link, session=self.session)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 928, in get_page<br>    “Cache-Control”: “max-age=600”,<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/requests/sessions.py”, line 477, in get<br>    return self.request(‘GET’, url, <strong>kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/download.py”, line 373, in request<br>    return super(PipSession, self).request(method, url, *args, </strong>kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/requests/sessions.py”, line 465, in request<br>    resp = self.send(prep, <strong>send_kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/requests/sessions.py”, line 573, in send<br>    r = adapter.send(request, </strong>kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/adapter.py”, line 36, in send<br>    cached_response = self.controller.cached_request(request)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/controller.py”, line 102, in cached_request<br>    resp = self.serializer.loads(request, self.cache.get(cache_url))<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/serialize.py”, line 108, in loads<br>    return getattr(self, “_loads_v{0}”.format(ver))(request, data)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/serialize.py”, line 164, in _loads_v2<br>    cached = json.loads(zlib.decompress(data).decode(“utf8”))<br>error: Error -5 while decompressing data: incomplete or truncated stream</pre><br>原来在PIP的本地缓存损坏了（在我这里的环境中，默认情况下在 ~/.cache/pip）。<br>我测试了一下，试图执行 <code>pip install --no-cache-dir flask-bootstrap</code>,它工作了。<br>为了确认这是高速缓存，我执行：</p>
+<p>pip uninstall flask-bootstrap<br>rm -rf ~/.cache/pip/*`<br>pip install flask-bootstrap</p>
+<p>这次它成功了，而它之前总是失败。<br>我不知道该这个问题是否跟缓存的问题有关。但我的猜测是，PIP被中断下载导致缓存数据被破坏。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Python/">Python</a><a href="/tags/faq/">faq</a><a href="/tags/pip/">pip</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/" data-title="pip-faq: Error -5 while decompressing data: incomplete or truncated stream | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/01/13/hello-world/" title="Hello World">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Hello World</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/"  title="Hadoop 单节点_伪分布 安装手记">
+ <strong>NEXT:</strong><br/> 
+ <span>Hadoop 单节点_伪分布 安装手记
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/tags/bug/" title="bug">bug<sup>1</sup></a></li>
+		
+			<li><a href="/tags/couchbase/" title="couchbase">couchbase<sup>1</sup></a></li>
+		
+			<li><a href="/tags/diy/" title="diy">diy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/expect/" title="expect">expect<sup>1</sup></a></li>
+		
+			<li><a href="/tags/facter/" title="facter">facter<sup>1</sup></a></li>
+		
+			<li><a href="/tags/faq/" title="faq">faq<sup>4</sup></a></li>
+		
+			<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/highcharts/" title="highcharts">highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iso/" title="iso">iso<sup>1</sup></a></li>
+		
+			<li><a href="/tags/pip/" title="pip">pip<sup>3</sup></a></li>
+		
+			<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
