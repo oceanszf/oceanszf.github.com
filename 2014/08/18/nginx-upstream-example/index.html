@@ -73,7 +73,7 @@ weight指定轮询几率，weight和访问比率成正比，用于后端服务�
     </p>
   <p class="article-time">
     <time datetime="2014-08-18T13:08:02.000Z" itemprop="datePublished">2014-08-18</time>
-    更新日期:<time datetime="2016-01-13T08:47:49.000Z" itemprop="dateModified">2016-01-13</time>
+    更新日期:<time datetime="2016-01-13T09:06:15.000Z" itemprop="dateModified">2016-01-13</time>
     
   </p>
 </header>
@@ -90,6 +90,33 @@ weight指定轮询几率，weight和访问比率成正比，用于后端服务�
 <h2 id="ip_hash"><a href="#ip_hash" class="headerlink" title="ip_hash"></a>ip_hash</h2><p>每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。<br>例如：<br>upstream bakend {<br>ip_hash;<br>server 172.16.7.14:88;<br>server 172.16.7.15:80;<br>}</p>
 <h2 id="fair_uFF08_u7B2C_u4E09_u65B9_uFF09"><a href="#fair_uFF08_u7B2C_u4E09_u65B9_uFF09" class="headerlink" title="fair（第三方）"></a>fair（第三方）</h2><p>按后端服务器的响应时间来分配请求，响应时间短的优先分配。<br>upstream backend {<br>server server1;<br>server server2;<br>fair;<br>}</p>
 <h2 id="url_hash_uFF08_u7B2C_u4E09_u65B9_uFF09"><a href="#url_hash_uFF08_u7B2C_u4E09_u65B9_uFF09" class="headerlink" title="url_hash（第三方）"></a>url_hash（第三方）</h2><p>按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。</p>
+<p>例：在upstream中加入hash语句，server语句中不能写入weight等其他的参数，hash_method是使用的hash算法<br>upstream backend {<br>server squid1:3128;<br>server squid2:3128;<br>hash $request_uri;<br>hash_method crc32;</p>
+<p>}</p>
+<p>upstream bakend{<br>ip_hash;<br>server 127.0.0.1:9090 down;<br>server 127.0.0.1:8080 weight=2;<br>server 127.0.0.1:6060;<br>server 127.0.0.1:7070 backup;<br>}<br>在需要使用负载均衡的server中增加<br>proxy_pass <a href="http://bakend/" target="_blank" rel="external">http://bakend/</a>;</p>
+<p>每个设备的状态设置为:<br>1.down 表示单前的server暂时不参与负载<br>2.weight 默认为1.weight越大，负载的权重就越大。<br>3.max_fails ：允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream 模块定义的错误<br>4.fail_timeout:max_fails次失败后，暂停的时间。<br>5.backup： 其它所有的非backup机器down或者忙的时候，请求backup机器。所以这台机器压力会最轻。</p>
+<p>nginx支持同时设置多组的负载均衡，用来给不用的server来使用。<br>client_body_in_file_only 设置为On 可以讲client post过来的数据记录到文件中用来做debug<br>client_body_temp_path 设置记录文件的目录 可以设置最多3层目录<br>location 对URL进行匹配.可以进行重定向或者进行新的代理 负载均衡</p>
+<p>例：配置使用Nginx实现LB<br>[root@Jeffery ~]# sed  -i ‘/^[ \t ]*#/d; /^$/d’ /usr/local/nginx/conf/nginx.conf<br>[root@Jeffery ~]# cat  /usr/local/nginx/conf/nginx.conf<br>      worker_processes  1;</p>
+<pre><code>events {
+  worker_connections  1024;
+}
+</code></pre><p>http {<br>    upstream Jeffery_lb {<br>      ip_hash;                              #会话保持<br>      server 172.16.7.30:80;                #后端的真实服务器<br>      server 172.16.7.40:80;                #后端的真实服务器<br>      server 172.16.7.50:80;                #后端的真实服务器<br>    }</p>
+<pre><code>server {
+  listen       80;
+  server_name  www.Jeffery.com;
+
+   location / {
+     root   html;
+       index index.php index.html index.htm;
+       proxy_pass http://Jeffery_lb;
+       proxy_set_header Host $host;
+   }
+
+       error_page   500 502 503 504  /50x.html;
+       location = /50x.html {
+       root   html;
+     }
+}
+</code></pre><p>}</p>
   
 	</div>
 		<footer class="article-footer clearfix">
