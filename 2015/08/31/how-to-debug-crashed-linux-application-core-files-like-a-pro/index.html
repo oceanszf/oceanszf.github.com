@@ -1,0 +1,454 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>How-To: Debug Crashed Linux Application Core Files Like A Pro | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Core dumps are often used to diagnose or debug errors in Linux or UNIX programs. Core dumps can serve as useful debugging aids for sys admins to find ">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/31/how-to-debug-crashed-linux-application-core-files-like-a-pro/" title="How-To: Debug Crashed Linux Application Core Files Like A Pro" itemprop="url">How-To: Debug Crashed Linux Application Core Files Like A Pro</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-08-31T02:11:24.000Z" itemprop="datePublished">2015-08-31</time>
+    更新日期:<time datetime="2016-01-13T07:38:52.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Turn_On_Core_File_Creation_Support"><span class="toc-number">1.</span> <span class="toc-text">Turn On Core File Creation Support</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#See_The_Current_Core_File_Limits"><span class="toc-number">1.1.</span> <span class="toc-text">See The Current Core File Limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Change_Core_File_Limits"><span class="toc-number">1.2.</span> <span class="toc-text">Change Core File Limits</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HowTo_3A_Enable_Core_File_Dumps_For_Application_Crashes_And_Segmentation_Faults"><span class="toc-number">2.</span> <span class="toc-text">HowTo: Enable Core File Dumps For Application Crashes And Segmentation Faults</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ulimit_-S_-c_0__26gt_3B_/dev/null_2_26gt_3B_26amp_3B1"><span class="toc-number"></span> <span class="toc-text">ulimit -S -c 0 > /dev/null 2>&1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ulimit_-c_unlimited__26gt_3B/dev/null_2_26gt_3B_26amp_3B1"><span class="toc-number"></span> <span class="toc-text">ulimit -c unlimited >/dev/null 2>&1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_Do_I_Enable_Core_Dumping_For_Specific_Deamon_3F"><span class="toc-number">1.</span> <span class="toc-text">How Do I Enable Core Dumping For Specific Deamon?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DAEMON_COREFILE_LIMIT_3D_u2019unlimited_u2019"><span class="toc-number"></span> <span class="toc-text">DAEMON_COREFILE_LIMIT=’unlimited’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#su_-_httpd"><span class="toc-number"></span> <span class="toc-text">su - httpd</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Test_generation_core_file"><span class="toc-number"></span> <span class="toc-text">Test generation core file</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_Do_I_Read_Core_Files_3F"><span class="toc-number">1.</span> <span class="toc-text">How Do I Read Core Files?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strace_command"><span class="toc-number">2.</span> <span class="toc-text">strace command</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Recommended_readings_3A"><span class="toc-number">2.0.1.</span> <span class="toc-text">Recommended readings:</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<p><span class="drop_cap">C</span>ore dumps are often used to diagnose or debug errors in Linux or UNIX programs. Core dumps can serve as useful debugging aids for sys admins to find out why Application like Lighttpd, Apache, PHP-CGI or any other program crashed. Many vendors and open source project author requests a core file to troubleshoot a program. A core file is generated when an application program abnormally terminates due to bug, operating system security protection schema, or program simply try to write beyond the area of memory it has allocated, and so on. This article explains how to turn on core file support and track down bugs in programs.<br><span id="more-7006"></span></p>
+<div></div>
+
+<h2 id="Turn_On_Core_File_Creation_Support"><a href="#Turn_On_Core_File_Creation_Support" class="headerlink" title="Turn On Core File Creation Support"></a>Turn On Core File Creation Support</h2><p>By default most Linux distributions turn off core file creation (at least this is true for RHEL, CentOS, Fedora and Suse Linux). You need to use the ulimit command to configure core files.</p>
+<h3 id="See_The_Current_Core_File_Limits"><a href="#See_The_Current_Core_File_Limits" class="headerlink" title="See The Current Core File Limits"></a>See The Current Core File Limits</h3><p>Type the following command:<br><code># ulimit -c</code><br>Sample outputs:   # 0</p>
+<p>The output 0 (zero) means core file is not created.</p>
+<h3 id="Change_Core_File_Limits"><a href="#Change_Core_File_Limits" class="headerlink" title="Change Core File Limits"></a>Change Core File Limits</h3><p>In this example, set the size limit of core files to 75000 bytes:<br><code># ulimit -c 75000</code></p>
+<h2 id="HowTo_3A_Enable_Core_File_Dumps_For_Application_Crashes_And_Segmentation_Faults"><a href="#HowTo_3A_Enable_Core_File_Dumps_For_Application_Crashes_And_Segmentation_Faults" class="headerlink" title="HowTo: Enable Core File Dumps For Application Crashes And Segmentation Faults"></a>HowTo: Enable Core File Dumps For Application Crashes And Segmentation Faults</h2><p>Edit /etc/profile file and find line that read as follows to make persistent configuration:</p>
+<h1 id="ulimit_-S_-c_0__26gt_3B_/dev/null_2_26gt_3B_26amp_3B1"><a href="#ulimit_-S_-c_0__26gt_3B_/dev/null_2_26gt_3B_26amp_3B1" class="headerlink" title="ulimit -S -c 0 &gt; /dev/null 2&gt;&amp;1"></a>ulimit -S -c 0 &gt; /dev/null 2&gt;&amp;1</h1><p>Update it as follows:</p>
+<h1 id="ulimit_-c_unlimited__26gt_3B/dev/null_2_26gt_3B_26amp_3B1"><a href="#ulimit_-c_unlimited__26gt_3B/dev/null_2_26gt_3B_26amp_3B1" class="headerlink" title="ulimit -c unlimited &gt;/dev/null 2&gt;&amp;1"></a>ulimit -c unlimited &gt;/dev/null 2&gt;&amp;1</h1><p>Save and close the file. Edit /etc/sysctl.conf, enter:<br><code># vi /etc/sysctl.conf</code><br>Append the following lines:</p>
+<p>kernel.core_uses_pid = 1<br>kernel.core_pattern = /tmp/core-%e-%s-%u-%g-%p-%t<br>fs.suid_dumpable = 2</p>
+<p>Save and close the file. Where,</p>
+<ol>
+<li><strong>kernel.core_uses_pid = 1</strong> - Appends the coring processes PID to the core file name.</li>
+<li><strong>fs.suid_dumpable = 2</strong> - Make sure you get core dumps for setuid programs.</li>
+<li><p><strong>kernel.core_pattern = /tmp/core-%e-%s-%u-%g-%p-%t</strong> - When the application terminates abnormally, a core file should appear in the /tmp. The kernel.core_pattern sysctl controls exact location of core file. You can define the core file name with the following template whih can contain % specifiers which are substituted by the following values when a core file is created:</p>
+<ul>
+<li><strong>%% </strong> - A single % character</li>
+<li><strong>%p </strong> - PID of dumped process</li>
+<li><strong>%u </strong> - real UID of dumped process</li>
+<li><strong> %g </strong> - real GID of dumped process</li>
+<li><strong>%s </strong> - number of signal causing dump</li>
+<li><strong>%t </strong> - time of dump (seconds since 0:00h, 1 Jan 1970)</li>
+<li><strong>%h </strong> - hostname (same as ’nodename’ returned by uname(2))</li>
+<li><strong> %e </strong> - executable filename<br>Finally, enable debugging for all apps, enter (Redhat and friends specific):<br><code># echo &quot;DAEMON_COREFILE_LIMIT=&#39;unlimited&#39;&quot; &amp;gt;&amp;gt; /etc/sysconfig/init</code><br>Reload the settings in /etc/sysctl.conf by running the following command:<br><code># sysctl -p</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="How_Do_I_Enable_Core_Dumping_For_Specific_Deamon_3F"><a href="#How_Do_I_Enable_Core_Dumping_For_Specific_Deamon_3F" class="headerlink" title="How Do I Enable Core Dumping For Specific Deamon?"></a>How Do I Enable Core Dumping For Specific Deamon?</h2><p>To enable core dumping for specific deamons, add the following line in the /etc/sysconfig/daemon-file file. In this example, edit /etc/init.d/httpd and add line as follows:</p>
+<h1 id="DAEMON_COREFILE_LIMIT_3D_u2019unlimited_u2019"><a href="#DAEMON_COREFILE_LIMIT_3D_u2019unlimited_u2019" class="headerlink" title="DAEMON_COREFILE_LIMIT=’unlimited’"></a>DAEMON_COREFILE_LIMIT=’unlimited’</h1><p>Please note that DAEMON_COREFILE_LIMIT is Redhat specific, for all other distro add configuration as follows:</p>
+<p>ulimit -c unlimited &gt;/dev/null 2&gt;&amp;1<br>echo /tmp/core-%e-%s-%u-%g-%p-%t &gt; /proc/sys/kernel/core_pattern</p>
+<p>&nbsp;</p>
+<p>Save and close the file. Restart / reload httpd:<br>`# /etc/init.d/httpd restart</p>
+<h1 id="su_-_httpd"><a href="#su_-_httpd" class="headerlink" title="su - httpd"></a>su - httpd</h1><p>$ ulimit -c`<br>Sample outputs:  # unlimited</p>
+<h1 id="Test_generation_core_file"><a href="#Test_generation_core_file" class="headerlink" title="Test generation core file"></a><span id="result_box" class="short_text" lang="en"><span class="hps">Test generation core file</span></span></h1><p>#ps -ef| grep httpd<br>apache   22997 22989  0 12:16 ?        00:00:00 /usr/sbin/httpd</p>
+<p>#kill -s SIGSEGV 22997</p>
+<p>^_^[13:42:30][root@suzf.net ~]#ls -lth  /tmp/core*<br>-rw——- 1 root apache 9.9M Sep 14 12:17 /tmp/core-httpd-11-48-48-22997-1442204248</p>
+<p>lol , the core file has created when the p<span id="result_box" class="short_text" lang="en"><span class="hps">rocess crash .  ^_^<br></span></span></p>
+<p>&nbsp;</p>
+<p>Now, you can send core files to vendor or software writes.</p>
+<h2 id="How_Do_I_Read_Core_Files_3F"><a href="#How_Do_I_Read_Core_Files_3F" class="headerlink" title="How Do I Read Core Files?"></a>How Do I Read Core Files?</h2><p>You need use the gdb command as follows:<br><code>$ gdb /path/to/application /path/to/corefile</code><br>See the gdb command man page for more information.</p>
+<h2 id="strace_command"><a href="#strace_command" class="headerlink" title="strace command"></a>strace command</h2><p>System administrators, diagnosticians and trouble-shooters will find it invaluable for solving problems with programs for which the source is not readily available since they do not need to be recompiled in order to trace them. This is also useful to submit bug reports to open source developers. See how to use the <a href="http://www.cyberciti.biz/tips/linux-strace-command-examples.html" target="_blank" rel="external">strace command</a> under Linux to debug the problems.</p>
+<h4 id="Recommended_readings_3A"><a href="#Recommended_readings_3A" class="headerlink" title="Recommended readings:"></a>Recommended readings:</h4><ul>
+<li><a href="http://www.cyberciti.biz/tips/linux-strace-command-examples.html" target="_blank" rel="external">Debugging Tip: Trace the Process and See What It is Doing with strace</a></li>
+<li><a href="http://www.cyberciti.biz/tips/debugging-with-gdb-ddd-eclipse.html" target="_blank" rel="external">The Art of Debugging with GDB, DDD, and Eclipse</a></li>
+<li>man pages core(5), strace, and bash<br>Stay tunned for gdb tutorial which will explains how to use generated core file to track down problem.</li>
+</ul>
+<p>Trans from : <a href="http://www.cyberciti.biz/tips/linux-core-dumps.html" target="_blank" rel="external">http://www.cyberciti.biz/tips/linux-core-dumps.html</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/coredump/">coredump</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Linux/">Linux</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2015/08/31/how-to-debug-crashed-linux-application-core-files-like-a-pro/" data-title="How-To: Debug Crashed Linux Application Core Files Like A Pro | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/10/01/how-to-use-highcharts-to-build-a-monitor-of-website-daily-visitor/" title="How-to: use highcharts and MySQL build easy monitor">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  How-to: use highcharts and MySQL build easy monitor</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/08/22/how-to-linux-e4-b8-8b-e5-a6-82-e4-bd-95-e6-9f-a5-e7-9c-8b-e8-bf-9b-e7-a8-8b-e5-87-86-e7-a1-ae-e5-90-af-e5-8a-a8-e6-97-b6-e9-97-b4/"  title="How-to: Linux下如何查看进程准确启动时间">
+ <strong>NEXT:</strong><br/> 
+ <span>How-to: Linux下如何查看进程准确启动时间
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Turn_On_Core_File_Creation_Support"><span class="toc-number">1.</span> <span class="toc-text">Turn On Core File Creation Support</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#See_The_Current_Core_File_Limits"><span class="toc-number">1.1.</span> <span class="toc-text">See The Current Core File Limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Change_Core_File_Limits"><span class="toc-number">1.2.</span> <span class="toc-text">Change Core File Limits</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HowTo_3A_Enable_Core_File_Dumps_For_Application_Crashes_And_Segmentation_Faults"><span class="toc-number">2.</span> <span class="toc-text">HowTo: Enable Core File Dumps For Application Crashes And Segmentation Faults</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ulimit_-S_-c_0__26gt_3B_/dev/null_2_26gt_3B_26amp_3B1"><span class="toc-number"></span> <span class="toc-text">ulimit -S -c 0 > /dev/null 2>&1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ulimit_-c_unlimited__26gt_3B/dev/null_2_26gt_3B_26amp_3B1"><span class="toc-number"></span> <span class="toc-text">ulimit -c unlimited >/dev/null 2>&1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_Do_I_Enable_Core_Dumping_For_Specific_Deamon_3F"><span class="toc-number">1.</span> <span class="toc-text">How Do I Enable Core Dumping For Specific Deamon?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DAEMON_COREFILE_LIMIT_3D_u2019unlimited_u2019"><span class="toc-number"></span> <span class="toc-text">DAEMON_COREFILE_LIMIT=’unlimited’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#su_-_httpd"><span class="toc-number"></span> <span class="toc-text">su - httpd</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Test_generation_core_file"><span class="toc-number"></span> <span class="toc-text">Test generation core file</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_Do_I_Read_Core_Files_3F"><span class="toc-number">1.</span> <span class="toc-text">How Do I Read Core Files?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strace_command"><span class="toc-number">2.</span> <span class="toc-text">strace command</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Recommended_readings_3A"><span class="toc-number">2.0.1.</span> <span class="toc-text">Recommended readings:</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>21</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>4</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>9</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>2</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>3</sup></a></li>
+		
+			<li><a href="/tags/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Proxy/" title="Proxy">Proxy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>15</sup></a></li>
+		
+			<li><a href="/tags/RAC/" title="RAC">RAC<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
