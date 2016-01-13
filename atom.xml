@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Suzf Blog]]></title>
+  <subtitle><![CDATA[Life is short We need smile.]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://blog.suzf.net/"/>
+  <updated>2016-01-13T06:43:26.000Z</updated>
+  <id>http://blog.suzf.net/</id>
+  
+  <author>
+    <name><![CDATA[Jeffrey Su]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://blog.suzf.net/2016/01/13/hello-world/"/>
+    <id>http://blog.suzf.net/2016/01/13/hello-world/</id>
+    <published>2016-01-13T06:43:49.000Z</published>
+    <updated>2016-01-13T06:43:26.000Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://blog.suzf.net">here</a>! This is your very first post. </p>
+<h2 id="building"><a href="#building" class="headerlink" title="building"></a>building</h2><p>   In building</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://blog.suzf.net">here</a>! This is your very first post. </p>
+<h2 id="building"><a href="#building" class="heade]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[pip-faq: Error -5 while decompressing data: incomplete or truncated stream]]></title>
+    <link href="http://blog.suzf.net/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/"/>
+    <id>http://blog.suzf.net/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/</id>
+    <published>2015-12-30T08:04:51.000Z</published>
+    <updated>2016-01-13T07:17:03.000Z</updated>
+    <content type="html"><![CDATA[<p>在我执行 <code>pip install flask-bootstrap</code> 出现了一个这样的错误<br>– error: Error -5 while decompressing data: incomplete or truncated stream</p>
+<p>安装/卸载其他包是正常的。唯独管理flask-bootstrap 出现了这样的错误。</p>
+<p>版本信息：</p>
+<p>#pip –version<br>pip 7.1.2 from /usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg (python 2.7)</p>
+<p>#python –version<br>Python 2.7.3</p>
+<p>完整的报错信息是：</p>
+<p><pre class="lang:default decode:true ">^_^[15:36:31][root@master01 ~]#pip install flask-bootstrap<br>Collecting flask-bootstrap<br>Exception:<br>Traceback (most recent call last):<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/basecommand.py”, line 211, in main<br>    status = self.run(options, args)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/commands/install.py”, line 294, in run<br>    requirement_set.prepare_files(finder)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_set.py”, line 334, in prepare_files<br>    functools.partial(self._prepare_file, finder))<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_set.py”, line 321, in _walk_req_to_install<br>    more_reqs = handler(req_to_install)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_set.py”, line 461, in _prepare_file<br>    req_to_install.populate_link(finder, self.upgrade)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_install.py”, line 250, in populate_link<br>    self.link = finder.find_requirement(self, upgrade)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 486, in find_requirement<br>    all_versions = self._find_all_versions(req.name)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 404, in _find_all_versions<br>    index_locations = self._get_index_urls_locations(project_name)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 378, in _get_index_urls_locations<br>    page = self._get_page(main_index_url)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 818, in _get_page<br>    return HTMLPage.get_page(link, session=self.session)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 928, in get_page<br>    “Cache-Control”: “max-age=600”,<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/requests/sessions.py”, line 477, in get<br>    return self.request(‘GET’, url, <strong>kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/download.py”, line 373, in request<br>    return super(PipSession, self).request(method, url, *args, </strong>kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/requests/sessions.py”, line 465, in request<br>    resp = self.send(prep, <strong>send_kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/requests/sessions.py”, line 573, in send<br>    r = adapter.send(request, </strong>kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/adapter.py”, line 36, in send<br>    cached_response = self.controller.cached_request(request)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/controller.py”, line 102, in cached_request<br>    resp = self.serializer.loads(request, self.cache.get(cache_url))<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/serialize.py”, line 108, in loads<br>    return getattr(self, “_loads_v{0}”.format(ver))(request, data)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/serialize.py”, line 164, in _loads_v2<br>    cached = json.loads(zlib.decompress(data).decode(“utf8”))<br>error: Error -5 while decompressing data: incomplete or truncated stream</pre><br>原来在PIP的本地缓存损坏了（在我这里的环境中，默认情况下在 ~/.cache/pip）。<br>我测试了一下，试图执行 <code>pip install --no-cache-dir flask-bootstrap</code>,它工作了。<br>为了确认这是高速缓存，我执行：</p>
+<p>pip uninstall flask-bootstrap<br>rm -rf ~/.cache/pip/*`<br>pip install flask-bootstrap</p>
+<p>这次它成功了，而它之前总是失败。<br>我不知道该这个问题是否跟缓存的问题有关。但我的猜测是，PIP被中断下载导致缓存数据被破坏。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在我执行 <code>pip install flask-bootstrap</code> 出现了一个这样的错误<br>– error: Error -5 while decompressing data: incomplete or truncated stream</p]]>
+    </summary>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="faq" scheme="http://blog.suzf.net/tags/faq/"/>
+    
+      <category term="pip" scheme="http://blog.suzf.net/tags/pip/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[How-to compile vim with lua]]></title>
+    <link href="http://blog.suzf.net/2015/12/28/how-to-compile-vim-with-lua/"/>
+    <id>http://blog.suzf.net/2015/12/28/how-to-compile-vim-with-lua/</id>
+    <published>2015-12-28T08:35:44.000Z</published>
+    <updated>2016-01-13T07:38:52.000Z</updated>
+    <content type="html"><![CDATA[<p>vim 重新编译支持lua</p>
+<p>安装依赖包<br>yum install ncurses lua lua-devel readline -y</p>
+<p>安装LuaJit<br>luajit不在centos的官方repo里面，我们需要编译安装;<br>wget <a href="http://luajit.org/download/LuaJIT-2.0.4.tar.gz" target="_blank" rel="external">http://luajit.org/download/LuaJIT-2.0.4.tar.gz</a><br>tar -xzvf LuaJIT-2.0.4.tar.gz<br>cd LuaJIT-2.0.4<br>make &amp;&amp; make install</p>
+<p>下载源码<br>wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2<br>tar xzvf vim-7.4.tar.bz2<br>cd vim74</p>
+<p>编译<br>vim的编译其实很简单，就configure -&gt; make -&gt; make install 这样的流程。<br>但是要添加 Lua支持，就有一些麻烦了。<br>configure的配置大概是这样的：<br>./configure –prefix=/usr/local/vim74 –with-features=huge –with-luajit –enable-luainterp=yes –enable-fail-if-missing</p>
+<h1 id="u5982_u679C_u4F60_u7684_u673A_u5668_u6CA1_u6709_u5B89_u88C5lua__u548Cluajit_u7684_u8BDD_u4F1A_u5728_u68C0_u67E5lua_u652F_u6301_u90A3_u91CC_u4E2D_u65AD_u4E86_u3002"><a href="#u5982_u679C_u4F60_u7684_u673A_u5668_u6CA1_u6709_u5B89_u88C5lua__u548Cluajit_u7684_u8BDD_u4F1A_u5728_u68C0_u67E5lua_u652F_u6301_u90A3_u91CC_u4E2D_u65AD_u4E86_u3002" class="headerlink" title="如果你的机器没有安装lua 和luajit的话会在检查lua支持那里中断了。"></a>如果你的机器没有安装lua 和luajit的话会在检查lua支持那里中断了。</h1><h1 id="make__26amp_3B_26amp_3B_make_install"><a href="#make__26amp_3B_26amp_3B_make_install" class="headerlink" title="make &amp;&amp; make install"></a>make &amp;&amp; make install</h1><p>运行</p>
+<h1 id="/usr/local/vim74/bin/vim"><a href="#/usr/local/vim74/bin/vim" class="headerlink" title="/usr/local/vim74/bin/vim"></a>/usr/local/vim74/bin/vim</h1><p>/usr/local/vim74/bin/vim: error while loading shared libraries: libluajit-5.1.so.2: cannot open shared object file: No such file or directory</p>
+<h1 id="u663E_u7136_u662F_u5B89_u88C5_u7684luajit_u6709_u95EE_u9898_u3002_u6211_u4EEC_u627E_u4E00_u4E0Bluajit_u8FD9_u4E2A-so_u6587_u4EF6_u5728_u54EA_u91CC"><a href="#u663E_u7136_u662F_u5B89_u88C5_u7684luajit_u6709_u95EE_u9898_u3002_u6211_u4EEC_u627E_u4E00_u4E0Bluajit_u8FD9_u4E2A-so_u6587_u4EF6_u5728_u54EA_u91CC" class="headerlink" title="显然是安装的luajit有问题。我们找一下luajit这个.so文件在哪里"></a>显然是安装的luajit有问题。我们找一下luajit这个.so文件在哪里</h1><h1 id="find_/_-name_libluajit-5-1-so-2"><a href="#find_/_-name_libluajit-5-1-so-2" class="headerlink" title="find / -name libluajit-5.1.so.2"></a>find / -name libluajit-5.1.so.2</h1><p>/usr/local/lib/libluajit-5.1.so.2<br>^C</p>
+<h1 id="u6211_u4EEC_u9700_u8981_u7ED9_u8FD9_u4E2Alibluajit-5-1-so-2_u751F_u6210_u4E00_u4E2A_u8F6F_u94FE_u63A5"><a href="#u6211_u4EEC_u9700_u8981_u7ED9_u8FD9_u4E2Alibluajit-5-1-so-2_u751F_u6210_u4E00_u4E2A_u8F6F_u94FE_u63A5" class="headerlink" title="我们需要给这个libluajit-5.1.so.2生成一个软链接"></a>我们需要给这个libluajit-5.1.so.2生成一个软链接</h1><h1 id="ln_-s_/usr/local/lib/libluajit-5-1-so-2_/lib64/libluajit-5-1-so-2"><a href="#ln_-s_/usr/local/lib/libluajit-5-1-so-2_/lib64/libluajit-5-1-so-2" class="headerlink" title="ln -s /usr/local/lib/libluajit-5.1.so.2 /lib64/libluajit-5.1.so.2"></a>ln -s /usr/local/lib/libluajit-5.1.so.2 /lib64/libluajit-5.1.so.2</h1><p>这样再运行vim就不会有问题了～也有Lua支持了</p>
+<p>#/usr/local/vim74/bin/vim  –version | grep lua<br>+dialog_con      +lua             +rightleft       +windows<br>Linking: gcc   -L/usr/local/lib -Wl,–as-needed -o vim    -lSM -lICE -lXpm -lXt -lX11 -lSM -lICE  -lm -ltinfo -lelf -lnsl  -lselinux  -L/usr/lib -lluajit-5.1</p>
+<p>mv /usr/bin/vim{,.old}<br>cp ~/vim74/src/vim /usr/bin</p>
+<p>Reference：</p>
+<ul>
+<li><a href="http://www.cnblogs.com/spch2008/p/4593370.html" target="_blank" rel="external">http://www.cnblogs.com/spch2008/p/4593370.html</a></li>
+<li><a href="http://blog.wuxu92.com/z-compile-vim-with-lua-support-in-centos-7/" target="_blank" rel="external">http://blog.wuxu92.com/z-compile-vim-with-lua-support-in-centos-7/</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>vim 重新编译支持lua</p>
+<p>安装依赖包<br>yum install ncurses lua lua-devel readline -y</p>
+<p>安装LuaJit<br>luajit不在centos的官方repo里面，我们需要编译安装;<br>wget ]]>
+    </summary>
+    
+      <category term="vim" scheme="http://blog.suzf.net/tags/vim/"/>
+    
+      <category term="Linux" scheme="http://blog.suzf.net/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用 VIM 打造 Python 开发IDE]]></title>
+    <link href="http://blog.suzf.net/2015/12/25/e4-bd-bf-e7-94-a8-vim-e6-89-93-e9-80-a0-python-e5-bc-80-e5-8f-91ide/"/>
+    <id>http://blog.suzf.net/2015/12/25/e4-bd-bf-e7-94-a8-vim-e6-89-93-e9-80-a0-python-e5-bc-80-e5-8f-91ide/</id>
+    <published>2015-12-25T09:10:28.000Z</published>
+    <updated>2016-01-13T07:38:52.000Z</updated>
+    <content type="html"><![CDATA[<p>编程常用的文本编辑器就那么几种常见的, 有人喜欢Vim, 有人喜欢emacs, 也有人喜欢IDE, 例如Pycharm, eclipse等. 今天我们不谈孰优孰劣, 只要适合自己就可以了.</p>
+<p>如果你喜欢VIM, 又希望有IDE常见的功能. 你完全可以将这些功能集成到Vim中. 但是, 对于一个初学者, 或像我一样的懒人, 一个一个的查找并试验配置这些插件未免有些太麻烦. 因此, 本文介绍 spf13-vim, 可以简单的满足我们的需要.</p>
+<p>spf13-vim (<a href="https://github.com/spf13/spf13-vim" target="_blank" rel="external">https://github.com/spf13/spf13-vim</a>). 这东西是一个Vim的集成开发环境，内置集成很多码农们常用的插件，基于bundle的方式非常方便扩展以及更新，是初学者们了解Vim以及精通Vim的一个很好的出发点，极大的降低了Vim使用的门槛.</p>
+<p>1. 安装和升级<br>你应该先安装 vim &amp; git<br>yum install vim git -y</p>
+<p>可以使用 spf13-vim lazy 版安装:<br>curl <a href="https://j.mp/spf13-vim3" target="_blank" rel="external">https://j.mp/spf13-vim3</a> -L &gt; spf13-vim.sh &amp;&amp; sh spf13-vim.sh</p>
+<p>如果需要升级, 则可以切换到spf13-vim安装目录(默认是~/.spf13-vim/), 运行:<br>cd $HOME/.spf13-vim-3<br>git pull<br>vim +BundleInstall! +BundleClean +q</p>
+<p>2. 设置<br>默认的.vimrc文件非常适合编程. 如果你查看.vimrc文件的内容, 你会发现其良好的组织既方便阅读, 又方便学习. 默认的.vimrc文件可以在跨平台系统中使用, 如果你还需要进一步的定制化设置的话, 则可以建立~/.vimrc.local实现.</p>
+<p>3. 插件介绍<br>spf13-vim自带许多插件, 方便我们使用:<br>Vundle<br>Vundle是Vim的插件管理系统, Vundle将vim插件组织在同一目录中, 并可以方便的安装, 升级和删除vim插件.</p>
+<p>NERDTree<br>NERDTree是一个文件浏览器, 在spf13-vim找中可以通过ctrl+e调出.</p>
+<p>ctrlp<br>ctrlp是文件载入插件, 通过ctrlp可以方便的浏览系统中文件并打开. 默认情况下可以通过ctrl+p调出.</p>
+<p>NERDCommenter<br>NERDCommenter可以用来方便的切换代码注释, 默认的快捷键是 , + c + 空格, (‘,’是spf13-vim默认的leader键).</p>
+<p>… …</p>
+<p>4. 定制化<br>添加插件</p>
+<p>如果想添加新的插件, 则可以通过以下命令添加:<br>echo Bundle \’spf13/vim-colors\’ &gt;&gt; ~/.vimrc.bundles.local<br>修改默认设置<br>希望修改默认的设置, 例如修改颜色配置, 则可以通过以下方式:<br>echo colorscheme ir_black  &gt;&gt; ~/.vimrc.local</p>
+<p>更多详细用法日后更新 … …</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>编程常用的文本编辑器就那么几种常见的, 有人喜欢Vim, 有人喜欢emacs, 也有人喜欢IDE, 例如Pycharm, eclipse等. 今天我们不谈孰优孰劣, 只要适合自己就可以了.</p>
+<p>如果你喜欢VIM, 又希望有IDE常见的功能. 你完全可以将这些功能集]]>
+    </summary>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="vim" scheme="http://blog.suzf.net/tags/vim/"/>
+    
+      <category term="Linux" scheme="http://blog.suzf.net/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hadoop 单节点_伪分布 安装手记]]></title>
+    <link href="http://blog.suzf.net/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/"/>
+    <id>http://blog.suzf.net/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/</id>
+    <published>2015-12-24T02:40:45.000Z</published>
+    <updated>2016-01-13T06:45:32.000Z</updated>
+    <content type="html"><![CDATA[<p>实验环境<br>CentOS 6.X<br>Hadoop 2.6.0<br>JDK    1.8.0_65</p>
+<p>目的<br>这篇文档的目的是帮助你快速完成单机上的Hadoop安装与使用以便你对Hadoop分布式文件系统(HDFS)和Map-Reduce框架有所体会，比如在HDFS上运行示例程序或简单作业等。</p>
+<p>先决条件<br>支持平台<br>GNU/Linux是产品开发和运行的平台。 Hadoop已在有2000个节点的GNU/Linux主机组成的集群系统上得到验证。<br>Win32平台是作为开发平台支持的。由于分布式操作尚未在Win32平台上充分测试，所以还不作为一个生产平台被支持。</p>
+<p>安装软件<br>如果你的集群尚未安装所需软件，你得首先安装它们。<br>以 CentOS 为例:</p>
+<h1 id="yum_install_ssh_rsync_-y"><a href="#yum_install_ssh_rsync_-y" class="headerlink" title="yum install ssh rsync -y"></a>yum install ssh rsync -y</h1><h1 id="ssh__u5FC5_u987B_u5B89_u88C5_u5E76_u4E14_u4FDD_u8BC1_sshd_u4E00_u76F4_u8FD0_u884C_uFF0C_u4EE5_u4FBF_u7528Hadoop__u811A_u672C_u7BA1_u7406_u8FDC_u7AEFHadoop_u5B88_u62A4_u8FDB_u7A0B_u3002"><a href="#ssh__u5FC5_u987B_u5B89_u88C5_u5E76_u4E14_u4FDD_u8BC1_sshd_u4E00_u76F4_u8FD0_u884C_uFF0C_u4EE5_u4FBF_u7528Hadoop__u811A_u672C_u7BA1_u7406_u8FDC_u7AEFHadoop_u5B88_u62A4_u8FDB_u7A0B_u3002" class="headerlink" title="ssh 必须安装并且保证 sshd一直运行，以便用Hadoop 脚本管理远端Hadoop守护进程。"></a>ssh 必须安装并且保证 sshd一直运行，以便用Hadoop 脚本管理远端Hadoop守护进程。</h1><p>创建用户</p>
+<h1 id="useradd_-m_hadoop_-s_/bin/bash__23__u521B_u5EFA_u65B0_u7528_u6237hadoop"><a href="#useradd_-m_hadoop_-s_/bin/bash__23__u521B_u5EFA_u65B0_u7528_u6237hadoop" class="headerlink" title="useradd -m hadoop -s /bin/bash   # 创建新用户hadoop"></a>useradd -m hadoop -s /bin/bash   # 创建新用户hadoop</h1><p>Hosts解析</p>
+<h1 id="cat_/etc/hosts_7C_grep_ocean-lab"><a href="#cat_/etc/hosts_7C_grep_ocean-lab" class="headerlink" title="cat /etc/hosts| grep ocean-lab"></a>cat /etc/hosts| grep ocean-lab</h1><p>192.168.9.70     ocean-lab.ocean.org  ocean-lab</p>
+<p>安装jdk<br>JDK – <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>首先安装JAVA环境</p>
+<h1 id="wget__u2013no-cookies__u2013no-check-certificate__u2013header__u201CCookie_3A_gpw_e24_3Dhttp_253A_252F_252Fwww-oracle-com_252F_3B_oraclelicense_3Daccept-securebackup-cookie_u201D__u201Chttp_3A//download-oracle-com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64-rpm_u201C"><a href="#wget__u2013no-cookies__u2013no-check-certificate__u2013header__u201CCookie_3A_gpw_e24_3Dhttp_253A_252F_252Fwww-oracle-com_252F_3B_oraclelicense_3Daccept-securebackup-cookie_u201D__u201Chttp_3A//download-oracle-com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64-rpm_u201C" class="headerlink" title="wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm“"></a>wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “<a href="http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm" target="_blank" rel="external">http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm</a>“</h1><h1 id="rpm_-Uvh_jdk-8u65-linux-x64-rpm"><a href="#rpm_-Uvh_jdk-8u65-linux-x64-rpm" class="headerlink" title="rpm -Uvh jdk-8u65-linux-x64.rpm"></a>rpm -Uvh jdk-8u65-linux-x64.rpm</h1><p>配置 Java</p>
+<h1 id="echo__u201Cexport_JAVA_HOME_3D/usr/java/jdk1-8-0_65_u201D__26gt_3B_26gt_3B_/home/hadoop/-bashrc"><a href="#echo__u201Cexport_JAVA_HOME_3D/usr/java/jdk1-8-0_65_u201D__26gt_3B_26gt_3B_/home/hadoop/-bashrc" class="headerlink" title="echo “export JAVA_HOME=/usr/java/jdk1.8.0_65” &gt;&gt; /home/hadoop/.bashrc"></a>echo “export JAVA_HOME=/usr/java/jdk1.8.0_65” &gt;&gt; /home/hadoop/.bashrc</h1><h1 id="source_/home/hadoop/-bashrc"><a href="#source_/home/hadoop/-bashrc" class="headerlink" title="source /home/hadoop/.bashrc"></a>source /home/hadoop/.bashrc</h1><h1 id="echo__24JAVA_HOME"><a href="#echo__24JAVA_HOME" class="headerlink" title="echo $JAVA_HOME"></a>echo $JAVA_HOME</h1><p>/usr/java/jdk1.8.0_65</p>
+<p>下载安装hadoop<br>为了获取Hadoop的发行版，从Apache的某个镜像服务器上下载最近的 稳定发行版。<br>运行Hadoop集群的准备工作</p>
+<h1 id="wget_http_3A//apache-fayea-com/hadoop/common/hadoop-2-6-0/hadoop-2-6-0-tar-gz"><a href="#wget_http_3A//apache-fayea-com/hadoop/common/hadoop-2-6-0/hadoop-2-6-0-tar-gz" class="headerlink" title="wget http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz"></a>wget <a href="http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz" target="_blank" rel="external">http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz</a></h1><p>解压所下载的Hadoop发行版。编辑 conf/hadoop-env.sh文件，至少需要将JAVA_HOME设置为Java安装根路径。</p>
+<h1 id="tar_xf_hadoop-2-6-0-tar-gz_-C_/usr/local"><a href="#tar_xf_hadoop-2-6-0-tar-gz_-C_/usr/local" class="headerlink" title="tar xf hadoop-2.6.0.tar.gz -C /usr/local"></a>tar xf hadoop-2.6.0.tar.gz -C /usr/local</h1><h4 id="mv_/usr/local/hadoop-2-6-0_/usr/local/hadoop"><a href="#mv_/usr/local/hadoop-2-6-0_/usr/local/hadoop" class="headerlink" title="mv /usr/local/hadoop-2.6.0 /usr/local/hadoop"></a>mv /usr/local/hadoop-2.6.0 /usr/local/hadoop</h4><p>尝试如下命令：</p>
+<h1 id="bin/hadoop"><a href="#bin/hadoop" class="headerlink" title="bin/hadoop"></a>bin/hadoop</h1><p>将会显示hadoop 脚本的使用文档。</p>
+<p>现在你可以用以下<strong>三种支持的模式</strong>中的一种启动Hadoop集群：<br>单机模式<br>伪分布式模式<br>完全分布式模式</p>
+<p><strong>单机模式的操作方法</strong></p>
+<p>默认情况下，Hadoop被配置成以非分布式模式运行的一个独立Java进程。这对调试非常有帮助。<br>现在我们可以执行例子来感受下 Hadoop 的运行。Hadoop 附带了丰富的例子包括 wordcount、terasort、join、grep 等。<br>在此我们选择运行 grep 例子，我们将 input 文件夹中的所有文件作为输入，筛选当中符合正则表达式 dfs[a-z.]+ 的单词并统计出现的次数，最后输出结果到 output 文件夹中。</p>
+<h1 id="mkdir_input"><a href="#mkdir_input" class="headerlink" title="mkdir input"></a>mkdir input</h1><h1 id="cp_conf/*-xml_input"><a href="#cp_conf/*-xml_input" class="headerlink" title="cp conf/*.xml input"></a>cp conf/*.xml input</h1><h1 id="/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_-/input/_-/ouput__u2018dfs_5Ba-z-_5D+_u2019"><a href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_-/input/_-/ouput__u2018dfs_5Ba-z-_5D+_u2019" class="headerlink" title="./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep ./input/ ./ouput ‘dfs[a-z.]+’"></a>./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep ./input/ ./ouput ‘dfs[a-z.]+’</h1><h1 id="cat_output/*"><a href="#cat_output/*" class="headerlink" title="cat output/*"></a>cat output/*</h1><p>若执行成功的话会输出很多作业的相关信息，最后的输出信息如下图所示。作业的结果会输出在指定的 output 文件夹中，通过命令 cat ./output/<em> 查看结果，符合正则的单词 dfsadmin 出现了1次：<br>[10:57:58][hadoop@ocean-lab hadoop-2.6.0]$ cat ./ouput/</em><br>1 dfsadmin</p>
+<p>注意，Hadoop 默认不会覆盖结果文件，因此再次运行上面实例会提示出错，需要先将 ./output 删除。<br>否则会报如下错误<br>INFO jvm.JvmMetrics: Cannot initialize JVM Metrics with processName=JobTracker, sessionId= - already initialized<br>org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/usr/local/hadoop-2.6.0/ouput already exists<br>若出现提示 “INFO metrics.MetricsUtil: Unable to obtain hostName java.net.UnknowHostException”，这需要执行如下命令修改 hosts 文件，为你的主机名增加IP映射：</p>
+<h1 id="cat_/etc/hosts_7C_grep_ocean-lab-1"><a href="#cat_/etc/hosts_7C_grep_ocean-lab-1" class="headerlink" title="cat /etc/hosts| grep ocean-lab"></a>cat /etc/hosts| grep ocean-lab</h1><p>192.168.9.70     ocean-lab.ocean.org  ocean-lab</p>
+<p><strong>伪分布式模式的操作方法</strong></p>
+<p>Hadoop可以在单节点上以所谓的伪分布式模式运行，此时每一个Hadoop守护进程都作为一个独立的Java进程运行。<br>节点既作为 NameNode 也作为 DataNode，同时，读取的是 HDFS 中的文件。</p>
+<p>在设置 Hadoop 伪分布式配置前，我们还需要设置 HADOOP 环境变量，执行如下命令在 ~/.bashrc 中设置</p>
+<h1 id="Hadoop_Environment_Variables"><a href="#Hadoop_Environment_Variables" class="headerlink" title="Hadoop Environment Variables"></a>Hadoop Environment Variables</h1><p>export HADOOP_HOME=/usr/local/hadoop-2.6.0<br>export HADOOP_INSTALL=$HADOOP_HOME<br>export HADOOP_MAPRED_HOME=$HADOOP_HOME<br>export HADOOP_COMMON_HOME=$HADOOP_HOME<br>export HADOOP_HDFS_HOME=$HADOOP_HOME<br>export YARN_HOME=$HADOOP_HOME<br>export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native<br>export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin</p>
+<p>source ~/.bashrc</p>
+<p>配置</p>
+<p>使用如下的 etc/hadoop/core-site.xml</p>
+<p>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;hadoop.tmp.dir&lt;/name&gt;<br>&lt;value&gt;file:/usr/local/hadoop-2.6.0/tmp&lt;/value&gt;<br>&lt;description&gt;Abase for other temporary directories.&lt;/description&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;fs.defaultFS&lt;/name&gt;<br>&lt;value&gt;hdfs://localhost:9000&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
+<p>同样的，修改配置文件 <strong>hdfs-site.xml</strong></p>
+<p>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.replication&lt;/name&gt;<br>&lt;value&gt;1&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;<br>&lt;value&gt;file:/usr/local/hadoop-2.6.0/tmp/dfs/name&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;<br>&lt;value&gt;file:/usr/local/hadoop-2.6.0/tmp/dfs/data&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
+<p>&nbsp;</p>
+<p><strong>关于Hadoop配置项的一点说明</strong></p>
+<p>虽 然只需要配置 fs.defaultFS 和 dfs.replication 就可以运行（官方教程如此），不过若没有配置 hadoop.tmp.dir 参数，则默认使用的临时目录为 /tmp/hadoo-hadoop，而这个目录在重启时有可能被系统清理掉，导致必须重新执行 format 才行。所以我们进行了设置，同时也指定 dfs.namenode.name.dir 和 dfs.datanode.data.dir，否则在接下来的步骤中可能会出错。</p>
+<p>&nbsp;</p>
+<p>免密码ssh设置<br>现在确认能否不输入口令就用ssh登录localhost:</p>
+<h1 id="ssh_localhost_date"><a href="#ssh_localhost_date" class="headerlink" title="ssh localhost date"></a>ssh localhost date</h1><p>如果不输入口令就无法用ssh登陆localhost，执行下面的命令：</p>
+<h1 id="ssh-keygen_-t_dsa_-P__u2018_u2019_-f__7E/-ssh/id_dsa"><a href="#ssh-keygen_-t_dsa_-P__u2018_u2019_-f__7E/-ssh/id_dsa" class="headerlink" title="ssh-keygen -t dsa -P ‘’ -f ~/.ssh/id_dsa"></a>ssh-keygen -t dsa -P ‘’ -f ~/.ssh/id_dsa</h1><h1 id="cat__7E/-ssh/id_dsa-pub__26gt_3B_26gt_3B__7E/-ssh/authorized_keys"><a href="#cat__7E/-ssh/id_dsa-pub__26gt_3B_26gt_3B__7E/-ssh/authorized_keys" class="headerlink" title="cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys"></a>cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</h1><p>#chmod  600 ~/.ssh/authorized_keys</p>
+<p>格式化一个新的分布式文件系统：<br>$ bin/hadoop namenode -format<br>15/12/23 11:30:20 INFO util.GSet: VM type       = 64-bit<br>15/12/23 11:30:20 INFO util.GSet: 0.029999999329447746% max memory 966.7 MB = 297.0 KB<br>15/12/23 11:30:20 INFO util.GSet: capacity      = 2^15 = 32768 entries<br>15/12/23 11:30:20 INFO namenode.NNConf: ACLs enabled? false<br>15/12/23 11:30:20 INFO namenode.NNConf: XAttrs enabled? true<br>15/12/23 11:30:20 INFO namenode.NNConf: Maximum size of an xattr: 16384<br>15/12/23 11:30:20 INFO namenode.FSImage: Allocated new BlockPoolId: BP-823870322-192.168.9.70-1450841420347<br>15/12/23 11:30:20 INFO common.Storage: Storage directory /usr/local/hadoop-2.6.0/tmp/dfs/name has been successfully formatted.<br>15/12/23 11:30:20 INFO namenode.NNStorageRetentionManager: Going to retain 1 images with txid &gt;= 0<br>15/12/23 11:30:20 INFO util.ExitUtil: <strong>Exiting with status 0</strong><br>15/12/23 11:30:20 INFO namenode.NameNode: SHUTDOWN_MSG:<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>SHUTDOWN_MSG: Shutting down NameNode at ocean-lab.ocean.org/192.168.9.70<br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/<br><strong>成功的话，会看到 “successfully formatted” 和 “Exitting with status 0″ 的提示</strong></p>
+<p><strong>注意</strong><br>下次启动 hadoop 时，无需进行 NameNode 的初始化，只需要运行 ./sbin/start-dfs.sh 就可以！</p>
+<p>启动 NameNode 和  DataNode</p>
+<p>$  ./sbin/start-dfs.sh<br>15/12/23 11:37:20 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable<br>Starting namenodes on [localhost]<br>localhost: starting namenode, logging to /usr/local/hadoop-2.6.0/logs/hadoop-hadoop-namenode-ocean-lab.ocean.org.out<br>localhost: starting datanode, logging to /usr/local/hadoop-2.6.0/logs/hadoop-hadoop-datanode-ocean-lab.ocean.org.out<br>Starting secondary namenodes [0.0.0.0]<br>The authenticity of host ‘0.0.0.0 (0.0.0.0)’ can’t be established.<br>RSA key fingerprint is a5:26:42:a0:5f:da:a2:88:52:04:9c:7f:8d:6a:98:9b.<br>Are you sure you want to continue connecting (yes/no)?<strong> yes</strong><br>0.0.0.0: Warning: Permanently added ‘0.0.0.0’ (RSA) to the list of known hosts.<br>0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop-2.6.0/logs/hadoop-hadoop-secondarynamenode-ocean-lab.ocean.org.out<br>15/12/23 11:37:44 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable</p>
+<p>[13:57:08][hadoop@ocean-lab hadoop-2.6.0]$ jps<br>27686 <strong>SecondaryNameNode</strong><br>28455 Jps<br>27501<strong> DataNode</strong><br>27405 <strong>NameNode</strong><br>27006 GetConf</p>
+<p>如果没有进程则说明启动失败 查看日志bebug</p>
+<p>成功启动后，可以访问 Web 界面  <a href="http://oceanszf.blog.51cto.com/50070" target="_blank" rel="external">http://[ip,fqdn]:/50070</a>  查看 NameNode 和 Datanode 信息，还可以在线查看 HDFS 中的文件。</p>
+<p><a href="http://s1.51cto.com/wyfs02/M00/78/52/wKiom1Z6Q3vAlkXcAACeq3_WIqU567.png" target="_blank" rel="external"><img src="http://s1.51cto.com/wyfs02/M00/78/52/wKiom1Z6Q3vAlkXcAACeq3_WIqU567.png" alt="wKiom1Z6Q3vAlkXcAACeq3_WIqU567.png" title="hadoop1.PNG"></a></p>
+<h2 id="u8FD0_u884CHadoop_u4F2A_u5206_u5E03_u5F0F_u5B9E_u4F8B"><a href="#u8FD0_u884CHadoop_u4F2A_u5206_u5E03_u5F0F_u5B9E_u4F8B" class="headerlink" title="运行Hadoop伪分布式实例"></a>运行Hadoop伪分布式实例</h2><p>上面的单机模式，grep 例子读取的是本地数据，伪分布式读取的则是 HDFS 上的数据。</p>
+<p>要使用 HDFS，首先需要在 HDFS 中创建用户目录：</p>
+<h1 id="/bin/hdfs_dfs_-mkdir_-p_/user/hadoop"><a href="#/bin/hdfs_dfs_-mkdir_-p_/user/hadoop" class="headerlink" title="./bin/hdfs dfs -mkdir -p /user/hadoop"></a>./bin/hdfs dfs -mkdir -p /user/hadoop</h1><h1 id="/bin/hadoop_fs_-ls_/user/hadoop"><a href="#/bin/hadoop_fs_-ls_/user/hadoop" class="headerlink" title="./bin/hadoop fs -ls /user/hadoop"></a>./bin/hadoop fs -ls /user/hadoop</h1><p>Found 1 items<br>drwxr-xr-x   - hadoop supergroup          0 2015-12-23 15:03 /user/hadoop/input</p>
+<p>接 着将 ./etc/hadoop 中的 xml 文件作为输入文件复制到分布式文件系统中，即将 /usr/local/hadoop/etc/hadoop 复制到分布式文件系统中的 /user/hadoop/input 中。我们使用的是 hadoop 用户，并且已创建相应的用户目录 /user/hadoop ，因此在命令中就可以使用相对路径如 input，其对应的绝对路径就是 /user/hadoop/input:</p>
+<h1 id="/bin/hdfs_dfs_-mkdir_input"><a href="#/bin/hdfs_dfs_-mkdir_input" class="headerlink" title="./bin/hdfs dfs -mkdir input"></a>./bin/hdfs dfs -mkdir input</h1><h1 id="/bin/hdfs_dfs_-put_-/etc/hadoop/*-xml_input"><a href="#/bin/hdfs_dfs_-put_-/etc/hadoop/*-xml_input" class="headerlink" title="./bin/hdfs dfs -put ./etc/hadoop/*.xml input"></a>./bin/hdfs dfs -put ./etc/hadoop/*.xml input</h1><p>复制完成后，可以通过如下命令查看 HDFS 中的文件列表：</p>
+<h1 id="/bin/hdfs_dfs_-ls_input"><a href="#/bin/hdfs_dfs_-ls_input" class="headerlink" title="./bin/hdfs dfs -ls input"></a>./bin/hdfs dfs -ls input</h1><p>-rw-r–r–   1 hadoop supergroup       4436 2015-12-23 16:46 input/capacity-scheduler.xml<br>-rw-r–r–   1 hadoop supergroup       1180 2015-12-23 16:46 input/core-site.xml<br>-rw-r–r–   1 hadoop supergroup       9683 2015-12-23 16:46 input/hadoop-policy.xml<br>-rw-r–r–   1 hadoop supergroup       1136 2015-12-23 16:46 input/hdfs-site.xml<br>-rw-r–r–   1 hadoop supergroup        620 2015-12-23 16:46 input/httpfs-site.xml<br>-rw-r–r–   1 hadoop supergroup       3523 2015-12-23 16:46 input/kms-acls.xml<br>-rw-r–r–   1 hadoop supergroup       5511 2015-12-23 16:46 input/kms-site.xml<br>-rw-r–r–   1 hadoop supergroup        858 2015-12-23 16:46 input/mapred-site.xml<br>-rw-r–r–   1 hadoop supergroup        690 2015-12-23 16:46 input/yarn-site.xml</p>
+<p>伪分布式运行 MapReduce 作业的方式跟单机模式相同，区别在于伪分布式读取的是HDFS中的文件（可以将单机步骤中创建的本地 input 文件夹，输出结果 output 文件夹都删掉来验证这一点）。</p>
+<h1 id="/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_input_output__u2018dfs_5Ba-z-_5D+_u2019"><a href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_input_output__u2018dfs_5Ba-z-_5D+_u2019" class="headerlink" title="./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep input output ‘dfs[a-z.]+’"></a>./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep input output ‘dfs[a-z.]+’</h1><p>查看运行结果的命令（查看的是位于 HDFS 中的输出结果）：<br>$ ./bin/hdfs dfs -cat output/*<br>1   dfsadmin<br>1   dfs.replication<br>1   dfs.namenode.name.dir<br>1   dfs.datanode.data.dir</p>
+<p>结果如下，注意到刚才我们已经更改了配置文件，所以运行结果不同。<br>Hadoop伪分布式运行grep的结果Hadoop伪分布式运行grep的结果<br>我们也可以将运行结果取回到本地：</p>
+<h1 id="rm_-r_-/output__23__u5148_u5220_u9664_u672C_u5730_u7684_output__u6587_u4EF6_u5939_uFF08_u5982_u679C_u5B58_u5728_uFF09"><a href="#rm_-r_-/output__23__u5148_u5220_u9664_u672C_u5730_u7684_output__u6587_u4EF6_u5939_uFF08_u5982_u679C_u5B58_u5728_uFF09" class="headerlink" title="rm -r ./output    # 先删除本地的 output 文件夹（如果存在）"></a>rm -r ./output    # 先删除本地的 output 文件夹（如果存在）</h1><h1 id="/bin/hdfs_dfs_-get_output_-/output__23__u5C06_HDFS__u4E0A_u7684_output__u6587_u4EF6_u5939_u62F7_u8D1D_u5230_u672C_u673A"><a href="#/bin/hdfs_dfs_-get_output_-/output__23__u5C06_HDFS__u4E0A_u7684_output__u6587_u4EF6_u5939_u62F7_u8D1D_u5230_u672C_u673A" class="headerlink" title="./bin/hdfs dfs -get output ./output     # 将 HDFS 上的 output 文件夹拷贝到本机"></a>./bin/hdfs dfs -get output ./output     # 将 HDFS 上的 output 文件夹拷贝到本机</h1><h1 id="cat_-/output/*"><a href="#cat_-/output/*" class="headerlink" title="cat ./output/*"></a>cat ./output/*</h1><p>1   dfsadmin<br>1   dfs.replication<br>1   dfs.namenode.name.dir<br>1   dfs.datanode.data.dir</p>
+<p>Hadoop 运行程序时，输出目录不能存在，否则会提示错误 “org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory hdfs://localhost:9000/user/hadoop/output already exists” ，因此若要再次执行，需要执行如下命令删除 output 文件夹:</p>
+<h1 id="u5220_u9664_output__u6587_u4EF6_u5939"><a href="#u5220_u9664_output__u6587_u4EF6_u5939" class="headerlink" title="删除 output 文件夹"></a>删除 output 文件夹</h1><p>$./bin/hdfs dfs -rm -r output<br>Deleted output</p>
+<p>运行程序时，输出目录不能存在<br>运行 Hadoop 程序时，为了防止覆盖结果，程序指定的输出目录（如 output）不能存在，否则会提示错误，因此运行前需要先删除输出目录。在实际开发应用程序时，可考虑在程序中加上如下代码，能在每次运行时自动删除输出目录，避免繁琐的命令行操作：<br>Configuration conf = new Configuration();<br>Job job = new Job(conf);<br>/<em> 删除输出目录 </em>/<br>Path outputPath = new Path(args[1]);<br>outputPath.getFileSystem(conf).delete(outputPath, true);</p>
+<p>若要关闭 Hadoop，则运行<br>./sbin/stop-dfs.sh</p>
+<p>启动YARN<br>(伪分布式不启动 YARN 也可以，一般不会影响程序执行)<br>有 的读者可能会疑惑，怎么启动 Hadoop 后，见不到书上所说的 JobTracker 和 TaskTracker，这是因为新版的 Hadoop 使用了新的 MapReduce 框架（MapReduce V2，也称为 YARN，Yet Another Resource Negotiator）。</p>
+<p>YARN 是从 MapReduce 中分离出来的，负责资源管理与任务调度。YARN 运行于 MapReduce 之上，提供了高可用性、高扩展性，YARN 的更多介绍在此不展开，有兴趣的可查阅相关资料。</p>
+<p>上述通过 ./sbin/start-dfs.sh 启动 Hadoop，仅仅是启动了 MapReduce 环境，我们可以启动 YARN ，让 YARN 来负责资源管理与任务调度。</p>
+<p>首先修改配置文件 mapred-site.xml<br>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;mapreduce.framework.name&lt;/name&gt;<br>&lt;value&gt;yarn&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
+<p>接着修改配置文件 yarn-site.xml：<br>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;<br>&lt;value&gt;mapreduce_shuffle&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
+<p>然后就可以启动 YARN 了（需要先执行过 ./sbin/start-dfs.sh）：</p>
+<h1 id="/sbin/start-yarn-sh__23__u542F_u52A8YARN"><a href="#/sbin/start-yarn-sh__23__u542F_u52A8YARN" class="headerlink" title="./sbin/start-yarn.sh                                # 启动YARN"></a>./sbin/start-yarn.sh                                # 启动YARN</h1><h1 id="/sbin/mr-jobhistory-daemon-sh_start_historyserver__23__u5F00_u542F_u5386_u53F2_u670D_u52A1_u5668_uFF0C_u624D_u80FD_u5728Web_u4E2D_u67E5_u770B_u4EFB_u52A1_u8FD0_u884C_u60C5_u51B5"><a href="#/sbin/mr-jobhistory-daemon-sh_start_historyserver__23__u5F00_u542F_u5386_u53F2_u670D_u52A1_u5668_uFF0C_u624D_u80FD_u5728Web_u4E2D_u67E5_u770B_u4EFB_u52A1_u8FD0_u884C_u60C5_u51B5" class="headerlink" title="./sbin/mr-jobhistory-daemon.sh start historyserver  # 开启历史服务器，才能在Web中查看任务运行情况"></a>./sbin/mr-jobhistory-daemon.sh start historyserver  # 开启历史服务器，才能在Web中查看任务运行情况</h1><p>开启后通过 jps 查看，可以看到多了 NodeManager 和 ResourceManager 两个后台进程:</p>
+<p>[09:18:34][hadoop@ocean-lab ~]$ jps<br>27686 SecondaryNameNode<br>6968 ResourceManager<br>7305 Jps<br>7066 NodeManager<br>27501 DataNode<br>27405 NameNode</p>
+<p>启 动 YARN 之后，运行实例的方法还是一样的，仅仅是资源管理方式、任务调度不同。观察日志信息可以发现，不启用 YARN 时，是 “mapred.LocalJobRunner” 在跑任务，启用 YARN 之后，是 “mapred.YARNRunner” 在跑任务。启动 YARN 有个好处是可以通过 Web 界面查看任务的运行情况：<a href="http://[ip,fqdn]:8088/cluster" target="_blank" rel="external">http://[ip,fqdn]:8088/cluster</a></p>
+<p>开启YARN后可以查看任务运行信息开启YARN后可以查看任务运行信息<br>但 YARN 主要是为集群提供更好的资源管理与任务调度，然而这在单机上体现不出价值，反而会使程序跑得稍慢些。因此在单机上是否开启 YARN 就看实际情况了。<br>不启动 YARN 需删掉/重命名 mapred-site.xml<br>否则在该配置文件存在，而未开启 YARN 的情况下，运行程序会提示 “Retrying connect to server: 0.0.0.0/0.0.0.0:8032″ 的错误。</p>
+<p>同样的，关闭 YARN 的脚本如下：</p>
+<h1 id="/sbin/stop-yarn-sh"><a href="#/sbin/stop-yarn-sh" class="headerlink" title="./sbin/stop-yarn.sh"></a>./sbin/stop-yarn.sh</h1><h1 id="/sbin/mr-jobhistory-daemon-sh_stop_historyserver"><a href="#/sbin/mr-jobhistory-daemon-sh_stop_historyserver" class="headerlink" title="./sbin/mr-jobhistory-daemon.sh stop historyserver"></a>./sbin/mr-jobhistory-daemon.sh stop historyserver</h1><p><strong>hadoop 常用命令</strong></p>
+<h1 id="u67E5_u770BHDFS_u6587_u4EF6_u5217_u8868"><a href="#u67E5_u770BHDFS_u6587_u4EF6_u5217_u8868" class="headerlink" title="查看HDFS文件列表"></a>查看HDFS文件列表</h1><p>hadoop fs -ls /usr/local/log/</p>
+<h1 id="u521B_u5EFA_u6587_u4EF6_u76EE_u5F55"><a href="#u521B_u5EFA_u6587_u4EF6_u76EE_u5F55" class="headerlink" title="创建文件目录"></a>创建文件目录</h1><p>hadoop fs -mkdir /usr/local/log/test</p>
+<h1 id="u5220_u9664_u6587_u4EF6"><a href="#u5220_u9664_u6587_u4EF6" class="headerlink" title="删除文件"></a>删除文件</h1><p>/hadoop fs -rm /usr/local/log/07</p>
+<h1 id="u4E0A_u4F20_u4E00_u4E2A_u672C_u673A_u6587_u4EF6_u5230HDFS_u4E2D/usr/local/log/_u76EE_u5F55_u4E0B"><a href="#u4E0A_u4F20_u4E00_u4E2A_u672C_u673A_u6587_u4EF6_u5230HDFS_u4E2D/usr/local/log/_u76EE_u5F55_u4E0B" class="headerlink" title="上传一个本机文件到HDFS中/usr/local/log/目录下"></a>上传一个本机文件到HDFS中/usr/local/log/目录下</h1><p>adoop fs -put /usr/local/src/infobright-4.0.6-0-x86_64-ice.rpm  /usr/local/log/</p>
+<h1 id="u4E0B_u8F7D"><a href="#u4E0B_u8F7D" class="headerlink" title="下载"></a>下载</h1><p>hadoop fs –get /usr/local/log/infobright-4.0.6-0-x86_64-ice.rpm   /usr/local/src/</p>
+<h1 id="u67E5_u770B_u6587_u4EF6"><a href="#u67E5_u770B_u6587_u4EF6" class="headerlink" title="查看文件"></a>查看文件</h1><p>hadoop fs -cat /usr/local/log/zabbix/access.log.zabbix</p>
+<h1 id="u67E5_u770BHDFS_u57FA_u672C_u4F7F_u7528_u60C5_u51B5"><a href="#u67E5_u770BHDFS_u57FA_u672C_u4F7F_u7528_u60C5_u51B5" class="headerlink" title="查看HDFS基本使用情况"></a>查看HDFS基本使用情况</h1><h1 id="hadoop_dfsadmin_-report"><a href="#hadoop_dfsadmin_-report" class="headerlink" title="hadoop dfsadmin -report"></a>hadoop dfsadmin -report</h1><p>DEPRECATED: Use of this script to execute hdfs command is deprecated.<br>Instead use the hdfs command for it.</p>
+<p>Configured Capacity: 29565767680 (27.54 GB)<br>Present Capacity: 17956433920 (16.72 GB)<br>DFS Remaining: 17956405248 (16.72 GB)<br>DFS Used: 28672 (28 KB)<br>DFS Used%: 0.00%<br>Under replicated blocks: 0<br>Blocks with corrupt replicas: 0<br>Missing blocks: 0</p>
+<hr>
+<p>Live datanodes (1):</p>
+<p>Name: 127.0.0.1:50010 (localhost)<br>Hostname: ocean-lab.ocean.org<br>Decommission Status : Normal<br>Configured Capacity: 29565767680 (27.54 GB)<br>DFS Used: 28672 (28 KB)<br>Non DFS Used: 11609333760 (10.81 GB)<br>DFS Remaining: 17956405248 (16.72 GB)<br>DFS Used%: 0.00%<br>DFS Remaining%: 60.73%<br>Configured Cache Capacity: 0 (0 B)<br>Cache Used: 0 (0 B)<br>Cache Remaining: 0 (0 B)<br>Cache Used%: 100.00%<br>Cache Remaining%: 0.00%<br>Xceivers: 1<br>Last contact: Thu Dec 24 09:52:14 CST 2015</p>
+<p>自此，你已经掌握 Hadoop 的配置和基本使用了。</p>
+<p>Reference doc:  <a href="https://hadoop.apache.org/docs/r2.6.0/" target="_blank" rel="external">https://hadoop.apache.org/docs/r2.6.0/</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>实验环境<br>CentOS 6.X<br>Hadoop 2.6.0<br>JDK    1.8.0_65</p>
+<p>目的<br>这篇文档的目的是帮助你快速完成单机上的Hadoop安装与使用以便你对Hadoop分布式文件系统(HDFS)和Map-Reduce框架有所体会]]>
+    </summary>
+    
+      <category term="hadoop" scheme="http://blog.suzf.net/tags/hadoop/"/>
+    
+      <category term="Hadoop" scheme="http://blog.suzf.net/categories/Hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[How-to deal with Ceph Monitor DB compaction?]]></title>
+    <link href="http://blog.suzf.net/2015/12/22/why-does-ceph-monitor-db-compaction-fail/"/>
+    <id>http://blog.suzf.net/2015/12/22/why-does-ceph-monitor-db-compaction-fail/</id>
+    <published>2015-12-22T08:29:58.000Z</published>
+    <updated>2016-01-13T07:38:52.000Z</updated>
+    <content type="html"><![CDATA[<p><section class="field_kcs_issue_txt"><strong>Issue</strong></section></p>
+<p>Ceph Monitors DB compaction<br>mon.ceph1 store is getting too big! 48031 MB &gt;= 15360 MB – 62% avail<br>mon.ceph2 store is getting too big! 47424 MB &gt;= 15360 MB – 63% avail<br>mon.ceph3 store is getting too big! 46524 MB &gt;= 15360 MB – 63% avail</p>
+<p>In Three Monitor nodes each one have ~50GB of store.db:<br>du -sch /var/lib/ceph/mon/ceph-ceph1/store.db/<br>47G     /var/lib/ceph/mon/ceph-ceph1/store.db/<br>47G     total</p>
+<p>We’ve set the following in our ceph.conf:<br>[mon]<br>mon compact on start = true<br>Then we restart one of the monitor to trigger the compact process.<br>Noticed that size of store.db increase more (and is still increasing) but it should decrease.</p>
+<p>&nbsp;</p>
+<p><strong>However</strong></p>
+<p>If mon compact on start is set true.</p>
+<p>The larger the database, the longer the compaction would take. there by increasing the time for a node to join cluster / form quorum. &lt;on the procuction, i restart one mon service. it costs more than one hour. It’s soo long! &gt;</p>
+<p>This probably need a review alongside any other existing cluster-level heartbeats/failover process for safety if this approach is selected.</p>
+<p>Clearly we don’t want this on by default, but having the option to turn it on via auto-manage-soft might be nice.</p>
+<p>Note you can also tell a monitor to run compaction on the fly with</p>
+<pre><code>sudo ceph tell mon.{id} compact
+</code></pre><p>&nbsp;</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><section class="field_kcs_issue_txt"><strong>Issue</strong></section></p>
+<p>Ceph Monitors DB compaction<br>mon.ceph1 store is getting to]]>
+    </summary>
+    
+      <category term="Ceph" scheme="http://blog.suzf.net/tags/Ceph/"/>
+    
+      <category term="Linux" scheme="http://blog.suzf.net/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[[译] Repair MySQL 5.6 GTID replication by injecting empty transactions]]></title>
+    <link href="http://blog.suzf.net/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/"/>
+    <id>http://blog.suzf.net/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/</id>
+    <published>2015-12-01T13:34:23.000Z</published>
+    <updated>2016-01-13T07:18:41.000Z</updated>
+    <content type="html"><![CDATA[<p>在前面文章我提到了两种关于<a href="https://www.percona.com/blog/2013/02/08/how-to-createrestore-a-slave-using-gtid-replication-in-mysql-5-6/" target="_blank" rel="external">如何修复 Mysql 5.6 GTID 主从数据库</a>。<br>我没有提到大家说熟知的方法 - <code>GLOBAL SQL_SLAVE_SKIP_COUNTER = n</code>。原因很简单，如果你使用的是MysqlGTID，它是不工作的。<br>那么问题来了：</p>
+<p><strong>有没有简单的方法跳过这单一事务 ?</strong><br>是的！<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-failover.html#replication-gtids-failover-empty" target="_blank" rel="external">注入空事务</a>。让我们想象一下，从服务器上的复制不工作，因为下面一个错误：</p>
+<p><div></div></p>
+<p><pre class="lang:default decode:true">Last_SQL_Error: Error ‘Duplicate entry ‘4’ for key ‘PRIMARY’’ on query. Default database: ‘test’. Query: ‘insert into t VALUES(NULL,’salazar’)’<br>Retrieved_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-5<br>Executed_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-4</pre><br><br>这里有不同的方法可以找到失败的事务。你可以检查二进制日志，或者你也可以检查<strong>retrieved_gtid_set </strong>和 <strong>executed_gtid_set</strong> 从显示输出的例子中我们可以看出。此从服务器检索到1到5的交易，但只执行了1到4。这意味着交易5是导致问题的一个问题。</p>
+<p>因为在GTID中sql_slave_skip_counter不工作，我们需要找到一种办法来忽视事务。我们可以在GTID中创建空事务以跳过它。</p>
+<p><pre class="lang:default decode:true ">STOP SLAVE;<br>SET GTID_NEXT=”7d72f9b4-8577-11e2-a3d7-080027635ef5:5”;<br>BEGIN; COMMIT;<br>SET GTID_NEXT=”AUTOMATIC”;<br>START SLAVE;<br>[…]<br>Retrieved_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-5<br>Executed_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-5</pre><br>START SLAVE 之后 检查事务5已经在它自己的二进制文件中了，这就意味着它已经执行过了。</p>
+<p>这是一个简单的方法来跳过一些事务，但是，你应该想到主从服务器之间数据不一致。<a href="https://www.percona.com/doc/percona-toolkit/2.2/pt-table-checksum.html" target="_blank" rel="external">pt-table-checksum</a> 在这里可以帮助你，它可以在<a href="https://www.percona.com/software/percona-toolkit" target="_blank" rel="external">Percona Toolkit for mysql</a> 中找到。</p>
+<p>上周我谈及了很多关于GTID的东西在<a href="http://percona-mysql-university-toronto-2013.eventbrite.com/" target="_blank" rel="external">多伦多 Percona Mysql 大学</a>。 它包括MySQL 5.6 gtid 这个新功能的工作概述，可以帮助人们。这是来自该会议的幻灯片。我希望你觉得它有用：<a href="https://www.percona.com/resources/technical-presentations/mysql-56-gtid-nutshell-percona-live-university-toronto" target="_blank" rel="external">MySQL 5.6 GTID in a nutshell
+</a></p>
+<p>原文： <a href="https://www.percona.com/blog/2013/03/26/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/" target="_blank" rel="external">https://www.percona.com/blog/2013/03/26/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在前面文章我提到了两种关于<a href="https://www.percona.com/blog/2013/02/08/how-to-createrestore-a-slave-using-gtid-replication-in-mysql-5-6/" target="]]>
+    </summary>
+    
+      <category term="Mysql" scheme="http://blog.suzf.net/tags/Mysql/"/>
+    
+      <category term="Mysql" scheme="http://blog.suzf.net/categories/Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[How To Install ELK Stack (Elasticsearch, Logstash, and Kibana) on CentOS 6]]></title>
+    <link href="http://blog.suzf.net/2015/11/29/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-6/"/>
+    <id>http://blog.suzf.net/2015/11/29/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-6/</id>
+    <published>2015-11-29T10:24:08.000Z</published>
+    <updated>2016-01-13T07:38:52.000Z</updated>
+    <content type="html"><![CDATA[<p>ELK(Elasticsearch + Logstash + Kibana) 是一套开源的日志管理方案<br>Elasticsearch：负责日志检索和分析<br>Logstash：负责日志的收集，处理和储存<br>Kibana：负责日志的可视化</p>
+<p>Logstash: The server component of Logstash that processes incoming logs<br>Elasticsearch: Stores all of the logs<br>Kibana 4: Web interface for searching and visualizing logs, which will be proxied through Nginx<br>Logstash Forwarder: Installed on servers that will send their logs to Logstash, Logstash Forwarder serves as a log forwarding agent that utilizes the lumberjack networking protocol to communicate with Logstash</p>
+<p>Reference：<br>JDK - <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>Elasticsearch - <a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="external">https://www.elastic.co/downloads/elasticsearch</a><br>Logstash - <a href="https://www.elastic.co/downloads/logstash" target="_blank" rel="external">https://www.elastic.co/downloads/logstash</a><br>Kibana - <a href="https://www.elastic.co/downloads/kibana" target="_blank" rel="external">https://www.elastic.co/downloads/kibana</a><br>redis - <a href="http://redis.io/download" target="_blank" rel="external">http://redis.io/download</a></p>
+<p>数据流流向如下<br>Logstash-forwarder—&gt;Logstash—&gt;Elasticsearch—&gt;kibana—&gt;nginx—&gt;客户浏览器<br><a href="http://s2.51cto.com/wyfs02/M00/76/B8/wKiom1ZazrHSbKu-AABA4HuUlBk078.png" target="_blank" rel="external"><img src="http://s2.51cto.com/wyfs02/M00/76/B8/wKiom1ZazrHSbKu-AABA4HuUlBk078.png" alt="" title="elk-infrastructure.png"></a>其中Logstash-forwarder是客户端的日志收集工具将日志发送给服务端Logstash后<br>Logstash通过使用grok匹配规则对日志进行匹配切割<br>然后保存在Elasticsearch中<br>最后通过kibana从Elasticsearch中读取数据并转交给nginx来处理后返回给客户。<br>好了下面就是ELK系统的安装过程了。</p>
+<p>首先安装JAVA环境</p>
+<p><pre class="brush:bash;toolbar:false">wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “<a href="http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm" target="_blank" rel="external">http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm</a>“<br>rpm -Uvh jdk-8u65-linux-x64.rpm</pre><br>或者直接yum安装jdk也行不过要保证安装好对应的版本。</p>
+<p>安装好jdk环境之后需要安装Elasticsearch</p>
+<p><pre class="brush:bash;toolbar:false">rpm –import <a href="http://packages.elastic.co/GPG-KEY-elasticsearch" target="_blank" rel="external">http://packages.elastic.co/GPG-KEY-elasticsearch</a><br>rpm -ivh <a href="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.noarch.rpm" target="_blank" rel="external">https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.noarch.rpm</a></pre><br>修改配置文件如下</p>
+<p><pre class="brush:bash;toolbar:false">grep -v “^.*#|^$” /etc/elasticsearch/elasticsearch.yml<br>network.host: localhost<br>path.data: /data/elasticsearch<br>chown -R elasticsearch:elasticsearch /data/elasticsearch</pre><br>安装Elasticsearch插件</p>
+<p><pre class="brush:bash;toolbar:false">cd /usr/share/elasticsearch/ &amp;&amp;  ./bin/plugin -install mobz/elasticsearch-head &amp;&amp; ./bin/plugin -install lukas-vlcek/bigdesk</pre><br>启动Elasticsearch</p>
+<p><pre class="brush:bash;toolbar:false">service elasticsearch start<br>chkconfig elasticsearch on</pre><br>测试Elasticsearch</p>
+<p><pre class="brush:bash;toolbar:false">curl <a href="http://localhost:9200" target="_blank" rel="external">http://localhost:9200</a><br>{<br>  “status” : 200,<br>  “name” : “Black Goliath”,<br>  “cluster_name” : “elasticsearch”,<br>  “version” : {<br>    “number” : “1.7.2”,<br>    “build_hash” : “e43676b1385b8125d647f593f7202acbd816e8ec”,<br>    “build_timestamp” : “2015-09-14T09:49:53Z”,<br>    “build_snapshot” : false,<br>    “lucene_version” : “4.10.4”<br>  },<br>  “tagline” : “You Know, for Search”<br>}</pre><br>然后开始安装kibana<br>去<a href="https://www.elastic.co/downloads/kibana" target="_blank" rel="external">https://www.elastic.co/downloads/kibana</a> 找合适的版本<br>每个版本下面有这么一行内容一定要注意这些内容Compatible with Elasticsearch x.x – x.x<br>这里选择的是kibana-4.1.3-linux-x64.tar.gz</p>
+<p><pre class="brush:bash;toolbar:false">wget <a href="https://download.elastic.co/kibana/kibana/kibana-4.1.3-linux-x64.tar.gz" target="_blank" rel="external">https://download.elastic.co/kibana/kibana/kibana-4.1.3-linux-x64.tar.gz</a><br>tar xf kibana-4.1.3-linux-x64.tar.gz<br>mv kibana-4.1.3-linux-x64 /usr/local/kibana<br>cd !$<br>grep -v “^.*#|^$” /usr/local/kibana/config/kibana.yml<br>port: 5601<br>host: “localhost”<br>elasticsearch_url: “<a href="http://localhost:9200" target="_blank" rel="external">http://localhost:9200</a>“<br>elasticsearch_preserve_host: true<br>kibana_index: “.kibana”<br>default_app_id: “discover”<br>request_timeout: 300000<br>shard_timeout: 0<br>verify_ssl: true<br>bundled_plugin_ids:</pre></p>
+<ul>
+<li>plugins/dashboard/index</li>
+<li>plugins/discover/index</li>
+<li>plugins/doc/index</li>
+<li>plugins/kibana/index</li>
+<li>plugins/markdown_vis/index</li>
+<li>plugins/metric_vis/index</li>
+<li>plugins/settings/index</li>
+<li>plugins/table_vis/index</li>
+<li>plugins/vis_types/index</li>
+<li>plugins/visualize/index<br>配置文件中指明kibana侦听5601端口并且通过9200端口从elasticsearch里面获取数据</li>
+</ul>
+<p>启动 Kibana<br>nohup /usr/local/kibana/bin/kibana -l /var/log/kibana.log &amp;</p>
+<p>或者也可以看看下面两个脚本</p>
+<p><pre class="brush:bash;toolbar:false">cd /etc/init.d &amp;&amp;  curl -o kibana <a href="https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/fc5025c3fc499ad8262aff34ba7fde8c87ead7c0/kibana-4.x-init" target="_blank" rel="external">https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/fc5025c3fc499ad8262aff34ba7fde8c87ead7c0/kibana-4.x-init</a><br>cd /etc/default &amp;&amp;  curl -o kibana <a href="https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/fc5025c3fc499ad8262aff34ba7fde8c87ead7c0/kibana-4.x-default" target="_blank" rel="external">https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/fc5025c3fc499ad8262aff34ba7fde8c87ead7c0/kibana-4.x-default</a><br>ln -s /usr/local/kibana /opt/kibana<br>groupadd -g 1005 kibana<br>useradd -u 1005 -g 1005 kibana<br>chown -R kibana:kibana /usr/local/kibana<br>service kibana start<br>chkconfig kibana on</pre><br>安装nginx</p>
+<p><pre class="brush:bash;toolbar:false">yum -y install epel-release<br>yum -y install nginx httpd-tools<br>grep -v “^.*#|^$” /etc/nginx/nginx.conf<br>user              nginx;<br>worker_processes  1;<br>error_log  /var/log/nginx/error.log;<br>pid        /var/run/nginx.pid;<br>events {<br>    worker_connections  1024;<br>}<br>http {<br>    include       /etc/nginx/mime.types;<br>    default_type  application/octet-stream;<br>    log_format main ‘$remote_addr - $remote_user [$time_local] “$request” ‘<br>                    ‘$status $upstream_response_time $request_time $body_bytes_sent ‘<br>                    ‘“$http_referer” “$http_user_agent” “$http_x_forwarded_for” “$request_body” ‘<br>                    ‘$scheme $upstream_addr’;</pre></p>
+<pre><code># 修改日志格式是为了匹配后面的Logstash的grok匹配规则
+access_log  /var/log/nginx/access.log  main;
+sendfile        on;
+keepalive_timeout  65;
+
+include /etc/nginx/conf.d/*.conf;
+</code></pre><p>}</p>
+<p><pre class="brush:bash;toolbar:false">grep -v “^.*#|^$” /etc/nginx/conf.d/kibana.conf<br>server {<br>    listen 80;<br>    server_name ocean-lab.ocean.org;<br>    location / {<br>        proxy_pass <a href="http://localhost:5601" target="_blank" rel="external">http://localhost:5601</a>;<br>        proxy_set_header Upgrade $http_upgrade;<br>        proxy_set_header Connection ‘upgrade’;<br>        proxy_set_header Host $host;<br>        proxy_cache_bypass $http_upgrade;<br>    }<br>}</pre><br>启动nginx</p>
+<p><pre class="brush:bash;toolbar:false">service nginx start<br>chkconfig nginx on</pre><br>之后就需要安装Logstash了</p>
+<p><pre class="brush:bash;toolbar:false">rpm –import <a href="https://packages.elasticsearch.org/GPG-KEY-elasticsearch" target="_blank" rel="external">https://packages.elasticsearch.org/GPG-KEY-elasticsearch</a><br>vi /etc/yum.repos.d/logstash.repo<br>[logstash-1.5]<br>name=Logstash repository for 1.5.x packages<br>baseurl=<a href="http://packages.elasticsearch.org/logstash/1.5/centos" target="_blank" rel="external">http://packages.elasticsearch.org/logstash/1.5/centos</a><br>gpgcheck=1<br>gpgkey=<a href="http://packages.elasticsearch.org/GPG-KEY-elasticsearch" target="_blank" rel="external">http://packages.elasticsearch.org/GPG-KEY-elasticsearch</a><br>enabled=1<br>yum -y install logstash</pre><br>Logstash 安装成功了 但是仍需要配置</p>
+<p>生成 SSL 证书<br>logstash和logstash-forwarder通信需要使用tls证书认证。<br>Logstash Forwarder上面只需公钥logstash需要配置公钥、私钥。<br>在logstash服务器上生成ssl证书。<br>创建ssl证书有两种方式一种指定IP地址一种指定fqdn(dns)。</p>
+<p>1、指定IP地址方式 [本实验使用此种方式]<br>vi /etc/pki/tls/openssl.cnf<br>在[ v3_ca ]下面配置<br>subjectAltName = IP:172.16.7.11</p>
+<h1 id="u5207_u8BB0_u8FD9_u6761_u5F88_u91CD_u8981_u56E0_u4E3Alogstash-forwarder-conf__u8FD8_u9700_u8981__u5982_u679C_u914D_u7F6E_u9519_u8BEF__u5C31_u4F1A_u4E00_u76F4_u65E0_u6CD5_u5B9E_u73B0_u8BA4_u8BC1"><a href="#u5207_u8BB0_u8FD9_u6761_u5F88_u91CD_u8981_u56E0_u4E3Alogstash-forwarder-conf__u8FD8_u9700_u8981__u5982_u679C_u914D_u7F6E_u9519_u8BEF__u5C31_u4F1A_u4E00_u76F4_u65E0_u6CD5_u5B9E_u73B0_u8BA4_u8BC1" class="headerlink" title="切记这条很重要因为logstash-forwarder.conf 还需要 如果配置错误 就会一直无法实现认证"></a>切记这条很重要因为logstash-forwarder.conf 还需要 如果配置错误 就会一直无法实现认证</h1><p>cd /etc/pki/tls<br>openssl req -config /etc/pki/tls/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt</p>
+<h1 id="u6CE8_u610F_u5C06-days_u8BBE_u7F6E_u5927_u70B9_u4EE5_u514D_u8BC1_u4E66_u8FC7_u671F_u3002"><a href="#u6CE8_u610F_u5C06-days_u8BBE_u7F6E_u5927_u70B9_u4EE5_u514D_u8BC1_u4E66_u8FC7_u671F_u3002" class="headerlink" title="注意将-days设置大点以免证书过期。"></a>注意将-days设置大点以免证书过期。</h1><p><strong><em> 如果logstash服务端的IP地址变换了证书不可用了 </em></strong><br>like that:<br>2015/11/29 16:23:48.274974 Failed to tls handshake with 127.0.0.1 x509: certificate is valid for 172.16.7.11, not 127.0.0.1</p>
+<p>2、使用 FQDN 方式<br>不需要修改openssl.cnf文件。<br>cd /etc/pki/tls<br><strong> CN=FQDN </strong><br>openssl req -subj ‘/CN=elk.suzf.net/‘ -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt</p>
+<h1 id="u5C06_elk-suzf-net__u6362_u6210_u4F60_u81EA_u5DF1_u7684_u57DF_u540D_u3002_u540C_u65F6_u5230_u57DF_u540D_u89E3_u6790_u90A3_u6DFB_u52A0_elk-suzf-net__u7684A_u8BB0_u5F55_u3002"><a href="#u5C06_elk-suzf-net__u6362_u6210_u4F60_u81EA_u5DF1_u7684_u57DF_u540D_u3002_u540C_u65F6_u5230_u57DF_u540D_u89E3_u6790_u90A3_u6DFB_u52A0_elk-suzf-net__u7684A_u8BB0_u5F55_u3002" class="headerlink" title="将 elk.suzf.net 换成你自己的域名。同时到域名解析那添加 elk.suzf.net 的A记录。"></a>将 elk.suzf.net 换成你自己的域名。同时到域名解析那添加 elk.suzf.net 的A记录。</h1><p>配置logstash<br>logstash配置文件是以json格式设置参数的<br>配置文件位于/etc/logstash/conf.d目录下配置包括三个部分 输入/输出和过滤器</p>
+<p>首先创建一个01-lumberjack-input.conf文件<br>设置lumberjack输入Logstash-Forwarder使用的协议。</p>
+<p><pre class="brush:bash;toolbar:false">cat /etc/logstash/conf.d/01-lumberjack-input.conf<br>input {<br>  lumberjack {<br>    port =&gt; 5043<br>    type =&gt; “logs”<br>    ssl_certificate =&gt; “/etc/pki/tls/certs/logstash-forwarder.crt”<br>    ssl_key =&gt; “/etc/pki/tls/private/logstash-forwarder.key”<br>  }<br>}</pre><br>再来创建一个02-nginx.conf用于过滤nginx日志</p>
+<p><pre class="brush:bash;toolbar:false">cat /etc/logstash/conf.d/02-nginx.conf<br>filter {<br>  if [type] == “nginx” {<br>    grok {<br>      match =&gt; { “message” =&gt; “%{IPORHOST:clientip} - %{NOTSPACE:remote_user} [%{HTTPDATE:timestamp}] \”(?:%{WORD:method} %{NOTSPACE:request}(?: %{URIPROTO:proto}/%{NUMBER:httpversion})?|%{DATA:rawrequest})\” %{NUMBER:status} (?:%{NUMBER:upstime}|-) %{NUMBER:reqtime} (?:%{NUMBER:size}|-) %{QS:referrer} %{QS:agent} %{QS:xforwardedfor} %{QS:reqbody} %{WORD:scheme} (?:%{IPV4:upstream}(:%{POSINT:port})?|-)” }<br>      add_field =&gt; [ “received_at”, “%{@timestamp}” ]<br>      add_field =&gt; [ “received_from”, “%{host}” ]<br>    }<br>    date {<br>        match =&gt; [ “timestamp” , “dd/MMM/YYYY:HH:mm:ss Z” ]<br>    }<br>   geoip {<br>        source =&gt; “clientip”<br>        add_tag =&gt; [ “geoip” ]<br>        fields =&gt; [“country_name”, “country_code2”,”region_name”, “city_name”, “real_region_name”, “latitude”, “longitude”]<br>        remove_field =&gt; [ “[geoip][longitude]”, “[geoip][latitude]” ]<br>    }<br>  }<br>}</pre><br>这个过滤器会寻找被标记为“nginx”类型Logstash-forwarder定义的的日志尝试使用“grok”来分析传入的nginx日志使之结构化和可查询。<br>type要与logstash-forwarder相匹配。<br>同时注意将nginx日志格式设置成上面的。<br>日志格式不对grok匹配规则要重写。<br>可以通过<a href="http://grokdebug.herokuapp.com/" target="_blank" rel="external">http://grokdebug.herokuapp.com/</a> 在线工具进行调试。多半ELK没数据错误在此处。<br>grok 匹配日志不成功不要往下看了。搞对为止先。<br>同时多看看<a href="http://grokdebug.herokuapp.com/patterns#" target="_blank" rel="external">http://grokdebug.herokuapp.com/patterns#</a>   grok匹配模式对后面写规则匹配很受益的。<br>最后创建一文件来定义输出。</p>
+<p><pre class="brush:bash;toolbar:false">cat  /etc/logstash/conf.d/30-lumberjack-output.conf<br>output {<br>    if “_grokparsefailure” in [tags] {<br>      file { path =&gt; “/var/log/logstash/grokparsefailure-%{type}-%{+YYYY.MM.dd}.log” }<br>    }<br>    elasticsearch {<br>        host =&gt; “127.0.0.1”<br>        protocol =&gt; “http”<br>        index =&gt; “logstash-%{type}-%{+YYYY.MM.dd}”<br>        document_type =&gt; “%{type}”<br>        workers =&gt; 5<br>        template_overwrite =&gt; true<br>    }</pre></p>
+<pre><code>#stdout { codec =&amp;gt;rubydebug }
+</code></pre><p>}<br>定义结构化的日志存储到elasticsearch对于不匹配grok的日志写入到文件。<br>注意后面添加的过滤器文件名要位于01-99之间。因为logstash配置文件有顺序的。<br>在调试时候先不将日志存入到elasticsearch而是标准输出以便排错。<br>同时多看看日志很多错误在日志里有体现也容易定位错误在哪。</p>
+<p>在启动logstash服务之前最好先进行配置文件检测如下</p>
+<p><pre class="brush:bash;toolbar:false">/opt/logstash/bin/logstash –configtest -f /etc/logstash/conf.d/*<br>Configuration OK</pre><br>也可指定文件名检测直到OK才行。不然logstash服务器起不起来。<br>最后就是启动logstash服务了。</p>
+<p><pre class="brush:bash;toolbar:false">service logstash start<br>chkconfig logstash on</pre><br>然后就是配置Logstash-forwarder客户端了。<br>安装logstash-forwarder</p>
+<p><pre class="brush:bash;toolbar:false">wget <a href="https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder-0.4.0-1.x86_64.rpm" target="_blank" rel="external">https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder-0.4.0-1.x86_64.rpm</a><br>rpm -ivh logstash-forwarder-0.4.0-1.x86_64.rpm</pre><br>需要将在安装logstash时候创建的ssl证书的公钥拷贝到每台logstash-forwarder服务器上。<br>scp 172.16.7.11:/etc/pki/tls/certs/logstash-forwarder.crt /etc/pki/tls/certs/</p>
+<p>配置logstash-forwarder</p>
+<p><pre class="brush:bash;toolbar:false">grep -v “^.*#|^$” /etc/logstash-forwarder.conf<br>{<br>  “network”: {<br>    “servers”: [ “172.16.7.11:5043” ],<br>    “ssl ca”: “/etc/pki/tls/certs/logstash-forwarder.crt”,<br>    “timeout”: 15<br>  },<br>  “files”: [<br>    {<br>      “paths”: [<br>        “/var/log/messages”,<br>        “/var/log/secure”<br>       ],<br>      “fields”: { “type”: “syslog” }<br>    },{<br>      “paths”: [<br>        “/var/log/nginx/access.log”<br>      ],<br>      “fields”: { “type”: “nginx” }<br>    }<br>  ]<br>}</pre><br>这也是个json个是的配置文件<br>json格式不对logstash-forwarder服务是启动不起来的<br>service logstash-forwarder start</p>
+<p>连接到 Kibana</p>
+<p>创建index</p>
+<p><a href="http://s1.51cto.com/wyfs02/M00/76/B7/wKioL1Za0R3x5ECsAAL9HfVOBKk815.jpg" target="_blank" rel="external"><img src="http://s1.51cto.com/wyfs02/M00/76/B7/wKioL1Za0R3x5ECsAAL9HfVOBKk815.jpg" alt="" title="ELK1.JPG"></a></p>
+<p>当上面的所有都配置正确的话就可以访问kibana来查看数据了。<br>访问效果如下所示<br><a href="http://s4.51cto.com/wyfs02/M01/76/B7/wKioL1Za0Vnjfp2JAAMaty9BPZw911.jpg" target="_blank" rel="external"><img src="http://s4.51cto.com/wyfs02/M01/76/B7/wKioL1Za0Vnjfp2JAAMaty9BPZw911.jpg" alt="" title="ELK2.JPG"></a>​</p>
+<p>参考文档：</p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-7" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-7</a></p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-elk-stack-issues" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-elk-stack-issues</a></p>
+<p><a href="http://xianglinhu.blog.51cto.com/5787032/1716274" target="_blank" rel="external">http://xianglinhu.blog.51cto.com/5787032/1716274</a></p>
+<p><a href="http://www.wklken.me/posts/2015/04/26/elk-for-nginx-log.html" target="_blank" rel="external">http://www.wklken.me/posts/2015/04/26/elk-for-nginx-log.html</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>ELK(Elasticsearch + Logstash + Kibana) 是一套开源的日志管理方案<br>Elasticsearch：负责日志检索和分析<br>Logstash：负责日志的收集，处理和储存<br>Kibana：负责日志的可视化</p>
+<p>Logsta]]>
+    </summary>
+    
+      <category term="ELK" scheme="http://blog.suzf.net/tags/ELK/"/>
+    
+      <category term="Log" scheme="http://blog.suzf.net/tags/Log/"/>
+    
+      <category term="Linux" scheme="http://blog.suzf.net/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[How-to: install elasticsearch plugin]]></title>
+    <link href="http://blog.suzf.net/2015/11/26/how-to-install-elasticsearch-plugin/"/>
+    <id>http://blog.suzf.net/2015/11/26/how-to-install-elasticsearch-plugin/</id>
+    <published>2015-11-26T08:49:22.000Z</published>
+    <updated>2016-01-13T07:38:52.000Z</updated>
+    <content type="html"><![CDATA[<p><strong>elasticsearch 插件</strong></p>
+<p>由于公司内部访问权限控制严格，自己搭建的虚拟机只能通过搭建代理上网</p>
+<p>因为某种限制第一种安装未成功， 所以有了后面的方法。<br>自动安装<br>[11:38:08][root@ocean-lab elasticsearch]$ <strong>./bin/plugin -install mobz/elasticsearch-head</strong><br>-&gt; Installing mobz/elasticsearch-head…<br>Trying <a href="https://github.com/mobz/elasticsearch-head/archive/master.zip" target="_blank" rel="external">https://github.com/mobz/elasticsearch-head/archive/master.zip</a>…<br>Failed to install mobz/elasticsearch-head, reason: failed to download out of all possible locations…, use –verbose to get detailed information</p>
+<p>[11:35:35][root@ocean-lab elasticsearch]$ wget <a href="https://github.com/mobz/elasticsearch-head/archive/master.zip" target="_blank" rel="external">https://github.com/mobz/elasticsearch-head/archive/master.zip</a><br>–2015-11-26 11:35:56–  <a href="https://github.com/mobz/elasticsearch-head/archive/master.zip" target="_blank" rel="external">https://github.com/mobz/elasticsearch-head/archive/master.zip</a><br>Connecting to x.x.9.158:3128… connected.<br>Proxy request sent, awaiting response… 302 Found<br>Location: <a href="https://codeload.github.com/mobz/elasticsearch-head/zip/master" target="_blank" rel="external">https://codeload.github.com/mobz/elasticsearch-head/zip/master</a> [following]<br>–2015-11-26 11:36:05–  <a href="https://codeload.github.com/mobz/elasticsearch-head/zip/master" target="_blank" rel="external">https://codeload.github.com/mobz/elasticsearch-head/zip/master</a><br>Connecting to x.x.9.158:3128… connected.<br>Proxy request sent, awaiting response… 200 OK<br>Length: 899159 (878K) [application/zip]<br>Saving to: “master.zip”</p>
+<p>100%[==================================================<br>2015-11-26 11:36:10 (292 KB/s) - “master.zip” saved [899159/899159]</p>
+<p>手动安装<br>[16:12:12][root@ocean-lab elasticsearch]$ <strong>./bin/plugin –install elasticsearch-head –url file:///usr/share/elasticsearch/plugins/master.zip</strong><br>-&gt; Installing elasticsearch-head…<br>Trying file:/usr/share/elasticsearch/plugins/master.zip…<br>Downloading ………DONE<br>Installed elasticsearch-head into /usr/share/elasticsearch/plugins/head</p>
+<p><strong>Reference</strong>  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-plugins.html#installing" target="_blank" rel="external">elasticsearch-modules-plugins-install</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><strong>elasticsearch 插件</strong></p>
+<p>由于公司内部访问权限控制严格，自己搭建的虚拟机只能通过搭建代理上网</p>
+<p>因为某种限制第一种安装未成功， 所以有了后面的方法。<br>自动安装<br>[11:38:08][root@o]]>
+    </summary>
+    
+      <category term="elasticsearch" scheme="http://blog.suzf.net/tags/elasticsearch/"/>
+    
+      <category term="Linux" scheme="http://blog.suzf.net/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Ceph 单/多节点 安装小结]]></title>
+    <link href="http://blog.suzf.net/2015/11/25/ceph-e5-8d-95-e5-a4-9a-e8-8a-82-e7-82-b9-e5-ae-89-e8-a3-85-e5-b0-8f-e7-bb-93-power-by-centos-6-x/"/>
+    <id>http://blog.suzf.net/2015/11/25/ceph-e5-8d-95-e5-a4-9a-e8-8a-82-e7-82-b9-e5-ae-89-e8-a3-85-e5-b0-8f-e7-bb-93-power-by-centos-6-x/</id>
+    <published>2015-11-25T14:21:54.000Z</published>
+    <updated>2016-01-13T07:38:52.000Z</updated>
+    <content type="html"><![CDATA[<p>概述</p>
+<p>Docs : <a href="http://docs.ceph.com/docs" target="_blank" rel="external">http://docs.ceph.com/docs</a></p>
+<p>Ceph是一个分布式文件系统，在维持POSIX兼容性的同时加入了复制和容错功能。Ceph最大的特点是分布式的元数据服务器，通过CRUSH（Controlled Replication Under Scalable Hashing）这种拟算法来分配文件的location。Ceph的核心是RADOS（ReliableAutonomic Distributed Object Store)，一个对象集群存储，本身提供对象的高可用、错误检测和修复功能。</p>
+<p>Ceph生态系统架构可以划分为四部分：</p>
+<p>client：客户端（数据用户）。client向外export出一个POSIX文件系统接口，供应用程序调用，并连接mon/mds/osd，进行元数据及数据交互；最原始的client使用FUSE来实现的，现在写到内核里面了，需要编译一个ceph.ko内核模块才能使用。<br>mon：集群监视器，其对应的daemon程序为cmon（Ceph Monitor）。mon监视和管理整个集群，对客户端export出一个网络文件系统，客户端可以通过mount -t ceph monitor_ip:/ mount_point命令来挂载Ceph文件系统。根据官方的说法，3个mon可以保证集群的可靠性。<br>mds：元数据服务器，其对应的daemon程序为cmds（Ceph Metadata Server）。Ceph里可以有多个MDS组成分布式元数据服务器集群，就会涉及到Ceph中动态目录分割来进行负载均衡。<br>osd：对象存储集群，其对应的daemon程序为cosd（Ceph Object StorageDevice）。osd将本地文件系统封装一层，对外提供对象存储的接口，将数据和元数据作为对象存储。这里本地的文件系统可以是ext2/3，但Ceph认为这些文件系统并不能适应osd特殊的访问模式，它们之前自己实现了ebofs，而现在Ceph转用btrfs。</p>
+<p>Ceph支持成百上千甚至更多的节点，以上四个部分最好分布在不同的节点上。当然，对于基本的测试，可以把mon和mds装在一个节点上，也可以把四个部分全都部署在同一个节点上。</p>
+<p><strong>环境</strong></p>
+<p><pre class="lang:default decode:true ">hostname    ip             role           filesystem   release<br>master01    192.168.9.10   mon,mds,osd    xfs          CentOS release 6.7[2.6.32-573.8.1.el6.x86_64]<br>agent01     192.168.9.20   osd,[mon,mds]  xfs          CentOS release 6.7[2.6.32-573.8.1.el6.x86_64]<br>ocean-lab   192.168.9.70   client         xfs          CentOS release 6.7[4.3.0-1.el6.elrepo.x86_64]</pre><br><strong>版本</strong></p>
+<p><pre class="lang:default decode:true ">^_^[16:26:11][root@master01 ~]#ceph -v<br>ceph version 0.80.5 (38b73c67d375a2552d8ed67843c8a65c2c0feba6)</pre><br><strong>Repo</strong></p>
+<p><pre class="lang:default decode:true ">Epel<br>yum install ceph ceph-common python-ceph<br>yum install ceph-fuse        # for client</pre><br><strong>host 解析</strong></p>
+<p><pre class="lang:default decode:true ">192.168.9.10     master01.ocean.org   master01<br>192.168.9.20     agent01.ocean.org    agent01<br>192.168.9.70     ocean-lab.ocean.org  ocean-lab</pre><br><strong>Ceph 配置</strong></p>
+<p><pre class="lang:default decode:true ">^_^[16:26:15][root@master01 ~]#cat /etc/ceph/ceph.conf<br>[global]<br>public network = 192.168.9.0/24<br>pid file = /var/run/ceph/$name.pid<br>auth cluster required = none<br>auth service required = none<br>auth client required = none<br>keyring = /etc/ceph/keyring.$name<br>osd pool default size = 1<br>osd pool default min size = 1<br>osd pool default crush rule = 0<br>osd crush chooseleaf type = 1</pre></p>
+<p>[mon]<br>mon data = /var/lib/ceph/mon/$name<br>mon clock drift allowed = .15<br>keyring = /etc/ceph/keyring.$name</p>
+<p>[mon.0]<br>host = master01<br>mon addr = 192.168.9.10:6789</p>
+<p>[mds]<br>keyring = /etc/ceph/keyring.$name</p>
+<p>[mds.0]<br>host = master01</p>
+<p>[osd]<br>osd data = /ceph/osd$id<br>osd recovery max active = 5<br>osd mkfs type = xfs<br>osd journal = /ceph/osd$id/journal<br>osd journal size = 1000<br>keyring = /etc/ceph/keyring.$name</p>
+<p>[osd.0]<br>host = master01<br>devs = /dev/sdc1</p>
+<p>[osd.1]<br>host = master01<br>devs = /dev/sdc2<br><strong>启动ceph(在mon上执行)</strong></p>
+<p><pre class="lang:default decode:true ">初始化：<br>mkcephfs -a -c /etc/ceph/ceph.conf<br>/etc/init.d/ceph -a start</pre></p>
+<p>执行健康检查<br>ceph health            #也可以使用ceph -s命令查看状态<br>如果返回的是HEALTH_OK，则代表成功！<br><strong>挂载ceph</strong></p>
+<p><pre class="lang:default decode:true">mount<br>升级系统内核<br>kernel 2.6.34以前的版本是没有Module rbd的，把系统内核版本升级到最新<br>rpm –import <a href="http://elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="external">http://elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>rpm -Uvh <a href="http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm" target="_blank" rel="external">http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm</a><br>yum –enablerepo=elrepo-kernel install kernel-ml  -y</pre></p>
+<p>安装完内核后修改/etc/grub.conf配置文件使<br>修改配置文件中的 Default=1 to Default=0</p>
+<p>验证内核支持</p>
+<p>#modprobe -l|grep ceph<br>kernel/fs/ceph/ceph.ko<br>kernel/net/ceph/libceph.ko</p>
+<p>#modprobe  ceph</p>
+<p>机器重启后生效 init 6</p>
+<p>mount -t ceph 192.168.9.10:6789:/ /mnt/ceph<br>[17:07:39][root@ocean-lab ~]$ df -TH<br>Filesystem           Type   Size  Used Avail Use% Mounted on<br>/dev/mapper/vg_oceani-lv_root<br>                     ext4    30G  7.7G   21G  28% /<br>tmpfs                tmpfs  111M     0  111M   0% /dev/shm<br>/dev/sda1            ext4   500M   94M  375M  21% /boot<br>192.168.9.10:/data2  nfs     30G   25G  4.0G  87% /mnt/log<br>192.168.9.10:6789:/  ceph   172G  5.4G  167G   4% /mnt/ceph</p>
+<p>ceph-fuse [未测]<br>mon推荐有至少3个，假如挂掉一个、服务也能正常使用<br>ceph-fuse -m 192.168.9.10:6789,192.168.9.20:6789 /mnt/ceph<br><strong>增加OSD</strong></p>
+<p><pre class="lang:default decode:true ">这里在agent01新增硬盘<br>[15:58:07][root@agent01 ~]$ cat /etc/ceph/ceph.conf<br>[global]<br>public network = 192.168.9.0/24<br>pid file = /var/run/ceph/$name.pid<br>auth cluster required = none<br>auth service required = none<br>auth client required = none<br>keyring = /etc/ceph/keyring.$name<br>osd pool default size = 1<br>osd pool default min size = 1<br>osd pool default crush rule = 0<br>osd crush chooseleaf type = 1</pre></p>
+<p>[mon]<br>mon data = /var/lib/ceph/mon/$name<br>mon clock drift allowed = .15<br>keyring = /etc/ceph/keyring.$name</p>
+<p>[mon.0]<br>host = master01<br>mon addr = 192.168.9.10:6789</p>
+<p>[mds]<br>keyring = /etc/ceph/keyring.$name</p>
+<p>[mds.0]<br>host = master01</p>
+<p>[osd]<br>osd data = /ceph/osd$id<br>osd recovery max active = 5<br>osd mkfs type = xfs<br>osd journal = /ceph/osd$id/journal<br>osd journal size = 1000<br>keyring = /etc/ceph/keyring.$name</p>
+<p>[osd.2]<br>host = agent01<br>devs = /dev/sdc1</p>
+<p>[osd.3]<br>host = agent01<br>devs = /dev/sdc2</p>
+<p>master01 ~ $ cd /etc/ceph; scp keyring.client.admin  agent01:/etc/ceph/<br>以下操作都在新增OSD节点上操作<br>初始化新增osd节点，需要在新增的节点机器上运行，这里在10.2.180.180上运行<br>ceph-osd -i 2 –mkfs –mkkey;<br>ceph-osd -i 3 –mkfs –mkkey;</p>
+<p>加入节点<br>ceph auth add osd.2 osd ‘allow <em>‘ mon ‘allow rwx’ -i /etc/ceph/keyring.osd.2;<br>ceph auth add osd.3 osd ‘allow </em>‘ mon ‘allow rwx’ -i /etc/ceph/keyring.osd.3;<br>ceph osd create #added key for osd.2<br>ceph osd create #added key for osd.3<br>ceph osd rm osd_num    # 删除osd</p>
+<p>/etc/init.d/ceph -a start osd.2 #启动osd.2<br>/etc/init.d/ceph -a start osd.3 #启动osd.3<br>/etc/init.d/ceph -a start osd   #启动所有osd<br>ceph -s #查看状态<br>ceph auth list #能查看所有认证节点<br><strong>增加MDS</strong></p>
+<p><pre class="lang:default decode:true ">增加agent01 MDS到节点<br>将以下配置增加到配置文件，并同步到节点<br>[mds.1]<br>host = agent01<br>以下操作都在新增OSD节点上操作<br>生成key<br>ceph-authtool –create-keyring –gen-key -n mds.1 /etc/ceph/keyring.mds.1<br>加入认证<br>ceph auth add mds.1 osd ‘allow <em>‘ mon ‘allow rwx’ mds ‘allow’ -i /etc/ceph/keyring.mds.1<br>启动新增MDS<br>/etc/init.d/ceph -a start mds.1<br></em></pre><br><em>*增加MON</em></p>
+<p><pre class="lang:default decode:true ">增加agent01 MDS到节点<br>将以下配置增加到配置文件，并同步到节点<br>[mon.1]<br>host = agent01<br>mon addr = 192.168.9.20:6789</pre></p>
+<p>导出key及mon map<br>mkdir /tmp/ceph<br>ceph auth get mon. -o /tmp/ceph/keyring.mon<br>ceph mon getmap -o /tmp/ceph/monmap</p>
+<p>初始化新mon<br>ceph-mon -i 1 –mkfs –monmap /tmp/ceph/monmap –keyring /tmp/ceph/keyring.mon</p>
+<p>启动新mon<br>ceph-mon -i 1 –public-addr 192.168.9.20:6789</p>
+<p>加入quorum votes<br>ceph mon add 1 192.168.9.20:6789<br>至此，Ceph 安装完成。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>概述</p>
+<p>Docs : <a href="http://docs.ceph.com/docs" target="_blank" rel="external">http://docs.ceph.com/docs</a></p>
+<p>Ceph是一个分布式文件系统，在]]>
+    </summary>
+    
+      <category term="Ceph" scheme="http://blog.suzf.net/tags/Ceph/"/>
+    
+      <category term="Linux" scheme="http://blog.suzf.net/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Python CSV 操作实例]]></title>
+    <link href="http://blog.suzf.net/2015/11/09/python-csv-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d/"/>
+    <id>http://blog.suzf.net/2015/11/09/python-csv-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d/</id>
+    <published>2015-11-09T08:24:44.000Z</published>
+    <updated>2016-01-13T07:17:03.000Z</updated>
+    <content type="html"><![CDATA[<p>Reference: <a href="https://docs.python.org/2/library/csv.html" target="_blank" rel="external"> The Python Standard Library CSV</a></p>
+<p><strong>使用 Python 生成csv 文件</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Autf-8"><a href="#coding_3Autf-8" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import csv</p>
+<h1 id="wb_u4E2D_u7684w_u8868_u793A_u5199_u5165_u6A21_u5F0F_uFF0Cb_u662F_u6587_u4EF6_u6A21_u5F0F"><a href="#wb_u4E2D_u7684w_u8868_u793A_u5199_u5165_u6A21_u5F0F_uFF0Cb_u662F_u6587_u4EF6_u6A21_u5F0F" class="headerlink" title="wb中的w表示写入模式，b是文件模式"></a>wb中的w表示写入模式，b是文件模式</h1><p>csv_file = file(‘test.csv’, ‘wb’)<br>writer = csv.writer(csv_file)</p>
+<h1 id="u5199_u5165_u4E00_u884C"><a href="#u5199_u5165_u4E00_u884C" class="headerlink" title="写入一行"></a>写入一行</h1><p>writer.writerow([‘Name’, ‘Age’, ‘Sex’])</p>
+<p>data = [<br>    (‘Lisa’, 18, ‘female’),<br>    (‘jack’, 20, ‘male’),<br>    (‘Danny’, 19, ‘female’),<br>]</p>
+<h1 id="u5199_u5165_u591A_u884C"><a href="#u5199_u5165_u591A_u884C" class="headerlink" title="写入多行"></a>写入多行</h1><p>writer.writerows(data)</p>
+<p>csv_file.close()</p>
+<p>“””<br>spamwriter = csv.writer(csvfile, dialect=’excel’)<br>如果想使生成的CSV 文件可以使excel打开，而不出现乱码 请使用参数：dialect=’excel’<br>这里我生成的 csv 文件没有使用 dialect 参数。 excel用的是 WPS，PY Version 是 2.7<br>“””<br>运行结果</p>
+<p><pre class="lang:default decode:true">^_^[15:43:21][root@master01 ~]#cat test.csv<br>Name,Age,Sex<br>Lisa,18,female<br>jack,20,male<br>Danny,19,female</pre><br><a href="http://suzf.net/wp-content/uploads/2015/11/20151109160321.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2015/11/20151109160321.png" alt="20151109160321"></a></p>
+<a id="more"></a>
+<p><strong>读取 Python 生成的 CSV 文件</strong></p>
+<p><pre class="lang:default decode:true ">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Autf-8-1"><a href="#coding_3Autf-8-1" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import csv</p>
+<h1 id="rb_u4E2D_u7684r_u8868_u793A_u8BFB_u53D6_u6A21_u5F0F_uFF0Cb_u662F_u6587_u4EF6_u6A21_u5F0F"><a href="#rb_u4E2D_u7684r_u8868_u793A_u8BFB_u53D6_u6A21_u5F0F_uFF0Cb_u662F_u6587_u4EF6_u6A21_u5F0F" class="headerlink" title="rb中的r表示读取模式，b是文件模式"></a>rb中的r表示读取模式，b是文件模式</h1><p>csv_file = file(‘test.csv’, ‘rb’)</p>
+<p>reader = csv.reader(csv_file)</p>
+<p>for line in reader:<br>    print line</p>
+<p>csv_file.close()<br>运行结果</p>
+<p><pre class="lang:default decode:true ">[‘Name’, ‘Age’, ‘Sex’]<br>[‘Lisa’, ‘18’, ‘female’]<br>[‘jack’, ‘20’, ‘male’]<br>[‘Danny’, ‘19’, ‘female’]</pre><br><strong>Python读取从excel导出的csv文件</strong><br>将 excel 文件导出成CSV 格式,使用python读取数据</p>
+<p><pre class="lang:default decode:true ">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Autf-8-2"><a href="#coding_3Autf-8-2" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import csv<br>with open(‘test_dos.csv’, ‘rb’) as csv_file:<br>    rows = csv.reader(csv_file, dialect=’excel’)<br>    for row in rows:<br>        print ‘, ‘.join(row)</p>
+<p>csv_file.close()<br>运行结果</p>
+<p><pre class="lang:default decode:true ">Name, Age, Sex<br>Lisa, 18, female<br>jack, 20, male<br>Danny, 19, female</pre><br>&nbsp;</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Reference: <a href="https://docs.python.org/2/library/csv.html"> The Python Standard Library CSV</a></p>
+<p><strong>使用 Python 生成csv 文件</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</p>
+<h1 id="coding_3Autf-8"><a href="#coding_3Autf-8" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import csv</p>
+<h1 id="wb_u4E2D_u7684w_u8868_u793A_u5199_u5165_u6A21_u5F0F_uFF0Cb_u662F_u6587_u4EF6_u6A21_u5F0F"><a href="#wb_u4E2D_u7684w_u8868_u793A_u5199_u5165_u6A21_u5F0F_uFF0Cb_u662F_u6587_u4EF6_u6A21_u5F0F" class="headerlink" title="wb中的w表示写入模式，b是文件模式"></a>wb中的w表示写入模式，b是文件模式</h1><p>csv_file = file(‘test.csv’, ‘wb’)<br>writer = csv.writer(csv_file)</p>
+<h1 id="u5199_u5165_u4E00_u884C"><a href="#u5199_u5165_u4E00_u884C" class="headerlink" title="写入一行"></a>写入一行</h1><p>writer.writerow([‘Name’, ‘Age’, ‘Sex’])</p>
+<p>data = [<br>    (‘Lisa’, 18, ‘female’),<br>    (‘jack’, 20, ‘male’),<br>    (‘Danny’, 19, ‘female’),<br>]</p>
+<h1 id="u5199_u5165_u591A_u884C"><a href="#u5199_u5165_u591A_u884C" class="headerlink" title="写入多行"></a>写入多行</h1><p>writer.writerows(data)</p>
+<p>csv_file.close()</p>
+<p>“””<br>spamwriter = csv.writer(csvfile, dialect=’excel’)<br>如果想使生成的CSV 文件可以使excel打开，而不出现乱码 请使用参数：dialect=’excel’<br>这里我生成的 csv 文件没有使用 dialect 参数。 excel用的是 WPS，PY Version 是 2.7<br>“””</pre><br>运行结果</p>
+<p><pre class="lang:default decode:true">^_^[15:43:21][root@master01 ~]#cat test.csv<br>Name,Age,Sex<br>Lisa,18,female<br>jack,20,male<br>Danny,19,female</pre><br><a href="http://suzf.net/wp-content/uploads/2015/11/20151109160321.png"><img src="http://suzf.net/wp-content/uploads/2015/11/20151109160321.png" alt="20151109160321"></a></p>]]>
+    
+    </summary>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[How-to Load CSV data into mysql use Python]]></title>
+    <link href="http://blog.suzf.net/2015/11/09/how-to-load-csv-data-into-mysql-use-python/"/>
+    <id>http://blog.suzf.net/2015/11/09/how-to-load-csv-data-into-mysql-use-python/</id>
+    <published>2015-11-09T06:51:06.000Z</published>
+    <updated>2016-01-13T07:17:03.000Z</updated>
+    <content type="html"><![CDATA[<p><div class="lemma-summary"></div></p>
+<p><div class="para"><strong>逗号分隔值</strong>（Comma-Separated Values，<strong>CSV</strong>，有时也称为<strong>字符分隔值</strong>，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。纯文本意味着该文件是一个<a href="http://baike.baidu.com/view/263416.htm" target="_blank" rel="external">字符</a>序列，不含必须像二进制数字那样被解读的数据。CSV文件由任意数目的记录组成，记录间以某种换行符分隔；每条记录由<a href="http://baike.baidu.com/view/159839.htm" target="_blank" rel="external">字段</a>组成，字段间的分隔符是其它字符或字符串，最常见的是逗号或<a href="http://baike.baidu.com/view/1138182.htm" target="_blank" rel="external">制表符</a>。通常，所有记录都有完全相同的字段序列。</div></p>
+<p><div class="para">CSV文件格式的通用标准并不存在，但是在RFC 4180中有基础性的描述。使用的字符编码同样没有被指定，但是7-bit<a href="http://baike.baidu.com/view/15482.htm" target="_blank" rel="external">ASCII</a>是最基本的通用编码。</div><br></p>
+<p><div class="para"></div></p>
+<p><div class="para">日常工作中总是需要将采集的数据保存到数据库中对以往数据的对比。下面以MySQL数据为例说明。</div></p>
+<p><div class="para"></div></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Autf-8"><a href="#coding_3Autf-8" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import csv<br>import MySQLdb</p>
+<p>conn = MySQLdb.connect(host=’localhost’,<br>                       user=’root’,<br>                       passwd=’’,<br>                       db=’test’)<br>cur = conn.cursor()</p>
+<p>cur.execute(‘DROP TABLE IF EXISTS <code>test_csv</code>;’)<br>create_table = ‘’’<br>  CREATE TABLE <code>test_csv</code> (<br>  <code>id</code> int(11) NOT NULL AUTO_INCREMENT,<br>  <code>col1</code> varchar(50) NOT NULL,<br>  <code>col2</code> varchar(30) DEFAULT NULL,<br>  <code>col3</code> varchar(30) DEFAULT NULL,<br>  <code>col4</code> varchar(30) DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>)<br>‘’’</p>
+<p>cur.execute(create_table)</p>
+<p>csv_data = csv.reader(file(‘test.csv’))<br>for row in csv_data:</p>
+<pre><code>#print row
+cur.execute(&apos;INSERT INTO test_csv(col1, col2, col3, col4)&apos;
+            &apos;VALUES(&quot;%s&quot;, &quot;%s&quot;, &quot;%s&quot;, &quot;%s&quot;)&apos;,
+            row)
+</code></pre><h1 id="close_the_connection_to_the_database"><a href="#close_the_connection_to_the_database" class="headerlink" title="close the connection to the database."></a>close the connection to the database.</h1><p>conn.commit()<br>cur.close()<br>conn.close()<br>print “Done”<br>执行结果</p>
+<p><pre class="lang:default decode:true ">mysql&gt;  select * from test_csv;<br>+—-+——+——-+——–+——–+<br>| id | col1 | col2  | col3   | col4   |<br>+—-+——+——-+——–+——–+<br>|  1 | ‘1’  | ‘UE1’ | ‘6295’ | ‘1648’ |<br>|  2 | ‘2’  | ‘UE9’ | ‘9805’ | ‘4542’ |<br>|  3 | ‘3’  | ‘MQ2’ | ‘NONE’ | ‘NONE’ |<br>|  4 | ‘4’  | ‘BD8’ | ‘NONE’ | ‘NONE’ |<br>|  5 | ‘5’  | ‘908’ | ‘1548’ | ‘1099’ |<br>|  6 | ‘6’  | ‘dle’ | ‘1548’ | ‘1098’ |<br>|  7 | ‘7’  | ‘808’ | ‘1548’ | ‘1099’ |<br>|  8 | ‘8’  | ‘108’ | ‘1548’ | ‘1098’ |<br>|  9 | ‘9’  | ‘B08’ | ‘1548’ | ‘1098’ |<br>+—-+——+——-+——–+——–+<br>9 rows in set (0.00 sec)</pre><br>源CSV文件</p>
+<p><pre class="lang:default decode:true ">^_^[14:36:16][root@master01 ~]#cat test.csv<br>1,UE1,6295,1648<br>2,UE9,9805,4542<br>3,MQ2,NONE,NONE<br>4,BD8,NONE,NONE<br>5,908,1548,1099<br>6,dle,1548,1098<br>7,808,1548,1099<br>8,108,1548,1098<br>9,B08,1548,1098</pre><br>&nbsp;</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><div class="lemma-summary"></div></p>
+<p><div class="para"><strong>逗号分隔值</strong>（Comma-Separated Values，<strong>CSV</strong>，有时也称为<stron]]>
+    </summary>
+    
+      <category term="Mysql" scheme="http://blog.suzf.net/tags/Mysql/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[How-to use MySQL-python in Python]]></title>
+    <link href="http://blog.suzf.net/2015/11/04/python-mysql-python-usage-example/"/>
+    <id>http://blog.suzf.net/2015/11/04/python-mysql-python-usage-example/</id>
+    <published>2015-11-04T14:30:46.000Z</published>
+    <updated>2016-01-13T07:17:03.000Z</updated>
+    <content type="html"><![CDATA[<p>对于数据库操作，和 TCP/IP 的三次握手异曲同工之妙，建立连接，执行操作，断开连接。当然这就需要建立连接的工具</p>
+<p>Python连接mysql的方案有oursql、PyMySQL、 myconnpy、MySQL Connector 等，不过本篇说的确是另外一个类库MySQLdb，MySQLdb 是用于Python链接Mysql数据库的接口，它实现了 Python 数据库 API 规范 V2.0，基于 MySQL C API 上建立的。</p>
+<h6 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h6><h6 id="Package_MySQL-python"><a href="#Package_MySQL-python" class="headerlink" title="Package MySQL-python"></a><a href="https://pypi.python.org/pypi/MySQL-python" target="_blank" rel="external">Package MySQL-python</a></h6><h6 id="MySQLdb_User_u2019s_Guide"><a href="#MySQLdb_User_u2019s_Guide" class="headerlink" title="MySQLdb User’s Guide"></a><a href="http://mysql-python.sourceforge.net/MySQLdb.html" target="_blank" rel="external">MySQLdb User’s Guide</a></h6><a id="more"></a>
+<p><strong>安装</strong></p>
+<p><pre class="lang:default decode:true">yum install Mysql-python -y</pre></p>
+<p>pip install Mysql-python</p>
+<p>源码解压缩进入主目录执行 python setup.py install<br><strong>使用</strong></p>
+<p><strong>1. 数据库的连接</strong></p>
+<p>MySQLdb提供了connect方法用来和数据库建立连接,接收数个参数,返回连接对象：<br>conn=MySQLdb.connect(host=”hostname”,user=”username”,passwd=”password”,db=”dbname”,charset=”utf8”)</p>
+<p>比较常用的参数包括:<br>host:数据库主机名.默认是用本地主机<br>user:数据库登陆名.默认是当前用户<br>passwd:数据库登陆的秘密.默认为空<br>db:要使用的数据库名.没有默认值<br>port:MySQL服务使用的TCP端口.默认是3306<br>charset:数据库编码<br>然后,这个连接对象也提供了对事务操作的支持,标准的方法:<br>commit() 提交<br>rollback() 回滚</p>
+<p><pre class="lang:default decode:true ">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8"><a href="#coding_3Dutf-8" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<p>try:<br>    conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<pre><code># 使用cursor()方法获取操作游标
+cur=conn.cursor()
+
+# 选择数据库
+conn.select_db(&apos;test&apos;)
+
+# 使用execute方法执行SQL语句
+cur.execute(&quot;SELECT VERSION()&quot;)
+
+# 使用 fetchone() 方法获取一条数据库。
+data = cur.fetchone()
+print &quot;Database version : %s &quot; % data
+
+# 关闭连接
+conn.commit()
+cur.close()
+conn.close()
+</code></pre><p>except MySQLdb.Error,e:<br>     print “Mysql Error %d: %s” % (e.args[0], e.args[1])<br><br>执行结果</p>
+<p><pre class="lang:default decode:true ">Database version : 5.1.73</pre><br><strong>2. cursor方法执行与返回值</strong></p>
+<p>cursor方法提供两类操作：<br>1.执行命令<br>2.接收返回值<br>cursor用来执行命令的方法</p>
+<p>#用来执行存储过程,接收的参数为存储过程名和参数列表,返回值为受影响的行数<br>callproc(self, procname, args)</p>
+<p>#执行单条sql语句,接收的参数为sql语句本身和使用的参数列表,返回值为受影响的行数<br>execute(self, query, args)</p>
+<p>#执行单挑sql语句,但是重复执行参数列表里的参数,返回值为受影响的行数<br>executemany(self, query, args)</p>
+<p>#移动到下一个结果集<br>nextset(self)<br>cursor用来接收返回值的方法</p>
+<p>#接收全部的返回结果行.<br>fetchall(self)</p>
+<p>#接收size条返回结果行.如果size的值大于返回的结果行的数量,则会返回cursor.arraysize条数据<br>fetchmany(self, size=None)</p>
+<p>#返回一条结果行<br>fetchone(self)</p>
+<p>#移动指针到某一行.如果mode=’relative’,则表示从当前所在行移动value条,如果mode=’absolute’,则表示从结果集的第一行移动value条<br>scroll(self, value, mode=’relative’)</p>
+<p>#这是一个只读属性，并返回执行execute()方法后影响的行数<br>rowcount</p>
+<p><strong>3.  数据库操作</strong></p>
+<p><strong>a.创建表</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8-1"><a href="#coding_3Dutf-8-1" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<p>try:<br>    conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<pre><code># 使用cursor()方法获取操作游标
+
+cur=conn.cursor()
+# 选择数据库
+conn.select_db(&apos;test&apos;)
+
+# 如果数据表已经存在使用 execute() 方法删除表。
+cur.execute(&quot;DROP TABLE IF EXISTS stu_info&quot;)
+
+# 创建数据表SQL语句
+sql = &quot;&quot;&quot;CREATE TABLE stu_info (
+         `id` int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+         `name` CHAR(20) NOT NULL,
+         `age` INT,
+         `sex` CHAR(6))&quot;&quot;&quot;
+cur.execute(sql)
+
+conn.commit()
+cur.close()
+conn.close()
+</code></pre><p>except MySQLdb.Error,e:<br>     print “Mysql Error %d: %s” % (e.args[0], e.args[1])<br><br><strong>b. 插入数据</strong></p>
+<p><strong> 添加单行记录</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8-2"><a href="#coding_3Dutf-8-2" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5"><a href="#u521B_u5EFA_u8FDE_u63A5" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur=conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93"><a href="#u9009_u62E9_u6570_u636E_u5E93" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u63D2_u5165_u4E00_u6761_u8BB0_u5F55"><a href="#u63D2_u5165_u4E00_u6761_u8BB0_u5F55" class="headerlink" title="插入一条记录"></a>插入一条记录</h1><p>sql = “insert into stu_info(name,age,sex) values(%s,%s,%s)”<br>cur.execute(sql,(‘Lisa’,18,’female’))</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br><strong>添加多行记录</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8-3"><a href="#coding_3Dutf-8-3" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-1"><a href="#u521B_u5EFA_u8FDE_u63A5-1" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn = MySQLdb.connect(host=’localhost’, user=’root’, passwd=’’, port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-1"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-1" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur = conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-1"><a href="#u9009_u62E9_u6570_u636E_u5E93-1" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u63D2_u5165_u4E00_u6761_u8BB0_u5F55-1"><a href="#u63D2_u5165_u4E00_u6761_u8BB0_u5F55-1" class="headerlink" title="插入一条记录"></a>插入一条记录</h1><p>sql = “insert into stu_info(name, age, sex) values(%s, %s, %s)”<br>cur.executemany(sql, [<br>    (‘jack’, 20, ‘male’),<br>    (‘Danny’, 19, ‘female’),<br>    ])</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br>executemany()方法可以一次插入多条值，执行单挑sql语句,但是重复执行参数列表里的参数,返回值为受影响的行数。</p>
+<p><strong>c. 查询数据</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8-4"><a href="#coding_3Dutf-8-4" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-2"><a href="#u521B_u5EFA_u8FDE_u63A5-2" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn = MySQLdb.connect(host=’localhost’, user=’root’, passwd=’’, port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-2"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-2" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur = conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-2"><a href="#u9009_u62E9_u6570_u636E_u5E93-2" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u83B7_u53D6_u8BB0_u5F55_u6761_u6570"><a href="#u83B7_u53D6_u8BB0_u5F55_u6761_u6570" class="headerlink" title="获取记录条数"></a>获取记录条数</h1><p>rec_count = cur.execute(“select * from stu_info”)<br>print “There have %s records” % rec_count</p>
+<p>#打印表中的数据</p>
+<p>#rows = cur.fetchmany(rec_count)<br>rows = cur.fetchall()<br>for row in rows:<br>    print row</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br>执行结果</p>
+<p><pre class="lang:default decode:true ">There have 3 records<br>(1L, ‘Lisa’, 18L, ‘female’)<br>(2L, ‘jack’, 20L, ‘male’)<br>(3L, ‘Danny’, 19L, ‘female’)</pre><br>上面的代码，用来将所有的结果取出，不过打印的时候是每行一个元祖打印，现在我们使用方法，取出其中的单个数据：</p>
+<p><pre class="lang:default decode:true">import MySQLdb</pre></p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-3"><a href="#u521B_u5EFA_u8FDE_u63A5-3" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-3"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-3" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur=conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-3"><a href="#u9009_u62E9_u6570_u636E_u5E93-3" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u6267_u884C_u90A3_u4E2A_u67E5_u8BE2_uFF0C_u8FD9_u91CC_u7528_u7684_u662Fselect_u8BED_u53E5"><a href="#u6267_u884C_u90A3_u4E2A_u67E5_u8BE2_uFF0C_u8FD9_u91CC_u7528_u7684_u662Fselect_u8BED_u53E5" class="headerlink" title="执行那个查询，这里用的是select语句"></a>执行那个查询，这里用的是select语句</h1><p>cur.execute(“select * from stu_info”)</p>
+<h1 id="u4F7F_u7528cur-rowcount_u83B7_u53D6_u7ED3_u679C_u96C6_u7684_u6761_u6570"><a href="#u4F7F_u7528cur-rowcount_u83B7_u53D6_u7ED3_u679C_u96C6_u7684_u6761_u6570" class="headerlink" title="使用cur.rowcount获取结果集的条数"></a>使用cur.rowcount获取结果集的条数</h1><p>numrows = int(cur.rowcount)<br>for i in range(numrows):<br>  row = cur.fetchone()<br>  print str(row[0]) + “,” + row[1] + “,” + str(row[2]) + “,” + row[3]</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br>执行结果</p>
+<p><pre class="lang:default decode:true">1,Lisa,18,female<br>2,jack,20,male<br>3,Danny,19,female</pre><br>&nbsp;</p>
+<p>使用字典cursor取得结果集（可以使用表字段名字访问值）</p>
+<p><pre class="lang:default decode:true">import MySQLdb</pre></p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-4"><a href="#u521B_u5EFA_u8FDE_u63A5-4" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-4"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-4" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur=conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-4"><a href="#u9009_u62E9_u6570_u636E_u5E93-4" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u83B7_u53D6_u8FDE_u63A5_u4E0A_u7684_u5B57_u5178cursor_uFF0C_u6CE8_u610F_u83B7_u53D6_u7684_u65B9_u6CD5_uFF0C"><a href="#u83B7_u53D6_u8FDE_u63A5_u4E0A_u7684_u5B57_u5178cursor_uFF0C_u6CE8_u610F_u83B7_u53D6_u7684_u65B9_u6CD5_uFF0C" class="headerlink" title="获取连接上的字典cursor，注意获取的方法，"></a>获取连接上的字典cursor，注意获取的方法，</h1><h1 id="u6BCF_u4E00_u4E2Acursor_u5176_u5B9E_u90FD_u662Fcursor_u7684_u5B50_u7C7B"><a href="#u6BCF_u4E00_u4E2Acursor_u5176_u5B9E_u90FD_u662Fcursor_u7684_u5B50_u7C7B" class="headerlink" title="每一个cursor其实都是cursor的子类"></a>每一个cursor其实都是cursor的子类</h1><p>cur = conn.cursor(MySQLdb.cursors.DictCursor)</p>
+<h1 id="u6267_u884C_u8BED_u53E5_u4E0D_u53D8"><a href="#u6267_u884C_u8BED_u53E5_u4E0D_u53D8" class="headerlink" title="执行语句不变"></a>执行语句不变</h1><p>cur.execute(“SELECT * FROM stu_info”)</p>
+<h1 id="u83B7_u53D6_u6570_u636E_u65B9_u6CD5_u4E0D_u53D8"><a href="#u83B7_u53D6_u6570_u636E_u65B9_u6CD5_u4E0D_u53D8" class="headerlink" title="获取数据方法不变"></a>获取数据方法不变</h1><p>rows = cur.fetchall()</p>
+<h1 id="u904D_u5386_u6570_u636E_u4E5F_u4E0D_u53D8_uFF08_u6BD4_u4E0A_u4E00_u4E2A_u66F4_u76F4_u63A5_u4E00_u70B9_uFF09"><a href="#u904D_u5386_u6570_u636E_u4E5F_u4E0D_u53D8_uFF08_u6BD4_u4E0A_u4E00_u4E2A_u66F4_u76F4_u63A5_u4E00_u70B9_uFF09" class="headerlink" title="遍历数据也不变（比上一个更直接一点）"></a>遍历数据也不变（比上一个更直接一点）</h1><p>for row in rows:</p>
+<pre><code># 这里，可以使用键值对的方法，由键名字来获取数据
+print &quot;%s %s %s&quot; % (str(row[&quot;id&quot;]), row[&quot;name&quot;], str(row[&quot;age&quot;]))
+</code></pre><p>conn.commit()<br>cur.close()<br>conn.close()<br>执行结果：</p>
+<p><pre class="lang:default decode:true">1 Lisa 18<br>2 jack 20<br>3 Danny 19</pre><br>使用Prepared statements执行查询</p>
+<p><pre class="lang:default decode:true ">import MySQLdb</pre></p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-5"><a href="#u521B_u5EFA_u8FDE_u63A5-5" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-5"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-5" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur=conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-5"><a href="#u9009_u62E9_u6570_u636E_u5E93-5" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u6211_u4EEC_u770B_u5230_uFF0C_u8FD9_u91CC_u53EF_u4EE5_u901A_u8FC7_u5199_u4E00_u4E2A_u53EF_u4EE5_u7EC4_u88C5_u7684sql_u8BED_u53E5_u6765_u8FDB_u884C"><a href="#u6211_u4EEC_u770B_u5230_uFF0C_u8FD9_u91CC_u53EF_u4EE5_u901A_u8FC7_u5199_u4E00_u4E2A_u53EF_u4EE5_u7EC4_u88C5_u7684sql_u8BED_u53E5_u6765_u8FDB_u884C" class="headerlink" title="我们看到，这里可以通过写一个可以组装的sql语句来进行"></a>我们看到，这里可以通过写一个可以组装的sql语句来进行</h1><p>cur.execute(“UPDATE stu_info SET Name = %s WHERE Id = %s”,<br>    (“cherry”, “3”))</p>
+<h1 id="u4F7F_u7528cur-rowcount_u83B7_u53D6_u5F71_u54CD_u4E86_u591A_u5C11_u884C"><a href="#u4F7F_u7528cur-rowcount_u83B7_u53D6_u5F71_u54CD_u4E86_u591A_u5C11_u884C" class="headerlink" title="使用cur.rowcount获取影响了多少行"></a>使用cur.rowcount获取影响了多少行</h1><p>print “Number of rows updated: %d” % cur.rowcount</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br><br>执行结果</p>
+<p><pre class="lang:default decode:true">:&lt;EOF&gt;<br>Number of rows updated: 1</pre></p>
+<p>In [16]:<br><strong>Transaction - 事务</strong></p>
+<p>事务机制可以确保数据一致性。<br>事务应该具有4个属性：原子性、一致性、隔离性、持久性。这四个属性通常称为ACID特性。<br>① 原子性（atomicity）。一个事务是一个不可分割的工作单位，事务中包括的诸操作要么都做，要么都不做。<br>② 一致性（consistency）。事务必须是使数据库从一个一致性状态变到另一个一致性状态。一致性与原子性是密切相关的。<br>③ 隔离性（isolation）。一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。<br>④ 持久性（durability）。持续性也称永久性（permanence），指一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。接下来的其他操作或故障不应该对其有任何影响。</p>
+<p>Python DB API 2.0 的事务提供了两个方法 commit 或 rollback。<br>对于支持事务的数据库， 在Python数据库编程中，当游标建立之时，就自动开始了一个隐形的数据库事务。commit()方法游标的所有更新操作，rollback（）方法回滚当前游标的所有操作。每一个方法都开始了一个新的事务。</p>
+<p><pre class="lang:default decode:true ">import MySQLdb</pre></p>
+<p>try:</p>
+<pre><code># 创建连接
+conn = MySQLdb.connect(
+    host=&apos;localhost&apos;, user=&apos;root&apos;, passwd=&apos;&apos;, port=3306)
+# 使用cursor()方法获取操作游标
+
+cur = conn.cursor()
+# 选择数据库
+conn.select_db(&apos;test&apos;)
+
+# 如果某个数据库支持事务，会自动开启
+# 这里用的是MYSQL，所以会自动开启事务（若是MYISM引擎则不会）
+cur.execute(&quot;UPDATE stu_info SET name = %s WHERE id = %s&quot;,
+               (&quot;tonny&quot;, &quot;1&quot;))
+cur.execute(&quot;UPDATE stu_infos SET name = %s WHERE id = %s&quot;,
+               (&quot;jim&quot;, &quot;2&quot;))
+
+# 事务的特性1、原子性的手动提交
+conn.commit()
+
+cur.close()
+conn.close()
+</code></pre><p>except MySQLdb.Error, e:</p>
+<pre><code># 如果出现了错误，那么可以回滚，就是上面的三条语句要么执行，要么都不执行 [ 存储引擎支持事物 ]
+# 如存储引擎不只是事务[MyISM], 则只提交成功的结果
+conn.rollback()
+print &quot;Error %d: %s&quot; % (e.args[0], e.args[1])&lt;/pre&gt;
+</code></pre><p>执行结果</p>
+<p><pre class="lang:default decode:true ">Error 1146: Table ‘test.stu_infos’ doesn’t exist</pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>未完待续  … ….</strong></p>
+<p>&nbsp;</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>对于数据库操作，和 TCP/IP 的三次握手异曲同工之妙，建立连接，执行操作，断开连接。当然这就需要建立连接的工具</p>
+<p>Python连接mysql的方案有oursql、PyMySQL、 myconnpy、MySQL Connector 等，不过本篇说的确是另外一个类库MySQLdb，MySQLdb 是用于Python链接Mysql数据库的接口，它实现了 Python 数据库 API 规范 V2.0，基于 MySQL C API 上建立的。</p>
+<h6 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h6><h6 id="Package_MySQL-python"><a href="#Package_MySQL-python" class="headerlink" title="Package MySQL-python"></a><a href="https://pypi.python.org/pypi/MySQL-python">Package MySQL-python</a></h6><h6 id="MySQLdb_User_u2019s_Guide"><a href="#MySQLdb_User_u2019s_Guide" class="headerlink" title="MySQLdb User’s Guide"></a><a href="http://mysql-python.sourceforge.net/MySQLdb.html">MySQLdb User’s Guide</a></h6>]]>
+    
+    </summary>
+    
+      <category term="Mysql" scheme="http://blog.suzf.net/tags/Mysql/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Python MySQLdb test for select count(*) = zero]]></title>
+    <link href="http://blog.suzf.net/2015/11/03/python-mysqldb-test-for-select-count-zero/"/>
+    <id>http://blog.suzf.net/2015/11/03/python-mysqldb-test-for-select-count-zero/</id>
+    <published>2015-11-03T13:24:47.000Z</published>
+    <updated>2016-01-13T07:17:03.000Z</updated>
+    <content type="html"><![CDATA[<p>I use SELECT COUNT(*) FROM db WHERE &lt;expression&gt; to see if a set of records is null. So:</p>
+<p><pre class="lang:default decode:true ">&gt;&gt;&gt; cnt = c.fetchone()<br>&gt;&gt;&gt; print cnt<br>(0L,)</pre><br>My question is: how do you test for this condition?<br>I have a number of other ways to accomplish this. Is something like the following possible?</p>
+<p><pre class="lang:default decode:true ">if cnt==(0L,):</pre></p>
+<pre><code># do something&lt;/pre&gt;
+</code></pre><p>fetchone returns a row, which is a sequence of columns.<br>If you want to get the first value in a sequence, you use [0].</p>
+<p>You could instead compare the row to (0,), as you’re suggesting. But as far as I know neither the general DB-API nor the specific MySQLdb library guarantee what kind of sequence a row is; it could be a list, or a custom sequence class. So, relying on the fact that it’s a tuple is probably not a good idea. And, since it’s just as easy to not do so, why not be safe and portable?</p>
+<p>So:</p>
+<p><pre class="lang:default decode:true ">count_row = c.fetchone()<br>count = count_row[0]<br>if count == 0:<br>    do_something()</pre><br>Or, putting it together in one line:</p>
+<p><pre class="lang:default decode:true ">if c.fetchone()[0] == 0:<br>    do_something()</pre><br>source： <a href="http://stackoverflow.com/questions/26024424/python-mysqldb-test-for-select-count-zero" target="_blank" rel="external">stackoverflow</a></p>
+<p>&nbsp;</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>I use SELECT COUNT(*) FROM db WHERE &lt;expression&gt; to see if a set of records is null. So:</p>
+<p><pre class="lang:default decode:tru]]>
+    </summary>
+    
+      <category term="Mysql" scheme="http://blog.suzf.net/tags/Mysql/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[ImportError: libmysqlclient.so.18: cannot open shared object file]]></title>
+    <link href="http://blog.suzf.net/2015/11/03/importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory/"/>
+    <id>http://blog.suzf.net/2015/11/03/importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory/</id>
+    <published>2015-11-03T12:33:04.000Z</published>
+    <updated>2016-01-13T07:17:03.000Z</updated>
+    <content type="html"><![CDATA[<pre class="lang:default decode:true">MySQL-python (1.2.5)
+
+&gt;&gt;&gt; import MySQLdb
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/usr/local/Python2.7.3/lib/python2.7/site-packages/MySQLdb/__init__.py", line 19, in &lt;module&gt;
+    import _mysql
+ImportError: libmysqlclient.so.18: cannot open shared object file: No such file or directory</pre>
+I.创建软连接 再次导入模块正常
+<pre class="lang:default decode:true  ">[21:21:01][root@suzf.net ~]#ln -s /usr/local/mysql-5.6.26/lib/libmysqlclient.so.18 /usr/lib64/libmysqlclient.so.18
+
+&gt;&gt;&gt; import MySQLdb
+&gt;&gt;&gt;</pre>]]></content>
+    <summary type="html">
+    <![CDATA[<pre class="lang:default decode:true">MySQL-python (1.2.5)
+
+&gt;&gt;&gt; import MySQLdb
+Traceback (most recent call last):
+  File "&lt;stdin]]>
+    </summary>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[How-to: use Python send mail with To Cc & Bcc]]></title>
+    <link href="http://blog.suzf.net/2015/11/03/python-use-smtplib-to-send-mail/"/>
+    <id>http://blog.suzf.net/2015/11/03/python-use-smtplib-to-send-mail/</id>
+    <published>2015-11-03T07:30:39.000Z</published>
+    <updated>2016-01-13T07:17:03.000Z</updated>
+    <content type="html"><![CDATA[<pre class="lang:default decode:true ">#!/usr/bin/python
+# -*- coding:utf-8 -*-
+
+import smtplib
+from email.mime.text import MIMEText
+
+to = ['zfsu']
+cc = ['zfsu','root']
+bcc = ['jack']
+from_addr = 'root'
+message_subject = "Say Hello"
+message_text = "Hello world"
+message = "From: %s\r\n" % from_addr \
+        + "To: %s\r\n" % ",".join(to) \
+        + "CC: %s\r\n" % ",".join(cc) \
+        + "BCC: %s\r\n" % ",".join(bcc) \
+        + "Subject: %s\r\n" % message_subject \
+        + message_text
+to_addrs = to + cc + bcc
+server = smtplib.SMTP('localhost')
+#server.set_debuglevel(1)
+server.sendmail(from_addr, to_addrs, message)
+server.quit()</pre>]]></content>
+    <summary type="html">
+    <![CDATA[<pre class="lang:default decode:true ">#!/usr/bin/python
+# -*- coding:utf-8 -*-
+
+import smtplib
+from email.mime.text import MIMEText
+
+to = []]>
+    </summary>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[The Puppet Language Style Guide]]></title>
+    <link href="http://blog.suzf.net/2015/10/27/the-puppet-language-style-guide/"/>
+    <id>http://blog.suzf.net/2015/10/27/the-puppet-language-style-guide/</id>
+    <published>2015-10-27T09:28:53.000Z</published>
+    <updated>2016-01-13T07:11:51.000Z</updated>
+    <content type="html"><![CDATA[<div class="primary-secondary-content"><br><div class="primary-content"><nav id="page-nav" class="in-page"></nav><br><div id="rendered-markdown">Puppet Language Style Guide: Version 2.0.1Puppet: Version 3.7+<br><br>(Note: While the style guide maps to Puppet 3.7, many of its recommendations apply to Puppet 3.0.x and up.)<br><br>## 1. Terminology<br><br>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in <a href="http://www.faqs.org/rfcs/rfc2119.html" target="_blank" rel="external">RFC 2119</a>.<br><br>Unless explicitly called out, everything discussed here applies specifically to Puppet (i.e. Puppet modules, Puppet classes, etc.). To save your eyes and our fingers, ‘Puppet’ will not be appended to every topic discussed.<br><br>## 2. Purpose<br><br>The purpose of this style guide is to promote consistent formatting across modules (from Puppet Labs and the community), which gives users and developers of Puppet modules a common pattern, design, and style to follow. Additionally, consistency in code and module structure makes continued development and contributions easier.<br><br>## 3. Guiding Principles<br><br>We can never cover every possible circumstance you might run into when developing Puppet code or creating a module. Eventually, a judgement call will be necessary. When that happens, keep in mind the following general principles:<br><br>1.  <strong>Readability matters.</strong>If you have to choose between two equally effective alternatives, pick the more readable one. While this is subjective, if you can read your own code three months from now, it’s a great start. In particular, code that generates readable diffs is highly preferred.<br>2.  <strong>Scoping and simplicity are key.</strong>When in doubt, err on the side of simplicity. A module should contain related resources that enable it to accomplish a task. If you describe the function of your module and you find yourself using the word ‘and,’ it’s time to split the module at the ‘and.’ You should have one goal, with all your classes and parameters focused on achieving it.<br>3.  <strong>Your module is a piece of software.</strong>At least, you should treat it that way. When it comes to making decisions, choose the option that is easier to sustain in the long term.<br><br>## 4. Versioning<br><br>Your module must be versioned. We recommend (and use) <a href="http://semver.org/spec/v1.0.0.html" target="_blank" rel="external">SemVer</a>; meaning for a version x.y.z., an increase in x indicates backwards incompatible changes or a complete rewrite, an increase in y indicates the addition of new features, and an increase in z indicates non-breaking bug fixes.<br><br>This style guide is versioned using SemVer.<br><br>## 5. Spacing, Indentation, and Whitespace<br><br>Module manifests:<br><br><em>   Must use two-space soft tabs,
+</em>   Must not use literal tab characters,<br><em>   Must not contain trailing whitespace,
+</em>   Must have trailing commas after all resource attributes and parameter definitions,<br><em>   Should not exceed a 140-character line width,
+</em>   Should leave one empty line between resources, except when using dependency chains, and<br><em>   Should align hash rockets (<code>=&amp;gt;</code>) within blocks of attributes, remembering to arrange hashes for maximum readability first.<br><br>## 6. Quoting
+
+</em>   All strings must be enclosed in single quotes, unless they contain variables or single quotes.<br><em>   Quoting is optional when the string is an enumerable set of options (such as present/absent).
+</em>   All variables must be enclosed in braces when interpolated in a string. For example:<br><strong>Good:</strong><br><br>        “/etc/${file}.conf”<br>        “${::operatingsystem} is not supported by ${module_name}”<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    “/etc/$file.conf”<br>        “$::operatingsystem is not supported by $module_name”<br>    <code>&lt;/pre&gt;
+
+*   Variables standing by themselves should not be quoted, unless they are a resource title. For example:
+    **Good:**
+    &lt;pre&gt;</code>    mode =&gt; $my_mode<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    mode =&gt; “$my_mode”<br>        mode =&gt; “${my_mode}”<br>    <code>&lt;/pre&gt;
+
+*   Double quotes should be used rather than escaping when a string contains single quotes.
+    **Good:**
+    &lt;pre&gt;</code>warning(“Class[‘apache’] parameter purge_vdir is deprecated in favor of purge_configs”)<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>warning(‘Class[\’apache\’] parameter purge_vdir is deprecated in favor of purge_configs’)<br>    <code>&lt;/pre&gt;
+
+    ## 7\. Comments
+
+    You must use hash comments (</code># This is a comment<code>). Comments should explain the **why**, not the **how**, of your code.
+
+    **Good:**
+    &lt;pre&gt;</code># Configures NTP<br>    file { ‘/etc/ntp.conf’: … }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>/<em> Creates file /etc/ntp.conf </em>/<br>    file { ‘/etc/ntp.conf’: … }<br>    <code>&lt;/pre&gt;
+
+    ## 8\. Module Metadata
+
+    Every publicly available module must have metadata defined in the metadata.json file. Your metadata should follow the below format:
+    &lt;pre&gt;</code>    {<br>          “name”: “examplecorp-mymodule”,<br>          “version”: “0.1.0”,<br>          “author”: “Pat”,<br>          “license”: “Apache-2.0”,<br>          “summary”: “A module for a thing”,<br>          “source”: “<a href="https://github.com/examplecorp/examplecorp-mymodule" target="_blank" rel="external">https://github.com/examplecorp/examplecorp-mymodule</a>“,<br>          “project_page”: “<a href="https://github.com/examplecorp/examplecorp-mymodule" target="_blank" rel="external">https://github.com/examplecorp/examplecorp-mymodule</a>“,<br>          “issues_url”: “<a href="https://github.com/examplecorp/examplecorp-mymodules/issues" target="_blank" rel="external">https://github.com/examplecorp/examplecorp-mymodules/issues</a>“,<br>          “tags”: [“things”, “stuff”],<br>          “operatingsystem_support”: [<br>            {<br>              “operatingsystem”:”RedHat”,<br>              “operatingsystemrelease”: [<br>                “5.0”,<br>                “6.0”<br>              ]<br>            },<br>            {<br>              “operatingsystem”: “Ubuntu”,<br>              “operatingsystemrelease”: [<br>                “12.04”,<br>                “10.04”<br>             ]<br>            }<br>          ],<br>          “dependencies”: [<br>            { “name”: “puppetlabs/stdlib”, “version_requirement”: “&gt;= 3.2.0 &lt;5.0.0” },<br>            { “name”: “puppetlabs/firewall”, “version_requirement”: “&gt;= 0.4.0 &lt;5.0.0” },<br>          ]<br>        }<br>    <code>&lt;/pre&gt;
+    A more complete guide to the metadata.json format can be found in the [docs](http://docs.puppetlabs.com/puppet/latest/reference/modules_publishing.html#write-a-metadatajson-file).
+
+    ### 8.1 Dependencies
+
+    Hard dependencies must be declared explicitly in your module’s metadata.json file. Soft dependencies should be called out in the README.md, and must not be enforced as a hard requirement in your metadata.json. A soft dependency is a dependency that is only required in a specific set of use cases. (As an example, see the [rabbitmq module](https://forge.puppetlabs.com/puppetlabs/rabbitmq#module-dependencies).)
+
+    Your hard dependency declarations should not be unbounded.
+
+    ## 9\. Resources
+
+    ### 9.1\. Resource Names
+
+    All resource titles must be quoted. If you are using an array of titles you must quote each title in the array, but cannot quote the array itself.
+
+    **Good:**
+    &lt;pre&gt;</code>    package { ‘openssh’: ensure =&gt; present }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    package { openssh: ensure =&gt; present }<br>    <code>&lt;/pre&gt;
+
+    ### 9.2\. Arrow Alignment
+
+    All of the hash rockets (</code>=&gt;<code>) in a resource’s attribute/value list should be aligned. The hash rockets should be placed one space ahead of the longest attribute name. Nested blocks must be indented by two spaces, and hash rockets within a nested block should be aligned (one space ahead of the longest attribute name).
+
+    **Good:**
+    &lt;pre&gt;</code>    exec { ‘hambone’:<br>          path =&gt; ‘/usr/bin’,<br>          cwd  =&gt; ‘/tmp’,<br>        }<br><br>        exec { ‘test’:<br>          subscribe   =&gt; File[‘/etc/test’],<br>          refreshonly =&gt; true,<br>        }<br><br>        myresource { ‘test’:<br>          ensure =&gt; present,<br>          myhash =&gt; {<br>            ‘myhash_key1’ =&gt; ‘value1’,<br>            ‘key2’        =&gt; ‘value2’,<br>          },<br>        }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    exec { ‘hambone’:<br>          path  =&gt; ‘/usr/bin’,<br>          cwd =&gt; ‘/tmp’,<br>        }<br><br>        exec { ‘test’:<br>          subscribe =&gt; File[‘/etc/test’],<br>          refreshonly =&gt; true,<br>        }<br>    <code>&lt;/pre&gt;
+
+    ### 9.3\. Attribute Ordering
+
+    If a resource declaration includes an</code>ensure<code>attribute, it should be the first attribute specified so a user can quickly see if the resource is being created or deleted.
+
+    **Good:**
+    &lt;pre&gt;</code>    file { ‘/tmp/readme.txt’:<br>          ensure =&gt; file,<br>          owner  =&gt; ‘0’,<br>          group  =&gt; ‘0’,<br>          mode   =&gt; ‘0644’,<br>        }<br>    <code>&lt;/pre&gt;
+
+    ### 9.4\. Resource Arrangement
+
+    Within a manifest, resources should be grouped by logical relationship to each other, rather than by resource type. Semicolons must not be used to declare multiple resources within a set of curly braces.
+
+    **Good:**
+    &lt;pre&gt;</code>    file { ‘/tmp/dir’:<br>          ensure =&gt; directory,<br>        }<br><br>        file { ‘/tmp/dir/a’:<br>          content =&gt; ‘a’,<br>        }<br><br>        file { ‘/tmp/dir2’:<br>          ensure =&gt; directory,<br>        }<br><br>        file { ‘/tmp/dir2/b’:<br>          content =&gt; ‘b’,<br>        }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    file { ‘/tmp/dir’:<br>          ensure =&gt; directory,<br>        }<br><br>        file { ‘/tmp/dir2’:<br>          ensure =&gt; directory,<br>        }<br><br>        file { ‘/tmp/dir/a’:<br>          content =&gt; ‘a’,<br>        }<br><br>        file { ‘/tmp/dir2/b’:<br>          content =&gt; ‘b’,<br>        }<br>    <code>&lt;/pre&gt;
+
+    ### 9.5\. Symbolic Links
+
+    Symbolic links must be declared with an ensure value of</code>ensure =&gt; link<code>and explicitly specify a value for the</code>target<code>attribute. Doing so more explicitly informs the user that a link is being created.
+
+    **Good:**
+    &lt;pre&gt;</code>    file { ‘/var/log/syslog’:<br>          ensure =&gt; link,<br>          target =&gt; ‘/var/log/messages’,<br>        }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    file { ‘/var/log/syslog’:<br>          ensure =&gt; ‘/var/log/messages’,<br>        }<br>    <code>&lt;/pre&gt;
+
+    ### 9.6\. File Modes
+
+*   POSIX numeric notation must be represented as 4 digits.
+*   POSIX symbolic notation must be a string.
+*   You should not use file mode with Windows; instead use the [acl module](https://forge.puppetlabs.com/puppetlabs/acl).
+*   You should use numeric notation whenever possible.
+    **Good:**
+    &lt;pre&gt;</code>  file { ‘/var/log/syslog’:<br>          ensure =&gt; file,<br>          mode   =&gt; ‘0644’,<br>      }<br>    <code>&lt;/pre&gt;
+    **Also Good:**
+    &lt;pre&gt;</code>  file { ‘/var/log/syslog’:<br>          ensure =&gt; file,<br>          mode   =&gt; ‘o-rwx’,<br>      }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    file { ‘/var/log/syslog’:<br>          ensure =&gt; present,<br>          mode   =&gt; 644,<br>        }<br>    <code>&lt;/pre&gt;
+
+    ### 9.7\. Resource Defaults
+
+    Resource defaults should be used in a very controlled manner and should only be declared at the edges of your manifest ecosystem. Specifically, they may be declared:
+
+*   At top scope in site.pp, or
+*   In a class which is guaranteed to never declare or be inherited by a class or define from another module.
+    This is due to the way resource defaults propagate through dynamic scope, which can have unpredictable effects far away from where the default was declared.
+
+    **Good:**
+    &lt;pre&gt;</code>    # /etc/puppetlabs/puppet/manifests/site.pp:<br>        File {<br>          owner =&gt; ‘root’,<br>          group =&gt; ‘0’,<br>          mode  =&gt; ‘0644’,<br>        }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    # /etc/puppetlabs/puppet/modules/apache/manifests/init.pp<br>        File {<br>          owner =&gt; ‘nobody’,<br>          group =&gt; ‘nogroup’,<br>          mode  =&gt; ‘0600’,<br>        }<br><br>        concat { $config_file_path:<br>          notify  =&gt; Class[‘Apache::Service’],<br>          require =&gt; Package[‘httpd’],<br>        }<br>    <code>&lt;/pre&gt;
+
+    ## 10\. Classes and Defines
+
+    ### 10.1\. Separate Files
+
+    All classes and resource type definitions (defines) must be separate files in the</code>manifests<code>directory of the module.
+
+    **Good:**
+    &lt;pre&gt;</code>    # /etc/puppetlabs/puppet/modules/apache/manifests<br><br>        # init.pp<br>          class apache { }<br>        # ssl.pp<br>          class apache::ssl { }<br>        # virtual_host.pp<br>          define apache::virtual_host () { }<br>    <code>&lt;/pre&gt;
+    Separating classes and defines into separate files is functionally identical to declaring them in init.pp, but has the benefit of highlighting the structure of the module and making the function and structure more legible.
+
+    ### 10.2\. Internal Organization of Classes and Defines
+
+    Classes and defines must be structured to accomplish one task. Below is a line-by-line general layout of what lines of code should come first, second, and so on.
+
+1.  First line: Name of class or type.
+2.  Following lines, if applicable: Define parameters.
+3.  Next lines: Should validate* any parameters and fail catalog compilation if any parameters are invalid. (See [ntp](https://github.com/puppetlabs/puppetlabs-ntp/blob/3.3.0/manifests/init.pp#L28-L49) for an example.)
+4.  Next lines, if applicable: Should declare local variables and perform variable munging.
+5.  Next lines: Should declare resource defaults.
+6.  Next lines: Should override resources if necessary.
+    The following example follows the recommended style:
+    &lt;pre&gt;</code>    # init.pp<br>        class myservice (<br>          $service_ensure     = $myservice::params::service_ensure,<br>          $package_list       = $myservice::params::package_list,<br>          $tempfile_contents  = $myservice::params::tempfile_contents,<br>        ) inherits myservice::params {<br><br>          if !($service_ensure in [ ‘running’, ‘stopped’ ]) {<br>            fail(‘ensure parameter must be running or stopped’)<br>          }<br><br>          if !$package_list {<br>            fail(“Module ${module_name} does not support ${::operatingsystem}”)<br>          }<br><br>          # temp file contents cannot contain numbers<br>          case $tempfile_contents {<br>            /\d/: {<br>              $_tempfile_contents = regsubst($tempfile_contents, ‘\d’, ‘’, ‘G’)<br>            }<br>            default: {<br>              $_tempfile_contents = $tempfile_contents<br>            }<br>          }<br><br>          $variable = ‘something’<br><br>          Package { ensure =&gt; present, }<br><br>          File {<br>            owner =&gt; ‘0’,<br>            group =&gt; ‘0’,<br>            mode  =&gt; ‘0644’,<br>         }<br><br>          package { $package_list: }<br><br>          file { “/tmp/${variable}”:<br>            ensure   =&gt; present,<br>            contents =&gt; $_tempfile_contents,<br>          }<br><br>          service { ‘myservice’:<br>            ensure    =&gt; $service_ensure,<br>            hasstatus =&gt; true,<br>          }<br><br>          Package[$package_list] -&gt; Service[‘myservice’]<br>        }<br><br>        # params.pp<br>        class myservice::params {<br>          $service_ensure = ‘running’<br><br>          case $::operatingsystem {<br>            ‘centos’: {<br>              $package_list = ‘myservice-centos-package’<br>            }<br>            ‘solaris’: {<br>              $package_list = [ ‘myservice-solaris-package1’, ‘myservice-solaris-package2’ ]<br>            }<br>            default: {<br>              $package_list = undef<br>            }<br>          }<br>        }<br>    <code>&lt;/pre&gt;
+
+    ### 10.3\. Public and Private
+
+    We recommend that you split your module into public and private classes and defines where possible. Public classes or defines should contain the parts of the module meant to be configured or customized by the user, while private classes should contain things you do not expect the user to change via parameters. Separating into public and private classes/defines helps build reusable and readable code.
+
+    You should help indicate to the user which classes are which by both calling out the public classes in the README and making sure all public classes have complete [comments](https://docs.puppetlabs.com/guides/style_guide.html#comments).
+    &gt; Note: As of stdlib 4.4.0, there is a</code>private<code>function that will cause a failure if a private class is called externally. You can use this to enforce the privacy of private classes.
+
+    ### 10.4\. Chaining Arrow Syntax
+
+    Most of the time, use [relationship metaparameters](https://docs.puppetlabs.com/puppet/latest/reference/lang_relationships.html#relationship-metaparameters) rather than [chaining arrows](https://docs.puppetlabs.com/puppet/latest/reference/lang_relationships.html#chaining-arrows). When you have many [interdependent or order-specific items](https://github.com/puppetlabs/puppetlabs-mysql/blob/3.1.0/manifests/server.pp#L64-L72), chaining syntax may be used. Chaining arrows must be used left to right.
+
+    **Good:**
+    &lt;pre&gt;</code>Package[‘httpd’] -&gt; Service[‘httpd’]<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>Service[‘httpd’] &lt;- Package[‘httpd’]<br>    <code>&lt;/pre&gt;
+
+    ### 10.5\. Nested Classes or Defines
+
+    Classes and defined resource types must not be defined within other classes or defined types. Classes and defines should be declared as close to node scope as possible. If you have a class or define which requires another class or define, graceful failures must be in place if those required classes or defines are not declared elsewhere.
+
+    **Very Bad:**
+    &lt;pre&gt;</code>    class apache {<br>          class ssl { … }<br>        }<br>    <code>&lt;/pre&gt;
+    **Also Very Bad:**
+    &lt;pre&gt;</code>    class apache {<br>          define config() { … }<br>        }<br>    <code>&lt;/pre&gt;
+
+    ### 10.6\. Display Order of Parameters
+
+    In parameterized class and define declarations, required parameters must be listed before optional parameters (i.e., parameters with defaults).
+
+    **Good:**
+    &lt;pre&gt;</code>class dhcp (<br>      $dnsdomain,<br>      $nameservers,<br>      $default_lease_time = 3600,<br>      $max_lease_time     = 86400<br>    ) {}<br><br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    class ntp (<br>          $options   = “iburst”,<br>          $servers,<br>          $multicast = false<br>        ) {}<br>    <code>&lt;/pre&gt;
+
+    ### 10.7 Parameter defaults
+
+    When writing a module that accepts class and define parameters, appropriate defaults should be provided for optional parameters. Establishing good defaults gives the end user the option of not explicitly specifying the parameter when declaring the class or define. Provided defaults should be specified with the parameter and not inside the class/define.
+
+    When creating parameter defaults, you:
+
+*   Must use fully qualified namespace variables when pulling the value from the module params class. This avoids namespace collisions. See [Namespacing Variables](https://docs.puppetlabs.com/guides/style_guide.html#namespacing-variables) for more information.
+*   Should use the</code>_<code>prefix to indicate a scope local variable for maintainability over time.
+    **Good:**
+    &lt;pre&gt;</code>class my_module (<br>      $source = $my_module::params::source,<br>      $config = $my_module::params::config,<br>    ){}<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>class my_module (<br>      $source = undef,<br>    ) {<br>      if $source {<br>        $_source = $source<br>      } else {<br>        $_source = $my_module::params::source<br>      }<br>    }<br>    <code>&lt;/pre&gt;
+
+    ### 10.8 Exported Resources
+
+    Exported resources should be opt-in rather than opt-out. Your module should not be written to use exported resources to function by default unless it is expressly required. When using exported resources, you should name the property</code>collect_exported<code>.
+
+    Exported resources should be exported and collected selectively using a [search expression](https://docs.puppetlabs.com/puppet/3.7/reference/lang_collectors.html#search-expressions), ideally allowing user-defined tags as parameters so tags can be used to selectively collect by environment or custom fact.
+
+    **Good:**
+    &lt;pre&gt;</code>define haproxy::frontend (<br>      $ports            = undef,<br>      $ipaddress        = [$::ipaddress],<br>      $bind             = undef,<br>      $mode             = undef,<br>      $collect_exported = false,<br>      $options          = {<br>        ‘option’  =&gt; [<br>          ‘tcplog’,<br>        ],<br>      },<br>    ) { … }<br>    <code>&lt;/pre&gt;
+
+    ## 11\. Classes
+
+    ### 11.1\. Class Inheritance
+
+    Inheritance can be used within a module, but must not be used across module namespaces. Cross-module dependencies should be satisfied in a more portable way, such as with include statements or relationship declarations.
+
+    **Good:**
+    &lt;pre&gt;</code>    class ssh { … }<br><br>        class ssh::client inherits ssh { … }<br><br>        class ssh::server inherits ssh { … }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    class ssh inherits server { … }<br><br>        class ssh::client inherits workstation { … }<br><br>        class wordpress inherits apache { … }<br>    <code>&lt;/pre&gt;
+    Generally, inheritance should be avoided when alternatives are viable. For example, rather than using inheritance to override relationships in an existing class when stopping a service, consider using a single class with an</code>ensure<code>parameter and conditional relationship declarations. For instance,
+    &lt;pre&gt;</code>    class bluetooth (<br>          $ensure      = ‘present’,<br>          $autoupgrade = false,<br>        ) {<br>           # Validate class parameter inputs. (Fail early and fail hard)<br><br>           if ! ($ensure in [ ‘present’, ‘absent’ ]) {<br>             fail(‘bluetooth ensure parameter must be absent or present’)<br>           }<br><br>           if ! ($autoupgrade in [ true, false ]) {<br>             fail(‘bluetooth autoupgrade parameter must be true or false’)<br>           }<br><br>           # Set local variables based on the desired state<br><br>           if $ensure == ‘present’ {<br>             $service_enable = true<br>             $service_ensure = ‘running’<br>             if $autoupgrade {<br>               $package_ensure = ‘latest’<br>             } else {<br>               $package_ensure = ‘present’<br>             }<br>           } else {<br>             $service_enable = false<br>             $service_ensure = ‘stopped’<br>             $package_ensure = ‘absent’<br>           }<br><br>           # Declare resources without any relationships in this section<br><br>           package { [ ‘bluez-libs’, ‘bluez-utils’]:<br>             ensure =&gt; $package_ensure,<br>           }<br><br>           service { ‘hidd’:<br>             enable         =&gt; $service_enable,<br>             ensure         =&gt; $service_ensure,<br>             status         =&gt; ‘source /etc/init.d/functions; status hidd’,<br>             hasstatus      =&gt; true,<br>             hasrestart     =&gt; true,<br>          }<br><br>          # Finally, declare relations based on desired behavior<br><br>          if $ensure == ‘present’ {<br>            Package[‘bluez-libs’]  -&gt; Package[‘bluez-utils’]<br>            Package[‘bluez-libs’]  ~&gt; Service[‘hidd’]<br>            Package[‘bluez-utils’] ~&gt; Service[‘hidd’]<br>          } else {<br>            Service[‘hidd’]        -&gt; Package[‘bluez-utils’]<br>            Package[‘bluez-utils’] -&gt; Package[‘bluez-libs’]<br>          }<br>        }<br>    <code>&lt;/pre&gt;
+    Remember:
+
+    Class inheritance should only be used for</code>myclass::params<code>parameter defaults. Other use cases can be accomplished through the addition of parameters or conditional logic.
+
+    ### 11.2 A Note About Publicly Available Modules
+
+    When declaring classes in publicly available modules, you should use</code>include<code>,</code>contain<code>, or</code>require<code>rather than class resource declaration. This avoids duplicate class declarations and vendor lock-in.
+
+    ## 12\. Defined Resource Types (Defines)
+
+    ### 12.1\. Uniqueness
+
+    Since defined resource types (defines) can have multiple instances, resource names must have a unique variable to avoid duplicate declarations.
+
+    **Good:**
+    &lt;pre&gt;</code>define apache::listen {<br>      $listen_addr_port = $name<br><br>      # Template uses: $listen_addr_port<br>      concat::fragment { “Listen ${listen_addr_port}”:<br>        ensure  =&gt; present,<br>        target  =&gt; $::apache::ports_file,<br>        content =&gt; template(‘apache/listen.erb’),<br>      }<br>    }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>file { ‘Required VHost directory’:<br>      path   =&gt; ‘/etc/apache/vhost/corpsite’,<br>      ensure =&gt; directory,<br>    }<br>    <code>&lt;/pre&gt;
+
+    ## 13\. Variables
+
+    ### 13.1\. Namespacing Variables
+
+    You must scope all variables except for local or inherited variables. Scope inherited variables, when appropriate, for clarity. You should not mask/shadow inherited variables.
+
+    You should avoid accidental scoping issues by explicitly specifying empty namespaces when using top-scope variables, including facts.
+
+    **Good:**
+    &lt;pre&gt;</code>    $::operatingsystem<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    $operatingsystem<br>    <code>&lt;/pre&gt;
+
+    ### 13.2\. Variable Format
+
+    When defining variables you must only use numbers, lowercase letters, and underscores. You should not use camelCasing, as it introduces inconsistency in style. You must also not use dashes, as they are not syntactically valid.
+
+    **Good:**
+    &lt;pre&gt;</code>$foo_bar<br>    $some_long_variable<br>    $foo_bar123<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>$fooBar<br>    $someLongVariable<br>    $foo-bar123<br>    <code>&lt;/pre&gt;
+
+    ## 14\. Conditionals
+
+    ### 14.1\. Keep Resource Declarations Simple
+
+    We recommend not mixing conditionals with resource declarations. When you use conditionals for data assignment, you should separate conditional code from the resource declarations.
+
+    **Good:**
+    &lt;pre&gt;</code>    $file_mode = $::operatingsystem ? {<br>          ‘debian’ =&gt; ‘0007’,<br>          ‘redhat’ =&gt; ‘0776’,<br>           default =&gt; ‘0700’,<br>        }<br><br>        file { ‘/tmp/readme.txt’:<br>          ensure  =&gt; file,<br>          content =&gt; “Hello World\n”,<br>          mode    =&gt; $file_mode,<br>        }<br>    <code>&lt;/pre&gt;
+    **Bad:**
+    &lt;pre&gt;</code>    file { ‘/tmp/readme.txt’:<br>          ensure  =&gt; file,<br>          content =&gt; “Hello World\n”,<br>          mode    =&gt; $::operatingsystem ? {<br>            ‘debian’ =&gt; ‘0777’,<br>            ‘redhat’ =&gt; ‘0776’,<br>            default  =&gt; ‘0700’,<br>          }<br>        }<br>    <code>&lt;/pre&gt;
+
+    ### 14.2\. Defaults for Case Statements and Selectors
+
+    Case statements must have default cases. If you want the default case to be “do nothing,” you must include it as an explicit</code>default: {}<code>for clarity’s sake.
+
+    Case and selector values must be quoted.
+
+    Selectors should omit default selections only if you explicitly want catalog compilation to fail when no value matches.
+
+    **Good:**
+    &lt;pre&gt;</code>    case $::operatingsystem {<br>          ‘centos’: {<br>            $version = ‘1.2.3’<br>          }<br>          ‘solaris’: {<br>            $version = ‘3.2.1’<br>          }<br>          default: {<br>            fail(“Module ${module_name} is not supported on ${::operatingsystem}”)<br>          }<br>        }<br>    <code>&lt;/pre&gt;
+    When setting the default case, keep in mind that the default case should cause the catalog compilation to fail if the resulting behavior cannot be predicted on the platforms the module was built to be used on.
+
+    ## 15\. Hiera
+
+    You should avoid using calls to Hiera functions in modules meant for public consumption, because not all users have implemented Hiera. Instead, we recommend using parameters that can be overridden with Hiera.
+
+    ## 16\. Examples
+
+    Major use cases for your module should have corresponding example manifests in the module’s /examples directory.
+    &lt;pre&gt;</code>modulepath/apache/examples/{usecase}.pp<br><br>The example manifest should provide a clear example of how to declare the class or defined resource type. The example manifest should also declare any classes required by the corresponding class to ensure <code>puppet apply</code> works in a limited, standalone manner.<br><br>## 17. Module Documentation<br><br>All publicly available modules should include the documentation covered below.<br><br>### 17.1 README<br><br>Your module should have a README in .md (or .markdown) format. READMEs help users of your module get the full benefit of your work. There is a <a href="https://docs.puppetlabs.com/puppet/latest/reference/READMEtemplate.txt" target="_blank" rel="external">Puppet Labs README template</a> available for your use; it can also be obtained by running <code>puppet module generate</code> (available in Puppet 3.6 and above). Using the .md/.markdown format allows your README to be parsed and displayed by both GitHub and the Puppet Forge.<br><br>If you are prolific with your in-code comments, you can use <code>puppet doc</code> up until Puppet 4 is released. If you’re currently using the future parser, you might want to check out <a href="https://github.com/puppetlabs/puppetlabs-strings" target="_blank" rel="external">strings</a>, the replacement for <code>puppet doc</code> that (only) works with the future parser.<br><br>There’s an entire <a href="https://docs.puppetlabs.com/puppet/latest/reference/modules_documentation.html" target="_blank" rel="external">guide</a> to writing a great README, but overall you should:<br><br><em>   Call out what your module does.
+</em>   Note any part of a user’s system the module might impact (e.g. “This module will overwrite everything in animportantfile.conf.”).<br><em>   List all of the classes, defines, types, providers, and parameters the user might need to configure with a brief description, the default values (if any), and what the valid options are.<br><br>### 17.2 CHANGELOG<br><br>Your module should have a CHANGELOG in .md (or .markdown) format. Your CHANGELOG should:
+
+</em>   Have entries for each release.<br><em>   List bugfixes and features included in the release.
+</em>   Specifically call out backwards-incompatible changes<br><br>## 19. Verifying style<br><br>This guide helps development of <a href="http://puppet-lint.com/" target="_blank" rel="external">puppet-lint</a> and <a href="https://github.com/nibalizer/metadata-json-lint" target="_blank" rel="external">metadata-json-lint</a><a href="http://fc09.deviantart.net/fs70/i/2012/232/0/a/welcome_to_the_internet__please_follow_me_by_sharpwriter-d5buwfu.jpg" target="_blank" rel="external">.</a><br><br></div><br>&gt; <a href="https://docs.puppetlabs.com/guides/style_guide.html#content" target="_blank" rel="external">↑ Back to top</a><br></div><br><nav class="main"><br><div id="subCol"><br><br><em>   <a href="https://docs.puppetlabs.com/guides/style_guide.html#" target="_blank" rel="external"> Docs Quick Nav </a><br><br>### Elsewhere in the Docs:<br><br>If this page isn’t quite what you need, you might be looking for one of these:<br><br>#### Using Puppet
+
+</em>   <a href="https://docs.puppetlabs.com/references/latest/type.html" target="_blank" rel="external">Type Reference</a> — Info for every resource type.<br><em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/lang_summary.html" target="_blank" rel="external">Language Reference</a> — How to write Puppet code.
+</em>   <a href="https://docs.puppetlabs.com/learning/" target="_blank" rel="external">Learning Puppet</a> — Guided intro with free VM.<br><em>   <a href="https://docs.puppetlabs.com/windows/" target="_blank" rel="external">Puppet on Windows</a> — Special notes for Windows users.
+</em>   <a href="https://docs.puppetlabs.com/references/latest/man/" target="_blank" rel="external">Man Pages</a> — Docs for Puppet’s CLI tools.<br><br>#### Administering Puppet<br><br><em>   <a href="https://docs.puppetlabs.com/pe/latest/install_basic.html" target="_blank" rel="external">Installing Puppet Enterprise</a>
+</em>   <a href="https://docs.puppetlabs.com/pe/latest/install_upgrading.html" target="_blank" rel="external">Upgrading Puppet Enterprise</a><br><em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/install_pre.html" target="_blank" rel="external">Installing Open Source Puppet</a>
+</em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/upgrade_agent.html" target="_blank" rel="external">Upgrading 3.x to 4.x Agents</a><br><em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/upgrade_server.html" target="_blank" rel="external">Upgrading 3.x to 4.x Server</a>
+</em>   <a href="http://info.puppetlabs.com/download-pe.html" target="_blank" rel="external">Puppet Enterprise Downloads</a><br><br>#### What Are These Variables?<br><br><em>   <a href="https://docs.puppetlabs.com/facter/latest/core_facts.html" target="_blank" rel="external">Facts</a>
+</em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/lang_facts_and_builtin_vars.html" target="_blank" rel="external">Other Special Variables</a><br></div><br>&nbsp;<br><br>Reference: <a href="https://docs.puppetlabs.com/guides/style_guide.html" target="_blank" rel="external">https://docs.puppetlabs.com/guides/style_guide.html</a><br><br></nav></div>]]></content>
+    <summary type="html">
+    <![CDATA[<div class="primary-secondary-content"><br><div class="primary-content"><nav id="page-nav" class="in-page"></nav><br><div id="rendered-markd]]>
+    </summary>
+    
+      <category term="Puppet" scheme="http://blog.suzf.net/tags/Puppet/"/>
+    
+      <category term="Puppet" scheme="http://blog.suzf.net/categories/Puppet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Use Python send mail]]></title>
+    <link href="http://blog.suzf.net/2015/10/22/use-python-send-email/"/>
+    <id>http://blog.suzf.net/2015/10/22/use-python-send-email/</id>
+    <published>2015-10-22T13:20:42.000Z</published>
+    <updated>2016-01-13T07:17:03.000Z</updated>
+    <content type="html"><![CDATA[<p>I recommend that you use the standard packages email and smtplib together to send Email. Please look at the following example (reproduced from the <a href="https://docs.python.org/2/library/email-examples.html" target="_blank" rel="external">Python documentation</a>). Notice that if you follow this approach, the “simple” task is indeed simple, and the more complex tasks (like attaching binary objects or sending plain/HTML multipart messages) are accomplished very rapidly.</p>
+<p>Here are a few examples of how to use the <a href="https://docs.python.org/2/library/email.html#module-email" title="email: Package supporting the parsing, manipulating, and generating email messages, including MIME documents." target="_blank" rel="external"><tt class="xref py py-mod docutils literal"><span class="pre">email</span></tt></a> package to read, write, and send simple email messages, as well as more complex MIME messages.</p>
+<p>First, let’s see how to create and send a simple text message:</p>
+<p><pre class="lang:python decode:true "># Import smtplib for the actual sending function<br>import smtplib</pre></p>
+<h1 id="Import_the_email_modules_we_u2019ll_need"><a href="#Import_the_email_modules_we_u2019ll_need" class="headerlink" title="Import the email modules we’ll need"></a>Import the email modules we’ll need</h1><p>from email.mime.text import MIMEText</p>
+<h1 id="Open_a_plain_text_file_for_reading-_For_this_example_2C_assume_that"><a href="#Open_a_plain_text_file_for_reading-_For_this_example_2C_assume_that" class="headerlink" title="Open a plain text file for reading.  For this example, assume that"></a>Open a plain text file for reading.  For this example, assume that</h1><h1 id="the_text_file_contains_only_ASCII_characters"><a href="#the_text_file_contains_only_ASCII_characters" class="headerlink" title="the text file contains only ASCII characters."></a>the text file contains only ASCII characters.</h1><p>fp = open(textfile, ‘rb’)</p>
+<h1 id="Create_a_text/plain_message"><a href="#Create_a_text/plain_message" class="headerlink" title="Create a text/plain message"></a>Create a text/plain message</h1><p>msg = MIMEText(fp.read())<br>fp.close()</p>
+<h1 id="me__3D_3D_the_sender_u2019s_email_address"><a href="#me__3D_3D_the_sender_u2019s_email_address" class="headerlink" title="me == the sender’s email address"></a>me == the sender’s email address</h1><h1 id="you__3D_3D_the_recipient_u2019s_email_address"><a href="#you__3D_3D_the_recipient_u2019s_email_address" class="headerlink" title="you == the recipient’s email address"></a>you == the recipient’s email address</h1><p>msg[‘Subject’] = ‘The contents of %s’ % textfile<br>msg[‘From’] = me<br>msg[‘To’] = you</p>
+<h1 id="Send_the_message_via_our_own_SMTP_server_2C_but_don_u2019t_include_the"><a href="#Send_the_message_via_our_own_SMTP_server_2C_but_don_u2019t_include_the" class="headerlink" title="Send the message via our own SMTP server, but don’t include the"></a>Send the message via our own SMTP server, but don’t include the</h1><h1 id="envelope_header"><a href="#envelope_header" class="headerlink" title="envelope header."></a>envelope header.</h1><p>s = smtplib.SMTP(‘localhost’)<br>s.sendmail(me, [you], msg.as_string())<br>s.quit()<br>For sending email to multiple destinations, you can also follow the example in the Python documentation:</p>
+<p><pre class="lang:python decode:true "># Import smtplib for the actual sending function<br>import smtplib</pre></p>
+<h1 id="Here_are_the_email_package_modules_we_u2019ll_need"><a href="#Here_are_the_email_package_modules_we_u2019ll_need" class="headerlink" title="Here are the email package modules we’ll need"></a>Here are the email package modules we’ll need</h1><p>from email.mime.image import MIMEImage<br>from email.mime.multipart import MIMEMultipart</p>
+<p>COMMASPACE = ‘, ‘</p>
+<h1 id="Create_the_container__28outer_29_email_message"><a href="#Create_the_container__28outer_29_email_message" class="headerlink" title="Create the container (outer) email message."></a>Create the container (outer) email message.</h1><p>msg = MIMEMultipart()<br>msg[‘Subject’] = ‘Our family reunion’</p>
+<h1 id="me__3D_3D_the_sender_u2019s_email_address-1"><a href="#me__3D_3D_the_sender_u2019s_email_address-1" class="headerlink" title="me == the sender’s email address"></a>me == the sender’s email address</h1><h1 id="family__3D_the_list_of_all_recipients_u2019_email_addresses"><a href="#family__3D_the_list_of_all_recipients_u2019_email_addresses" class="headerlink" title="family = the list of all recipients’ email addresses"></a>family = the list of all recipients’ email addresses</h1><p>msg[‘From’] = me<br>msg[‘To’] = COMMASPACE.join(family)<br>msg.preamble = ‘Our family reunion’</p>
+<h1 id="Assume_we_know_that_the_image_files_are_all_in_PNG_format"><a href="#Assume_we_know_that_the_image_files_are_all_in_PNG_format" class="headerlink" title="Assume we know that the image files are all in PNG format"></a>Assume we know that the image files are all in PNG format</h1><p>for file in pngfiles:</p>
+<pre><code># Open the files in binary mode.  Let the MIMEImage class automatically
+# guess the specific image type.
+fp = open(file, &apos;rb&apos;)
+img = MIMEImage(fp.read())
+fp.close()
+msg.attach(img)
+</code></pre><h1 id="Send_the_email_via_our_own_SMTP_server"><a href="#Send_the_email_via_our_own_SMTP_server" class="headerlink" title="Send the email via our own SMTP server."></a>Send the email via our own SMTP server.</h1><p>s = smtplib.SMTP(‘localhost’)<br>s.sendmail(me, family, msg.as_string())<br>s.quit()<br>As you can see, the header To in the MIMEText object must be a string consisting of email addresses separated by commas. On the other hand, the second argument to the sendmail function must be a list of strings (each string is an email address).</p>
+<p>So, if you have three email addresses: person1@example.com, person2@example.com, and person3@example.com, you can do as follows (obvious sections omitted):</p>
+<p>to = [“person1@example.com”, “person2@example.com”, “person3@example.com”]<br>msg[‘To’] = “,”.join(to)<br>s.sendmail(me, to, msg.as_string())</p>
+<p>the “”,””.join(to) part makes a single string out of the list, separated by commas.</p>
+<p>From your questions I gather that you have not gone through the Python tutorial - it is a MUST if you want to get anywhere in Python - the documentation is mostly excellent for the standard library.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>I recommend that you use the standard packages email and smtplib together to send Email. Please look at the following example (reproduced]]>
+    </summary>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[PHP 获取的时间和系统的时间不一致]]></title>
+    <link href="http://blog.suzf.net/2015/10/22/php-e8-8e-b7-e5-8f-96-e7-9a-84-e6-97-b6-e9-97-b4-e5-92-8c-e7-b3-bb-e7-bb-9f-e7-9a-84-e6-97-b6-e9-97-b4-e4-b8-8d-e4-b8-80-e8-87-b4/"/>
+    <id>http://blog.suzf.net/2015/10/22/php-e8-8e-b7-e5-8f-96-e7-9a-84-e6-97-b6-e9-97-b4-e5-92-8c-e7-b3-bb-e7-bb-9f-e7-9a-84-e6-97-b6-e9-97-b4-e4-b8-8d-e4-b8-80-e8-87-b4/</id>
+    <published>2015-10-22T03:31:01.000Z</published>
+    <updated>2016-01-13T07:38:52.000Z</updated>
+    <content type="html"><![CDATA[<p>问题描述：<br>最近发现自动发送工作日报的那个脚本出现了问题, 发送是大昨天的内容.<br>可能是系统时间或是服务器时间配置不正确,下面开始逐步排查.</p>
+<p><pre class="lang:php decode:true">^<em>^[11:04:26][root@master01 ~]#date<br>Thu Oct 22 11:05:33 CST 2015<br>^</em>^[11:05:33][root@master01 ~]#cat /etc/sysconfig/clock<br>ZONE=”Asia/Shanghai”</pre></p>
+<p>#UTC=true</p>
+<p>#ARC=false</p>
+<p>&lt;?php<br>//date_default_timezone_set(‘UTC’);<br>date_default_timezone_set(‘CST/8.0’);</p>
+<p>$today = date(‘Y-m-d H:i:s’);<br>$yesterday = date(‘Y-m-d H:i:s’,time()-86400);<br>echo “$today\n”;<br>echo “$yesterday”;<br>?&gt;</p>
+<p>^_^[11:06:09][root@master01 ~]#php test.php<br>2015-10-21 23:06:16<br>2015-10-20 23:06:16</p>
+<p>^_^[11:07:35][root@master01 ~]#date -R<br>Thu, 22 Oct 2015 11:10:14 +0800<br><a id="more"></a><br>奇le个怪le, 系统区时的时间是对的,为啥时间不对呢?<br>再来看一下php 的 timezone</p>
+<p>咔咔，居然错误在这里</p>
+<p><pre class="lang:default decode:true  ">[Date]<br>; Defines the default timezone used by the date functions<br>; <a href="http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone" target="_blank" rel="external">http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone</a><br>date.timezone = ‘Asia/Shanghai’<br>date.timezone = ‘America/New<em>York’</em></pre><br>将第二个注释掉再来看，这下对了O(∩∩)O哈！</p>
+<p><pre class="lang:default decode:true ">^_^[11:15:06][root@master01 ~]#php test.php<br>2015-10-22 11:15:12<br>2015-10-21 11:15:12</pre><br>reference：<br>发现时区确实错误，进行修改<br>/bin/cp /etc/localtime{,.old}<br>/bin/cp /usr/share/zoneinfo/Asia/Shanghai      /etc/localtime</p>
+<p>命令行修改时区<br>tzselect</p>
+<p>一些概念：</p>
+<p>1、硬件时钟（也叫BIOS时钟、CMOS时钟）<br>和CPU和系统无关的，单独由一个电池和晶振运行的时钟，即使关机也会走。<br>硬件时钟只有当系统启动的时候才会读取。<br>hwclock –show # 显示硬件时间<br>hwclock -s     # 系统时钟和硬件时钟同步</p>
+<p>2、系统时间<br>Linux内核启动以后的时间，保持一个时间中断，用1970年1月1日00:00:00开始的秒数计数。这是我们平时看到时间。</p>
+<p>3、时区<br>在某个时刻，世界各地的人，看到的时间都不同的。比如你同样适用gmail，大陆的人看到是 20:00，北美的人，可能是07：00.时刻还是一样的，但是由于时区不同，看到的时间显示就不同。<br>同样，我们机器里，可以系统时间一样的，但是不同的用户，可以设置不同的时区，看到的时间也不同。当然，系统本身有一个缺省时区。<br>在Redhat或者CentOS下，是使用  /etc/sysconfig/clock里的 ZONE=”Asia/Shanghai” 选项配置的</p>
+<p>4、UTC/GMT还是本地时间<br>系统启动的时候，使用/sbin/hwclock 从硬件时钟读取时间，关机的时候，会回写硬件时钟。<br>这里就有一个问题，读取和回写的时候，采用什么标准，是UTC还是本地时间？<br>一般情况下，都使用UTC/GMT，这样可以自动处理夏令时间（中国地方太大，已经作废）。<br>使用UTC的唯一坏处，是当你的计算机是多系统时，如果启动Windows，会导致时间不对。</p>
+<p>5、时间同步<br>一般使用 ntp 协议进行同步，可以保持毫秒级的时差。</p>
+<p><a href="http://php.net/manual/zh/function.date.php" target="_blank" rel="external">http://php.net/manual/zh/function.date.php</a><br><a href="http://bbs.csdn.net/topics/390023846" target="_blank" rel="external">http://bbs.csdn.net/topics/390023846</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>问题描述：<br>最近发现自动发送工作日报的那个脚本出现了问题, 发送是大昨天的内容.<br>可能是系统时间或是服务器时间配置不正确,下面开始逐步排查.</p>
+<p><pre class="lang:php decode:true">^<em>^[11:04:26][root@master01 ~]#date<br>Thu Oct 22 11:05:33 CST 2015<br>^</em>^[11:05:33][root@master01 ~]#cat /etc/sysconfig/clock<br>ZONE=”Asia/Shanghai”</p>
+<p>#UTC=true</p>
+<p>#ARC=false</p>
+<p>&lt;?php<br>//date_default_timezone_set(‘UTC’);<br>date_default_timezone_set(‘CST/8.0’);</p>
+<p>$today = date(‘Y-m-d H:i:s’);<br>$yesterday = date(‘Y-m-d H:i:s’,time()-86400);<br>echo “$today\n”;<br>echo “$yesterday”;<br>?&gt;</p>
+<p>^_^[11:06:09][root@master01 ~]#php test.php<br>2015-10-21 23:06:16<br>2015-10-20 23:06:16</p>
+<p>^_^[11:07:35][root@master01 ~]#date -R<br>Thu, 22 Oct 2015 11:10:14 +0800</pre><br>]]>
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://blog.suzf.net/tags/PHP/"/>
+    
+      <category term="Linux" scheme="http://blog.suzf.net/categories/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Python 执行Linux系统命令的N种方法]]></title>
+    <link href="http://blog.suzf.net/2015/10/20/python-e6-89-a7-e8-a1-8clinux-e7-b3-bb-e7-bb-9f-e5-91-bd-e4-bb-a4-e7-9a-84n-e7-a7-8d-e6-96-b9-e6-b3-95/"/>
+    <id>http://blog.suzf.net/2015/10/20/python-e6-89-a7-e8-a1-8clinux-e7-b3-bb-e7-bb-9f-e5-91-bd-e4-bb-a4-e7-9a-84n-e7-a7-8d-e6-96-b9-e6-b3-95/</id>
+    <published>2015-10-20T07:00:56.000Z</published>
+    <updated>2016-01-13T07:17:03.000Z</updated>
+    <content type="html"><![CDATA[<p>前言：<br>很多时候我们会用到python去调用外部工具/命令去实现某种功能。<br><strong>I. os</strong><br><a href="https://docs.python.org/2/library/os.html" target="_blank" rel="external">https://docs.python.org/2/library/os.html</a><br>os.system<br>执行流程<br>system(command) -&gt; exit_status<br>Execute the command (a string) in a subshell.</p>
+<h1 id="os-system_28_29__u662F_u65B0_u8D77_u4E00_u4E2Ashell_u53BB_u5E72_u6D3B_u7684_uFF0C_u5BF9_u7CFB_u7EDF_u7684_u5F00_u9500_u6BD4_u8F83_u5927"><a href="#os-system_28_29__u662F_u65B0_u8D77_u4E00_u4E2Ashell_u53BB_u5E72_u6D3B_u7684_uFF0C_u5BF9_u7CFB_u7EDF_u7684_u5F00_u9500_u6BD4_u8F83_u5927" class="headerlink" title="os.system() 是新起一个shell去干活的，对系统的开销比较大"></a>os.system() 是新起一个shell去干活的，对系统的开销比较大</h1><h1 id="u4EC5_u5728_u4E00_u4E2A_u5B50_u7EC8_u7AEF_u8FD0_u884C_u7CFB_u7EDF_u547D_u4EE4_uFF0C_u800C_u4E0D_u80FD_u83B7_u53D6_u547D_u4EE4_u6267_u884C_u540E_u7684_u8FD4_u56DE_u4FE1_u606F"><a href="#u4EC5_u5728_u4E00_u4E2A_u5B50_u7EC8_u7AEF_u8FD0_u884C_u7CFB_u7EDF_u547D_u4EE4_uFF0C_u800C_u4E0D_u80FD_u83B7_u53D6_u547D_u4EE4_u6267_u884C_u540E_u7684_u8FD4_u56DE_u4FE1_u606F" class="headerlink" title="仅在一个子终端运行系统命令，而不能获取命令执行后的返回信息"></a>仅在一个子终端运行系统命令，而不能获取命令执行后的返回信息</h1><h1 id="u65E0_u6CD5_u63A7_u5236_uFF0C_uFF08_u5982_u679C_u8C03_u7528_u7684_u5916_u90E8_u547D_u4EE4_uFF0C_u6302_u6B7B_u6216_u8005_u6267_u884C_u65F6_u95F4_u5F88_u957F_uFF09_uFF0C_u4E3B_u8FDB_u7A0B_u65E0_u6CD5_u63A7_u5236os-system_28_29_2C__u56E0_u4E3A_u8C03_u7528os-system_28cmd_29__u8C03_u7528_u8FDB_u7A0B_u4F1Ablock_uFF0C_until_os-system_28_29__u81EA_u5DF1_u9000_u51FA"><a href="#u65E0_u6CD5_u63A7_u5236_uFF0C_uFF08_u5982_u679C_u8C03_u7528_u7684_u5916_u90E8_u547D_u4EE4_uFF0C_u6302_u6B7B_u6216_u8005_u6267_u884C_u65F6_u95F4_u5F88_u957F_uFF09_uFF0C_u4E3B_u8FDB_u7A0B_u65E0_u6CD5_u63A7_u5236os-system_28_29_2C__u56E0_u4E3A_u8C03_u7528os-system_28cmd_29__u8C03_u7528_u8FDB_u7A0B_u4F1Ablock_uFF0C_until_os-system_28_29__u81EA_u5DF1_u9000_u51FA" class="headerlink" title="无法控制，（如果调用的外部命令，挂死或者执行时间很长），主进程无法控制os.system(), 因为调用os.system(cmd)  调用进程会block， until os.system() 自己退出"></a>无法控制，（如果调用的外部命令，挂死或者执行时间很长），主进程无法控制os.system(), 因为调用os.system(cmd)  调用进程会block， until os.system() 自己退出</h1><p><pre class="lang:default decode:true ">In [30]: import os</pre></p>
+<p>In [31]: os.system(‘ls *.py’)<br>check_drive_usage.py  diff_file.py  fcSpider.py  fedspider.py  get_host_list.py  test.py  while.py<br>Out[31]: 0<br>os.popen<br>执行流程<br>popen(command [, mode=’r’ [, bufsize]]) -&gt; pipe<br>Open a pipe to/from a command returning a file object.</p>
+<h1 id="u8BE5_u65B9_u6CD5_u4E0D_u4F46_u6267_u884C_u547D_u4EE4_u8FD8_u8FD4_u56DE_u6267_u884C_u540E_u7684_u4FE1_u606F_u5BF9_u8C61"><a href="#u8BE5_u65B9_u6CD5_u4E0D_u4F46_u6267_u884C_u547D_u4EE4_u8FD8_u8FD4_u56DE_u6267_u884C_u540E_u7684_u4FE1_u606F_u5BF9_u8C61" class="headerlink" title="该方法不但执行命令还返回执行后的信息对象"></a>该方法不但执行命令还返回执行后的信息对象</h1><h1 id="u597D_u5904_u5728_u4E8E_uFF1A_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><a href="#u597D_u5904_u5728_u4E8E_uFF1A_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406" class="headerlink" title="好处在于：将返回的结果赋于一变量，便于程序的处理"></a>好处在于：将返回的结果赋于一变量，便于程序的处理</h1><p><pre class="lang:default decode:true">In [32]: py = os.popen(‘ls *py’).readlines()</pre></p>
+<p>In [33]: print py<br>[‘check_drive_usage.py\n’, ‘diff_file.py\n’, ‘fcSpider.py\n’, ‘fedspider.py\n’, ‘get_host_list.py\n’, ‘test.py\n’, ‘while.py\n’]<br>&nbsp;</p>
+<p><strong>II. commands</strong><br><a href="https://docs.python.org/2/library/commands.html" target="_blank" rel="external">https://docs.python.org/2/library/commands.html</a><br>常用的主要有两个方法：getoutput和getstatusoutput</p>
+<p><pre class="lang:default decode:true ">In [40]: import commands</pre></p>
+<p>In [41]: commands.getoutput(‘ls *.py’)<br>Out[41]: ‘check_drive_usage.py\ndiff_file.py\nfcSpider.py\nfedspider.py\nget_host_list.py\ntest.py\nwhile.py’</p>
+<p>In [41]: commands.getstatusoutput(‘ls *py’)<br>Out[41]:<br>(0,<br> ‘check_drive_usage.py\ndiff_file.py\nfcSpider.py\nfedspider.py\nget_host_list.py\ntest.py\nwhile.py’)<br>&nbsp;</p>
+<p><strong>III. subprocess  [ 推荐使用 ]</strong><br><a href="https://docs.python.org/2/library/subprocess.html" target="_blank" rel="external">https://docs.python.org/2/library/subprocess.html</a></p>
+<h1 id="u8FD0_u7528_u5BF9_u7EBF_u7A0B_u7684_u63A7_u5236_u548C_u76D1_u63A7_uFF0C_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><a href="#u8FD0_u7528_u5BF9_u7EBF_u7A0B_u7684_u63A7_u5236_u548C_u76D1_u63A7_uFF0C_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406" class="headerlink" title="运用对线程的控制和监控，将返回的结果赋于一变量，便于程序的处理"></a>运用对线程的控制和监控，将返回的结果赋于一变量，便于程序的处理</h1><h1 id="u4F1A_u81EA_u52A8_u5730_u52A0_u8F7D_u7CFB_u7EDF_u73AF_u5883_u53D8_u91CF_u3002"><a href="#u4F1A_u81EA_u52A8_u5730_u52A0_u8F7D_u7CFB_u7EDF_u73AF_u5883_u53D8_u91CF_u3002" class="headerlink" title="会自动地加载系统环境变量。"></a>会自动地加载系统环境变量。</h1><p>subprocess模块主要用于替代以下几个模块函数<br>os.system<br>os.spawn<em><br>os.popen</em><br>popen2.<em><br>commands.</em><br>相对应的subprocess 模块里有 call 函数和 popen 函数 。</p>
+<p>1、subprocess.call<br>call 函数的用法如下：<br>subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False)<br>可以看出，相对于os模块中的函数，这里可以指定的选项更多。</p>
+<p><pre class="lang:default decode:true ">In [64]: import subprocess</pre></p>
+<p>In [65]: subprocess.call(‘ls *py ‘,shell=False)<br>check_drive_usage.py  diff_file.py  fcSpider.py  fedspider.py  get_host_list.py  test.py  while.py<br>Out[65]: 0<br><br>交互式模式下，call 也会有returncode 0 输出，不过在py文件里执行时，ruturn的结果并不会将最后的 0 输出。不过在使用call 函数时，需要注意后面的几个参数:</p>
+<p><pre class="lang:default decode:true ">    开启shell=True是不安全的<br>    Using shell=True can be a security hazard. See the warning under Frequently Used Arguments for details.<br>    Note：<br>    尽量不要启用标准输出和标准错误输出需要管道，call有可能会导致子进程死锁。如需管道时，请使用Popen函数<br>    Do not use stdout=PIPE or stderr=PIPE with this function as that can deadlock based on the child process output volume. Use Popen with the communicate() method when you need pipes.</pre><br>subprocess.call 主要用于替换 os.system ，具体如下：</p>
+<p><pre class="lang:default decode:true ">In [66]: subprocess.call(‘date’)<br>Thu Oct 29 16:02:24 CST 2015<br>Out[66]: 0</pre><br>sub.process.Popen的用法如下：</p>
+<p><pre class="lang:default decode:true">subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)</pre><br>eg:</p>
+<p><pre class="lang:default decode:true ">In [67]: import subprocess</pre></p>
+<p>In [68]: p = subprocess.Popen(‘ls *.py’, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)</p>
+<p>In [69]: print p.stdout.readlines()<br>[‘check_drive_usage.py\n’, ‘diff_file.py\n’, ‘fcSpider.py\n’, ‘fedspider.py\n’, ‘get_host_list.py\n’, ‘test.py\n’, ‘while.py\n’]<br>&nbsp;</p>
+<p>更多内容请移步官网 <a href="https://docs.python.org" target="_blank" rel="external">https://docs.python.org</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>前言：<br>很多时候我们会用到python去调用外部工具/命令去实现某种功能。<br><strong>I. os</strong><br><a href="https://docs.python.org/2/library/os.html" target="_blank"]]>
+    </summary>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
+  
+</feed>
