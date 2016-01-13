@@ -4,12 +4,20 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>How-to: Find out Linux Disk utilization ? | Suzf Blog</title>
+    <title>Nginx 之访问控制与状态查看 | Suzf Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="I’ve already written about finding out Linux / UNIX cpu utilization using various tools. You can use same iostat command to find out disk utilization ">
+    <meta name="description" content="Nginx访问控制基于用户基于主机
+一、基于用户的访问控制1. 检测是否有htpasswd命令
+
+建立口令文件
+查看口令文件
+
+2. 实现认证[用户][root@Jeffery ~]# vim /usr/local/nginx/conf/nginx.conf3. 访问测试检测配置文件，重新加载
+
+访">
     
     
     
@@ -64,15 +72,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/08/14/how-do-i-find-out-linux-disk-utilization/" title="How-to: Find out Linux Disk utilization ?" itemprop="url">How-to: Find out Linux Disk utilization ?</a>
+      <a href="/2014/08/13/nginx-e4-b9-8b-e8-ae-bf-e9-97-ae-e6-8e-a7-e5-88-b6-e4-b8-8e-e7-8a-b6-e6-80-81-e6-9f-a5-e7-9c-8b/" title="Nginx 之访问控制与状态查看" itemprop="url">Nginx 之访问控制与状态查看</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-08-14T02:24:41.000Z" itemprop="datePublished">2015-08-14</time>
-    更新日期:<time datetime="2016-01-13T07:38:52.000Z" itemprop="dateModified">2016-01-13</time>
+    <time datetime="2014-08-13T13:18:07.000Z" itemprop="datePublished">2014-08-13</time>
+    更新日期:<time datetime="2016-01-13T07:22:14.000Z" itemprop="dateModified">2016-01-13</time>
     
   </p>
 </header>
@@ -81,60 +89,57 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#iostat_syntax_for_disk_utilization_report"><span class="toc-number">1.</span> <span class="toc-text">iostat syntax for disk utilization report</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Display_3_reports_of_extended_statistics_at_5_second_intervals_for_disk"><span class="toc-number">2.</span> <span class="toc-text">Display 3 reports of extended statistics at 5 second intervals for disk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_do_I_interpret_the_output_result_for_optimization_3F"><span class="toc-number">3.</span> <span class="toc-text">How do I interpret the output result for optimization?</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Nginx_u8BBF_u95EE_u63A7_u5236"><span class="toc-number">1.</span> <span class="toc-text">Nginx访问控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/local/nginx/conf/nginx-conf"><span class="toc-number">2.</span> <span class="toc-text">vim /usr/local/nginx/conf/nginx.conf</span></a></li></ol>
 		</div>
 		
-		<p>I’ve already written about finding out <a href="http://www.cyberciti.biz/tips/how-do-i-find-out-linux-cpu-utilization.html" target="_blank" rel="external">Linux / UNIX cpu utilization</a> using various tools. You can use same iostat command to find out disk utilization and for monitoring system input/output device loading by observing the time the physical disks are active in relation to their average transfer rates.</p>
-<h2 id="iostat_syntax_for_disk_utilization_report"><a href="#iostat_syntax_for_disk_utilization_report" class="headerlink" title="iostat syntax for disk utilization report"></a>iostat syntax for disk utilization report</h2><p>iostat -d -x interval count</p>
-<ul>
-<li><strong>-d</strong> : Display the device utilization report (d == disk)</li>
-<li><strong>-x</strong> : Display extended statistics including disk utilization</li>
-<li><strong>interval</strong> : It is time period in seconds between two samples . iostat 2 will give data at each 2 seconds interval.</li>
-<li><strong>count</strong> : It is the number of times the data is needed . iostat 2 5 will give data at 2 seconds interval 5 times</li>
-</ul>
-<h2 id="Display_3_reports_of_extended_statistics_at_5_second_intervals_for_disk"><a href="#Display_3_reports_of_extended_statistics_at_5_second_intervals_for_disk" class="headerlink" title="Display 3 reports of extended statistics at 5 second intervals for disk"></a>Display 3 reports of extended statistics at 5 second intervals for disk</h2><p>Type the following command:<br><code>$ iostat -d -x 5 3</code><br>Output:</p>
-<p><pre>Linux 2.6.18-53.1.4.el5 (moon.nixcraft.in)   12/17/2007<br>Device:         rrqm/s   wrqm/s   r/s   w/s   rsec/s   wsec/s avgrq-sz avgqu-sz   await  svctm  %util<br>sda               1.10    39.82  3.41 13.59   309.50   427.48    43.36     0.17   10.03   1.03   1.75<br>sdb               0.20    18.32  1.15  6.08   117.36   195.25    43.22     0.51   71.14   1.26   0.91<br>Device:         rrqm/s   wrqm/s   r/s   w/s   rsec/s   wsec/s avgrq-sz avgqu-sz   await  svctm  %util<br>sda               0.00   108.40  1.40 64.40    49.60  1382.40    21.76     0.04    0.67   0.44   2.92<br>sdb               0.00    37.80  0.00 245.20     0.00  2254.40     9.19    28.91  108.49   1.08  26.36<br>Device:         rrqm/s   wrqm/s   r/s   w/s   rsec/s   wsec/s avgrq-sz avgqu-sz   await  svctm  %util<br>sda               0.00    97.01  1.00 57.29    39.92  1234.33    21.86     0.03    0.58   0.50   2.89<br>sdb               0.00    38.32  0.00 288.42     0.00  2623.55     9.10    32.97  122.30   1.15  33.27</pre><br>Where,</p>
-<ul>
-<li><strong>rrqm/s</strong> : The number of read requests merged per second that were queued to the hard disk</li>
-<li><strong>wrqm/s</strong> : The number of write requests merged per second that were queued to the hard disk</li>
-<li><strong>r/s</strong> : The number of read requests per second</li>
-<li><strong>w/s</strong> : The number of write requests per second</li>
-<li><strong>rsec/s</strong> : The number of sectors read from the hard disk per second</li>
-<li><strong>wsec/s </strong> : The number of sectors written to the hard disk per second</li>
-<li><strong>avgrq-sz </strong> : The average size (in sectors) of the requests that were issued to the device.</li>
-<li><strong>avgqu-sz </strong> : The average queue length of the requests that were issued to the device</li>
-<li><strong>await </strong> : The average time (in milliseconds) for I/O requests issued to the device to be served. This includes the time spent by the requests in queue and the time spent servicing them.</li>
-<li><strong>svctm</strong> : The average service time (in milliseconds) for I/O requests that were issued to the device</li>
-<li><strong>%util</strong> : Percentage of CPU time during which I/O requests were issued to the device (bandwidth utilization for the device). Device saturation occurs when this value is close to 100%.</li>
-</ul>
-<h2 id="How_do_I_interpret_the_output_result_for_optimization_3F"><a href="#How_do_I_interpret_the_output_result_for_optimization_3F" class="headerlink" title="How do I interpret the output result for optimization?"></a>How do I interpret the output result for optimization?</h2><p>First you need to note down following values from the iostat output:</p>
-<ol>
-<li>The average service time (svctm)</li>
-<li>Percentage of CPU time during which I/O requests were issued (%util)</li>
-<li>See if a hard disk reports consistently high reads/writes (r/s and w/s)<br>If any one of these are high, you need to take one of the following action:</li>
-</ol>
-<ul>
-<li>Get high speed disk and controller for file system (for example move from SATA I to SAS 15k disk)</li>
-<li>Tune software or application or kernel or file system for better disk utilization</li>
-<li>Use RAID array to spread the file system<br>For example, from about iostat report it appears that /dev/sdb under load. Hope this information will help you diagnose and optimize disk related issues.</li>
-</ul>
-<p><strong>Related:</strong> <a href="http://www.cyberciti.biz/tips/how-do-i-find-out-linux-cpu-utilization.html" target="_blank" rel="external">How to find out Linux CPU utilization</a> using vmstat, iostat, mpstat and sar commands.</p>
-<p>Please note that command and information discussed here almost applies to any other UNIX like variant.</p>
+		<h1 id="Nginx_u8BBF_u95EE_u63A7_u5236"><a href="#Nginx_u8BBF_u95EE_u63A7_u5236" class="headerlink" title="Nginx访问控制"></a>Nginx访问控制</h1><p>基于用户<br>基于主机</p>
+<p>一、基于用户的访问控制<br>1. 检测是否有htpasswd命令</p>
+<p><img src="http://s3.51cto.com/wyfs02/M01/45/CC/wKiom1PrXt_A_rRuAABnC4Rha0w624.jpg" alt=""></p>
+<p>建立口令文件<br><img src="http://s3.51cto.com/wyfs02/M02/45/CC/wKiom1PrXhXi11blAAEkug7k48I780.jpg" alt=""></p>
+<p>查看口令文件</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/45/CD/wKioL1PrX5-zJrOHAADCwoRS6hU712.jpg" alt=""></p>
+<p>2. 实现认证[用户]<br>[root@Jeffery ~]# vim /usr/local/nginx/conf/nginx.conf<br><img src="http://s3.51cto.com/wyfs02/M01/45/CC/wKiom1PrYa2TkDVOAAG1mJLVafc406.jpg" alt=""><br>3. 访问测试<br>检测配置文件，重新加载</p>
+<p><img src="http://s3.51cto.com/wyfs02/M01/45/CC/wKiom1PrYoDhLNd2AAEpa0LGJaw512.jpg" alt=""></p>
+<p>访问测试</p>
+<p>[root@Jeffery ~]# links  www.jeffery.com</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/45/CC/wKiom1PrYsXSnYHAAADb2gYgKA4766.jpg" alt=""></p>
+<p>二、基于主机的访问控制</p>
+<p>修改配置文件<br><img src="http://s3.51cto.com/wyfs02/M01/45/CE/wKioL1PrZamRX-8KAAEXofukEP4125.jpg" alt=""></p>
+<p>重载与测试</p>
+<p><img src="http://s3.51cto.com/wyfs02/M00/45/CC/wKiom1PrZRXQKUwlAAF1DU_pFDY004.jpg" alt=""></p>
+<p>========================================================</p>
+<p>Nginx状态查看</p>
+<p>一、编译安装Nginx时<br>–with-http_stub_status_module<br>查看当前编译参数</p>
+<p>[root@Jeffery ~]# /usr/local/nginx/sbin/nginx -V<br>nginx version: nginx/1.2.2<br>built by gcc 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC)<br>TLS SNI support enabled<br>configure arguments: –user=www –group=www –prefix=/usr/local/nginx-1.2.2 –with-http_stub_status_module –with-http_sub_module –with-http_ssl_module –with-pcre=/usr/local/src/pcre-8.31</p>
+<p>二、配置Nginx</p>
+<h1 id="vim_/usr/local/nginx/conf/nginx-conf"><a href="#vim_/usr/local/nginx/conf/nginx-conf" class="headerlink" title="vim /usr/local/nginx/conf/nginx.conf"></a>vim /usr/local/nginx/conf/nginx.conf</h1><p><img src="http://s3.51cto.com/wyfs02/M00/45/CD/wKiom1PrcEyjybRNAAGKawW4xZ0927.jpg" alt=""></p>
+<p>重启服务</p>
+<p>[root@Jeffery ~]# /usr/local/nginx/sbin/nginx -t<br>nginx: the configuration file /usr/local/nginx-1.2.2/conf/nginx.conf syntax is ok<br>nginx: configuration file /usr/local/nginx-1.2.2/conf/nginx.conf test is successful<br>[root@Jeffery ~]# /usr/local/nginx/sbin/nginx -s reload</p>
+<p>查看Nginx状态信息<br><img src="http://s3.51cto.com/wyfs02/M01/45/CD/wKiom1PrcROCO2AmAADUEa_x3-4562.jpg" alt=""></p>
+<p>Active connections: 1    当前活动的连接数</p>
+<p>server accepts handled requests<br>18 18 45<br>18             从启动到现在一共处理的连接数<br>18             从启动到现在成功创建的握手的次数<br>45             总共处理的请求数(requests)<br>请求的丢失数＝（握手－连接）</p>
+<p>connection     连接数，tcp连接<br>request        http请求，GET/POST/DELETE</p>
+<p>Reading:0 Writing: 1 Waiting: 0<br>Reading: 0     读取客户端Header的信息数            请求头<br>Writing: 1     返回给客户端的header的信息数        响应头<br>Waiting: 0    等待的请求数</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Nginx/">Nginx</a>
+  </div>
+
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.suzf.net/2015/08/14/how-do-i-find-out-linux-disk-utilization/" data-title="How-to: Find out Linux Disk utilization ? | Suzf Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://blog.suzf.net/2014/08/13/nginx-e4-b9-8b-e8-ae-bf-e9-97-ae-e6-8e-a7-e5-88-b6-e4-b8-8e-e7-8a-b6-e6-80-81-e6-9f-a5-e7-9c-8b/" data-title="Nginx 之访问控制与状态查看 | Suzf Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -144,18 +149,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/08/16/how-to-delete-the-redundant-kernel-after-centos-update/" title="How-to: Delete the redundant kernel after CentOS update">
+ <a href="/2014/08/14/e8-af-91-zabbix-e4-b9-8b-e7-9b-91-e6-8e-a7-e8-99-9a-e6-8b-9f-e4-b8-bb-e6-9c-baexsi/" title="[ 译 ] Zabbix 之监控虚拟主机EXSI">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  How-to: Delete the redundant kernel after CentOS update</span>
+  [ 译 ] Zabbix 之监控虚拟主机EXSI</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/08/11/tomcat-e8-87-aa-e5-8a-a8-e6-9b-b4-e6-96-b0-e8-84-9a-e6-9c-ac/"  title="Tomcat  自动更新脚本">
+<a href="/2014/08/13/zabbix-e4-b9-8bweb-url-e7-9b-91-e6-8e-a7/"  title="Zabbix 之 web  url 监控">
  <strong>NEXT:</strong><br/> 
- <span>Tomcat  自动更新脚本
+ <span>Zabbix 之 web  url 监控
 </span>
 </a>
 </div>
@@ -172,7 +177,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#iostat_syntax_for_disk_utilization_report"><span class="toc-number">1.</span> <span class="toc-text">iostat syntax for disk utilization report</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Display_3_reports_of_extended_statistics_at_5_second_intervals_for_disk"><span class="toc-number">2.</span> <span class="toc-text">Display 3 reports of extended statistics at 5 second intervals for disk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How_do_I_interpret_the_output_result_for_optimization_3F"><span class="toc-number">3.</span> <span class="toc-text">How do I interpret the output result for optimization?</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Nginx_u8BBF_u95EE_u63A7_u5236"><span class="toc-number">1.</span> <span class="toc-text">Nginx访问控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/local/nginx/conf/nginx-conf"><span class="toc-number">2.</span> <span class="toc-text">vim /usr/local/nginx/conf/nginx.conf</span></a></li></ol>
   </div>
 
 <div id="asidepart">
