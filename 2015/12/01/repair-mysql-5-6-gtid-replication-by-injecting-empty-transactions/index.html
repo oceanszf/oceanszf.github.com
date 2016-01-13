@@ -1,0 +1,409 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>[译] Repair MySQL 5.6 GTID replication by injecting empty transactions | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="在前面文章我提到了两种关于如何修复 Mysql 5.6 GTID 主从数据库。我没有提到大家说熟知的方法 - GLOBAL SQL_SLAVE_SKIP_COUNTER = n。原因很简单，如果你使用的是MysqlGTID，它是不工作的。那么问题来了：
+有没有简单的方法跳过这单一事务 ?是的！注入空">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/" title="[译] Repair MySQL 5.6 GTID replication by injecting empty transactions" itemprop="url">[译] Repair MySQL 5.6 GTID replication by injecting empty transactions</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-12-01T13:34:23.000Z" itemprop="datePublished">2015-12-01</time>
+    更新日期:<time datetime="2016-01-13T07:18:41.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+		</div>
+		
+		<p>在前面文章我提到了两种关于<a href="https://www.percona.com/blog/2013/02/08/how-to-createrestore-a-slave-using-gtid-replication-in-mysql-5-6/" target="_blank" rel="external">如何修复 Mysql 5.6 GTID 主从数据库</a>。<br>我没有提到大家说熟知的方法 - <code>GLOBAL SQL_SLAVE_SKIP_COUNTER = n</code>。原因很简单，如果你使用的是MysqlGTID，它是不工作的。<br>那么问题来了：</p>
+<p><strong>有没有简单的方法跳过这单一事务 ?</strong><br>是的！<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-failover.html#replication-gtids-failover-empty" target="_blank" rel="external">注入空事务</a>。让我们想象一下，从服务器上的复制不工作，因为下面一个错误：</p>
+<p><div></div></p>
+<p><pre class="lang:default decode:true">Last_SQL_Error: Error ‘Duplicate entry ‘4’ for key ‘PRIMARY’’ on query. Default database: ‘test’. Query: ‘insert into t VALUES(NULL,’salazar’)’<br>Retrieved_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-5<br>Executed_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-4</pre><br><br>这里有不同的方法可以找到失败的事务。你可以检查二进制日志，或者你也可以检查<strong>retrieved_gtid_set </strong>和 <strong>executed_gtid_set</strong> 从显示输出的例子中我们可以看出。此从服务器检索到1到5的交易，但只执行了1到4。这意味着交易5是导致问题的一个问题。</p>
+<p>因为在GTID中sql_slave_skip_counter不工作，我们需要找到一种办法来忽视事务。我们可以在GTID中创建空事务以跳过它。</p>
+<p><pre class="lang:default decode:true ">STOP SLAVE;<br>SET GTID_NEXT=”7d72f9b4-8577-11e2-a3d7-080027635ef5:5”;<br>BEGIN; COMMIT;<br>SET GTID_NEXT=”AUTOMATIC”;<br>START SLAVE;<br>[…]<br>Retrieved_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-5<br>Executed_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-5</pre><br>START SLAVE 之后 检查事务5已经在它自己的二进制文件中了，这就意味着它已经执行过了。</p>
+<p>这是一个简单的方法来跳过一些事务，但是，你应该想到主从服务器之间数据不一致。<a href="https://www.percona.com/doc/percona-toolkit/2.2/pt-table-checksum.html" target="_blank" rel="external">pt-table-checksum</a> 在这里可以帮助你，它可以在<a href="https://www.percona.com/software/percona-toolkit" target="_blank" rel="external">Percona Toolkit for mysql</a> 中找到。</p>
+<p>上周我谈及了很多关于GTID的东西在<a href="http://percona-mysql-university-toronto-2013.eventbrite.com/" target="_blank" rel="external">多伦多 Percona Mysql 大学</a>。 它包括MySQL 5.6 gtid 这个新功能的工作概述，可以帮助人们。这是来自该会议的幻灯片。我希望你觉得它有用：<a href="https://www.percona.com/resources/technical-presentations/mysql-56-gtid-nutshell-percona-live-university-toronto" target="_blank" rel="external">MySQL 5.6 GTID in a nutshell
+</a></p>
+<p>原文： <a href="https://www.percona.com/blog/2013/03/26/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/" target="_blank" rel="external">https://www.percona.com/blog/2013/03/26/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Mysql/">Mysql</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/" data-title="[译] Repair MySQL 5.6 GTID replication by injecting empty transactions | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/" title="Hadoop 单节点_伪分布 安装手记">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Hadoop 单节点_伪分布 安装手记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/11/09/python-csv-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d/"  title="Python CSV 操作实例">
+ <strong>NEXT:</strong><br/> 
+ <span>Python CSV 操作实例
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>8</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/tags/RAC/" title="RAC">RAC<sup>2</sup></a></li>
+		
+			<li><a href="/tags/bug/" title="bug">bug<sup>1</sup></a></li>
+		
+			<li><a href="/tags/couchbase/" title="couchbase">couchbase<sup>1</sup></a></li>
+		
+			<li><a href="/tags/diy/" title="diy">diy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/expect/" title="expect">expect<sup>1</sup></a></li>
+		
+			<li><a href="/tags/facter/" title="facter">facter<sup>1</sup></a></li>
+		
+			<li><a href="/tags/faq/" title="faq">faq<sup>6</sup></a></li>
+		
+			<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/highcharts/" title="highcharts">highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iso/" title="iso">iso<sup>1</sup></a></li>
+		
+			<li><a href="/tags/pip/" title="pip">pip<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
