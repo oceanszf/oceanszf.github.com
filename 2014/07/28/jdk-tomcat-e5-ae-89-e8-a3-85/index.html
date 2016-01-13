@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | Suzf Blog</title>
+    <title>JDK_Tomcat  安装 | Suzf Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="Welcome to here! This is your very first post. 
-building   In building">
+    <meta name="description" content="####JDK 安装####这里版本选择为  jdk-6u33-linux-x64.bin1.上传安装文件至默认路径
+2.对安装文件授予执行权限 chmod +x  jdk-6u33-linux-x64.bin
+3.执行安装 ./jdk-6u33-linux-x64.bin mv jdk1.6.0_">
     
     
     
@@ -65,15 +66,15 @@ building   In building">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/01/13/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2014/07/28/jdk-tomcat-e5-ae-89-e8-a3-85/" title="JDK_Tomcat  安装" itemprop="url">JDK_Tomcat  安装</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-01-13T06:43:49.000Z" itemprop="datePublished">2016-01-13</time>
-    更新日期:<time datetime="2016-01-13T06:43:26.000Z" itemprop="dateModified">2016-01-13</time>
+    <time datetime="2014-07-28T09:35:00.000Z" itemprop="datePublished">2014-07-28</time>
+    更新日期:<time datetime="2016-01-13T07:04:12.000Z" itemprop="dateModified">2016-01-13</time>
     
   </p>
 </header>
@@ -82,21 +83,68 @@ building   In building">
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#building"><span class="toc-number">1.</span> <span class="toc-text">building</span></a></li></ol>
+		
 		</div>
 		
-		<p>Welcome to <a href="http://blog.suzf.net">here</a>! This is your very first post. </p>
-<h2 id="building"><a href="#building" class="headerlink" title="building"></a>building</h2><p>   In building</p>
+		<p>####JDK 安装####<br>这里版本选择为  jdk-6u33-linux-x64.bin<br>1.上传安装文件至默认路径</p>
+<p>2.对安装文件授予执行权限<br> chmod +x  jdk-6u33-linux-x64.bin</p>
+<p>3.执行安装<br> ./jdk-6u33-linux-x64.bin<br> mv jdk1.6.0_33 /usr/local<br> ln -s jdk1.6.0_33 java</p>
+<p>4.配置环境变量 在/etc/profile后追加即可<br>JAVA_HOME=/usr/local/java<br>JRE_HOME=/usr/local/java/jre<br>CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>PATH=$JAVA_HOME/bin:$PATH<br>export PATH CLASSPATH JAVA_HOME</p>
+<p>   source  /etc/profile   # 使修改的配置文件生效</p>
+<p>5.检测java 是否成功安装<br>[root@p2ptest ~]# java -version<br>java version “1.6.0_33”<br>Java(TM) SE Runtime Environment (build 1.6.0_33-b04)<br>Java HotSpot(TM) 64-Bit Server VM (build 20.8-b03, mixed mode)</p>
+<p>####安装Tomcat####<br>1.解压文件<br>  tar zxf apache-tomcat-7.0.2.tar.gz -C /usr/local<br>  mv apache-tomcat-7.0.2 tomcat</p>
+<p>2.vi /usr/local/tomcat/bin/catalina.sh 添加<br> JAVA_OPTS=”-Xms1024m -Xmx1024m -Xss1024K -XX:PermSize=128m -XX:MaxPermSize=256m”</p>
+<p> 配置文件： /usr/local/tomcat/conf/server.xml</p>
+<p> 日志输出： /usr/local/tomcat/logs/catalina.out</p>
+<p> 连接串：/usr/local/tomcat/conf/context.xml</p>
+<pre><code>    &lt;resource name=&quot;jdbc/myoracle&quot; auth=&quot;Container&quot;   
+
+    type=&quot;javax.sql.DataSource&quot; driverClassName=&quot;oracle.jdbc.OracleDriver&quot;   
+
+    url=&quot;jdbc:oracle:thin:@127.0.0.1:1521:mysid&quot; username=&quot;scott&quot;   
+
+    password=&quot;tiger&quot; maxActive=&quot;20&quot; maxIdle=&quot;10&quot; maxWait=&apos;&apos;-1&quot;&gt;&lt;/resource&gt;  
+
+部分参数解释：
+
+                          name--------------------jdbc/myoracle中myoracle为你要连接的数据库的名字。
+
+                           driverClassName----JDBC驱动类的完整的名称；
+
+                           maxActive---------------同时能够从连接池中被分配的可用实例的最大数
+
+                           maxIdle------------------可以同时闲置在连接池中的连接的最大数；
+
+                           maxWait------------------最大超时时间，以毫秒计；
+
+                           password----------------用户密码；
+
+                           url--------------------------到JDBC的URL连接,最后面的mysid为你安装时数据库实例的名称；
+
+                           username---------------用户名称
+
+                           validationQuery--------用来查询池中空闲的连接。
+</code></pre><p>   或是修改这个文件/usr/local/tomcat/webapps/project_name/WEB-INF/classes/conf/jdbc.properties</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/tomcat/">tomcat</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tomcat/">Tomcat</a>
+</div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.suzf.net/2016/01/13/hello-world/" data-title="Hello World | Suzf Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://blog.suzf.net/2014/07/28/jdk-tomcat-e5-ae-89-e8-a3-85/" data-title="JDK_Tomcat  安装 | Suzf Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -105,14 +153,14 @@ building   In building">
 	
 <nav class="article-nav clearfix">
  
-
-<div class="next">
-<a href="/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/"  title="Hadoop 单节点_伪分布 安装手记">
- <strong>NEXT:</strong><br/> 
- <span>Hadoop 单节点_伪分布 安装手记
-</span>
+ <div class="prev" >
+ <a href="/2015/10/01/how-to-use-highcharts-to-build-a-monitor-of-website-daily-visitor/" title="How-to: use highcharts and MySQL build easy monitor">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  How-to: use highcharts and MySQL build easy monitor</span>
 </a>
 </div>
+
 
 </nav>
 
@@ -126,7 +174,7 @@ building   In building">
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#building"><span class="toc-number">1.</span> <span class="toc-text">building</span></a></li></ol>
+  
   </div>
 
 <div id="asidepart">
