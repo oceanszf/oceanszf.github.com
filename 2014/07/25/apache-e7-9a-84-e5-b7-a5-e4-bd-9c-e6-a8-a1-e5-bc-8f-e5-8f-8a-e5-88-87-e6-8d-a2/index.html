@@ -1,0 +1,456 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Apache的工作模式及切换 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="prefork的工作原理及配置　　如果不用“–with-mpm”显式指定某种MPM，prefork就是Unix平台上缺省的MPM。它所采用的预派生子进程方式也是Apache 1.3中采用的模式。prefork本身并没有使用到线程，2.0版使用它是为了与1.3版保持兼容性；另一方面，prefork用单">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/07/25/apache-e7-9a-84-e5-b7-a5-e4-bd-9c-e6-a8-a1-e5-bc-8f-e5-8f-8a-e5-88-87-e6-8d-a2/" title="Apache的工作模式及切换" itemprop="url">Apache的工作模式及切换</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-07-25T06:10:00.000Z" itemprop="datePublished">2014-07-25</time>
+    更新日期:<time datetime="2016-01-13T07:21:07.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+		</div>
+		
+		<p>prefork的工作原理及配置<br>　　如果不用“–with-mpm”显式指定某种MPM，prefork就是Unix平台上缺省的MPM。它所采用的预派生子进程方式也是Apache 1.3中采用的模式。prefork本身并没有使用到线程，2.0版使用它是为了与1.3版保持兼容性；另一方面，prefork用单独的子进程来处理不同的请求，进程之间是彼此独立的，这也使其成为最稳定的MPM之一。</p>
+<p>　　若使用prefork，在make编译和make install安装后，使用“httpd -l”来确定当前使用的MPM，应该会看到prefork.c（如果看到worker.c说明使用的是worker MPM，依此类推）。再查看缺省生成的httpd.conf配置文件，里面包含如下配置段：</p>
+<ifmodule prefork.c=""><br><br>StartServers 5<br><br>MinSpareServers 5<br><br>MaxSpareServers 10<br><br>MaxClients 150<br><br>MaxRequestsPerChild 0<br><br></ifmodule>
+
+<p>　　prefork的工作原理是，控制进程在最初建立“StartServers”个子进程后，为了满足MinSpareServers设置的需要创建一 个进程，等待一秒钟，继续创建两个，再等待一秒钟，继续创建四个……如此按指数级增加创建的进程数，最多达到每秒32个，直到满足 MinSpareServers设置的值为止。这就是预派生（prefork）的由来。这种模式可以不必在请求到来时再产生新的进程，从而减小了系统开销 以增加性能。</p>
+<p>　　MaxSpareServers设置了最大的空闲进程数，如果空闲进程数大于这个值，Apache会自动kill掉一些多余进程。这个值不要设得过 大，但如果设的值比MinSpareServers小，Apache会自动把其调整为MinSpareServers+1。如果站点负载较大，可考虑同时 加大MinSpareServers和MaxSpareServers。</p>
+<p>　　MaxRequestsPerChild设置的是每个子进程可处理的请求数。每个子进程在处理了“MaxRequestsPerChild”个请求后 将自动销毁。0意味着无限，即子进程永不销毁。虽然缺省设为0可以使每个子进程处理更多的请求，但如果设成非零值也有两点重要的好处：</p>
+<p>　　◆ 可防止意外的内存泄漏；</p>
+<p>　　◆ 在服务器负载下降的时侯会自动减少子进程数。</p>
+<p>　　因此，可根据服务器的负载来调整这个值。个人认为10000左右比较合适。</p>
+<p>　　MaxClients是这些指令中最为重要的一个，设定的是Apache可以同时处理的请求，是对Apache性能影响最大的参数。其缺省值150是 远远不够的，如果请求总数已达到这个值（可通过ps -ef|grep http|wc -l来确认），那么后面的请求就要排队，直到某个已处理请求完毕。这就是系统资源还剩下很多而HTTP访问却很慢的主要原因。系统管理员可以根据硬件配置 和负载情况来动态调整这个值。虽然理论上这个值越大，可以处理的请求就越多，但Apache默认的限制不能大于256。如果把这个值设为大于256，那么 Apache将无法起动。事实上，256对于负载稍重的站点也是不够的。在Apache 1.3中，这是个硬限制。如果要加大这个值，必须在“configure”前手工修改的源代码树下的src/include/httpd.h中查找 256，就会发现“#define HARD_SERVER_LIMIT 256”这行。把256改为要增大的值（如4000），然后重新编译Apache即可。在Apache 2.0中新加入了ServerLimit指令，使得无须重编译Apache就可以加大MaxClients。下面是prefork配置段：</p>
+<ifmodule prefork.c=""><br><br>StartServers 10<br><br>MinSpareServers 10<br><br>MaxSpareServers 15<br><br>ServerLimit 2000<br><br>MaxClients 1000<br><br>MaxRequestsPerChild 10000<br><br></ifmodule>
+
+<p>　　上述配置中，ServerLimit的最大值是2000，对于大多数站点已经足够。如果一定要再加大这个数值，对位于源代码树下server/mpm/prefork/prefork.c中以下两行做相应修改即可：</p>
+<p>#define DEFAULT_SERVER_LIMIT 256</p>
+<p>#define MAX_SERVER_LIMIT 2000</p>
+<p>worker的工作原理及配置</p>
+<p>　　相对于prefork，worker是2.0 版中全新的支持多线程和多进程混合模型的MPM。由于使用线程来处理，所以可以处理相对海量的请求，而系统资源的开销要小于基于进程的服务器。但 是，worker也使用了多进程，每个进程又生成多个线程，以获得基于进程服务器的稳定性。这种MPM的工作方式将是Apache 2.0的发展趋势。</p>
+<p>　　在configure -with-mpm=worker后，进行make编译、make install安装。在缺省生成的httpd.conf中有以下配置段：</p>
+<ifmodule worker.c=""><br><br>StartServers 2<br><br>MaxClients 150<br><br>MinSpareThreads 25<br><br>MaxSpareThreads 75<br><br>ThreadsPerChild 25<br><br>MaxRequestsPerChild 0<br><br></ifmodule>
+
+<p>　　worker的工作原理是，由主控制进程生成“StartServers”个子进程，每个子进程中包含固定的ThreadsPerChild线程数， 各个线程独立地处理请求。同样，为了不在请求到来时再生成线程，MinSpareThreads和MaxSpareThreads设置了最少和最多的空闲 线程数；而MaxClients设置了所有子进程中的线程总数。如果现有子进程中的线程总数不能满足负载，控制进程将派生新的子进程。</p>
+<p>　　MinSpareThreads和MaxSpareThreads的最大缺省值分别是75和250。这两个参数对Apache的性能影响并不大，可以按照实际情况相应调节。</p>
+<p>　　ThreadsPerChild是worker MPM中与性能相关最密切的指令。ThreadsPerChild的最大缺省值是64，如果负载较大，64也是不够的。这时要显式使用 ThreadLimit指令，它的最大缺省值是20000。上述两个值位于源码树server/mpm/worker/worker.c中的以下两行：</p>
+<p>#define DEFAULT_THREAD_LIMIT 64</p>
+<p>#define MAX_THREAD_LIMIT 20000</p>
+<p>　　这两行对应着ThreadsPerChild和ThreadLimit的限制数。最好在configure之前就把64改成所希望的值。注意，不要把这两个值设得太高，超过系统的处理能力，从而因Apache不起动使系统很不稳定。</p>
+<p>　　Worker模式下所能同时处理的请求总数是由子进程总数乘以ThreadsPerChild值决定的，应该大于等于MaxClients。如果负载 很大，现有的子进程数不能满足时，控制进程会派生新的子进程。默认最大的子进程总数是16，加大时也需要显式声明ServerLimit（最大值是 20000）。这两个值位于源码树server/mpm/worker/worker.c中的以下两行：</p>
+<p>#define DEFAULT_SERVER_LIMIT 16</p>
+<p>#define MAX_SERVER_LIMIT 20000</p>
+<p>　　需要注意的是，如果显式声明了ServerLimit，那么它乘以ThreadsPerChild的值必须大于等于MaxClients，而且 MaxClients必须是ThreadsPerChild的整数倍，否则Apache将会自动调节到一个相应值（可能是个非期望值）。下面是 worker配置段：</p>
+<ifmodule worker.c=""><br><br>StartServers 3<br><br>MaxClients 2000<br><br>ServerLimit 25<br><br>MinSpareThreads 50<br><br>MaxSpareThreads 200<br><br>ThreadLimit 200<br><br>ThreadsPerChild 100<br><br>MaxRequestsPerChild 0<br><br></ifmodule>
+
+<p>　　通过上面的叙述，可以了解到Apache 2.0中prefork和worker这两个重要MPM的工作原理，并可根据实际情况来配置Apache相关的核心参数，以获得最大的性能和稳定性。</p>
+<p>如何切换apache2的prefork和worker模式</p>
+<p>  问题</p>
+<p>　　在Prima/Plesk/Virtuozzo上，apache都使用了系统自带的httpd-2.0.5x的rpm包</p>
+<p>　　在redhat linux上，默认使用的是prefork模式，而不是worker模式</p>
+<p>　　如何在二者间切换？</p>
+<p> 解决方案</p>
+<p>　　Apache HTTP服务器被设计为一个强大的、灵活的能够在多种平台以及不同环境下工作的服务器。</p>
+<p>　　不同的平台和不同的环境经常产生不同的需求，或是为了达到同样的最佳效果而采用不同的方法。</p>
+<p>　　Apache凭借它的模块化设计很好的适应了大量不同的环境。</p>
+<p>　　这一设计使得网站管理员能够在编译时和运行时凭借载入不同的模块来决定服务器的不同附加功能。</p>
+<p>　　Apache2.0将这种模块化的设计延伸到了web服务器的基础功能上。</p>
+<p>　　这个版本带有多路处理模块(MPM)的选择以处理网络端口绑定、</p>
+<p>　　接受请求并指派子进程来处理这些请求。</p>
+<p>　　比如，需要更好伸缩性的可以选择象worker或event这样线程化的MPM，</p>
+<p>　　而需要更好的稳定性和兼容性以适应一些旧的软件可以用prefork 。</p>
+<p>　　在Redhat Linux的主要版本as4上，apache版本为httpd-2.0.5x，</p>
+<p>　　默认为prefork模式，主要是考虑到稳定性的原因。</p>
+<p>　　要切换到worker模式，则需要登录到linux上，进行如下操作：</p>
+<p>　　进入/usr/sbin目录</p>
+<p>　　cd /usr/sbin</p>
+<p>　　将当前的prefork模式启动文件改名</p>
+<p>　　mv httpd httpd.prefork</p>
+<p>　　将worker模式的启动文件改名</p>
+<p>　　mv httpd.worker httpd</p>
+<p>　　修改配置文件vi /etc/httpd/conf/httpd.conf</p>
+<p>　　找到里边的如下一段，可适当修改负载等参数：</p>
+<p>　 StartServers 5<br>  ThreadLimit 200<br>  ServerLimit 50<br>  MaxClients 2000<br>  MinSpareThreads 25<br>  MaxSpareThreads 200<br>  ThreadsPerChild 100<br>  MaxRequestsPerChild 50</p>
+<p>　　重新启动服务</p>
+<p>　　/etc/init.d/httpd restart</p>
+<p>　　即可换成worker方式启动apache2</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Apache/">Apache</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Apache/">Apache</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2014/07/25/apache-e7-9a-84-e5-b7-a5-e4-bd-9c-e6-a8-a1-e5-bc-8f-e5-8f-8a-e5-88-87-e6-8d-a2/" data-title="Apache的工作模式及切换 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/07/28/jdk-tomcat-e5-ae-89-e8-a3-85/" title="JDK_Tomcat  安装">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  JDK_Tomcat  安装</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>8</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/tags/RAC/" title="RAC">RAC<sup>2</sup></a></li>
+		
+			<li><a href="/tags/bug/" title="bug">bug<sup>1</sup></a></li>
+		
+			<li><a href="/tags/couchbase/" title="couchbase">couchbase<sup>1</sup></a></li>
+		
+			<li><a href="/tags/diy/" title="diy">diy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/expect/" title="expect">expect<sup>1</sup></a></li>
+		
+			<li><a href="/tags/facter/" title="facter">facter<sup>1</sup></a></li>
+		
+			<li><a href="/tags/faq/" title="faq">faq<sup>6</sup></a></li>
+		
+			<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/highcharts/" title="highcharts">highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iso/" title="iso">iso<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
