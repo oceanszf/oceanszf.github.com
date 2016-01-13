@@ -4,14 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>JDK_Tomcat  安装 | Suzf Blog</title>
+    <title>LB 简单比较 - F5、NetScaler、LVS、Nginx、Haproxy | Suzf Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="####JDK 安装####这里版本选择为  jdk-6u33-linux-x64.bin1.上传安装文件至默认路径
-2.对安装文件授予执行权限 chmod +x  jdk-6u33-linux-x64.bin
-3.执行安装 ./jdk-6u33-linux-x64.bin mv jdk1.6.0_">
+    <meta name="description" content="负载均衡技术是构建大型网站必不可少的架构策略之一。它的目的是，把用户的请求分发到多台后端的设备上，用以均衡服务器的负载。我们可以把负载均衡器划分为两大类：硬件负载均衡器和软件负载均衡器。
+硬件负载均衡器，常见的有NetScaler、F5、Radware和Array等，这些设备为专业的厂商开发的负载均衡器，价格比较高昂，但也提供了高 可用性和高稳定性，同时还提供专业的技术服务，这些设备往往都是一些大企业（非IT类）所热衷的。因为这些企业不缺乏资金，也没有专业的it团队来开发和 运维类似的负载均衡套件。">
     
     
     
@@ -66,15 +65,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/07/28/jdk-tomcat-e5-ae-89-e8-a3-85/" title="JDK_Tomcat  安装" itemprop="url">JDK_Tomcat  安装</a>
+      <a href="/2015/07/12/lb-e7-ae-80-e5-8d-95-e6-af-94-e8-be-83-f5-e3-80-81netscaler-e3-80-81lvs-e3-80-81nginx-e3-80-81haproxy/" title="LB 简单比较 - F5、NetScaler、LVS、Nginx、Haproxy" itemprop="url">LB 简单比较 - F5、NetScaler、LVS、Nginx、Haproxy</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-07-28T09:35:00.000Z" itemprop="datePublished">2014-07-28</time>
-    更新日期:<time datetime="2016-01-13T07:04:12.000Z" itemprop="dateModified">2016-01-13</time>
+    <time datetime="2015-07-12T07:39:47.000Z" itemprop="datePublished">2015-07-12</time>
+    更新日期:<time datetime="2016-01-13T07:13:39.000Z" itemprop="dateModified">2016-01-13</time>
     
   </p>
 </header>
@@ -86,65 +85,27 @@
 		
 		</div>
 		
-		<p>####JDK 安装####<br>这里版本选择为  jdk-6u33-linux-x64.bin<br>1.上传安装文件至默认路径</p>
-<p>2.对安装文件授予执行权限<br> chmod +x  jdk-6u33-linux-x64.bin</p>
-<p>3.执行安装<br> ./jdk-6u33-linux-x64.bin<br> mv jdk1.6.0_33 /usr/local<br> ln -s jdk1.6.0_33 java</p>
-<p>4.配置环境变量 在/etc/profile后追加即可<br>JAVA_HOME=/usr/local/java<br>JRE_HOME=/usr/local/java/jre<br>CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>PATH=$JAVA_HOME/bin:$PATH<br>export PATH CLASSPATH JAVA_HOME</p>
-<p>   source  /etc/profile   # 使修改的配置文件生效</p>
-<p>5.检测java 是否成功安装<br>[root@p2ptest ~]# java -version<br>java version “1.6.0_33”<br>Java(TM) SE Runtime Environment (build 1.6.0_33-b04)<br>Java HotSpot(TM) 64-Bit Server VM (build 20.8-b03, mixed mode)</p>
-<p>####安装Tomcat####<br>1.解压文件<br>  tar zxf apache-tomcat-7.0.2.tar.gz -C /usr/local<br>  mv apache-tomcat-7.0.2 tomcat</p>
-<p>2.vi /usr/local/tomcat/bin/catalina.sh 添加<br> JAVA_OPTS=”-Xms1024m -Xmx1024m -Xss1024K -XX:PermSize=128m -XX:MaxPermSize=256m”</p>
-<p> 配置文件： /usr/local/tomcat/conf/server.xml</p>
-<p> 日志输出： /usr/local/tomcat/logs/catalina.out</p>
-<p> 连接串：/usr/local/tomcat/conf/context.xml</p>
-<pre><code>    &lt;resource name=&quot;jdbc/myoracle&quot; auth=&quot;Container&quot;   
-
-    type=&quot;javax.sql.DataSource&quot; driverClassName=&quot;oracle.jdbc.OracleDriver&quot;   
-
-    url=&quot;jdbc:oracle:thin:@127.0.0.1:1521:mysid&quot; username=&quot;scott&quot;   
-
-    password=&quot;tiger&quot; maxActive=&quot;20&quot; maxIdle=&quot;10&quot; maxWait=&apos;&apos;-1&quot;&gt;&lt;/resource&gt;  
-
-部分参数解释：
-
-                          name--------------------jdbc/myoracle中myoracle为你要连接的数据库的名字。
-
-                           driverClassName----JDBC驱动类的完整的名称；
-
-                           maxActive---------------同时能够从连接池中被分配的可用实例的最大数
-
-                           maxIdle------------------可以同时闲置在连接池中的连接的最大数；
-
-                           maxWait------------------最大超时时间，以毫秒计；
-
-                           password----------------用户密码；
-
-                           url--------------------------到JDBC的URL连接,最后面的mysid为你安装时数据库实例的名称；
-
-                           username---------------用户名称
-
-                           validationQuery--------用来查询池中空闲的连接。
-</code></pre><p>   或是修改这个文件/usr/local/tomcat/webapps/project_name/WEB-INF/classes/conf/jdbc.properties</p>
+		<p>负载均衡技术是构建大型网站必不可少的架构策略之一。它的目的是，把用户的请求分发到多台后端的设备上，用以均衡服务器的负载。我们可以把负载均衡器划分为两大类：硬件负载均衡器和软件负载均衡器。</p>
+<p>硬件负载均衡器，常见的有NetScaler、F5、Radware和Array等，这些设备为专业的厂商开发的负载均衡器，价格比较高昂，但也提供了高 可用性和高稳定性，同时还提供专业的技术服务，这些设备往往都是一些大企业（非IT类）所热衷的。因为这些企业不缺乏资金，也没有专业的it团队来开发和 运维类似的负载均衡套件。<a id="more"></a></p>
+<p>软件负载均衡器，较流行的有LVS，haproxy，nginx。这三种软件负载均衡器都为开源软件，任何个人或企业都可以无偿使用，所以对于一些小企业 或者比较专业的大型IT或者互联网企业来说，使用这些软件负载均衡器成为了一种必然趋势。下面简单分析一些这三种开源负载均衡器的特点：</p>
+<p>LVS特点是：<br>1. 首先它是基于4层的网络协议的，抗负载能力强，对于服务器的硬件要求除了网卡外，其他没有太多要求；<br>2. 配置性比较低，这是一个缺点也是一个优点，因为没有可太多配置的东西，大大减少了人为出错的几率；<br>3. 应用范围比较广，不仅仅对web服务做负载均衡，还可以对其他应用（mysql）做负载均衡；<br>4. LVS架构中存在一个虚拟IP的概念，需要向IDC多申请一个IP来做虚拟IP。</p>
+<p>Nginx负载均衡器的特点是：<br>1. 工作在网络的7层之上，可以针对http应用做一些分流的策略，比如针对域名、目录结构；<br>2. Nginx安装和配置比较简单，测试起来比较方便；<br>3. 也可以承担高的负载压力且稳定，一般能支撑超过上万次的并发；<br>4. Nginx可以通过端口检测到服务器内部的故障，比如根据服务器处理网页返回的状态码、超时等等，并且会把返回错误的请求重新提交到另一个节点，不过其中缺点就是不支持url来检测；<br>5. Nginx对请求的异步处理可以帮助节点服务器减轻负载；<br>6. Nginx能支持http和Email，这样就在适用范围上面小很多；<br>7. 默认有三种调度算法: 轮询、weight以及ip_hash（可以解决会话保持的问题），还可以支持第三方的fair和url_hash等调度算法；</p>
+<p>HAProxy的特点是：<br>1. HAProxy是工作在网络7层之上；<br>2. 支持Session的保持，Cookie的引导等；<br>3. 支持url检测后端的服务器出问题的检测会有很好的帮助；<br>4. 支持的负载均衡算法：动态加权轮循(Dynamic Round Robin)，加权源地址哈希(Weighted Source Hash)，加权URL哈希和加权参数哈希(Weighted Parameter Hash)；<br>5. 单纯从效率上来讲HAProxy更会比Nginx有更出色的负载均衡速度；<br>6. HAProxy可以对Mysql进行负载均衡，对后端的DB节点进行检测和负载均衡。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/tomcat/">tomcat</a>
-  </div>
-
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Tomcat/">Tomcat</a>
+  <a class="article-category-link" href="/categories/HA/">HA</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.suzf.net/2014/07/28/jdk-tomcat-e5-ae-89-e8-a3-85/" data-title="JDK_Tomcat  安装 | Suzf Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://blog.suzf.net/2015/07/12/lb-e7-ae-80-e5-8d-95-e6-af-94-e8-be-83-f5-e3-80-81netscaler-e3-80-81lvs-e3-80-81nginx-e3-80-81haproxy/" data-title="LB 简单比较 - F5、NetScaler、LVS、Nginx、Haproxy | Suzf Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -154,13 +115,21 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/10/14/faq-puppet-e5-b8-b8-e8-a7-81-e9-97-ae-e9-a2-98-e3-80-90-e6-8c-81-e7-bb-ad-e6-9b-b4-e6-96-b0-e4-b8-ad-e3-80-91/" title="FAQ_Puppet: common issue ">
+ <a href="/2015/08/21/e7-a8-8b-e5-ba-8f-e5-91-98-e7-a6-85-e7-9a-8410-e6-9d-a1-e6-b3-95-e5-88-99/" title="程序员禅的10条法则">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  FAQ_Puppet: common issue </span>
+  程序员禅的10条法则</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2015/07/07/e6-8f-90-e9-97-ae-e7-9a-84-e6-99-ba-e6-85-a7/"  title="提问的智慧">
+ <strong>NEXT:</strong><br/> 
+ <span>提问的智慧
+</span>
+</a>
+</div>
 
 </nav>
 
