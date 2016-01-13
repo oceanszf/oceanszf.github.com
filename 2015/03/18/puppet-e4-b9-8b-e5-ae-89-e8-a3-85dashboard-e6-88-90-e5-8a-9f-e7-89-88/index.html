@@ -1,0 +1,451 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Puppet set up dashboard success version | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Puppet Dasshboard是由支持Puppet开发的公司Puppetlabs创建的，是Ruby on Rails程序。可以作为一个ENC（外部节点分类器）以及一个报告工具，并且正在逐渐成为一个包含许多Puppet新功能的集成界面，例如审计和资源管 理功能。 Puppet Dashboard是">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/18/puppet-e4-b9-8b-e5-ae-89-e8-a3-85dashboard-e6-88-90-e5-8a-9f-e7-89-88/" title="Puppet set up dashboard success version" itemprop="url">Puppet set up dashboard success version</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-03-18T14:10:21.000Z" itemprop="datePublished">2015-03-18</time>
+    更新日期:<time datetime="2016-01-13T07:11:51.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_install_ruby-mysql_mysql-server_puppet-dashboard"><span class="toc-number">1.</span> <span class="toc-text">yum install  ruby-mysql mysql-server puppet-dashboard</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/mysqld_restart"><span class="toc-number">2.</span> <span class="toc-text">/etc/rc.d/init.d/mysqld restart</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chkconfig_mysqld_on"><span class="toc-number">3.</span> <span class="toc-text">chkconfig mysqld on</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysqladmin_-uroot_password_xxx"><span class="toc-number">4.</span> <span class="toc-text">mysqladmin -uroot password xxx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/etc/my-cnf"><span class="toc-number">5.</span> <span class="toc-text">vim /etc/my.cnf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Allowing_32MB_allows_an_occasional_17MB_row_with_plenty_of_spare_roommax_allowed_packet__3D_32M"><span class="toc-number">6.</span> <span class="toc-text">Allowing 32MB allows an occasional 17MB row with plenty of spare roommax_allowed_packet = 32M</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/mysqld_restart__23_u91CD_u542FMySQL_u751F_u6548"><span class="toc-number">7.</span> <span class="toc-text">/etc/rc.d/init.d/mysqld restart #重启MySQL生效</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/share/puppet-dashboard/config/database-yml"><span class="toc-number">8.</span> <span class="toc-text">vim /usr/share/puppet-dashboard/config/database.yml</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/share/puppet-dashboard/"><span class="toc-number">9.</span> <span class="toc-text">cd /usr/share/puppet-dashboard/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rake_gems_3Arefresh_specs"><span class="toc-number">10.</span> <span class="toc-text">rake gems:refresh_specs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rake_RAILS_ENV_3Dproduction_db_3Amigrate"><span class="toc-number">11.</span> <span class="toc-text">rake RAILS_ENV=production db:migrate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/httpd_stop__23_u4E4B_u524D_u914D_u7F6E_u8FC7_u4F7F_u7528httpd_u8FD0_u884Cpuppetmaster_uFF0C_u9700_u8981_u5173_u95ED"><span class="toc-number">12.</span> <span class="toc-text">/etc/rc.d/init.d/httpd stop #之前配置过使用httpd运行puppetmaster，需要关闭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/puppetmaster_start"><span class="toc-number">13.</span> <span class="toc-text">/etc/rc.d/init.d/puppetmaster start</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/puppet-dashboard_start__23_u542F_u52A8dashboard_Starting_Puppet_Dashboard_3A__3D_26gt_3B_Booting_WEBrick_3D_26gt_3B_Rails_2-3-17_application_starting_on_http_3A//0-0-0-0_3A3000__5B_OK__5D"><span class="toc-number">14.</span> <span class="toc-text">/etc/rc.d/init.d/puppet-dashboard start #启动dashboard    Starting Puppet Dashboard: => Booting WEBrick=> Rails 2.3.17 application starting on http://0.0.0.0:3000                                                           [  OK  ]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_install_ruby-devel_ruby-libs_rubygems_libcurl-devel_23_yum_install_httpd_httpd-devel_apr-util-devel_apr-devel_mod_ssl"><span class="toc-number">15.</span> <span class="toc-text">yum install ruby-devel ruby-libs rubygems libcurl-devel# yum install httpd httpd-devel apr-util-devel apr-devel mod_ssl</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gem_install_passenger"><span class="toc-number">16.</span> <span class="toc-text">gem install passenger</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#passenger-install-apache2-module"><span class="toc-number">17.</span> <span class="toc-text">passenger-install-apache2-module</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_install_openssl-devel_-y"><span class="toc-number">18.</span> <span class="toc-text">yum install openssl-devel -y</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/etc/httpd/conf-d/passenger-conf"><span class="toc-number">19.</span> <span class="toc-text">vim /etc/httpd/conf.d/passenger.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RailsAutoDetect_On"><span class="toc-number">20.</span> <span class="toc-text">RailsAutoDetect On</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/puppetmaster_stop__23_u505C_u6389puppetmaster_u670D_u52A1Stopping_puppetmaster_3A__5B_OK__5D_23_/etc/rc-d/init-d/httpd_restart"><span class="toc-number">21.</span> <span class="toc-text">/etc/rc.d/init.d/puppetmaster stop  #停掉puppetmaster服务Stopping puppetmaster:                                     [  OK  ]# /etc/rc.d/init.d/httpd restart</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/share/puppet-dashboard/_23_rake_RAILS_ENV_3Dproduction_reports_3Aimport__23_u5BFC_u5165_u5DF2_u7ECF_u5B58_u5728_u7684_u62A5_u544A"><span class="toc-number">22.</span> <span class="toc-text">cd /usr/share/puppet-dashboard/# rake RAILS_ENV=production reports:import  #导入已经存在的报告</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u914D_u7F6Eagent_u8282_u70B9_u81EA_u52A8_u53D1_u9001_u62A5_u544A"><span class="toc-number">23.</span> <span class="toc-text">配置agent节点自动发送报告</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u914D_u7F6Emaster__u62A5_u544A_u6C47_u603B_5Broot@master_puppet-dashboard_5D_23_vim_/etc/puppet/puppet-conf_5Bmain_5D_reports__3D_http"><span class="toc-number">24.</span> <span class="toc-text">配置master  报告汇总[root@master puppet-dashboard]# vim /etc/puppet/puppet.conf[main]    reports = http</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/share/puppet-dashboard/config/settings-yml"><span class="toc-number">25.</span> <span class="toc-text">vim /usr/share/puppet-dashboard/config/settings.yml</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/lib/ruby/site_ruby/1-8/puppet/reports"><span class="toc-number">26.</span> <span class="toc-text">cd /usr/lib/ruby/site_ruby/1.8/puppet/reports</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_summary-rbrequire"><span class="toc-number">27.</span> <span class="toc-text">vim summary.rbrequire</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/etc/puppet/puppet-conf"><span class="toc-number">28.</span> <span class="toc-text">vim /etc/puppet/puppet.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/httpd_restart"><span class="toc-number">29.</span> <span class="toc-text">/etc/rc.d/init.d/httpd restart</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/var/lib/puppet/reports/agent1-jeffery-com/_23_cat_summary-txt_Changes_3A_Total_3A_1Events_3A_Total_3A_1_Success_3A_1Resources_3A_Out_of_sync_3A_1_Changed_3A_1_Total_3A_15_Skipped_3A_6Time_3A_Filebucket_3A_0-00_Package_3A_0-00_File_3A_0-11_Service_3A_0-12_Config_retrieval_3A_1-29_Total_3A_1-52_Last_run_3A_1380861882Version_3A_Config_3A_1380861878_Puppet_3A_2-7-23"><span class="toc-number">30.</span> <span class="toc-text">cd /var/lib/puppet/reports/agent1.jeffery.com/# cat summary.txt Changes:            Total: 1Events:            Total: 1          Success: 1Resources:      Out of sync: 1          Changed: 1            Total: 15          Skipped: 6Time:       Filebucket: 0.00          Package: 0.00             File: 0.11          Service: 0.12   Config retrieval: 1.29            Total: 1.52         Last run: 1380861882Version:           Config: 1380861878           Puppet: 2.7.23</span></a></li></ol>
+		</div>
+		
+		<p>Puppet Dasshboard是由支持Puppet开发的公司Puppetlabs创建的，是Ruby on Rails程序。可以作为一个ENC（外部节点分类器）以及一个报告工具，并且正在逐渐成为一个包含许多Puppet新功能的集成界面，例如审计和资源管 理功能。 Puppet Dashboard是一个Ruby on Rails程序，用于显示Puppet master和agent的相关信息。它允许你查看从一个或多个Puppet master汇总的图形和报告数据。它同时从一个或者多个Puppet master上收集来自于Puppet agent的资产数据（主机的Fact和其他信息）。最后，它能作为一个ENC来配置Puppet节点，并指定这些节点上的类和参数。 </p>
+<p>参考文档：</p>
+<p><a href="http://kisspuppet.com/2014/10/20/puppet_learning_ext8/" target="_blank" rel="external">http://kisspuppet.com/2014/10/20/puppet_learning_ext8/</a></p>
+<p><a href="http://ruby-on-rails-book.kejyun.com/install/install-passenger.html" target="_blank" rel="external">http://ruby-on-rails-book.kejyun.com/install/install-passenger.html</a><br>1 前期准备工作</p>
+<p>Puppet Dashboard（1.2.3）程序目前版本只能安装在Ruby 1.8.x（Dashboard还不能工作在1.9.x下或者更新的版本下），只支持MySQL作为数据库后端。</p>
+<p>Rake version 0.8.3 or newerMySQL database server version 5.xRuby-MySQL bindings version 2.7.x or 2.8.x</p>
+<p>备注：更多详细信息请参考：<a href="http://docs.puppetlabs.com/dashboard/" target="_blank" rel="external">http://docs.puppetlabs.com/dashboard/</a><br>2 安装相关软件包</p>
+<h1 id="yum_install_ruby-mysql_mysql-server_puppet-dashboard"><a href="#yum_install_ruby-mysql_mysql-server_puppet-dashboard" class="headerlink" title="yum install  ruby-mysql mysql-server puppet-dashboard"></a>yum install  ruby-mysql mysql-server puppet-dashboard</h1><p>3 配置Dashboard（包括与数据库的结合部分）</p>
+<p>3.1 创建管理Dashboard的MySQL数据库账号并授权</p>
+<h1 id="/etc/rc-d/init-d/mysqld_restart"><a href="#/etc/rc-d/init-d/mysqld_restart" class="headerlink" title="/etc/rc.d/init.d/mysqld restart"></a>/etc/rc.d/init.d/mysqld restart</h1><h1 id="chkconfig_mysqld_on"><a href="#chkconfig_mysqld_on" class="headerlink" title="chkconfig mysqld on"></a>chkconfig mysqld on</h1><h1 id="mysqladmin_-uroot_password_xxx"><a href="#mysqladmin_-uroot_password_xxx" class="headerlink" title="mysqladmin -uroot password xxx"></a>mysqladmin -uroot password xxx</h1><p>#mysql uroot -p<br>mysql&gt; create database dashboard_production character set utf8;<br>mysql&gt; grant all on dashboard_production.* to ‘dashboard’@’localhost’ identified by “xxxx”;<br>mysql&gt; flush privileges;    </p>
+<p>#测试账号是否创建成功<br>mysql -udashboard -p -e “show processlist”;</p>
+<p>3.2 优化数据库配置文件my.cnf</p>
+<h1 id="vim_/etc/my-cnf"><a href="#vim_/etc/my-cnf" class="headerlink" title="vim /etc/my.cnf"></a>vim /etc/my.cnf</h1><p>[mysqld]</p>
+<h1 id="Allowing_32MB_allows_an_occasional_17MB_row_with_plenty_of_spare_roommax_allowed_packet__3D_32M"><a href="#Allowing_32MB_allows_an_occasional_17MB_row_with_plenty_of_spare_roommax_allowed_packet__3D_32M" class="headerlink" title="Allowing 32MB allows an occasional 17MB row with plenty of spare roommax_allowed_packet = 32M"></a>Allowing 32MB allows an occasional 17MB row with plenty of spare roommax_allowed_packet = 32M</h1><h1 id="/etc/rc-d/init-d/mysqld_restart__23_u91CD_u542FMySQL_u751F_u6548"><a href="#/etc/rc-d/init-d/mysqld_restart__23_u91CD_u542FMySQL_u751F_u6548" class="headerlink" title="/etc/rc.d/init.d/mysqld restart #重启MySQL生效"></a>/etc/rc.d/init.d/mysqld restart #重启MySQL生效</h1><p>3.3 编辑dashboard YAML配置文件（database.yml）来指定数据库</p>
+<h1 id="vim_/usr/share/puppet-dashboard/config/database-yml"><a href="#vim_/usr/share/puppet-dashboard/config/database-yml" class="headerlink" title="vim /usr/share/puppet-dashboard/config/database.yml"></a>vim /usr/share/puppet-dashboard/config/database.yml</h1><p>production:<br>database: dashboard_production<br>username: dashboard<br>password: xxx</p>
+<p>encoding: utf8  adapter: mysql</p>
+<p>…</p>
+<p>3.4 填充数据库</p>
+<h1 id="cd_/usr/share/puppet-dashboard/"><a href="#cd_/usr/share/puppet-dashboard/" class="headerlink" title="cd /usr/share/puppet-dashboard/"></a>cd /usr/share/puppet-dashboard/</h1><h1 id="rake_gems_3Arefresh_specs"><a href="#rake_gems_3Arefresh_specs" class="headerlink" title="rake gems:refresh_specs"></a>rake gems:refresh_specs</h1><h1 id="rake_RAILS_ENV_3Dproduction_db_3Amigrate"><a href="#rake_RAILS_ENV_3Dproduction_db_3Amigrate" class="headerlink" title="rake RAILS_ENV=production db:migrate"></a>rake RAILS_ENV=production db:migrate</h1><p>#环境变量RAILS_ENV=production告诉Ruby on Rails我们工作在生产环境。每次你运行一个rake命令都需要使用合适的环境值来设置RAILS_ENV环境变量</p>
+<p>3.5 查看是否导入成功<br><img src="http://s3.51cto.com/wyfs02/M01/5B/7B/wKiom1UJha6AhvkbAAIkioLDfzw868.jpg" alt=""></p>
+<p>4 启动并运行Dashboard（WEBrick方式）</p>
+<p>WEBrick有助于快速使用Dashboard，不过它不能很好地进行扩展，并且当有许多Puppet agent向Dashboard进行报告时，它的性能会非常差，因此不推荐使用。</p>
+<p>4.1 关闭httpd服务</p>
+<h1 id="/etc/rc-d/init-d/httpd_stop__23_u4E4B_u524D_u914D_u7F6E_u8FC7_u4F7F_u7528httpd_u8FD0_u884Cpuppetmaster_uFF0C_u9700_u8981_u5173_u95ED"><a href="#/etc/rc-d/init-d/httpd_stop__23_u4E4B_u524D_u914D_u7F6E_u8FC7_u4F7F_u7528httpd_u8FD0_u884Cpuppetmaster_uFF0C_u9700_u8981_u5173_u95ED" class="headerlink" title="/etc/rc.d/init.d/httpd stop #之前配置过使用httpd运行puppetmaster，需要关闭"></a>/etc/rc.d/init.d/httpd stop #之前配置过使用httpd运行puppetmaster，需要关闭</h1><p>4.2 启动puppetmaster服务</p>
+<h1 id="/etc/rc-d/init-d/puppetmaster_start"><a href="#/etc/rc-d/init-d/puppetmaster_start" class="headerlink" title="/etc/rc.d/init.d/puppetmaster start"></a>/etc/rc.d/init.d/puppetmaster start</h1><p>4.3 启动puppet-dashboard服务</p>
+<h1 id="/etc/rc-d/init-d/puppet-dashboard_start__23_u542F_u52A8dashboard_Starting_Puppet_Dashboard_3A__3D_26gt_3B_Booting_WEBrick_3D_26gt_3B_Rails_2-3-17_application_starting_on_http_3A//0-0-0-0_3A3000__5B_OK__5D"><a href="#/etc/rc-d/init-d/puppet-dashboard_start__23_u542F_u52A8dashboard_Starting_Puppet_Dashboard_3A__3D_26gt_3B_Booting_WEBrick_3D_26gt_3B_Rails_2-3-17_application_starting_on_http_3A//0-0-0-0_3A3000__5B_OK__5D" class="headerlink" title="/etc/rc.d/init.d/puppet-dashboard start #启动dashboard    Starting Puppet Dashboard: =&gt; Booting WEBrick=&gt; Rails 2.3.17 application starting on http://0.0.0.0:3000                                                           [  OK  ]"></a>/etc/rc.d/init.d/puppet-dashboard start #启动dashboard    Starting Puppet Dashboard: =&gt; Booting WEBrick=&gt; Rails 2.3.17 application starting on <a href="http://0.0.0.0:3000" target="_blank" rel="external">http://0.0.0.0:3000</a>                                                           [  OK  ]</h1><p>4.4 通过浏览器访问<a href="http://172.16.7.81:3000" target="_blank" rel="external">http://172.16.7.81:3000</a><br><img src="http://s3.51cto.com/wyfs02/M02/5B/75/wKioL1UJhumx16eeAAI-AxYGV4k423.jpg" alt=""></p>
+<p>5 启动并运行Dashboard（Passenger方式）</p>
+<p>5.1 使用Ruby Gem安装Passenger</p>
+<h1 id="yum_install_ruby-devel_ruby-libs_rubygems_libcurl-devel_23_yum_install_httpd_httpd-devel_apr-util-devel_apr-devel_mod_ssl"><a href="#yum_install_ruby-devel_ruby-libs_rubygems_libcurl-devel_23_yum_install_httpd_httpd-devel_apr-util-devel_apr-devel_mod_ssl" class="headerlink" title="yum install ruby-devel ruby-libs rubygems libcurl-devel# yum install httpd httpd-devel apr-util-devel apr-devel mod_ssl"></a>yum install ruby-devel ruby-libs rubygems libcurl-devel# yum install httpd httpd-devel apr-util-devel apr-devel mod_ssl</h1><h1 id="gem_install_passenger"><a href="#gem_install_passenger" class="headerlink" title="gem install passenger"></a>gem install passenger</h1><h1 id="passenger-install-apache2-module"><a href="#passenger-install-apache2-module" class="headerlink" title="passenger-install-apache2-module"></a>passenger-install-apache2-module</h1><p>注：安装过程会检查所需要的依赖包，若果发生错误，请按照passenger的提示安装<br><img src="http://s3.51cto.com/wyfs02/M00/5B/75/wKioL1UJhzPCNmhKAAXu2vpBYQ8318.jpg" alt=""></p>
+<p>我这里缺少OpenSSL包，所以需要再重新安裝</p>
+<h1 id="yum_install_openssl-devel_-y"><a href="#yum_install_openssl-devel_-y" class="headerlink" title="yum install openssl-devel -y"></a>yum install openssl-devel -y</h1><p>重新安装后再次执行passenger-install-apache2-module 安裝 Apache Passenger 套件即可，安装的过程需要编译apache 套件，所以需要一些时间</p>
+<p>5.2 配置虚拟主机和passenger</p>
+<h1 id="vim_/etc/httpd/conf-d/passenger-conf"><a href="#vim_/etc/httpd/conf-d/passenger-conf" class="headerlink" title="vim /etc/httpd/conf.d/passenger.conf"></a>vim /etc/httpd/conf.d/passenger.conf</h1><p>LoadModule passenger_module /usr/lib/ruby/gems/1.8/gems/passenger-4.0.19/buildout/apache2/mod_passenger.so</p>
+<p><ifmodule mod_passenger.c=""><br>PassengerRoot /usr/lib/ruby/gems/1.8/gems/passenger-4.0.19<br>PassengerRuby /usr/bin/ruby   PassengerHighPerformance on<br>PassengerMaxPoolSize 12<br>PassengerPoolIdleTime 1500<br>PassengerStatThrottleRate 120 </ifmodule></p>
+<h1 id="RailsAutoDetect_On"><a href="#RailsAutoDetect_On" class="headerlink" title="RailsAutoDetect On"></a>RailsAutoDetect On</h1><p><br>Listen 8141</p>
+<virtualhost *:8141=""><br>DocumentRoot “/usr/share/puppet-dashboard/public/“<br><directory "="" usr="" share="" puppet-dashboard="" public=""><br>Options None             AllowOverride AuthConfig<br>Order allow,deny<br>allow from all<br></directory><br>ErrorLog /var/log/httpd/dashboard.error.log<br>LogLevel warn<br>CustomLog /var/log/httpd/dashboard.access.log combined<br></virtualhost>
+
+<p>5.3 启动相关服务</p>
+<h1 id="/etc/rc-d/init-d/puppetmaster_stop__23_u505C_u6389puppetmaster_u670D_u52A1Stopping_puppetmaster_3A__5B_OK__5D_23_/etc/rc-d/init-d/httpd_restart"><a href="#/etc/rc-d/init-d/puppetmaster_stop__23_u505C_u6389puppetmaster_u670D_u52A1Stopping_puppetmaster_3A__5B_OK__5D_23_/etc/rc-d/init-d/httpd_restart" class="headerlink" title="/etc/rc.d/init.d/puppetmaster stop  #停掉puppetmaster服务Stopping puppetmaster:                                     [  OK  ]# /etc/rc.d/init.d/httpd restart"></a>/etc/rc.d/init.d/puppetmaster stop  #停掉puppetmaster服务Stopping puppetmaster:                                     [  OK  ]# /etc/rc.d/init.d/httpd restart</h1><p>5.4 通过浏览器访问测试</p>
+<p><a href="http://172.16.7.81:8141/" target="_blank" rel="external">http://172.16.7.81:8141/</a><br><img src="http://s3.51cto.com/wyfs02/M00/5B/7B/wKiom1UJhkyBw3iOAAJCa4-XQVs004.jpg" alt=""></p>
+<p>6 集成Puppet Dashboard</p>
+<p>6.1 手工导入现有的报告（方式一）</p>
+<h1 id="cd_/usr/share/puppet-dashboard/_23_rake_RAILS_ENV_3Dproduction_reports_3Aimport__23_u5BFC_u5165_u5DF2_u7ECF_u5B58_u5728_u7684_u62A5_u544A"><a href="#cd_/usr/share/puppet-dashboard/_23_rake_RAILS_ENV_3Dproduction_reports_3Aimport__23_u5BFC_u5165_u5DF2_u7ECF_u5B58_u5728_u7684_u62A5_u544A" class="headerlink" title="cd /usr/share/puppet-dashboard/# rake RAILS_ENV=production reports:import  #导入已经存在的报告"></a>cd /usr/share/puppet-dashboard/# rake RAILS_ENV=production reports:import  #导入已经存在的报告</h1><p><img src="http://s3.51cto.com/wyfs02/M01/5B/75/wKioL1UJh5HQQkhLAAI0MtWwlP0990.jpg" alt=""></p>
+<p>备注：默认节点报告会在/var/lib/puppet/reports/ 产生，如果路径发生变化，导入报告时需要在后面加上“REPORT_DIR=report路径”，reports更改路径可在puppet.conf中设置参数“reportdir = 新路径”，这种方式不够实时。<br><img src="http://s3.51cto.com/wyfs02/M02/5B/75/wKioL1UJh6bhiZWlAAGHXd9bNvA888.jpg" alt=""></p>
+<p>6.2 配置实施汇总puppet报告（方式二）</p>
+<h1 id="u914D_u7F6Eagent_u8282_u70B9_u81EA_u52A8_u53D1_u9001_u62A5_u544A"><a href="#u914D_u7F6Eagent_u8282_u70B9_u81EA_u52A8_u53D1_u9001_u62A5_u544A" class="headerlink" title="配置agent节点自动发送报告"></a>配置agent节点自动发送报告</h1><p>[root@agent1 ~]# vim /etc/puppet/puppet.conf    [agent]report = true                  #从2.7.0版本开始，报告系统会默认开启，不需要配置…</p>
+<h1 id="u914D_u7F6Emaster__u62A5_u544A_u6C47_u603B_5Broot@master_puppet-dashboard_5D_23_vim_/etc/puppet/puppet-conf_5Bmain_5D_reports__3D_http"><a href="#u914D_u7F6Emaster__u62A5_u544A_u6C47_u603B_5Broot@master_puppet-dashboard_5D_23_vim_/etc/puppet/puppet-conf_5Bmain_5D_reports__3D_http" class="headerlink" title="配置master  报告汇总[root@master puppet-dashboard]# vim /etc/puppet/puppet.conf[main]    reports = http"></a>配置master  报告汇总[root@master puppet-dashboard]# vim /etc/puppet/puppet.conf[main]    reports = http</h1><pre><code>reporturl = http://172.16.7.81:8141/reports 
+</code></pre><p>#定义为http报告处理器，除此之外还有store，log，tagmail，rrdgraph等报告处理器</p>
+<p>#http报告处理器将puppet报告发送到一个HTTP URL和端口（Dashboard位置）。Puppet报告以被转储为HTTP Poort形式的YAML格式进行发送。 [root@master ~]# /etc/rc.d/init.d/httpd restart</p>
+<p>6.3 开启后台处理报告进程</p>
+<p>#运行“Delayed Job Workers”，使其在后台为我们处理报告日志</p>
+<p>[root@master puppet-dashboard]# rake RAILS_ENV=production jobs:work &amp;[1] 20577</p>
+<p>6.4 修改dashboard时区【master】</p>
+<p>Dashboard默认时区为UTC格式，我们这里需要更改为CST（Asia/Shanghai）格式</p>
+<h1 id="vim_/usr/share/puppet-dashboard/config/settings-yml"><a href="#vim_/usr/share/puppet-dashboard/config/settings-yml" class="headerlink" title="vim /usr/share/puppet-dashboard/config/settings.yml"></a>vim /usr/share/puppet-dashboard/config/settings.yml</h1><p>time_zone: ‘Asia/Shanghai’…<strong>备注</strong>：设置的settings.yml会覆盖掉config/environment.rb中对应的配置项（config.time_zone = ‘UTC’）</p>
+<p>#/etc/init.d/httpd restart</p>
+<p>6.5 显示报告</p>
+<p>通过<a href="http://172.16.7.81:8141及时查看节点更新的报告信息，可以看到两个节点，默认显示时间为CST格式，除此之外还可以看到某一个节点在某一个时刻的更新报告和运行曲线图。" target="_blank" rel="external">http://172.16.7.81:8141及时查看节点更新的报告信息，可以看到两个节点，默认显示时间为CST格式，除此之外还可以看到某一个节点在某一个时刻的更新报告和运行曲线图。</a><br><img src="http://s3.51cto.com/wyfs02/M02/5B/7B/wKiom1UJhp_z5LLhAAFRPwQGzhc644.jpg" alt=""></p>
+<p>6.6 删除报告</p>
+<p>删除一个前的报告</p>
+<p>[root@master puppet-dashboard]# rake RAILS_ENV=production reports:prune upto=1 unit=mon</p>
+<p>删除一天前的报告</p>
+<p>[root@master puppet-dashboard]# rake RAILS_ENV=production reports:prune upto=1 unit=day</p>
+<p>删除效果如下：<br><img src="http://s3.51cto.com/wyfs02/M00/5B/75/wKioL1UJh__SnDeVAAEpgLydCtA405.jpg" alt=""></p>
+<p>7 自定义报告</p>
+<p>7.1 编写外部报告处理器</p>
+<p>使用现有的被存储的报告，就是那些yaml文件，可以通过设置puppet.conf中reports = store进 行收集。然后编写一个外部的处理器来处理这些信息，例如绘图或者将他们存储在外部数据库。这也是Puppet Dashboard中的报告输入进程的工作原理。这些外部的报告处理器可以很简单地使用Ruby进行编写，以便使用Ruby反序列化YAML文件的能力以 及使用生成的对象。你可以使用任何支持导入第三方ymal数据的工具。</p>
+<p>7.2 编写内部报告处理器</p>
+<p>编写自定义报告处理器并将它添加到Puppet。和fact、函数、类型及提供者的插件不同，Puppet没有提供一个自动分发自定义报告的方法。</p>
+<p>7.2.1 现有报告处理器信息</p>
+<p><img src="http://s3.51cto.com/wyfs02/M00/5B/7B/wKiom1UJhubw_m8SAAO1-njCTZk791.jpg" alt=""></p>
+<p>7.2.2 自定义摘要报告处理器</p>
+<p>7.2.2.1 进入reports目录编写自定义summary.rb报告处理器</p>
+<h1 id="cd_/usr/lib/ruby/site_ruby/1-8/puppet/reports"><a href="#cd_/usr/lib/ruby/site_ruby/1-8/puppet/reports" class="headerlink" title="cd /usr/lib/ruby/site_ruby/1.8/puppet/reports"></a>cd /usr/lib/ruby/site_ruby/1.8/puppet/reports</h1><h1 id="vim_summary-rbrequire"><a href="#vim_summary-rbrequire" class="headerlink" title="vim summary.rbrequire"></a>vim summary.rbrequire</h1><p>‘puppet’Puppet::Reports.register_report(:summary)<br>do  desc &lt; &lt;-DESC  Send summary report information to the report directory.<br>DESC  def process<br>client = self.host<br>summary = self.summary<br>dir = File.join(Puppet[:reportdir],client)<br>client = self.host<br>file = “summary.txt”<br>destination = File.join(dir,file)<br>File.open(destination,”w”)<br>do |f|        f.write(summary)<br>end<br>endend</p>
+<p>7.2.2.2 将报告处理器的名字加入puppet.conf中，并重新启动httpd服务</p>
+<h1 id="vim_/etc/puppet/puppet-conf"><a href="#vim_/etc/puppet/puppet-conf" class="headerlink" title="vim /etc/puppet/puppet.conf"></a>vim /etc/puppet/puppet.conf</h1><p>[main]reports = http,summary…</p>
+<h1 id="/etc/rc-d/init-d/httpd_restart"><a href="#/etc/rc-d/init-d/httpd_restart" class="headerlink" title="/etc/rc.d/init.d/httpd restart"></a>/etc/rc.d/init.d/httpd restart</h1><p>7.2.2.3 使用mco命令触发更新节点agent1</p>
+<p>[ mco 未完待续 ]<br>下面的这些涉及到 MCollective 事先配置好</p>
+<p> mco puppet -v runonce  mco facts -v –with-fact  hostname=’agent1’Discovering hosts using the mc method for 2 second(s) …. 1 * [ ============================================================&gt; ] 1 / 1agent1.kisspuppet.com                      : OK    {:summary=&gt;      “Started a background Puppet run using the ‘puppet agent –onetime –daemonize –color=false –splay –splaylimit 30’ command”}—- rpc stats —-           Nodes: 1 / 1     Pass / Fail: 1 / 0      Start Time: Fri Oct 04 12:54:50 +0800 2013  Discovery Time: 2005.27ms      Agent Time: 1118.41ms      Total Time: 3123.68ms</p>
+<p>7.2.2.4 查看新生成的报告信息</p>
+<h1 id="cd_/var/lib/puppet/reports/agent1-jeffery-com/_23_cat_summary-txt_Changes_3A_Total_3A_1Events_3A_Total_3A_1_Success_3A_1Resources_3A_Out_of_sync_3A_1_Changed_3A_1_Total_3A_15_Skipped_3A_6Time_3A_Filebucket_3A_0-00_Package_3A_0-00_File_3A_0-11_Service_3A_0-12_Config_retrieval_3A_1-29_Total_3A_1-52_Last_run_3A_1380861882Version_3A_Config_3A_1380861878_Puppet_3A_2-7-23"><a href="#cd_/var/lib/puppet/reports/agent1-jeffery-com/_23_cat_summary-txt_Changes_3A_Total_3A_1Events_3A_Total_3A_1_Success_3A_1Resources_3A_Out_of_sync_3A_1_Changed_3A_1_Total_3A_15_Skipped_3A_6Time_3A_Filebucket_3A_0-00_Package_3A_0-00_File_3A_0-11_Service_3A_0-12_Config_retrieval_3A_1-29_Total_3A_1-52_Last_run_3A_1380861882Version_3A_Config_3A_1380861878_Puppet_3A_2-7-23" class="headerlink" title="cd /var/lib/puppet/reports/agent1.jeffery.com/# cat summary.txt Changes:            Total: 1Events:            Total: 1          Success: 1Resources:      Out of sync: 1          Changed: 1            Total: 15          Skipped: 6Time:       Filebucket: 0.00          Package: 0.00             File: 0.11          Service: 0.12   Config retrieval: 1.29            Total: 1.52         Last run: 1380861882Version:           Config: 1380861878           Puppet: 2.7.23"></a>cd /var/lib/puppet/reports/agent1.jeffery.com/# cat summary.txt Changes:            Total: 1Events:            Total: 1          Success: 1Resources:      Out of sync: 1          Changed: 1            Total: 15          Skipped: 6Time:       Filebucket: 0.00          Package: 0.00             File: 0.11          Service: 0.12   Config retrieval: 1.29            Total: 1.52         Last run: 1380861882Version:           Config: 1380861878           Puppet: 2.7.23</h1><p>在整个报告处理器中，我们定义了一个叫做process的方法来承载处理器的核心逻辑。我们从报告中提取了一些信息：使用self.host方式提取了主机名，使用summary方式提取了变更的摘要。还可以使用self.logs和self.metrics方式来访问报告中的日子以及度量值。 我们同时还将报告的摘要输出了报告目录下对应的以Puppet agent主机名命名的目录中，报告目录的位置是由reportdir配置的值来指定的，默认在/var/lib/puppet/reports/目录下。</p>
+<p>备注：更多报告处理器信息请访问</p>
+<p>现有报告处理器<a href="https://github.com/puppetlabs/puppet/tree/master/lib/puppet/reports报告参考" target="_blank" rel="external">https://github.com/puppetlabs/puppet/tree/master/lib/puppet/reports报告参考</a> <a href="http://docs.puppetlabs.com/references/latest/report.html#http" target="_blank" rel="external">http://docs.puppetlabs.com/references/latest/report.html#http</a> 报告及报告系统 <a href="http://docs.puppetlabs.com/guides/reporting.html" target="_blank" rel="external">http://docs.puppetlabs.com/guides/reporting.html</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Puppet/">Puppet</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Puppet/">Puppet</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2015/03/18/puppet-e4-b9-8b-e5-ae-89-e8-a3-85dashboard-e6-88-90-e5-8a-9f-e7-89-88/" data-title="Puppet set up dashboard success version | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/05/26/puppet-e5-b0-86-e6-a8-a1-e5-9d-97-e7-bb-98-e5-88-b6-e6-88-90-e4-be-9d-e8-b5-96-e5-85-b3-e7-b3-bb-e5-9b-be/" title="Puppet drawing module into a dependency graph">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Puppet drawing module into a dependency graph</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/25/puppet-e8-87-aa-e5-ae-9a-e4-b9-89facter-e7-ae-80-e8-bf-b0/"  title="Puppet 自定义facter 简述">
+ <strong>NEXT:</strong><br/> 
+ <span>Puppet 自定义facter 简述
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_install_ruby-mysql_mysql-server_puppet-dashboard"><span class="toc-number">1.</span> <span class="toc-text">yum install  ruby-mysql mysql-server puppet-dashboard</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/mysqld_restart"><span class="toc-number">2.</span> <span class="toc-text">/etc/rc.d/init.d/mysqld restart</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chkconfig_mysqld_on"><span class="toc-number">3.</span> <span class="toc-text">chkconfig mysqld on</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysqladmin_-uroot_password_xxx"><span class="toc-number">4.</span> <span class="toc-text">mysqladmin -uroot password xxx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/etc/my-cnf"><span class="toc-number">5.</span> <span class="toc-text">vim /etc/my.cnf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Allowing_32MB_allows_an_occasional_17MB_row_with_plenty_of_spare_roommax_allowed_packet__3D_32M"><span class="toc-number">6.</span> <span class="toc-text">Allowing 32MB allows an occasional 17MB row with plenty of spare roommax_allowed_packet = 32M</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/mysqld_restart__23_u91CD_u542FMySQL_u751F_u6548"><span class="toc-number">7.</span> <span class="toc-text">/etc/rc.d/init.d/mysqld restart #重启MySQL生效</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/share/puppet-dashboard/config/database-yml"><span class="toc-number">8.</span> <span class="toc-text">vim /usr/share/puppet-dashboard/config/database.yml</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/share/puppet-dashboard/"><span class="toc-number">9.</span> <span class="toc-text">cd /usr/share/puppet-dashboard/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rake_gems_3Arefresh_specs"><span class="toc-number">10.</span> <span class="toc-text">rake gems:refresh_specs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rake_RAILS_ENV_3Dproduction_db_3Amigrate"><span class="toc-number">11.</span> <span class="toc-text">rake RAILS_ENV=production db:migrate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/httpd_stop__23_u4E4B_u524D_u914D_u7F6E_u8FC7_u4F7F_u7528httpd_u8FD0_u884Cpuppetmaster_uFF0C_u9700_u8981_u5173_u95ED"><span class="toc-number">12.</span> <span class="toc-text">/etc/rc.d/init.d/httpd stop #之前配置过使用httpd运行puppetmaster，需要关闭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/puppetmaster_start"><span class="toc-number">13.</span> <span class="toc-text">/etc/rc.d/init.d/puppetmaster start</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/puppet-dashboard_start__23_u542F_u52A8dashboard_Starting_Puppet_Dashboard_3A__3D_26gt_3B_Booting_WEBrick_3D_26gt_3B_Rails_2-3-17_application_starting_on_http_3A//0-0-0-0_3A3000__5B_OK__5D"><span class="toc-number">14.</span> <span class="toc-text">/etc/rc.d/init.d/puppet-dashboard start #启动dashboard    Starting Puppet Dashboard: => Booting WEBrick=> Rails 2.3.17 application starting on http://0.0.0.0:3000                                                           [  OK  ]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_install_ruby-devel_ruby-libs_rubygems_libcurl-devel_23_yum_install_httpd_httpd-devel_apr-util-devel_apr-devel_mod_ssl"><span class="toc-number">15.</span> <span class="toc-text">yum install ruby-devel ruby-libs rubygems libcurl-devel# yum install httpd httpd-devel apr-util-devel apr-devel mod_ssl</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gem_install_passenger"><span class="toc-number">16.</span> <span class="toc-text">gem install passenger</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#passenger-install-apache2-module"><span class="toc-number">17.</span> <span class="toc-text">passenger-install-apache2-module</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_install_openssl-devel_-y"><span class="toc-number">18.</span> <span class="toc-text">yum install openssl-devel -y</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/etc/httpd/conf-d/passenger-conf"><span class="toc-number">19.</span> <span class="toc-text">vim /etc/httpd/conf.d/passenger.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RailsAutoDetect_On"><span class="toc-number">20.</span> <span class="toc-text">RailsAutoDetect On</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/puppetmaster_stop__23_u505C_u6389puppetmaster_u670D_u52A1Stopping_puppetmaster_3A__5B_OK__5D_23_/etc/rc-d/init-d/httpd_restart"><span class="toc-number">21.</span> <span class="toc-text">/etc/rc.d/init.d/puppetmaster stop  #停掉puppetmaster服务Stopping puppetmaster:                                     [  OK  ]# /etc/rc.d/init.d/httpd restart</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/share/puppet-dashboard/_23_rake_RAILS_ENV_3Dproduction_reports_3Aimport__23_u5BFC_u5165_u5DF2_u7ECF_u5B58_u5728_u7684_u62A5_u544A"><span class="toc-number">22.</span> <span class="toc-text">cd /usr/share/puppet-dashboard/# rake RAILS_ENV=production reports:import  #导入已经存在的报告</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u914D_u7F6Eagent_u8282_u70B9_u81EA_u52A8_u53D1_u9001_u62A5_u544A"><span class="toc-number">23.</span> <span class="toc-text">配置agent节点自动发送报告</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u914D_u7F6Emaster__u62A5_u544A_u6C47_u603B_5Broot@master_puppet-dashboard_5D_23_vim_/etc/puppet/puppet-conf_5Bmain_5D_reports__3D_http"><span class="toc-number">24.</span> <span class="toc-text">配置master  报告汇总[root@master puppet-dashboard]# vim /etc/puppet/puppet.conf[main]    reports = http</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/share/puppet-dashboard/config/settings-yml"><span class="toc-number">25.</span> <span class="toc-text">vim /usr/share/puppet-dashboard/config/settings.yml</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/lib/ruby/site_ruby/1-8/puppet/reports"><span class="toc-number">26.</span> <span class="toc-text">cd /usr/lib/ruby/site_ruby/1.8/puppet/reports</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_summary-rbrequire"><span class="toc-number">27.</span> <span class="toc-text">vim summary.rbrequire</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/etc/puppet/puppet-conf"><span class="toc-number">28.</span> <span class="toc-text">vim /etc/puppet/puppet.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/rc-d/init-d/httpd_restart"><span class="toc-number">29.</span> <span class="toc-text">/etc/rc.d/init.d/httpd restart</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/var/lib/puppet/reports/agent1-jeffery-com/_23_cat_summary-txt_Changes_3A_Total_3A_1Events_3A_Total_3A_1_Success_3A_1Resources_3A_Out_of_sync_3A_1_Changed_3A_1_Total_3A_15_Skipped_3A_6Time_3A_Filebucket_3A_0-00_Package_3A_0-00_File_3A_0-11_Service_3A_0-12_Config_retrieval_3A_1-29_Total_3A_1-52_Last_run_3A_1380861882Version_3A_Config_3A_1380861878_Puppet_3A_2-7-23"><span class="toc-number">30.</span> <span class="toc-text">cd /var/lib/puppet/reports/agent1.jeffery.com/# cat summary.txt Changes:            Total: 1Events:            Total: 1          Success: 1Resources:      Out of sync: 1          Changed: 1            Total: 15          Skipped: 6Time:       Filebucket: 0.00          Package: 0.00             File: 0.11          Service: 0.12   Config retrieval: 1.29            Total: 1.52         Last run: 1380861882Version:           Config: 1380861878           Puppet: 2.7.23</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/couchbase/" title="couchbase">couchbase<sup>1</sup></a></li>
+		
+			<li><a href="/tags/facter/" title="facter">facter<sup>1</sup></a></li>
+		
+			<li><a href="/tags/faq/" title="faq">faq<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/highcharts/" title="highcharts">highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>

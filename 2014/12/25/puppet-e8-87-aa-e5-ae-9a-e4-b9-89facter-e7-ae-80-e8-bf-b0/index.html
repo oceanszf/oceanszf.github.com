@@ -1,0 +1,385 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Puppet 自定义facter 简述 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="在使用puppet作为配置管理工具的同时，facter是一个非常有用的系统盘点工具，自定义fact可以让节点增加更多的标签。这个工具可以通过一些预先设定好变量定位一台主机，比如可 以通过变量lsbdistrelease便可以知道当前系统的版本号，通过osfamily便可以知道系统是RedHat还是S">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/25/puppet-e8-87-aa-e5-ae-9a-e4-b9-89facter-e7-ae-80-e8-bf-b0/" title="Puppet 自定义facter 简述" itemprop="url">Puppet 自定义facter 简述</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-25T14:06:21.000Z" itemprop="datePublished">2014-12-25</time>
+    更新日期:<time datetime="2016-01-13T07:11:51.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#5Broot@agent1_facts-d_5D_23_vim_roles-yaml"><span class="toc-number">1.</span> <span class="toc-text">[root@agent1 facts.d]# vim roles.yaml </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config_by_puppet"><span class="toc-number">1.1.</span> <span class="toc-text">config by  puppet</span></a></li></ol></li></ol>
+		</div>
+		
+		<p>在使用puppet作为配置管理工具的同时，facter是一个非常有用的系统盘点工具，自定义fact可以让节点增加更多的标签。这个工具可以通过一些预先设定好变量定位一台主机，比如可 以通过变量lsbdistrelease便可以知道当前系统的版本号，通过osfamily便可以知道系统是RedHat还是SLES，还是其它等等。但 是这些预先设定好的变量毕竟有限，在整个自动化运维过程中，由于系统应用的多样性，更多需要通过应用的名称、角色的名称进行标示，这样就需要自定义一些 fact并赋值到每个节点上去，相当于给节点打上标签。<br>一、自定义(custom)fact的四种方法</p>
+<p>1、定义到facter软件本身的lib库中</p>
+<p>这种方法是直接在安装facter的lib库里面直接创建，相当于扩充facter软件的lib库。<br>可以通过以下方法找到facter包的lib库路径为/usr/lib/ruby/site_ruby/1.8/facter<br>[root@agent1 facter]# rpm -ql facter<br>/usr/bin/facter<br>/usr/lib/ruby/site_ruby/1.8/facter<br>/usr/lib/ruby/site_ruby/1.8/facter.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/Cfkey.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/application.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/architecture.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/augeasversion.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/blockdevices.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/domain.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/ec2.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/facterversion.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/filesystems.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/fqdn.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/hardwareisa.rb<br>/usr/lib/ruby/site_ruby/1.8/facter/hardwaremodel.rb<br>1.1、在facter的lib库中创建fact，名称为rpms，可以显示当前安装了多少rpm包<br>[root@agent1 ~]# cd /usr/lib/ruby/site_ruby/1.8/facter/<br>[root@agent1 facter]# vim rpms.rb<br>Facter.add(:rpms) do<br>  setcode do<br>    %x{/bin/rpm -qa | wc -l}.chomp  #定义一个shell命令<br>  end<br>end<br>1.2、通过facter命令进行测试<br>[root@agent1 facter]# facter | grep rpms<br>rpms =&gt; 918<br>[root@agent1 facter]# facter  rpms<br>918<br>备注：这种方法相当于给facter软件打补丁，过多的使用可能会破坏facter本身软件的完整性，不建议使用。<br>2、使用环境变量‘FACTERLIB’创建fact</p>
+<p>这种方法也非常简单，在一个目录下定义一个fact，然后export即可，方法如下<br>2.1、在自定义目录里面定义一个fact，列出当前系统登录的用户数<br>[root@agent1 ~]# vim /var/lib/puppet/kiss_fact/users.rb<br>Facter.add(:users) do<br>  setcode do<br>    %x{/usr/bin/who |wc -l}.chomp<br>  end<br>end<br>[root@agent1 kiss_fact]# facter users #无显示结果，需要设置FACTERLIB<br>[root@agent1 kiss_fact]#<br>2.2、将自定义fact路径赋值给变量FACTERLIB<br>[root@agent1 kiss_fact]# export FACTERLIB=/var/lib/puppet/kiss_fact<br>[root@agent1 kiss_fact]# facter users<br>2<br>[root@agent1 kiss_fact]# facter | grep users<br>users =&gt; 2<br>备注：这种方法是对第一种方法的扩展，可以自己定义目录，不过需要将路径加到变量FACTERLIB中，可以在/etc/profile添加，这样系统启动的时候便可以自动加载。<br>3、添加外部的(external)fact</p>
+<p>这种方式支持txt、yaml、json、sh四种格式，内容也比较固定，默认情况下需要在目录/etc/facter/facts.d/下创建，使用也非常方便。 关于这个路径其实是可以修改的，不过修改起来并不是很方便，需要修改facter软件代码。<br>[root@agent1 ~]# vim /usr/lib/ruby/site_ruby/1.8/facter/util/config.rb<br>    def self.external_facts_dirs                                     #这些内容默认是有的<br>      if Facter::Util::Root.root?<br>        windows_dir = windows_data_dir<br>        if windows_dir.nil? then<br>          [“/etc/facter/facts.d”, “/etc/puppetlabs/facter/facts.d”]  #external路径位置<br>        else<br>          [File.join(windows_dir, ‘PuppetLabs’, ‘facter’, ‘facts.d’)]<br>        end<br>      else<br>        [File.expand_path(File.join(“~”, “.facter”, “facts.d”))]<br>      end<br>    end<br>特殊说明：只能用于1.7.3版本以上</p>
+<p>3.1、通过txt文件创建<br>3.1.1、创建roles.txt文件<br>文件内容格式必须为“key=value”<br>[root@agent1 ~]# mkdir /etc/facter/facts.d -p<br>[root@agent1 facts.d]# vim roles.txt<br>web=http<br>db=mysql<br>3.1.2、测试<br>[root@agent1 facts.d]# facter web1<br>http1<br>[root@agent1 facts.d]# facter db1<br>mysql1<br>[root@agent1 facts.d]# facter | egrep ‘web1|db1’<br>db1 =&gt; mysql1<br>web1 =&gt; http1<br>3.2、通过yaml文件创建<br>3.2.1、创建yaml文件</p>
+<h2 id="5Broot@agent1_facts-d_5D_23_vim_roles-yaml"><a href="#5Broot@agent1_facts-d_5D_23_vim_roles-yaml" class="headerlink" title="[root@agent1 facts.d]# vim roles.yaml"></a>[root@agent1 facts.d]# vim roles.yaml </h2><p>web2:</p>
+<ul>
+<li>http2<br>db2:</li>
+<li>mysql2</li>
+<li>3.2.2、测试<br>[root@agent1 facts.d]# facter | egrep ‘web2|db2’<br>db2 =&gt; mysql2<br>web2 =&gt; http2<br>3.3、通过json文件创建<br>3.3.1、创建json文件<br>[root@agent1 facts.d]# vim roles.json<br>{<br>“web3”: “http3”,<br>“db3”: “mysql3”<br>}<br>备注：提供一个在线编辑json的网站<a href="http://www.bejson.com/go.html?u=http://www.bejson.com/jsonview2/" target="_blank" rel="external">http://www.bejson.com/go.html?u=http://www.bejson.com/jsonview2/</a><br>3.3.2、安装rubygem-json包（json文件需要它的支持）<br>[root@agent1 facts.d]# facter | egrep ‘web3|db3’<br>Cannot parse JSON data file /etc/facter/facts.d/roles.json without the json library.<br>Suggested next step is <code>gem install json</code> to install the json library. #缺少json包<br>[root@agent1 facts.d]# rpm -ivh rubygem-json-1.5.5-2.el5.x86_64.rpm #安装rubygem-json包，找不到安装包的同志可在群共享里面查找，群号码在文章最后面。<br>3.3.3、测试<br>[root@agent1 facts.d]# facter | egrep ‘web3|db3’<br>db3 =&gt; mysql3<br>web3 =&gt; http3<br>3.4、通过sh脚本创建<br>3.4.1、创建shell脚本<br>[root@agent1 facts.d]# vim roles.sh<br>#!/bin/bash<br>echo “web4=http4”<br>echo “db4=mysql4”<br>3.4.2、设置文件具有可执行权限<br>[root@agent1 facts.d]# chmod a+x roles.sh<br>3.4.3、测试<br>[root@agent1 facts.d]# facter web4 db4<br>db4 =&gt; mysql4<br>web4 =&gt; http4<br>思考：那么如何做到所有节点批量部署呢，可以看到以上四种方式都是基于文件编辑的，可在puppetmaster端通过file资源实现部署。</li>
+</ul>
+<p>4、使用pluginsync进行发布</p>
+<p>这种方法比较特殊，节点factpath目录里除了编写好的rb文件之外，还需要在puppet模块中引用，运行一次之后才会转换成fact。通常 在puppetmaster端模块里的lib库中添加，然后在puppet.conf中添加选项pluginsync=true即可，格式为ruby文 件。<br>4.1、创建模块facts<br>[root@puppetmaster ~]# cd /etc/puppet/environments/kissprd/environment/modules/<br>[root@puppetmaster modules]# tree facts/  #目录结构<br>facts/<br>└── lib<br>    └── facter<br>        └── hwclock.rb<br>2 directories, 1 file<br>备注：也可以放在其他已经编写好的模块中<br>[root@puppetmaster facter]# vim hwclock.rb  #自定义fact：hwclock，显示节点硬件时间<br>Facter.add(:hwclock) do<br>  setcode do<br>    %x{/usr/sbin/hwclock}.chomp<br>  end<br>end<br>4.2、应用自定义fact至motd模块中<br>[root@puppetmaster kissprd]# vim application/modules/motd/manifests/init.pp<br>class motd{<br>  package{ ‘setup’:<br>    ensure =&gt; present,<br>  }<br>  file{ ‘/etc/motd’:<br>    ensure  =&gt; present,<br>    owner   =&gt; ‘root’,<br>    group   =&gt; ‘root’,<br>    mode    =&gt; ‘0644’,<br>    source  =&gt; “puppet://$puppetserver/modules/motd/etc/motd”,<br>    require =&gt; Package[‘setup’],<br>  }<br>  notify { “ Hardware-Clock: ${::hwclock}”: } #添加一个通知，这里只是测试，没有实际意义<br>}<br>4.3、在puppetmaster端的puppet.conf中添加选项pluginsync<br>[root@puppetmaster kissprd]# vim /etc/puppet/puppet.conf<br>[main]<br>    logdir = /var/log/puppet<br>    rundir = /var/run/puppet<br>    ssldir = $vardir/ssl<br>    pluginsync = true    #添加插件选项<br>…<br>4.4、在所有节点puppet.conf中添加pluginsync（通过在puppet模块中添加实现）<br>[root@puppetmaster kissprd]# vim environment/modules/puppet/templates/puppet.conf.erb </p>
+<h3 id="config_by_puppet"><a href="#config_by_puppet" class="headerlink" title="config by  puppet"></a>config by  puppet</h3><p>[main]<br>    logdir = /var/log/puppet<br>    rundir = /var/run/puppet<br>    ssldir = $vardir/ssl<br>    pluginsync = true  #添加插件选项<br>[agent]<br>    classfile = $vardir/classes.txt<br>    localconfig = $vardir/localconfig<br>    server = &lt; %= scope.lookupvar(‘puppet::params::puppetserver’) %&gt;<br>    certname = &lt; %= scope.lookupvar(‘puppet::params::certname’) %&gt;<br>4.5、节点运行puppet agent进行测试<br>[root@agent1 ~]# facter -p hwclock  #没有这个fact，自定义fact需要加上-p参数才能显示<br>[root@agent1 ~]# puppet agent -t –environment=kissprd  #运行一次<br>info: Retrieving plugin<br>notice: /File[/var/lib/puppet/lib/facter/historys.rb]/ensure: removed<br>notice: /File[/var/lib/puppet/lib/facter/hwclock.rb]/ensure: defined content as ‘{md5}d8cc9fe2b349a06f087692763c878e28’<br>info: Loading downloaded plugin /var/lib/puppet/lib/facter/hwclock.rb  #下载插件至节点factpath指定的目录<br>info: Loading facts in /var/lib/puppet/lib/facter/hwclock.rb<br>info: Caching catalog for agent1_cert.kisspuppet.com<br>info: Applying configuration version ‘1396170375’<br>notice:  Hardware-Clock: Sun 30 Mar 2014 05:06:16 PM CST  -0.055086 seconds<br>notice: /Stage[main]/Motd/Notify[ Hardware-Clock: Sun 30 Mar 2014 05:06:16 PM CST  -0.055086 seconds]/message: defined ‘message’ as ‘ Hardware-Clock: Sun 30 Mar 2014 05:06:16 PM CST  -0.055086 seconds’ #应用<br>notice: Finished catalog run in 0.51 seconds<br>[root@agent1 ~]# facter -p  hwclock #自定义的hwclock生效<br>hwclock =&gt; Sun 30 Mar 2014 05:06:25 PM CST  -0.567090 seconds</p>
+<p>[root@agent1 ~]# ll /var/lib/puppet/lib/facter/  #插件已经下载到本地<br>total 4<br>-rw-r–r– 1 root root 79 Mar 30 17:06 hwclock.rb<br>关于factpath默认路径可通过以下命令查看，当然也可以在puppet.conf中进行修改<br>[root@agent1 ~]# puppet –genconfig | grep factpath<br>    factpath = /var/lib/puppet/lib/facter:/var/lib/puppet/facts<br>资料参考：</p>
+<p>官网 <a href="http://docs.puppetlabs.com/guides/custom_facts.html" target="_blank" rel="external">http://docs.puppetlabs.com/guides/custom_facts.html</a><br>书籍《pro puppet 2》Chapter10:Extending Facter and Puppet 下载地址：<a href="http://kisspuppet.com/2014/03/29/propuppet2/" target="_blank" rel="external">http://kisspuppet.com/2014/03/29/propuppet2/</a><br>书籍《Puppet 3 Cookbook》Chapter8: External Tools the Puppet Ecosystem 下载地址：QQ群里已经共享，群号在文章最下面<br>那么在生产环境当中应当如何应用自定义的fact呢，下一章节会介绍一种方法，结合ENC(hiera)实现节点分类。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Puppet/">Puppet</a><a href="/tags/facter/">facter</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Puppet/">Puppet</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2014/12/25/puppet-e8-87-aa-e5-ae-9a-e4-b9-89facter-e7-ae-80-e8-bf-b0/" data-title="Puppet 自定义facter 简述 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/18/puppet-e4-b9-8b-e5-ae-89-e8-a3-85dashboard-e6-88-90-e5-8a-9f-e7-89-88/" title="Puppet set up dashboard success version">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Puppet set up dashboard success version</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/10/21/puppet-e4-b9-8b-nginx-e6-a8-a1-e5-9d-97-e7-bc-96-e5-86-99/"  title="Puppet Nginx module write">
+ <strong>NEXT:</strong><br/> 
+ <span>Puppet Nginx module write
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#5Broot@agent1_facts-d_5D_23_vim_roles-yaml"><span class="toc-number">1.</span> <span class="toc-text">[root@agent1 facts.d]# vim roles.yaml </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config_by_puppet"><span class="toc-number">1.1.</span> <span class="toc-text">config by  puppet</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/couchbase/" title="couchbase">couchbase<sup>1</sup></a></li>
+		
+			<li><a href="/tags/facter/" title="facter">facter<sup>1</sup></a></li>
+		
+			<li><a href="/tags/faq/" title="faq">faq<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hadoop/" title="hadoop">hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/highcharts/" title="highcharts">highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
