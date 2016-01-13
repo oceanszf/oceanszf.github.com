@@ -97,8 +97,8 @@
   
   <entry>
     <title><![CDATA[使用 VIM 打造 Python 开发IDE]]></title>
-    <link href="http://blog.suzf.net/2015/12/25/e4-bd-bf-e7-94-a8-vim-e6-89-93-e9-80-a0-python-e5-bc-80-e5-8f-91ide/"/>
-    <id>http://blog.suzf.net/2015/12/25/e4-bd-bf-e7-94-a8-vim-e6-89-93-e9-80-a0-python-e5-bc-80-e5-8f-91ide/</id>
+    <link href="http://blog.suzf.net/2015/12/25/use-vim-to-build-python-development-ide/"/>
+    <id>http://blog.suzf.net/2015/12/25/use-vim-to-build-python-development-ide/</id>
     <published>2015-12-25T09:10:28.000Z</published>
     <updated>2016-01-13T07:38:52.000Z</updated>
     <content type="html"><![CDATA[<p>编程常用的文本编辑器就那么几种常见的, 有人喜欢Vim, 有人喜欢emacs, 也有人喜欢IDE, 例如Pycharm, eclipse等. 今天我们不谈孰优孰劣, 只要适合自己就可以了.</p>
@@ -404,8 +404,8 @@ include /etc/nginx/conf.d/*.conf;
   
   <entry>
     <title><![CDATA[Ceph 单/多节点 安装小结]]></title>
-    <link href="http://blog.suzf.net/2015/11/25/ceph-e5-8d-95-e5-a4-9a-e8-8a-82-e7-82-b9-e5-ae-89-e8-a3-85-e5-b0-8f-e7-bb-93-power-by-centos-6-x/"/>
-    <id>http://blog.suzf.net/2015/11/25/ceph-e5-8d-95-e5-a4-9a-e8-8a-82-e7-82-b9-e5-ae-89-e8-a3-85-e5-b0-8f-e7-bb-93-power-by-centos-6-x/</id>
+    <link href="http://blog.suzf.net/2015/11/25/ceph-single-multi-node-installation-summary/"/>
+    <id>http://blog.suzf.net/2015/11/25/ceph-single-multi-node-installation-summary/</id>
     <published>2015-11-25T14:21:54.000Z</published>
     <updated>2016-01-13T07:38:52.000Z</updated>
     <content type="html"><![CDATA[<p>概述</p>
@@ -469,8 +469,8 @@ include /etc/nginx/conf.d/*.conf;
   
   <entry>
     <title><![CDATA[Python CSV 操作实例]]></title>
-    <link href="http://blog.suzf.net/2015/11/09/python-csv-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d/"/>
-    <id>http://blog.suzf.net/2015/11/09/python-csv-e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8d/</id>
+    <link href="http://blog.suzf.net/2015/11/09/python-csv-example/"/>
+    <id>http://blog.suzf.net/2015/11/09/python-csv-example/</id>
     <published>2015-11-09T08:24:44.000Z</published>
     <updated>2016-01-13T07:17:03.000Z</updated>
     <content type="html"><![CDATA[<p>Reference: <a href="https://docs.python.org/2/library/csv.html" target="_blank" rel="external"> The Python Standard Library CSV</a></p>
@@ -1197,8 +1197,8 @@ msg.attach(img)
   
   <entry>
     <title><![CDATA[PHP 获取的时间和系统的时间不一致]]></title>
-    <link href="http://blog.suzf.net/2015/10/22/php-e8-8e-b7-e5-8f-96-e7-9a-84-e6-97-b6-e9-97-b4-e5-92-8c-e7-b3-bb-e7-bb-9f-e7-9a-84-e6-97-b6-e9-97-b4-e4-b8-8d-e4-b8-80-e8-87-b4/"/>
-    <id>http://blog.suzf.net/2015/10/22/php-e8-8e-b7-e5-8f-96-e7-9a-84-e6-97-b6-e9-97-b4-e5-92-8c-e7-b3-bb-e7-bb-9f-e7-9a-84-e6-97-b6-e9-97-b4-e4-b8-8d-e4-b8-80-e8-87-b4/</id>
+    <link href="http://blog.suzf.net/2015/10/22/php-acquisition-time-and-system-inconsistencies/"/>
+    <id>http://blog.suzf.net/2015/10/22/php-acquisition-time-and-system-inconsistencies/</id>
     <published>2015-10-22T03:31:01.000Z</published>
     <updated>2016-01-13T07:38:52.000Z</updated>
     <content type="html"><![CDATA[<p>问题描述：<br>最近发现自动发送工作日报的那个脚本出现了问题, 发送是大昨天的内容.<br>可能是系统时间或是服务器时间配置不正确,下面开始逐步排查.</p>
@@ -1241,8 +1241,8 @@ msg.attach(img)
   
   <entry>
     <title><![CDATA[Python 执行Linux系统命令的N种方法]]></title>
-    <link href="http://blog.suzf.net/2015/10/20/python-e6-89-a7-e8-a1-8clinux-e7-b3-bb-e7-bb-9f-e5-91-bd-e4-bb-a4-e7-9a-84n-e7-a7-8d-e6-96-b9-e6-b3-95/"/>
-    <id>http://blog.suzf.net/2015/10/20/python-e6-89-a7-e8-a1-8clinux-e7-b3-bb-e7-bb-9f-e5-91-bd-e4-bb-a4-e7-9a-84n-e7-a7-8d-e6-96-b9-e6-b3-95/</id>
+    <link href="http://blog.suzf.net/2015/10/20/python-exec-linux-cmd-ways/"/>
+    <id>http://blog.suzf.net/2015/10/20/python-exec-linux-cmd-ways/</id>
     <published>2015-10-20T07:00:56.000Z</published>
     <updated>2016-01-13T07:17:03.000Z</updated>
     <content type="html"><![CDATA[<p>前言：<br>很多时候我们会用到python去调用外部工具/命令去实现某种功能。<br><strong>I. os</strong><br><a href="https://docs.python.org/2/library/os.html" target="_blank" rel="external">https://docs.python.org/2/library/os.html</a><br>os.system<br>执行流程<br>system(command) -&gt; exit_status<br>Execute the command (a string) in a subshell.</p>

@@ -1,0 +1,485 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>MYSQL 常用总结【基础】 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="文章是之前总结的，还不是很完善。对于新手来说也许有一些帮助吧。
+文章难免会出现一些错误，请大家指出。
+Mysql 忘记root密码在/etc/my.cfg [mysqld]下面添加skip-grant-tables或是skip-grant
+重启MySQLuse mysql;UPDATE user S">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/10/20/mysql-basic-common-summary/" title="MYSQL 常用总结【基础】" itemprop="url">MYSQL 常用总结【基础】</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-10-20T08:48:10.000Z" itemprop="datePublished">2014-10-20</time>
+    Updated:<time datetime="2016-01-13T07:18:41.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>文章是之前总结的，还不是很完善。对于新手来说也许有一些帮助吧。</p>
+<p>文章难免会出现一些错误，请大家指出。</p>
+<p>Mysql 忘记root密码<br>在/etc/my.cfg [mysqld]下面添加<br>skip-grant-tables<br>或是<br>skip-grant</p>
+<p>重启MySQL<br>use mysql;<br>UPDATE user SET Password = password ( ‘new-password’ ) WHERE User = ‘root’ ;<br>mysql flush privileges;<br>将my.cfg文件修改回来 ，重启MySQL即可。</p>
+<p>二、在启动Mysql服务器时加上参数–skip-grant-tables来跳过授权表的验证<br>    (./safe_mysqld –skip-grant-tables &amp;)，这样我们就可以直接登陆Mysql服务器，<br>    然后再修改root用户的口令，重启Mysql就可以用新口令登陆了。</p>
+<p>添加环境变量<br>PATH=$PATH:/usr/local/mysql/bin  加入到/etc/profile中</p>
+<p>只需本机使用Mysql服务<br>在启动时还可以加上–skip-networking参数使Mysql不监听任何TCP/IP连接<br>(./safe_mysqld –skip-networking &amp;)，增加安全性。（非常推荐）</p>
+<p>查看支持的存储引擎<br> mysql&gt; show engines;<br>+————+———+————————————————————+————–+——+————+<br>| Engine     | Support | Comment                                                    | Transactions | XA   | Savepoints |<br>+————+———+————————————————————+————–+——+————+<br>| MRG_MYISAM | YES     | Collection of identical MyISAM tables                      | NO           | NO   | NO         |<br>| CSV        | YES     | CSV storage engine                                         | NO           | NO   | NO         |<br>| MyISAM     | DEFAULT | Default engine as of MySQL 3.23 with great performance    | NO           | NO   | NO         |<br>| InnoDB     | YES     | Supports transactions, row-level locking, and foreign keys | YES          | YES  | YES        |<br>| MEMORY     | YES     | Hash based, stored in memory, useful for temporary tables  | NO           | NO   | NO         |<br>+————+———+————————————————————+————–+——+————</p>
+<p>查看当前MySQL的默认数据引擎<br>show variables like ‘%engine%’;<br>mysql&gt; show variables like ‘%engine%’;<br>+—————————+——–+<br>| Variable_name             | Value  |<br>+—————————+——–+<br>| engine_condition_pushdown | ON     |<br>| storage_engine            | MyISAM |<br>+—————————+——–+<br>2 rows in set (0.00 sec)</p>
+<p>查看和修改最大连接数<br>  使用MySQL 数据库的站点，当访问连接数过多时，就会出现 “Too many connections” 的错误。<br>  出现这种错误有两种情况，一种是网站访问量实在太大，服务器已经负担不起，此时就应该考虑负载均衡或者其它减少服务器压力的办法。另一种情况就是 MySQL 的最大连接数设置得太小，当访问量稍大就出现连接过多的错误。</p>
+<p>  show variables like ‘%max_connections%’;<br>  要对 mysql 的最大连接数进行修改，只需要在 my.cnf 配置文件里面修改 max_connections 的值，然后重启 mysql 就行。<br>  如果 my.ini 文件中没有找到 max_connections 条目，可自行添加以下条目。</p>
+<p>  max_connections = 220<br>  或是<br>  mysql&gt;set global max_user_connections = 200; [仅本次修改有效]</p>
+<p>实时查看mysql当前连接数<br>前提：对用户和远程主机有授权<br>mysql&gt; grant all on <em>.</em> to root@192.168.9.9 identified by ‘ocean@mx’;<br>Query OK, 0 rows affected (0.00 sec)</p>
+<p>mysql&gt; flush privileges;<br>Query OK, 0 rows affected (0.00 sec)</p>
+<p>[root@OceanV ~]# mysqladmin -uroot -p -h192.168.9.9  processlist<br>Enter password:<br>+—-+——+——————-+—-+———+——+——-+——————+<br>| Id | User | Host              | db | Command | Time | State | Info             |<br>+—-+——+——————-+—-+———+——+——-+——————+<br>| 41 | root | localhost         |    | Sleep   | 13   |       |                  |<br>| 56 | root | 192.168.9.9:45422 |    | Query   | 0    |       | show processlist |<br>+—-+——+——————-+—-+———+——+——-+——————+</p>
+<p>只查看当前连接数(Threads就是连接数）<br>[root@OceanV ~]# mysqladmin -uroot -pocean@mx status<br>Uptime: 4449  Threads: 2  Questions: 18697  Slow queries: 0  Opens: 77  Flush tables: 1  Open tables: 31  Queries per second avg: 4.202<br>或是 show full processlist;<br>mysql&gt; show full processlist;<br>+—-+——+———–+——-+———+——+——-+———————–+<br>| Id | User | Host      | db    | Command | Time | State | Info                  |<br>+—-+——+———–+——-+———+——+——-+———————–+<br>| 41 | root | localhost | NULL  | Query   |    0 | NULL  | show full processlist |<br>| 65 | root | localhost | cacti | Sleep   |    4 |       | NULL                  |<br>| 68 | root | localhost | NULL  | Sleep   |   27 |       | NULL                  |<br>+—-+——+———–+——-+———+——+——-+———————–+<br>3 rows in set (0.00 sec)<br>看一下所有连接进程，注意查看进程等待时间以及所处状态 是否locked<br>如果进程过多，就把进程打印下来，然后查看.<br>mysql -e ‘show full processlist;’ -p &gt; 111<br>查找非locked的进程，一般就是当前执行中卡死，导致后面的进程排队的原因。</p>
+<p>查看MySQL连接数和当前用户Mysql连接数<br>先用管理员身份进入mysql提示符。<br>mysql -uroot -pxxxx<br>mysql &gt;show processlist;         #可以显示前100条连接信息<br>       show full processlist;    #可以显示全部。随便说下，如果用普通账号登录，就只显示这用户的。</p>
+<p>修改MySQL监听端口<br> 1.如果你安装的是系统自带的rpm包的情况：<br> 修改 /etc/my.cnf<br> [mysqld]<br> datadir=/var/lib/mysql<br> port=3300                    #修改成你自己想要的端口<br>  socket=/var/lib/mysql/mysql.sock<br> [mysql.server]<br> user=mysql<br> basedir=/var/lib<br> [safe_mysqld]<br> err-log=/var/log/mysqld.log<br> pid-file=/var/run/mysqld/mysqld.pid<br> 保存退出。<br> 2.如果你安装的是其他源码包或者在同一服务器上安装多个mysqld服务的情况：<br>  同样的配置，找出my.cnf 文件。添加port= 端口号<br> 需要注意的是<br> [client]<br> port            = 3300<br> 这里也要改一下。</p>
+<p>在同一台机器上配置两个MySQL服务（跑两个端口）<br>cd /usr/local/; cp -r mysql mysql_2; cd mysql_2;<br>初始化mysql2: ./scripts/mysql_install_db –user=mysql –datadir=/data/mysql2<br>拷贝配置文件：cp /etc/my.cnf ./my.cnf<br>修改配置文件相关参数：vim my.cnf  #更改port 以及 socket<br>启动：/usr/local/mysql_2/bin/mysqld_safe –defaults-file=/usr/local/mysql_2/my.cnf –user=mysql &amp;<br>若开机启动它，需加入到 /etc/rc.local中</p>
+<p>查看mysql设置参数　　<br>$mysqladmin  -u root -p variables;</p>
+<p>查询参数　　<br>    1) \g  在语句尾，同;<br>　　2) \G  在语句尾，使查询结果以竖形输出<br>　　3) \c  在语句尾，使当前语句不执行</p>
+<p>清屏<br>! clear</p>
+<p>切换mysql命令结尾符<br>dlimeter 特殊符;</p>
+<p>查看当前版本和当前日期<br>此命令要求mysql服务器告诉你它的版本号和当前日期</p>
+<p>mysql select version(),current_date();<br>+——————————-+—————-+<br>| version()                     | current_date() |<br>+——————————-+—————-+<br>| 4.1.7Boco_DC_Group_2004-11-24 | 2008-06-18     |<br>+——————————-+—————-+<br>1 row in set (0.00 sec)</p>
+<p>当前是哪个用户<br>select user();</p>
+<p>查看mysql状态<br>show status;</p>
+<p>修改mysql参数<br>show variables like ‘max_connect%’; set global max_connect_errors = 1000;<br>查看mysql队列 show processlist;</p>
+<p>查看mysql是否在监听端口命令<br>netstat -tl | grep mysql</p>
+<p>开启服务器　　<br>    $/etc/rc.d/init.d/mysqld start<br>　　或<br>　　$mysqld_safe  –user=mysql &amp;<br>停止服务器<br>　　$/etc/rc.d/init.d/mysqld stop<br>　　或<br>　　$mysqladmin  shutdown  -u root -p<br>    或<br>　　/usr/bin/mysqladmin -u root -p shutdown</p>
+<p>赋权　　<br>mysqlgrant all on dbname.* to username@ identified by ‘localhostpassword’<br>刷新权限表　　mysqlflush privileges;</p>
+<p>优化表　　<br>mysqloptimize  table  tblA,tblB;<br>或 [进行优化并检查修复任务]<br>$mysqlcheck  -o  dbname  tblA tblB  tblC   -u root  -p</p>
+<p>对表进行分析　　<br>mysqlanalyze  table  tblA;<br>或<br>$mysqlcheck  -a dbname [tblA  tblB tblC ] -u root -p</p>
+<p>对表进行检查　　<br>mysqlcheck table tblA,tblB,tblC;</p>
+<p>连接服务器　　<br>mysql -u   cnscn<br>　　      -h   192.168.0.1<br>　　      [-D  dbname]<br>　　      [-P  3306]<br>　　 [–protocol=name]    The protocol of connection (tcp,socket,pipe,memory)<br>　　      [-S, –socket=name]  连接所用的套接字文件<br>　　      [–character-sets-dir=name]  字符集所位于的目录<br>　　      [–default-character-set=name]   默认的字符集<br>　　      [-E, –vertical]  垂直地打列出查询输出</p>
+<p>从命令行登录MySQL数据库服务器<br>1.登录使用默认3306端口的MySQL<br>/usr/local/mysql/bin/mysql -u root -p</p>
+<p>2.通过TCP连接管理不同端口的多个MySQL（注意：MySQL4.1以上版本才有此项功能）<br>/usr/local/mysql/bin/mysql -u root -p –protocol=tcp –host=localhost –port=3307</p>
+<p>3.通过socket套接字管理不同端口的多个MySQL<br>/usr/local/mysql/bin/mysql -u root -p –socket=/tmp/mysql3307.sock</p>
+<p>4.通过端口和IP管理不同端口的多个MySQL<br>/usr/local/mysql/bin/mysql -u root -p -P 3306 -h 127.0.0.1</p>
+<p>退出mysql命令：<br>exit（回车） 提示“bye”</p>
+<p>修改登录密码<br>MySQL默认没有密码，安装完毕增加密码的重要性是不言而喻的。<br>usr/bin/mysqladmin -u root password ‘new-password’<br>格式：mysqladmin -u用户名 -p旧密码 password 新密码</p>
+<p>创建数据库　　<br>Mysql&gt;create database dbname;</p>
+<p>显示数据库列表　　<br>mysql&gt;show databases;</p>
+<p>显示数据表列表　　<br>mysql&gt;show tables;</p>
+<p>显示数据表的结构<br>describe 表名;<br>或<br>desc tablesname;</p>
+<p>显示表的创建信息<br>show create table tablesname;</p>
+<p>创建名称为ocean的数据库<br>CREATE DATABASE ocean;<br>DROP tables tablesname;</p>
+<p>将表中记录清空<br>delete from tablesname;</p>
+<p>建表<br>use 库名；create table 表名(字段设定列表)；</p>
+<p>删除名称为ocean的数据库<br>DROP DATABASE ocean;</p>
+<p>选择ocean数据库<br>USE ocean;</p>
+<p>(USE 和 QUIT 命令不需要分号结束。）</p>
+<p>常用sql命令<br>查询 select count(<em>) from mysql.user; select </em> from mysql.db; select * from mysql.db where host like ‘10.0.%’;<br>插入 update db1.t1 set name=’aaa’ where id=1;<br>清空表 truncate table db1.t1;<br>删除表 drop table db1.t1;<br>删除数据库 drop database db1;<br>修复表 repair table tb1 [use frm];</p>
+<p>表操作SQL语句<br>1、显示当前数据库中存在什么表<br>SHOW TABLES;</p>
+<p>2、创建数据库表zhangyan<br>在mysql后粘贴以下SQL语句，存储引擎为MYISAM，字段id为主键、唯一索引<br>。<br>CREATE TABLE <code>zhangyan</code> ( <code>id</code> INT( 5 ) UNSIGNED NOT NULL AUTO_INCREMENT , <code>username</code> VARCHAR( 20 ) NOT NULL , <code>password</code> CHAR( 32 ) NOT NULL , <code>time</code> DATETIME NOT NULL , <code>number</code> FLOAT( 10 ) NOT NULL , <code>content</code> TEXT NOT NULL , PRIMARY KEY ( <code>id</code> ) ) ENGINE = MYISAM ;</p>
+<p>3、查看zhangyan表结构<br>DESCRIBE zhangyan;</p>
+<p>4、从表中检索信息<br>4.1、从zhangyan表中检索所有记录<br>SELECT * FROM zhangyan;</p>
+<p>4.2、从zhangyan表中检索特定的行：字段username等于abc，字段number等于1，按字段id降序排列<br>SELECT * FROM zhangyan WHERE username = abc AND number=1 ORDER BY id DESC;</p>
+<p>4.3、从zhangyan表中检索指定的字段：username和password<br>SELECT username, password FROM zhangyan;</p>
+<p>4.4、从zhangyan表中检索出唯一的不重复记录<br>SELECT DISTINCT username FROM zhangyan;</p>
+<p>5、插入信息到zhangyan表<br>INSERT INTO zhangyan (id, username, password, time, number, content) VALUES (, abc, 123456,<br>2007-08-06 14:32:12, 23.41, hello world);</p>
+<p>6、更新zhangyan表中的指定信息<br>UPDATE zhangyan SET content = hello china WHERE username = abc;</p>
+<p>7、删除zhangyan表中的指定信息<br>DELETE FROM zhangyan WHERE id = 1;</p>
+<p>8、清空zhangyan表<br>DELETE FROM zhangyan;</p>
+<p>9、删除zhangyan表<br>DROP TABLE zhangyan;</p>
+<p>10、更改表结构，将zhangyan表username字段的字段类型改为CHAR(25)<br>ALTER TABLE zhangyan CHANGE username username CHAR(25);</p>
+<p>11、将当前目录下的mysql.sql导入数据库<br>SOURCE ./mysql.sql;</p>
+<p>12、MySQL中将字符串aaa批量替换为bbb的SQL语句<br>UPDATE表名SET字段名=REPLACE(字段名,aaa,bbb);</p>
+<p>13、修复损坏的表<br>用root帐号从命令行登录MySQL：　　<br>mysql-uroot-p<br>选定数据库名（本例中的数据库名为student）：use  student;<br>修复损坏的表（本例中要修复的表为smis_user_student）：　　repair tables mis_user_student;udent;</p>
+<p>一个建库和建表以及插入数据的实例<br>drop database if exists school; //如果存在SCHOOL则删除<br>create database school; //建立库SCHOOL<br>use school; //打开库SCHOOL<br>create table subject //建立表<br>(<br>id int(3) auto_increment not null primary key,<br>name char(10) not null<br>); //建表结束<br>//以下为插入字段<br>insert into subject(name) values(‘语文’);<br>insert into subject(name) values(‘数学’);<br>insert into subject(name) values(‘英语’);</p>
+<p>create table student //建立表<br>(<br>id int(4) auto_increment not null primary key;<br>no char(4) not null,<br>name char(10) not null,<br>); //建表结束<br>//以下为插入字段<br>insert into student(no,name) values(‘0001’,’张三’);<br>insert into student(no,name) values(‘0002’,’李四’);</p>
+<p>create table grade //建立表<br>(<br>student_no char(4) not null,<br>subject_id int(3) not null,<br>score int(3) not null default 0 null,<br>primary key(student_no,subject_id);<br>); //建表结束<br>我们这里建立的grade表student_no参考student的no字段，subject_id参考subject的id字段 它们存在约束关系，<br>我们给grade表添加两个外键：<br>subject_id字段：<br>alter table grade add foreign key(subject_id) refrences subject(id) on delete cascade on update cascade;<br>student_no字段：<br>alter table grade add foreign key(student_no) refrences student(no) on delete cascade on update cascade;<br>这个时候会报错，因为我们没有把student表中的no设为索引，前一句没有问题是因为subject的id是主键，已经是索引了<br>我们给student的no添加索引<br>alter table student add index(no);<br>然后我们再<br>alter table grade add foreign key(student_no) refrences student(no);<br>这样就OK了</p>
+<p>其他一些操作：<br>添加主键： alter table 表名 add primary key(列名)<br>删除主键： alter table 表名 drop primary key;<br>给某列改名： alter table 表名 change 列名 属性列表 比如alter table student change id no char(4)<br>添加某列：<br>1 在表的最前面添加列 比如给student表添加id属性 放在表的最前面<br>alter table student add id int(4) not null auto_increment primary key first;<br>2 在表的某个列后加列 比如给student表添加id属性 放在列no的最前面<br>alter table student add a int(11) afer no;<br>删除某列： alter table 表名 drop column 列名;<br>更改某列属性 比如修改student no字段属性 alter table student modify no char(4);<br>添加索引：alter table 表名 add index 列名<br>删除索引：alter table 表名 drop index 列名<br>删除外键：alter table 表名 drop foreign key 约束名<br>limit的使用：<br>select <em> from 表名 limit 2;//如果只给定一个参数，它表示返回最大的记录行数目<br>select </em> from 表名 limit 1,3;// 第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目</p>
+<p>更改MySQL目录<br>MySQL默认的数据文件存储目录为/var/lib/mysql。假如要把目录移到/home/data下需要进行下面几步：<br>1、home<br>目录下建立data目录<br>cd /home<br>mkdir data<br>2、把MySQL服务进程停掉：<br>mysqladmin -u root -p shutdown<br>3、把/var/lib/mysql整个目录移到/home/data<br>mv /var/lib/mysql　/home/data/<br>这样就把MySQL的数据文件移动到了/home/data/mysql下<br>4、找到my.cnf配置文件<br>如果/etc/目录下没有my.cnf配置文件，请到/usr/share/mysql/下找到*.cnf文件，拷贝其中一个到/etc/并改名为my.cnf)中。命令如下：<br>[root@test1 mysql]# cp /usr/share/mysql/my-medium.cnf　/etc/my.cnf<br>5、编辑MySQL的配置文件/etc/my.cnf<br>为保证MySQL能够正常工作，需要指明mysql.sock文件的产生位置。 修改socket=/var/lib/mysql/mysql.sock一行中等号右边的值为：/home/mysql/mysql.sock 。<br>操作如下：<br>　　 vi　 my.cnf<br>　　 # The MySQL server<br>　　　 [mysqld]<br>　　　 port　　　= 3306<br>　　　#socket　 = /var/lib/mysql/mysql.sock（原内容，为了更稳妥用#注释此行）<br>　　　 socket　 = /home/data/mysql/mysql.sock　　　（加上此行）<br>6、修改MySQL启动脚本/etc/rc.d/init.d/mysql<br>　　最后,需要修改MySQL启动脚本/etc/rc.d/init.d/mysql，把其中datadir=/var/lib/mysql一行中，等号右边的路径改成你现在的实际存放路径：home/data/mysql。<br>　　[root@test1 etc]# vi　/etc/rc.d/init.d/mysql<br>　　#datadir=/var/lib/mysql　　　　（注释此行）<br>　　datadir=/home/data/mysql　　 （加上此行）<br>7、重新启动MySQL服务<br>　　/etc/rc.d/init.d/mysql　start<br>　　如果工作正常移动就成功了，否则对照前面的7步再检查一下。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Mysql/">Mysql</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2014/10/20/mysql-basic-common-summary/" data-title="MYSQL 常用总结【基础】 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/10/21/puppet-nginx-module-write/" title="Puppet Nginx module write">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Puppet Nginx module write</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/10/14/faq-puppet-common-issues/"  title="FAQ_Puppet: common issue ">
+ <strong>NEXT:</strong><br/> 
+ <span>FAQ_Puppet: common issue 
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>20</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>4</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>9</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>7</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>3</sup></a></li>
+		
+			<li><a href="/tags/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Proxy/" title="Proxy">Proxy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>15</sup></a></li>
+		
+			<li><a href="/tags/RAC/" title="RAC">RAC<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>

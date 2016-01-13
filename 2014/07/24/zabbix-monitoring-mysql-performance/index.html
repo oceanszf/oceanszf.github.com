@@ -1,0 +1,499 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Zabbix之监控Mysql性能 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Zabbix还可以监控mysql slow queries,mysql version,uptime,alive等。下面通过Zabbix Graphs实时查看的SQL语句操作情况和mysql发送接收的字节数。1.Zabbix官方提供的监控mysql的模板Template App MySQL,可以看到">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/07/24/zabbix-monitoring-mysql-performance/" title="Zabbix之监控Mysql性能" itemprop="url">Zabbix之监控Mysql性能</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-07-24T11:59:07.000Z" itemprop="datePublished">2014-07-24</time>
+    Updated:<time datetime="2016-01-13T07:37:21.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysqladmin_-uzabbix_-p_status"><span class="toc-number">1.</span> <span class="toc-text">mysqladmin  -uzabbix -p status</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/usr/local/zabbix/scripts/checkmysqlperformance-sh"><span class="toc-number">2.</span> <span class="toc-text">cat /usr/local/zabbix/scripts/checkmysqlperformance.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/usr/local/zabbix/etc/zabbix_agentd-conf_7C_grep_-v__u201C_5E_24_7C_5E_23_u201D"><span class="toc-number">3.</span> <span class="toc-text">cat /usr/local/zabbix/etc/zabbix_agentd.conf| grep -v “^$|^#”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BUptime_5D"><span class="toc-number">4.</span> <span class="toc-text">/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Uptime]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BCom_select_5D"><span class="toc-number">5.</span> <span class="toc-text">/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Com_select]</span></a></li></ol>
+		</div>
+		
+		<p>Zabbix还可以监控mysql slow queries,mysql version,uptime,alive等。下面通过Zabbix Graphs实时查看的SQL语句操作情况和mysql发送接收的字节数。<br>1.Zabbix官方提供的监控mysql的模板Template App MySQL,可以看到相关的Items和key。</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/46/56/wKiom1PxzESQxRm3AAQZvp-HspU325.jpg" alt=""></p>
+<p>2. 把该模板Template App MySQL Link到相关的主机上面,发现Item的Status是不可用的，因为key的值是通过Mysql用户查看”show global status”信息或者用mysqladmin命令查看status或extended-status的信息而取的值。</p>
+<p>mysql&gt; show global status;</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/46/56/wKiom1PxzFyCnHWIAAFSPC-iApg860.jpg" alt=""></p>
+<p>mysql&gt; show status;</p>
+<p>3.创建只读 账户zabbix</p>
+<p>mysql&gt;  insert into mysql.user(Host,User,Password)values(“localhost”,”zabbix”,password(“yourpasswd”));</p>
+<p>mysql&gt; update mysql.user set  Select_priv=”Y” where user=”zabbix” and HOST=”localhost”;</p>
+<p>mysql&gt;flush privileges;</p>
+<h1 id="mysqladmin_-uzabbix_-p_status"><a href="#mysqladmin_-uzabbix_-p_status" class="headerlink" title="mysqladmin  -uzabbix -p status"></a>mysqladmin  -uzabbix -p status</h1><p>Uptime: 3023456  Threads: 16  Questions: 941201  Slow queries: 0  Opens: 491  Flush tables: 1  Open tables: 90  Queries per second avg: 0.311</p>
+<p>4.结合官方提供的key编写Shell脚本，从数据库中取出Items的key的值。</p>
+<h1 id="cat_/usr/local/zabbix/scripts/checkmysqlperformance-sh"><a href="#cat_/usr/local/zabbix/scripts/checkmysqlperformance-sh" class="headerlink" title="cat /usr/local/zabbix/scripts/checkmysqlperformance.sh"></a>cat /usr/local/zabbix/scripts/checkmysqlperformance.sh</h1><p>#!/bin/sh</p>
+<p>#Modified by Jeffery Aug,18 2014<br>MYSQL_SOCK=”/var/lib/mysql/mysql.sock”</p>
+<p>#MYSQL_PWD=<code>cat /var/lib/mysql/3306/.mysqlpassword</code><br>MYSQL_PWD=yourpasswd</p>
+<p>ARGS=1</p>
+<p>if [ $# -ne “$ARGS” ];then<br>    echo “Please input one arguement:”<br>fi</p>
+<p>case $1 in<br>    Uptime)<br>        result=<code>mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK status|cut -f2 -d&quot;:&quot;|cut -f1 -d&quot;T&quot;</code><br>        echo $result<br>        ;;</p>
+<pre><code>Com_update)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_update&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+</code></pre><p>   Slow_queries)<br>        result=<code>mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK status |cut -f5 -d&quot;:&quot;|cut -f1 -d&quot;O&quot;</code><br>        echo $result<br>        ;;</p>
+<pre><code>Com_select)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_select&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Com_rollback)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_rollback&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Questions)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK status|cut -f4 -d&quot;:&quot;|cut -f1 -d&quot;S&quot;`
+    echo $result
+    ;;
+
+Com_insert)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_insert&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Com_delete)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_delete&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Com_commit)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_commit&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Bytes_sent)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Bytes_sent&quot; |cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Bytes_received)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Bytes_received&quot; |cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Com_begin)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_begin&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+    *)
+    echo &quot;Usage:$0(Uptime|Com_update|Slow_queries|Com_select|Com_rollback|Questions)&quot;
+    ;;
+</code></pre><p>esac</p>
+<p>4.在Zabbix_agentd.conf里面添加UserParameter，格式如下，对于Zabbix来说，脚本其实就是一个插件。    </p>
+<h1 id="cat_/usr/local/zabbix/etc/zabbix_agentd-conf_7C_grep_-v__u201C_5E_24_7C_5E_23_u201D"><a href="#cat_/usr/local/zabbix/etc/zabbix_agentd-conf_7C_grep_-v__u201C_5E_24_7C_5E_23_u201D" class="headerlink" title="cat /usr/local/zabbix/etc/zabbix_agentd.conf| grep -v “^$|^#”"></a>cat /usr/local/zabbix/etc/zabbix_agentd.conf| grep -v “^$|^#”</h1><p>LogFile=/tmp/zabbix_agentd.log</p>
+<p>Server=172.16.9.38</p>
+<p>ServerActive=172.16.9.38:10051</p>
+<p>Hostname=172.16.9.26</p>
+<p>UnsafeUserParameters=1</p>
+<p>UserParameter=mysql.version,mysql -V</p>
+<p>UserParameter=mysql.ping,mysqladmin -uzabbix -p\7h@6npqQlaX -S /var/lib/mysql/mysql.sock ping | grep -c alive</p>
+<p>UserParameter=mysql.status[*],/usr/local/zabbix/scripts/checkmysqlperformance.sh $1</p>
+<p>5.重启agentd服务器</p>
+<p>/etc/init.d/zabbix_agentd restart</p>
+<p>6.然后在zabbix server用zabbix_get就可以取到key的值。</p>
+<h1 id="/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BUptime_5D"><a href="#/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BUptime_5D" class="headerlink" title="/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Uptime]"></a>/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Uptime]</h1><p>3386849</p>
+<h1 id="/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BCom_select_5D"><a href="#/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BCom_select_5D" class="headerlink" title="/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Com_select]"></a>/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Com_select]</h1><p>275188</p>
+<p>6.在zabbix前端可以实时查看SQL语句每秒钟的操作次数。</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/46/56/wKiom1PxzG-TwcMrAAW79eCRKos634.jpg" alt=""></p>
+<p>7.在zabbix前端可以实时查看mysql发送接收的字节数。其中bytes received表示从所有客户端接收到的字节数，bytes sent表示发送给所有客户端的字节数。<br><img src="http://s3.51cto.com/wyfs02/M02/46/58/wKioL1PxzZnANp3gAAQPSv1iD3I116.jpg" alt=""></p>
+<p>   总结：<br>   1)把该脚本放到要监控的服务器上面（Modify mysql user and password），修改UserParameter的参数并重启agentd,Link官方提供的Template App MySQL模板即可。<br>   2)我这里是测试环境用的是新创建的只读账户zabbix，线上服务器安全期间可以给mysql用户授权readonly权限。</p>
+<p>   3)根据实际的需求，除了监控上述监控项之外，还可以监控mysql processlist,Innodb等。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Mysql/">Mysql</a><a href="/tags/Zabbix/">Zabbix</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Zabbix/">Zabbix</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2014/07/24/zabbix-monitoring-mysql-performance/" data-title="Zabbix之监控Mysql性能 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/07/25/apache-working-mode-and-switch/" title="Apache的工作模式及切换">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Apache的工作模式及切换</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/07/24/zabbix-auto-discovery-rules/"  title="Zabbix 之自动发现规则">
+ <strong>NEXT:</strong><br/> 
+ <span>Zabbix 之自动发现规则
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysqladmin_-uzabbix_-p_status"><span class="toc-number">1.</span> <span class="toc-text">mysqladmin  -uzabbix -p status</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/usr/local/zabbix/scripts/checkmysqlperformance-sh"><span class="toc-number">2.</span> <span class="toc-text">cat /usr/local/zabbix/scripts/checkmysqlperformance.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/usr/local/zabbix/etc/zabbix_agentd-conf_7C_grep_-v__u201C_5E_24_7C_5E_23_u201D"><span class="toc-number">3.</span> <span class="toc-text">cat /usr/local/zabbix/etc/zabbix_agentd.conf| grep -v “^$|^#”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BUptime_5D"><span class="toc-number">4.</span> <span class="toc-text">/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Uptime]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BCom_select_5D"><span class="toc-number">5.</span> <span class="toc-text">/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Com_select]</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>20</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>4</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>9</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>7</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>3</sup></a></li>
+		
+			<li><a href="/tags/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Proxy/" title="Proxy">Proxy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>15</sup></a></li>
+		
+			<li><a href="/tags/RAC/" title="RAC">RAC<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>

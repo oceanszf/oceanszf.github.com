@@ -1,0 +1,440 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Mysql之replication初探 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="MySQL的Replication是一种多个MySQL的数据库做主从同步的方案，特点是异步，广泛用在各种对MySQL有更高性能，更高可靠性要求的场合。与之对应的另一个技术是同步的MySQL Cluster，但因为比较复杂，使用者较少。
+下图是MySQL官方给出了使用Replication的场景：
+R">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/11/03/mysql-replication/" title="Mysql之replication初探" itemprop="url">Mysql之replication初探</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-11-03T13:10:47.000Z" itemprop="datePublished">2014-11-03</time>
+    Updated:<time datetime="2016-01-13T07:18:41.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>MySQL的Replication是一种多个MySQL的数据库做主从同步的方案，特点是异步，广泛用在各种对MySQL有更高性能，更高可靠性要求的场合。与之对应的另一个技术是同步的MySQL Cluster，但因为比较复杂，使用者较少。</p>
+<p>下图是MySQL官方给出了使用Replication的场景：<br><img src="http://s3.51cto.com/wyfs02/M00/4D/B3/wKiom1RXfpvC6o6ZAAFTXNi6cDU783.jpg" alt=""></p>
+<p>Replication原理</p>
+<p>Mysql 的 Replication  是一个异步的复制过程，从一个MySQL节点（称之为Master）复制到另一个MySQL节点（称之Slave）。在 Master 与 Slave  之间的实现整个复制过程主要由三个线程来完成，其中两个线程（SQL 线程和 I/O 线程）在 Slave 端，另外一个线程（I/O 线程）在  Master 端。</p>
+<p>要实现 MySQL 的 Replication ，首先必须打开 Master 端的 Binary Log，因为整个复制过程实际上就是 Slave 从 Master 端获取该日志然后再在自己身上完全顺序的执行日志中所记录的各种操作。</p>
+<p>看上去MySQL的Replication原理非常简单，总结一下：</p>
+<pre><code>* 每个从仅可以设置一个主。  
+* 主在执行sql之后，记录二进制log文件（bin-log）。  
+* 从连接主，并从主获取binlog，存于本地relay-log，并从上次记住的位置起执行sql，一旦遇到错误则停止同步。  
+</code></pre><p>从这几条Replication原理来看，可以有这些推论：</p>
+<pre><code>* 主从间的数据库不是实时同步，就算网络连接正常，也存在瞬间，主从数据不一致。  
+* 如果主从的网络断开，从会在网络正常后，批量同步。  
+* 如果对从进行修改数据，那么很可能从在执行主的bin-log时出现错误而停止同步，这个是很危险的操作。所以一般情况下，非常小心的修改从上的数据。  
+* 一个衍生的配置是双主，互为主从配置，只要双方的修改不冲突，可以工作良好。  
+* 如果需要多主的话，可以用环形配置，这样任意一个节点的修改都可以同步到所有节点。  
+</code></pre><p>主从设置<br>1. MySQL主从应用场景</p>
+<p>原理是master上数据更新时会记录一个bin-log，slave会实时同步该bin-log然后slave根据bin-log的sql语句进行相应的操作。<br>MySQL主从可以实时备份,保证数据高安全性<br>可以应用在读写分离的场景中，用以降低单台MySQL服务器的I/O<br>可以实现MySQL服务的HA集群<br>可以是1主多从，也可以是相互主从（主主）</p>
+<p>2. 安装、配置MySQL<br>参考之前步骤搭建MySQL服务</p>
+<p>3. 配置主从准备工作</p>
+<p>在主上创建测试库:<br>建立测试用数据库｜表</p>
+<p>#myslq –u root –p<br>mysql&gt;create database ocean;<br>mysql&gt;use ocean;<br>mysql&gt;create table test1(id int,sname char(8));<br>mysql&gt;insert into test1 values(1,’zhangsang’);</p>
+<p>4. 配置主(master)<br>vim ./my.cnf   #修改或添加：<br>server-id=1<br>log-bin=mysql-bin<br>两个可选参数（2选1）：<br>binlog-do-db=ocean        #需要同步的库【多个库之间用，分隔】<br>binlog-ignore-db=ocean    #忽略不同步的库<br>修改配置文件后，重启mysql<br>pid=<code>ps uax |grep mysql.sock |grep -v grep |awk &#39;{print $2}&#39;</code> ; kill $pid; cd /usr/local/mysql_2/bin/; ./mysqld_safe –defaults-file=../my.cnf –user=mysql &amp;</p>
+<p>Master 授权给Slave<br>grant replication slave on <em>.</em> to ‘ocean’@’192.168.9.10’ identified by ‘ocean’;<br>flush tables with read lock;  #锁住表，防止数据写入,slave配置完成后记得解锁<br>flush privileges;             #刷新<br>show master status;           #一定要记住前两列的内容，一会会用到<br>mysql&gt; show master status;<br>+———————-+———-+————–+——————+<br>| File                 | Position | Binlog_Do_DB | Binlog_Ignore_DB |<br>+———————-+———-+————–+——————+<br>| mysql-bin-log.000028 |      330 | mysql        |                  |<br>+———————-+———-+————–+——————+<br>1 row in set (0.00 sec)</p>
+<p>5. 设置从(slave)<br>vim my.cnf  #修改或增加<br>server-id = 2 #这个数值不能和主一样<br>可选参数：<br>replicate-do-db=ocean,ocean2 和 replicate-ignore-db=ocean,ocean2 #意义同主的那两个可选参数<br>service mysqld restart<br>拷贝主的db1库数据到从：<br>然后导出主的mysql库数据然后导入给slave mysql<br>mysqldump -uroot -p mysql &gt; ocean.sql<br>在salve 中将数据导入到新创建的数据库中<br>mysql -uroot -p -e “create database ocean”; mysql -uroot -p  ocean &lt; ocean.sql</p>
+<p>mysql -uroot -p  #登陆Slave的mysql<br>slave stop;</p>
+<p>change master to master_host=’192.168.9.9’, master_port=3306 ,master_user=’ocean’,<br>master_password=’ocean’, master_log_file=’mysql-bin-log.000028’, master_log_pos=330;</p>
+<p>slave start;</p>
+<p>Master上： mysql -uroot -p -e “unlock tables”<br>Slave查看从的状态:mysql&gt; show slave status\G<br><strong><strong><strong><strong><strong><strong><em>*</em></strong></strong></strong></strong></strong></strong> 1. row <strong><strong><strong><strong><strong><strong><em>*</em></strong></strong></strong></strong></strong></strong><br>               Slave_IO_State: Waiting for master to send event<br>                  Master_Host: 192.168.9.9<br>                  Master_User: ocean<br>                  Master_Port: 3306<br>                Connect_Retry: 60<br>              Master_Log_File: mysql-bin-log.000028<br>          Read_Master_Log_Pos: 330<br>               Relay_Log_File: mysqld-relay-bin.000002<br>                Relay_Log_Pos: 255<br>        Relay_Master_Log_File: mysql-bin-log.000028<br>           Slave_IO_Running: Yes<br>         Slave_SQL_Running: Yes<br>              Replicate_Do_DB: ocean<br>          Replicate_Ignore_DB:<br>           Replicate_Do_Table:<br>       Replicate_Ignore_Table:<br>      Replicate_Wild_Do_Table:<br>  Replicate_Wild_Ignore_Table:<br>                   Last_Errno: 0<br>                   Last_Error:<br>                 Skip_Counter: 0<br>                 …..</p>
+<p>6. 测试主从<br>在Master中ocean数据库中插入一条记录：<br>mysql&gt;use ocean;<br>mysql&gt;insert into test1 values(2,’lisi’);<br>在slave中查看oceanDB是否有新纪录生成。</p>
+<p>建议: MySQL主从机制比较脆弱，谨慎操作。如果重启master，务必要先把slave停掉，也就是说需要在slave上去执行 slave stop 命令，然后再去重启master的mysql服务，否则很有可能就会中断了。当然重启完后，还需要把slave给开启 slave start. </p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Mysql/">Mysql</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2014/11/03/mysql-replication/" data-title="Mysql之replication初探 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/21/jeffrey-takes-you-step-by-step-installation-oracle-rac-step1/" title="Jeffrey带你一步步安装ORACLE_RAC STEP:ONE">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Jeffrey带你一步步安装ORACLE_RAC STEP:ONE</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/10/21/puppet-nginx-module-write/"  title="Puppet Nginx module write">
+ <strong>NEXT:</strong><br/> 
+ <span>Puppet Nginx module write
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>20</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>14</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>4</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>9</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>7</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>3</sup></a></li>
+		
+			<li><a href="/tags/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Proxy/" title="Proxy">Proxy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/tags/Python/" title="Python">Python<sup>15</sup></a></li>
+		
+			<li><a href="/tags/RAC/" title="RAC">RAC<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
