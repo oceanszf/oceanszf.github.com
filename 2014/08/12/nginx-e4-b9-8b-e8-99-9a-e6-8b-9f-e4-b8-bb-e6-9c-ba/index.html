@@ -4,14 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>JDK_Tomcat  安装 | Suzf Blog</title>
+    <title>Nginx 之虚拟主机 | Suzf Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="####JDK 安装####这里版本选择为  jdk-6u33-linux-x64.bin1.上传安装文件至默认路径
-2.对安装文件授予执行权限 chmod +x  jdk-6u33-linux-x64.bin
-3.执行安装 ./jdk-6u33-linux-x64.bin mv jdk1.6.0_">
+    <meta name="description" content="Nginx 虚拟主机虚拟主机是在网络服务器上划分出一定的磁盘空间供用户放置站点、应用组件等，提供必要的站点功能、数据存放和传输功能。所谓虚拟主机，也叫“网站空间”，就是把一台运行在互联网上的服务器划分成多个“虚拟”的服务器，每一个虚拟主机都具有独立的域名和完整的Internet服务器（支持WWW、F">
     
     
     
@@ -66,15 +64,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/07/28/jdk-tomcat-e5-ae-89-e8-a3-85/" title="JDK_Tomcat  安装" itemprop="url">JDK_Tomcat  安装</a>
+      <a href="/2014/08/12/nginx-e4-b9-8b-e8-99-9a-e6-8b-9f-e4-b8-bb-e6-9c-ba/" title="Nginx 之虚拟主机" itemprop="url">Nginx 之虚拟主机</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-07-28T09:35:00.000Z" itemprop="datePublished">2014-07-28</time>
-    更新日期:<time datetime="2016-01-13T07:04:12.000Z" itemprop="dateModified">2016-01-13</time>
+    <time datetime="2014-08-12T14:45:22.000Z" itemprop="datePublished">2014-08-12</time>
+    更新日期:<time datetime="2016-01-13T07:22:14.000Z" itemprop="dateModified">2016-01-13</time>
     
   </p>
 </header>
@@ -83,68 +81,77 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Nginx__u865A_u62DF_u4E3B_u673A"><span class="toc-number">1.</span> <span class="toc-text">Nginx 虚拟主机</span></a></li></ol>
 		</div>
 		
-		<p>####JDK 安装####<br>这里版本选择为  jdk-6u33-linux-x64.bin<br>1.上传安装文件至默认路径</p>
-<p>2.对安装文件授予执行权限<br> chmod +x  jdk-6u33-linux-x64.bin</p>
-<p>3.执行安装<br> ./jdk-6u33-linux-x64.bin<br> mv jdk1.6.0_33 /usr/local<br> ln -s jdk1.6.0_33 java</p>
-<p>4.配置环境变量 在/etc/profile后追加即可<br>JAVA_HOME=/usr/local/java<br>JRE_HOME=/usr/local/java/jre<br>CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>PATH=$JAVA_HOME/bin:$PATH<br>export PATH CLASSPATH JAVA_HOME</p>
-<p>   source  /etc/profile   # 使修改的配置文件生效</p>
-<p>5.检测java 是否成功安装<br>[root@p2ptest ~]# java -version<br>java version “1.6.0_33”<br>Java(TM) SE Runtime Environment (build 1.6.0_33-b04)<br>Java HotSpot(TM) 64-Bit Server VM (build 20.8-b03, mixed mode)</p>
-<p>####安装Tomcat####<br>1.解压文件<br>  tar zxf apache-tomcat-7.0.2.tar.gz -C /usr/local<br>  mv apache-tomcat-7.0.2 tomcat</p>
-<p>2.vi /usr/local/tomcat/bin/catalina.sh 添加<br> JAVA_OPTS=”-Xms1024m -Xmx1024m -Xss1024K -XX:PermSize=128m -XX:MaxPermSize=256m”</p>
-<p> 配置文件： /usr/local/tomcat/conf/server.xml</p>
-<p> 日志输出： /usr/local/tomcat/logs/catalina.out</p>
-<p> 连接串：/usr/local/tomcat/conf/context.xml</p>
-<pre><code>    &lt;resource name=&quot;jdbc/myoracle&quot; auth=&quot;Container&quot;   
+		<h1 id="Nginx__u865A_u62DF_u4E3B_u673A"><a href="#Nginx__u865A_u62DF_u4E3B_u673A" class="headerlink" title="Nginx 虚拟主机"></a>Nginx 虚拟主机</h1><p>虚拟主机是在网络服务器上划分出一定的磁盘空间供用户放置站点、应用组件等，提供必要的站点功能、数据存放和传输功能。所谓虚拟主机，也叫“网站空间”，就是把一台运行在互联网上的服务器划分成多个“虚拟”的服务器，每一个虚拟主机都具有独立的域名和完整的Internet服务器（支持WWW、FTP、E-mail等）功能，从用户角度来看，每台虚拟术机和一台独立的服务器完全相同，在IP地址日益紧张的今天，基于域名的虚拟主机要比基于IP的虚拟主机使用的更加广泛。</p>
+<p>========================================================</p>
+<p>三种表现形式：</p>
+<p>基于主机<br>基于端口<br>基于IP</p>
+<p>准备工作：</p>
+<p>安装好nginx，这里不做介绍，如果需要请在本博中查找。</p>
+<p>一、规划<br>网站                 IP                   网站主目录<br>www.jeffery.com      192.168.9.110       /nginx/jeffery<br>www.ocean.com        192.168.9.110       /nginx/ocean<br>www.blue.com         192.168.10.120      /nginx/blue<br>由于使用了两个IP，在接口上绑定IP</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/45/BB/wKioL1PqKcbj_1MRAAJxkNLGkJc022.jpg" alt=""></p>
+<p>二、DNS解析</p>
+<p>这里可以直接写入到 hosts 文件<br>www.jeffery.com      jeffery.com        ==&gt;    192.168.9.110<br>www.ocean.com        ocean.com          ==&gt;    192.168.9.110<br>www.blue.com         blue.com           ==&gt;    192.168.9.120<br><img src="http://s3.51cto.com/wyfs02/M01/45/BA/wKiom1PqKMiyj0m-AAR3CdcPTkY302.jpg" alt=""></p>
+<p>三、Nginx虚拟主机<br>1. 准备工作<br><img src="http://s3.51cto.com/wyfs02/M02/45/BB/wKioL1PqKyyhUHK-AAFiAKVaodM048.jpg" alt=""></p>
+<p>2.配置Nginx实现虚拟主机<br>[root@jeffery ~]# vim /usr/local/nginx/conf/nginx.conf</p>
+<p>#工作模式及连接数上限</p>
+<p>worker_processes  1;               #cpu核心数<br>events {<br>    worker_connections  1024;      #连接数<br>}</p>
+<p>#设定http服务器，利用它的反向代理功能提供负载均衡支持<br>http {<br>    include            mime.types;<br>    default_type       application/octet-stream;<br>    sendfile           on;<br>    keepalive_timeout  65;<br>    server {<br>            listen       192.168.9.110:80;<br>            server_name  www.jeffery.com jeffery.com;       #基于主机名<br>            location / {<br>            root   html/jeffery;<br>            index  index.html index.htm;<br>        }<br>        error_page   500 502 503 504  /50x.html;<br>        location = /50x.html {<br>            root   html;<br>        }<br>        }</p>
+<pre><code>server {
+        listen       192.168.9.110:80;
+        server_name  www.ocean.com ocean.com;       #基于主机名
+        location / {
+        root   html/ocean;
+        index  index.html index.htm;
+    }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+    }
 
-    type=&quot;javax.sql.DataSource&quot; driverClassName=&quot;oracle.jdbc.OracleDriver&quot;   
-
-    url=&quot;jdbc:oracle:thin:@127.0.0.1:1521:mysid&quot; username=&quot;scott&quot;   
-
-    password=&quot;tiger&quot; maxActive=&quot;20&quot; maxIdle=&quot;10&quot; maxWait=&apos;&apos;-1&quot;&gt;&lt;/resource&gt;  
-
-部分参数解释：
-
-                          name--------------------jdbc/myoracle中myoracle为你要连接的数据库的名字。
-
-                           driverClassName----JDBC驱动类的完整的名称；
-
-                           maxActive---------------同时能够从连接池中被分配的可用实例的最大数
-
-                           maxIdle------------------可以同时闲置在连接池中的连接的最大数；
-
-                           maxWait------------------最大超时时间，以毫秒计；
-
-                           password----------------用户密码；
-
-                           url--------------------------到JDBC的URL连接,最后面的mysid为你安装时数据库实例的名称；
-
-                           username---------------用户名称
-
-                           validationQuery--------用来查询池中空闲的连接。
-</code></pre><p>   或是修改这个文件/usr/local/tomcat/webapps/project_name/WEB-INF/classes/conf/jdbc.properties</p>
+server {
+        listen       192.168.9.120:80;
+        server_name  www.blue.com blue.com;       #基于主机名
+        location / {
+        root   html/blue;
+        index  index.html index.htm;
+    }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+}
+</code></pre><p>}</p>
+<p>3. 检测配置文件并重新启动<br>[root@jeffery ~]# /usr/local/nginx/sbin/nginx -t<br>nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok<br>nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</p>
+<p>[root@Jeffery ~]# pgrep nginx<br>5856<br>5857<br>[root@Jeffery ~]# kill -HUP 5856<br>[root@Jeffery ~]# /usr/local/nginx/sbin/nginx -s reload</p>
+<p>4.测试</p>
+<p>有</p>
+<p><img src="http://s3.51cto.com/wyfs02/M00/45/BC/wKioL1PqMI7zyIFsAAEKAUBb9EE953.jpg" alt=""></p>
+<p>无</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/45/BC/wKioL1PqMizQaS18AAEzDc_UchA229.jpg" alt=""></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/tomcat/">tomcat</a>
+  <span></span> <a href="/tags/Nginx/">Nginx</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Tomcat/">Tomcat</a>
+  <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.suzf.net/2014/07/28/jdk-tomcat-e5-ae-89-e8-a3-85/" data-title="JDK_Tomcat  安装 | Suzf Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://blog.suzf.net/2014/08/12/nginx-e4-b9-8b-e8-99-9a-e6-8b-9f-e4-b8-bb-e6-9c-ba/" data-title="Nginx 之虚拟主机 | Suzf Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -154,18 +161,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/08/01/zabbix-e4-b9-8bwindows-e4-b8-8b-e5-ae-89-e8-a3-85agent/" title="Zabbix 之windows下安装agent">
+ <a href="/2014/08/13/zabbix-e4-b9-8bweb-url-e7-9b-91-e6-8e-a7/" title="Zabbix 之 web  url 监控">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  Zabbix 之windows下安装agent</span>
+  Zabbix 之 web  url 监控</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/07/25/zabbix-e4-b9-8b-e7-9b-91-e6-8e-a7oracle-e6-80-a7-e8-83-bd/"  title="Zabbix之监控Oracle性能">
+<a href="/2014/08/12/nginx-e4-b9-8b-e5-9f-ba-e6-9c-ac-e9-85-8d-e7-bd-ae/"  title="Nginx之基本配置">
  <strong>NEXT:</strong><br/> 
- <span>Zabbix之监控Oracle性能
+ <span>Nginx之基本配置
 </span>
 </a>
 </div>
@@ -182,7 +189,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Nginx__u865A_u62DF_u4E3B_u673A"><span class="toc-number">1.</span> <span class="toc-text">Nginx 虚拟主机</span></a></li></ol>
   </div>
 
 <div id="asidepart">
