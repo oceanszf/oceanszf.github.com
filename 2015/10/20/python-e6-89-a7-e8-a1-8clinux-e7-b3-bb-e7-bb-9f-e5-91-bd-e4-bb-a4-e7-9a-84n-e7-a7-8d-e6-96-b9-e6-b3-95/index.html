@@ -1,6 +1,6 @@
 
  <!DOCTYPE HTML>
-<html lang="zh-CN">
+<html lang="default">
 <head>
   <meta charset="UTF-8">
   
@@ -33,7 +33,7 @@
 				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
 				<h2 class="blog-motto">Life is short We need smile.</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -48,7 +48,7 @@
 					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:blog.suzf.net">
 					</form>
 					
@@ -72,7 +72,7 @@
     </p>
   <p class="article-time">
     <time datetime="2015-10-20T07:00:56.000Z" itemprop="datePublished">2015-10-20</time>
-    更新日期:<time datetime="2016-01-13T07:17:03.000Z" itemprop="dateModified">2016-01-13</time>
+    Updated:<time datetime="2016-01-13T07:17:03.000Z" itemprop="dateModified">2016-01-13</time>
     
   </p>
 </header>
@@ -80,7 +80,7 @@
 		
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#os-system_28_29__u662F_u65B0_u8D77_u4E00_u4E2Ashell_u53BB_u5E72_u6D3B_u7684_uFF0C_u5BF9_u7CFB_u7EDF_u7684_u5F00_u9500_u6BD4_u8F83_u5927"><span class="toc-number">1.</span> <span class="toc-text">os.system() 是新起一个shell去干活的，对系统的开销比较大</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4EC5_u5728_u4E00_u4E2A_u5B50_u7EC8_u7AEF_u8FD0_u884C_u7CFB_u7EDF_u547D_u4EE4_uFF0C_u800C_u4E0D_u80FD_u83B7_u53D6_u547D_u4EE4_u6267_u884C_u540E_u7684_u8FD4_u56DE_u4FE1_u606F"><span class="toc-number">2.</span> <span class="toc-text">仅在一个子终端运行系统命令，而不能获取命令执行后的返回信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u65E0_u6CD5_u63A7_u5236_uFF0C_uFF08_u5982_u679C_u8C03_u7528_u7684_u5916_u90E8_u547D_u4EE4_uFF0C_u6302_u6B7B_u6216_u8005_u6267_u884C_u65F6_u95F4_u5F88_u957F_uFF09_uFF0C_u4E3B_u8FDB_u7A0B_u65E0_u6CD5_u63A7_u5236os-system_28_29_2C__u56E0_u4E3A_u8C03_u7528os-system_28cmd_29__u8C03_u7528_u8FDB_u7A0B_u4F1Ablock_uFF0C_until_os-system_28_29__u81EA_u5DF1_u9000_u51FA"><span class="toc-number">3.</span> <span class="toc-text">无法控制，（如果调用的外部命令，挂死或者执行时间很长），主进程无法控制os.system(), 因为调用os.system(cmd)  调用进程会block， until os.system() 自己退出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8BE5_u65B9_u6CD5_u4E0D_u4F46_u6267_u884C_u547D_u4EE4_u8FD8_u8FD4_u56DE_u6267_u884C_u540E_u7684_u4FE1_u606F_u5BF9_u8C61"><span class="toc-number">4.</span> <span class="toc-text">该方法不但执行命令还返回执行后的信息对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u597D_u5904_u5728_u4E8E_uFF1A_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><span class="toc-number">5.</span> <span class="toc-text">好处在于：将返回的结果赋于一变量，便于程序的处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u7528_u5BF9_u7EBF_u7A0B_u7684_u63A7_u5236_u548C_u76D1_u63A7_uFF0C_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><span class="toc-number">6.</span> <span class="toc-text">运用对线程的控制和监控，将返回的结果赋于一变量，便于程序的处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F1A_u81EA_u52A8_u5730_u52A0_u8F7D_u7CFB_u7EDF_u73AF_u5883_u53D8_u91CF_u3002"><span class="toc-number">7.</span> <span class="toc-text">会自动地加载系统环境变量。</span></a></li></ol>
 		</div>
 		
@@ -158,24 +158,24 @@
 </section>
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#os-system_28_29__u662F_u65B0_u8D77_u4E00_u4E2Ashell_u53BB_u5E72_u6D3B_u7684_uFF0C_u5BF9_u7CFB_u7EDF_u7684_u5F00_u9500_u6BD4_u8F83_u5927"><span class="toc-number">1.</span> <span class="toc-text">os.system() 是新起一个shell去干活的，对系统的开销比较大</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4EC5_u5728_u4E00_u4E2A_u5B50_u7EC8_u7AEF_u8FD0_u884C_u7CFB_u7EDF_u547D_u4EE4_uFF0C_u800C_u4E0D_u80FD_u83B7_u53D6_u547D_u4EE4_u6267_u884C_u540E_u7684_u8FD4_u56DE_u4FE1_u606F"><span class="toc-number">2.</span> <span class="toc-text">仅在一个子终端运行系统命令，而不能获取命令执行后的返回信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u65E0_u6CD5_u63A7_u5236_uFF0C_uFF08_u5982_u679C_u8C03_u7528_u7684_u5916_u90E8_u547D_u4EE4_uFF0C_u6302_u6B7B_u6216_u8005_u6267_u884C_u65F6_u95F4_u5F88_u957F_uFF09_uFF0C_u4E3B_u8FDB_u7A0B_u65E0_u6CD5_u63A7_u5236os-system_28_29_2C__u56E0_u4E3A_u8C03_u7528os-system_28cmd_29__u8C03_u7528_u8FDB_u7A0B_u4F1Ablock_uFF0C_until_os-system_28_29__u81EA_u5DF1_u9000_u51FA"><span class="toc-number">3.</span> <span class="toc-text">无法控制，（如果调用的外部命令，挂死或者执行时间很长），主进程无法控制os.system(), 因为调用os.system(cmd)  调用进程会block， until os.system() 自己退出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8BE5_u65B9_u6CD5_u4E0D_u4F46_u6267_u884C_u547D_u4EE4_u8FD8_u8FD4_u56DE_u6267_u884C_u540E_u7684_u4FE1_u606F_u5BF9_u8C61"><span class="toc-number">4.</span> <span class="toc-text">该方法不但执行命令还返回执行后的信息对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u597D_u5904_u5728_u4E8E_uFF1A_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><span class="toc-number">5.</span> <span class="toc-text">好处在于：将返回的结果赋于一变量，便于程序的处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u7528_u5BF9_u7EBF_u7A0B_u7684_u63A7_u5236_u548C_u76D1_u63A7_uFF0C_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><span class="toc-number">6.</span> <span class="toc-text">运用对线程的控制和监控，将返回的结果赋于一变量，便于程序的处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F1A_u81EA_u52A8_u5730_u52A0_u8F7D_u7CFB_u7EDF_u73AF_u5883_u53D8_u91CF_u3002"><span class="toc-number">7.</span> <span class="toc-text">会自动地加载系统环境变量。</span></a></li></ol>
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
@@ -220,7 +220,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>

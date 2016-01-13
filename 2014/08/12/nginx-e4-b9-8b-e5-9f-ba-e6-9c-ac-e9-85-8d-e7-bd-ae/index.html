@@ -1,6 +1,6 @@
 
  <!DOCTYPE HTML>
-<html lang="zh-CN">
+<html lang="default">
 <head>
   <meta charset="UTF-8">
   
@@ -37,7 +37,7 @@ service httpd stopchkconfig httpd off所需的软件: 开发库，openssl-devel
 				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
 				<h2 class="blog-motto">Life is short We need smile.</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -52,7 +52,7 @@ service httpd stopchkconfig httpd off所需的软件: 开发库，openssl-devel
 					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:blog.suzf.net">
 					</form>
 					
@@ -76,7 +76,7 @@ service httpd stopchkconfig httpd off所需的软件: 开发库，openssl-devel
     </p>
   <p class="article-time">
     <time datetime="2014-08-12T13:15:42.000Z" itemprop="datePublished">2014-08-12</time>
-    更新日期:<time datetime="2016-01-13T07:45:51.000Z" itemprop="dateModified">2016-01-13</time>
+    Updated:<time datetime="2016-01-13T07:45:51.000Z" itemprop="dateModified">2016-01-13</time>
     
   </p>
 </header>
@@ -84,7 +84,7 @@ service httpd stopchkconfig httpd off所需的软件: 开发库，openssl-devel
 		
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3-__u505A_u4E3A_u524D_u7AEF_u4E00_u4E2A_u8D1F_u8F7D_u5747_u8861_u5668"><span class="toc-number">1.</span> <span class="toc-text">3. 做为前端一个负载均衡器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#service_httpd_stop"><span class="toc-number">2.</span> <span class="toc-text">service httpd stop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chkconfig_httpd_off"><span class="toc-number">3.</span> <span class="toc-text">chkconfig httpd off</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_zxf_pcre-8-31-tar-gz"><span class="toc-number">4.</span> <span class="toc-text">tar zxf pcre-8.31.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_pcre-8-31"><span class="toc-number">5.</span> <span class="toc-text">cd pcre-8.31</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/configure__26amp_3B_26amp_3B_make__26amp_3B_26amp_3B_make_install"><span class="toc-number">6.</span> <span class="toc-text">./configure && make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ldconfig"><span class="toc-number">7.</span> <span class="toc-text">ldconfig</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useradd_www"><span class="toc-number">8.</span> <span class="toc-text">useradd www</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xvf_nginx-1-2-2-tar-gz"><span class="toc-number">9.</span> <span class="toc-text">tar xvf nginx-1.2.2.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_nginx-1-2-2"><span class="toc-number">10.</span> <span class="toc-text">cd nginx-1.2.2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make__26amp_3B_26amp_3B_make_install"><span class="toc-number">11.</span> <span class="toc-text">make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ln_-s_/usr/local/nginx-1-2-2/_/usr/local/nginx"><span class="toc-number">12.</span> <span class="toc-text">ln -s /usr/local/nginx-1.2.2/ /usr/local/nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tree_/usr/local/nginx/"><span class="toc-number">13.</span> <span class="toc-text">tree /usr/local/nginx/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#links_-dump_192-168-9-110"><span class="toc-number">14.</span> <span class="toc-text">links -dump 192.168.9.110</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201C/usr/local/nginx/sbin/nginx_u201D__26gt_3B_26gt_3B_/etc/rc-local__23_u5F00_u673A_u8FD0_u884C"><span class="toc-number">15.</span> <span class="toc-text">echo “/usr/local/nginx/sbin/nginx” >> /etc/rc.local         #开机运行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sed_-i__u2018/_5E_5B__5Ct_5D_23/d_3B/_5E_5B__5Ct_5D_24/d_u2019_/usr/local/nginx/conf/nginx-conf"><span class="toc-number">16.</span> <span class="toc-text">sed -i ‘/^[ \t]#/d;/^[ \t]$/d’ /usr/local/nginx/conf/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/local/nginx/conf/nginx-conf"><span class="toc-number">17.</span> <span class="toc-text">vim /usr/local/nginx/conf/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/nginx/sbin/nginx_-t"><span class="toc-number">18.</span> <span class="toc-text">/usr/local/nginx/sbin/nginx -t</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/nginx/sbin/nginx_-s_reload"><span class="toc-number">19.</span> <span class="toc-text">/usr/local/nginx/sbin/nginx -s reload</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/nginx/html/__23_u7AD9_u70B9_u9ED8_u8BA4_u4E3B_u76EE_u5F55"><span class="toc-number">20.</span> <span class="toc-text">/usr/local/nginx/html/                   #站点默认主目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201CWelcome_to_Jeffery_Nginx_u201D__26gt_3B_/usr/local/nginx/html/index-html"><span class="toc-number">21.</span> <span class="toc-text">echo “Welcome to Jeffery Nginx” > /usr/local/nginx/html/index.html</span></a></li></ol>
 		</div>
 		
@@ -186,24 +186,24 @@ Nginx常用配置实例
 </section>
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3-__u505A_u4E3A_u524D_u7AEF_u4E00_u4E2A_u8D1F_u8F7D_u5747_u8861_u5668"><span class="toc-number">1.</span> <span class="toc-text">3. 做为前端一个负载均衡器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#service_httpd_stop"><span class="toc-number">2.</span> <span class="toc-text">service httpd stop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chkconfig_httpd_off"><span class="toc-number">3.</span> <span class="toc-text">chkconfig httpd off</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_zxf_pcre-8-31-tar-gz"><span class="toc-number">4.</span> <span class="toc-text">tar zxf pcre-8.31.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_pcre-8-31"><span class="toc-number">5.</span> <span class="toc-text">cd pcre-8.31</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/configure__26amp_3B_26amp_3B_make__26amp_3B_26amp_3B_make_install"><span class="toc-number">6.</span> <span class="toc-text">./configure && make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ldconfig"><span class="toc-number">7.</span> <span class="toc-text">ldconfig</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useradd_www"><span class="toc-number">8.</span> <span class="toc-text">useradd www</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xvf_nginx-1-2-2-tar-gz"><span class="toc-number">9.</span> <span class="toc-text">tar xvf nginx-1.2.2.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_nginx-1-2-2"><span class="toc-number">10.</span> <span class="toc-text">cd nginx-1.2.2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make__26amp_3B_26amp_3B_make_install"><span class="toc-number">11.</span> <span class="toc-text">make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ln_-s_/usr/local/nginx-1-2-2/_/usr/local/nginx"><span class="toc-number">12.</span> <span class="toc-text">ln -s /usr/local/nginx-1.2.2/ /usr/local/nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tree_/usr/local/nginx/"><span class="toc-number">13.</span> <span class="toc-text">tree /usr/local/nginx/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#links_-dump_192-168-9-110"><span class="toc-number">14.</span> <span class="toc-text">links -dump 192.168.9.110</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201C/usr/local/nginx/sbin/nginx_u201D__26gt_3B_26gt_3B_/etc/rc-local__23_u5F00_u673A_u8FD0_u884C"><span class="toc-number">15.</span> <span class="toc-text">echo “/usr/local/nginx/sbin/nginx” >> /etc/rc.local         #开机运行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sed_-i__u2018/_5E_5B__5Ct_5D_23/d_3B/_5E_5B__5Ct_5D_24/d_u2019_/usr/local/nginx/conf/nginx-conf"><span class="toc-number">16.</span> <span class="toc-text">sed -i ‘/^[ \t]#/d;/^[ \t]$/d’ /usr/local/nginx/conf/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/local/nginx/conf/nginx-conf"><span class="toc-number">17.</span> <span class="toc-text">vim /usr/local/nginx/conf/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/nginx/sbin/nginx_-t"><span class="toc-number">18.</span> <span class="toc-text">/usr/local/nginx/sbin/nginx -t</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/nginx/sbin/nginx_-s_reload"><span class="toc-number">19.</span> <span class="toc-text">/usr/local/nginx/sbin/nginx -s reload</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/nginx/html/__23_u7AD9_u70B9_u9ED8_u8BA4_u4E3B_u76EE_u5F55"><span class="toc-number">20.</span> <span class="toc-text">/usr/local/nginx/html/                   #站点默认主目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201CWelcome_to_Jeffery_Nginx_u201D__26gt_3B_/usr/local/nginx/html/index-html"><span class="toc-number">21.</span> <span class="toc-text">echo “Welcome to Jeffery Nginx” > /usr/local/nginx/html/index.html</span></a></li></ol>
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
@@ -248,7 +248,7 @@ Nginx常用配置实例
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
