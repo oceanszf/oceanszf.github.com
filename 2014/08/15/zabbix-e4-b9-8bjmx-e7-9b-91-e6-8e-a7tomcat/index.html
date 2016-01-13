@@ -1,6 +1,6 @@
 
  <!DOCTYPE HTML>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
@@ -35,7 +35,7 @@ zabbixserver想知道一台主机上的特定的JMX值时，它向ZabbixJavagate
 				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
 				<h2 class="blog-motto">Life is short We need smile.</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -82,7 +82,7 @@ zabbixserver想知道一台主机上的特定的JMX值时，它向ZabbixJavagate
 		
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">文章目录</strong>
 		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java_-version"><span class="toc-number">1.</span> <span class="toc-text">java -version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ll_/usr/local/zabbix/sbin/zabbix_java/"><span class="toc-number">2.</span> <span class="toc-text">ll /usr/local/zabbix/sbin/zabbix_java/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sed_-e__u2018/_5E_23/d_3B/_5E_24/d_u2019_/usr/local/zabbix/sbin/zabbix_java/settings-sh"><span class="toc-number">3.</span> <span class="toc-text">sed -e ‘/^#/d;/^$/d’ /usr/local/zabbix/sbin/zabbix_java/settings.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/startup-sh"><span class="toc-number">4.</span> <span class="toc-text">./startup.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#netstat_-lntp__7C_grep_10052"><span class="toc-number">5.</span> <span class="toc-text">netstat -lntp | grep 10052</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget_wget_http_3A//mirror-bit-edu-cn/apache/tomcat/tomcat-7/v7-0-42/bin/extras/catalina-jmx-remote-jar"><span class="toc-number">6.</span> <span class="toc-text">wget wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-7/v7.0.42/bin/extras/catalina-jmx-remote.jar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mv_catalina-jmx-remote-jar_/usr/local/tomcat/lib/"><span class="toc-number">7.</span> <span class="toc-text">mv catalina-jmx-remote.jar /usr/local/tomcat/lib/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_catalina-jmx-remote-jar_/usr/local/zabbix/sbin/zabbix_java/lib/__23_u628Acatalina-jmx-remote-jar_u4E5F_u653E_u5230zabbix_java/lib/_u4E0B_u9762_uFF0C_u8FD9_u662F_u4E3A_u4E86_u9632_u6B62_u51FA_u73B0_u7C7B_u6CA1_u6709_u53D1_u73B0_u7684_u5F02_u5E38_uFF0C_u6709_u7684_u6587_u6863_u4E0A_u5E76_u6CA1_u6709_u8FD9_u6B65_u64CD_u4F5C"><span class="toc-number">8.</span> <span class="toc-text">cp  catalina-jmx-remote.jar  /usr/local/zabbix/sbin/zabbix_java/lib/ #把catalina-jmx-remote.jar也放到zabbix_java/lib/下面，这是为了防止出现类没有发现的异常，有的文档上并没有这步操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/local/tomcat/bin/"><span class="toc-number">9.</span> <span class="toc-text">cd /usr/local/tomcat/bin/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/startup-sh-1"><span class="toc-number">10.</span> <span class="toc-text">./startup.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget_http_3A//repo-typesafe-com/typesafe/repo/cmdline-jmxclient/cmdline-jmxclient/0-10-3/cmdline-jmxclient-0-10-3-jar"><span class="toc-number">11.</span> <span class="toc-text">wget http://repo.typesafe.com/typesafe/repo/cmdline-jmxclient/cmdline-jmxclient/0.10.3/cmdline-jmxclient-0.10.3.jar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java_-jar_/root/cmdline-jmxclient-0-10-3-jar_-_localhost_3A12345_java-lang_3Atype_3DMemory_NonHeapMemoryUsage"><span class="toc-number">12.</span> <span class="toc-text">java -jar /root/cmdline-jmxclient-0.10.3.jar - localhost:12345 java.lang:type=Memory NonHeapMemoryUsage</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sed_-e__u2018/_5E_23/d_3B/_5E_24/d_u2019_/usr/local/zabbix/sbin/zabbix_java/settings-sh-1"><span class="toc-number">13.</span> <span class="toc-text">sed -e ‘/^#/d;/^$/d’ /usr/local/zabbix/sbin/zabbix_java/settings.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java_-jar_/root/cmdline-jmxclient-0-10-3-jar_-_localhost_3A12345_java-lang_3Atype_3DMemory_NonHeapMemoryUsage-1"><span class="toc-number">14.</span> <span class="toc-text">java -jar /root/cmdline-jmxclient-0.10.3.jar - localhost:12345 java.lang:type=Memory NonHeapMemoryUsage</span></a></li></ol>
 		</div>
 		
@@ -245,24 +245,24 @@ zabbixserver想知道一台主机上的特定的JMX值时，它向ZabbixJavagate
 </section>
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">文章目录</strong>
   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java_-version"><span class="toc-number">1.</span> <span class="toc-text">java -version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ll_/usr/local/zabbix/sbin/zabbix_java/"><span class="toc-number">2.</span> <span class="toc-text">ll /usr/local/zabbix/sbin/zabbix_java/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sed_-e__u2018/_5E_23/d_3B/_5E_24/d_u2019_/usr/local/zabbix/sbin/zabbix_java/settings-sh"><span class="toc-number">3.</span> <span class="toc-text">sed -e ‘/^#/d;/^$/d’ /usr/local/zabbix/sbin/zabbix_java/settings.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/startup-sh"><span class="toc-number">4.</span> <span class="toc-text">./startup.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#netstat_-lntp__7C_grep_10052"><span class="toc-number">5.</span> <span class="toc-text">netstat -lntp | grep 10052</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget_wget_http_3A//mirror-bit-edu-cn/apache/tomcat/tomcat-7/v7-0-42/bin/extras/catalina-jmx-remote-jar"><span class="toc-number">6.</span> <span class="toc-text">wget wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-7/v7.0.42/bin/extras/catalina-jmx-remote.jar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mv_catalina-jmx-remote-jar_/usr/local/tomcat/lib/"><span class="toc-number">7.</span> <span class="toc-text">mv catalina-jmx-remote.jar /usr/local/tomcat/lib/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_catalina-jmx-remote-jar_/usr/local/zabbix/sbin/zabbix_java/lib/__23_u628Acatalina-jmx-remote-jar_u4E5F_u653E_u5230zabbix_java/lib/_u4E0B_u9762_uFF0C_u8FD9_u662F_u4E3A_u4E86_u9632_u6B62_u51FA_u73B0_u7C7B_u6CA1_u6709_u53D1_u73B0_u7684_u5F02_u5E38_uFF0C_u6709_u7684_u6587_u6863_u4E0A_u5E76_u6CA1_u6709_u8FD9_u6B65_u64CD_u4F5C"><span class="toc-number">8.</span> <span class="toc-text">cp  catalina-jmx-remote.jar  /usr/local/zabbix/sbin/zabbix_java/lib/ #把catalina-jmx-remote.jar也放到zabbix_java/lib/下面，这是为了防止出现类没有发现的异常，有的文档上并没有这步操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/local/tomcat/bin/"><span class="toc-number">9.</span> <span class="toc-text">cd /usr/local/tomcat/bin/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/startup-sh-1"><span class="toc-number">10.</span> <span class="toc-text">./startup.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget_http_3A//repo-typesafe-com/typesafe/repo/cmdline-jmxclient/cmdline-jmxclient/0-10-3/cmdline-jmxclient-0-10-3-jar"><span class="toc-number">11.</span> <span class="toc-text">wget http://repo.typesafe.com/typesafe/repo/cmdline-jmxclient/cmdline-jmxclient/0.10.3/cmdline-jmxclient-0.10.3.jar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java_-jar_/root/cmdline-jmxclient-0-10-3-jar_-_localhost_3A12345_java-lang_3Atype_3DMemory_NonHeapMemoryUsage"><span class="toc-number">12.</span> <span class="toc-text">java -jar /root/cmdline-jmxclient-0.10.3.jar - localhost:12345 java.lang:type=Memory NonHeapMemoryUsage</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sed_-e__u2018/_5E_23/d_3B/_5E_24/d_u2019_/usr/local/zabbix/sbin/zabbix_java/settings-sh-1"><span class="toc-number">13.</span> <span class="toc-text">sed -e ‘/^#/d;/^$/d’ /usr/local/zabbix/sbin/zabbix_java/settings.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java_-jar_/root/cmdline-jmxclient-0-10-3-jar_-_localhost_3A12345_java-lang_3Atype_3DMemory_NonHeapMemoryUsage-1"><span class="toc-number">14.</span> <span class="toc-text">java -jar /root/cmdline-jmxclient-0.10.3.jar - localhost:12345 java.lang:type=Memory NonHeapMemoryUsage</span></a></li></ol>
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
@@ -307,7 +307,7 @@ zabbixserver想知道一台主机上的特定的JMX值时，它向ZabbixJavagate
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
