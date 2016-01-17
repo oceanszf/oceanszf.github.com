@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[Suzf Blog]]></title>
-  <subtitle><![CDATA[Life is short We need smile.]]></subtitle>
+  <subtitle><![CDATA[Life is short, We need smile.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.suzf.net/"/>
   <updated>2016-01-17T06:13:57.000Z</updated>
