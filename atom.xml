@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Life is short, We need smile.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.suzf.net/"/>
-  <updated>2016-01-17T06:13:57.000Z</updated>
+  <updated>2016-01-26T08:44:51.000Z</updated>
   <id>http://blog.suzf.net/</id>
   
   <author>
@@ -13,6 +13,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Python sengmail examples]]></title>
+    <link href="http://blog.suzf.net/2016/01/26/python-sendmail-example/"/>
+    <id>http://blog.suzf.net/2016/01/26/python-sendmail-example/</id>
+    <published>2016-01-26T08:36:02.000Z</published>
+    <updated>2016-01-26T08:44:51.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="send__attchment_email"><a href="#send__attchment_email" class="headerlink" title="send_ attchment email"></a>send_ attchment email</h2><p>`</p>
+<p>#!/usr/bin/env python<br>from email.mime.text import MIMEText<br>from email.mime.multipart import MIMEMultipart<br>import smtplib</p>
+<p>msg = MIMEMultipart()</p>
+<p>filename = ‘/root/bigfile’<br>att1 = MIMEText(open(filename, ‘rb’).read(), ‘base64’, ‘utf-8’)<br>att1[“Content-Type”] = ‘application/octet-stream’<br>att1[“Content-Disposition”] = ‘attachment; filename=filename’<br>msg.attach(att1)</p>
+<p>msg[‘to’] = ‘xxx@qq.com’<br>msg[‘from’] = ‘robot@suzf.net’<br>msg[‘subject’] = ‘hello world’</p>
+<p>try:<br>    server = smtplib.SMTP()<br>    server.connect(‘localhost’)</p>
+<pre><code>#server.connect(&apos;smtp.exmail.qq.com&apos;)
+#server.login(&apos;smtp_user&apos;,&apos;smtp_pwd&apos;)
+server.sendmail(msg[&apos;from&apos;], msg[&apos;to&apos;],msg.as_string())
+server.quit()
+</code></pre><p>except Exception, e:<br>    print str(e)</p>
+<p>`</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="send__attchment_email"><a href="#send__attchment_email" class="headerlink" title="send_ attchment email"></a>send_ attchment email</]]>
+    </summary>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
@@ -1237,44 +1266,6 @@ msg.attach(img)
       <category term="PHP" scheme="http://blog.suzf.net/tags/PHP/"/>
     
       <category term="Linux" scheme="http://blog.suzf.net/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Python 执行Linux系统命令的N种方法]]></title>
-    <link href="http://blog.suzf.net/2015/10/20/python-exec-linux-cmd-ways/"/>
-    <id>http://blog.suzf.net/2015/10/20/python-exec-linux-cmd-ways/</id>
-    <published>2015-10-20T07:00:56.000Z</published>
-    <updated>2016-01-13T07:17:03.000Z</updated>
-    <content type="html"><![CDATA[<p>前言：<br>很多时候我们会用到python去调用外部工具/命令去实现某种功能。<br><strong>I. os</strong><br><a href="https://docs.python.org/2/library/os.html" target="_blank" rel="external">https://docs.python.org/2/library/os.html</a><br>os.system<br>执行流程<br>system(command) -&gt; exit_status<br>Execute the command (a string) in a subshell.</p>
-<h1 id="os-system_28_29__u662F_u65B0_u8D77_u4E00_u4E2Ashell_u53BB_u5E72_u6D3B_u7684_uFF0C_u5BF9_u7CFB_u7EDF_u7684_u5F00_u9500_u6BD4_u8F83_u5927"><a href="#os-system_28_29__u662F_u65B0_u8D77_u4E00_u4E2Ashell_u53BB_u5E72_u6D3B_u7684_uFF0C_u5BF9_u7CFB_u7EDF_u7684_u5F00_u9500_u6BD4_u8F83_u5927" class="headerlink" title="os.system() 是新起一个shell去干活的，对系统的开销比较大"></a>os.system() 是新起一个shell去干活的，对系统的开销比较大</h1><h1 id="u4EC5_u5728_u4E00_u4E2A_u5B50_u7EC8_u7AEF_u8FD0_u884C_u7CFB_u7EDF_u547D_u4EE4_uFF0C_u800C_u4E0D_u80FD_u83B7_u53D6_u547D_u4EE4_u6267_u884C_u540E_u7684_u8FD4_u56DE_u4FE1_u606F"><a href="#u4EC5_u5728_u4E00_u4E2A_u5B50_u7EC8_u7AEF_u8FD0_u884C_u7CFB_u7EDF_u547D_u4EE4_uFF0C_u800C_u4E0D_u80FD_u83B7_u53D6_u547D_u4EE4_u6267_u884C_u540E_u7684_u8FD4_u56DE_u4FE1_u606F" class="headerlink" title="仅在一个子终端运行系统命令，而不能获取命令执行后的返回信息"></a>仅在一个子终端运行系统命令，而不能获取命令执行后的返回信息</h1><h1 id="u65E0_u6CD5_u63A7_u5236_uFF0C_uFF08_u5982_u679C_u8C03_u7528_u7684_u5916_u90E8_u547D_u4EE4_uFF0C_u6302_u6B7B_u6216_u8005_u6267_u884C_u65F6_u95F4_u5F88_u957F_uFF09_uFF0C_u4E3B_u8FDB_u7A0B_u65E0_u6CD5_u63A7_u5236os-system_28_29_2C__u56E0_u4E3A_u8C03_u7528os-system_28cmd_29__u8C03_u7528_u8FDB_u7A0B_u4F1Ablock_uFF0C_until_os-system_28_29__u81EA_u5DF1_u9000_u51FA"><a href="#u65E0_u6CD5_u63A7_u5236_uFF0C_uFF08_u5982_u679C_u8C03_u7528_u7684_u5916_u90E8_u547D_u4EE4_uFF0C_u6302_u6B7B_u6216_u8005_u6267_u884C_u65F6_u95F4_u5F88_u957F_uFF09_uFF0C_u4E3B_u8FDB_u7A0B_u65E0_u6CD5_u63A7_u5236os-system_28_29_2C__u56E0_u4E3A_u8C03_u7528os-system_28cmd_29__u8C03_u7528_u8FDB_u7A0B_u4F1Ablock_uFF0C_until_os-system_28_29__u81EA_u5DF1_u9000_u51FA" class="headerlink" title="无法控制，（如果调用的外部命令，挂死或者执行时间很长），主进程无法控制os.system(), 因为调用os.system(cmd)  调用进程会block， until os.system() 自己退出"></a>无法控制，（如果调用的外部命令，挂死或者执行时间很长），主进程无法控制os.system(), 因为调用os.system(cmd)  调用进程会block， until os.system() 自己退出</h1><p><pre class="lang:default decode:true ">In [30]: import os</pre></p>
-<p>In [31]: os.system(‘ls *.py’)<br>check_drive_usage.py  diff_file.py  fcSpider.py  fedspider.py  get_host_list.py  test.py  while.py<br>Out[31]: 0<br>os.popen<br>执行流程<br>popen(command [, mode=’r’ [, bufsize]]) -&gt; pipe<br>Open a pipe to/from a command returning a file object.</p>
-<h1 id="u8BE5_u65B9_u6CD5_u4E0D_u4F46_u6267_u884C_u547D_u4EE4_u8FD8_u8FD4_u56DE_u6267_u884C_u540E_u7684_u4FE1_u606F_u5BF9_u8C61"><a href="#u8BE5_u65B9_u6CD5_u4E0D_u4F46_u6267_u884C_u547D_u4EE4_u8FD8_u8FD4_u56DE_u6267_u884C_u540E_u7684_u4FE1_u606F_u5BF9_u8C61" class="headerlink" title="该方法不但执行命令还返回执行后的信息对象"></a>该方法不但执行命令还返回执行后的信息对象</h1><h1 id="u597D_u5904_u5728_u4E8E_uFF1A_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><a href="#u597D_u5904_u5728_u4E8E_uFF1A_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406" class="headerlink" title="好处在于：将返回的结果赋于一变量，便于程序的处理"></a>好处在于：将返回的结果赋于一变量，便于程序的处理</h1><p><pre class="lang:default decode:true">In [32]: py = os.popen(‘ls *py’).readlines()</pre></p>
-<p>In [33]: print py<br>[‘check_drive_usage.py\n’, ‘diff_file.py\n’, ‘fcSpider.py\n’, ‘fedspider.py\n’, ‘get_host_list.py\n’, ‘test.py\n’, ‘while.py\n’]<br>&nbsp;</p>
-<p><strong>II. commands</strong><br><a href="https://docs.python.org/2/library/commands.html" target="_blank" rel="external">https://docs.python.org/2/library/commands.html</a><br>常用的主要有两个方法：getoutput和getstatusoutput</p>
-<p><pre class="lang:default decode:true ">In [40]: import commands</pre></p>
-<p>In [41]: commands.getoutput(‘ls *.py’)<br>Out[41]: ‘check_drive_usage.py\ndiff_file.py\nfcSpider.py\nfedspider.py\nget_host_list.py\ntest.py\nwhile.py’</p>
-<p>In [41]: commands.getstatusoutput(‘ls *py’)<br>Out[41]:<br>(0,<br> ‘check_drive_usage.py\ndiff_file.py\nfcSpider.py\nfedspider.py\nget_host_list.py\ntest.py\nwhile.py’)<br>&nbsp;</p>
-<p><strong>III. subprocess  [ 推荐使用 ]</strong><br><a href="https://docs.python.org/2/library/subprocess.html" target="_blank" rel="external">https://docs.python.org/2/library/subprocess.html</a></p>
-<h1 id="u8FD0_u7528_u5BF9_u7EBF_u7A0B_u7684_u63A7_u5236_u548C_u76D1_u63A7_uFF0C_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><a href="#u8FD0_u7528_u5BF9_u7EBF_u7A0B_u7684_u63A7_u5236_u548C_u76D1_u63A7_uFF0C_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406" class="headerlink" title="运用对线程的控制和监控，将返回的结果赋于一变量，便于程序的处理"></a>运用对线程的控制和监控，将返回的结果赋于一变量，便于程序的处理</h1><h1 id="u4F1A_u81EA_u52A8_u5730_u52A0_u8F7D_u7CFB_u7EDF_u73AF_u5883_u53D8_u91CF_u3002"><a href="#u4F1A_u81EA_u52A8_u5730_u52A0_u8F7D_u7CFB_u7EDF_u73AF_u5883_u53D8_u91CF_u3002" class="headerlink" title="会自动地加载系统环境变量。"></a>会自动地加载系统环境变量。</h1><p>subprocess模块主要用于替代以下几个模块函数<br>os.system<br>os.spawn<em><br>os.popen</em><br>popen2.<em><br>commands.</em><br>相对应的subprocess 模块里有 call 函数和 popen 函数 。</p>
-<p>1、subprocess.call<br>call 函数的用法如下：<br>subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False)<br>可以看出，相对于os模块中的函数，这里可以指定的选项更多。</p>
-<p><pre class="lang:default decode:true ">In [64]: import subprocess</pre></p>
-<p>In [65]: subprocess.call(‘ls *py ‘,shell=False)<br>check_drive_usage.py  diff_file.py  fcSpider.py  fedspider.py  get_host_list.py  test.py  while.py<br>Out[65]: 0<br><br>交互式模式下，call 也会有returncode 0 输出，不过在py文件里执行时，ruturn的结果并不会将最后的 0 输出。不过在使用call 函数时，需要注意后面的几个参数:</p>
-<p><pre class="lang:default decode:true ">    开启shell=True是不安全的<br>    Using shell=True can be a security hazard. See the warning under Frequently Used Arguments for details.<br>    Note：<br>    尽量不要启用标准输出和标准错误输出需要管道，call有可能会导致子进程死锁。如需管道时，请使用Popen函数<br>    Do not use stdout=PIPE or stderr=PIPE with this function as that can deadlock based on the child process output volume. Use Popen with the communicate() method when you need pipes.</pre><br>subprocess.call 主要用于替换 os.system ，具体如下：</p>
-<p><pre class="lang:default decode:true ">In [66]: subprocess.call(‘date’)<br>Thu Oct 29 16:02:24 CST 2015<br>Out[66]: 0</pre><br>sub.process.Popen的用法如下：</p>
-<p><pre class="lang:default decode:true">subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)</pre><br>eg:</p>
-<p><pre class="lang:default decode:true ">In [67]: import subprocess</pre></p>
-<p>In [68]: p = subprocess.Popen(‘ls *.py’, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)</p>
-<p>In [69]: print p.stdout.readlines()<br>[‘check_drive_usage.py\n’, ‘diff_file.py\n’, ‘fcSpider.py\n’, ‘fedspider.py\n’, ‘get_host_list.py\n’, ‘test.py\n’, ‘while.py\n’]<br>&nbsp;</p>
-<p>更多内容请移步官网 <a href="https://docs.python.org" target="_blank" rel="external">https://docs.python.org</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>前言：<br>很多时候我们会用到python去调用外部工具/命令去实现某种功能。<br><strong>I. os</strong><br><a href="https://docs.python.org/2/library/os.html" target="_blank"]]>
-    </summary>
-    
-      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
-    
-      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
     
   </entry>
   
