@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Life is short, We need smile.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.suzf.net/"/>
-  <updated>2016-01-26T09:33:51.000Z</updated>
+  <updated>2016-01-27T07:51:54.000Z</updated>
   <id>http://blog.suzf.net/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://blog.suzf.net/2016/01/26/python-sendmail-examples/"/>
     <id>http://blog.suzf.net/2016/01/26/python-sendmail-examples/</id>
     <published>2016-01-26T08:36:02.000Z</published>
-    <updated>2016-01-26T09:33:51.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="send__attchment_email"><a href="#send__attchment_email" class="headerlink" title="send_ attchment email"></a>send_ attchment email</h2><p>#!/usr/bin/env python<br>from email.mime.text import MIMEText<br>from email.mime.multipart import MIMEMultipart<br>import smtplib</p>
+    <updated>2016-01-27T07:51:54.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="send_attchment_email"><a href="#send_attchment_email" class="headerlink" title="send attchment email"></a>send attchment email</h2><p>#!/usr/bin/env python<br>from email.mime.text import MIMEText<br>from email.mime.multipart import MIMEMultipart<br>import smtplib</p>
 <p>msg = MIMEMultipart()</p>
 <p>filename = ‘/root/bigfile’<br>att1 = MIMEText(open(filename, ‘rb’).read(), ‘base64’, ‘utf-8’)<br>att1[“Content-Type”] = ‘application/octet-stream’<br>att1[“Content-Disposition”] = ‘attachment; filename=filename’<br>msg.attach(att1)</p>
 <p>msg[‘to’] = ‘xxx@qq.com’<br>msg[‘from’] = ‘robot@suzf.net’<br>msg[‘subject’] = ‘hello world’</p>
@@ -32,7 +32,7 @@ server.quit()
 </code></pre><p>except Exception, e:<br>    print str(e)</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="send__attchment_email"><a href="#send__attchment_email" class="headerlink" title="send_ attchment email"></a>send_ attchment email</]]>
+    <![CDATA[<h2 id="send_attchment_email"><a href="#send_attchment_email" class="headerlink" title="send attchment email"></a>send attchment email</h2><]]>
     </summary>
     
       <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
