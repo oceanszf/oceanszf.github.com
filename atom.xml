@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Life is short, We need smile.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.suzf.net/"/>
-  <updated>2016-01-28T06:37:10.000Z</updated>
+  <updated>2016-01-28T06:38:45.000Z</updated>
   <id>http://blog.suzf.net/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://blog.suzf.net/2016/01/28/python-file-operations/"/>
     <id>http://blog.suzf.net/2016/01/28/python-file-operations/</id>
     <published>2016-01-28T06:27:12.000Z</published>
-    <updated>2016-01-28T06:37:10.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="Split_big_file"><a href="#Split_big_file" class="headerlink" title="Split big file"></a>Split big file</h2><p>`#!/usr/bin/env python</p>
+    <updated>2016-01-28T06:38:45.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="Split_big_file"><a href="#Split_big_file" class="headerlink" title="Split big file"></a>Split big file</h2><p><code>#!/usr/bin/env python</code></p>
 <h1 id="encoding_3A_utf-8"><a href="#encoding_3A_utf-8" class="headerlink" title="-- encoding: utf-8 --"></a>-<em>- encoding: utf-8 -</em>-</h1><p>import os<br>import sys<br>from optparse import OptionParser</p>
 <p>def split(fromfile, todir, chunksize):<br>    if not os.path.exists(todir):<br>        os.mkdir(todir)<br>    else:<br>        for fname in os.listdir(todir):<br>            os.remove(os.path.join(todir, fname))</p>
 <pre><code>partnum = 0
@@ -51,10 +51,10 @@ except:
     print &apos;Error during split:&apos; + (sys.exc_info()[0], sys.exc_info()[1])
 else:
     print (&apos;split finished:&apos;, parts, &apos;parts are in&apos;, absto)
-</code></pre><p>`</p>
+</code></pre><p></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="Split_big_file"><a href="#Split_big_file" class="headerlink" title="Split big file"></a>Split big file</h2><p>`#!/usr/bin/env python]]>
+    <![CDATA[<h2 id="Split_big_file"><a href="#Split_big_file" class="headerlink" title="Split big file"></a>Split big file</h2><p><code>#!/usr/bin/env p]]>
     </summary>
     
       <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
