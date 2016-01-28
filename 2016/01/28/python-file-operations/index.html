@@ -9,9 +9,9 @@
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="Split big file#!/usr/bin/env python
+    <meta name="description" content="Split big file`#!/usr/bin/env python
 -- encoding: utf-8 --import osimport sysfrom optparse import OptionParser
-def split(fromfile, todir, chunksize):  ">
+def split(fromfile, todir, chunksize): ">
     
     
     
@@ -230,7 +230,7 @@ def split(fromfile, todir, chunksize):  ">
     </p>
   <p class="article-time">
     <time datetime="2016-01-28T06:27:12.000Z" itemprop="datePublished">2016-01-28</time>
-    Updated:<time datetime="2016-01-28T06:34:37.000Z" itemprop="dateModified">2016-01-28</time>
+    Updated:<time datetime="2016-01-28T06:37:10.000Z" itemprop="dateModified">2016-01-28</time>
     
   </p>
 </header>
@@ -242,7 +242,7 @@ def split(fromfile, todir, chunksize):  ">
 		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Split_big_file"><span class="toc-number">1.</span> <span class="toc-text">Split big file</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#encoding_3A_utf-8"><span class="toc-number"></span> <span class="toc-text">-- encoding: utf-8 --</span></a>
 		</div>
 		
-		<h2 id="Split_big_file"><a href="#Split_big_file" class="headerlink" title="Split big file"></a>Split big file</h2><p>#!/usr/bin/env python</p>
+		<h2 id="Split_big_file"><a href="#Split_big_file" class="headerlink" title="Split big file"></a>Split big file</h2><p>`#!/usr/bin/env python</p>
 <h1 id="encoding_3A_utf-8"><a href="#encoding_3A_utf-8" class="headerlink" title="-- encoding: utf-8 --"></a>-<em>- encoding: utf-8 -</em>-</h1><p>import os<br>import sys<br>from optparse import OptionParser</p>
 <p>def split(fromfile, todir, chunksize):<br>    if not os.path.exists(todir):<br>        os.mkdir(todir)<br>    else:<br>        for fname in os.listdir(todir):<br>            os.remove(os.path.join(todir, fname))</p>
 <pre><code>partnum = 0
@@ -273,7 +273,8 @@ except:
     print &apos;Error during split:&apos; + (sys.exc_info()[0], sys.exc_info()[1])
 else:
     print (&apos;split finished:&apos;, parts, &apos;parts are in&apos;, absto)
-</code></pre>  
+</code></pre><p>`</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
