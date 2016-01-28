@@ -9,8 +9,7 @@
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="send attchment email#!/usr/bin/env pythonfrom email.mime.text import MIMETextfrom email.mime.multipart import MIMEMultipartimport smtplib
-msg = MIMEMu">
+    <meta name="description" content="send attchment email123456789101112131415161718192021222324252627282930#!/usr/bin/env pythonfrom email.mime.text import MIMETextfrom email.mime.multip">
     
     
     
@@ -229,7 +228,7 @@ msg = MIMEMu">
     </p>
   <p class="article-time">
     <time datetime="2016-01-26T08:36:02.000Z" itemprop="datePublished">2016-01-26</time>
-    Updated:<time datetime="2016-01-27T07:51:54.000Z" itemprop="dateModified">2016-01-27</time>
+    Updated:<time datetime="2016-01-28T07:01:11.000Z" itemprop="dateModified">2016-01-28</time>
     
   </p>
 </header>
@@ -241,16 +240,7 @@ msg = MIMEMu">
 		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#send_attchment_email"><span class="toc-number">1.</span> <span class="toc-text">send attchment email</span></a></li></ol>
 		</div>
 		
-		<h2 id="send_attchment_email"><a href="#send_attchment_email" class="headerlink" title="send attchment email"></a>send attchment email</h2><p>#!/usr/bin/env python<br>from email.mime.text import MIMEText<br>from email.mime.multipart import MIMEMultipart<br>import smtplib</p>
-<p>msg = MIMEMultipart()</p>
-<p>filename = ‘/root/bigfile’<br>att1 = MIMEText(open(filename, ‘rb’).read(), ‘base64’, ‘utf-8’)<br>att1[“Content-Type”] = ‘application/octet-stream’<br>att1[“Content-Disposition”] = ‘attachment; filename=filename’<br>msg.attach(att1)</p>
-<p>msg[‘to’] = ‘xxx@qq.com’<br>msg[‘from’] = ‘robot@suzf.net’<br>msg[‘subject’] = ‘hello world’</p>
-<p>try:<br>    server = smtplib.SMTP()<br>    server.connect(‘localhost’)</p>
-<pre><code>#server.connect(&apos;smtp.exmail.qq.com&apos;)
-#server.login(&apos;smtp_user&apos;,&apos;smtp_pwd&apos;)
-server.sendmail(msg[&apos;from&apos;], msg[&apos;to&apos;],msg.as_string())
-server.quit()
-</code></pre><p>except Exception, e:<br>    print str(e)</p>
+		<h2 id="send_attchment_email"><a href="#send_attchment_email" class="headerlink" title="send attchment email"></a>send attchment email</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msg = MIMEMultipart()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">filename = <span class="string">'/root/bigfile'</span></span><br><span class="line">att1 = MIMEText(open(filename, <span class="string">'rb'</span>).read(), <span class="string">'base64'</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">att1[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span></span><br><span class="line">att1[<span class="string">"Content-Disposition"</span>] = <span class="string">'attachment; filename=filename'</span></span><br><span class="line">msg.attach(att1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msg[<span class="string">'to'</span>] = <span class="string">'xxx@qq.com'</span></span><br><span class="line">msg[<span class="string">'from'</span>] = <span class="string">'robot@suzf.net'</span></span><br><span class="line">msg[<span class="string">'subject'</span>] = <span class="string">'hello world'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    server = smtplib.SMTP()</span><br><span class="line">    server.connect(<span class="string">'localhost'</span>)</span><br><span class="line">    <span class="comment">#server.connect('smtp.exmail.qq.com')</span></span><br><span class="line">    <span class="comment">#server.login('smtp_user','smtp_pwd')</span></span><br><span class="line">    server.sendmail(msg[<span class="string">'from'</span>], msg[<span class="string">'to'</span>],msg.as_string())</span><br><span class="line">    server.quit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">except</span> Exception, e:</span><br><span class="line">    <span class="keyword">print</span> str(e)</span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
