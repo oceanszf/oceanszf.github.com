@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Life is short, We need smile.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.suzf.net/"/>
-  <updated>2016-01-27T09:15:12.000Z</updated>
+  <updated>2016-01-28T06:27:12.000Z</updated>
   <id>http://blog.suzf.net/</id>
   
   <author>
@@ -15,19 +15,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[python-modules-optparse.md]]></title>
-    <link href="http://blog.suzf.net/2016/01/27/python-modules-optparse-md/"/>
-    <id>http://blog.suzf.net/2016/01/27/python-modules-optparse-md/</id>
-    <published>2016-01-27T09:05:50.000Z</published>
-    <updated>2016-01-27T09:15:12.000Z</updated>
+    <title><![CDATA[python-file-operations.md]]></title>
+    <link href="http://blog.suzf.net/2016/01/28/python-file-operations/"/>
+    <id>http://blog.suzf.net/2016/01/28/python-file-operations/</id>
+    <published>2016-01-28T06:27:12.000Z</published>
+    <updated>2016-01-28T06:27:12.000Z</updated>
     <content type="html"></content>
     <summary type="html">
     
     </summary>
-    
-      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
-    
-      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
     
   </entry>
   
