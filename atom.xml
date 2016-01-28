@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Life is short, We need smile.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.suzf.net/"/>
-  <updated>2016-01-28T06:53:19.000Z</updated>
+  <updated>2016-01-28T07:23:07.000Z</updated>
   <id>http://blog.suzf.net/</id>
   
   <author>
@@ -13,6 +13,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://blog.suzf.net/2016/01/28/use_mutt_sendmail_with_attachment/"/>
+    <id>http://blog.suzf.net/2016/01/28/use_mutt_sendmail_with_attachment/</id>
+    <published>2016-01-28T07:23:29.000Z</published>
+    <updated>2016-01-28T07:23:07.000Z</updated>
+    <content type="html"><![CDATA[<p>title: use mutt/postfix to send attachment<br>date: 2015-06-01 12:27:12<br>tags:</p>
+<ul>
+<li>Linux<br>categories:</li>
+<li>Linux</li>
+</ul>
+<p>使用Mutt发邮件极其方便,只需要一条命令即可发送或者批量发送邮件<br>功能说明：E-mail管理程序。</p>
+<p>语　　法：mutt [-hnpRvxz][-a&lt;文件&gt;][-b&lt;地址&gt;][-c&lt;地址&gt;][-f&lt;邮件文件&gt;][-F&lt;配置文件&gt;][-H&lt;邮件草稿&gt;][-i&lt;文件&gt;][-m&lt;类型&gt;][-s&lt;主题&gt;][邮件地址]</p>
+<p>补充说明：mutt是一个文字模式的邮件管理程序，提供了全屏幕的操作界面。</p>
+<p>参　　数：<br>-a&lt;文件&gt; 在邮件中加上附加文件。<br>-b&lt;地址&gt; 指定密件副本的收信人地址。<br>-c&lt;地址&gt; 指定副本的收信人地址。<br>-f&lt;邮件文件&gt; 指定要载入的邮件文件。<br>-F&lt;配置文件&gt; 指定mutt程序的设置文件，而不读取预设的.muttrc文件。<br>-h 显示帮助。<br>-H&lt;邮件草稿&gt; 将指定的邮件草稿送出。<br>-i&lt;文件&gt; 将指定文件插入邮件内文中。<br>-m&lt;类型&gt; 指定预设的邮件信箱类型。<br>-n 不要去读取程序培植文件(/etc/Muttrc)。<br>-p 在mutt中编辑完邮件后，而不想将邮件立即送出，可将该邮件暂缓寄出。<br>-R 以只读的方式开启邮件文件。<br>-s&lt;主题&gt; 指定邮件的主题。<br>-v 显示mutt的版本信息以及当初编译此文件时所给予的参数。<br>-x 模拟mailx的编辑方式。<br>-z 与-f参数一并使用时，若邮件文件中没有邮件即不启动mutt。</p>
+<p>1.安装方法<br>Centos安装 #<br>yum install -y mutt</p>
+<p>2.使用方法<br>最简单的测试方法<br>echo “Test” | mutt -s “Title” xxx@qq.com</p>
+<p>带附件的<br>echo “Test” | mutt -s “mysql backup” -a /xxx.tar.gz xxx@qq.com</p>
+<p>读取文本中的信息作为内容<br>mutt -s “Test” xxx@qq.com</p>
+<p>添加多个附件<br>echo “Test” | mutt -s “web backup” -a /mysql.tar.gz -a /web.tar.gz xxxx@qq.com</p>
+<p>#读取mail.txt内容为邮件内容,内容必须UTF8编码,否则乱码</p>
+<p>3.设置发件人<br>编辑配置文件<br>vi /etc/Muttrc</p>
+<p>添加如下内容,防止被作为垃圾邮件<br>set from = “robot@suzf.net”<br>set use_from = yes<br>set envelope_from = “yes”<br>set realname = “Robot”</p>
+<p>FAQ:<br>通常来说目前主流的邮箱支持的邮箱附件仅在 百兆之内 [ qq 单个邮件附件为 70M]。</p>
+<p>#echo “mutt test” |mutt username@domain.name -s “test”   -a “/root/xxx.tar.gz”<br>postdrop: warning: uid=0: File too large<br>sendmail: fatal: root(0): message file too big<br>Error sending message, child exited 75 (Deferred.).<br>Could not send the message.</p>
+<p>#查看日志<br>Jan 25 15:43:08 xxx postfix/smtp[26575]: 9DB3A1160C2: to=<a href="/&#x6d;&#97;&#x69;&#108;&#116;&#111;&#58;&#120;&#120;&#120;&#x78;&#x78;&#x78;&#120;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#111;&#109;">&#120;&#120;&#120;&#x78;&#x78;&#x78;&#120;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#111;&#109;</a>, relay=mx3.qq.com[184.105.206.32]:25, delay=9.8, delays=3.6/0.29/5.9/0, dsn=5.3.4, status=bounced (message size 92650110 exceeds size limit 73400320 of server mx3.qq.com[184.105.206.32])</p>
+<p>方案：<br>修改main.cf里面的message_size_limit参数，调大点。<br>如果里面没有，自己手工加一个。单位是字节，如果不懂用法，man 5 postconf找到这个参数的说明<br>eg: 修改成如下大小即可（1G）<br>postconf -e “message_size_limit = 1024000000”<br>postconf -e “mailbox_size_limit = 1024000000”</p>
+<p>再次发送邮件可以收到邮件了， So cool!</p>
+<p>注：发送邮件略慢，需要等待一分钟或者更长才能发送成功(可做定时备份)</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>title: use mutt/postfix to send attachment<br>date: 2015-06-01 12:27:12<br>tags:</p>
+<ul>
+<li>Linux<br>categories:</li>
+<li>Linux</li>
+</]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[python-file-operations]]></title>
@@ -1186,49 +1226,6 @@ to = []]>
       <category term="Puppet" scheme="http://blog.suzf.net/tags/Puppet/"/>
     
       <category term="Puppet" scheme="http://blog.suzf.net/categories/Puppet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Use Python send mail]]></title>
-    <link href="http://blog.suzf.net/2015/10/22/use-python-send-email/"/>
-    <id>http://blog.suzf.net/2015/10/22/use-python-send-email/</id>
-    <published>2015-10-22T13:20:42.000Z</published>
-    <updated>2016-01-13T07:17:03.000Z</updated>
-    <content type="html"><![CDATA[<p>I recommend that you use the standard packages email and smtplib together to send Email. Please look at the following example (reproduced from the <a href="https://docs.python.org/2/library/email-examples.html" target="_blank" rel="external">Python documentation</a>). Notice that if you follow this approach, the “simple” task is indeed simple, and the more complex tasks (like attaching binary objects or sending plain/HTML multipart messages) are accomplished very rapidly.</p>
-<p>Here are a few examples of how to use the <a href="https://docs.python.org/2/library/email.html#module-email" title="email: Package supporting the parsing, manipulating, and generating email messages, including MIME documents." target="_blank" rel="external"><tt class="xref py py-mod docutils literal"><span class="pre">email</span></tt></a> package to read, write, and send simple email messages, as well as more complex MIME messages.</p>
-<p>First, let’s see how to create and send a simple text message:</p>
-<p><pre class="lang:python decode:true "># Import smtplib for the actual sending function<br>import smtplib</pre></p>
-<h1 id="Import_the_email_modules_we_u2019ll_need"><a href="#Import_the_email_modules_we_u2019ll_need" class="headerlink" title="Import the email modules we’ll need"></a>Import the email modules we’ll need</h1><p>from email.mime.text import MIMEText</p>
-<h1 id="Open_a_plain_text_file_for_reading-_For_this_example_2C_assume_that"><a href="#Open_a_plain_text_file_for_reading-_For_this_example_2C_assume_that" class="headerlink" title="Open a plain text file for reading.  For this example, assume that"></a>Open a plain text file for reading.  For this example, assume that</h1><h1 id="the_text_file_contains_only_ASCII_characters"><a href="#the_text_file_contains_only_ASCII_characters" class="headerlink" title="the text file contains only ASCII characters."></a>the text file contains only ASCII characters.</h1><p>fp = open(textfile, ‘rb’)</p>
-<h1 id="Create_a_text/plain_message"><a href="#Create_a_text/plain_message" class="headerlink" title="Create a text/plain message"></a>Create a text/plain message</h1><p>msg = MIMEText(fp.read())<br>fp.close()</p>
-<h1 id="me__3D_3D_the_sender_u2019s_email_address"><a href="#me__3D_3D_the_sender_u2019s_email_address" class="headerlink" title="me == the sender’s email address"></a>me == the sender’s email address</h1><h1 id="you__3D_3D_the_recipient_u2019s_email_address"><a href="#you__3D_3D_the_recipient_u2019s_email_address" class="headerlink" title="you == the recipient’s email address"></a>you == the recipient’s email address</h1><p>msg[‘Subject’] = ‘The contents of %s’ % textfile<br>msg[‘From’] = me<br>msg[‘To’] = you</p>
-<h1 id="Send_the_message_via_our_own_SMTP_server_2C_but_don_u2019t_include_the"><a href="#Send_the_message_via_our_own_SMTP_server_2C_but_don_u2019t_include_the" class="headerlink" title="Send the message via our own SMTP server, but don’t include the"></a>Send the message via our own SMTP server, but don’t include the</h1><h1 id="envelope_header"><a href="#envelope_header" class="headerlink" title="envelope header."></a>envelope header.</h1><p>s = smtplib.SMTP(‘localhost’)<br>s.sendmail(me, [you], msg.as_string())<br>s.quit()<br>For sending email to multiple destinations, you can also follow the example in the Python documentation:</p>
-<p><pre class="lang:python decode:true "># Import smtplib for the actual sending function<br>import smtplib</pre></p>
-<h1 id="Here_are_the_email_package_modules_we_u2019ll_need"><a href="#Here_are_the_email_package_modules_we_u2019ll_need" class="headerlink" title="Here are the email package modules we’ll need"></a>Here are the email package modules we’ll need</h1><p>from email.mime.image import MIMEImage<br>from email.mime.multipart import MIMEMultipart</p>
-<p>COMMASPACE = ‘, ‘</p>
-<h1 id="Create_the_container__28outer_29_email_message"><a href="#Create_the_container__28outer_29_email_message" class="headerlink" title="Create the container (outer) email message."></a>Create the container (outer) email message.</h1><p>msg = MIMEMultipart()<br>msg[‘Subject’] = ‘Our family reunion’</p>
-<h1 id="me__3D_3D_the_sender_u2019s_email_address-1"><a href="#me__3D_3D_the_sender_u2019s_email_address-1" class="headerlink" title="me == the sender’s email address"></a>me == the sender’s email address</h1><h1 id="family__3D_the_list_of_all_recipients_u2019_email_addresses"><a href="#family__3D_the_list_of_all_recipients_u2019_email_addresses" class="headerlink" title="family = the list of all recipients’ email addresses"></a>family = the list of all recipients’ email addresses</h1><p>msg[‘From’] = me<br>msg[‘To’] = COMMASPACE.join(family)<br>msg.preamble = ‘Our family reunion’</p>
-<h1 id="Assume_we_know_that_the_image_files_are_all_in_PNG_format"><a href="#Assume_we_know_that_the_image_files_are_all_in_PNG_format" class="headerlink" title="Assume we know that the image files are all in PNG format"></a>Assume we know that the image files are all in PNG format</h1><p>for file in pngfiles:</p>
-<pre><code># Open the files in binary mode.  Let the MIMEImage class automatically
-# guess the specific image type.
-fp = open(file, &apos;rb&apos;)
-img = MIMEImage(fp.read())
-fp.close()
-msg.attach(img)
-</code></pre><h1 id="Send_the_email_via_our_own_SMTP_server"><a href="#Send_the_email_via_our_own_SMTP_server" class="headerlink" title="Send the email via our own SMTP server."></a>Send the email via our own SMTP server.</h1><p>s = smtplib.SMTP(‘localhost’)<br>s.sendmail(me, family, msg.as_string())<br>s.quit()<br>As you can see, the header To in the MIMEText object must be a string consisting of email addresses separated by commas. On the other hand, the second argument to the sendmail function must be a list of strings (each string is an email address).</p>
-<p>So, if you have three email addresses: person1@example.com, person2@example.com, and person3@example.com, you can do as follows (obvious sections omitted):</p>
-<p>to = [“person1@example.com”, “person2@example.com”, “person3@example.com”]<br>msg[‘To’] = “,”.join(to)<br>s.sendmail(me, to, msg.as_string())</p>
-<p>the “”,””.join(to) part makes a single string out of the list, separated by commas.</p>
-<p>From your questions I gather that you have not gone through the Python tutorial - it is a MUST if you want to get anywhere in Python - the documentation is mostly excellent for the standard library.</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>I recommend that you use the standard packages email and smtplib together to send Email. Please look at the following example (reproduced]]>
-    </summary>
-    
-      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
-    
-      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
     
   </entry>
   

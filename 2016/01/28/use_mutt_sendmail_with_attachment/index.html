@@ -9,7 +9,13 @@
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="Suzf linux tech blog">
+    <meta name="description" content="title: use mutt/postfix to send attachmentdate: 2015-06-01 12:27:12tags:
+
+Linuxcategories:
+Linux
+
+使用Mutt发邮件极其方便,只需要一条命令即可发送或者批量发送邮件功能说明：E-mail管理程序。
+语　">
     
     
     
@@ -26,7 +32,7 @@
 
   <body>
     <header>
-        <div>
+      <div>
 		
 			<div id="imglogo">
 				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
@@ -215,176 +221,95 @@
 
     </header>
     <div id="container">
-      <div id="main">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/13/nginx-access-control-and-status-view/" title="Nginx 之访问控制与状态查看" itemprop="url">
-  
-    <h1 itemprop="name">Nginx 之访问控制与状态查看</h1>
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >Nginx访问控制基于用户基于主机
-一、基于用户的访问控制1. 检测是否有htpasswd命令
-
-建立口令文件
-查看口令文件
-
-2. 实现认证[用户][root@Jeffery ~]# vim /usr/local/nginx/conf/nginx.conf3. 访问测试检测配置</p>
-        
+      <a href="/2016/01/28/use_mutt_sendmail_with_attachment/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
     
-    <time datetime="2014-08-13T13:18:07.000Z" itemprop="datePublished">2014-08-13</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-01-28T07:23:29.000Z" itemprop="datePublished">2016-01-28</time>
+    Updated:<time datetime="2016-01-28T07:23:07.000Z" itemprop="dateModified">2016-01-28</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>title: use mutt/postfix to send attachment<br>date: 2015-06-01 12:27:12<br>tags:</p>
+<ul>
+<li>Linux<br>categories:</li>
+<li>Linux</li>
+</ul>
+<p>使用Mutt发邮件极其方便,只需要一条命令即可发送或者批量发送邮件<br>功能说明：E-mail管理程序。</p>
+<p>语　　法：mutt [-hnpRvxz][-a&lt;文件&gt;][-b&lt;地址&gt;][-c&lt;地址&gt;][-f&lt;邮件文件&gt;][-F&lt;配置文件&gt;][-H&lt;邮件草稿&gt;][-i&lt;文件&gt;][-m&lt;类型&gt;][-s&lt;主题&gt;][邮件地址]</p>
+<p>补充说明：mutt是一个文字模式的邮件管理程序，提供了全屏幕的操作界面。</p>
+<p>参　　数：<br>-a&lt;文件&gt; 在邮件中加上附加文件。<br>-b&lt;地址&gt; 指定密件副本的收信人地址。<br>-c&lt;地址&gt; 指定副本的收信人地址。<br>-f&lt;邮件文件&gt; 指定要载入的邮件文件。<br>-F&lt;配置文件&gt; 指定mutt程序的设置文件，而不读取预设的.muttrc文件。<br>-h 显示帮助。<br>-H&lt;邮件草稿&gt; 将指定的邮件草稿送出。<br>-i&lt;文件&gt; 将指定文件插入邮件内文中。<br>-m&lt;类型&gt; 指定预设的邮件信箱类型。<br>-n 不要去读取程序培植文件(/etc/Muttrc)。<br>-p 在mutt中编辑完邮件后，而不想将邮件立即送出，可将该邮件暂缓寄出。<br>-R 以只读的方式开启邮件文件。<br>-s&lt;主题&gt; 指定邮件的主题。<br>-v 显示mutt的版本信息以及当初编译此文件时所给予的参数。<br>-x 模拟mailx的编辑方式。<br>-z 与-f参数一并使用时，若邮件文件中没有邮件即不启动mutt。</p>
+<p>1.安装方法<br>Centos安装 #<br>yum install -y mutt</p>
+<p>2.使用方法<br>最简单的测试方法<br>echo “Test” | mutt -s “Title” xxx@qq.com</p>
+<p>带附件的<br>echo “Test” | mutt -s “mysql backup” -a /xxx.tar.gz xxx@qq.com</p>
+<p>读取文本中的信息作为内容<br>mutt -s “Test” xxx@qq.com</p>
+<p>添加多个附件<br>echo “Test” | mutt -s “web backup” -a /mysql.tar.gz -a /web.tar.gz xxxx@qq.com</p>
+<p>#读取mail.txt内容为邮件内容,内容必须UTF8编码,否则乱码</p>
+<p>3.设置发件人<br>编辑配置文件<br>vi /etc/Muttrc</p>
+<p>添加如下内容,防止被作为垃圾邮件<br>set from = “robot@suzf.net”<br>set use_from = yes<br>set envelope_from = “yes”<br>set realname = “Robot”</p>
+<p>FAQ:<br>通常来说目前主流的邮箱支持的邮箱附件仅在 百兆之内 [ qq 单个邮件附件为 70M]。</p>
+<p>#echo “mutt test” |mutt username@domain.name -s “test”   -a “/root/xxx.tar.gz”<br>postdrop: warning: uid=0: File too large<br>sendmail: fatal: root(0): message file too big<br>Error sending message, child exited 75 (Deferred.).<br>Could not send the message.</p>
+<p>#查看日志<br>Jan 25 15:43:08 xxx postfix/smtp[26575]: 9DB3A1160C2: to=<a href="/&#x6d;&#97;&#x69;&#108;&#116;&#111;&#58;&#120;&#120;&#120;&#x78;&#x78;&#x78;&#120;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#111;&#109;">&#120;&#120;&#120;&#x78;&#x78;&#x78;&#120;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#111;&#109;</a>, relay=mx3.qq.com[184.105.206.32]:25, delay=9.8, delays=3.6/0.29/5.9/0, dsn=5.3.4, status=bounced (message size 92650110 exceeds size limit 73400320 of server mx3.qq.com[184.105.206.32])</p>
+<p>方案：<br>修改main.cf里面的message_size_limit参数，调大点。<br>如果里面没有，自己手工加一个。单位是字节，如果不懂用法，man 5 postconf找到这个参数的说明<br>eg: 修改成如下大小即可（1G）<br>postconf -e “message_size_limit = 1024000000”<br>postconf -e “mailbox_size_limit = 1024000000”</p>
+<p>再次发送邮件可以收到邮件了， So cool!</p>
+<p>注：发送邮件略慢，需要等待一分钟或者更长才能发送成功(可做定时备份)</p>
   
-    <a href="/2014/08/13/zabbix-monitoring-of-web-url/" title="Zabbix 之 web  url 监控" itemprop="url">
-  
-    <h1 itemprop="name">Zabbix 之 web  url 监控</h1>
-    
-     
-           <p itemprop="description" >1.首先可以在主机模板中先定义一个application
-
-2.找一个关联着这个模板的主机[Configuration – Hosts ],然后选择这台主机[Web],点击Create scenario
-
-&amp;nbsp;
-
-Save
-3.查看监控状态[Monitoring – We</p>
-        
-    
-    <time datetime="2014-08-13T08:13:51.000Z" itemprop="datePublished">2014-08-13</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/12/nginx-virtualhost/" title="Nginx 之虚拟主机" itemprop="url">
-  
-    <h1 itemprop="name">Nginx 之虚拟主机</h1>
-    
-     
-           <p itemprop="description" >Nginx 虚拟主机虚拟主机是在网络服务器上划分出一定的磁盘空间供用户放置站点、应用组件等，提供必要的站点功能、数据存放和传输功能。所谓虚拟主机，也叫“网站空间”，就是把一台运行在互联网上的服务器划分成多个“虚拟”的服务器，每一个虚拟主机都具有独立的域名和完整的Internet服</p>
-        
-    
-    <time datetime="2014-08-12T14:45:22.000Z" itemprop="datePublished">2014-08-12</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/12/nginx-basic-configure/" title="Nginx之基本配置" itemprop="url">
-  
-    <h1 itemprop="name">Nginx之基本配置</h1>
-    
-     
-           <p itemprop="description" >Nginx
-1. 高性能的HTTP Server，支持高达20000并发访问2. 反向代理服务器，给网站加速
-3. 做为前端一个负载均衡器一、准备工作
-service httpd stopchkconfig httpd off所需的软件: 开发库，openssl-devel
-二、</p>
-        
-    
-    <time datetime="2014-08-12T13:15:42.000Z" itemprop="datePublished">2014-08-12</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/07/loganalyzer-log-analysis-and-syslog-log-analysis-system/" title="日志分析之LogAnalyzer+Rsyslog日志分析系统全" itemprop="url">
-  
-    <h1 itemprop="name">日志分析之LogAnalyzer+Rsyslog日志分析系统全</h1>
-    
-     
-           <p itemprop="description" >一、简介
-LogAnalyzer 是一款syslog日志和其他网络事件数据的Web前端。它提供了对日志的简单浏览、搜索、基本分析和一些图表报告的功能。数据可以从数据库或一般的 syslog文本文件中获取，所以LogAnalyzer不需要改变现有的记录架构。基于当前的日志数据，它可</p>
-        
-    
-    <time datetime="2014-08-07T06:22:56.000Z" itemprop="datePublished">2014-08-07</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/07/kickstart-the-custom-password-for-the-root/" title="Kickstart之为root自定义密码" itemprop="url">
-  
-    <h1 itemprop="name">Kickstart之为root自定义密码</h1>
-    
-     
-           <p itemprop="description" >linux kickstart之中root的密码可以使用明文，也可以使用加密过的值rootpw –iscrypted $1$BYSimLw0$I515yLiKzudlwkIskBqQE1
-就是读取加密后的值，但是这个值是怎么生成的呢？这与linux系统的密码shadow一样，生成</p>
-        
-    
-    <time datetime="2014-08-07T05:31:57.000Z" itemprop="datePublished">2014-08-07</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/06/http-returns-a-status-code-explanation/" title="HTTP 返回状态代码详解" itemprop="url">
-  
-    <h1 itemprop="name">HTTP 返回状态代码详解</h1>
-    
-     
-           <p itemprop="description" >一、HTTP状态码
-如果某项请求发送到您的服务器要求显示您网站上的某个网页（例如，用户通过浏览器访问您的网页或 Googlebot 抓取网页时），服务器将会返回 HTTP 状态代码以响应请求。
-此状态代码提供关于请求状态的信息， 告诉 Googlebot 关于您的网站和请求的网页</p>
-        
-    
-    <time datetime="2014-08-06T03:18:31.000Z" itemprop="datePublished">2014-08-06</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/06/DIY-streamline-automatically-install-CentOS-ISO/" title="DIY精简CentOS自动安装ISO" itemprop="url">
-  
-    <h1 itemprop="name">DIY精简CentOS自动安装ISO</h1>
-    
-     
-           <p itemprop="description" >俗话说一瘦遮三丑，一胖全没有。原生的系统过于庞大和臃肿，工作中有很多组件和安装包根本是用不到的，只安装我们需要的组件，并实现自动安装，这样在产线批量布署服务器的时候，显的效率非常高。a.在VM安装linux系统b.安装定制工具anaconda repodata createrep</p>
-        
-    
-    <time datetime="2014-08-06T03:09:30.000Z" itemprop="datePublished">2014-08-06</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/01/zabbix-agent-setup-on-windows/" title="Zabbix 之windows下安装agent" itemprop="url">
-  
-    <h1 itemprop="name">Zabbix 之windows下安装agent</h1>
-    
-     
-           <p itemprop="description" >1.下载windows版zabbix-agent-2.2.5并解压  http://www.zabbix.com/downloads/2.2.5/zabbix_agents_2.2.5.win.zip  解压后有两个目录bin和conf，其中bin中又有两个目录win32和 wi</p>
-        
-    
-    <time datetime="2014-08-01T06:01:19.000Z" itemprop="datePublished">2014-08-01</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/07/28/nginx-rewrite/" title="Nginx之rewrite简述" itemprop="url">
-  
-    <h1 itemprop="name">Nginx之rewrite简述</h1>
-    
-     
-           <p itemprop="description" >1、添加nginx第三方yum源cat &amp;gt; /etc/yum.repos.d/nginx.repo &amp;lt;&amp;lt;EOF[nginx]name=nginx repobaseurl=http://nginx.org/packages/centos/$releasever/$</p>
-        
-    
-    <time datetime="2014-07-28T09:47:29.000Z" itemprop="datePublished">2014-07-28</time>
-  </a>
-</section>
+	</div>
+		<footer class="article-footer clearfix">
 
 
-  <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
-  </nav>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/01/28/use_mutt_sendmail_with_attachment/" data-title="Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
 
 </div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/01/28/python-file-operations/"  title="python-file-operations">
+ <strong>NEXT:</strong><br/> 
+ <span>python-file-operations
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -544,6 +469,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
@@ -563,12 +490,84 @@ $(document).ready(function(){
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
 
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
 
 
   </body>
- </html>
+</html>
 
