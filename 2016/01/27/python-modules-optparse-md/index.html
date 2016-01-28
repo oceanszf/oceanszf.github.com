@@ -4,14 +4,10 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>FAQ_Puppet: common issue  | Suzf Blog</title>
+    <title>python-modules-optparse.md | Suzf Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jeffrey Su">
-    
-    <meta name="description" content="Q1:最近测试3.7.1 的版本出现了一个问题：The package type’s allow_virtual parameter will be changing its default value from false to true in a future release
-A1：
-[root">
     
     
     
@@ -222,15 +218,15 @@ A1：
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/10/14/faq-puppet-common-issues/" title="FAQ_Puppet: common issue " itemprop="url">FAQ_Puppet: common issue </a>
+      <a href="/2016/01/27/python-modules-optparse-md/" title="python-modules-optparse.md" itemprop="url">python-modules-optparse.md</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-10-14T03:51:36.000Z" itemprop="datePublished">2014-10-14</time>
-    Updated:<time datetime="2016-01-13T07:11:51.000Z" itemprop="dateModified">2016-01-13</time>
+    <time datetime="2016-01-27T09:05:50.000Z" itemprop="datePublished">2016-01-27</time>
+    Updated:<time datetime="2016-01-27T09:15:12.000Z" itemprop="dateModified">2016-01-27</time>
     
   </p>
 </header>
@@ -242,52 +238,26 @@ A1：
 		
 		</div>
 		
-		<p>Q1:最近测试3.7.1 的版本出现了一个问题：The package type’s allow_virtual parameter will be changing its default value from false to true in a future release</p>
-<p>A1：</p>
-<p>[root@agent1 ~]# puppet –version<br>3.7.1</p>
-<p>[root@agent1 ~]# puppet agent –test –server master.jeffery.com –noop<br>Info: Retrieving pluginfacts<br>Info: Retrieving plugin<br>Info: Caching catalog for agent1.jeffery.com<br>Warning: The package type’s allow_virtual parameter will be changing its default value from false to true in a future release. If you do not want to allow virtual packages, please explicitly set allow_virtual to false.<br>(at /usr/lib/ruby/site_ruby/1.8/puppet/type/package.rb:430:in `default’)<br>Info: Applying configuration version ‘1413249918’</p>
-<p>Notice: Finished catalog run in 0.11 seconds</p>
-<p>出现一个警告，但不影响执行的结果，有群友说是版本有问题，最终我也不知道是神码问题的。。</p>
-<p>可以在服务器端的 pp文件中的package 中加入 ：allow_virtual =&gt; false, 来解决出现的警告。</p>
-<p><img src="http://s3.51cto.com/wyfs02/M02/4C/65/wKiom1Q8naCzHpLMAAECYZl0S3s217.jpg" alt=""></p>
-<p>检查文件的正确性spacer.gif</p>
-<p><img src="http://s3.51cto.com/wyfs02/M00/4C/65/wKiom1Q8nbLzhLqMAABcT7JLibY009.jpg" alt=""></p>
-<p>测试</p>
-<p><img src="http://s3.51cto.com/wyfs02/M01/4C/66/wKioL1Q8niewaYtMAAC2Nf56-04528.jpg" alt=""></p>
-<p>Q2:</p>
-<p>puppet Error 400 on SERVER Permission denied</p>
-<p>Error: /Stage[main]/Ssh::Config/File[/etc/ssh/sshd_config]: Could not evaluate: Error 400 on SERVER: Permission denied - /etc/puppet/modules/ssh/files/sshd_config Could not retrieve file metadata for puppet:///modules/ssh/sshd_config: Error 400 on SERVER: Permission denied - /etc/puppet/modules/ssh/files/sshd_config</p>
-<p>A2: chmod -R ./ssh/files/*</p>
-<p>Q3:</p>
-<p>What causes the error “Could not retrieve catalog from remote server: execution expired” in Puppet</p>
-<p>This can be caused when the load on the Puppet Master server is too high to send compiled catalogs to the agents.<br>Start by checking if any services are using all the available resources, or if the server is under-powered for the requests it is getting. If all agents run at the same time, edit the cron job that controls their run time to spread it out.<br>If all else fails, allowing the agents to take longer to receive the catalog may work. This can be done by adding the configtimeout setting to the puppet.conf file (/etc/puppet/puppet.conf) and increasing the value. It defaults to “2m”, meaning two minutes.</p>
-<p>Q4:</p>
-<p>Error: Could not retrieve catalog from remote server: Connection refused - connect(2)<br>Warning: Not using cache on failed catalog<br>Error: Could not retrieve catalog; skipping run<br>Error: Could not send report: Connection refused - connect(2)</p>
-<p>此错误是没有启动puppet master服务 或是没有绑定主机名/DNS 未得到正确解析</p>
-<p>[14:37:04][root@agent01 ~]$ cat /etc/hosts | grep 192</p>
-<p>#192.168.9.10     master01.ocean.org   master01</p>
-<p>#192.168.9.20     agent01.ocean.org    agent01</p>
-<p>取消注释 再次执行 问题解决</p>
-  
+		  
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Puppet/">Puppet</a><a href="/tags/faq/">faq</a>
+  <span></span> <a href="/tags/Python/">Python</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Puppet/">Puppet</a>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.suzf.net/2014/10/14/faq-puppet-common-issues/" data-title="FAQ_Puppet: common issue  | Suzf Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://blog.suzf.net/2016/01/27/python-modules-optparse-md/" data-title="python-modules-optparse.md | Suzf Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -296,19 +266,11 @@ A1：
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/10/20/mysql-basic-common-summary/" title="MYSQL 常用总结【基础】">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  MYSQL 常用总结【基础】</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2014/09/26/snmp-items-with-zabbix/"  title="[ 译 ] SNMP Items with ZABBIX">
+<a href="/2016/01/26/python-sendmail-examples/"  title="Python sendmail examples">
  <strong>NEXT:</strong><br/> 
- <span>[ 译 ] SNMP Items with ZABBIX
+ <span>Python sendmail examples
 </span>
 </a>
 </div>

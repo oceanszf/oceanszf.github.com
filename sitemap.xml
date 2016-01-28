@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.suzf.net/2016/01/27/python-modules-optparse-md/</loc>
+    <lastmod>2016-01-27T09:15:12.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.suzf.net/2016/01/26/python-sendmail-examples/</loc>
     <lastmod>2016-01-27T07:51:54.000Z</lastmod>
   </url>
@@ -127,32 +132,17 @@
   </url>
   
   <url>
+    <loc>http://blog.suzf.net/2014/07/24/zabbix-monitoring-mysql-performance/</loc>
+    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.suzf.net/2014/08/14/zabbix-monitoring-of-esxi/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/07/24/zabbix-the-custom-key/</loc>
-    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2014/08/22/zabbix-monitoring-of-nginx-status-information/</loc>
-    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2014/08/15/zabbix-jmx-monitoring-of-tomcat/</loc>
-    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://blog.suzf.net/2014/09/26/snmp-items-with-zabbix/</loc>
-    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2014/07/22/zabbix-email-alarm/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
   </url>
   
@@ -167,7 +157,22 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/07/24/zabbix-monitoring-mysql-performance/</loc>
+    <loc>http://blog.suzf.net/2014/08/22/zabbix-monitoring-of-nginx-status-information/</loc>
+    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2014/08/01/zabbix-agent-setup-on-windows/</loc>
+    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2014/07/24/zabbix-the-custom-key/</loc>
+    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2014/08/15/zabbix-jmx-monitoring-of-tomcat/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
   </url>
   
@@ -182,12 +187,12 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/07/24/zabbix-auto-discovery-rules/</loc>
+    <loc>http://blog.suzf.net/2014/07/22/zabbix-email-alarm/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/08/01/zabbix-agent-setup-on-windows/</loc>
+    <loc>http://blog.suzf.net/2014/07/24/zabbix-auto-discovery-rules/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
   </url>
   

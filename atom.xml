@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Life is short, We need smile.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.suzf.net/"/>
-  <updated>2016-01-27T07:51:54.000Z</updated>
+  <updated>2016-01-27T09:15:12.000Z</updated>
   <id>http://blog.suzf.net/</id>
   
   <author>
@@ -13,6 +13,23 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[python-modules-optparse.md]]></title>
+    <link href="http://blog.suzf.net/2016/01/27/python-modules-optparse-md/"/>
+    <id>http://blog.suzf.net/2016/01/27/python-modules-optparse-md/</id>
+    <published>2016-01-27T09:05:50.000Z</published>
+    <updated>2016-01-27T09:15:12.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
+    
+      <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Python sendmail examples]]></title>
@@ -1220,50 +1237,6 @@ msg.attach(img)
       <category term="Python" scheme="http://blog.suzf.net/tags/Python/"/>
     
       <category term="Python" scheme="http://blog.suzf.net/categories/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[PHP 获取的时间和系统的时间不一致]]></title>
-    <link href="http://blog.suzf.net/2015/10/22/php-acquisition-time-and-system-inconsistencies/"/>
-    <id>http://blog.suzf.net/2015/10/22/php-acquisition-time-and-system-inconsistencies/</id>
-    <published>2015-10-22T03:31:01.000Z</published>
-    <updated>2016-01-13T07:38:52.000Z</updated>
-    <content type="html"><![CDATA[<p>问题描述：<br>最近发现自动发送工作日报的那个脚本出现了问题, 发送是大昨天的内容.<br>可能是系统时间或是服务器时间配置不正确,下面开始逐步排查.</p>
-<p><pre class="lang:php decode:true">^<em>^[11:04:26][root@master01 ~]#date<br>Thu Oct 22 11:05:33 CST 2015<br>^</em>^[11:05:33][root@master01 ~]#cat /etc/sysconfig/clock<br>ZONE=”Asia/Shanghai”</pre></p>
-<p>#UTC=true</p>
-<p>#ARC=false</p>
-<p>&lt;?php<br>//date_default_timezone_set(‘UTC’);<br>date_default_timezone_set(‘CST/8.0’);</p>
-<p>$today = date(‘Y-m-d H:i:s’);<br>$yesterday = date(‘Y-m-d H:i:s’,time()-86400);<br>echo “$today\n”;<br>echo “$yesterday”;<br>?&gt;</p>
-<p>^_^[11:06:09][root@master01 ~]#php test.php<br>2015-10-21 23:06:16<br>2015-10-20 23:06:16</p>
-<p>^_^[11:07:35][root@master01 ~]#date -R<br>Thu, 22 Oct 2015 11:10:14 +0800<br><a id="more"></a><br>奇le个怪le, 系统区时的时间是对的,为啥时间不对呢?<br>再来看一下php 的 timezone</p>
-<p>咔咔，居然错误在这里</p>
-<p><pre class="lang:default decode:true  ">[Date]<br>; Defines the default timezone used by the date functions<br>; <a href="http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone" target="_blank" rel="external">http://www.php.net/manual/en/datetime.configuration.php#ini.date.timezone</a><br>date.timezone = ‘Asia/Shanghai’<br>date.timezone = ‘America/New<em>York’</em></pre><br>将第二个注释掉再来看，这下对了O(∩∩)O哈！</p>
-<p><pre class="lang:default decode:true ">^_^[11:15:06][root@master01 ~]#php test.php<br>2015-10-22 11:15:12<br>2015-10-21 11:15:12</pre><br>reference：<br>发现时区确实错误，进行修改<br>/bin/cp /etc/localtime{,.old}<br>/bin/cp /usr/share/zoneinfo/Asia/Shanghai      /etc/localtime</p>
-<p>命令行修改时区<br>tzselect</p>
-<p>一些概念：</p>
-<p>1、硬件时钟（也叫BIOS时钟、CMOS时钟）<br>和CPU和系统无关的，单独由一个电池和晶振运行的时钟，即使关机也会走。<br>硬件时钟只有当系统启动的时候才会读取。<br>hwclock –show # 显示硬件时间<br>hwclock -s     # 系统时钟和硬件时钟同步</p>
-<p>2、系统时间<br>Linux内核启动以后的时间，保持一个时间中断，用1970年1月1日00:00:00开始的秒数计数。这是我们平时看到时间。</p>
-<p>3、时区<br>在某个时刻，世界各地的人，看到的时间都不同的。比如你同样适用gmail，大陆的人看到是 20:00，北美的人，可能是07：00.时刻还是一样的，但是由于时区不同，看到的时间显示就不同。<br>同样，我们机器里，可以系统时间一样的，但是不同的用户，可以设置不同的时区，看到的时间也不同。当然，系统本身有一个缺省时区。<br>在Redhat或者CentOS下，是使用  /etc/sysconfig/clock里的 ZONE=”Asia/Shanghai” 选项配置的</p>
-<p>4、UTC/GMT还是本地时间<br>系统启动的时候，使用/sbin/hwclock 从硬件时钟读取时间，关机的时候，会回写硬件时钟。<br>这里就有一个问题，读取和回写的时候，采用什么标准，是UTC还是本地时间？<br>一般情况下，都使用UTC/GMT，这样可以自动处理夏令时间（中国地方太大，已经作废）。<br>使用UTC的唯一坏处，是当你的计算机是多系统时，如果启动Windows，会导致时间不对。</p>
-<p>5、时间同步<br>一般使用 ntp 协议进行同步，可以保持毫秒级的时差。</p>
-<p><a href="http://php.net/manual/zh/function.date.php" target="_blank" rel="external">http://php.net/manual/zh/function.date.php</a><br><a href="http://bbs.csdn.net/topics/390023846" target="_blank" rel="external">http://bbs.csdn.net/topics/390023846</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>问题描述：<br>最近发现自动发送工作日报的那个脚本出现了问题, 发送是大昨天的内容.<br>可能是系统时间或是服务器时间配置不正确,下面开始逐步排查.</p>
-<p><pre class="lang:php decode:true">^<em>^[11:04:26][root@master01 ~]#date<br>Thu Oct 22 11:05:33 CST 2015<br>^</em>^[11:05:33][root@master01 ~]#cat /etc/sysconfig/clock<br>ZONE=”Asia/Shanghai”</p>
-<p>#UTC=true</p>
-<p>#ARC=false</p>
-<p>&lt;?php<br>//date_default_timezone_set(‘UTC’);<br>date_default_timezone_set(‘CST/8.0’);</p>
-<p>$today = date(‘Y-m-d H:i:s’);<br>$yesterday = date(‘Y-m-d H:i:s’,time()-86400);<br>echo “$today\n”;<br>echo “$yesterday”;<br>?&gt;</p>
-<p>^_^[11:06:09][root@master01 ~]#php test.php<br>2015-10-21 23:06:16<br>2015-10-20 23:06:16</p>
-<p>^_^[11:07:35][root@master01 ~]#date -R<br>Thu, 22 Oct 2015 11:10:14 +0800</pre><br>]]>
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://blog.suzf.net/tags/PHP/"/>
-    
-      <category term="Linux" scheme="http://blog.suzf.net/categories/Linux/"/>
     
   </entry>
   
