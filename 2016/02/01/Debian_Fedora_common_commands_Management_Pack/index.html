@@ -1,0 +1,575 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Debian Fedora常用命令管理包 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="对大家推荐很好使用的Debian Fedora命令系统，像让大家对Debian Fedora命令系统有所了解，然后对Debian Fedora命令统全面讲解介绍，Debian Fedora 的包管理命令。
+=== Debian Fedora 中dpkg命令 ===dpkg -i –install d">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/01/Debian_Fedora_common_commands_Management_Pack/" title="Debian Fedora常用命令管理包" itemprop="url">Debian Fedora常用命令管理包</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-02-01T02:16:33.000Z" itemprop="datePublished">2016-02-01</time>
+    Updated:<time datetime="2016-02-01T02:25:59.000Z" itemprop="dateModified">2016-02-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Debian__u5FEB_u901F_u53C2_u8003_u624B_u518C"><span class="toc-number">1.</span> <span class="toc-text">Debian 快速参考手册</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The_Debian_GNU/Linux_FAQ"><span class="toc-number">2.</span> <span class="toc-text">The Debian GNU/Linux FAQ</span></a></li></ol>
+		</div>
+		
+		<div>
+
+<p>对大家推荐很好使用的Debian Fedora命令系统，像让大家对Debian Fedora命令系统有所了解，然后对Debian Fedora命令统全面讲解介绍，Debian Fedora 的包管理命令。</p>
+<p><strong>=== Debian Fedora 中dpkg命令 ===</strong><br>dpkg -i –install<em> dpkg –install w3m_0.5.2-2+b1_i386.deb<span class="Apple-converted-space"> </span><br>dpkg -r –remove</em> dpkg –remove w3m<br>dpkg -P –purge<em> dpkg –purge w3m<br>dpkg -l –list</em> 列出当前系统里安装好的包名<br>dpkg -L –listfiles<em> 列出已经安装好的包的文件</em> dpkg -L w3m<br>dpkg -s –status<em> 包的状态表示</em> dpkg –status w3m<br>dpkg -S –search<em> 查看一个系统文件归属于哪个包</em> dpkg –search /etc/ucf.conf<br>dpkg -c –contents<em> 显示包里内容</em> dpkg -c w3m_0.5.2-2+b1_i386.deb<br>dpkg –unpack<em> 解压包<br>dpkg –configure</em> 配置包<br>dpkg -R –recursive* 递归处理文件夹内的内容</p>
+<p><strong>=== Debian Fedora 中apt-get命令 ===</strong><br>apt-get install <em> 安装一个包<br>apt-get remove </em> 删除一个包<br>apt-get update<em> 更新APT-GET数据库<br>apt-get dist-upgrade</em> 从APT-GET数据库里,所有组件更新到最新状态<br>apt-get upgrade* 更新一个包</p>
+<p><strong>=== Debian Fedora 中apt-cache命令 ===</strong><br>apt-cache show<em> 显示一个包的信息<br>apt-cache showpkg</em> 显示一个包的详细信息<br>apt-cache depends<em> 显示当前包的依赖信息<br>apt-cache search</em> 通过一个关键字,去查询含有这个关键字的包</p>
+<p><strong>=== Debian Fedora 中aptitude命令 ===</strong><br>这是一个CUI工具,可以人机交互的操作.<br>所以,没有具体的参数,选项.<br>里面还有扫雷游戏,真的很好玩.</p>
+<p><strong>===Debian Fedora 中 rpm命令 ===</strong>rpm -i –install w3m_aa.rpm<em> 安装一个RPM包<br>rpm -F –freshen w3m_aa.rpm</em> 如果已经安装过的包,进行更新<br>rpm -U –upgrade w3m_aa.rpm<em> 如果没安装,就安装;如果已经安装,就更新;这个比较常用<br>rpm -e w3m</em> 删除一个已经安装的包<br>rpm -h<em> 显示安装进度条, 一般和其它安装选项一起使用<br>rpm -v </em> 显示详细信息<br>rpm –nodeps<em> 无视依赖,强制安装/删除<br>rpm –force</em> 强制执行安装,更新<br>rpm -qa<em> 显示所有已经安装的包名<br>rpm -qi w3m</em> 显示已经安装好的包的信息<br>rpm -ql w3m<em> 显示已经安装好的包的所有文件<br>rpm -qc w3m</em> 显示已经安装好的包的设定文件; 这个比较有用<br>rpm -qd w3m<em> 显示已经安装好的包的相关文档 就是/usr/share/doc下有哪些相关文件<br>rpm -q –changelog w3m</em> 显示包的版本变化履历,注意,-q –changelog 这是一个命令, 不是同义词.<br>rpm -qpi w3m_aa.rpm <em> 显示rpm包的信息<br>rpm -qpl w3m_aa.rpm</em> 显示rpm包里所包含的文件<br>rpm2cpio w3m_aa.rpm | cpio -id<em> 把RPM里的文件释放到当前文件夹下面<br>rpm -V w3m</em> 对于已经安装好的包的系统文件,进行更新检查.如有变化,会有提示<br>S:大小变化了.<br>5:MD5检查,就是内容变化了.<br>M:Permitt,变化了<br>U:User变了<br>G:Group变了<br>T:更改时间有变化</p>
+<p><strong>=== Debian Fedora 中yum 命令===</strong><br>/etc/yum.conf<br>/etc/yum.repos.d/<br>yumdownloader –source w3m<em> 下载包的源代码<br>yum check-update</em> 查看系统里所有可更新的包<br>yum update<em> 所有可更新的包进行更新<br>yum clean all</em> clean : 清除CACHE里的数据,参数 all 表示所有种别的cache全部删除<br>yum insatll w3m<em> 安装包<br>yum update w3m</em> 在线更新包,如果原来没有安装的话,不会安装.<br>yum remove w3m<em> 删除包w3m<br>yum list</em> 列出所有包的安装与否信息及已经安装的版本<br>yum list w3m<em> 列出指定包的安装与否及版本信息<br>yum info w3m</em> 打出指定的包的相关信息<br>yum groupinstall prg-group<em> 安装一组程序,比如 “Chinese Support”<br>yum grouplist</em> 显示可用的 程序组<br>yum gorupinfo prg-group<em> 显示程序组的信息,并显示里面包含的所有包名<br>yum search keyword</em> 显示包含keyword 的包名</p>
+<p></p></div><p></p>
+<p><div></div></p>
+<p><div></div></p>
+<div>
+
+<h1 id="Debian__u5FEB_u901F_u53C2_u8003_u624B_u518C"><a href="#Debian__u5FEB_u901F_u53C2_u8003_u624B_u518C" class="headerlink" title="Debian 快速参考手册"></a>Debian 快速参考手册</h1><p></p></div><p></p>
+<p><div><a href="http://qref.sourceforge.net/Debian/quick-reference/index.zh-cn.html#contents" target="_blank" rel="external">http://qref.sourceforge.net/Debian/quick-reference/index.zh-cn.html#contents</a></div></p>
+<p><div></div></p>
+<div>
+
+<h1 id="The_Debian_GNU/Linux_FAQ"><a href="#The_Debian_GNU/Linux_FAQ" class="headerlink" title="The Debian GNU/Linux FAQ"></a>The Debian GNU/Linux FAQ</h1><p><a href="https://www.debian.org/doc/manuals/debian-faq/index.zh-cn.html#contents" target="_blank" rel="external">https://www.debian.org/doc/manuals/debian-faq/index.zh-cn.html#contents</a></p></div><br><br>&nbsp;<p></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Debian/">Debian</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Linux/">Linux</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/02/01/Debian_Fedora_common_commands_Management_Pack/" data-title="Debian Fedora常用命令管理包 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/02/01/how-to-rechange-debian-system-root-password/"  title="How-to rechange debian system root password">
+ <strong>NEXT:</strong><br/> 
+ <span>How-to rechange debian system root password
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Debian__u5FEB_u901F_u53C2_u8003_u624B_u518C"><span class="toc-number">1.</span> <span class="toc-text">Debian 快速参考手册</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The_Debian_GNU/Linux_FAQ"><span class="toc-number">2.</span> <span class="toc-text">The Debian GNU/Linux FAQ</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>23</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>16</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>9</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>7</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>3</sup></a></li>
+		
+			<li><a href="/tags/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Proxy/" title="Proxy">Proxy<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+
