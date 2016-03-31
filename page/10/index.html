@@ -219,60 +219,172 @@
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2014/07/23/how-to-disabling-hyper-threading-on-a-dell-pe-r730/" title="How-to: Disabling Hyper-threading on a Dell PE R730" itemprop="url">
+    <a href="/2014/08/15/zabbix-jmx-monitoring-of-tomcat/" title="Zabbix之JMX监控Tomcat" itemprop="url">
   
-    <h1 itemprop="name">How-to: Disabling Hyper-threading on a Dell PE R730</h1>
+    <h1 itemprop="name">Zabbix之JMX监控Tomcat</h1>
     
      
-           <p itemprop="description" >Q:I need to disable hyper-threading due to licensing issues but, I can’t find the setting in the BIOS that would allow me to disable it. Doe</p>
+           <p itemprop="description" >zabbix从2.0开始添加了支持用于监控JMX应用程序的服务进程，称为”ZabbixJavagateway”；它是用java写的一个程序。
+一.工作原理：
+zabbixserver想知道一台主机上的特定的JMX值时，它向ZabbixJavagateway询问，而ZabbixJa</p>
         
     
-    <time datetime="2014-07-23T09:18:24.000Z" itemprop="datePublished">2014-07-23</time>
+    <time datetime="2014-08-15T10:06:09.000Z" itemprop="datePublished">2014-08-15</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2014/07/22/zabbix-email-alarm/" title="Zbbix之邮件报警" itemprop="url">
+    <a href="/2014/08/14/zabbix-monitoring-of-esxi/" title="[ 译 ] Zabbix 之监控虚拟主机EXSI" itemprop="url">
   
-    <h1 itemprop="name">Zbbix之邮件报警</h1>
+    <h1 itemprop="name">[ 译 ] Zabbix 之监控虚拟主机EXSI</h1>
     
      
-           <p itemprop="description" >本次内容就介绍一下如何的在zabbix里进行邮件报警，并且自定义邮件报警的格式。
-1.选择“Administration-Media types“
-选择“Email“
-输入相应信息
-
-然后保存
-2.选择“Administration-Users“
-选择“users“，然后在选择”</p>
+           <p itemprop="description" >概述
+Zabbix 从2.2.0版本开始支持支持监控VMware 虚拟机的可用性。
+Zabbix 可以使用low-level discovery 规则去自动发现 VMware hypervisors and virtual machines 之后创建主机并监控他们, 基于之前定义</p>
         
     
-    <time datetime="2014-07-22T10:14:19.000Z" itemprop="datePublished">2014-07-22</time>
+    <time datetime="2014-08-14T10:53:07.000Z" itemprop="datePublished">2014-08-14</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2014/07/11/zabbix-server-and-agent-setup-shell/" title="Zabbix shell setup Server &amp;&amp; agent [tar]" itemprop="url">
+    <a href="/2014/08/13/nginx-access-control-and-status-view/" title="Nginx 之访问控制与状态查看" itemprop="url">
   
-    <h1 itemprop="name">Zabbix shell setup Server &amp;&amp; agent [tar]</h1>
+    <h1 itemprop="name">Nginx 之访问控制与状态查看</h1>
     
      
-           <p itemprop="description" >本文简单简述用源码包的方式安装 zabbix server &amp;amp;&amp;amp; agent 的安装方式。
-#!/bin/bash
-# This is a script of auto install zabbix
-# Copyright to jeffery Su
-# Writ</p>
+           <p itemprop="description" >Nginx访问控制基于用户基于主机
+一、基于用户的访问控制1. 检测是否有htpasswd命令
+
+建立口令文件
+查看口令文件
+
+2. 实现认证[用户][root@Jeffery ~]# vim /usr/local/nginx/conf/nginx.conf3. 访问测试检测配置</p>
         
     
-    <time datetime="2014-07-11T12:05:52.000Z" itemprop="datePublished">2014-07-11</time>
+    <time datetime="2014-08-13T13:18:07.000Z" itemprop="datePublished">2014-08-13</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2014/08/13/zabbix-monitoring-of-web-url/" title="Zabbix 之 web  url 监控" itemprop="url">
+  
+    <h1 itemprop="name">Zabbix 之 web  url 监控</h1>
+    
+     
+           <p itemprop="description" >1.首先可以在主机模板中先定义一个application
+
+2.找一个关联着这个模板的主机[Configuration – Hosts ],然后选择这台主机[Web],点击Create scenario
+
+&amp;nbsp;
+
+Save
+3.查看监控状态[Monitoring – We</p>
+        
+    
+    <time datetime="2014-08-13T08:13:51.000Z" itemprop="datePublished">2014-08-13</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2014/08/12/nginx-virtualhost/" title="Nginx 之虚拟主机" itemprop="url">
+  
+    <h1 itemprop="name">Nginx 之虚拟主机</h1>
+    
+     
+           <p itemprop="description" >Nginx 虚拟主机虚拟主机是在网络服务器上划分出一定的磁盘空间供用户放置站点、应用组件等，提供必要的站点功能、数据存放和传输功能。所谓虚拟主机，也叫“网站空间”，就是把一台运行在互联网上的服务器划分成多个“虚拟”的服务器，每一个虚拟主机都具有独立的域名和完整的Internet服</p>
+        
+    
+    <time datetime="2014-08-12T14:45:22.000Z" itemprop="datePublished">2014-08-12</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2014/08/12/nginx-basic-configure/" title="Nginx之基本配置" itemprop="url">
+  
+    <h1 itemprop="name">Nginx之基本配置</h1>
+    
+     
+           <p itemprop="description" >Nginx
+1. 高性能的HTTP Server，支持高达20000并发访问2. 反向代理服务器，给网站加速
+3. 做为前端一个负载均衡器一、准备工作
+service httpd stopchkconfig httpd off所需的软件: 开发库，openssl-devel
+二、</p>
+        
+    
+    <time datetime="2014-08-12T13:15:42.000Z" itemprop="datePublished">2014-08-12</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2014/08/07/loganalyzer-log-analysis-and-syslog-log-analysis-system/" title="日志分析之LogAnalyzer+Rsyslog日志分析系统全" itemprop="url">
+  
+    <h1 itemprop="name">日志分析之LogAnalyzer+Rsyslog日志分析系统全</h1>
+    
+     
+           <p itemprop="description" >一、简介
+LogAnalyzer 是一款syslog日志和其他网络事件数据的Web前端。它提供了对日志的简单浏览、搜索、基本分析和一些图表报告的功能。数据可以从数据库或一般的 syslog文本文件中获取，所以LogAnalyzer不需要改变现有的记录架构。基于当前的日志数据，它可</p>
+        
+    
+    <time datetime="2014-08-07T06:22:56.000Z" itemprop="datePublished">2014-08-07</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2014/08/07/kickstart-the-custom-password-for-the-root/" title="Kickstart之为root自定义密码" itemprop="url">
+  
+    <h1 itemprop="name">Kickstart之为root自定义密码</h1>
+    
+     
+           <p itemprop="description" >linux kickstart之中root的密码可以使用明文，也可以使用加密过的值rootpw –iscrypted $1$BYSimLw0$I515yLiKzudlwkIskBqQE1
+就是读取加密后的值，但是这个值是怎么生成的呢？这与linux系统的密码shadow一样，生成</p>
+        
+    
+    <time datetime="2014-08-07T05:31:57.000Z" itemprop="datePublished">2014-08-07</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2014/08/06/http-returns-a-status-code-explanation/" title="HTTP 返回状态代码详解" itemprop="url">
+  
+    <h1 itemprop="name">HTTP 返回状态代码详解</h1>
+    
+     
+           <p itemprop="description" >一、HTTP状态码
+如果某项请求发送到您的服务器要求显示您网站上的某个网页（例如，用户通过浏览器访问您的网页或 Googlebot 抓取网页时），服务器将会返回 HTTP 状态代码以响应请求。
+此状态代码提供关于请求状态的信息， 告诉 Googlebot 关于您的网站和请求的网页</p>
+        
+    
+    <time datetime="2014-08-06T03:18:31.000Z" itemprop="datePublished">2014-08-06</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2014/08/06/DIY-streamline-automatically-install-CentOS-ISO/" title="DIY精简CentOS自动安装ISO" itemprop="url">
+  
+    <h1 itemprop="name">DIY精简CentOS自动安装ISO</h1>
+    
+     
+           <p itemprop="description" >俗话说一瘦遮三丑，一胖全没有。原生的系统过于庞大和臃肿，工作中有很多组件和安装包根本是用不到的，只安装我们需要的组件，并实现自动安装，这样在产线批量布署服务器的时候，显的效率非常高。a.在VM安装linux系统b.安装定制工具anaconda repodata createrep</p>
+        
+    
+    <time datetime="2014-08-06T03:09:30.000Z" itemprop="datePublished">2014-08-06</time>
   </a>
 </section>
 
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+    <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
   </nav>
 
 </div>
@@ -295,29 +407,37 @@
 		
 			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
 		
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>5</sup></a></li>
 		
 			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
 		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
 			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
 		
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>23</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>24</sup></a></li>
 		
 			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
 		
 			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>6</sup></a></li>
 		
-			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>6</sup></a></li>
 		
 			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
 		
 			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
 		
-			<li><a href="/categories/Python/" title="Python">Python<sup>16</sup></a></li>
+			<li><a href="/categories/Python/" title="Python">Python<sup>20</sup></a></li>
 		
-			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+			<li><a href="/categories/Nginx/Redis/" title="Redis">Redis<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
 		
 			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Nginx/Redis/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
 		
 			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
 		
@@ -344,9 +464,15 @@
 		
 			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
 		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
 		
@@ -358,19 +484,13 @@
 		
 			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
 		
-			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>11</sup></a></li>
 		
-			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>7</sup></a></li>
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
 		
-			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
 		
 			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>3</sup></a></li>
-		
-			<li><a href="/tags/PHP/" title="PHP">PHP<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Proxy/" title="Proxy">Proxy<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
 		
 		</ul>
 </div>

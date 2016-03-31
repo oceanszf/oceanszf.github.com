@@ -255,7 +255,7 @@
 <p>添加如下内容,防止被作为垃圾邮件<br>set from = “robot@suzf.net”<br>set use_from = yes<br>set envelope_from = “yes”<br>set realname = “Robot”</p>
 <p>FAQ:<br>通常来说目前主流的邮箱支持的邮箱附件仅在 百兆之内 [ qq 单个邮件附件为 70M]。</p>
 <p>#echo “mutt test” |mutt username@domain.name -s “test”   -a “/root/xxx.tar.gz”<br>postdrop: warning: uid=0: File too large<br>sendmail: fatal: root(0): message file too big<br>Error sending message, child exited 75 (Deferred.).<br>Could not send the message.</p>
-<p>#查看日志<br>Jan 25 15:43:08 xxx postfix/smtp[26575]: 9DB3A1160C2: to=<a href="/&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x78;&#120;&#120;&#120;&#x78;&#120;&#120;&#120;&#x78;&#x40;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#x78;&#120;&#120;&#120;&#x78;&#120;&#120;&#120;&#x78;&#x40;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;</a>, relay=mx3.qq.com[184.105.206.32]:25, delay=9.8, delays=3.6/0.29/5.9/0, dsn=5.3.4, status=bounced (message size 92650110 exceeds size limit 73400320 of server mx3.qq.com[184.105.206.32])</p>
+<p>#查看日志<br>Jan 25 15:43:08 xxx postfix/smtp[26575]: 9DB3A1160C2: to=<a href="/&#109;&#97;&#105;&#x6c;&#116;&#111;&#x3a;&#x78;&#x78;&#120;&#x78;&#120;&#120;&#120;&#x78;&#x78;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;">&#x78;&#x78;&#120;&#x78;&#120;&#120;&#120;&#x78;&#x78;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;</a>, relay=mx3.qq.com[184.105.206.32]:25, delay=9.8, delays=3.6/0.29/5.9/0, dsn=5.3.4, status=bounced (message size 92650110 exceeds size limit 73400320 of server mx3.qq.com[184.105.206.32])</p>
 <p>方案：<br>修改main.cf里面的message_size_limit参数，调大点。<br>如果里面没有，自己手工加一个。单位是字节，如果不懂用法，man 5 postconf找到这个参数的说明<br>eg: 修改成如下大小即可（1G）<br>postconf -e “message_size_limit = 1024000000”<br>postconf -e “mailbox_size_limit = 1024000000”</p>
 <p>再次发送邮件可以收到邮件了， So cool!</p>
 <p>注：发送邮件略慢，需要等待一分钟或者更长才能发送成功(可做定时备份)</p>
@@ -336,29 +336,37 @@
 		
 			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
 		
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>5</sup></a></li>
 		
 			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
 		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
 			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
 		
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>23</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>24</sup></a></li>
 		
 			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
 		
 			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>6</sup></a></li>
 		
-			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>6</sup></a></li>
 		
 			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
 		
 			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
 		
-			<li><a href="/categories/Python/" title="Python">Python<sup>16</sup></a></li>
+			<li><a href="/categories/Python/" title="Python">Python<sup>20</sup></a></li>
 		
-			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+			<li><a href="/categories/Nginx/Redis/" title="Redis">Redis<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
 		
 			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Nginx/Redis/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
 		
 			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
 		
@@ -385,9 +393,15 @@
 		
 			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
 		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
 		
@@ -399,19 +413,13 @@
 		
 			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
 		
-			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>11</sup></a></li>
 		
-			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>7</sup></a></li>
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
 		
-			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
 		
 			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>3</sup></a></li>
-		
-			<li><a href="/tags/PHP/" title="PHP">PHP<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Proxy/" title="Proxy">Proxy<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
 		
 		</ul>
 </div>

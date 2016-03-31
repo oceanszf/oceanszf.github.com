@@ -219,160 +219,157 @@
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2016/02/02/How-to-create-restore-a-slave-using-GTID-replication-in-MySQL-5.6/" title="How to create restore a slave using GTID replication in MySQL 5.6" itemprop="url">
+    <a href="/2016/03/29/'[译]__zookeeper_配置文件详解'/" title="[译]  zookeeper 配置文件详解" itemprop="url">
   
-    <h1 itemprop="name">How to create restore a slave using GTID replication in MySQL 5.6</h1>
+    <h1 itemprop="name">[译]  zookeeper 配置文件详解</h1>
     
      
-           <p itemprop="description" >在 Mysql 5.6 中，里面有许多新的特性；我个人认为其中最有用的是在复制中支持 全局 事物 ID。这篇文章不是用来介绍什么是GTID，关于它的工作原理这里有很多文章介绍：  http://dev.mysql.com/doc/refman/5.6/en/replication</p>
-        
+       <p itemprop="description" >必填配置参数
+clientPort
+该端口监听客户端的连接。也就是说，客户端都会尝试连接该端口。
+dataDir
+该路径用于存储zookeeper内存数据库快照。除非有特殊设定，否则也会存储数据库更新的事物日志。事物日志的存放位置是很有讲究的。有一台专门用于存放事物日志的设备，可</p>
+      
     
-    <time datetime="2016-02-02T09:02:33.000Z" itemprop="datePublished">2016-02-02</time>
+    <time datetime="2016-03-29T07:22:32.000Z" itemprop="datePublished">2016-03-29</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2016/02/01/Debian_Fedora_common_commands_Management_Pack/" title="Debian Fedora常用命令管理包" itemprop="url">
+    <a href="/2016/03/29/'[译]_zookpeer_入门教程'/" title="[译] zookpeer 入门教程" itemprop="url">
   
-    <h1 itemprop="name">Debian Fedora常用命令管理包</h1>
+    <h1 itemprop="name">[译] zookpeer 入门教程</h1>
     
      
-           <p itemprop="description" >对大家推荐很好使用的Debian Fedora命令系统，像让大家对Debian Fedora命令系统有所了解，然后对Debian Fedora命令统全面讲解介绍，Debian Fedora 的包管理命令。
-=== Debian Fedora 中dpkg命令 ===dpkg -i </p>
+           <p itemprop="description" >入门：分布式应用程序协调服务 ZooKeeper本文档包含的信息来帮助你的ZooKeeper快速入门。它是在开发人员希望能够尝试一下主要目的，并包含安装简单说明一个ZooKeeper的服务器，几个命令，以验证它是否正在运行，一个简单的编程示例。最后，为了方便，还有更多的关于安装复</p>
         
     
-    <time datetime="2016-02-01T02:16:33.000Z" itemprop="datePublished">2016-02-01</time>
+    <time datetime="2016-03-29T07:19:33.000Z" itemprop="datePublished">2016-03-29</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2016/02/01/how-to-rechange-debian-system-root-password/" title="How-to rechange debian system root password" itemprop="url">
+    <a href="/2016/03/23/zookeeper_工作原理/" title="zookeeper 工作原理" itemprop="url">
   
-    <h1 itemprop="name">How-to rechange debian system root password</h1>
+    <h1 itemprop="name">zookeeper 工作原理</h1>
     
      
-           <p itemprop="description" >Debian Linux 系统忘记密码怎么办?看到很多人老在论坛里面问这个问题，有的人给的答案也不多。特拿出来，随便当笔记用。
-对于一些版本的OS（如RedHat）来说，编辑grub，在后面加上“single”即可进入单用户模式。但是对于debian来说，这种方式是无效的，因为d</p>
-        
+       <p itemprop="description" >ZooKeeper 是一个分布式的，开放源码的分布式应用程序协调服务，它包含一个简单的原语集，分布式应用程序可以基于它实现同步服务，配置维护和命名服务等。 Zookeeper是hadoop的一个子项目，其发展历程无需赘述。在分布式应用中，由于工程师不能很好地使用锁机制，以及基于消</p>
+      
     
-    <time datetime="2016-02-01T02:13:07.000Z" itemprop="datePublished">2016-02-01</time>
+    <time datetime="2016-03-23T13:26:16.000Z" itemprop="datePublished">2016-03-23</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2016/02/01/linux-curl-and-wget/" title="Linux curl and wget" itemprop="url">
+    <a href="/2016/03/21/高可用_开源的_Redis_缓存集群方案/" title="高可用 开源的 Redis 缓存集群方案" itemprop="url">
   
-    <h1 itemprop="name">Linux curl and wget</h1>
+    <h1 itemprop="name">高可用 开源的 Redis 缓存集群方案</h1>
     
      
-           <p itemprop="description" >1、curl（文件传输工具）
-常用参数如下：
--c，–cookie-jar：将cookie写入到文件
--b，–cookie：从文件中读取cookie
--C，–continue-at：断点续传
--d，–data：http post方式传送数据
--D，–dump-header：把he</p>
-        
+       <p itemprop="description" >作者  李士窑 原文 链接由于单台Redis服务器的内存管理能力有限，使用过大内存的Redis又会使得 服务器的性能急剧下降，一旦服务器发生故障将会影响更大范围业务，而Redis 3.0 beta1支持的集群功能还不适合生产环境的使用。于是为了获取更好的Redis缓存性能及可用性</p>
+      
     
-    <time datetime="2016-02-01T01:53:35.000Z" itemprop="datePublished">2016-02-01</time>
+    <time datetime="2016-03-21T09:47:35.000Z" itemprop="datePublished">2016-03-21</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2016/01/28/python-file-operations/" title="python-file-operations" itemprop="url">
+    <a href="/2016/03/21/Redis_常用命令总结/" title="Redis 常用命令总结" itemprop="url">
   
-    <h1 itemprop="name">python-file-operations</h1>
+    <h1 itemprop="name">Redis 常用命令总结</h1>
     
      
-           <p itemprop="description" >Split big file12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#!/usr/bin/env python# -*- enco</p>
-        
+       <p itemprop="description" >Redis 提供了丰富的命令（ command）对数据库和各种数据类型进行操作下面对常用操作做出简单总结, 希望对大家有所帮助。Redis commands – http://redis.io/commands
+ redis 默认端口 6379 redis-cli -p ${po</p>
+      
     
-    <time datetime="2016-01-28T06:27:12.000Z" itemprop="datePublished">2016-01-28</time>
+    <time datetime="2016-03-21T09:03:39.000Z" itemprop="datePublished">2016-03-21</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2016/01/26/python-sendmail-examples/" title="Python sendmail examples" itemprop="url">
+    <a href="/2016/03/18/Nginx+Redis+Tomcat实现session共享的集群/" title="Nginx+Redis+Tomcat实现session共享的集群" itemprop="url">
   
-    <h1 itemprop="name">Python sendmail examples</h1>
+    <h1 itemprop="name">Nginx+Redis+Tomcat实现session共享的集群</h1>
     
      
-           <p itemprop="description" >send attchment email123456789101112131415161718192021222324252627282930#!/usr/bin/env pythonfrom email.mime.text import MIMETextfrom email.m</p>
-        
+       <p itemprop="description" >Nginx 作为目前最流行的开源反向代理HTTP Server，用于实现资源缓存、web server负载均衡等功能，由于其轻量级、高性能、高可靠等特点在互联网项目中有着非常普遍的应用，相关概念网上有丰富的介绍。分布式web server集群部署后需要实现session共享，针对</p>
+      
     
-    <time datetime="2016-01-26T08:36:02.000Z" itemprop="datePublished">2016-01-26</time>
+    <time datetime="2016-03-18T06:56:32.000Z" itemprop="datePublished">2016-03-18</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2016/01/13/hello-world/" title="Hello World" itemprop="url">
+    <a href="/2016/03/17/redis-sentinel-test/" title="Redis Sentinel Test" itemprop="url">
   
-    <h1 itemprop="name">Hello World</h1>
+    <h1 itemprop="name">Redis Sentinel Test</h1>
     
      
-           <p itemprop="description" >Welcome to here! This is your very first post. 
-building   I has migrated my wp blog articles on Jan 13, 2016.   The old and the new will be</p>
+           <p itemprop="description" >Redis Sentinel 是一套用于管理Redis实例的分布式系统,主要完成3项任务:
+1. Monitoring:持续监控Redis master或slave实例的运行情况是否符合预期2. Notification:若被监控的Redis实例运行异常,sentinel会通过A</p>
         
     
-    <time datetime="2016-01-13T01:00:00.000Z" itemprop="datePublished">2016-01-13</time>
+    <time datetime="2016-03-17T10:00:00.000Z" itemprop="datePublished">2016-03-17</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/" title="pip-faq: Error -5 while decompressing data: incomplete or truncated stream" itemprop="url">
+    <a href="/2016/03/17/Redis_主从复制/" title="Redis 主从复制" itemprop="url">
   
-    <h1 itemprop="name">pip-faq: Error -5 while decompressing data: incomplete or truncated stream</h1>
+    <h1 itemprop="name">Redis 主从复制</h1>
     
      
-           <p itemprop="description" >在我执行 pip install flask-bootstrap 出现了一个这样的错误– error: Error -5 while decompressing data: incomplete or truncated stream
-安装/卸载其他包是正常的。唯独管理flask</p>
+           <p itemprop="description" >Redis 安装见 Redis Setup
+环境CentOS 6.xRedis=3.0.7
+master01port 1111192.168.9.10/24
+ocean-labport 2222192.168.9.70/24
+主从复制1.为什么使用，好处？1.1 单个redis服</p>
         
     
-    <time datetime="2015-12-30T08:04:51.000Z" itemprop="datePublished">2015-12-30</time>
+    <time datetime="2016-03-17T07:56:24.000Z" itemprop="datePublished">2016-03-17</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/12/28/how-to-compile-vim-with-lua/" title="How-to compile vim with lua" itemprop="url">
+    <a href="/2016/03/14/Redis_监控技巧/" title="Redis 监控技巧" itemprop="url">
   
-    <h1 itemprop="name">How-to compile vim with lua</h1>
+    <h1 itemprop="name">Redis 监控技巧</h1>
     
      
-           <p itemprop="description" >vim 重新编译支持lua
-安装依赖包yum install ncurses lua lua-devel readline -y
-安装LuaJitluajit不在centos的官方repo里面，我们需要编译安装;wget http://luajit.org/download/Lu</p>
+           <p itemprop="description" >本文来自 Bugsnag 的联合创始人 Simon Maynard 的系列文章，作者根据几年来对 Redis 的使用经历，对 Redis 监控方法进行了系统性的总结，干货很多，值得一看。原文链接：Redis Masterclass – Part 2, MonitoringRedi</p>
         
     
-    <time datetime="2015-12-28T08:35:44.000Z" itemprop="datePublished">2015-12-28</time>
+    <time datetime="2016-03-14T10:03:29.000Z" itemprop="datePublished">2016-03-14</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/12/25/use-vim-to-build-python-development-ide/" title="使用 VIM 打造 Python 开发IDE" itemprop="url">
+    <a href="/2016/03/14/Redis_安装与特性简述/" title="Redis 安装与特性简述" itemprop="url">
   
-    <h1 itemprop="name">使用 VIM 打造 Python 开发IDE</h1>
+    <h1 itemprop="name">Redis 安装与特性简述</h1>
     
      
-           <p itemprop="description" >编程常用的文本编辑器就那么几种常见的, 有人喜欢Vim, 有人喜欢emacs, 也有人喜欢IDE, 例如Pycharm, eclipse等. 今天我们不谈孰优孰劣, 只要适合自己就可以了.
-如果你喜欢VIM, 又希望有IDE常见的功能. 你完全可以将这些功能集成到Vim中. 但是</p>
+           <p itemprop="description" >Redis&amp;lt; Remote Dictionary Server  &amp;gt;作为NoSQL数据库的一种应用，响应速度和命中率上还是比较高效的。项目中需要用集中式可横向扩展的缓存框架，做了一点调研，即便redis、memcached存在效率上的差异（具体比较参考http://t</p>
         
     
-    <time datetime="2015-12-25T09:10:28.000Z" itemprop="datePublished">2015-12-25</time>
+    <time datetime="2016-03-14T09:51:57.000Z" itemprop="datePublished">2016-03-14</time>
   </a>
 </section>
 
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </div>
@@ -395,29 +392,37 @@ building   I has migrated my wp blog articles on Jan 13, 2016.   The old and the
 		
 			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
 		
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>5</sup></a></li>
 		
 			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
 		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
 			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
 		
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>23</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>24</sup></a></li>
 		
 			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
 		
 			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>6</sup></a></li>
 		
-			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>6</sup></a></li>
 		
 			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
 		
 			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
 		
-			<li><a href="/categories/Python/" title="Python">Python<sup>16</sup></a></li>
+			<li><a href="/categories/Python/" title="Python">Python<sup>20</sup></a></li>
 		
-			<li><a href="/categories/Shell/" title="Shell">Shell<sup>1</sup></a></li>
+			<li><a href="/categories/Nginx/Redis/" title="Redis">Redis<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
 		
 			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Nginx/Redis/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
 		
 			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
 		
@@ -444,9 +449,15 @@ building   I has migrated my wp blog articles on Jan 13, 2016.   The old and the
 		
 			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
 		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
 		
 			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
 		
@@ -458,19 +469,13 @@ building   I has migrated my wp blog articles on Jan 13, 2016.   The old and the
 		
 			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
 		
-			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>11</sup></a></li>
 		
-			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>7</sup></a></li>
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
 		
-			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>2</sup></a></li>
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
 		
 			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>3</sup></a></li>
-		
-			<li><a href="/tags/PHP/" title="PHP">PHP<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Proxy/" title="Proxy">Proxy<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
 		
 		</ul>
 </div>
