@@ -344,7 +344,7 @@ setquota -n|-b val path&lt;/pre&gt;
     <link href="http://blog.suzf.net/2016/03/18/Nginx+Redis+Tomcat%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB%E7%9A%84%E9%9B%86%E7%BE%A4/"/>
     <id>http://blog.suzf.net/2016/03/18/Nginx+Redis+Tomcat实现session共享的集群/</id>
     <published>2016-03-18T06:56:32.000Z</published>
-    <updated>2016-03-31T05:38:36.000Z</updated>
+    <updated>2016-03-31T12:50:15.000Z</updated>
     <content type="html"><![CDATA[<p>Nginx 作为目前最流行的开源反向代理HTTP Server，用于实现资源缓存、web server负载均衡等功能，由于其轻量级、高性能、高可靠等特点在互联网项目中有着非常普遍的应用，相关概念网上有丰富的介绍。分布式web server集群部署后需要实现session共享，针对 tomcat 服务器的实现方案多种多样，比如 tomcat cluster session 广播、nginx IP hash策略、nginx sticky module等方案，本文主要介绍了使用 redis 服务器进行 session 统一存储管理的共享方案。</p>
 <p>使 用Nginx作为Tomcat的负载平衡器，Tomcat的会话Session数据存储在Redis，能够实现0当机的7×24运营效果。因为将会话存储 在Redis中，因此Nginx就不必配置成stick粘粘某个Tomcat方式，这样才能真正实现后台多个Tomcat负载平衡，用户请求能够发往任何 一个tomcat主机，当我们需要部署新应用代码时，只要停止任何一台tomcat，所有当前在线用户都会导向到运行中的tomcat实例，因为会话数据 被序列化到Redis，在线用户不会受到影响，一旦停掉的tomcat实例上线，另外其他重复部署过程。<a id="more"></a></p>
 <p><a href="http://suzf.net/wp-content/uploads/2016/03/frame-20160121153429_41249.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/03/frame-20160121153429_41249.png" alt="frame-20160121153429_41249"></a><br><strong>实验环境</strong></p>
@@ -568,11 +568,7 @@ include /etc/nginx/conf.d/*.conf;
     
       <category term="tomcat" scheme="http://blog.suzf.net/tags/tomcat/"/>
     
-      <category term="Nginx" scheme="http://blog.suzf.net/categories/Nginx/"/>
-    
-      <category term="Redis" scheme="http://blog.suzf.net/categories/Nginx/Redis/"/>
-    
-      <category term="Tomcat" scheme="http://blog.suzf.net/categories/Nginx/Redis/Tomcat/"/>
+      <category term="Redis" scheme="http://blog.suzf.net/categories/Redis/"/>
     
   </entry>
   
