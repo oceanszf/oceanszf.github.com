@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>date(): It is not safe to rely on the system&#39;s timezone settings | Suzf Blog</title>
+    <title>[译] Moving a Volume Group to Another System | Suzf Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="date(): It is not safe to rely on the system’s timezone settings. You are required to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone ‘UTC’ for now, but please set date.timezone to select your timezone.
-PHP 5.3 +  需要在 php.ini 文件中配置 timezone, 或在调用 date() 函数之前使用 date_default_timezone_set() 方法设置 timezone">
+    <meta name="description" content="您可以将整个LVM卷组移动到另一个系统。建议您在执行此操作时使用 vgexport 和 vgimport 命令。
+vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。vgimport：在执行vgexport命令使其禁用之后，再次使机器可以访问卷组。
+一个系统卷组移动到另一个系统，请执行下列步骤：">
     
     
     
@@ -221,14 +222,14 @@ PHP 5.3 +  需要在 php.ini 文件中配置 timezone, 或在调用 date() 函�
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/04/06/"date()/" title="date(): It is not safe to rely on the system&#39;s timezone settings" itemprop="url">date(): It is not safe to rely on the system&#39;s timezone settings</a>
+      <a href="/2016/04/14/[译]_Moving_a_Volume_Group_to_Another_System/" title="[译] Moving a Volume Group to Another System" itemprop="url">[译] Moving a Volume Group to Another System</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-04-06T04:00:08.000Z" itemprop="datePublished">2016-04-06</time>
+    <time datetime="2016-04-14T07:21:56.000Z" itemprop="datePublished">2016-04-14</time>
     Updated:<time datetime="2016-04-29T12:43:02.000Z" itemprop="dateModified">2016-04-29</time>
     
   </p>
@@ -241,33 +242,38 @@ PHP 5.3 +  需要在 php.ini 文件中配置 timezone, 或在调用 date() 函�
 		
 		</div>
 		
-		<p>date(): It is not safe to rely on the system’s timezone settings. You are <em>required</em> to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone ‘UTC’ for now, but please set date.timezone to select your timezone.</p>
-<p>PHP 5.3 +  需要在 php.ini 文件中配置 timezone, 或在调用 date() 函数之前使用 date_default_timezone_set() 方法设置 timezone<a id="more"></a></p>
-<p>Case A:<br>在 php.ini 文件中配置 timezone</p>
-<p><pre class="lang:default decode:true ">#grep -B 1 timezone ./php.ini<br>[Date]<br>; Defines the default timezone used by the date functions<br>; <a href="http://php.net/date.timezone" target="_blank" rel="external">http://php.net/date.timezone</a><br>date.timezone = “Asia/Shanghai”</pre><br>&nbsp;</p>
-<p>之后重启你的 web/php 服务</p>
-<p>Case B:<br>在调用 date() 函数之前 通过 date_default_timezone_set() 设置 timezone<br>eg:</p>
-<p><pre class="lang:default decode:true ">/<em> set data timezone </em>/<br>date_default_timezone_set(“PRC”);<br>$years = date(‘Y’);</pre><br>&nbsp;</p>
+		<p>您可以将整个LVM卷组移动到另一个系统。建议您在执行此操作时使用 vgexport 和 vgimport 命令。</p>
+<p>vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。<br>vgimport：在执行vgexport命令使其禁用之后，再次使机器可以访问卷组。</p>
+<p>一个系统卷组移动到另一个系统，请执行下列步骤：<a id="more"></a></p>
+<p>1. 确保现在没有用户正在访问卷组中活动卷上的文件，然后卸载逻辑卷。</p>
+<p>2. 使用vgchange命令的-a n 标记卷组为无效，以防止卷组上的任何进一步的活动。</p>
+<p>3. 使用vgexport命令导出卷组。这可以防止由要从中删除它在系统被访问。</p>
+<p>当您导出卷组后，在你执行pvscan命令时，物理卷将显示为导出卷组。如下面的例子。</p>
+<p><pre class="lang:default decode:true  "># pvscan<br>PV /dev/sda1    is in exported VG myvg [17.15 GB / 7.15 GB free]<br>PV /dev/sdc1    is in exported VG myvg [17.15 GB / 15.15 GB free]<br>PV /dev/sdd1   is in exported VG myvg [17.15 GB / 15.15 GB free]<br>…</pre><br>当系统下一次关机，就可以拔下构成卷组的磁盘，并将它们连接到新的系统。</p>
+<p>4. 当这些磁盘被插入到新的系统之后， 使用 vgexport 命令导入，使得新的系统可以访问它。</p>
+<p>5. 激活卷组 使用 vgchange -ay volune-group</p>
+<p>6. 挂载文件系统，使其可用。</p>
+<p>源文：<a href="https://www.centos.org/docs/5/html/Cluster_Logical_Volume_Manager/VG_move.html" target="_blank" rel="external">Moving a Volume Group to Another System</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/PHP/">PHP</a>
+  <span></span> <a href="/tags/lvm/">lvm</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  <a class="article-category-link" href="/categories/Linux/">Linux</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.suzf.net/2016/04/06/"date()/" data-title="date(): It is not safe to rely on the system&#39;s timezone settings | Suzf Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://blog.suzf.net/2016/04/14/[译]_Moving_a_Volume_Group_to_Another_System/" data-title="[译] Moving a Volume Group to Another System | Suzf Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -277,18 +283,18 @@ PHP 5.3 +  需要在 php.ini 文件中配置 timezone, 或在调用 date() 函�
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/04/06/MySQL__特性分析__InnoDB_transaction_history/" title="MySQL  特性分析  InnoDB transaction history">
+ <a href="/2016/04/18/Hello_Kafka/" title="Hello Kafka">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  MySQL  特性分析  InnoDB transaction history</span>
+  Hello Kafka</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/04/06/'Deprecated/"  title="Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future">
+<a href="/2016/04/14/dokuwiki_重置管理员密码/"  title="dokuwiki 重置管理员密码">
  <strong>NEXT:</strong><br/> 
- <span>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future
+ <span>dokuwiki 重置管理员密码
 </span>
 </a>
 </div>
@@ -345,7 +351,7 @@ PHP 5.3 +  需要在 php.ini 文件中配置 timezone, 或在调用 date() 函�
 		
 			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
 		
-			<li><a href="/categories/PHP/" title="PHP">PHP<sup>3</sup></a></li>
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
 		
 			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
 		

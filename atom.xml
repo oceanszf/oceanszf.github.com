@@ -657,8 +657,8 @@ findall() 在它返回结果时不得不创建一个列表。在 Python 2.2中�
   
   <entry>
     <title><![CDATA[[译] Moving a Volume Group to Another System]]></title>
-    <link href="http://blog.suzf.net/2016/04/14/'%5B%E8%AF%91%5D_Moving_a_Volume_Group_to_Another_System'/"/>
-    <id>http://blog.suzf.net/2016/04/14/'[译]_Moving_a_Volume_Group_to_Another_System'/</id>
+    <link href="http://blog.suzf.net/2016/04/14/%5B%E8%AF%91%5D_Moving_a_Volume_Group_to_Another_System/"/>
+    <id>http://blog.suzf.net/2016/04/14/[译]_Moving_a_Volume_Group_to_Another_System/</id>
     <published>2016-04-14T07:21:56.000Z</published>
     <updated>2016-04-29T12:43:02.000Z</updated>
     <content type="html"><![CDATA[<p>您可以将整个LVM卷组移动到另一个系统。建议您在执行此操作时使用 vgexport 和 vgimport 命令。</p>
@@ -1080,64 +1080,6 @@ trx_purge_dml_delay(void)
   </entry>
   
   <entry>
-    <title><![CDATA[date(): It is not safe to rely on the system's timezone settings]]></title>
-    <link href="http://blog.suzf.net/2016/04/06/%22date()/"/>
-    <id>http://blog.suzf.net/2016/04/06/"date()/</id>
-    <published>2016-04-06T04:00:08.000Z</published>
-    <updated>2016-04-29T12:43:02.000Z</updated>
-    <content type="html"><![CDATA[<p>date(): It is not safe to rely on the system’s timezone settings. You are <em>required</em> to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone ‘UTC’ for now, but please set date.timezone to select your timezone.</p>
-<p>PHP 5.3 +  需要在 php.ini 文件中配置 timezone, 或在调用 date() 函数之前使用 date_default_timezone_set() 方法设置 timezone<a id="more"></a></p>
-<p>Case A:<br>在 php.ini 文件中配置 timezone</p>
-<p><pre class="lang:default decode:true ">#grep -B 1 timezone ./php.ini<br>[Date]<br>; Defines the default timezone used by the date functions<br>; <a href="http://php.net/date.timezone" target="_blank" rel="external">http://php.net/date.timezone</a><br>date.timezone = “Asia/Shanghai”</pre><br>&nbsp;</p>
-<p>之后重启你的 web/php 服务</p>
-<p>Case B:<br>在调用 date() 函数之前 通过 date_default_timezone_set() 设置 timezone<br>eg:</p>
-<p><pre class="lang:default decode:true ">/<em> set data timezone </em>/<br>date_default_timezone_set(“PRC”);<br>$years = date(‘Y’);</pre><br>&nbsp;</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>date(): It is not safe to rely on the system’s timezone settings. You are <em>required</em> to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone ‘UTC’ for now, but please set date.timezone to select your timezone.</p>
-<p>PHP 5.3 +  需要在 php.ini 文件中配置 timezone, 或在调用 date() 函数之前使用 date_default_timezone_set() 方法设置 timezone]]>
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://blog.suzf.net/tags/PHP/"/>
-    
-      <category term="PHP" scheme="http://blog.suzf.net/categories/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future]]></title>
-    <link href="http://blog.suzf.net/2016/04/06/'Deprecated/"/>
-    <id>http://blog.suzf.net/2016/04/06/'Deprecated/</id>
-    <published>2016-04-06T03:57:47.000Z</published>
-    <updated>2016-04-29T12:43:02.000Z</updated>
-    <content type="html"><![CDATA[<p>昨天刚把 php 的错误日志打开，今天看自己以前写的 <a href="http://suzf.net/thread-1001-345.html" target="_blank" rel="external">监控网站访问量的 demo </a>就一片空白了 一片空白了 一片空白了。<br>手动执行了下 数据采集的 data_access.php 发现有一个警告信息输出：<br>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead<br>这个警告把原本的数据结构给打乱了，所以会出现 demo 的空白。<br>从提示很明显可以看出  mysql 扩展模块将在将来弃用，可以使用 mysqli 和 PDO 来代替。<a id="more"></a></p>
-<p>Case A:<br>将 mysql 替换为 mysqli</p>
-<p><pre class="lang:default decode:true ">-$conn = mysql_connect(“db-hostname”,”dnuser”,”password”,”dbname”);<br>+$conn = mysqli_connect(“db-hostname”,”dbuer”,”password”,”dbname”);</pre></p>
-<p>-if (!$conn) {</p>
-<ul>
-<li>die(‘Could not connect: ‘ . mysql_error());<br>+/<em> check connection </em>/<br>+if (mysqli_connect_errno()) {</li>
-</ul>
-<ul>
-<li>printf(“Connect failed: %s\n”, mysqli_connect_error());</li>
-<li>exit();<br>}<br>官方文档  <a href="http://www.php.net/manual/zh/mysqli.query.php" target="_blank" rel="external">http://www.php.net/manual/zh/mysqli.query.php</a></li>
-</ul>
-<p>Case B:<br>将错误日志关闭<br>display_errors = On<br>改为<br>display_errors = Off</p>
-<p>Case C:<br>在php程序代码里面设置报警级别<br>error_reporting(E_ALL ^ E_DEPRECATED);</p>
-<p>这样 Deprecated 这个问题就解决了。 不过还是推荐 使用 mysqli 或是 PDO 替代老旧的 mysql. 毕竟是趋势嘛。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>昨天刚把 php 的错误日志打开，今天看自己以前写的 <a href="http://suzf.net/thread-1001-345.html">监控网站访问量的 demo </a>就一片空白了 一片空白了 一片空白了。<br>手动执行了下 数据采集的 data_access.php 发现有一个警告信息输出：<br>Deprecated: mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead<br>这个警告把原本的数据结构给打乱了，所以会出现 demo 的空白。<br>从提示很明显可以看出  mysql 扩展模块将在将来弃用，可以使用 mysqli 和 PDO 来代替。]]>
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://blog.suzf.net/tags/PHP/"/>
-    
-      <category term="PHP" scheme="http://blog.suzf.net/categories/PHP/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Hardware  Related notes]]></title>
     <link href="http://blog.suzf.net/2016/04/05/Hardware__Related_notes/"/>
     <id>http://blog.suzf.net/2016/04/05/Hardware__Related_notes/</id>
@@ -1365,8 +1307,8 @@ Slave_SQL_Running_State: Slave has read all relay log; waiting for the slave I/O
   
   <entry>
     <title><![CDATA[[译]  zookeeper 配置文件详解]]></title>
-    <link href="http://blog.suzf.net/2016/03/29/'%5B%E8%AF%91%5D__zookeeper_%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3'/"/>
-    <id>http://blog.suzf.net/2016/03/29/'[译]__zookeeper_配置文件详解'/</id>
+    <link href="http://blog.suzf.net/2016/03/29/%5B%E8%AF%91%5D__zookeeper_%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://blog.suzf.net/2016/03/29/[译]__zookeeper_配置文件详解/</id>
     <published>2016-03-29T07:22:32.000Z</published>
     <updated>2016-03-31T06:27:01.000Z</updated>
     <content type="html"><![CDATA[<p><strong>必填配置参数</strong></p>
@@ -1442,8 +1384,8 @@ Slave_SQL_Running_State: Slave has read all relay log; waiting for the slave I/O
   
   <entry>
     <title><![CDATA[[译] zookpeer 入门教程]]></title>
-    <link href="http://blog.suzf.net/2016/03/29/'%5B%E8%AF%91%5D_zookpeer_%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B'/"/>
-    <id>http://blog.suzf.net/2016/03/29/'[译]_zookpeer_入门教程'/</id>
+    <link href="http://blog.suzf.net/2016/03/29/%5B%E8%AF%91%5D_zookpeer_%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
+    <id>http://blog.suzf.net/2016/03/29/[译]_zookpeer_入门教程/</id>
     <published>2016-03-29T07:19:33.000Z</published>
     <updated>2016-03-31T06:27:01.000Z</updated>
     <content type="html"><![CDATA[<h3 id="u5165_u95E8_uFF1A_u5206_u5E03_u5F0F_u5E94_u7528_u7A0B_u5E8F_u534F_u8C03_u670D_u52A1_ZooKeeper"><a href="#u5165_u95E8_uFF1A_u5206_u5E03_u5F0F_u5E94_u7528_u7A0B_u5E8F_u534F_u8C03_u670D_u52A1_ZooKeeper" class="headerlink" title="入门：分布式应用程序协调服务 ZooKeeper"></a>入门：分布式应用程序协调服务 ZooKeeper</h3><p>本文档包含的信息来帮助你的ZooKeeper快速入门。它是在开发人员希望能够尝试一下主要目的，并包含安装简单说明一个ZooKeeper的服务器，几个命令，以验证它是否正在运行，一个简单的编程示例。最后，为了方便，还有更多的关于安装复杂，几节，例如运行复制的部署和优化事务日志。然而，对于商业部署的完整说明，请参阅的<a href="http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html" target="_blank" rel="external">ZooKeeper管理员指南</a>。</p>
@@ -1680,6 +1622,290 @@ setquota -n|-b val path&lt;/pre&gt;
     <![CDATA[<p>Redis 提供了丰富的命令（ command）对数据库和各种数据类型进行操作<br>下面对常用操作做出简单总结, 希望对大家有所帮助。<br>Redis commands – <a href="http://redis.io/commands">http://redis.io/commands</a></p>
 <p><strong><em> redis 默认端口 6379 </em></strong><br>redis-cli -p ${port}    # 指定端口]]>
     
+    </summary>
+    
+      <category term="redis" scheme="http://blog.suzf.net/tags/redis/"/>
+    
+      <category term="Redis" scheme="http://blog.suzf.net/categories/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Nginx+Redis+Tomcat实现session共享的集群]]></title>
+    <link href="http://blog.suzf.net/2016/03/18/Nginx+Redis+Tomcat%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB%E7%9A%84%E9%9B%86%E7%BE%A4/"/>
+    <id>http://blog.suzf.net/2016/03/18/Nginx+Redis+Tomcat实现session共享的集群/</id>
+    <published>2016-03-18T06:56:32.000Z</published>
+    <updated>2016-03-31T12:50:15.000Z</updated>
+    <content type="html"><![CDATA[<p>Nginx 作为目前最流行的开源反向代理HTTP Server，用于实现资源缓存、web server负载均衡等功能，由于其轻量级、高性能、高可靠等特点在互联网项目中有着非常普遍的应用，相关概念网上有丰富的介绍。分布式web server集群部署后需要实现session共享，针对 tomcat 服务器的实现方案多种多样，比如 tomcat cluster session 广播、nginx IP hash策略、nginx sticky module等方案，本文主要介绍了使用 redis 服务器进行 session 统一存储管理的共享方案。</p>
+<p>使 用Nginx作为Tomcat的负载平衡器，Tomcat的会话Session数据存储在Redis，能够实现0当机的7×24运营效果。因为将会话存储 在Redis中，因此Nginx就不必配置成stick粘粘某个Tomcat方式，这样才能真正实现后台多个Tomcat负载平衡，用户请求能够发往任何 一个tomcat主机，当我们需要部署新应用代码时，只要停止任何一台tomcat，所有当前在线用户都会导向到运行中的tomcat实例，因为会话数据 被序列化到Redis，在线用户不会受到影响，一旦停掉的tomcat实例上线，另外其他重复部署过程。<a id="more"></a></p>
+<p><a href="http://suzf.net/wp-content/uploads/2016/03/frame-20160121153429_41249.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/03/frame-20160121153429_41249.png" alt="frame-20160121153429_41249"></a><br><strong>实验环境</strong></p>
+<p><pre class="lang:default decode:true">      IP            Roles               port</pre></p>
+<p>node1 192.168.9.10  nginx,redis,tomcat  80,1111,8080</p>
+<p>node2 192.168.9.70  tomcat              8080<br><strong>软件工具包</strong><br>apache-tomcat-7.0.68.tar<br>redis-3.0.7.tar<br>jdk-7u79-linux-x64.rpm<br>nginx-1.0.15-12.el6.x86_64.rpm</p>
+<p><strong>tomcat需要的jar包</strong><br>commons-logging-1.1.3.jar<br>commons-pool2-2.2.jar<br>jedis-2.5.2.jar<br>tomcat-juli.jar<br>tomcat-redis-session-manage-tomcat7.jar<br><strong>安装redis</strong></p>
+<ol>
+<li>Redis 安装<br>== Redis 源码安装<br>— 参照源码 README<br>— 默认端口 6379</li>
+</ol>
+<p><strong><em> 安装redis之前先要确认系统已经安装了GCC和libc库 </em></strong></p>
+<p><pre class="lang:default decode:true ">wget <a href="http://download.redis.io/releases/redis-3.0.7.tar.gz" target="_blank" rel="external">http://download.redis.io/releases/redis-3.0.7.tar.gz</a><br>tar xf redis-3.0.7.tar.gz<br>cd redis-3.0.7<br>make</pre></p>
+<h1 id="make_test"><a href="#make_test" class="headerlink" title="make test"></a>make test</h1><p>make PREFIX=/usr/local/redis install<br>&nbsp;</p>
+<p>== 可执行命令</p>
+<p><pre class="lang:default decode:true ">redis-server    Redis服务系统<br>redis-cli       Redis一个客户端管理工具<br>redis-benchmark 用来检测redis性能<br>redis-check-aof &amp; redis-check-dump 用来处理损坏的数据文件<br>redis-sentinel -&gt; redis-server   &lt; soft link &gt;</pre></p>
+<p>cd utils<br>./install_server.sh</p>
+<p>^_^[15:50:34][root@master01 utils]#bash install_server.sh<br>Welcome to the redis service installer<br>This script will help you easily set up a running redis server</p>
+<p>Please select the redis port for this instance: [6379] 1111<br>Please select the redis config file name [/etc/redis/1111.conf]<br>Selected default – /etc/redis/1111.conf<br>Please select the redis log file name [/var/log/redis_1111.log]<br>Selected default – /var/log/redis_1111.log<br>Please select the data directory for this instance [/var/lib/redis/1111]<br>Selected default – /var/lib/redis/1111<br>Please select the redis executable path [/usr/sbin/redis-server] /usr/local/redis/bin/redis-server<br>Selected config:<br>Port           : 1111<br>Config file    : /etc/redis/1111.conf<br>Log file       : /var/log/redis_1111.log<br>Data dir       : /var/lib/redis/1111<br>Executable     : /usr/local/redis/bin/redis-server<br>Cli Executable : /usr/bin/redis-cli<br>Is this ok? Then press ENTER to go on or Ctrl-C to abort.<br>Copied /tmp/1111.conf =&gt; /etc/init.d/redis_1111<br>Installing service…<br>Successfully added to chkconfig!<br>Successfully added to runlevels 345!<br>Starting Redis server…<br>Installation successful!<br>&nbsp;</p>
+<p>Redis 系统配置</p>
+<p><pre class="lang:default decode:true">echo “vm.overcommit_memory = 1” &gt;&gt; /etc/sysctl.conf<br>sysctl vm.overcommit_memory=1<br>echo 511 &gt; /proc/sys/net/core/somaxconn</pre><br>启动服务</p>
+<p>/etc/init.d/redis_1111 start</p>
+<p>配置文件可以用默认的配置，从服务器上配置文文件打开slavefo 加上主服务器的ip和端口，还有其他的参数如日志和dump.rdb保存路径可以适当修改</p>
+<p>FAQ:</p>
+<p>make时如果有类似如下报错：<br>Selecting a non-default memory allocator when building Redis is done by setting<br>the <code>[MALLOC](https://www.baidu.com/s?wd=MALLOC&amp;amp;tn=44039180_cpr&amp;amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1YLPvnvnHIWuHTYnvPWP1mL0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1csP1RvnjcdPHnYP1nzPjDzPW6)</code> environment variable. Redis is compiled and linked against libc<br><a href="https://www.baidu.com/s?wd=malloc&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1YLPvnvnHIWuHTYnvPWP1mL0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1csP1RvnjcdPHnYP1nzPjDzPW6" target="_blank" rel="external">malloc</a> by default, with the exception of je<a href="https://www.baidu.com/s?wd=malloc&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1YLPvnvnHIWuHTYnvPWP1mL0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1csP1RvnjcdPHnYP1nzPjDzPW6" target="_blank" rel="external">malloc</a> being the default on Linux<br>systems. This default was picked because jemalloc has proven to have fewer<br>fragmentation problems than libc malloc.</p>
+<p>make MALLOC=libc<br><strong>安装 JDK and Tomcat</strong></p>
+<p><pre class="lang:default decode:true"># wget -c –header “Cookie: oraclelicense=accept-securebackup-cookie” <code>curl -s http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html | awk -F&#39;&quot;&#39; &#39;/jdk\-7.*\-linux\-x64.rpm/{print $12;exit}&#39;</code></pre></p>
+<h1 id="rpm_-ivh_jdk-7u79-linux-x64-rpm"><a href="#rpm_-ivh_jdk-7u79-linux-x64-rpm" class="headerlink" title="rpm -ivh jdk-7u79-linux-x64.rpm"></a>rpm -ivh jdk-7u79-linux-x64.rpm</h1><h1 id="cat__26gt_3B_/etc/profile-d/java-sh__26lt_3B_26lt_3B_EOF"><a href="#cat__26gt_3B_/etc/profile-d/java-sh__26lt_3B_26lt_3B_EOF" class="headerlink" title="cat &gt; /etc/profile.d/java.sh &lt;&lt; EOF"></a>cat &gt; /etc/profile.d/java.sh &lt;&lt; EOF</h1><p>JAVA_HOME=/usr/java/latest</p>
+<p>PATH=\$JAVA_HOME/bin:\$PATH</p>
+<p>export JAVA_HOME PATH</p>
+<p>EOF</p>
+<h1 id="wget_-c_curl_-s__26quot_3Bhttps_3A//tomcat-apache-org/download-70-cgi_26quot_3B__7C_awk_-F_26_2339_3B_26quot_3B_26_2339_3B__26_2339_3B/apache_5C-tomcat_5C-7-*-tar-gz/_7Bprint__242_3Bexit_7D_26_2339_3B"><a href="#wget_-c_curl_-s__26quot_3Bhttps_3A//tomcat-apache-org/download-70-cgi_26quot_3B__7C_awk_-F_26_2339_3B_26quot_3B_26_2339_3B__26_2339_3B/apache_5C-tomcat_5C-7-*-tar-gz/_7Bprint__242_3Bexit_7D_26_2339_3B" class="headerlink" title="wget -c curl -s &quot;https://tomcat.apache.org/download-70.cgi&quot; | awk -F&#39;&quot;&#39; &#39;/apache\-tomcat\-7.*.tar.gz/{print $2;exit}&#39;"></a>wget -c <code>curl -s &quot;https://tomcat.apache.org/download-70.cgi&quot; | awk -F&#39;&quot;&#39; &#39;/apache\-tomcat\-7.*.tar.gz/{print $2;exit}&#39;</code></h1><h1 id="tar_xf_apache-tomcat-7-*-tar-gz_-C_/usr/local/"><a href="#tar_xf_apache-tomcat-7-*-tar-gz_-C_/usr/local/" class="headerlink" title="tar xf apache-tomcat-7.*.tar.gz -C /usr/local/"></a>tar xf apache-tomcat-7.*.tar.gz -C /usr/local/</h1><h1 id="ln_-sv_/usr/local/apache-tomcat-7-*_/usr/local/tomcat"><a href="#ln_-sv_/usr/local/apache-tomcat-7-*_/usr/local/tomcat" class="headerlink" title="ln -sv /usr/local/apache-tomcat-7.* /usr/local/tomcat"></a>ln -sv /usr/local/apache-tomcat-7.* /usr/local/tomcat</h1><h1 id="cat__26gt_3B_/etc/profile-d/tomcat-sh__26lt_3B_26lt_3B_EOF"><a href="#cat__26gt_3B_/etc/profile-d/tomcat-sh__26lt_3B_26lt_3B_EOF" class="headerlink" title="cat &gt; /etc/profile.d/tomcat.sh &lt;&lt; EOF"></a>cat &gt; /etc/profile.d/tomcat.sh &lt;&lt; EOF</h1><p>export CATALINA_HOME=/usr/local/tomcat</p>
+<p>export PATH=\$CATALINA_HOME/bin:\$PATH</p>
+<p>EOF</p>
+<h1 id="source_/etc/profile-d/java-sh"><a href="#source_/etc/profile-d/java-sh" class="headerlink" title="source /etc/profile.d/java.sh"></a>source /etc/profile.d/java.sh</h1><h1 id="source_/etc/profile-d/tomcat-sh"><a href="#source_/etc/profile-d/tomcat-sh" class="headerlink" title="source /etc/profile.d/tomcat.sh"></a>source /etc/profile.d/tomcat.sh</h1><h1 id="catalina-sh_version"><a href="#catalina-sh_version" class="headerlink" title="catalina.sh version"></a>catalina.sh version</h1><p>Using CATALINA_BASE:   /usr/local/tomcat</p>
+<p>Using CATALINA_HOME:   /usr/local/tomcat</p>
+<p>Using CATALINA_TMPDIR: /usr/local/tomcat/temp</p>
+<p>Using JRE_HOME:        /usr/java/latest</p>
+<p>Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar</p>
+<p>Server version: Apache Tomcat/7.0.68</p>
+<p>Server built:   Feb 8 2016 20:25:54 UTC</p>
+<p>Server number:  7.0.68.0</p>
+<p>OS Name:        Linux</p>
+<p>OS Version:     2.6.32-573.8.1.el6.x86_64</p>
+<p>Architecture:   amd64</p>
+<p>JVM Version:    1.7.0_79-b15</p>
+<p>JVM Vendor:     Oracle Corporation<br>&nbsp;</p>
+<p><strong><em> 将jar包全都拷进tomcat lib目录下 </em></strong></p>
+<p><pre class="lang:default decode:true ">^<em>^[14:43:41][root@master01 lib]#pwd<br>/usr/local/tomcat/lib<br>^</em>^[14:44:47][root@master01 lib]#ls -lth | tail -5<br>-rw-r–r– 1 root root  61K Nov 13 15:18 commons-logging-1.1.3.jar<br>-rw-r–r– 1 root root 106K Nov 13 15:18 commons-pool2-2.2.jar<br>-rw-r–r– 1 root root 308K Nov 13 15:18 jedis-2.5.2.jar<br>-rw-r–r– 1 root root  74K Nov 13 15:18 tomcat-juli.jar<br>-rw-r–r– 1 root root  20K Nov 13 15:18 tomcat-redis-session-manage-tomcat7.jar</pre><br>修改conf目录下context.xml配置文件，session共享保存设置<br>在&lt;Context&gt;标签中</p>
+<p><pre class="lang:default decode:true ">&lt;Valve className=”com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve” /&gt;<br>&lt;Manager className=”com.orangefunction.tomcat.redissessions.RedisSessionManager”<br>host=”192.168.9.10”<br>port=”1111”<br>database=”0”<br>maxInactiveInterval=”60”/&gt;</pre><br>添加测试页</p>
+<p><pre class="lang:default decode:true ">vim webapps/ROOT/test.jsp</pre></p>
+<p>&lt;%@ page language=”java” %&gt;</p>
+<p>&lt;html&gt;</p>
+<p>  &lt;head&gt;&lt;title&gt;TomcatI&lt;/title&gt;&lt;/head&gt;</p>
+<p>  &lt;body&gt;</p>
+<pre><code>&amp;lt;h1&amp;gt;&amp;lt;font color=&quot;green&quot;&amp;gt;TomcatI.suzf.net&amp;lt;/font&amp;gt;&amp;lt;/h1&amp;gt;
+
+&amp;lt;table align=&quot;centre&quot; border=&quot;1&quot;&amp;gt;
+
+  &amp;lt;tr&amp;gt;
+
+    &amp;lt;td&amp;gt;Session ID&amp;lt;/td&amp;gt;
+
+&amp;lt;% session.setAttribute(&quot;tomcat.suzf.net&quot;,&quot;tomcat.suzf.net&quot;); %&amp;gt;
+
+    &amp;lt;td&amp;gt;&amp;lt;%= session.getId() %&amp;gt;&amp;lt;/td&amp;gt;
+
+  &amp;lt;/tr&amp;gt;
+
+  &amp;lt;tr&amp;gt;
+
+    &amp;lt;td&amp;gt;Created on&amp;lt;/td&amp;gt;
+
+    &amp;lt;td&amp;gt;&amp;lt;%= session.getCreationTime() %&amp;gt;&amp;lt;/td&amp;gt;
+
+ &amp;lt;/tr&amp;gt;
+
+&amp;lt;/table&amp;gt;
+</code></pre><p>  &lt;/body&gt;</p>
+<p>&lt;/html&gt;<br>将tomcat目录拷贝到其他tomcat服务器<br>将测试页代码 Titile 和 color 修改下，以作区分。</p>
+<p><strong>Nginx安装</strong></p>
+<p><pre class="lang:default decode:true ">yum install nginx -y </pre></p>
+<p>Nginx 相关配置</p>
+<h1 id="grep_-v__u201C_5E_24_7C_5E-*_23_u201D_/etc/nginx/nginx-conf"><a href="#grep_-v__u201C_5E_24_7C_5E-*_23_u201D_/etc/nginx/nginx-conf" class="headerlink" title="grep -v “^$|^.*#”  /etc/nginx/nginx.conf"></a>grep -v “^$|^.*#”  /etc/nginx/nginx.conf</h1><p>user              nginx;<br>worker_processes  1;<br>error_log  /var/log/nginx/error.log;<br>pid        /var/run/nginx.pid;</p>
+<p>events {</p>
+<pre><code>worker_connections  1024;
+</code></pre><p>}</p>
+<p>http {</p>
+<pre><code>include       /etc/nginx/mime.types;
+default_type  application/octet-stream;
+log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;
+
+                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;
+
+                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;
+
+upstream suzf-net-tomcat {
+
+   server 192.168.9.10:8080;
+   server 192.168.9.70:8080;
+
+}
+
+server {
+
+    listen 80;
+    server_name tomcat.suzf.net;
+
+    location / {
+
+         index   index.jsp index.html index.htm;
+         proxy_pass http://suzf-net-tomcat;
+         proxy_redirect off;
+         proxy_set_header Host $host;
+         proxy_set_header X-Real-IP $remote_addr;
+         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    }
+
+}
+
+access_log  /var/log/nginx/access.log  main;
+sendfile        on;
+server_tokens   off;
+keepalive_timeout  65;
+
+include /etc/nginx/conf.d/*.conf;
+</code></pre><p>}<br>&nbsp;</p>
+<p>检测nginx 配置文件 &amp; 重载配置文件</p>
+<p><pre class="lang:default decode:true">#/etc/init.d/nginx configtest </pre></p>
+<p>nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</p>
+<p>nginx: configuration file /etc/nginx/nginx.conf test is successful</p>
+<p>#/etc/init.d/nginx  reload</p>
+<p>Reloading nginx:                                           [  OK  ]<br><strong>浏览器验证：</strong></p>
+<p><a href="http://suzf.net/wp-content/uploads/2016/03/tom1-20160318130409.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/03/tom1-20160318130409.png" alt="tom1-20160318130409"></a></p>
+<p><a href="http://suzf.net/wp-content/uploads/2016/03/tom2-20160318130451.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/03/tom2-20160318130451.png" alt="tom2-20160318130451"></a></p>
+<p>&nbsp;</p>
+<p><strong> 查看Redis 数据</strong></p>
+<p><a href="http://suzf.net/wp-content/uploads/2016/03/redis-20160318130539.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/03/redis-20160318130539.png" alt="redis-20160318130539"></a></p>
+<p>&nbsp;</p>
+<p><strong>通过 tomcat-redis-session-manager  自动获取tomcat 所需 jar 包  </strong></p>
+<p><strong>*</strong> 未测 <strong>* </strong></p>
+<p>tomcat-redis-session-manager 是一个用来将 Tomcat 的 Session 数据存储在 Redis 库中的项目。</p>
+<p>官网：<a href="https://github.com/jcoleman/tomcat-redis-session-manager" target="_blank" rel="external">https://github.com/jcoleman/tomcat-redis-session-manager</a></p>
+<p><strong><em> 由于源码构建基于 gradle，请先配置 gradle 环境。</em></strong></p>
+<p><pre class="lang:default decode:true">wget <a href="https://downloads.gradle.org/distributions/gradle-2.10-all.zip" target="_blank" rel="external">https://downloads.gradle.org/distributions/gradle-2.10-all.zip</a></pre></p>
+<p>unzip -q gradle-2.10-all.zip -d /usr/local/</p>
+<p>ln -sv /usr/local/gradle-2.10 /usr/local/gradle</p>
+<p>#echo “export PATH=/usr/local/gradle/bin:\$PATH” &gt; /etc/profile.d/gradle2.10.sh</p>
+<p>#source /etc/profile.d/gradle2.10.sh<br>&nbsp;</p>
+<p>安装 tomcat-redis-session-manager</p>
+<p><pre class="lang:default decode:true">git clone <a href="https://github.com/jcoleman/tomcat-redis-session-manager.git" target="_blank" rel="external">https://github.com/jcoleman/tomcat-redis-session-manager.git</a></pre></p>
+<p>cd tomcat-redis-session-manager/</p>
+<p>mv build.gradle build.gradle.bak</p>
+<p>vim build.gradle</p>
+<p>#diff -ruN build.gradle*</p>
+<p>— build.gradle 2016-01-04 07:07:59.000000000 +0800</p>
+<p>+++ build.gradle.old 2016-03-18 10:48:15.620704187 +0800</p>
+<p>@@ -44,13 +44,8 @@</p>
+<p>   archives sourcesJar</p>
+<p> }</p>
+<p>-//signing {</p>
+<p>-//  sign configurations.archives</p>
+<p>-//}</p>
+<p>-</p>
+<p>-task copyJars(type: Copy) {</p>
+<ul>
+<li><p>from configurations.runtime</p>
+</li>
+<li><p>into ‘dist’  </p>
+</li>
+</ul>
+<p>+signing {</p>
+<ul>
+<li><p>sign configurations.archives</p>
+<p>}</p>
+<p>uploadArchives {</p>
+</li>
+</ul>
+<p>@@ -58,9 +53,9 @@</p>
+<pre><code>mavenDeployer {
+
+  beforeDeployment { MavenDeployment deployment -&amp;gt; signing.signPom(deployment) }
+</code></pre><ul>
+<li><p>//repository(url: “<a href="https://oss.sonatype.org/service/local/staging/deploy/maven2/" target="_blank" rel="external">https://oss.sonatype.org/service/local/staging/deploy/maven2/</a>“) {</p>
+</li>
+<li><p>//  authentication(userName: sonatypeUsername, password: sonatypePassword)</p>
+</li>
+<li><p>//}</p>
+</li>
+</ul>
+<ul>
+<li><p>repository(url: “<a href="https://oss.sonatype.org/service/local/staging/deploy/maven2/" target="_blank" rel="external">https://oss.sonatype.org/service/local/staging/deploy/maven2/</a>“) {</p>
+</li>
+<li><p>authentication(userName: sonatypeUsername, password: sonatypePassword)</p>
+</li>
+<li><p>}</p>
+<p>//repository(url: “<a href="https://oss.sonatype.org/content/repositories/snapshots" target="_blank" rel="external">https://oss.sonatype.org/content/repositories/snapshots</a>“) {</p>
+<p>//  authentication(userName: sonatypeUsername, password: sonatypePassword)</p>
+<p>//}</p>
+</li>
+</ul>
+<p>@@ -101,4 +96,4 @@</p>
+<pre><code>  }
+
+}
+</code></pre><p>   }</p>
+<p>-}</p>
+<p>\ No newline at end of file</p>
+<p>+}</p>
+<h1 id="gradle_build_-x_test_copyJars"><a href="#gradle_build_-x_test_copyJars" class="headerlink" title="gradle build -x test copyJars"></a>gradle build -x test copyJars</h1><h1 id="mkdir_/tmp/jar"><a href="#mkdir_/tmp/jar" class="headerlink" title="mkdir /tmp/jar"></a>mkdir /tmp/jar</h1><h1 id="cp_-a_build/libs/-jar_/tmp/jar/__26amp_3B_26amp_3B_cp_-a_dist/-jar_/tmp/jar/"><a href="#cp_-a_build/libs/-jar_/tmp/jar/__26amp_3B_26amp_3B_cp_-a_dist/-jar_/tmp/jar/" class="headerlink" title="cp -a build/libs/.jar /tmp/jar/ &amp;&amp; cp -a dist/.jar /tmp/jar/"></a>cp -a build/libs/<em>.jar /tmp/jar/ &amp;&amp; cp -a dist/</em>.jar /tmp/jar/</h1><p>最后将 jar 包 分发到tomcat 项目中</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Nginx 作为目前最流行的开源反向代理HTTP Server，用于实现资源缓存、web server负载均衡等功能，由于其轻量级、高性能、高可靠等特点在互联网项目中有着非常普遍的应用，相关概念网上有丰富的介绍。分布式web server集群部署后需要实现session共享，针对 tomcat 服务器的实现方案多种多样，比如 tomcat cluster session 广播、nginx IP hash策略、nginx sticky module等方案，本文主要介绍了使用 redis 服务器进行 session 统一存储管理的共享方案。</p>
+<p>使 用Nginx作为Tomcat的负载平衡器，Tomcat的会话Session数据存储在Redis，能够实现0当机的7×24运营效果。因为将会话存储 在Redis中，因此Nginx就不必配置成stick粘粘某个Tomcat方式，这样才能真正实现后台多个Tomcat负载平衡，用户请求能够发往任何 一个tomcat主机，当我们需要部署新应用代码时，只要停止任何一台tomcat，所有当前在线用户都会导向到运行中的tomcat实例，因为会话数据 被序列化到Redis，在线用户不会受到影响，一旦停掉的tomcat实例上线，另外其他重复部署过程。]]>
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://blog.suzf.net/tags/Nginx/"/>
+    
+      <category term="redis" scheme="http://blog.suzf.net/tags/redis/"/>
+    
+      <category term="tomcat" scheme="http://blog.suzf.net/tags/tomcat/"/>
+    
+      <category term="Redis" scheme="http://blog.suzf.net/categories/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Redis Sentinel Test]]></title>
+    <link href="http://blog.suzf.net/2016/03/17/redis-sentinel-test/"/>
+    <id>http://blog.suzf.net/2016/03/17/redis-sentinel-test/</id>
+    <published>2016-03-17T10:00:00.000Z</published>
+    <updated>2016-03-31T05:38:36.000Z</updated>
+    <content type="html"><![CDATA[<p>Redis Sentinel 是一套用于管理Redis实例的分布式系统,主要完成3项任务:</p>
+<p>1. Monitoring:持续监控Redis master或slave实例的运行情况是否符合预期<br>2. Notification:若被监控的Redis实例运行异常,sentinel会通过API通知外界（人或程序）<br>3. Automation failover:若master实例故障,sentinel会重新选主并启动自动故障切换:选择slave-priority最小的那个slave实例并将其提升为master,同时修改其它slave的配置,使其master配置项指向新的master,当old master恢复重启后,会自动降级为new master的slave.最后,根据配置,Redis Sentinel还会将新的master地址通知给当前正在访问Redis的应用程序.</p>
+<p>Raft分布式算法</p>
+<p>1. 主要用途:用于分布式系统,系统容错,以及选出领头羊<br>2. 作者:Diego Ongaro,毕业于哈佛<br>3. 目前用到这个算法的项目有:<br>a. CoreOS<br>b. ectd : a distributed, consistent shared configuration<br>c. LogCabin : 分布式存储系统<br>d. redis sentinel : redis 的监控系统</p>
+<p>Sentinel使用的Raft算法核心: 原则</p>
+<p>1. 所有sentinel都有选举的领头羊的权利<br>2. 每个sentinel都会要求其他sentinel选举自己为领头羊(主要由发现redis客观下线的sentinel先发起选举)<br>3. 每个sentinel只有一次选举的机会<br>4. 采用先到先得的原则<br>5. 一旦加入到系统了,则不会自动清除(这一点很重要, why?)<br>6. 每个sentinel都有唯一的uid,不会因为重启而变更<br>7. 达到领头羊的条件是 N/2 + 1个sentinel选择了自己<br>8. 采用配置纪元,如果一次选举出现脑裂,则配置纪元会递增,进入下一次选举,所有sentinel都会处于统一配置纪元,以最新的为标准.</p>
+<p>Sentinel 配置样例</p>
+<p><pre class="lang:default decode:true ">  port 26379<br>  dir /tmp<br>  sentinel monitor mymaster 127.0.0.1 6379 2<br>  sentinel down-after-milliseconds mymaster 30000<br>  sentinel parallel-syncs mymaster 1<br>  sentinel failover-timeout mymaster 180000<br>  sentinel notification-script myredis &lt;script-path&gt;</pre><br>其中:<br>port: 指定sentinel的侦听端口（即与redis server或client建立tcp连接的端口）<br>dir: 工作路径,sentinel一般指定/tmp比较简单<br>monitor: 指定sentinel要monitor的redis实例,包括一个redis实例的别名（alias）及redis实例的ip+port,该行最后的数字2表示至少2个setinel实例同时检测到redis server异常时,才将redis server的状态判决为real fail.也即,若这里配置为2,但实际部署中sentinel只部署了1套,则即使redis实例已经挂掉,sentinel也不会给出任何警告.这一点需要特别引起注意.<br>down-after-milliseconds: 指定sentinel监控到redis实例持续异常多长时间后,会判决其状态为down.若实际业务需要sentinel尽快判决出redis实例异常,则该值可适当配小.<br>failover-timeout: 若sentinel在该配置值内未能完成failover操作（即故障时master/slave自动切换）,则认为本次failover失败.该配置有4个用途,具体可参考sentinel.conf中的说明,限于篇幅,此处不再赘述.<br>parallel-syncs: 指定failover过程中,同时被sentinel reconfigure的最大slave实例数.由于reconfigure过程中,对应的slave会中断响应客户端请求,故为避免所有的slave同时不可用,该值需适当配小.<br>notification-script: 指定sentinel检测到master-name指向的实例异常时,调用的报警脚本.该配置项可选,但线上系统建议配置.</p>
+<p>启动 sentinel的方法</p>
+<p>当前Redis stable版已经自带了redis-sentinel这个工具.虽然 Redis Sentinel 已经提供了一个单独的可执行文件 redis-sentinel , 但实际上它只是一个运行在特殊模式下的 Redis实例, 你可以在启动一个普通 Redis实例时通过给定 –sentinel 选项来启动 Redis Sentinel 实例.也就是说:<br>redis-sentinel /path/to/sentinel.conf<br>等同于<br>redis-server /path/to/sentinel.conf –sentinel<br>其中sentinel.conf是redis的配置文件,Redis sentinel会需要写入配置文件来保存sentinel的当前状态.当配置文件无法写入时,Sentinel启动失败.</p>
+<p>sentinel 测试<br>实验环境 &lt; one master / Three slaves / two sentinels &gt;:<br>a. one master（slave-priority为90）部署在ip为192.168.9.10的机器上；<br>b.Three slaves（slave-priority分别为100）的均部署在ip为192.168.9.70的机器上；<br>c. 启用两个sentinel进程监控redis集群状态</p>
+<p>配置 sentinel</p>
+<p>Sentinel可以通过master Redis实例来获得它的从实例的信息.所以每一个Sentinel只配置主实例的监控即可.Sentinel之间端口有所不同.</p>
+<p><pre class="lang:default decode:true">  port 6666<br>  daemonize yes<br>  logfile “/var/log/redis/sentinel-6666.log”</pre></p>
+<p>  #master 1111<br>  sentinel monitor master-1111 192.168.9.10 11111 1<br>  sentinel config-epoch master-1111 6<br>  sentinel leader-epoch master-1111 6<br>  sentinel known-slave master-1111 192.168.9.70 2222<br>启动 sentinel<br>配置文件修改完成后,启动各监控进程即可,例如:<br>redis-server /etc/redis/sentinel-6666.conf</p>
+<p>连接Sentinel和主动failover</p>
+<p>在默认情况下,Sentinel 使用TCP端口26379（普通 Redis 服务器使用的是 6379）.<br>Sentinel 接受 Redis 协议格式的命令请求,所以你可以使用 redis-cli 或者任何其他 Redis 客户端来与 Sentinel 进行通讯.<br>有两种方式可以和 Sentinel 进行通讯:<br>第一种方法是通过直接发送命令来查询被监视 Redis 服务器的当前状态, 以及进行主动转移等操作.这些命令包括:</p>
+<p>SENTINEL masters<br>列出所有被监视的主Redis服务实例,以及这些主服务实例的当前状态.</p>
+<p>SENTINEL slaves<br>列出给定主服务实例的所有从实例,以及这些从实例的当前状态.</p>
+<p>SENTINEL get-master-addr-by-name<br>返回给定名字的主实例的 IP 地址和端口号. 如果这个主实例正在执行故障转移操作, 或者针对这个主实例的故障转移操作已经完成, 那么这个命令返回新的主服务器的 IP 地址和端口号.</p>
+<p>SENTINEL reset:<br>重置所有名字和给定模式 pattern 相匹配的主服务器. pattern 参数是一个 Glob 风格的模式. 重置操作清除该sentinel的所保存的所有状态信息,并进行一次重新的发现过程.</p>
+<p>SENTINEL failover<br>进行一次主动的failover.即在不询问其他 Sentinel 意见的情况下, 强制开始一次自动故障迁移 .发起故障转移的 Sentinel 会向其他 Sentinel 发送一个新的配置,其他 Sentinel 会根据这个配置进行相应的更新.^_^[17:19:25][root@master01 ~]#redis-cli  -p 6666</p>
+<p><pre class="lang:default decode:true ">redis 127.0.0.1:6666&gt; SENTINEL masters<br>1)  1) “name”<br>2) “master-1111”<br>3) “ip”<br>4) “192.168.9.10”<br>5) “port”<br>6) “1111”<br>7) “runid”<br>8) “5d6c2f08547ffe9446eb54c85dc40959e66b203d”<br>9) “flags”<br>10) “master”<br>11) “pending-commands”<br>12) “0”<br>13) “last-ping-sent”<br>14) “0”<br>15) “last-ok-ping-reply”<br>16) “947”<br>17) “last-ping-reply”<br>18) “947”<br>19) “down-after-milliseconds”<br>20) “30000”<br>21) “info-refresh”<br>22) “6259”<br>23) “role-reported”<br>24) “master”<br>25) “role-reported-time”<br>26) “126884”<br>27) “config-epoch”<br>28) “7”<br>29) “num-slaves”<br>30) “3”<br>31) “num-other-sentinels”<br>32) “1”<br>33) “quorum”<br>34) “1”<br>35) “failover-timeout”<br>36) “180000”<br>37) “parallel-syncs”<br>38) “1”</pre></p>
+<p>redis 127.0.0.1:6666&gt; SENTINEL slaves master-1111<br>1)  1) “name”<br>2) “192.168.9.10:1112”<br>3) “ip”<br>4) “192.168.9.10”<br>5) “port”<br>6) “1112”<br>7) “runid”<br>8) “”<br>9) “flags”<br>10) “s_down,slave,disconnected”<br>11) “pending-commands”<br>12) “0”<br>13) “last-ping-sent”<br>14) “215549”<br>15) “last-ok-ping-reply”<br>16) “215549”<br>17) “last-ping-reply”<br>18) “215549”<br>19) “s-down-time”<br>20) “185544”<br>21) “down-after-milliseconds”<br>22) “30000”<br>23) “info-refresh”<br>24) “1458206565223”<br>25) “role-reported”<br>26) “slave”<br>27) “role-reported-time”<br>28) “215549”<br>29) “master-link-down-time”<br>30) “0”<br>31) “master-link-status”<br>32) “err”<br>33) “master-host”<br>34) “?”<br>35) “master-port”<br>36) “0”<br>37) “slave-priority”<br>38) “100”<br>39) “slave-repl-offset”<br>40) “0”<br>2)  1) “name”<br>2) “192.168.9.70:2222”<br>3) “ip”<br>4) “192.168.9.70”<br>5) “port”<br>6) “2222”<br>7) “runid”<br>8) “”<br>9) “flags”<br>10) “s_down,slave,disconnected”<br>11) “pending-commands”<br>12) “0”<br>13) “last-ping-sent”<br>14) “215549”<br>15) “last-ok-ping-reply”<br>16) “215549”<br>17) “last-ping-reply”<br>18) “215549”<br>19) “s-down-time”<br>20) “185544”<br>21) “down-after-milliseconds”<br>22) “30000”<br>23) “info-refresh”<br>24) “1458206565223”<br>25) “role-reported”<br>26) “slave”<br>27) “role-reported-time”<br>28) “215549”<br>29) “master-link-down-time”<br>30) “0”<br>31) “master-link-status”<br>32) “err”<br>33) “master-host”<br>34) “?”<br>35) “master-port”<br>36) “0”<br>37) “slave-priority”<br>38) “100”<br>39) “slave-repl-offset”<br>40) “0”<br>3)  1) “name”<br>2) “192.168.9.70:2223”<br>3) “ip”<br>4) “192.168.9.70”<br>5) “port”<br>6) “2223”<br>7) “runid”<br>8) “9987aebafc55d750145a61f9109cf7d9fb7c8613”<br>9) “flags”<br>10) “slave”<br>11) “pending-commands”<br>12) “0”<br>13) “last-ping-sent”<br>14) “0”<br>15) “last-ok-ping-reply”<br>16) “372”<br>17) “last-ping-reply”<br>18) “372”<br>19) “down-after-milliseconds”<br>20) “30000”<br>21) “info-refresh”<br>22) “4616”<br>23) “role-reported”<br>24) “slave”<br>25) “role-reported-time”<br>26) “215549”<br>27) “master-link-down-time”<br>28) “0”<br>29) “master-link-status”<br>30) “ok”<br>31) “master-host”<br>32) “192.168.9.10”<br>33) “master-port”<br>34) “1111”<br>35) “slave-priority”<br>36) “100”<br>37) “slave-repl-offset”<br>38) “29082”</p>
+<p>查看当前的master<br>redis 127.0.0.1:6666&gt;  SENTINEL get-master-addr-by-name master-1111<br>1) “192.168.9.10”<br>2) “1111”<br>&nbsp;</p>
+<p>使用发布与订阅功能, 通过接收 Sentinel 发送的通知: 当执行故障转移操作, 或者某个被监视的实例被判断为主观下线或者客观下线时, Sentinel 就会发送相应的信息.<br>一个频道能够接收和这个频道的名字相同的事件. 比如说,名为 +sdown 的频道就可以接收所有实例进入主观下线（SDOWN）状态的事件.<br>通过执行 PSUBSCRIBE * 命令可以接收所有事件信息.例如：</p>
+<p><pre class="lang:default decode:true ">^_^[17:50:13][root@master01 ~]#redis-cli -p 6666 info| grep 192<br>master0:name=master-1111,status=ok,address=192.168.9.10:1111,slaves=3,sentinels=2</pre></p>
+<p>^_^[17:50:21][root@master01 ~]#redis-cli -p 6666 sentinel failover master-1111<br>OK</p>
+<p>@_@[17:50:09][root@master01 ~]#redis-cli -p 6666<br>redis 127.0.0.1:6666&gt;  SENTINEL get-master-addr-by-name master-1111<br>1) “192.168.9.10”<br>2) “1111”<br>redis 127.0.0.1:6666&gt; PSUBSCRIBE <em><br>Reading messages… (press Ctrl-C to quit)<br>1) “psubscribe”<br>2) “</em>“<br>3) (integer) 1<br>1) “pmessage”<br>2) “<em>“<br>3) “+new-epoch”<br>4) “8”<br>1) “pmessage”<br>2) “</em>“<br>3) “+try-failover”<br>4) “master master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “<em>“<br>3) “+vote-for-leader”<br>4) “691dc32d3a3c1afdc5b18a8e5541c885aa04c487 8”<br>1) “pmessage”<br>2) “</em>“<br>3) “+elected-leader”<br>4) “master master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “<em>“<br>3) “+failover-state-select-slave”<br>4) “master master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “</em>“<br>3) “+selected-slave”<br>4) “slave 192.168.9.10:1112 192.168.9.10 1112 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “<em>“<br>3) “+failover-state-send-slaveof-noone”<br>4) “slave 192.168.9.10:1112 192.168.9.10 1112 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “</em>“<br>3) “+failover-state-wait-promotion”<br>4) “slave 192.168.9.10:1112 192.168.9.10 1112 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “<em>“<br>3) “-role-change”<br>4) “slave 192.168.9.10:1112 192.168.9.10 1112 @ master-1111 192.168.9.10 1111 new reported role is master”<br>1) “pmessage”<br>2) “</em>“<br>3) “+promoted-slave”<br>4) “slave 192.168.9.10:1112 192.168.9.10 1112 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “<em>“<br>3) “+failover-state-reconf-slaves”<br>4) “master master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “</em>“<br>3) “+slave-reconf-sent”<br>4) “slave 192.168.9.70:2222 192.168.9.70 2222 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “<em>“<br>3) “+slave-reconf-inprog”<br>4) “slave 192.168.9.70:2222 192.168.9.70 2222 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “</em>“<br>3) “+slave-reconf-done”<br>4) “slave 192.168.9.70:2222 192.168.9.70 2222 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “<em>“<br>3) “+slave-reconf-sent”<br>4) “slave 192.168.9.70:2223 192.168.9.70 2223 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “</em>“<br>3) “+slave-reconf-inprog”<br>4) “slave 192.168.9.70:2223 192.168.9.70 2223 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “<em>“<br>3) “+slave-reconf-done”<br>4) “slave 192.168.9.70:2223 192.168.9.70 2223 @ master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “</em>“<br>3) “+failover-end”<br>4) “master master-1111 192.168.9.10 1111”<br>1) “pmessage”<br>2) “<em>“<br>3) “+switch-master”<br>4) “master-1111 192.168.9.10 1111 192.168.9.10 1112”<br>1) “pmessage”<br>2) “</em>“<br>3) “+slave”<br>4) “slave 192.168.9.70:2222 192.168.9.70 2222 @ master-1111 192.168.9.10 1112”<br>1) “pmessage”<br>2) “<em>“<br>3) “+slave”<br>4) “slave 192.168.9.70:2223 192.168.9.70 2223 @ master-1111 192.168.9.10 1112”<br>1) “pmessage”<br>2) “</em>“<br>3) “+slave”<br>4) “slave 192.168.9.10:1111 192.168.9.10 1111 @ master-1111 192.168.9.10 1112”<br>1) “pmessage”<br>2) “<em>“<br>3) “-role-change”<br>4) “slave 192.168.9.10:1111 192.168.9.10 1111 @ master-1111 192.168.9.10 1112 new reported role is master”<br>1) “pmessage”<br>2) “</em>“<br>3) “+role-change”<br>4) “slave 192.168.9.10:1111 192.168.9.10 1111 @ master-1111 192.168.9.10 1112 new reported role is slave”<br>一次故障转移操作由以下步骤组成：<br>(1). 由sentinel主动发起failover或者发现主服务器已经进入客观下线状态.<br>(2). sentinel对我们的当前纪元(epoch)进行自增,并尝试在这个纪元中当选为此次failover的总指挥.<br>(3). 如果当选失败, 那么在设定的故障迁移超时时间的两倍之后, 重新尝试当选. 如果当选成功, 那么执行以下步骤.<br>(4). 选出一个从redis实例,并将它升级为主redis实例.<br>(5). 向被选中的从redis实例发送 SLAVEOF NO ONE 命令,让它转变为主redis实例.<br>(6). 通过发布与订阅功能, 将更新后的配置传播给所有其他 Sentinel , 其他 Sentinel 对它们自己的配置进行更新.<br>(7). 向已下线主服务器的从服务器发送SLAVEOF命令, 让它们去复制新的主服务器.<br>(8). 当所有从redis实例都已经开始复制新的主redis实例时, 领头Sentinel 终止这次故障迁移操作.</p>
+<p>FAQ:<br>若master实例故障,则最好等sentinel选出new master且稳定后（选新主并完成切换的时间与配置有关,典型值在1分钟之内）,再重启old master,避免引发sentinel的误判,导致整个系统无法选出new master.</p>
+<p>最大内存问题:要设置好最大内存,以防不停的申请内存,造成系统内存都被用完.</p>
+<p>Fork进程问题:’vm.overcommit_memory = 1’这一个选项要加到系统的配置中,防止fork因内存不足而失败.</p>
+<p>密码问题:需要设置复杂一些,防止暴力破解.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Redis Sentinel 是一套用于管理Redis实例的分布式系统,主要完成3项任务:</p>
+<p>1. Monitoring:持续监控Redis master或slave实例的运行情况是否符合预期<br>2. Notification:若被监控的Redis实例运行异]]>
     </summary>
     
       <category term="redis" scheme="http://blog.suzf.net/tags/redis/"/>

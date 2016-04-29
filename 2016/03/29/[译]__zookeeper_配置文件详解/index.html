@@ -4,14 +4,16 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>[译] Moving a Volume Group to Another System | Suzf Blog</title>
+    <title>[译]  zookeeper 配置文件详解 | Suzf Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jeffrey Su">
     
-    <meta name="description" content="您可以将整个LVM卷组移动到另一个系统。建议您在执行此操作时使用 vgexport 和 vgimport 命令。
-vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。vgimport：在执行vgexport命令使其禁用之后，再次使机器可以访问卷组。
-一个系统卷组移动到另一个系统，请执行下列步骤：">
+    <meta name="description" content="必填配置参数
+clientPort
+该端口监听客户端的连接。也就是说，客户端都会尝试连接该端口。
+dataDir
+该路径用于存储zookeeper内存数据库快照。除非有特殊设定，否则也会存储数据库更新的事物日志。事物日志的存放位置是很有讲究的。有一台专门用于存放事物日志的设备，可以产生持久的高性能。讲日志放在高负荷的设备上，会对性能产生副作用。">
     
     
     
@@ -222,15 +224,15 @@ vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/04/14/'[译]_Moving_a_Volume_Group_to_Another_System'/" title="[译] Moving a Volume Group to Another System" itemprop="url">[译] Moving a Volume Group to Another System</a>
+      <a href="/2016/03/29/[译]__zookeeper_配置文件详解/" title="[译]  zookeeper 配置文件详解" itemprop="url">[译]  zookeeper 配置文件详解</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
     </p>
   <p class="article-time">
-    <time datetime="2016-04-14T07:21:56.000Z" itemprop="datePublished">2016-04-14</time>
-    Updated:<time datetime="2016-04-29T12:43:02.000Z" itemprop="dateModified">2016-04-29</time>
+    <time datetime="2016-03-29T07:22:32.000Z" itemprop="datePublished">2016-03-29</time>
+    Updated:<time datetime="2016-03-31T06:27:01.000Z" itemprop="dateModified">2016-03-31</time>
     
   </p>
 </header>
@@ -242,38 +244,81 @@ vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。
 		
 		</div>
 		
-		<p>您可以将整个LVM卷组移动到另一个系统。建议您在执行此操作时使用 vgexport 和 vgimport 命令。</p>
-<p>vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。<br>vgimport：在执行vgexport命令使其禁用之后，再次使机器可以访问卷组。</p>
-<p>一个系统卷组移动到另一个系统，请执行下列步骤：<a id="more"></a></p>
-<p>1. 确保现在没有用户正在访问卷组中活动卷上的文件，然后卸载逻辑卷。</p>
-<p>2. 使用vgchange命令的-a n 标记卷组为无效，以防止卷组上的任何进一步的活动。</p>
-<p>3. 使用vgexport命令导出卷组。这可以防止由要从中删除它在系统被访问。</p>
-<p>当您导出卷组后，在你执行pvscan命令时，物理卷将显示为导出卷组。如下面的例子。</p>
-<p><pre class="lang:default decode:true  "># pvscan<br>PV /dev/sda1    is in exported VG myvg [17.15 GB / 7.15 GB free]<br>PV /dev/sdc1    is in exported VG myvg [17.15 GB / 15.15 GB free]<br>PV /dev/sdd1   is in exported VG myvg [17.15 GB / 15.15 GB free]<br>…</pre><br>当系统下一次关机，就可以拔下构成卷组的磁盘，并将它们连接到新的系统。</p>
-<p>4. 当这些磁盘被插入到新的系统之后， 使用 vgexport 命令导入，使得新的系统可以访问它。</p>
-<p>5. 激活卷组 使用 vgchange -ay volune-group</p>
-<p>6. 挂载文件系统，使其可用。</p>
-<p>源文：<a href="https://www.centos.org/docs/5/html/Cluster_Logical_Volume_Manager/VG_move.html" target="_blank" rel="external">Moving a Volume Group to Another System</a></p>
+		<p><strong>必填配置参数</strong></p>
+<p>clientPort</p>
+<p>该端口监听客户端的连接。也就是说，客户端都会尝试连接该端口。</p>
+<p>dataDir</p>
+<p>该路径用于存储zookeeper内存数据库快照。除非有特殊设定，否则也会存储数据库更新的事物日志。事物日志的存放位置是很有讲究的。有一台专门用于存放事物日志的设备，可以产生持久的高性能。讲日志放在高负荷的设备上，会对性能产生副作用。<a id="more"></a></p>
+<p>tickTime</p>
+<p>一个心跳的长度，它是zookeeper毫秒级的一个基本时间单位。它用来设定心跳间隔和超时时间。例如，最小会话超时时间是两倍的心跳长度。</p>
+<p><strong>可选配置参数</strong></p>
+<p>dataLogDir</p>
+<p>这个选项指定将事物日志存储于该路径，代替了dataDir。目的是可以用专门的设备来存储日志，这样可以避免日志和快照的资源竞争。有一个专门的 日志存储设备，可以导致高的吞吐量和稳定性。我们更推荐使用一台专用日志设备并用dataLogDir在该设备上指定目录来存放日志，这样可以保证 dataDir指定的目录不在该设备上(dataDir指定存放快照的目录，快照和日志会竞争资源)。</p>
+<p>globalOutstandingLimit(java:zookeeper.globalOutstandingLimit)</p>
+<p>客户端提交请求的速度可能会超过zookeeper处理请求的速度，尤其是存在大量的客户端。为了避免由于排队的请求导致的内存溢 出，zookeeper将会对客户端进行限流，将请求的数量保持在globalOutstandingLimit以下。 globalOutstandingLimit的默认值是1000。</p>
+<p>preAllocSize(java:zookeeper.preAllocSize)</p>
+<p>zookeeper将事务日志文件分割成preAllocSize kb大小的模块，这样可以避免查询带来的消耗。默认的模块大小是64M。当快照频繁产生时，我们可以肩上模块的大小来提高系统的效率(这段好难翻译，还不知道对不对)。</p>
+<p>snapCount(java:zookeeper.snapCount)</p>
+<p>zookeeper将所有事务记录到日志中。当记录了snapCount数量的事务后，会生成新的快照和事务日志文件。snapCount默认值是100000。</p>
+<p>traceFile(Java:requestTraceFile)</p>
+<p>如果使用该选项，我们会将请求记录在追踪文件中，并将其以traceFile.year.month.day格式命名。这个选项可以提供调试信息，但会影响性能。</p>
+<p>maxClientCnxns</p>
+<p>一个客户端的最大并发连接数(接口级别)，每台客户端用IP地址区分，成为zookeeper总体中的一个成员(貌似翻译的不对)。它用来防止某些DoS攻击，包括文件描述符耗尽(不懂-_-||)。默认值是60。将其设定为0，则取消并发连接数的限制。</p>
+<p>clientPortAddress</p>
+<p>监听客户端连接的地址(ipv4,ipv6,hostname)，也就是说，客户端会尝试连接该地址。可选配置，默认情况下，客户端都会连接到clientPort上(address,interface,nic)。</p>
+<p>minSessionTimeout</p>
+<p>最小会话超时时间(毫秒级)，默认是2倍的tickTime。</p>
+<p>maxSessionTimeout</p>
+<p>最大会话超时时间(毫秒级)，默认是20倍的tickTime。(在代码中会设置超时时间，但是必须在这里设定的最小与最大值之间，否则直接取最小/最大值)</p>
+<p>fsync.warningthresholdms(java:fsync.warningthresholdms)</p>
+<p>当日志中的fsync函数超出了该值的长度，就会在日志出输出警告信息。默认值是1000(毫秒级)，是系统属性。</p>
+<p>autopurge.snapRetainCount</p>
+<p>当启用时，zookeeper将自动储存最近autopurge.snapRetainCount次的快照和事务日志，分别放在dataDir和dataLogDir中，其余部分将被删除。默认值是3，最小值是3。</p>
+<p>autopurge.purgeInterval</p>
+<p>设置该定时器，能定时触发净化任务(清理快照和日志)，单位为小时，值为大于等于1的正整数，默认值是0。</p>
+<p><strong>集群选项</strong></p>
+<p>electionAlg</p>
+<p>作用是实现选举。0是基于UDP的传统版本，1是基于未认证UDP的快速选举版本，2是基于已认证UDP的快速选举版本，3是基于TCP的快速选举版本。默认值是3。(0/1/2已经不建议使用，在下个版本准备取消)</p>
+<p>initLimit</p>
+<p>在心跳连接中，允许followers连接leader和与leader同步数据的时间。如果zookeeper管理的数据比较大，可以增加此值。</p>
+<p>leaderServes(zookeeper.leaderServes)</p>
+<p>leader接受客户端的连接。默认值是“yes”。leader主机的坐标更新。要实现使用很少的读取量而达到更高的更新量，leader可以不 接受客户端的连接而是只专注于负载的均衡。默认值是“yes”，就是可以接受连接。(当集群中存在3台以上的zookeeper服务端时，推荐使用 “no”)</p>
+<p>server.x=[hostname]:nnnnn[:nnnnn]，etc</p>
+<p>配置的服务端组成zookeeper集群。集群启动时，将在配置的服务端上寻找myid文件。该文件包含服务器编号，于server.x中的x值相匹配。</p>
+<p>每台zookeeper服务器都持有这个服务器列表，客户端必须根据这个列表进行连接。</p>
+<p>配置中还存在两个端口号nnnnn。第一个端口号用于follower连接leader，第二个端口号用于leader的选举。当electionAlg=1,2,3时，选举端口是必要的。当=0时，不是必要的。加入想要在单机上测试集群，可以使用不同端口号来模拟。</p>
+<p>syncLimit</p>
+<p>在心跳连接中，允许followers同步zookeeper数据的时间。如果followers与leader长久失去连接，它将被丢弃。</p>
+<p>group.x=nnnnn[:nnnnn]</p>
+<p>实现一个分层的法定人数的构造。“x”是组的标识，“=”后边是服务器的标识。</p>
+<p>例：group.2=4:5:6<br>group.3=7:8:9</p>
+<p>weight.x=nnnnn[:nnnnn]</p>
+<p>要与group搭配使用，为服务器设置一个比重。这个比重就是选举投票时一台服务器的比重。group.1=1:2:3</p>
+<p>例：weight.1=1<br>weight.2=1<br>weight.3=1<br>weight.4=1<br>weight.5=1<br>weight.6=1<br>weight.7=1<br>weight.8=1<br>weight.9=1</p>
+<p>cnxTimeout</p>
+<p>leader选举的超时时间，electionAlg=3时才起作用。默认值是5秒。</p>
+<p>原文地址：<a href="http://zookeeper.apache.org/doc/r3.4.5/zookeeperAdmin.html" target="_blank" rel="external">http://zookeeper.apache.org/doc/r3.4.5/zookeeperAdmin.html</a></p>
+<p>来源： <a href="http://my.csdn.net/u011796274" target="_blank" rel="external">静静的小猪</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/lvm/">lvm</a>
+  <span></span> <a href="/tags/zookeeper/">zookeeper</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://blog.suzf.net/2016/04/14/'[译]_Moving_a_Volume_Group_to_Another_System'/" data-title="[译] Moving a Volume Group to Another System | Suzf Blog" data-tsina="null" class="share clearfix">
+  <div data-url="http://blog.suzf.net/2016/03/29/[译]__zookeeper_配置文件详解/" data-title="[译]  zookeeper 配置文件详解 | Suzf Blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -283,18 +328,18 @@ vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/04/18/Hello_Kafka/" title="Hello Kafka">
+ <a href="/2016/04/01/Mysql_GTID_简述/" title="Mysql GTID 简述">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  Hello Kafka</span>
+  Mysql GTID 简述</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/04/14/dokuwiki_重置管理员密码/"  title="dokuwiki 重置管理员密码">
+<a href="/2016/03/29/[译]_zookpeer_入门教程/"  title="[译] zookpeer 入门教程">
  <strong>NEXT:</strong><br/> 
- <span>dokuwiki 重置管理员密码
+ <span>[译] zookpeer 入门教程
 </span>
 </a>
 </div>
@@ -351,7 +396,7 @@ vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。
 		
 			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
 		
-			<li><a href="/categories/PHP/" title="PHP">PHP<sup>3</sup></a></li>
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
 		
 			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
 		
