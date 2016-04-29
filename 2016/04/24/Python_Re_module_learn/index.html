@@ -1,0 +1,654 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Python Re module learn | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="上篇文章 Python正则表达式操作指南 已经对正则表达式做出了详细的介绍。下面只对 re 模块做出简要的说明。
+元字符说明
+.    匹配除换行符以外的任意字符^    匹配字符串的开始$    匹配字符串的结束[]   用来匹配一个指定的字符类别？   对于前一个字符字符重复0次到1次
+
+对于前一个字符重复0次到无穷次{}   对于前一个字符重复m次{m，n} 对前一个字符重复为m到n次\d   匹配数字，相当于[0-9]\D   匹配任何非数字字符，相当于[^0-9]\s   匹配任意的空白符，相当于[ fv]\S   匹配任何非空白字符，相当于[^ fv]\w   匹配任何字母数字字符，相当于[a-zA-Z0-9]\W   匹配任何非字母数字字符，相当于[^a-zA-Z0-9]\b   匹配单词的开始或结束">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/24/Python_Re_module_learn/" title="Python Re module learn" itemprop="url">Python Re module learn</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-04-24T09:15:46.000Z" itemprop="datePublished">2016-04-24</time>
+    Updated:<time datetime="2016-04-29T12:43:02.000Z" itemprop="dateModified">2016-04-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD4_u56DE_pattern__u5BF9_u8C61"><span class="toc-number">1.</span> <span class="toc-text">返回 pattern 对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#encoding_3A_utf-8"><span class="toc-number">2.</span> <span class="toc-text">-- encoding: utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5728_u5F00_u59CB_u4F4D_u7F6E_u5339_u914D"><span class="toc-number">3.</span> <span class="toc-text">在开始位置匹配</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4E0D_u5728_u5F00_u59CB_u4F4D_u7F6E_u5339_u914D"><span class="toc-number">4.</span> <span class="toc-text">不在开始位置匹配</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u7ED3_u679C"><span class="toc-number">5.</span> <span class="toc-text">执行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u7ED3_u679C-1"><span class="toc-number">6.</span> <span class="toc-text">执行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u884C_u7ED3_u679C"><span class="toc-number">7.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5206_u5272_u524D_u4E09_u4E2A"><span class="toc-number">8.</span> <span class="toc-text">分割前三个</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4E0D_u5339_u914D_u9ED8_u8BA4__u6253_u5370_u6240_u6709"><span class="toc-number">9.</span> <span class="toc-text">不匹配默认 打印所有</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u884C_u7ED3_u679C-1"><span class="toc-number">10.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u884C_u7ED3_u679C-2"><span class="toc-number">11.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u884C_u7ED3_u679C-3"><span class="toc-number">12.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Delete_comments"><span class="toc-number">13.</span> <span class="toc-text">Delete comments</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Remove_anything_other_than_digits"><span class="toc-number">14.</span> <span class="toc-text">Remove anything other than digits</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u7ED3_u679C-2"><span class="toc-number">15.</span> <span class="toc-text">执行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Delete_comments-1"><span class="toc-number">16.</span> <span class="toc-text">Delete comments</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Remove_anything_other_than_digits-1"><span class="toc-number">17.</span> <span class="toc-text">Remove anything other than digits</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u7ED3_u679C-3"><span class="toc-number">18.</span> <span class="toc-text">执行结果</span></a></li></ol>
+		</div>
+		
+		<p>上篇文章 <a href="http://suzf.net/thread-0422-806.html" target="_blank" rel="external">Python正则表达式操作指南 </a>已经对正则表达式做出了详细的介绍。<br>下面只对 re 模块做出简要的说明。</p>
+<p>元字符说明</p>
+<p><pre class="lang:default decode:true ">.    匹配除换行符以外的任意字符<br>^    匹配字符串的开始<br>$    匹配字符串的结束<br>[]   用来匹配一个指定的字符类别<br>？   对于前一个字符字符重复0次到1次</pre></p>
+<ul>
+<li>对于前一个字符重复0次到无穷次<br>{}   对于前一个字符重复m次<br>{m，n} 对前一个字符重复为m到n次<br>\d   匹配数字，相当于[0-9]<br>\D   匹配任何非数字字符，相当于[^0-9]<br>\s   匹配任意的空白符，相当于[ fv]<br>\S   匹配任何非空白字符，相当于[^ fv]<br>\w   匹配任何字母数字字符，相当于[a-zA-Z0-9<em>]<br>\W   匹配任何非字母数字字符，相当于[^a-zA-Z0-9</em>]<br>\b   匹配单词的开始或结束<a id="more"></a>
+模块导入 查看方法<br><pre class="lang:default decode:true ">import re<br>dir(re)<br>[‘DEBUG’, ‘DOTALL’, ‘I’, ‘IGNORECASE’, ‘L’, ‘LOCALE’, ‘M’, ‘MULTILINE’, ‘S’, ‘Scanner’, ‘T’, ‘TEMPLATE’, ‘U’, ‘UNICODE’, ‘VERBOSE’, ‘X’, ‘_MAXCACHE’, ‘<strong>all</strong>‘, ‘<strong>builtins</strong>‘, ‘<strong>doc</strong>‘, ‘<strong>file</strong>‘, ‘<strong>name</strong>‘, ‘<strong>package</strong>‘, ‘<strong>version</strong>‘, ‘_alphanum’, ‘_cache’, ‘_cache_repl’, ‘_compile’, ‘_compile_repl’, ‘_expand’, ‘_pattern_type’, ‘_pickle’, ‘_subx’, ‘compile’, ‘copy_reg’, ‘error’, ‘escape’, ‘findall’, ‘finditer’, ‘match’, ‘purge’, ‘search’, ‘split’, ‘sre_compile’, ‘sre_parse’, ‘sub’, ‘subn’, ‘sys’, ‘template’]</pre><br>常用的方法函数<br><pre class="lang:default decode:true"># 以下为匹配所用函数<br>re.match(pattern, string[, flags])<br>re.search(pattern, string[, flags])<br>re.split(pattern, string[, maxsplit])<br>re.findall(pattern, string[, flags])<br>re.finditer(pattern, string[, flags])<br>re.sub(pattern, repl, string[, count])<br>re.subn(pattern, repl, string[, count])</pre></li>
+</ul>
+<h1 id="u8FD4_u56DE_pattern__u5BF9_u8C61"><a href="#u8FD4_u56DE_pattern__u5BF9_u8C61" class="headerlink" title="返回 pattern 对象"></a>返回 pattern 对象</h1><p>re.compile(string[,flag]) </p>
+<p>参数 flag 是匹配模式，取值可以使用按位或运算符’|’表示同时生效。<br>      比如 re.I | re.M。</p>
+<p>可选值有：<br>    re.I(I –&gt; IGNORECASE): 忽略大小写（括号内是完整写法，下同）<br>    re.M(M –&gt; MULTILINE): 多行模式，改变’^’和’$’的行为（参见上图）<br>    re.S(S –&gt; DOTALL): 点任意匹配模式，改变’.’的行为<br>    re.L(L –&gt; LOCALE): 使预定字符类 \w \W \b \B \s \S 取决于当前区域设定<br>    re.U(U –&gt; UNICODE): 使预定字符类 \w \W \b \B \s \S \d \D 取决于unicode定义的字符属性<br>    re.X(X –&gt; VERBOSE): 详细模式。这个模式下正则表达式可以是多行，忽略空白字符，并可以加入注释。<br>Match</p>
+<p>尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。</p>
+<p><pre class="lang:default decode:true">语法格式<br>re.match(pattern, string[, flags])</pre></p>
+<p>匹配对象方法    描述<br>group(num=0)    匹配的整个表达式的字符串，group() 可以一次输入多个组号，<br>                在这种情况下它将返回一个包含那些组所对应值的元组。<br>groups()    返回一个包含所有小组字符串的元组，从 1 到 所含的小组号。<br>举个栗子</p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="encoding_3A_utf-8"><a href="#encoding_3A_utf-8" class="headerlink" title="-- encoding: utf-8 --"></a>-<em>- encoding: utf-8 -</em>-</h1><p>import re</p>
+<h1 id="u5728_u5F00_u59CB_u4F4D_u7F6E_u5339_u914D"><a href="#u5728_u5F00_u59CB_u4F4D_u7F6E_u5339_u914D" class="headerlink" title="在开始位置匹配"></a>在开始位置匹配</h1><p>print (re.match(‘www’, ‘www.suzf.net’).span())</p>
+<h1 id="u4E0D_u5728_u5F00_u59CB_u4F4D_u7F6E_u5339_u914D"><a href="#u4E0D_u5728_u5F00_u59CB_u4F4D_u7F6E_u5339_u914D" class="headerlink" title="不在开始位置匹配"></a>不在开始位置匹配</h1><p>print (re.match(‘net’, ‘www.suzf.net’))</p>
+<h1 id="u6267_u884C_u7ED3_u679C"><a href="#u6267_u884C_u7ED3_u679C" class="headerlink" title="执行结果"></a>执行结果</h1><p>(0, 3)<br>None</p>
+<p>line = ‘Welcome to access my blog —&gt; <a href="http://suzf.net" target="_blank" rel="external">http://suzf.net</a>‘<br>matchObj = re.match(r’(.<em>) -{2,}. (.</em>)’, line, re.M|re.I)</p>
+<p>if matchObj:<br>    print “matchObj.group():”, matchObj.group()<br>    print “matchObj.group(1):”, matchObj.group(1)<br>    print “matchObj.group(2):”, matchObj.group(2)</p>
+<p>else:<br>    print “Sorry! No match!”</p>
+<h1 id="u6267_u884C_u7ED3_u679C-1"><a href="#u6267_u884C_u7ED3_u679C-1" class="headerlink" title="执行结果"></a>执行结果</h1><p>matchObj.group(): Welcome to access my blog –&gt; <a href="http://suzf.net" target="_blank" rel="external">http://suzf.net</a><br>matchObj.group(1): Welcome to access my blog<br>matchObj.group(2): <a href="http://suzf.net" target="_blank" rel="external">http://suzf.net</a><br><br>Search</p>
+<p>re.search 扫描整个字符串并返回第一个成功的匹配，匹配失败返回None。。</p>
+<p><pre class="lang:default decode:true">语法格式<br>re.search(pattern, string, flags=0)</pre><br>举个栗子</p>
+<p><pre class="lang:default decode:true">import re</pre></p>
+<p>print (re.search(‘www’, ‘www.suzf.net’).span())<br>print (re.search(‘net’, ‘www.suzf.net’).span())</p>
+<p>line = ‘Welcome to access my blog —&gt; <a href="http://suzf.net" target="_blank" rel="external">http://suzf.net</a>‘<br>matchObj = re.search(r’(.<em>) -{2,}. (.</em>)’, line, re.M|re.I)</p>
+<p>if matchObj:<br>    print “matchObj.group():”, matchObj.group()<br>    print “matchObj.group(1):”, matchObj.group(1)<br>    print “matchObj.group(2):”, matchObj.group(2)</p>
+<p>else:<br>    print “Sorry! No match!”</p>
+<h1 id="u8FD0_u884C_u7ED3_u679C"><a href="#u8FD0_u884C_u7ED3_u679C" class="headerlink" title="运行结果"></a>运行结果</h1><p>(0, 3)<br>(9, 12)<br>matchObj.group(): Welcome to access my blog —&gt; <a href="http://suzf.net" target="_blank" rel="external">http://suzf.net</a><br>matchObj.group(1): Welcome to access my blog<br>matchObj.group(2): <a href="http://suzf.net" target="_blank" rel="external">http://suzf.net</a><br>re.match与re.search的区别<br>re.match只匹配字符串的开始，如果字符串开始不符合正则表达式，则匹配失败，函数返回None；而re.search匹配整个字符串，直到找到一个匹配。</p>
+<p>Split</p>
+<p>通过正则表达式将字符串分离。如果用括号将正则表达式括起来，那么匹配的字符串也会被列入到list中返回。maxsplit是分离的次数，maxsplit=1分离一次，默认为0，不限制次数。</p>
+<p><pre class="lang:default decode:true"><strong>语法格式<br>re.split(pattern, string[, maxsplit]) | split(string[, maxsplit])</strong></pre><br>举个栗子</p>
+<p><pre class="lang:default decode:true ">import re</pre></p>
+<p>test=”Trouble is a friend, yeah trouble is a friend of mine.”<br>print re.split(r”\s+”, test)</p>
+<h1 id="u5206_u5272_u524D_u4E09_u4E2A"><a href="#u5206_u5272_u524D_u4E09_u4E2A" class="headerlink" title="分割前三个"></a>分割前三个</h1><p>print re.split(r”\s+”, test, 3)</p>
+<h1 id="u4E0D_u5339_u914D_u9ED8_u8BA4__u6253_u5370_u6240_u6709"><a href="#u4E0D_u5339_u914D_u9ED8_u8BA4__u6253_u5370_u6240_u6709" class="headerlink" title="不匹配默认 打印所有"></a>不匹配默认 打印所有</h1><p>print re.split(“AAA”, “158158”) </p>
+<h1 id="u8FD0_u884C_u7ED3_u679C-1"><a href="#u8FD0_u884C_u7ED3_u679C-1" class="headerlink" title="运行结果"></a>运行结果</h1><p>[‘Trouble’, ‘is’, ‘a’, ‘friend,’, ‘yeah’, ‘trouble’, ‘is’, ‘a’, ‘friend’, ‘of’, ‘mine.’]<br>[‘Trouble’, ‘is’, ‘a’, ‘friend, yeah trouble is a friend of mine.’]<br>[‘158158’]<br>Findall</p>
+<p>搜索string，以列表形式返回全部能匹配的子串。</p>
+<p><pre class="lang:default decode:true ">语法格式<br>re.findall(pattern, string[, flags]) | findall(string[, pos[, endpos]])</pre><br>举个栗子</p>
+<p><pre class="lang:default decode:true">import re</pre></p>
+<p>num = re.compile(r’\d+’)<br>print num.findall(‘one1two2three3’)</p>
+<h1 id="u8FD0_u884C_u7ED3_u679C-2"><a href="#u8FD0_u884C_u7ED3_u679C-2" class="headerlink" title="运行结果"></a>运行结果</h1><p>[‘1’, ‘2’, ‘3’]<br>Finditer</p>
+<p>搜索string，返回一个顺序访问每一个匹配结果（Match对象）的迭代器。</p>
+<p><pre class="lang:default decode:true ">语法格式<br>re.finditer(pattern, string[, flags]) | finditer(string[, pos[, endpos]])</pre><br>举个栗子</p>
+<p><pre class="lang:default decode:true ">import re</pre></p>
+<p>num = re.compile(r’\d+’)</p>
+<p>for item in num.finditer(‘one1two2three3’):<br>    print item.group(),</p>
+<h1 id="u8FD0_u884C_u7ED3_u679C-3"><a href="#u8FD0_u884C_u7ED3_u679C-3" class="headerlink" title="运行结果"></a>运行结果</h1><p>1 2 3<br>Sub</p>
+<p>返回的字符串是在字符串中用 RE 最左边不重复的匹配来替换。如果模式没有发现，字符将被没有改变地返回。</p>
+<p>可选参数 count 是模式匹配后替换的最大次数；count 必须是非负整数。缺省值是 0 表示替换所有的匹配。</p>
+<p><pre class="lang:default decode:true ">语法格式<br>re.sub(pattern, repl, string, count=0, flags=0)</pre><br>举个栗子</p>
+<p><pre class="lang:default decode:true">import re</pre></p>
+<p>phone = “6666-666-666 # This is Phone Number”</p>
+<h1 id="Delete_comments"><a href="#Delete_comments" class="headerlink" title="Delete comments"></a>Delete comments</h1><p>num = re.sub(r’#.*$’, “”, phone)<br>print “Phone Num:”, num</p>
+<h1 id="Remove_anything_other_than_digits"><a href="#Remove_anything_other_than_digits" class="headerlink" title="Remove anything other than digits"></a>Remove anything other than digits</h1><p>num = re.sub(r’\D’, “”, phone)<br>print “Phone Num:”, num</p>
+<h1 id="u6267_u884C_u7ED3_u679C-2"><a href="#u6267_u884C_u7ED3_u679C-2" class="headerlink" title="执行结果"></a>执行结果</h1><p>Phone Num: 6666-666-666<br>Phone Num: 6666666666<br>Subn</p>
+<p>与re.sub方法作用一样，但返回的是包含新字符串和替换执行次数的两元组。</p>
+<p><pre class="lang:default decode:true ">语法格式<br>re.subn(pattern, repl, string, count=0, flags=0)</pre><br>举个栗子</p>
+<p><pre class="lang:default decode:true ">import re</pre></p>
+<p>phone = “6666-666-666 # This is Phone Number”</p>
+<h1 id="Delete_comments-1"><a href="#Delete_comments-1" class="headerlink" title="Delete comments"></a>Delete comments</h1><p>num = re.subn(r’#.*$’, “”, phone)<br>print “Phone Num:”, num</p>
+<h1 id="Remove_anything_other_than_digits-1"><a href="#Remove_anything_other_than_digits-1" class="headerlink" title="Remove anything other than digits"></a>Remove anything other than digits</h1><p>num = re.subn(r’\D’, “”, phone)<br>print “Phone Num:”, num</p>
+<h1 id="u6267_u884C_u7ED3_u679C-3"><a href="#u6267_u884C_u7ED3_u679C-3" class="headerlink" title="执行结果"></a>执行结果</h1><p>Phone Num: (‘6666-666-666 ‘, 1)<br>Phone Num: (‘6666666666’, 25)<br>Compile</p>
+<p>compile 函数根据一个模式字符串和可选的标志参数生成一个正则表达式对象。该对象拥有一系列方法用于正则表达式匹配和替换。</p>
+<p><pre class="lang:default decode:true ">help(re.compile)<br>compile(pattern, flags=0)<br>    Compile a regular expression pattern, returning a pattern object.</pre><br>举个栗子</p>
+<p><pre class="lang:default decode:true ">import os,re</pre></p>
+<p>data_file = ‘/tmp/disk_info.csv.tmp’</p>
+<p>with open(data_file, ‘w’) as f:<br>  for row in disk_info:<br>    spacetab = re.compile(“ +”)<br>    item = re.sub(spacetab, ‘,’, row)<br>    f.write(item)<br>f.close()<br>&nbsp;</p>
+<blockquote>
+<p><em>Notice</em></p>
+<p><em>prog = re.compile(pattern)</em></p>
+<p><em>result = prog.match(string)</em></p>
+<p><em>与</em></p>
+<p><em>result = re.match(pattern, string)</em></p>
+<p><em>是等价的。</em></p>
+<p><em>第一种方式能实现正则表达式的重用。</em><br>好了就啰嗦这么多吧。</p>
+</blockquote>
+<p>更多详细内容 请移步 <a href="https://docs.python.org/3/library/re.html?highlight=re#" target="_blank" rel="external">Python Standard Library</a></p>
+<p>&nbsp;</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Python/">Python</a><a href="/tags/Re/">Re</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/04/24/Python_Re_module_learn/" data-title="Python Re module learn | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/" title="MySQL mysqldump 数据导出详解">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  MySQL mysqldump 数据导出详解</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/04/22/Python正则表达式操作指南/"  title="Python正则表达式操作指南">
+ <strong>NEXT:</strong><br/> 
+ <span>Python正则表达式操作指南
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD4_u56DE_pattern__u5BF9_u8C61"><span class="toc-number">1.</span> <span class="toc-text">返回 pattern 对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#encoding_3A_utf-8"><span class="toc-number">2.</span> <span class="toc-text">-- encoding: utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5728_u5F00_u59CB_u4F4D_u7F6E_u5339_u914D"><span class="toc-number">3.</span> <span class="toc-text">在开始位置匹配</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4E0D_u5728_u5F00_u59CB_u4F4D_u7F6E_u5339_u914D"><span class="toc-number">4.</span> <span class="toc-text">不在开始位置匹配</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u7ED3_u679C"><span class="toc-number">5.</span> <span class="toc-text">执行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u7ED3_u679C-1"><span class="toc-number">6.</span> <span class="toc-text">执行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u884C_u7ED3_u679C"><span class="toc-number">7.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5206_u5272_u524D_u4E09_u4E2A"><span class="toc-number">8.</span> <span class="toc-text">分割前三个</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4E0D_u5339_u914D_u9ED8_u8BA4__u6253_u5370_u6240_u6709"><span class="toc-number">9.</span> <span class="toc-text">不匹配默认 打印所有</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u884C_u7ED3_u679C-1"><span class="toc-number">10.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u884C_u7ED3_u679C-2"><span class="toc-number">11.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u8FD0_u884C_u7ED3_u679C-3"><span class="toc-number">12.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Delete_comments"><span class="toc-number">13.</span> <span class="toc-text">Delete comments</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Remove_anything_other_than_digits"><span class="toc-number">14.</span> <span class="toc-text">Remove anything other than digits</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u7ED3_u679C-2"><span class="toc-number">15.</span> <span class="toc-text">执行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Delete_comments-1"><span class="toc-number">16.</span> <span class="toc-text">Delete comments</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Remove_anything_other_than_digits-1"><span class="toc-number">17.</span> <span class="toc-text">Remove anything other than digits</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u7ED3_u679C-3"><span class="toc-number">18.</span> <span class="toc-text">执行结果</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>27</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

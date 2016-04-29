@@ -1,0 +1,597 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hello Kafka | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Kafka Setup
+Kafka 是一种高吞吐的分布式发布订阅消息系统，能够替代传统的消息队列用于解耦合数据处理，缓存未处理消息等，同时具有更高的吞吐率，支持分区、多副本、冗余，因此被广泛用于大规模消息数据处理应用。Kafka 支持Java 及多种其它语言客户端，可与Hadoop、Storm、Sp">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/18/Hello_Kafka/" title="Hello Kafka" itemprop="url">Hello Kafka</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-04-18T06:11:46.000Z" itemprop="datePublished">2016-04-18</time>
+    Updated:<time datetime="2016-04-29T12:43:02.000Z" itemprop="dateModified">2016-04-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Whether_topic_deletion_should_be_allowed-_Requires_kafka__26gt_3B_3D_0-8-2"><span class="toc-number">1.</span> <span class="toc-text">Whether topic deletion should be allowed. Requires kafka >= 0.8.2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bin/kafka-topics-sh__u2013create__u2013zookeeper_localhost_3A2181__5C"><span class="toc-number">2.</span> <span class="toc-text">bin/kafka-topics.sh –create –zookeeper localhost:2181 \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bin/kafka-topics-sh__u2013list__u2013zookeeper_localhost_3A2181"><span class="toc-number">3.</span> <span class="toc-text">bin/kafka-topics.sh –list –zookeeper localhost:2181</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bin/kafka-topics-sh__u2013delete__u2013zookeeper_localhost_3A2181__u2013topic_test2"><span class="toc-number">4.</span> <span class="toc-text">bin/kafka-topics.sh –delete –zookeeper localhost:2181 –topic test2</span></a></li></ol>
+		</div>
+		
+		<p>Kafka Setup</p>
+<p>Kafka 是一种高吞吐的分布式发布订阅消息系统，能够替代传统的消息队列用于解耦合数据处理，缓存未处理消息等，同时具有更高的吞吐率，支持分区、多副本、冗余，因此被广泛用于大规模消息数据处理应用。Kafka 支持Java 及多种其它语言客户端，可与Hadoop、Storm、Spark等其它大数据工具结合使用。</p>
+<p>本教程主要介绍Kafka 在Centos 6上的安装和使用，包括功能验证和集群的简单配置。</p>
+<p>kafka docs &amp; download<br>– <a href="http://kafka.apache.org/documentation.html" target="_blank" rel="external">http://kafka.apache.org/documentation.html</a><br>– <a href="http://kafka.apache.org/downloads.html" target="_blank" rel="external">http://kafka.apache.org/downloads.html</a></p>
+<p>1. 安装 zk &amp; java<br>请参考 <a href="http://suzf.net/thread-0329-671.html" target="_blank" rel="external">[译] zookeeper 入门教程</a></p>
+<p>2. 运行zk<br>bin/zkServer.sh  start</p>
+<p>3. 安装 kafka<br>下载 kafka 并配置</p>
+<p><pre class="lang:default decode:true">wget <a href="http://apache.fayea.com/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz" target="_blank" rel="external">http://apache.fayea.com/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz</a><br>tar xf kafka_2.11-0.9.0.1.tgz<br>mv kafka_2.11-0.9.0.1 /usr/loca/kafka</pre><br>配置 server.properties 文件中的 zookeeper.connect，设置为 2 中的IP 和端口<br>创建多 broker</p>
+<p><pre class="lang:default decode:true">@_@[11:59:56][root@suzf.net kafka]#diff -ruN config/server.properties  config/server-1.properties |grep “^[-+@]”<br>— config/server.properties  2016-02-12 08:37:25.000000000 +0800<br>+++ config/server-1.properties  2016-04-18 11:54:34.011797645 +0800<br>@@ -17,14 +17,14 @@<br>-broker.id=0<br>+broker.id=1<br>-#port=9092<br>+port=9093<br>@@ -57,7 +57,7 @@<br>-log.dirs=/tmp/kafka-logs<br>+log.dirs=/tmp/kafka-logs-1</pre><br>4. 运行 kafka</p>
+<p><pre class="lang:default decode:true">bin/kafka-server-start.sh  -daemon config/server.properties<br>bin/kafka-server-start.sh  -daemon config/server-1.properties</pre><br>停止</p>
+<p><pre class="lang:default decode:true">bin/kafka-server-stop.sh<br>pkill -9 -f config/server.properties</pre><br>5. 创建Topic<br>创建一个名为“test”只有一个分区，只有一个副本的Topic：</p>
+<p><pre class="lang:default decode:true">bin/kafka-topics.sh –create –zookeeper localhost:2181 \<br>–replication-factor 1 –partitions 1 –topic lucy<br>Created topic “lucy”.</pre><br>如果你用的是Kafka 8.x之前版本，请用以下的命令创建topic</p>
+<p><pre class="lang:default decode:true">bin/kafka-create-topic.sh –zookeeper  localhost:2181 \<br>–replica 1 –partition 1 –topic lucy</pre><br>运行list topic命令，可以看到Topic列表</p>
+<p><pre class="lang:default decode:true">bin/kafka-topics.sh –describe  –zookeeper localhost:2181<br>Topic:lucy  PartitionCount:1  ReplicationFactor:1 Configs:<br>Topic: lucy Partition: 0  Leader: 1 Replicas: 1 Isr: 1</pre><br>6. 发送消息<br>kafka自带的一个命令行客户端，运行后可以输入消息，kafka会将其发送到kafka进群进行消息消费。默认情况下，每一行数据被作为一个消息进行发送。<br>接下来我们运行producer试试</p>
+<p><pre class="lang:default decode:true">^_^[12:02:21][root@suzf.net kafka]#bin/kafka-console-producer.sh –broker-list localhost:9092 –topic lucy<br>Hello Kafka<br>My name is jeffrey<br>This is test on lab.suzf.net</pre><br>7. 启动消费者(consumer)<br>上面我们通过kafka自带的命令行输入了消息，那么我们现在启动消费者看看是否会接收到。</p>
+<p><pre class="lang:default decode:true">@_@[12:03:22][root@suzf.net kafka]#bin/kafka-console-consumer.sh  –zookeeper localhost:2181 –topic lucy –from-beginning<br>Hello Kafka<br>My name is jeffrey<br>This is test on lab.suzf.net<br>^CProcessed a total of 3 messages</pre><br>可以看到消费者已经对我们上面输入的数据进行处理了.</p>
+<ol>
+<li>删除无用的topic<br><pre class="lang:default decode:true">bin/kafka-topics.sh –delete –zookeeper localhost:2181 –topic test<br>Topic test is already marked for deletion.</pre></li>
+</ol>
+<p>bin/kafka-topics.sh –list –zookeeper localhost:2181<br>lucy<br>test - marked for deletion<br>并没有真正删除，如果要真正删除,配置 delete.topic.enable=true.</p>
+<p>配置文件在kafka/config目录</p>
+<p><pre class="lang:default decode:true ">vim config/server.properties</pre></p>
+<h1 id="Whether_topic_deletion_should_be_allowed-_Requires_kafka__26gt_3B_3D_0-8-2"><a href="#Whether_topic_deletion_should_be_allowed-_Requires_kafka__26gt_3B_3D_0-8-2" class="headerlink" title="Whether topic deletion should be allowed. Requires kafka &gt;= 0.8.2"></a>Whether topic deletion should be allowed. Requires kafka &gt;= 0.8.2</h1><p>delete.topic.enable=true</p>
+<h1 id="bin/kafka-topics-sh__u2013create__u2013zookeeper_localhost_3A2181__5C"><a href="#bin/kafka-topics-sh__u2013create__u2013zookeeper_localhost_3A2181__5C" class="headerlink" title="bin/kafka-topics.sh –create –zookeeper localhost:2181 \"></a>bin/kafka-topics.sh –create –zookeeper localhost:2181 \</h1><p>–replication-factor 1 –partitions 1 –topic test2<br>Created topic “test2”.</p>
+<h1 id="bin/kafka-topics-sh__u2013list__u2013zookeeper_localhost_3A2181"><a href="#bin/kafka-topics-sh__u2013list__u2013zookeeper_localhost_3A2181" class="headerlink" title="bin/kafka-topics.sh –list –zookeeper localhost:2181"></a>bin/kafka-topics.sh –list –zookeeper localhost:2181</h1><p>lucy<br>test - marked for deletion<br>test2</p>
+<h1 id="bin/kafka-topics-sh__u2013delete__u2013zookeeper_localhost_3A2181__u2013topic_test2"><a href="#bin/kafka-topics-sh__u2013delete__u2013zookeeper_localhost_3A2181__u2013topic_test2" class="headerlink" title="bin/kafka-topics.sh –delete –zookeeper localhost:2181 –topic test2"></a>bin/kafka-topics.sh –delete –zookeeper localhost:2181 –topic test2</h1><p>Topic test2 is marked for deletion.<br>Note: This will have no impact if delete.topic.enable is not set to true.<br>^_^[13:55:46][root@suzf.net kafka]#  bin/kafka-topics.sh –list –zookeeper localhost:2181<br>lucy<br>test - marked for deletion<br>&nbsp;</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/kafka/">kafka</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/04/18/Hello_Kafka/" data-title="Hello Kafka | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/04/22/Python正则表达式操作指南/" title="Python正则表达式操作指南">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Python正则表达式操作指南</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/04/14/'[译]_Moving_a_Volume_Group_to_Another_System'/"  title="[译] Moving a Volume Group to Another System">
+ <strong>NEXT:</strong><br/> 
+ <span>[译] Moving a Volume Group to Another System
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Whether_topic_deletion_should_be_allowed-_Requires_kafka__26gt_3B_3D_0-8-2"><span class="toc-number">1.</span> <span class="toc-text">Whether topic deletion should be allowed. Requires kafka >= 0.8.2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bin/kafka-topics-sh__u2013create__u2013zookeeper_localhost_3A2181__5C"><span class="toc-number">2.</span> <span class="toc-text">bin/kafka-topics.sh –create –zookeeper localhost:2181 \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bin/kafka-topics-sh__u2013list__u2013zookeeper_localhost_3A2181"><span class="toc-number">3.</span> <span class="toc-text">bin/kafka-topics.sh –list –zookeeper localhost:2181</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bin/kafka-topics-sh__u2013delete__u2013zookeeper_localhost_3A2181__u2013topic_test2"><span class="toc-number">4.</span> <span class="toc-text">bin/kafka-topics.sh –delete –zookeeper localhost:2181 –topic test2</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>27</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

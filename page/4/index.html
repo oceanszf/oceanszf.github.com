@@ -219,172 +219,160 @@
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/" title="[译] Repair MySQL 5.6 GTID replication by injecting empty transactions" itemprop="url">
+    <a href="/2016/02/11/Linux_下_僵尸进程与D进程/" title="Linux 下 僵尸进程与D进程" itemprop="url">
   
-    <h1 itemprop="name">[译] Repair MySQL 5.6 GTID replication by injecting empty transactions</h1>
+    <h1 itemprop="name">Linux 下 僵尸进程与D进程</h1>
     
      
-           <p itemprop="description" >在前面文章我提到了两种关于如何修复 Mysql 5.6 GTID 主从数据库。我没有提到大家说熟知的方法 - GLOBAL SQL_SLAVE_SKIP_COUNTER = n。原因很简单，如果你使用的是MysqlGTID，它是不工作的。那么问题来了：
-有没有简单的方法跳过这单一</p>
+           <p itemprop="description" >————- 1 关于ZOMBIE进程：
+ps -el| grep ZF S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD0 Z     0  3288  3278  0  80   0 -   </p>
         
     
-    <time datetime="2015-12-01T13:34:23.000Z" itemprop="datePublished">2015-12-01</time>
+    <time datetime="2016-02-11T09:43:59.000Z" itemprop="datePublished">2016-02-11</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/11/29/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-6/" title="How To Install ELK Stack (Elasticsearch, Logstash, and Kibana) on CentOS 6" itemprop="url">
+    <a href="/2016/02/03/ZooKeeper_概述/" title="ZooKeeper 概述" itemprop="url">
   
-    <h1 itemprop="name">How To Install ELK Stack (Elasticsearch, Logstash, and Kibana) on CentOS 6</h1>
+    <h1 itemprop="name">ZooKeeper 概述</h1>
     
      
-           <p itemprop="description" >ELK(Elasticsearch + Logstash + Kibana) 是一套开源的日志管理方案Elasticsearch：负责日志检索和分析Logstash：负责日志的收集，处理和储存Kibana：负责日志的可视化
-Logstash: The server compone</p>
+           <p itemprop="description" >1. ZooKeeper概述hadoop的一个子项目，是对Google分布式同步系统 chubby 的开源实现。针对大型分布式系统的可靠协调系统。包括 配置维护，名字服务，分布式同步，组服务 等在内的功能。目标： 封装复杂，易出错的关键服务，将简单的易用的接口和性能高效，稳定的协</p>
         
     
-    <time datetime="2015-11-29T10:24:08.000Z" itemprop="datePublished">2015-11-29</time>
+    <time datetime="2016-02-03T03:39:32.000Z" itemprop="datePublished">2016-02-03</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/11/26/how-to-install-elasticsearch-plugin/" title="How-to: install elasticsearch plugin" itemprop="url">
+    <a href="/2016/02/02/How-to-create-restore-a-slave-using-GTID-replication-in-MySQL-5.6/" title="How to create restore a slave using GTID replication in MySQL 5.6" itemprop="url">
   
-    <h1 itemprop="name">How-to: install elasticsearch plugin</h1>
+    <h1 itemprop="name">How to create restore a slave using GTID replication in MySQL 5.6</h1>
     
      
-           <p itemprop="description" >elasticsearch 插件
-由于公司内部访问权限控制严格，自己搭建的虚拟机只能通过搭建代理上网
-因为某种限制第一种安装未成功， 所以有了后面的方法。自动安装[11:38:08][root@ocean-lab elasticsearch]$ ./bin/plugin -ins</p>
+           <p itemprop="description" >在 Mysql 5.6 中，里面有许多新的特性；我个人认为其中最有用的是在复制中支持 全局 事物 ID。这篇文章不是用来介绍什么是GTID，关于它的工作原理这里有很多文章介绍：  http://dev.mysql.com/doc/refman/5.6/en/replication</p>
         
     
-    <time datetime="2015-11-26T08:49:22.000Z" itemprop="datePublished">2015-11-26</time>
+    <time datetime="2016-02-02T09:02:33.000Z" itemprop="datePublished">2016-02-02</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/11/25/ceph-single-multi-node-installation-summary/" title="Ceph 单/多节点 安装小结" itemprop="url">
+    <a href="/2016/02/02/Python_爬取中文网页乱码的通用解决办法/" title="Python 爬取中文网页乱码的通用解决办法" itemprop="url">
   
-    <h1 itemprop="name">Ceph 单/多节点 安装小结</h1>
+    <h1 itemprop="name">Python 爬取中文网页乱码的通用解决办法</h1>
     
      
-           <p itemprop="description" >概述
-Docs : http://docs.ceph.com/docs
-Ceph是一个分布式文件系统，在维持POSIX兼容性的同时加入了复制和容错功能。Ceph最大的特点是分布式的元数据服务器，通过CRUSH（Controlled Replication Under Scalab</p>
+           <p itemprop="description" >由于网页编码不统一，我们会遇到各式各样的网页编码格式。
+那么问题来了，由于编码格式不统一，爬取的中文信息往往是不尽任意的， 那么如何处理它呢？
+ENV: Python 2.7.x
+如何取得网页的编码，用chardet库最方便(https://pypi.python.org/pyp</p>
         
     
-    <time datetime="2015-11-25T14:21:54.000Z" itemprop="datePublished">2015-11-25</time>
+    <time datetime="2016-02-02T03:51:27.000Z" itemprop="datePublished">2016-02-02</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/11/09/python-csv-example/" title="Python CSV 操作实例" itemprop="url">
+    <a href="/2016/02/01/Debian_Fedora_common_commands_Management_Pack/" title="Debian Fedora常用命令管理包" itemprop="url">
   
-    <h1 itemprop="name">Python CSV 操作实例</h1>
+    <h1 itemprop="name">Debian Fedora常用命令管理包</h1>
     
      
-       <p itemprop="description" >Reference:  The Python Standard Library CSV
-使用 Python 生成csv 文件
-#!/usr/bin/env python
--- coding:utf-8 --import csv
-wb中的w表示写入模式，b是文件模式csv_file</p>
-      
-    
-    <time datetime="2015-11-09T08:24:44.000Z" itemprop="datePublished">2015-11-09</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/11/09/how-to-load-csv-data-into-mysql-use-python/" title="How-to Load CSV data into mysql use Python" itemprop="url">
-  
-    <h1 itemprop="name">How-to Load CSV data into mysql use Python</h1>
-    
-     
-           <p itemprop="description" >逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。纯文本意味着该文件是一个字符序列，不含必须像二进制数字那样被解读的数据。CSV文件由任意数目的记录组成，记录间以某种</p>
+           <p itemprop="description" >对大家推荐很好使用的Debian Fedora命令系统，像让大家对Debian Fedora命令系统有所了解，然后对Debian Fedora命令统全面讲解介绍，Debian Fedora 的包管理命令。
+=== Debian Fedora 中dpkg命令 ===dpkg -i </p>
         
     
-    <time datetime="2015-11-09T06:51:06.000Z" itemprop="datePublished">2015-11-09</time>
+    <time datetime="2016-02-01T02:16:33.000Z" itemprop="datePublished">2016-02-01</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/11/04/python-mysql-python-usage-example/" title="How-to use MySQL-python in Python" itemprop="url">
+    <a href="/2016/02/01/how-to-rechange-debian-system-root-password/" title="How-to rechange debian system root password" itemprop="url">
   
-    <h1 itemprop="name">How-to use MySQL-python in Python</h1>
+    <h1 itemprop="name">How-to rechange debian system root password</h1>
     
      
-       <p itemprop="description" >对于数据库操作，和 TCP/IP 的三次握手异曲同工之妙，建立连接，执行操作，断开连接。当然这就需要建立连接的工具
-Python连接mysql的方案有oursql、PyMySQL、 myconnpy、MySQL Connector 等，不过本篇说的确是另外一个类库MySQLdb，</p>
-      
-    
-    <time datetime="2015-11-04T14:30:46.000Z" itemprop="datePublished">2015-11-04</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/11/03/python-mysqldb-test-for-select-count-zero/" title="Python MySQLdb test for select count(*) = zero" itemprop="url">
-  
-    <h1 itemprop="name">Python MySQLdb test for select count(*) = zero</h1>
-    
-     
-           <p itemprop="description" >I use SELECT COUNT(*) FROM db WHERE &amp;lt;expression&amp;gt; to see if a set of records is null. So:
-&amp;gt;&amp;gt;&amp;gt; cnt = c.fetchone()&amp;gt;&amp;gt;&amp;gt; p</p>
+           <p itemprop="description" >Debian Linux 系统忘记密码怎么办?看到很多人老在论坛里面问这个问题，有的人给的答案也不多。特拿出来，随便当笔记用。
+对于一些版本的OS（如RedHat）来说，编辑grub，在后面加上“single”即可进入单用户模式。但是对于debian来说，这种方式是无效的，因为d</p>
         
     
-    <time datetime="2015-11-03T13:24:47.000Z" itemprop="datePublished">2015-11-03</time>
+    <time datetime="2016-02-01T02:13:07.000Z" itemprop="datePublished">2016-02-01</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/11/03/importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory/" title="ImportError: libmysqlclient.so.18: cannot open shared object file" itemprop="url">
+    <a href="/2016/02/01/linux-curl-and-wget/" title="Linux curl and wget" itemprop="url">
   
-    <h1 itemprop="name">ImportError: libmysqlclient.so.18: cannot open shared object file</h1>
+    <h1 itemprop="name">Linux curl and wget</h1>
     
      
-           <p itemprop="description" >MySQL-python (1.2.5)
-
-&amp;gt;&amp;gt;&amp;gt; import MySQLdb
-Traceback (most recent call last):
-  File &quot;&amp;lt;stdin&amp;gt;&quot;, line 1, in &amp;lt;module&amp;gt;
-  Fil</p>
+           <p itemprop="description" >1、curl（文件传输工具）
+常用参数如下：
+-c，–cookie-jar：将cookie写入到文件
+-b，–cookie：从文件中读取cookie
+-C，–continue-at：断点续传
+-d，–data：http post方式传送数据
+-D，–dump-header：把he</p>
         
     
-    <time datetime="2015-11-03T12:33:04.000Z" itemprop="datePublished">2015-11-03</time>
+    <time datetime="2016-02-01T01:53:35.000Z" itemprop="datePublished">2016-02-01</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/11/03/python-use-smtplib-to-send-mail/" title="How-to: use Python send mail with To Cc &amp; Bcc" itemprop="url">
+    <a href="/2016/01/28/python-file-operations/" title="python-file-operations" itemprop="url">
   
-    <h1 itemprop="name">How-to: use Python send mail with To Cc &amp; Bcc</h1>
+    <h1 itemprop="name">python-file-operations</h1>
     
      
-           <p itemprop="description" >#!/usr/bin/python
-# -*- coding:utf-8 -*-
-
-import smtplib
-from email.mime.text import MIMEText
-
-to = [&#39;zfsu&#39;]
-cc = [&#39;zfsu&#39;,&#39;root&#39;]
-bcc = [&#39;ja</p>
+           <p itemprop="description" >Split big file12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#!/usr/bin/env python# -*- enco</p>
         
     
-    <time datetime="2015-11-03T07:30:39.000Z" itemprop="datePublished">2015-11-03</time>
+    <time datetime="2016-01-28T06:27:12.000Z" itemprop="datePublished">2016-01-28</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2016/01/26/python-sendmail-examples/" title="Python sendmail examples" itemprop="url">
+  
+    <h1 itemprop="name">Python sendmail examples</h1>
+    
+     
+           <p itemprop="description" >send attchment email123456789101112131415161718192021222324252627282930#!/usr/bin/env pythonfrom email.mime.text import MIMETextfrom email.m</p>
+        
+    
+    <time datetime="2016-01-26T08:36:02.000Z" itemprop="datePublished">2016-01-26</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2016/01/13/hello-world/" title="Hello World" itemprop="url">
+  
+    <h1 itemprop="name">Hello World</h1>
+    
+     
+           <p itemprop="description" >Welcome to here! This is your very first post. 
+building   I has migrated my wp blog articles on Jan 13, 2016.   The old and the new will be</p>
+        
+    
+    <time datetime="2016-01-13T01:00:00.000Z" itemprop="datePublished">2016-01-13</time>
   </a>
 </section>
 
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 
 </div>
@@ -407,7 +395,9 @@ bcc = [&#39;ja</p>
 		
 			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
 		
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>5</sup></a></li>
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
 		
 			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
 		
@@ -415,19 +405,21 @@ bcc = [&#39;ja</p>
 		
 			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
 		
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>24</sup></a></li>
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>27</sup></a></li>
 		
 			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
 		
-			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>6</sup></a></li>
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
 		
 			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
 		
 			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
 		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>3</sup></a></li>
+		
 			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
 		
-			<li><a href="/categories/Python/" title="Python">Python<sup>20</sup></a></li>
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
 		
 			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
 		
@@ -462,6 +454,8 @@ bcc = [&#39;ja</p>
 		
 			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
 		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
 			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
@@ -480,13 +474,11 @@ bcc = [&#39;ja</p>
 		
 			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
 		
-			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>11</sup></a></li>
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
 		
 			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
 		
 			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
-		
-			<li><a href="/tags/Oracle/" title="Oracle">Oracle<sup>3</sup></a></li>
 		
 		</ul>
 </div>

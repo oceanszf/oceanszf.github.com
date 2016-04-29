@@ -1,0 +1,672 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>MySQL  特性分析  InnoDB transaction history | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="## 背景在写压力负载比较重的MySQL实例上，InnoDB可能积累了较长的没有被purge掉的transaction history，导致实例性能的衰减，或者空闲空间被耗尽，下面就来看看它是怎么产生的，或者有没有什么方法来减轻，避免这样的问题出现。## InnoDB purge 概要InnoDB是一个事务引擎，实现了MVCC特性，也就是在存储引擎里对行数据保存了多个版本。在对行数据进行delete或者update更改时，行数据的前映像会保留一段时间，直到可以被删除的时候。在大部分OLTP负载情况下，前映像会在数据操作完成后的数秒钟内被删除掉，但在一些情况下，假设存在一些持续很长时间的事务需要看到数据的前映像，那么老版本的数据就会被保留相当长一段时间。">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/06/MySQL__特性分析__InnoDB_transaction_history/" title="MySQL  特性分析  InnoDB transaction history" itemprop="url">MySQL  特性分析  InnoDB transaction history</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-04-06T04:56:57.000Z" itemprop="datePublished">2016-04-06</time>
+    Updated:<time datetime="2016-04-29T12:43:02.000Z" itemprop="dateModified">2016-04-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB_purge__u8BBE_u8BA1_u601D_u8DEF"><span class="toc-number">1.</span> <span class="toc-text">InnoDB purge 设计思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5F53_u524D_u8C03_u4F18_u65B9_u6CD5"><span class="toc-number">2.</span> <span class="toc-text">当前调优方法</span></a></li></ol>
+		</div>
+		
+		<div class="content typo"><section class="post"><br><br>## 背景<br><br>在写压力负载比较重的MySQL实例上，InnoDB可能积累了较长的没有被purge掉的transaction history，导致实例性能的衰减，或者空闲空间被耗尽，下面就来看看它是怎么产生的，或者有没有什么方法来减轻，避免这样的问题出现。<br><br>## InnoDB purge 概要<br><br>InnoDB是一个事务引擎，实现了MVCC特性，也就是在存储引擎里对行数据保存了多个版本。在对行数据进行delete或者update更改时，行数据的前映像会保留一段时间，直到可以被删除的时候。<br><br>在大部分OLTP负载情况下，前映像会在数据操作完成后的数秒钟内被删除掉，但在一些情况下，假设存在一些持续很长时间的事务需要看到数据的前映像，那么老版本的数据就会被保留相当长一段时间。<a id="more"></a><br><br>虽然MySQL 5.6版本增加了多个purge threads来加快完成老版本数据的清理工作，但在write-intensive workload情况下，不一定完全凑效。<br><br>## 测试案例<br><br>Peter Zaitsev 使用sysbench的update进行的测试，无论是 innodb_purge_threads=1 还是8的时候，显示的transaction history快速增长的情况，如下图所示:<br><div class="image-wrapper"><br><br><img src="http://mysql.taobao.org/monthly/pic/2016-02-03/1.png" alt="transaction history增长情况"><br><br>transaction history增长情况<br><br></div><br>下面看一下同步测试过程中purge的速度(可以通过<code>I_S.innodb_metrics</code>进行查询)：<br><div class="image-wrapper"><br><br><img src="http://mysql.taobao.org/monthly/pic/2016-02-03/2.png" alt="InnoDB purge 情况"><br><br>InnoDB purge 情况<br><br></div><br>显示在并发 process 的过程中，purge thread 其实处在饥饿状态，待sysbench结束，purge线程满载运行清理工作。<br><br>对于这个测试结果，这里需要说明下：<br><br>1.  对于Peter Zaitsev的测试，其实主要是为了说明transaction history的情况，如果是用sysbench进行小事务的OLTP测试，并不会产生这么明显的transaction history增长而purge thread 跟不上的情况，或者他在测试的时候，对sbtest表进行了全表查询吧，或者设置了RR级别，不过这只是猜测。<br>2.  对于undo page大部分被cache在buffer pool的情况下，purge thread还是比较快的，但如果因为buffer pool的不足而导致undo page被淘汰到disk上的情况，purge操作就会被受限IO情况， 而导致跟不上。<br><br>## 问题分析<br><br>我们来看下出现transaction history增长最常见的两种场景：<br><br><strong>大查询</strong><br>如果你在一张大表上发起一个长时间运行的查询，比如mysqldump，那么purge线程必须停下来等待查询结束，这个时候transaction undo就会累积。如果buffer pool中 free page紧张，undo page 还会被置换到disk上，加剧purge的代价。<br><br><strong>MySQL重启</strong><br>即使transaction history并没有急剧增加，但MySQL重启操作，buffer pool的重新预热，还是导致purge变成IO密集型操作。不过MySQL 5.6提供了InnoDB buffer pool的dump和reload方法，可以显著减轻purge的IO压力。<br><br>这里介绍一下如何查看buffer pool中undo page的cache情况，percona的版本上提供了<code>I_S.innodb_rseg</code>记录undo的分配和使用情况：<code>`
+&lt;pre class=&quot;lang:default decode:true &quot;&gt;mysql&amp;gt; select sum(curr_size)*16/1024 undo_space_MB from innodb_rseg;
++---------------+
+| undo_space_MB |
++---------------+
+|     1688.4531 |
++---------------+
+1 row in set (0.00 sec)
+mysql&amp;gt; select count(*) cnt, count(*)*16/1024 size_MB, page_type from innodb_buffer_page group by page_type;
++--------+-----------+-------------------+
+| cnt    | size_MB   | page_type         |
++--------+-----------+-------------------+
+|     55 |    0.8594 | EXTENT_DESCRIPTOR |
+|      2 |    0.0313 | FILE_SPACE_HEADER |
+|    108 |    1.6875 | IBUF_BITMAP       |
+|  17186 |  268.5313 | IBUF_INDEX        |
+| 352671 | 5510.4844 | INDEX             |
+|     69 |    1.0781 | INODE             |
+|    128 |    2.0000 | SYSTEM            |
+|      1 |    0.0156 | TRX_SYSTEM        |
+|   6029 |   94.2031 | UNDO_LOG          |
+|  16959 |  264.9844 | UNKNOWN           |
++--------+-----------+-------------------+
+10 rows in set (1.65 sec)
+&lt;/pre&gt;
+&amp;nbsp;
+
+从这两个information_schema下的两张表可以看到：undo space使用的总大小是1.7G，而buffer pool中cached不足100M。
+
+## InnoDB 优化方法
+
+在一定的写压力情况下，并发进行一些大查询，transaction history就会因为undo log无法purge而一直增加。
+
+InnoDB提供了两个参数</code>innodb_max_purge_lag<code>，</code>innodb_max_purge_lag_delay<code>来调整，即当</code>trx_sys-&gt;rseg_history_len<code>超过了设置的</code>innodb_max_purge_lag<code>，就影响DML操作最大delay不超过</code>innodb_max_purge_lag_delay<code>设置的时间，以microseconds来计算。
+
+其核心计算代码如下：</code> <code>&lt;pre class=&quot;lang:default decode:true &quot;&gt;/*******************************************************************//**
+Calculate the DML delay required.
+@return delay in microseconds or ULINT_MAX */
+static
+ulint
+trx_purge_dml_delay(void)
+/*=====================*/
+{
+     /* Determine how much data manipulation language (DML) statements
+     need to be delayed in order to reduce the lagging of the purge
+     thread. */
+     ulint     delay = 0; /* in microseconds; default: no delay */
+
+     /* If purge lag is set (ie. &amp;gt; 0) then calculate the new DML delay.
+     Note: we do a dirty read of the trx_sys_t data structure here,
+     without holding trx_sys-&amp;gt;mutex. */
+
+     if (srv_max_purge_lag &amp;gt; 0) {
+          float     ratio;
+
+          ratio = float(trx_sys-&amp;gt;rseg_history_len) / srv_max_purge_lag;
+
+          if (ratio &amp;gt; 1.0) {
+               /* If the history list length exceeds the
+               srv_max_purge_lag, the data manipulation
+               statements are delayed by at least 5000
+               microseconds. */
+               delay = (ulint) ((ratio - .5) * 10000);
+          }
+
+          if (delay &amp;gt; srv_max_purge_lag_delay) {
+               delay = srv_max_purge_lag_delay;
+          }
+
+          MONITOR_SET(MONITOR_DML_PURGE_DELAY, delay);
+     }
+
+     return(delay);
+}&lt;/pre&gt;
+&amp;nbsp;
+
+但这两个参数设计有明显的两个缺陷：
+
+**缺陷1：针对total history length**
+假设transaction history中保留两类records，一类是是马上可以被purge的，一类是因为active transaction而不能purge的。但大多数时间，我们期望的是purgable history比较小，而不是整个history。
+
+**缺陷2：针对大小而非变化**</code>trx_sys-&gt;rseg_history_len<code>是一个当前history的长度，而不是一个interval时间段内undo的增长和减少的变化情况，导致</code>trx_sys-&gt;rseg_history_len<code>一旦超过</code>innodb_max_purge_lag<code>这个设定的值，就对DML产生不超过</code>innodb_max_purge_lag_delay`的时间delay，一旦低于这个值马上delay 时间就又恢复成 0。<br><br>在对系统的吞吐监控的时候，会发现系统抖动非常厉害，而不是一个平滑的曲线。类似于下图：<br><div class="image-wrapper"><br><br><img src="http://mysql.taobao.org/monthly/pic/2016-02-03/3.png" alt="Purge 造成系统抖动"><br><br>Purge 造成系统抖动<br><br></div>
+
+<h2 id="InnoDB_purge__u8BBE_u8BA1_u601D_u8DEF"><a href="#InnoDB_purge__u8BBE_u8BA1_u601D_u8DEF" class="headerlink" title="InnoDB purge 设计思路"></a>InnoDB purge 设计思路</h2><p>针对InnoDB的purge功能，可以从以下几个因素来综合考虑：</p>
+<ol>
+<li>增加默认 purge thread 的个数；</li>
+<li>测量 purgable history 长度而不是总的长度；</li>
+<li>针对变化进行调整 delay 数值，以应对 shrinking；</li>
+<li>基于 undo space 的大小，而不是事务的个数；</li>
+<li>调整 undo page 在 buffer pool 中的缓存策略，类似 insert buffer；</li>
+<li>针对 undo page 使用和 index page 不同的预读策略。<br>以上6条可以针对purge线程进行一些改良。</li>
+</ol>
+<h2 id="u5F53_u524D_u8C03_u4F18_u65B9_u6CD5"><a href="#u5F53_u524D_u8C03_u4F18_u65B9_u6CD5" class="headerlink" title="当前调优方法"></a>当前调优方法</h2><p>在当前的 MySQL 5.6 版本上，我们能做哪些调整或者调优方法，以减少transaction history增加带来的问题呢？</p>
+<p><strong>监控</strong><br>监控<code>trx_sys</code>的<code>innodb_history_list_length</code>，为它设置报警值，及时关注和处理。</p>
+<p><strong>调整参数</strong><br>如果你的实例是写压力比较大的话，调整<code>innodb_purge_threads=8</code>，增加并发purge线程数。<br>谨慎调整<code>innodb_max_purge_lag</code>和<code>innodb_max_purge_lag_delay</code>参数，依据现在的设计，可能你的实例的吞吐量会急剧的下降。</p>
+<p><strong>purge完之后再shutdown</strong><br>大部分的case下，MySQL实例重启后，会发现purge的性能更差，因为undo page未命中的原因，并且是random IO请求。<br>如果是正常shutdown，就等purge完成再shutdown；如果是crash，就启动后等purge完成再接受业务请求。</p>
+<p><strong>预热</strong><br>使用MySQL 5.6 提供的<code>innodb_buffer_pool_dump_at_shutdown=on</code> 和 <code>innodb_buffer_pool_load_at_startup=on</code>进行预热，把undo space page预热到buffer pool中。</p>
+<p>&nbsp;</p>
+<blockquote>
+<p><em>原文出处：<a href="http://mysql.taobao.org/monthly/2016/02/03/" target="_blank" rel="external">Taobao mysql</a></em></p>
+<p><em>More: <a href="http://mysql.taobao.org/monthly/" target="_blank" rel="external">Taobao 数据内核月报</a></em><br></p></blockquote></section></div><p></p>
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Mysql/">Mysql</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/04/06/MySQL__特性分析__InnoDB_transaction_history/" data-title="MySQL  特性分析  InnoDB transaction history | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/04/06/Tcpdump_notes/" title="Tcpdump notes">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Tcpdump notes</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/04/06/"date()/"  title="date(): It is not safe to rely on the system&#39;s timezone settings">
+ <strong>NEXT:</strong><br/> 
+ <span>date(): It is not safe to rely on the system&#39;s timezone settings
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB_purge__u8BBE_u8BA1_u601D_u8DEF"><span class="toc-number">1.</span> <span class="toc-text">InnoDB purge 设计思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5F53_u524D_u8C03_u4F18_u65B9_u6CD5"><span class="toc-number">2.</span> <span class="toc-text">当前调优方法</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>27</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

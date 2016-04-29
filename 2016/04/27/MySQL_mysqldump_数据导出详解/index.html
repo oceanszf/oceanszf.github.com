@@ -1,0 +1,592 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>MySQL mysqldump 数据导出详解 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="介绍在日常维护工作当中经常会需要对数据进行导出操作，而mysqldump是导出数据过程中使用非常频繁的一个工具；它自带的功能参数非常多，文章中会列举出一些常用的操作，在文章末尾会将所有的参数详细说明列出来。
+语法：默认不带参数的导出，导出文本内容大概如下：创建数据库判断语句-删除表-创建表-锁表-禁用索引-插入数据-启用索引-解锁表。
+Usage: mysqldump [OPTIONS] database [tables]OR     mysqldump [OPTIONS] –databases [OPTIONS] DB1 [DB2 DB3…]OR     mysqldump [OPTIONS] –all-databases [OPTIONS]">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/" title="MySQL mysqldump 数据导出详解" itemprop="url">MySQL mysqldump 数据导出详解</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-04-27T13:27:53.000Z" itemprop="datePublished">2016-04-27</time>
+    Updated:<time datetime="2016-04-29T12:43:02.000Z" itemprop="dateModified">2016-04-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>介绍<br>在日常维护工作当中经常会需要对数据进行导出操作，而mysqldump是导出数据过程中使用非常频繁的一个工具；它自带的功能参数非常多，文章中会列举出一些常用的操作，在文章末尾会将所有的参数详细说明列出来。</p>
+<p>语法：<br>默认不带参数的导出，导出文本内容大概如下：创建数据库判断语句-删除表-创建表-锁表-禁用索引-插入数据-启用索引-解锁表。</p>
+<p><pre class="lang:default decode:true ">Usage: mysqldump [OPTIONS] database [tables]<br>OR     mysqldump [OPTIONS] –databases [OPTIONS] DB1 [DB2 DB3…]<br>OR     mysqldump [OPTIONS] –all-databases [OPTIONS]</pre><a id="more"></a><br>插入测试数据</p>
+<p><pre class="lang:default decode:true ">CREATE DATABASE db1 DEFAULT CHARSET utf8;<br>USE db1;<br>CREATE TABLE a1(id int);<br>insert into a1() values(1),(2);<br>CREATE TABLE a2(id int);<br>insert into a2() values(2);<br>CREATE TABLE a3(id int);<br>insert into a3() values(3);</pre></p>
+<p>CREATE DATABASE db2 DEFAULT CHARSET utf8;<br>USE db2;<br>CREATE TABLE b1(id int);<br>insert into b1() values(1);<br>CREATE TABLE b2(id int);<br>insert into b2() values(2);<br>1. 导出所有数据库<br>该命令会导出包括系统数据库在内的所有数据库</p>
+<p><pre class="lang:default decode:true ">mysqldump -uroot -proot –all-databases &gt;/tmp/all.sql</pre><br>2. 导出db1、db2两个数据库的所有数据</p>
+<p><pre class="lang:default decode:true ">mysqldump -uroot -proot –databases db1 db2 &gt;/tmp/user.sql</pre><br>3. 导出db1中的a1、a2表<br>注意导出指定表只能针对一个数据库进行导出，且导出的内容中和导出数据库也不一样，导出指定表的导出文本中没有创建数据库的判断语句，只有删除表-创建表-导入数据</p>
+<p><pre class="lang:default decode:true ">mysqldump -uroot -proot –databases db1 –tables a1 a2  &gt;/tmp/db1.sql</pre><br>4. 条件导出，导出db1表a1中id=1的数据<br>条件导出只能导出单个表</p>
+<p><pre class="lang:default decode:true">mysqldump -uroot -proot –databases db1 –tables a1 –where=’id=1’  &gt;/tmp/a1.sql<br></pre><br>5. 生成新的binlog文件,-F<br>有时候会希望导出数据之后生成一个新的binlog文件,只需要加上-F参数即可</p>
+<p><pre class="lang:default decode:true ">mysqldump -uroot -proot –databases db1 -F &gt;/tmp/db1.sql</pre><br>6. 只导出表结构不导出数据，–no-data</p>
+<p><pre class="lang:default decode:true ">mysqldump -uroot -proot –no-data –databases db1 &gt;/tmp/db1.sql</pre><br>7. 跨服务器导出导入数据</p>
+<p><pre class="lang:default decode:true">mysqldump –host=h1 -uroot -proot –databases db1 |mysql –host=h2 -uroot -proot db2</pre><br>将h1服务器中的db1数据库的所有数据导入到h2中的db2数据库中，db2的数据库必须存在否则会报错</p>
+<p><pre class="lang:default decode:true ">mysqldump –host=192.168.80.137 -uroot -proot -C –databases test |mysql –host=192.168.80.133 -uroot -proot test</pre><br>加上-C参数可以启用压缩传递。</p>
+<p>8. 将主库的binlog位置和文件名追加到导出数据的文件中，–dump-slave<br>该参数在在从服务器上执行，相当于执行show slave status。当设置为1时，将会以CHANGE MASTER命令输出到数据文件；设置为2时，会在change前加上注释。<br>该选项将会打开–lock-all-tables，除非–single-transaction被指定。<br>在执行完后会自动关闭–lock-tables选项。–dump-slave默认是1</p>
+<p><pre class="lang:default decode:true ">mysqldump -uroot -proot –dump-slave=1 –database db1 &gt;/tmp/db1.sql<br>mysqldump -uroot -proot –dump-slave=2 –database db1 &gt;/tmp/db1.sql</pre><br>9. 将当前服务器的binlog的位置和文件名追加到输出文件，–master-data<br>改参数和–dump-slave方法一样，只是它是记录的是当前服务器的binlog，相当于执行show master status。</p>
+<p>10. –opt<br>等同于–add-drop-table, –add-locks, –create-options, –quick, –extended-insert, –lock-tables, –set-charset, –disable-keys 该选项默认开启, 可以用–skip-opt禁用.</p>
+<p><pre class="lang:default decode:true ">mysqldump -uroot -p –host=localhost –all-databases –opt</pre><br>11. 保证导出的一致性状态–single-transaction<br>该选项在导出数据之前提交一个BEGIN SQL语句，BEGIN 不会阻塞任何应用程序且能保证导出时数据库的一致性状态。它只适用于多版本存储引擎（它不显示加锁通过判断版本来对比数据），仅InnoDB。本选项和–lock-tables 选项是互斥的，因为LOCK TABLES 会使任何挂起的事务隐含提交。要想导出大表的话，应结合使用–quick 选项。<br>–quick, -q<br>不缓冲查询，直接导出到标准输出。默认为打开状态，使用–skip-quick取消该选项。</p>
+<p>12. –lock-tables, -l<br>开始导出前，锁定所有表。用READ LOCAL锁定表以允许MyISAM表并行插入。对于支持事务的表例如InnoDB和BDB，–single-transaction是一个更好的选择，因为它根本不需要锁定表。</p>
+<p>请注意当导出多个数据库时，–lock-tables分别为每个数据库锁定表。因此，该选项不能保证导出文件中的表在数据库之间的逻辑一致性。不同数据库表的导出状态可以完全不同。</p>
+<p>13. 导出存储过程和自定义函数–routines, -R</p>
+<p><pre class="lang:default decode:true ">mysqldump  -uroot -p –host=localhost –all-databases –routines</pre><br>参数说明:</p>
+<p><pre class="lang:default decode:true ">–all-databases  , -A<br>导出全部数据库。<br>mysqldump  -uroot -p –all-databases<br>–all-tablespaces  , -Y<br>导出全部表空间。<br>mysqldump  -uroot -p –all-databases –all-tablespaces<br>–no-tablespaces  , -y<br>不导出任何表空间信息。<br>mysqldump  -uroot -p –all-databases –no-tablespaces<br>–add-drop-database<br>每个数据库创建之前添加drop数据库语句。<br>mysqldump  -uroot -p –all-databases –add-drop-database<br>–add-drop-table<br>每个数据表创建之前添加drop数据表语句。(默认为打开状态，使用–skip-add-drop-table取消选项)<br>mysqldump  -uroot -p –all-databases  (默认添加drop语句)<br>mysqldump  -uroot -p –all-databases –skip-add-drop-table  (取消drop语句)<br>–add-locks<br>在每个表导出之前增加LOCK TABLES并且之后UNLOCK  TABLE。(默认为打开状态，使用–skip-add-locks取消选项)<br>mysqldump  -uroot -p –all-databases  (默认添加LOCK语句)<br>mysqldump  -uroot -p –all-databases –skip-add-locks   (取消LOCK语句)<br>–allow-keywords<br>允许创建是关键词的列名字。这由表名前缀于每个列名做到。<br>mysqldump  -uroot -p –all-databases –allow-keywords<br>–apply-slave-statements<br>在’CHANGE MASTER’前添加’STOP SLAVE’，并且在导出的最后添加’START SLAVE’。<br>mysqldump  -uroot -p –all-databases –apply-slave-statements<br>–character-sets-dir<br>字符集文件的目录<br>mysqldump  -uroot -p –all-databases  –character-sets-dir=/usr/local/mysql/share/mysql/charsets<br>–comments<br>附加注释信息。默认为打开，可以用–skip-comments取消<br>mysqldump  -uroot -p –all-databases  (默认记录注释)<br>mysqldump  -uroot -p –all-databases –skip-comments   (取消注释)<br>–compatible<br>导出的数据将和其它数据库或旧版本的MySQL 相兼容。值可以为ansi、mysql323、mysql40、postgresql、oracle、mssql、db2、maxdb、no_key_options、no_tables_options、no_field_options等，<br>要使用几个值，用逗号将它们隔开。它并不保证能完全兼容，而是尽量兼容。<br>mysqldump  -uroot -p –all-databases –compatible=ansi<br>–compact<br>导出更少的输出信息(用于调试)。去掉注释和头尾等结构。可以使用选项：–skip-add-drop-table  –skip-add-locks –skip-comments –skip-disable-keys<br>mysqldump  -uroot -p –all-databases –compact<br>–complete-insert,  -c<br>使用完整的insert语句(包含列名称)。这么做能提高插入效率，但是可能会受到max_allowed_packet参数的影响而导致插入失败。<br>mysqldump  -uroot -p –all-databases –complete-insert<br>–compress, -C<br>在客户端和服务器之间启用压缩传递所有信息<br>mysqldump  -uroot -p –all-databases –compress<br>–create-options,  -a<br>在CREATE TABLE语句中包括所有MySQL特性选项。(默认为打开状态)<br>mysqldump  -uroot -p –all-databases<br>–databases,  -B<br>导出几个数据库。参数后面所有名字参量都被看作数据库名。<br>mysqldump  -uroot -p –databases test mysql<br>–debug<br>输出debug信息，用于调试。默认值为：d:t,/tmp/mysqldump.trace<br>mysqldump  -uroot -p –all-databases –debug<br>mysqldump  -uroot -p –all-databases –debug=” d:t,/tmp/debug.trace”<br>–debug-check<br>检查内存和打开文件使用说明并退出。<br>mysqldump  -uroot -p –all-databases –debug-check<br>–debug-info<br>输出调试信息并退出<br>mysqldump  -uroot -p –all-databases –debug-info<br>–default-character-set<br>设置默认字符集，默认值为utf8<br>mysqldump  -uroot -p –all-databases –default-character-set=utf8<br>–delayed-insert<br>采用延时插入方式（INSERT DELAYED）导出数据<br>mysqldump  -uroot -p –all-databases –delayed-insert<br>–delete-master-logs<br>master备份后删除日志. 这个参数将自动激活–master-data。<br>mysqldump  -uroot -p –all-databases –delete-master-logs<br>–disable-keys<br>对于每个表，用/<em>!40000 ALTER TABLE tbl_name DISABLE KEYS </em>/;和/<em>!40000 ALTER TABLE tbl_name ENABLE KEYS </em>/;语句引用INSERT语句。这样可以更快地导入dump出来的文件，因为它是在插入所有行后创建索引的。该选项只适合MyISAM表，默认为打开状态。<br>mysqldump  -uroot -p –all-databases<br>–dump-slave<br>该选项将主的binlog位置和文件名追加到导出数据的文件中(show slave status)。设置为1时，将会以CHANGE MASTER命令输出到数据文件；设置为2时，会在change前加上注释。该选项将会打开–lock-all-tables，除非–single-transaction被指定。该选项会自动关闭–lock-tables选项。默认值为0。<br>mysqldump  -uroot -p –all-databases –dump-slave=1<br>mysqldump  -uroot -p –all-databases –dump-slave=2</pre></p>
+<p>–master-data<br>该选项将当前服务器的binlog的位置和文件名追加到输出文件中(show master status)。如果为1，将会输出CHANGE MASTER 命令；如果为2，输出的CHANGE  MASTER命令前添加注释信息。该选项将打开–lock-all-tables 选项，除非–single-transaction也被指定（在这种情况下，全局读锁在开始导出时获得很短的时间；其他内容参考下面的–single-transaction选项）。该选项自动关闭–lock-tables选项。<br>mysqldump  -uroot -p –host=localhost –all-databases –master-data=1;<br>mysqldump  -uroot -p –host=localhost –all-databases –master-data=2;</p>
+<p>–events, -E<br>导出事件。<br>mysqldump  -uroot -p –all-databases –events<br>–extended-insert,  -e<br>使用具有多个VALUES列的INSERT语法。这样使导出文件更小，并加速导入时的速度。默认为打开状态，使用–skip-extended-insert取消选项。<br>mysqldump  -uroot -p –all-databases<br>mysqldump  -uroot -p –all-databases–skip-extended-insert   (取消选项)<br>–fields-terminated-by<br>导出文件中忽略给定字段。与–tab选项一起使用，不能用于–databases和–all-databases选项<br>mysqldump  -uroot -p test test –tab=”/home/mysql” –fields-terminated-by=”#”<br>–fields-enclosed-by<br>输出文件中的各个字段用给定字符包裹。与–tab选项一起使用，不能用于–databases和–all-databases选项<br>mysqldump  -uroot -p test test –tab=”/home/mysql” –fields-enclosed-by=”#”<br>–fields-optionally-enclosed-by<br>输出文件中的各个字段用给定字符选择性包裹。与–tab选项一起使用，不能用于–databases和–all-databases选项<br>mysqldump  -uroot -p test test –tab=”/home/mysql”  –fields-enclosed-by=”#” –fields-optionally-enclosed-by  =”#”<br>–fields-escaped-by<br>输出文件中的各个字段忽略给定字符。与–tab选项一起使用，不能用于–databases和–all-databases选项<br>mysqldump  -uroot -p mysql user –tab=”/home/mysql” –fields-escaped-by=”#”<br>–flush-logs<br>开始导出之前刷新日志。<br>请注意：假如一次导出多个数据库(使用选项–databases或者–all-databases)，将会逐个数据库刷新日志。除使用–lock-all-tables或者–master-data外。在这种情况下，日志将会被刷新一次，相应的所以表同时被锁定。因此，如果打算同时导出和刷新日志应该使用–lock-all-tables 或者–master-data 和–flush-logs。<br>mysqldump  -uroot -p –all-databases –flush-logs<br>–flush-privileges<br>在导出mysql数据库之后，发出一条FLUSH  PRIVILEGES 语句。为了正确恢复，该选项应该用于导出mysql数据库和依赖mysql数据库数据的任何时候。<br>mysqldump  -uroot -p –all-databases –flush-privileges<br>–force<br>在导出过程中忽略出现的SQL错误。<br>mysqldump  -uroot -p –all-databases –force<br>–help<br>显示帮助信息并退出。<br>mysqldump  –help<br>–hex-blob<br>使用十六进制格式导出二进制字符串字段。如果有二进制数据就必须使用该选项。影响到的字段类型有BINARY、VARBINARY、BLOB。<br>mysqldump  -uroot -p –all-databases –hex-blob<br>–host, -h<br>需要导出的主机信息<br>mysqldump  -uroot -p –host=localhost –all-databases<br>–ignore-table<br>不导出指定表。指定忽略多个表时，需要重复多次，每次一个表。每个表必须同时指定数据库和表名。例如：–ignore-table=database.table1 –ignore-table=database.table2 ……<br>mysqldump  -uroot -p –host=localhost –all-databases –ignore-table=mysql.user<br>–include-master-host-port<br>在–dump-slave产生的’CHANGE  MASTER TO..’语句中增加’MASTER_HOST=&lt;host&gt;，MASTER_PORT=&lt;port&gt;’<br>mysqldump  -uroot -p –host=localhost –all-databases –include-master-host-port<br>–insert-ignore<br>在插入行时使用INSERT IGNORE语句.<br>mysqldump  -uroot -p –host=localhost –all-databases –insert-ignore<br>–lines-terminated-by<br>输出文件的每行用给定字符串划分。与–tab选项一起使用，不能用于–databases和–all-databases选项。<br>mysqldump  -uroot -p –host=localhost test test –tab=”/tmp/mysql”  –lines-terminated-by=”##”<br>–lock-all-tables,  -x<br>提交请求锁定所有数据库中的所有表，以保证数据的一致性。这是一个全局读锁，并且自动关闭–single-transaction 和–lock-tables 选项。<br>mysqldump  -uroot -p –host=localhost –all-databases –lock-all-tables<br>–lock-tables,  -l<br>开始导出前，锁定所有表。用READ  LOCAL锁定表以允许MyISAM表并行插入。对于支持事务的表例如InnoDB和BDB，–single-transaction是一个更好的选择，因为它根本不需要锁定表。<br>请注意当导出多个数据库时，–lock-tables分别为每个数据库锁定表。因此，该选项不能保证导出文件中的表在数据库之间的逻辑一致性。不同数据库表的导出状态可以完全不同。<br>mysqldump  -uroot -p –host=localhost –all-databases –lock-tables<br>–log-error<br>附加警告和错误信息到给定文件<br>mysqldump  -uroot -p –host=localhost –all-databases  –log-error=/tmp/mysqldump_error_log.err<br>–max_allowed_packet<br>服务器发送和接受的最大包长度。<br>mysqldump  -uroot -p –host=localhost –all-databases –max_allowed_packet=10240<br>–net_buffer_length<br>TCP/IP和socket连接的缓存大小。<br>mysqldump  -uroot -p –host=localhost –all-databases –net_buffer_length=1024<br>–no-autocommit<br>使用autocommit/commit 语句包裹表。<br>mysqldump  -uroot -p –host=localhost –all-databases –no-autocommit<br>–no-create-db,  -n<br>只导出数据，而不添加CREATE DATABASE 语句。<br>mysqldump  -uroot -p –host=localhost –all-databases –no-create-db<br>–no-create-info,  -t<br>只导出数据，而不添加CREATE TABLE 语句。<br>mysqldump  -uroot -p –host=localhost –all-databases –no-create-info<br>–no-data, -d<br>不导出任何数据，只导出数据库表结构。<br>mysqldump  -uroot -p –host=localhost –all-databases –no-data<br>–no-set-names,  -N<br>等同于–skip-set-charset<br>mysqldump  -uroot -p –host=localhost –all-databases –no-set-names<br>–opt<br>等同于–add-drop-table,  –add-locks, –create-options, –quick, –extended-insert, –lock-tables,  –set-charset, –disable-keys 该选项默认开启,  可以用–skip-opt禁用.<br>mysqldump  -uroot -p –host=localhost –all-databases –opt<br>–order-by-primary<br>如果存在主键，或者第一个唯一键，对每个表的记录进行排序。在导出MyISAM表到InnoDB表时有效，但会使得导出工作花费很长时间。<br>mysqldump  -uroot -p –host=localhost –all-databases –order-by-primary<br>–password, -p<br>连接数据库密码<br>–pipe(windows系统可用)<br>使用命名管道连接mysql<br>mysqldump  -uroot -p –host=localhost –all-databases –pipe<br>–port, -P<br>连接数据库端口号<br>–protocol<br>使用的连接协议，包括：tcp, socket, pipe, memory.<br>mysqldump  -uroot -p –host=localhost –all-databases –protocol=tcp<br>–quick, -q<br>不缓冲查询，直接导出到标准输出。默认为打开状态，使用–skip-quick取消该选项。<br>mysqldump  -uroot -p –host=localhost –all-databases<br>mysqldump  -uroot -p –host=localhost –all-databases –skip-quick<br>–quote-names,-Q<br>使用（`）引起表和列名。默认为打开状态，使用–skip-quote-names取消该选项。<br>mysqldump  -uroot -p –host=localhost –all-databases<br>mysqldump  -uroot -p –host=localhost –all-databases –skip-quote-names<br>–replace<br>使用REPLACE INTO 取代INSERT INTO.<br>mysqldump  -uroot -p –host=localhost –all-databases –replace<br>–result-file,  -r<br>直接输出到指定文件中。该选项应该用在使用回车换行对（\r\n）换行的系统上（例如：DOS，Windows）。该选项确保只有一行被使用。<br>mysqldump  -uroot -p –host=localhost –all-databases –result-file=/tmp/mysqldump_result_file.txt<br>–routines, -R<br>导出存储过程以及自定义函数。<br>mysqldump  -uroot -p –host=localhost –all-databases –routines<br>–set-charset<br>添加’SET NAMES  default_character_set’到输出文件。默认为打开状态，使用–skip-set-charset关闭选项。<br>mysqldump  -uroot -p –host=localhost –all-databases<br>mysqldump  -uroot -p –host=localhost –all-databases –skip-set-charset<br>–single-transaction<br>该选项在导出数据之前提交一个BEGIN SQL语句，BEGIN 不会阻塞任何应用程序且能保证导出时数据库的一致性状态。它只适用于多版本存储引擎，仅InnoDB。本选项和–lock-tables 选项是互斥的，因为LOCK  TABLES 会使任何挂起的事务隐含提交。要想导出大表的话，应结合使用–quick 选项。<br>mysqldump  -uroot -p –host=localhost –all-databases –single-transaction<br>–dump-date<br>将导出时间添加到输出文件中。默认为打开状态，使用–skip-dump-date关闭选项。<br>mysqldump  -uroot -p –host=localhost –all-databases<br>mysqldump  -uroot -p –host=localhost –all-databases –skip-dump-date<br>–skip-opt<br>禁用–opt选项.<br>mysqldump  -uroot -p –host=localhost –all-databases –skip-opt<br>–socket,-S<br>指定连接mysql的socket文件位置，默认路径/tmp/mysql.sock<br>mysqldump  -uroot -p –host=localhost –all-databases –socket=/tmp/mysqld.sock<br>–tab,-T<br>为每个表在给定路径创建tab分割的文本文件。注意：仅仅用于mysqldump和mysqld服务器运行在相同机器上。<br>mysqldump  -uroot -p –host=localhost test test –tab=”/home/mysql”<br>–tables<br>覆盖–databases (-B)参数，指定需要导出的表名。<br>mysqldump  -uroot -p –host=localhost –databases test –tables test<br>–triggers<br>导出触发器。该选项默认启用，用–skip-triggers禁用它。<br>mysqldump  -uroot -p –host=localhost –all-databases –triggers<br>–tz-utc<br>在导出顶部设置时区TIME_ZONE=’+00:00’ ，以保证在不同时区导出的TIMESTAMP 数据或者数据被移动其他时区时的正确性。<br>mysqldump  -uroot -p –host=localhost –all-databases –tz-utc<br>–user, -u<br>指定连接的用户名。<br>–verbose, –v<br>输出多种平台信息。<br>–version, -V<br>输出mysqldump版本信息并退出<br>–where, -w<br>只转储给定的WHERE条件选择的记录。请注意如果条件包含命令解释符专用空格或字符，一定要将条件引用起来。<br>mysqldump  -uroot -p –host=localhost –all-databases –where=” user=’root’”<br>–xml, -X<br>导出XML格式.<br>mysqldump  -uroot -p –host=localhost –all-databases –xml<br>–plugin_dir<br>客户端插件的目录，用于兼容不同的插件版本。<br>mysqldump  -uroot -p –host=localhost –all-databases –plugin_dir=”/usr/local/lib/plugin”<br>–default_auth<br>客户端插件默认使用权限。<br>mysqldump  -uroot -p –host=localhost –all-databases –default-auth=”/usr/local/lib/plugin/&lt;PLUGIN&gt;”<br>总结<br>文章中列举了一些常用的导出操作，还有很多其它的参数也会经常用到，包括“–add-drop-database”，“–apply-slave-statements”，“–triggers”等。</p>
+<blockquote>
+<p><em>源文： <a href="http://www.cnblogs.com/chenmh/p/5300370.html" target="_blank" rel="external">http://www.cnblogs.com/chenmh/p/5300370.html</a></em></p>
+<p><em>作者： <a href="http://www.cnblogs.com/chenmh/" title="点击跳转到原文" target="_blank" rel="external">pursuer.chen</a></em></p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Mysql/">Mysql</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/04/27/MySQL_mysqldump_数据导出详解/" data-title="MySQL mysqldump 数据导出详解 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/04/24/Python_Re_module_learn/"  title="Python Re module learn">
+ <strong>NEXT:</strong><br/> 
+ <span>Python Re module learn
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>27</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+
