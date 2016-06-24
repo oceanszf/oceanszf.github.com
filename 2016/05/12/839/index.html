@@ -1,0 +1,588 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Linux 下使用 strace 诊断疑难杂症 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Strace是什么？strace是一个用来跟踪系统调用的简易工具。它最简单的用途就是跟踪一个程序整个生命周期里所有的系统调用，并把调用参数和返回值以文本的方式输出。当然它还可以做更多的事情：strace可以过筛选出特定的系统调用。strace可以记录系统调用的次数，时间，成功和失败的次数。strace可以跟踪发给进程的信号。strace可以通过pid附加到任何正在运行的进程上。strace类似其他Unix系统上的truss，或者Sun’s Dtrace
+这个简单而又强大的工具几乎在所有的Linux操作系统上可用，并且可被用来调试大量的程序。">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/05/12/839/" title="Linux 下使用 strace 诊断疑难杂症" itemprop="url">Linux 下使用 strace 诊断疑难杂症</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-05-12T03:51:28.000Z" itemprop="datePublished">2016-05-12</time>
+    Updated:<time datetime="2016-06-24T05:03:38.000Z" itemprop="dateModified">2016-06-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<p>Strace是什么？<br>strace是一个用来跟踪系统调用的简易工具。它最简单的用途就是跟踪一个程序整个生命周期里所有的系统调用，并把调用参数和返回值以文本的方式输出。<br>当然它还可以做更多的事情：<br>strace可以过筛选出特定的系统调用。<br>strace可以记录系统调用的次数，时间，成功和失败的次数。<br>strace可以跟踪发给进程的信号。<br>strace可以通过pid附加到任何正在运行的进程上。<br>strace类似其他Unix系统上的truss，或者Sun’s Dtrace</p>
+<p>这个简单而又强大的工具几乎在所有的Linux操作系统上可用，并且可被用来调试大量的程序。<a id="more"></a></p>
+<p><pre class="lang:default decode:true ">参数详解<br>-c 统计每一系统调用的所执行的时间,次数和出错的次数等.<br>-d 输出strace关于标准错误的调试信息.<br>-f 跟踪由fork调用所产生的子进程.<br>-ff 如果提供-o filename,则所有进程的跟踪结果输出到相应的filename.pid中,pid是各进程的进程号.<br>-F 尝试跟踪vfork调用.在-f时,vfork不被跟踪.<br>-h 输出简要的帮助信息.<br>-i 输出系统调用的入口指针.<br>-q 禁止输出关于脱离的消息.<br>-r 打印出相对时间关于,每一个系统调用.<br>-t 在输出中的每一行前加上时间信息.<br>-tt 在输出中的每一行前加上时间信息,微秒级.<br>-ttt 微秒级输出,以秒了表示时间.<br>-T 显示每一调用所耗的时间.<br>-v 输出所有的系统调用.一些调用关于环境变量,状态,输入输出等调用由于使用频繁,默认不输出.<br>-V 输出strace的版本信息.<br>-x 以十六进制形式输出非标准字符串<br>-xx 所有字符串以十六进制形式输出.<br>-a column<br>设置返回值的输出位置.默认 为40.<br>-e expr<br>指定一个表达式,用来控制如何跟踪.格式如下:<br>[qualifier=][!]value1[,value2]…<br>qualifier只能是 trace,abbrev,verbose,raw,signal,read,write其中之一.value是用来限定的符号或数字.默认的 qualifier是 trace.感叹号是否定符号.例如:<br>-eopen等价于 -e trace=open,表示只跟踪open调用.而-etrace!=open表示跟踪除了open以外的其他调用.有两个特殊的符号 all 和 none.<br>注意有些shell使用!来执行历史记录里的命令,所以要使用\.<br>-e trace=set<br>只跟踪指定的系统 调用.例如:-e trace=open,close,rean,write表示只跟踪这四个系统调用.默认的为set=all.<br>-e trace=file<br>只跟踪有关文件操作的系统调用.<br>-e trace=process<br>只跟踪有关进程控制的系统调用.<br>-e trace=network<br>跟踪与网络有关的所有系统调用.<br>-e strace=signal<br>跟踪所有与系统信号有关的 系统调用<br>-e trace=ipc<br>跟踪所有与进程通讯有关的系统调用<br>-e abbrev=set<br>设定 strace输出的系统调用的结果集.-v 等与 abbrev=none.默认为abbrev=all.<br>-e raw=set<br>将指 定的系统调用的参数以十六进制显示.<br>-e signal=set<br>指定跟踪的系统信号.默认为all.如 signal=!SIGIO(或者signal=!io),表示不跟踪SIGIO信号.<br>-e read=set<br>输出从指定文件中读出 的数据.例如:<br>-e read=3,5<br>-e write=set<br>输出写入到指定文件中的数据.<br>-o filename<br>将strace的输出写入文件filename<br>-p pid<br>跟踪指定的进程pid.<br>-s strsize<br>指定输出的字符串的最大长度.默认为32.文件名一直全部输出.<br>-u username<br>以username 的UID和GID执行被跟踪的命令<br></pre><br><strong>举个栗子</strong><br>例1<br>帮助查看库依赖问题<br>最简单的形式，strace后面可以跟任何命令。它将列出许许多多的系统调用。一开始，我们并不能理解所有的输出，但是如果你正在寻找一些特殊的东西，那么你应该能从输出中发现它。<br>让我们来看看简单命令ssh的系统调用跟踪情况。</p>
+<p><pre class="lang:default decode:true ">strace ssh<br>execve(“/usr/bin/ssh”, [“ssh”], [/<em> 22 vars </em>/]) = 0<br>brk(0)                                  = 0x5618009da000<br>access(“/etc/ld.so.nohwcap”, F_OK)      = -1 ENOENT (No such file or directory)<br>mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f7a9d5f8000<br>access(“/etc/ld.so.preload”, R_OK)      = -1 ENOENT (No such file or directory)<br>open(“/etc/ld.so.cache”, O_RDONLY|O_CLOEXEC) = 3<br>…<br>exit_group(255)                         = ?<br>+++ exited with 255 +++</pre><br>例2</p>
+<p><pre class="lang:default decode:true ">strace -o output.txt -T -tt -e trace=all -p 28979</pre><br>上面的含义是 跟踪28979进程的所有系统调用（-e trace=all），并统计系统调用的花费时间，以及开始时间（并以可视化的时分秒格式显示），最后将记录结果存在output.txt文件里面</p>
+<p>例3<br>查看进程是否卡住</p>
+<p><pre class="lang:default decode:true">strace -p 36699<br>Process 36699 attached - interrupt to quit<br>futex(0x22d8400, FUTEX_WAIT_PRIVATE, 0, NULL<br></pre><br>到这里没有任何输出 程序挂起<br>在这个示例里进程在调用futex的时候被挂起了。<br>顺带一说，在这个例子里调用futex挂起可能有很多的原因（Futex是Linux的一种线程同步原语）。</p>
+<p><strong>NOTICE:</strong><br>对于僵尸进程来说, strace 是没有权限访问的：</p>
+<p><pre class="lang:default decode:true  ">$sudo strace  -p 62497<br>attach: ptrace(PTRACE_ATTACH, …): Operation not permitted、</pre><br>例4<br>寻找被程序读取的配置文件</p>
+<p><pre class="lang:default decode:true ">strace php 2&gt;&amp;1 | grep php.ini<br>open(“/usr/bin/php.ini”, O_RDONLY)      = -1 ENOENT (No such file or directory)<br>open(“/etc/php.ini”, O_RDONLY)          = 3<br>lstat(“/etc/php.ini”, {st_mode=S_IFREG|0644, st_size=69345, …}) = 0</pre><br>例5<br>跟踪指定的系统调用<br>strace命令的-e选项仅仅被用来展示特定的系统调用（例如，open，write等等）<br>让我们跟踪一下cat命令的 <code>open</code> 系统调用。</p>
+<p><pre class="lang:default decode:true ">strace cat /tmp/trace.2043925204.012003.xt | head<br>execve(“/bin/cat”, [“cat”, “/tmp/trace.2043925204.012003.xt”], [/<em> 35 vars </em>/]) = 0<br>brk(0)                                  = 0x167f000<br>mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fb7d8991000<br>access(“/etc/ld.so.preload”, R_OK)      = -1 ENOENT (No such file or directory)<br>open(“/etc/ld.so.cache”, O_RDONLY)      = 3<br>fstat(3, {st_mode=S_IFREG|0644, st_size=74047, …}) = 0<br>mmap(NULL, 74047, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fb7d897e000<br>close(3)                                = 0<br>open(“/lib64/libc.so.6”, O_RDONLY)      = 3<br>read(3, “\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0p\356\1\0\0\0\0\0”…, 832) = 832<br>fstat(3, {st_mode=S_IFREG|0755, st_size=1920936, …}) = 0<br>mmap(NULL, 3750152, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fb7d83df000<br>mprotect(0x7fb7d8569000, 2097152, PROT_NONE) = 0<br>mmap(0x7fb7d8769000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x18a000) = 0x7fb7d8769000<br>…</pre><br>例6<br>统计概要<br>它包括系统调用的概要，执行时间，错误等等。使用-c选项能够以一种整洁的方式展示：</p>
+<p><pre class="lang:default decode:true ">strace -c ls<br>environments  generate  githooks  hieradata  manifests  master  modules  README.md<br>% time     seconds  usecs/call     calls    errors syscall</pre></p>
+<hr>
+<p>  0.00    0.000000           0        10           read<br>  0.00    0.000000           0         1           write<br>  0.00    0.000000           0        12           open<br>  0.00    0.000000           0        14           close<br>  0.00    0.000000           0        12           fstat<br>  0.00    0.000000           0        28           mmap<br>  0.00    0.000000           0        16           mprotect<br>  0.00    0.000000           0         3           munmap<br>  0.00    0.000000           0         3           brk<br>  0.00    0.000000           0         2           rt_sigaction<br>  0.00    0.000000           0         1           rt_sigprocmask<br>  0.00    0.000000           0         2           ioctl<br>  0.00    0.000000           0         1         1 access<br>  0.00    0.000000           0         1           execve<br>  0.00    0.000000           0         1           fcntl<br>  0.00    0.000000           0         2           getdents<br>  0.00    0.000000           0         1           getrlimit<br>  0.00    0.000000           0         1           statfs<br>  0.00    0.000000           0         1           arch_prctl<br>  0.00    0.000000           0         2         1 futex<br>  0.00    0.000000           0         1           set_tid_address<br>  0.00    0.000000           0         1           set_robust_list</p>
+<hr>
+<p>100.00    0.000000                   116         2 total<br>例7<br>保存到文件中</p>
+<p><pre class="lang:default decode:true">strace -f -F -o /tmp/strace.txt xxserver</pre><br>这里 -f -F 选项告诉strace同时跟踪 fork和vfork 出来的进程，-o选项把所有strace输出写到/tmp/strace.txt里 面，xxserver 是要启动和调试的程序。</p>
+<p>例8<br>如果你已经知道你要找什么，你可以让strace只跟踪一些类型的系统调用。例如，你需要看看在configure脚本里面执行的程序，你需要监视的系统调 用就是execve。让strace只记录execve的调用用这个命令：</p>
+<p><pre class="lang:default decode:true">strace -f -o /tmp/configure-strace.txt -e execve ./configure</pre><br>例9<br>为什么程序打不开这个文件？<br>是否有遇到过读取文件的时候被拒绝呢，你可以试试下面的命令<br>查看open()和access()系统调用是否有异常</p>
+<p><pre class="lang:default decode:true ">strace -e open,access 2&gt;&amp;1 | grep your-filename</pre><br>例10<br>为什么连不上服务器？<br>调试某些进程为什么连不上远程的服务器是个很让人头疼的事情。DNS可能挂了，连接可能断了，服务器可能返回什么无法识别的东西等等。你可以使用tcpdump去分析这些问题，tcpdump是个很棒的工具。但是很多情况下，strace可以给你提供更简洁的信息。如果你的程序里有很多进程连接到某台服务器，用tcpdump来处理就是很头疼的事情，因为你会得到太多的信息，没法抓到重点。<br>下面是一个跟踪<code>nc</code>命令连接到 www.news.com 的80端口的例子：</p>
+<p><pre class="lang:default decode:true ">strace -e poll,select,connect,recvfrom,sendto nc www.news.com 80<br>sendto(3, “\24\0\0\0\26\0\1\3\255\373NH\0\0\0\0\0\0\0\0”, 20, 0, {sa_family=AF_NETLINK, pid=0, groups=00000000}, 12) = 20<br>connect(3, {sa_family=AF_FILE, path=”/var/run/nscd/socket”}, 110) = -1 ENOENT (No such file or directory)<br>connect(3, {sa_family=AF_FILE, path=”/var/run/nscd/socket”}, 110) = -1 ENOENT (No such file or directory)<br>connect(3, {sa_family=AF_INET, sin_port=htons(53), sin_addr=inet_addr(“62.30.112.39”)}, 28) = 0<br>poll([{fd=3, events=POLLOUT, revents=POLLOUT}], 1, 0) = 1<br>sendto(3, “\213\321\1\0\0\1\0\0\0\0\0\0\3www\4news\3com\0\0\34\0\1”, 30, MSG_NOSIGNAL, NULL, 0) = 30<br>poll([{fd=3, events=POLLIN, revents=POLLIN}], 1, 5000) = 1<br>recvfrom(3, “\213\321\201\200\0\1\0\1\0\1\0\0\3www\4news\3com\0\0\34\0\1\300\f”…, 1024, 0, {sa_family=AF_INET, sin_port=htons(53), sin_addr=inet_addr(“62.30.112.39”)}, [16]) = 153<br>connect(3, {sa_family=AF_INET, sin_port=htons(53), sin_addr=inet_addr(“62.30.112.39”)}, 28) = 0<br>poll([{fd=3, events=POLLOUT, revents=POLLOUT}], 1, 0) = 1<br>sendto(3, “k\374\1\0\0\1\0\0\0\0\0\0\3www\4news\3com\0\0\1\0\1”, 30, MSG_NOSIGNAL, NULL, 0) = 30<br>poll([{fd=3, events=POLLIN, revents=POLLIN}], 1, 5000) = 1<br>recvfrom(3, “k\374\201\200\0\1\0\2\0\0\0\0\3www\4news\3com\0\0\1\0\1\300\f”…, 1024, 0, {sa_family=AF_INET, sin_port=htons(53), sin_addr=inet_addr(“62.30.112.39”)}, [16]) = 106<br>connect(3, {sa_family=AF_INET, sin_port=htons(53), sin_addr=inet_addr(“62.30.112.39”)}, 28) = 0<br>poll([{fd=3, events=POLLOUT, revents=POLLOUT}], 1, 0) = 1<br>sendto(3, “\\\2\1\0\0\1\0\0\0\0\0\0\3www\4news\3com\0\0\1\0\1”, 30, MSG_NOSIGNAL, NULL, 0) = 30<br>poll([{fd=3, events=POLLIN, revents=POLLIN}], 1, 5000) = 1<br>recvfrom(3, “\\\2\201\200\0\1\0\2\0\0\0\0\3www\4news\3com\0\0\1\0\1\300\f”…, 1024, 0, {sa_family=AF_INET, sin_port=htons(53), sin_addr=inet_addr(“62.30.112.39”)}, [16]) = 106<br>connect(3, {sa_family=AF_INET, sin_port=htons(80), sin_addr=inet_addr(“216.239.122.102”)}, 16) = -1 EINPROGRESS (Operation now in progress)<br>select(4, NULL, [3], NULL, NULL)        = 1 (out [3])</pre><br>那么，这里发生了什么？这个连接尝试访问了/var/run/nscd/socket，这意味着nc命令首先尝试连接NSCD服务（名称缓存守护进程，通常用于NIS,YP,LDAP中的名字查找）。在上面的例子里执行失败 &lt;connect(3, {sa_family=AF_FILE, path=”/var/run/nscd/socket”}, 110) = -1 ENOENT (No such file or directory)<br>&gt;。</p>
+<p>nc命令转而使用DNS（DNS的端口是53，”sin_port=htons(53)” ）。可以看到程序调用”sendto()”发送包含www.news.com信息的DNS数据包。因为某些原因，尝试了3次。为什么会这样呢？我猜测可能www.news.com是CNAME ，最后，程序连接从DNS获取到的IP，注意这里，返回EINPROGRESS。这意味这这个连接是非堵塞的。连接成功后nc调用select。</p>
+<p>添加read和write到跟踪的系统调用列表里，连接上后敲入test，你会看到如下信息：</p>
+<p><pre class="lang:default decode:true ">read(0, “test\n”, 1024)                 = 5<br>write(3, “test\n”, 5)                   = 5<br>poll([{fd=3, events=POLLIN, revents=POLLIN}, {fd=0, events=POLLIN}], 2, -1) = 1<br>read(3, “\”-//IETF//“…, 1024) = 216<br>write(1, “\”-//IETF//“…, 216) = 216</pre><br>你可以看到，程序从标准输入中读取到“test”，并写到网络连接中，然后调用poll()等待响应，读取响应然后写入到标准输出中。看起来一切工作正常。</p>
+<p><strong>Reference</strong><br><a href="http://jarfield.iteye.com/blog/1739834" target="_blank" rel="external">Linux随机数发生器导致Apache进程全部Block的问题追查</a><br><a href="https://www.ibm.com/developerworks/cn/linux/l-tsl/" target="_blank" rel="external">技巧: 使用truss、strace或ltrace诊断软件的”疑难杂症”</a><br><a href="http://linoxide.com/linux-command/linux-strace-command-examples/" target="_blank" rel="external">linux-strace-command-examples</a><br><a href="http://hokstad.com/5-simple-ways-to-troubleshoot-using-strace" target="_blank" rel="external">5 simple ways to troubleshoot using Strace</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/debug/">debug</a><a href="/tags/strace/">strace</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Linux/">Linux</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/05/12/839/" data-title="Linux 下使用 strace 诊断疑难杂症 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/04/27/MySQL_mysqldump_数据导出详解/"  title="MySQL mysqldump 数据导出详解">
+ <strong>NEXT:</strong><br/> 
+ <span>MySQL mysqldump 数据导出详解
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+
