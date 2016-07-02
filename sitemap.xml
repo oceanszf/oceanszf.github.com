@@ -2,18 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.suzf.net/about/index.html</loc>
+    <lastmod>2016-07-02T04:00:21.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.suzf.net/2016/05/12/839/</loc>
     <lastmod>2016-06-24T05:03:38.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2016/04/27/MySQL_mysqldump_%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2016-04-29T12:43:02.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2016/04/13/%E5%AF%86%E7%A0%81%E6%95%A3%E5%88%97%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2016-04-29T12:43:02.000Z</lastmod>
   </url>
   
   <url>
@@ -23,11 +18,6 @@
   
   <url>
     <loc>http://blog.suzf.net/2016/04/18/Hello_Kafka/</loc>
-    <lastmod>2016-04-29T12:43:02.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2016/04/14/dokuwiki_%E9%87%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81/</loc>
     <lastmod>2016-04-29T12:43:02.000Z</lastmod>
   </url>
   
@@ -42,7 +32,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2016/04/03/pip_faq_-_Cannot_fetch_index_base_URL/</loc>
+    <loc>http://blog.suzf.net/2016/04/27/MySQL_mysqldump_%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E8%AF%A6%E8%A7%A3/</loc>
     <lastmod>2016-04-29T12:43:02.000Z</lastmod>
   </url>
   
@@ -52,12 +42,17 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2016/04/14/%5B%E8%AF%91%5D_Moving_a_Volume_Group_to_Another_System/</loc>
+    <loc>http://blog.suzf.net/2016/04/13/%E5%AF%86%E7%A0%81%E6%95%A3%E5%88%97%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2016-04-29T12:43:02.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2016/04/24/Python_Re_module_learn/</loc>
+    <loc>http://blog.suzf.net/2016/04/03/pip_faq_-_Cannot_fetch_index_base_URL/</loc>
+    <lastmod>2016-04-29T12:43:02.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2016/04/22/Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2016-04-29T12:43:02.000Z</lastmod>
   </url>
   
@@ -67,7 +62,17 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2016/04/22/Python%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/</loc>
+    <loc>http://blog.suzf.net/2016/04/14/%5B%E8%AF%91%5D_Moving_a_Volume_Group_to_Another_System/</loc>
+    <lastmod>2016-04-29T12:43:02.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2016/04/14/dokuwiki_%E9%87%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81/</loc>
+    <lastmod>2016-04-29T12:43:02.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2016/04/24/Python_Re_module_learn/</loc>
     <lastmod>2016-04-29T12:43:02.000Z</lastmod>
   </url>
   
@@ -87,22 +92,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2016/03/10/Python_time_%E6%A8%A1%E5%9D%97%E7%AE%80%E8%BF%B0/</loc>
-    <lastmod>2016-03-31T05:38:36.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2016/02/23/How_to_limit_Flask_dev_server_to_only_one_visiting_ip_address/</loc>
-    <lastmod>2016-03-31T05:38:36.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2016/03/23/zookeeper_%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2016-03-31T05:38:36.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2016/02/29/MySQLdb_%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86%E7%9A%84%E5%9D%91/</loc>
+    <loc>http://blog.suzf.net/2016/03/21/%E9%AB%98%E5%8F%AF%E7%94%A8_%E5%BC%80%E6%BA%90%E7%9A%84_Redis_%E7%BC%93%E5%AD%98%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2016-03-31T05:38:36.000Z</lastmod>
   </url>
   
@@ -132,12 +122,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2016/02/28/LVS_%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%80%E8%BF%B0/</loc>
-    <lastmod>2016-03-31T05:38:36.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2016/03/17/redis-sentinel-test/</loc>
+    <loc>http://blog.suzf.net/2016/03/23/zookeeper_%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2016-03-31T05:38:36.000Z</lastmod>
   </url>
   
@@ -147,12 +132,32 @@
   </url>
   
   <url>
+    <loc>http://blog.suzf.net/2016/02/29/MySQLdb_%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86%E7%9A%84%E5%9D%91/</loc>
+    <lastmod>2016-03-31T05:38:36.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2016/02/23/How_to_limit_Flask_dev_server_to_only_one_visiting_ip_address/</loc>
+    <lastmod>2016-03-31T05:38:36.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2016/03/17/redis-sentinel-test/</loc>
+    <lastmod>2016-03-31T05:38:36.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2016/02/28/LVS_%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%80%E8%BF%B0/</loc>
+    <lastmod>2016-03-31T05:38:36.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.suzf.net/2016/02/11/Linux_%E4%B8%8B_%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B%E4%B8%8ED%E8%BF%9B%E7%A8%8B/</loc>
     <lastmod>2016-03-31T05:38:36.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2016/03/21/%E9%AB%98%E5%8F%AF%E7%94%A8_%E5%BC%80%E6%BA%90%E7%9A%84_Redis_%E7%BC%93%E5%AD%98%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88/</loc>
+    <loc>http://blog.suzf.net/2016/03/10/Python_time_%E6%A8%A1%E5%9D%97%E7%AE%80%E8%BF%B0/</loc>
     <lastmod>2016-03-31T05:38:36.000Z</lastmod>
   </url>
   
@@ -167,7 +172,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2016/02/01/how-to-rechange-debian-system-root-password/</loc>
+    <loc>http://blog.suzf.net/2016/02/01/linux-curl-and-wget/</loc>
     <lastmod>2016-02-01T02:25:59.000Z</lastmod>
   </url>
   
@@ -177,7 +182,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2016/02/01/linux-curl-and-wget/</loc>
+    <loc>http://blog.suzf.net/2016/02/01/how-to-rechange-debian-system-root-password/</loc>
     <lastmod>2016-02-01T02:25:59.000Z</lastmod>
   </url>
   
@@ -197,11 +202,6 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/about/index.html</loc>
-    <lastmod>2016-01-17T06:18:55.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://blog.suzf.net/2016/01/13/hello-world/</loc>
     <lastmod>2016-01-17T06:13:57.000Z</lastmod>
   </url>
@@ -217,12 +217,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/08/22/how-can-i-view-the-process-under-linux-exact-start-time/</loc>
-    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/07/31/dell-server-firmware-upgrade/</loc>
+    <loc>http://blog.suzf.net/2015/08/10/proxy-using-yum-with-a-proxy-server/</loc>
     <lastmod>2016-01-13T07:38:52.000Z</lastmod>
   </url>
   
@@ -232,32 +227,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/08/14/how-do-i-find-out-linux-disk-utilization/</loc>
-    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/10/22/php-acquisition-time-and-system-inconsistencies/</loc>
-    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/12/28/how-to-compile-vim-with-lua/</loc>
-    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/11/25/ceph-single-multi-node-installation-summary/</loc>
-    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://blog.suzf.net/2015/08/31/how-to-debug-crashed-linux-application-core-files-like-a-pro/</loc>
-    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/08/10/proxy-using-yum-with-a-proxy-server/</loc>
     <lastmod>2016-01-13T07:38:52.000Z</lastmod>
   </url>
   
@@ -267,12 +237,27 @@
   </url>
   
   <url>
+    <loc>http://blog.suzf.net/2015/10/22/php-acquisition-time-and-system-inconsistencies/</loc>
+    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.suzf.net/2014/07/23/how-to-disabling-hyper-threading-on-a-dell-pe-r730/</loc>
     <lastmod>2016-01-13T07:38:52.000Z</lastmod>
   </url>
   
   <url>
+    <loc>http://blog.suzf.net/2015/11/25/ceph-single-multi-node-installation-summary/</loc>
+    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.suzf.net/2015/11/29/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-6/</loc>
+    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/08/22/how-can-i-view-the-process-under-linux-exact-start-time/</loc>
     <lastmod>2016-01-13T07:38:52.000Z</lastmod>
   </url>
   
@@ -292,12 +277,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/08/07/loganalyzer-log-analysis-and-syslog-log-analysis-system/</loc>
-    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/12/25/use-vim-to-build-python-development-ide/</loc>
+    <loc>http://blog.suzf.net/2015/08/14/how-do-i-find-out-linux-disk-utilization/</loc>
     <lastmod>2016-01-13T07:38:52.000Z</lastmod>
   </url>
   
@@ -312,22 +292,32 @@
   </url>
   
   <url>
+    <loc>http://blog.suzf.net/2014/08/07/loganalyzer-log-analysis-and-syslog-log-analysis-system/</loc>
+    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/12/25/use-vim-to-build-python-development-ide/</loc>
+    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/12/28/how-to-compile-vim-with-lua/</loc>
+    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.suzf.net/2015/12/22/why-does-ceph-monitor-db-compaction-fail/</loc>
     <lastmod>2016-01-13T07:38:52.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/07/24/zabbix-auto-discovery-rules/</loc>
-    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
+    <loc>http://blog.suzf.net/2015/07/31/dell-server-firmware-upgrade/</loc>
+    <lastmod>2016-01-13T07:38:52.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://blog.suzf.net/2014/08/01/zabbix-agent-setup-on-windows/</loc>
-    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2014/07/22/zabbix-email-alarm/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
   </url>
   
@@ -347,17 +337,27 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/08/15/zabbix-jmx-monitoring-of-tomcat/</loc>
-    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://blog.suzf.net/2014/08/13/zabbix-monitoring-of-web-url/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://blog.suzf.net/2014/08/22/zabbix-monitoring-of-nginx-status-information/</loc>
+    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2014/07/24/zabbix-auto-discovery-rules/</loc>
+    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2014/07/22/zabbix-email-alarm/</loc>
+    <lastmod>2016-01-13T07:37:21.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2014/08/14/zabbix-monitoring-of-esxi/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
   </url>
   
@@ -372,23 +372,13 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/08/14/zabbix-monitoring-of-esxi/</loc>
+    <loc>http://blog.suzf.net/2014/08/15/zabbix-jmx-monitoring-of-tomcat/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://blog.suzf.net/2014/07/24/zabbix-the-custom-key/</loc>
     <lastmod>2016-01-13T07:37:21.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/07/05/linux-web-server-site-failure-analysis-commonly-used-commands/</loc>
-    <lastmod>2016-01-13T07:35:18.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2014/08/18/lnmp-sourcecode-setup/</loc>
-    <lastmod>2016-01-13T07:35:18.000Z</lastmod>
   </url>
   
   <url>
@@ -402,7 +392,17 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/08/13/nginx-access-control-and-status-view/</loc>
+    <loc>http://blog.suzf.net/2015/07/05/linux-web-server-site-failure-analysis-commonly-used-commands/</loc>
+    <lastmod>2016-01-13T07:35:18.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2014/08/18/lnmp-sourcecode-setup/</loc>
+    <lastmod>2016-01-13T07:35:18.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2014/08/12/nginx-virtualhost/</loc>
     <lastmod>2016-01-13T07:22:14.000Z</lastmod>
   </url>
   
@@ -412,7 +412,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/08/12/nginx-virtualhost/</loc>
+    <loc>http://blog.suzf.net/2014/08/13/nginx-access-control-and-status-view/</loc>
     <lastmod>2016-01-13T07:22:14.000Z</lastmod>
   </url>
   
@@ -422,17 +422,17 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/</loc>
-    <lastmod>2016-01-13T07:18:41.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://blog.suzf.net/2014/10/20/mysql-basic-common-summary/</loc>
     <lastmod>2016-01-13T07:18:41.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/11/03/mysql-replication/</loc>
+    <loc>http://blog.suzf.net/2014/12/21/mysql-faq-error-1396-hy000-operation-create-user-failed-for-usernamehostname/</loc>
+    <lastmod>2016-01-13T07:18:41.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/</loc>
     <lastmod>2016-01-13T07:18:41.000Z</lastmod>
   </url>
   
@@ -442,7 +442,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/12/21/mysql-faq-error-1396-hy000-operation-create-user-failed-for-usernamehostname/</loc>
+    <loc>http://blog.suzf.net/2014/11/03/mysql-replication/</loc>
     <lastmod>2016-01-13T07:18:41.000Z</lastmod>
   </url>
   
@@ -457,22 +457,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/10/18/ipython/</loc>
-    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/11/03/python-mysqldb-test-for-select-count-zero/</loc>
-    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/06/12/faq-flask-attributeerror-module-object-has-no-attribute-autoescape/</loc>
-    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/10/11/python-2.6-to-2.7-readline-issue/</loc>
+    <loc>http://blog.suzf.net/2015/11/03/python-use-smtplib-to-send-mail/</loc>
     <lastmod>2016-01-13T07:17:03.000Z</lastmod>
   </url>
   
@@ -482,37 +467,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/10/09/python-update-simple-script/</loc>
-    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/11/03/python-use-smtplib-to-send-mail/</loc>
-    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/</loc>
-    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/11/09/python-csv-example/</loc>
-    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/10/20/python-exec-linux-cmd-ways/</loc>
-    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/11/03/importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory/</loc>
-    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/11/09/how-to-load-csv-data-into-mysql-use-python/</loc>
+    <loc>http://blog.suzf.net/2015/06/12/faq-flask-attributeerror-module-object-has-no-attribute-autoescape/</loc>
     <lastmod>2016-01-13T07:17:03.000Z</lastmod>
   </url>
   
@@ -522,7 +477,52 @@
   </url>
   
   <url>
+    <loc>http://blog.suzf.net/2015/10/20/python-exec-linux-cmd-ways/</loc>
+    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/11/09/python-csv-example/</loc>
+    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/11/03/python-mysqldb-test-for-select-count-zero/</loc>
+    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/10/11/python-2.6-to-2.7-readline-issue/</loc>
+    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/11/09/how-to-load-csv-data-into-mysql-use-python/</loc>
+    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/</loc>
+    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/10/09/python-update-simple-script/</loc>
+    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.suzf.net/2015/10/22/use-python-send-email/</loc>
+    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/10/18/ipython/</loc>
+    <lastmod>2016-01-13T07:17:03.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2015/11/03/importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory/</loc>
     <lastmod>2016-01-13T07:17:03.000Z</lastmod>
   </url>
   
@@ -532,17 +532,17 @@
   </url>
   
   <url>
+    <loc>http://blog.suzf.net/2014/08/07/kickstart-the-custom-password-for-the-root/</loc>
+    <lastmod>2016-01-13T07:14:34.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.suzf.net/2014/08/06/DIY-streamline-automatically-install-CentOS-ISO/</loc>
     <lastmod>2016-01-13T07:14:34.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://blog.suzf.net/2014/09/15/expect-automation-brief/</loc>
-    <lastmod>2016-01-13T07:14:34.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2014/08/07/kickstart-the-custom-password-for-the-root/</loc>
     <lastmod>2016-01-13T07:14:34.000Z</lastmod>
   </url>
   
@@ -557,12 +557,7 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2014/10/14/faq-puppet-common-issues/</loc>
-    <lastmod>2016-01-13T07:11:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.suzf.net/2015/10/27/the-puppet-language-style-guide/</loc>
+    <loc>http://blog.suzf.net/2015/03/18/puppet-set-up-dashboard-success-version/</loc>
     <lastmod>2016-01-13T07:11:51.000Z</lastmod>
   </url>
   
@@ -572,7 +567,12 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/03/18/puppet-set-up-dashboard-success-version/</loc>
+    <loc>http://blog.suzf.net/2015/10/27/the-puppet-language-style-guide/</loc>
+    <lastmod>2016-01-13T07:11:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.suzf.net/2014/10/14/faq-puppet-common-issues/</loc>
     <lastmod>2016-01-13T07:11:51.000Z</lastmod>
   </url>
   
@@ -587,12 +587,12 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/07/01/xiao-ming-is-gone-he-had-lived-in-Beijing-brutally/</loc>
+    <loc>http://blog.suzf.net/2015/08/21/programmers-zen-10-rules/</loc>
     <lastmod>2016-01-13T07:07:22.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/08/21/programmers-zen-10-rules/</loc>
+    <loc>http://blog.suzf.net/2015/07/01/xiao-ming-is-gone-he-had-lived-in-Beijing-brutally/</loc>
     <lastmod>2016-01-13T07:07:22.000Z</lastmod>
   </url>
   
@@ -607,12 +607,12 @@
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/10/13/mongodb-data-backup-and-restore/</loc>
+    <loc>http://blog.suzf.net/2015/10/13/how-to-install-mongo-and-php-support/</loc>
     <lastmod>2016-01-13T07:03:00.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.suzf.net/2015/10/13/how-to-install-mongo-and-php-support/</loc>
+    <loc>http://blog.suzf.net/2015/10/13/mongodb-data-backup-and-restore/</loc>
     <lastmod>2016-01-13T07:03:00.000Z</lastmod>
   </url>
   
