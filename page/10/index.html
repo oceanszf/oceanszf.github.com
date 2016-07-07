@@ -1,582 +1,1072 @@
-
- <!DOCTYPE HTML>
-<html lang="default">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   
-    <title>Suzf Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="Jeffrey Su">
-    
-    <meta name="description" content="Suzf linux tech blog">
-    
-    
-    
-    
-    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
-    
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
-    
-    <link rel="icon" href="/img/favicon.ico">
-    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  <title>Suzf Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Suzf linux tech blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Suzf Blog">
+<meta property="og:url" content="http://blog.suzf.net/page/10/index.html">
+<meta property="og:site_name" content="Suzf Blog">
+<meta property="og:description" content="Suzf linux tech blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Suzf Blog">
+<meta name="twitter:description" content="Suzf linux tech blog">
+  
+    <link rel="alternative" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
 
 </head>
-
-  <body>
-    <header>
-        <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
-				<h2 class="blog-motto">Life is short, We need smile.</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-
-                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
-                        <li><a title="Let's High!!!" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>High一下</a> </li>
-
-                    <li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:blog.suzf.net">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-
-    </header>
-    <div id="container">
-      <div id="main">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/22/jeffrey-takes-you-step-by-step-installation-oracle-rac-step2/" title="Jeffrey带你一步步安装ORACLE_RAC STEP:TWO" itemprop="url">
-  
-    <h1 itemprop="name">Jeffrey带你一步步安装ORACLE_RAC STEP:TWO</h1>
-    
-     
-           <p itemprop="description" >说明：由于图片过于多没有一一截图，还望大家见谅。3、集群的 Oracle Grid Infrastructure 的安装:
-所需的oracle软件如下：
-o 适用于 Linux 的 Oracle Database 11g 第 2 版 Grid Infrastructure (11</p>
-        
-    
-    <time datetime="2014-12-22T12:06:04.000Z" itemprop="datePublished">2014-12-22</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/21/mysql-faq-error-1396-hy000-operation-create-user-failed-for-usernamehostname/" title="Mysql_Faq: ERROR 1396 (HY000): Operation CREATE USER failed for &#39;username&#39;@&#39;hostname&#39;" itemprop="url">
-  
-    <h1 itemprop="name">Mysql_Faq: ERROR 1396 (HY000): Operation CREATE USER failed for &#39;username&#39;@&#39;hostname&#39;</h1>
-    
-     
-           <p itemprop="description" >在对mysql 权限进行管理的时候出现如下错误：ERROR 1396 (HY000): Operation CREATE USER failed for ‘username’@’hostname’ 
-But 这个用户只真是存在的 。回想一个之前的操作 : 先是用 grant 语句</p>
-        
-    
-    <time datetime="2014-12-21T13:37:37.000Z" itemprop="datePublished">2014-12-21</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/12/21/jeffrey-takes-you-step-by-step-installation-oracle-rac-step1/" title="Jeffrey带你一步步安装ORACLE_RAC STEP:ONE" itemprop="url">
-  
-    <h1 itemprop="name">Jeffrey带你一步步安装ORACLE_RAC STEP:ONE</h1>
-    
-     
-           <p itemprop="description" >Copyright to Jeffrey.Su
-前言：
-文档编写日期追溯到13年10月，那时的自己还是一枚学生。基本上是三无人员 。听老湿说RAC很高大上，遂弄之。那是啥也不太懂 神马udev 神马 block 什么 ASM 等等 。一切从零开始 ， 开始网上收集文档 补充知识 </p>
-        
-    
-    <time datetime="2014-12-21T02:08:45.000Z" itemprop="datePublished">2014-12-21</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/03/mysql-replication/" title="Mysql之replication初探" itemprop="url">
-  
-    <h1 itemprop="name">Mysql之replication初探</h1>
-    
-     
-           <p itemprop="description" >MySQL的Replication是一种多个MySQL的数据库做主从同步的方案，特点是异步，广泛用在各种对MySQL有更高性能，更高可靠性要求的场合。与之对应的另一个技术是同步的MySQL Cluster，但因为比较复杂，使用者较少。
-下图是MySQL官方给出了使用Replica</p>
-        
-    
-    <time datetime="2014-11-03T13:10:47.000Z" itemprop="datePublished">2014-11-03</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/10/21/puppet-nginx-module-write/" title="Puppet Nginx module write" itemprop="url">
-  
-    <h1 itemprop="name">Puppet Nginx module write</h1>
-    
-     
-           <p itemprop="description" >搞puppet也有三几天了，一些概念还不是很清晰。很多时候实验未成功，都是概念没有理清楚、文档没有看全。别的就先不说了，先来安装一个nginx 来试一下吧。
-1、编写nginx模块接下来我们先采动创建模块信息来完成Nginx的部署：需要创建模块录，虚拟主机采件的式进管理。创建模块</p>
-        
-    
-    <time datetime="2014-10-21T04:02:48.000Z" itemprop="datePublished">2014-10-21</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/10/20/mysql-basic-common-summary/" title="MYSQL 常用总结【基础】" itemprop="url">
-  
-    <h1 itemprop="name">MYSQL 常用总结【基础】</h1>
-    
-     
-           <p itemprop="description" >文章是之前总结的，还不是很完善。对于新手来说也许有一些帮助吧。
-文章难免会出现一些错误，请大家指出。
-Mysql 忘记root密码在/etc/my.cfg [mysqld]下面添加skip-grant-tables或是skip-grant
-重启MySQLuse mysql;UPD</p>
-        
-    
-    <time datetime="2014-10-20T08:48:10.000Z" itemprop="datePublished">2014-10-20</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/10/14/faq-puppet-common-issues/" title="FAQ_Puppet: common issue " itemprop="url">
-  
-    <h1 itemprop="name">FAQ_Puppet: common issue </h1>
-    
-     
-           <p itemprop="description" >Q1:最近测试3.7.1 的版本出现了一个问题：The package type’s allow_virtual parameter will be changing its default value from false to true in a future release</p>
-        
-    
-    <time datetime="2014-10-14T03:51:36.000Z" itemprop="datePublished">2014-10-14</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/09/26/snmp-items-with-zabbix/" title="[ 译 ] SNMP Items with ZABBIX" itemprop="url">
-  
-    <h1 itemprop="name">[ 译 ] SNMP Items with ZABBIX</h1>
-    
-     
-           <p itemprop="description" >SNMP Items with ZABBIX
-原文：https://www.zabbix.com/wiki/howto/monitor/snmp/snmp
-翻译不好的地方，欢迎大家指出. w_0005.gif设备
-Cisco 3750X
-例：系统运行时间
-创建一个新的主机监控项
-</p>
-        
-    
-    <time datetime="2014-09-26T08:05:15.000Z" itemprop="datePublished">2014-09-26</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/09/25/faq-zabbix-solving-template-to-collect-data-and-real-data-deviations/" title="FAQ_Zabbix:解决模板收集到的数据和真实数据有偏差" itemprop="url">
-  
-    <h1 itemprop="name">FAQ_Zabbix:解决模板收集到的数据和真实数据有偏差</h1>
-    
-     
-           <p itemprop="description" >前不久定制了一个Sanfor的模板，后发现 发现内存图形呈现的数据太不靠谱了。和真是数据相差近千倍。
-使用snmpwalk  抓取数据后发现单位是kb ， 靠懵了和 交换、路由的单位不太一样
-查看了一下官方手册 ，在 item 有一个选项是  Use custom multipl</p>
-        
-    
-    <time datetime="2014-09-25T02:33:10.000Z" itemprop="datePublished">2014-09-25</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/09/16/site-data-backup-of-rsync-mirrors-program/" title="数据备份 之网站镜像方案 sersync" itemprop="url">
-  
-    <h1 itemprop="name">数据备份 之网站镜像方案 sersync</h1>
-    
-     
-           <p itemprop="description" >网站镜像方案:sersync &amp;amp; rsync
-spacer.gif
-一、需要软件:sersync、rsyncsersync 访问网址:http://code.google.com/p/sersync/
-二、试验环境主服务器（内容发布服务器）：Node1 172.16.7.</p>
-        
-    
-    <time datetime="2014-09-16T09:58:35.000Z" itemprop="datePublished">2014-09-16</time>
-  </a>
-</section>
-
-
-  <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
-  </nav>
-
-</div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
-
-  
-<div class="categorieslist">
-	<p class="asidetitle">Categories</p>
-		<ul>
-		
-			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
-		
-			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
-		
-			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
-		
-			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
-		
-			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
-		
-			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
-		
-			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
-		
-			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
-		
-			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
-		
-			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
-		
-		</ul>
-</div>
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
-		
-			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
-		
-			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
-		
-			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
-		
-			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
-		
-			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
-		
-		</ul>
-</div>
-
-
-</aside>
-</div>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Suzf Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Life is short, We need smile.</a>
+        </h2>
+      
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello, I&#39;m a linuser. <br/>
-			This is my blog, share with you. ^_^</p>
-	</section>
-	 
-	<div class="social-font clearfix">
-		
-		
-		
-		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
-		
-		
-		
-	</div>
-    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
-<!--		
-		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
-		
-        -->
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-    }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
-</script>
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.suzf.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-jeffrey-takes-you-step-by-step-installation-oracle-rac-step2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/22/jeffrey-takes-you-step-by-step-installation-oracle-rac-step2/" class="article-date">
+  <time datetime="2014-12-22T12:06:04.000Z" itemprop="datePublished">2014-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Oracle/">Oracle</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/22/jeffrey-takes-you-step-by-step-installation-oracle-rac-step2/">Jeffrey带你一步步安装ORACLE_RAC STEP:TWO</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说明：由于图片过于多没有一一截图，还望大家见谅。<br>3、集群的 Oracle Grid Infrastructure 的安装:</p>
+<p>所需的oracle软件如下：</p>
+<p>o 适用于 Linux 的 Oracle Database 11g 第 2 版 Grid Infrastructure (11.2.0.1.0)</p>
+<p>o 适用于 Linux 的 Oracle Database 11g 第 2 版 (11.2.0.1.0)</p>
+<p>o Oracle Database 11g 第 2 版 Examples（可选）</p>
+<p>安装用于 Linux 的 cvuqdisk 程序包</p>
+<p>在两个 Oracle RAC 节点上安装操作系统程序包 cvuqdisk。如果没有 cvuqdisk，集群验证实用程序就无法发现共享磁盘，当运行（手动运行或在 Oracle Grid Infrastructure 安装结束时自动运行）集群验证实用程序时，您会收到这样的错误消息：“Package cvuqdisk not installed”。使用适用于您的硬件体系结构（例如，x86_64 或 i386）的 cvuqdisk RPM。</p>
+<p>cvuqdisk RPM 包含在 Oracle Grid Infrastructure 安装介质上的 rpm 目录中。<br>3.1 安装cvuqdisk</p>
+<p>设置环境变量 CVUQDISK_GRP，使其指向作为 cvuqdisk 的所有者所在的组（本文为 oinstall）：<br>[root@OceanI ~]# CVUQDISK_GRP=oinstall; export CVUQDISK_GRP<br>[root@OceanV ~]# CVUQDISK_GRP=oinstall; export CVUQDISK_GRP</p>
+<p>在保存 cvuqdisk RPM 的目录中，使用以下命令在两个 Oracle RAC 节点上安装 cvuqdisk 程序包：<br>[root@OceanI rpm]# pwd<br>/data/grid/rpm<br>[root@OceanI rpm]# rpm -ivh cvuqdisk-1.0.7-1.rpm<br>[root@OceanV rpm]# rpm -ivh cvuqdisk-1.0.7-1.rpm</p>
+<p>使用 CVU 验证是否满足 Oracle 集群件要求</p>
+<p>记住要作为 grid 用户在将要执行 Oracle 安装的节点 (racnode1) 上运行。此外，必须为 grid 用户配置通过用户等效性实现的 SSH 连通性。</p>
+<p>在grid软件目录里运行以下命令：</p>
+<p>[root@OceanI grid]#$./runcluvfy.sh stage -pre crsinst -n OceanI,OceanV -fixup  -verbose</p>
+<p>使用 CVU 验证硬件和操作系统设置</p>
+<p>[root@OceanI grid]#./runcluvfy.sh stage -post hwos -n OceanI,OceanV -verbose</p>
+<p>查看 CVU 报告。CVU 执行的所有其他检查的结果报告应该为“passed”，之后才能继续进行 Oracle Grid Infrastructure 的安装。</p>
+<p>3.2、为集群安装 Oracle Grid Infrastructure：<br>su - grid</p>
+<p>#./runInstaller</p>
+<p>此处省略 N 张图 ……..</p>
+<p>当弹出执行脚本的时候一定要先 local node 然后再remote node 切记不可一味图块<br><img src="http://s3.51cto.com/wyfs02/M00/5D/E1/wKiom1UmC42TEVHgAAYRcSkpxEk636.jpg" alt=""></p>
+<p>3.3、检验cluster安装是否成功</p>
+<p>1.检查集群中的结点状态</p>
+<p><img src="http://s3.51cto.com/wyfs02/M01/5D/DC/wKioL1UmDObB8pFsAANMRGWnrp0864.jpg" alt=""></p>
+<p>2.检查SCAN是否产生，是否能ping通</p>
+<p>3.检查所有服务的状态</p>
+<p>4.检查ASM实例的状态</p>
+<p>4、安装database soft &amp; database<br>4.1、创建asm_group<br>su - grid<br>asmca</p>
+<p>4.2、使用oracle用户调用图形界面进行安装Oracle Database<br>$./runInstaller</p>
+<p>4.3、使用oracle用户调用dbca创建数据库<br>$dbca</p>
+<p>4.4、查看整个集群状态</p>
+<p>#crs_stat -t</p>
+<p>其它注意事项：</p>
+<p>1.给votedisk和ocr创建ASM时，如果选择normal模式，则需要3个ASM disk。</p>
+<p>2.安装Oracle Grid Infrastructure的ORACLE_HOME目录与ORACLE_BASE目录不能存在从属关系；而安装Oracle Database的ORACLE_HOME又必须在ORACLE_BASE目录下。</p>
+<p>5、部分错误整理：</p>
+<p>错误1：</p>
+<p>在第一个节点执行root.sh时报错：</p>
+<p>error while loading shared libraries:libcap.so.1:cannot open shared object file: No such file or directory</p>
+<p>解决办法：</p>
+<p>确定libcap包已经安装</p>
+<p>rpm -q libcap</p>
+<p>find / -name ‘<em>libcap</em>‘ -print</p>
+<p>创建链接</p>
+<p>ln -s /lib64/libcap.so.2.16 /lib64/libcap.so.1</p>
+<p>删掉root.sh的配置：</p>
+<p>./roothas.pl -deconfig -verbose -force</p>
+<p>再次运行root.sh即可。</p>
+<p>错误2：</p>
+<p>这个错误会在Redhat6.x/CentOS6.x上安装Oracle11gR2 11.2.0.1 RAC时出现。</p>
+<p>在第一个节点执行root.sh时报错（各个节点都会出现这个问题）：</p>
+<p>Adding daemon to inittab</p>
+<p>CRS-4124: Oracle High Availability Services startup failed.</p>
+<p>CRS-4000: Command Start failed, or completed with errors.</p>
+<p>解决办法：（临时）</p>
+<p>在生成了文件/var/tmp/.oracle/npohasd文件后，使用root立即执行以下命令命令：</p>
+<p>/bin/dd if=/var/tmp/.oracle/npohasd of=/dev/null bs=1024 count=1</p>
+<p>如果懒得看npohasd有没有生成，就用下面的命令让它自动完成</p>
+<p>watch -n 0.5 /bin/dd if=/var/tmp/.oracle/npohasd of=/dev/null bs=1024 count=1</p>
+<p>错误3：</p>
+<p>通过dbca方式, 在基于ASM存储建库时, 报以下错误:</p>
+<p>ORA-12547: TNS:lost contact</p>
+<p>原因：</p>
+<p>In environment where listener home (including SCAN listener which resides in Grid Infrastructure/ASM home) and database home are owned by different OS user, ORA-12537 could happen when connecting through listener, when creating database through DBCA, or when installing database software and creating a database in runInstaller. Job Role Separation is a typical example as SCAN and local grid home listener is owned differently than database.</p>
+<p>解决办法：</p>
+<p>检查grid安装的SCAN listener目录和Oracle Database目录的owner是不是一样的。如果不一样，改成一样或将目录设置为770权限。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/12/22/jeffrey-takes-you-step-by-step-installation-oracle-rac-step2/" data-id="ciq4n5jc8007c7xo9mwjry0d0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RAC/">RAC</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-mysql-faq-error-1396-hy000-operation-create-user-failed-for-usernamehostname" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/21/mysql-faq-error-1396-hy000-operation-create-user-failed-for-usernamehostname/" class="article-date">
+  <time datetime="2014-12-21T13:37:37.000Z" itemprop="datePublished">2014-12-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/21/mysql-faq-error-1396-hy000-operation-create-user-failed-for-usernamehostname/">Mysql_Faq: ERROR 1396 (HY000): Operation CREATE USER failed for &#39;username&#39;@&#39;hostname&#39;</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在对mysql 权限进行管理的时候出现如下错误：<br>ERROR 1396 (HY000): Operation CREATE USER failed for ‘username’@’hostname’ </p>
+<p>But 这个用户只真是存在的 。回想一个之前的操作 : 先是用 grant 语句创建了一个用户，然后权限有变 用 update 更新了一下 mysql.user 的数据 。结果就出现了上面的错误 。<br>解决办法 ：删除无效/冲突的用户授权 ，重新根据需求授权。<br>这就是说 MySQL 权限控制最好是使用统一的操作方式。 </p>
+<p>FLUSH PRIVILEGES不会删除用户 ，而是从mysql数据库中的授权表重新载入权限。 </p>
+<p>GRANT, CREATE USER, CREATE SERVER, and INSTALL PLUGIN 语句 是缓存到服务器内存当中的 。该内存不会被释放由相应的REVOKE, DROP USER, DROP SERVER, and UNINSTALL PLUGIN 语句，因此对于执行该语句的过多的情况下，会有增加内存使用。该缓存内存可以被释放使用 FLUSH PRIVILEGES。 </p>
+<p>DROP USER<br>DROP USER user[，user] …<br><a href="http://dev.mysql.com/doc/refman/5.1/en/drop-user.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.1/en/drop-user.html</a><br>DROP USER ‘username’@HOSTNAME;<br>CREATE USER ‘username’@HOSTNAME [IDENTIFIED BY ‘password’];<br>你可能会需要的，如果你使用的删除刷新权限。<br>请记住：这并不一定撤销所有该用户可能有（如表的权限）的权限，你将不得不这样做<br>如果你不这样做，你可能无法重新创建用户。<br>REVOKE ALL PRIVILEGES, GRANT OPTION FROM ‘username’@HOSTNAME;<br>DELETE FROM mysql.user WHERE user=’username’;<br>FLUSH PRIVILEGES;<br>CREATE USER ‘username’@HOSTNAME [IDENTIFIED BY ‘password’]; </p>
+<p>用户的帐户名是等价的：<br>以“user_name’@’％’。例如，’user_name’ 等同于 ‘user_name’@’％’。 </p>
+<p>补充阅读：<a href="http://dev.mysql.com/doc/refman/5.1/en/account-names.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.1/en/account-names.html</a><br>请阅读进一步 bug:<br><a href="http://bugs.mysql.com/bug.php?id=28331" target="_blank" rel="external">http://bugs.mysql.com/bug.php?id=28331</a><br><a href="http://bugs.mysql.com/bug.php?id=62255" target="_blank" rel="external">http://bugs.mysql.com/bug.php?id=62255</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/12/21/mysql-faq-error-1396-hy000-operation-create-user-failed-for-usernamehostname/" data-id="ciq4n5jb8006b7xo94ya7nqmz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/faq/">faq</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-jeffrey-takes-you-step-by-step-installation-oracle-rac-step1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/21/jeffrey-takes-you-step-by-step-installation-oracle-rac-step1/" class="article-date">
+  <time datetime="2014-12-21T02:08:45.000Z" itemprop="datePublished">2014-12-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Oracle/">Oracle</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/21/jeffrey-takes-you-step-by-step-installation-oracle-rac-step1/">Jeffrey带你一步步安装ORACLE_RAC STEP:ONE</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Copyright to Jeffrey.Su</p>
+<p>前言：</p>
+<pre><code>文档编写日期追溯到13年10月，那时的自己还是一枚学生。基本上是三无人员 。听老湿说RAC很高大上，遂弄之。那是啥也不太懂 神马udev 神马 block 什么 ASM 等等 。一切从零开始 ， 开始网上收集文档 补充知识 。借鉴了很多文档 。向开源的前辈致敬！ 再说说装备之简陋 ，可以称之为小米加步枪。整体装备 i5 2450 Ram 4G disk 5400/r . @_@
+</code></pre><p>这里内存是最要命的 官方说明rac 单机 物理内存至少是1.5G 。 都分1.5 的话 再加一个 openfiler 机器不就成蜗牛了吗？ 后通过实践 virtual box 的共享磁盘还是蛮方便的，就用它了 。 一点一点网上加内存呀  ！！ 最终 还是弄到 1.5G 囧囧囧 ， 之前是各种报错 。 历时 一周半 从无到有 测试环境算是出来了 ， 但是仅做了简单的测试 。 Cpu 风扇 都开始 往外吐灰尘了 。 这是什么节奏呀 @_@ </p>
+<p>文中难免出现纰漏，欢迎大家拍砖 。 </p>
+<p>下面回到正文：</p>
+<p>一、配置oracle 11g r2 RAC  </p>
+<p>1、环境介绍：</p>
+<p>Node Name     Oracle_SID    Databasename   MEM       OS</p>
+<p>OceanI        oceandb1       oceandb       1.5G      Rhel5.4</p>
+<p>OceanV        oceandb2                     1.5G      Rhel5.4</p>
+<p>这里系统安装建议对node2 不是clone system</p>
+<p>网络配置<br>Node Name Public IP      Private IP     Virtual IP   Scan Name   Scan IP       解析方式<br>OceanI    192.168.1.10   10.10.10.10    192.168.1.11  Ocean-rac  192.168.1.99  hosts<br>OceanV    192.168.1.20   10.10.10.20    192.168.1.21      </p>
+<p>Oracle 软件组件<br>软件组件      用户  主组      辅组                       主目录        Oracl基本目        Oracle主目录<br>Grid         grid  oinstall  asmadmin、asmdba、asmoper /home/grid    /u01/app/grid    /u01/app/11.2.0/grid<br>Oracle Rac   grid  oinstall  dba、oper、asmdba         /home/oracle  /u01/app/oracle  /u01/app/oracle/product/11.2.0/db_1</p>
+<p>存储组件<br>存储组件    文件系统  卷大小 ASM卷组名  ASM 冗余  Raw 卷名<br>OCR表决磁盘 ASM        2GB   +CRSV1     External  raw1<br>数据库文件  ASM        10GB  +DATEV1    External  raw2<br>快速恢复区  ASM        5GB   +FRAV1     External  raw3</p>
+<p> 在这里存储系统使用的是ASM,在 ASM 上存储 OCR 和表决磁盘文件，具体是存储在一个名为 +CRS 的磁盘组中，该磁盘组使用外部冗余配置，只有一个 OCR 位置和一个表决磁盘位置。ASM 磁盘组应在共享存储器上创建，大小至少为 2GB。Oracle 物理数据库文件（数据、联机重做日志、控制文件、存档重做日志）将安装在 ASM 上一个名为 +DATElv1 的 ASM 磁盘组中，而快速恢复区将在一个名为 +FRAlv1 的 ASM 磁盘组上创建。</p>
+<p>2、系统配置：<br>2.1、安装oracle RAC所需的linux软件包：</p>
+<p>查看安装的包<br>rpm -q binutils compat-libstdc++-33 elfutils-libelf elfutils-libelf-devel gcc gcc-c++ glibc glibc-common glibc-devel<br>rpm -q glibc-headers ksh libaio libaio-devel libgcc libstdc++ libstdc++-devel make numactl-devel sysstat </p>
+<p>yum -y install binutils compat-libstdc++ elfutils-libelf elfutils-libelf-devel elfutils-libelf-devel-static gcc gcc-c++ glibc glibc-common glibc-devel glibc-headers ksh libaio libaio-devel libgcc libgomp libstdc++ libstdc++-devel make sysstat unixODBC unixODBC-devel</p>
+<p>2.2、网络配置：</p>
+<p>分配IP地址：</p>
+<p>这里的 SCAN ip地址必须通过GNS或者DNS来解析的，这里使用的是DNS解析.其他地址都在hosts文件里定义。</p>
+<p>[root@OceanI ~]# cat /etc/hosts</p>
+<h1 id="Do_not_remove_the_following_line_2C_or_various_programs"><a href="#Do_not_remove_the_following_line_2C_or_various_programs" class="headerlink" title="Do not remove the following line, or various programs"></a>Do not remove the following line, or various programs</h1><h1 id="that_require_network_functionality_will_fail"><a href="#that_require_network_functionality_will_fail" class="headerlink" title="that require network functionality will fail."></a>that require network functionality will fail.</h1><p>127.0.0.1OceanI localhost.localdomain localhost</p>
+<p>#::1localhost6.localdomain6 localhost6</p>
+<p>192.168.1.10    OceanI<br>192.168.1.11    OceanI-vip      #未非配IP<br>10.10.10.10     OceanI-pri</p>
+<p>192.168.1.50    OceanV<br>192.168.1.51    OceanV-vip      #未非配IP<br>10.10.10.50     OceanV-pri</p>
+<p>192.168.1.99   Ocean-rac         #未非配IP</p>
+<p>2.3、集群时间同步服务：</p>
+<p>利用linux本身对时间进行同步</p>
+<p>service ntpd stop<br>chkconfig ntpd off<br>mv /etc/ntp.conf  /etc/ntp.conf.org<br>rm /var/run/ntpd.pid</p>
+<p>这步需要做 否则会影响rac稳定运行</p>
+<p>2.4、创建任务角色划分操作系统权限组、用户和目录:</p>
+<p>创建以下 O/S 组：</p>
+<p>wKioL1UlR9Dz4-00AAFpOn4hR2Y571.jpg<br>2.4.1 添加Oracle用户组</p>
+<p>groupadd -g 1001 oinstall<br>groupadd -g 1002 asmadmin<br>groupadd -g 1003 asmdba<br>groupadd -g 1004 asmoper<br>groupadd -g 1005 dba<br>groupadd -g 1006 oper</p>
+<p>2.4.2添加Oracle用户</p>
+<p>useradd oracle -u 600<br>useradd grid -u 601</p>
+<p>2.4.3  修改Oracle用户所属组</p>
+<p>useradd -g oinstall -G dba,asmadmin,asmdba,asmoper grid<br>useradd -g oinstall -G dba,oper,asmdba oracle</p>
+<p>分别在两节点使用 id grid /id oracle 查看用户ID、组ID 是否一致[之前未指定用户ID、组ID]</p>
+<p>2.4.4  设置密码</p>
+<p>passwd oracle   (oracle)<br>passwd grid (grid)</p>
+<p>2.5为 grid 用户帐户创建登录脚本</p>
+<p>vi /home/grid/.bash_profile</p>
+<p>注：在为每个 Oracle RAC 节点设置 Oracle 环境变量时，确保为每个 RAC 节点指定唯一的 Oracle SID。对于此示例，我使用：</p>
+<p>o OceanI：ORACLE_SID=+ASM1</p>
+<p>o OceanV：ORACLE_SID=+ASM2</p>
+<p>ORACLE_SID=+ASM1; export ORACLE_SID<br>ORACLE_BASE=/u01/app/grid; export ORACLE_BASE<br>ORACLE_HOME=/u01/app/11.2.0/grid; export ORACLE_HOME<br>export PATH=$ORACLE_HOME/bin:$PATH<br>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib:/lib:/usr/lib:/usr/local/lib<br>export TMP=/tmp<br>export CLASSPATH=$CLASSPATH:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib </p>
+<p>source /home/grid/.bash_profile</p>
+<p>2.6为 oracle 用户帐户创建登录脚本</p>
+<p>vi /home/oracle/.bash_profile</p>
+<p>注：在为每个 Oracle RAC 节点设置 Oracle 环境变量时，确保为每个 RAC 节点指定唯一的 Oracle SID。对于此示例，我使用： </p>
+<p>o OceanI：ORACLE_SID=oceandb1</p>
+<p>o OceanV：ORACLE_SID=oceandb2</p>
+<p>加入.bash_profile</p>
+<p>ORACLE_SID=oceandb1; export ORACLE_SID<br>ORACLE_UNQNAME=oceandb; export ORACLE_UNQNAME<br>ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE<br>ORACLE_HOME=$ORACLE_BASE/product/11.2.0/db_1; export ORACLE_HOME<br>export PATH=$ORACLE_HOME/bin:$PATH<br>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib:/lib:/usr/lib:/usr/local/lib<br>export TMP=/tmp<br>export CLASSPATH=$CLASSPATH:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib<br>source /home/oracle/.bash_profile</p>
+<p>2.7 创建Oracle 基目录路径[两节点均执行相同操作]:</p>
+<p>mkdir -p /u01/app/grid<br>mkdir -p /u01/app/11.2.0/grid<br>chown -R grid.oinstall /u01/<br>mkdir -p /u01/app/oracle<br>chown -R oracle.oinstall /u01/app/oracle/<br>chmod -R 775 /u01/</p>
+<p>2.8 为 Oracle 软件安装用户设置资源限制:</p>
+<p>A:修改/etc/security/limits.conf文件，加入以下内容：</p>
+<p>#add by lcs for oracle<br>grid soft nproc 2047<br>grid hard nproc 16384<br>grid soft nofile 1024<br>grid hard nofile 65536<br>oracle soft nproc 2047<br>oracle hard nproc 16384<br>oracle soft nofile 1024<br>oracle hard nofile 65536</p>
+<p>B:vi /etc/pam.d/login ，加入以下内容：</p>
+<p>session required pam_limits.so</p>
+<p>C:根据您的 shell 环境，对默认的 shell 启动文件进行以下更改，以便更改所有 Oracle 安装所有者的 ulimit 设置（注意这里的示例显示 oracle 和 grid 用户）：</p>
+<p>对于 Bourne、Bash 或 Korn shell，通过运行以下命令将以下行添加到 /etc/profile 文件：</p>
+<p>#oracle<br>if [ $USER = “oracle” ] || [ $USER = “grid” ]; then<br>        if [ $SHELL = “/bin/ksh” ]; then<br>                ulimit -p 16384<br>                ulimit -n 65536<br>        else<br>                ulimit -u 16384 -n 65536<br>        fi<br>        umask 022<br>fi</p>
+<p>2.9 为 Oracle 配置 Linux 服务器：</p>
+<p>配置内核参数：</p>
+<p>向/etc/sysctl.conf，添加</p>
+<p>#kernel.shmall = 2097152（已有可不修改）</p>
+<p>#kernel.shmmax = 2147483648（已有可不修改）<br>kernel.shmmni = 4096<br>kernel.sem = 250 32000 100 128<br>net.core.rmem_default = 262144<br>net.core.rmem_max = 4194304<br>net.core.wmem_default = 262144<br>net.core.wmem_max = 1048576<br>net.ipv4.ip_local_port_range = 9000 65500<br>fs.suid_dumpable = 1<br>fs.file-max = 6815744<br>fs.aio-max-nr = 1048576</p>
+<p>/sbin/sysctl -p    #是修改参数立即生效<br>2.10 配置系统安全设置[两节点均执行]<br>iptables -F<br>/etc/init.d/iptables save<br>chkconfig iptables off<br>vim /etc/selinux/config<br>SELINUX=disabled</p>
+<p>2.11 修改tmpfs的大小</p>
+<p>umount tmpfs<br>mount -t tmpfs shmfs -o size=3000m /dev/shm<br>修改/etc/fstab文件，增加tmpfs大小<br>vi /etc/fstab<br>tmpfs                   /dev/shm                tmpfs defaults,size=3G  0 0</p>
+<p>2.12 配置RAC 节点以便可以使用 SSH 进行远程访问</p>
+<p>略………<br>2.13、共享磁盘配置：</p>
+<p>[注]：这里的共享磁盘选择固定大小 添加方式和添加其他虚拟硬盘方式一样 这里不做过多的说明。</p>
+<p>wKiom1UlR_6wxGz0AAMkF1efcxY446.jpg</p>
+<p>在共享磁盘上创建分区：</p>
+<p>只创建一个分区，在一个节点上执行即可，如下：</p>
+<p>2.14使用u_dev绑定裸设备:</p>
+<p>[root@OceanI ~]# vim /etc/udev/rules.d/60-raw.rules </p>
+<h1 id="Enter_raw_device_bindings_here"><a href="#Enter_raw_device_bindings_here" class="headerlink" title="Enter raw device bindings here."></a>Enter raw device bindings here.</h1><p>#</p>
+<h1 id="An_example_would_be_3A"><a href="#An_example_would_be_3A" class="headerlink" title="An example would be:"></a>An example would be:</h1><h1 id="ACTION_3D_3D_u201Dadd_u201D_2C_KERNEL_3D_3D_u201Dsda_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw1__25N_u201D"><a href="#ACTION_3D_3D_u201Dadd_u201D_2C_KERNEL_3D_3D_u201Dsda_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw1__25N_u201D" class="headerlink" title="ACTION==”add”, KERNEL==”sda”, RUN+=”/bin/raw /dev/raw/raw1 %N”"></a>ACTION==”add”, KERNEL==”sda”, RUN+=”/bin/raw /dev/raw/raw1 %N”</h1><h1 id="to_bind_/dev/raw/raw1_to_/dev/sda_2C_or"><a href="#to_bind_/dev/raw/raw1_to_/dev/sda_2C_or" class="headerlink" title="to bind /dev/raw/raw1 to /dev/sda, or"></a>to bind /dev/raw/raw1 to /dev/sda, or</h1><h1 id="ACTION_3D_3D_u201Dadd_u201D_2C_ENV_7BMAJOR_7D_3D_3D_u201D8_u201D_2C_ENV_7BMINOR_7D_3D_3D_u201D1_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw2__25M__25m_u201D"><a href="#ACTION_3D_3D_u201Dadd_u201D_2C_ENV_7BMAJOR_7D_3D_3D_u201D8_u201D_2C_ENV_7BMINOR_7D_3D_3D_u201D1_u201D_2C_RUN+_3D_u201D/bin/raw_/dev/raw/raw2__25M__25m_u201D" class="headerlink" title="ACTION==”add”, ENV{MAJOR}==”8”, ENV{MINOR}==”1”, RUN+=”/bin/raw /dev/raw/raw2 %M %m”"></a>ACTION==”add”, ENV{MAJOR}==”8”, ENV{MINOR}==”1”, RUN+=”/bin/raw /dev/raw/raw2 %M %m”</h1><h1 id="to_bind_/dev/raw/raw2_to_the_device_with_major_8_2C_minor_1"><a href="#to_bind_/dev/raw/raw2_to_the_device_with_major_8_2C_minor_1" class="headerlink" title="to bind /dev/raw/raw2 to the device with major 8, minor 1."></a>to bind /dev/raw/raw2 to the device with major 8, minor 1.</h1><p>ACTION==”add”, KERNEL==”sdb1”, RUN+=”/bin/raw /dev/raw/raw1 %N”<br>ACTION==”add”, KERNEL==”sdc1”, RUN+=”/bin/raw /dev/raw/raw2 %N”<br>ACTION==”add”, KERNEL==”sdd1”, RUN+=”/bin/raw /dev/raw/raw3 %N”<br>ACTION==”add”, KERNEL==”sde1”, RUN+=”/bin/raw /dev/raw/raw4 %N”</p>
+<p>KERNEL==”raw1”, OWNER==”grid”, GROUP==”asmadmin”, MODE=”660”<br>KERNEL==”raw2”, OWNER==”grid”, GROUP==”asmadmin”, MODE=”660”<br>KERNEL==”raw3”, OWNER==”grid”, GROUP==”asmadmin”, MODE=”660”<br>KERNEL==”raw4”, OWNER==”grid”, GROUP==”asmadmin”, MODE=”660”<br>然后启动udev服务生成RAW设备<br>[root@OceanI /]# start_udev<br>Starting udev:                                        [OK]<br>接着验证udev是否成功生成<br>[root@OceanI ~]# ls -l /dev/raw<br>total 0<br>crw-rw—- 1 grid asmadmin 162, 1 Sep 27 05:04 raw1<br>crw-rw—- 1 grid asmadmin 162, 2 Sep 27 05:04 raw2<br>crw-rw—- 1 grid asmadmin 162, 3 Sep 27 05:04 raw3<br>crw-rw—- 1 grid asmadmin 162, 4 Sep 27 05:04 raw4</p>
+<p>[root@OceanI ~]# scp /etc/udev/rules.d/60-raw.rules OceanV:/etc/udev/rules.d/60-raw.rules</p>
+<pre><code># start_udev
+</code></pre><p>2.15  重新启动系统</p>
+<p>Reboot</p>
+<p>检查之前配置</p>
+<p>到这里基本上环境都准备好了 ，下篇讲解 GRID 的安装 。</p>
+<p>本文出自 “Jeffrey Blog” 博客，转载请注明出处 ！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/12/21/jeffrey-takes-you-step-by-step-installation-oracle-rac-step1/" data-id="ciq4n5jcd007i7xo9oi0dzpuc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RAC/">RAC</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-mysql-replication" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/03/mysql-replication/" class="article-date">
+  <time datetime="2014-11-03T13:10:47.000Z" itemprop="datePublished">2014-11-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+  </div>
 
-  </body>
- </html>
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/03/mysql-replication/">Mysql之replication初探</a>
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MySQL的Replication是一种多个MySQL的数据库做主从同步的方案，特点是异步，广泛用在各种对MySQL有更高性能，更高可靠性要求的场合。与之对应的另一个技术是同步的MySQL Cluster，但因为比较复杂，使用者较少。</p>
+<p>下图是MySQL官方给出了使用Replication的场景：<br><img src="http://s3.51cto.com/wyfs02/M00/4D/B3/wKiom1RXfpvC6o6ZAAFTXNi6cDU783.jpg" alt=""></p>
+<p>Replication原理</p>
+<p>Mysql 的 Replication  是一个异步的复制过程，从一个MySQL节点（称之为Master）复制到另一个MySQL节点（称之Slave）。在 Master 与 Slave  之间的实现整个复制过程主要由三个线程来完成，其中两个线程（SQL 线程和 I/O 线程）在 Slave 端，另外一个线程（I/O 线程）在  Master 端。</p>
+<p>要实现 MySQL 的 Replication ，首先必须打开 Master 端的 Binary Log，因为整个复制过程实际上就是 Slave 从 Master 端获取该日志然后再在自己身上完全顺序的执行日志中所记录的各种操作。</p>
+<p>看上去MySQL的Replication原理非常简单，总结一下：</p>
+<pre><code>* 每个从仅可以设置一个主。  
+* 主在执行sql之后，记录二进制log文件（bin-log）。  
+* 从连接主，并从主获取binlog，存于本地relay-log，并从上次记住的位置起执行sql，一旦遇到错误则停止同步。  
+</code></pre><p>从这几条Replication原理来看，可以有这些推论：</p>
+<pre><code>* 主从间的数据库不是实时同步，就算网络连接正常，也存在瞬间，主从数据不一致。  
+* 如果主从的网络断开，从会在网络正常后，批量同步。  
+* 如果对从进行修改数据，那么很可能从在执行主的bin-log时出现错误而停止同步，这个是很危险的操作。所以一般情况下，非常小心的修改从上的数据。  
+* 一个衍生的配置是双主，互为主从配置，只要双方的修改不冲突，可以工作良好。  
+* 如果需要多主的话，可以用环形配置，这样任意一个节点的修改都可以同步到所有节点。  
+</code></pre><p>主从设置<br>1. MySQL主从应用场景</p>
+<p>原理是master上数据更新时会记录一个bin-log，slave会实时同步该bin-log然后slave根据bin-log的sql语句进行相应的操作。<br>MySQL主从可以实时备份,保证数据高安全性<br>可以应用在读写分离的场景中，用以降低单台MySQL服务器的I/O<br>可以实现MySQL服务的HA集群<br>可以是1主多从，也可以是相互主从（主主）</p>
+<p>2. 安装、配置MySQL<br>参考之前步骤搭建MySQL服务</p>
+<p>3. 配置主从准备工作</p>
+<p>在主上创建测试库:<br>建立测试用数据库｜表</p>
+<p>#myslq –u root –p<br>mysql&gt;create database ocean;<br>mysql&gt;use ocean;<br>mysql&gt;create table test1(id int,sname char(8));<br>mysql&gt;insert into test1 values(1,’zhangsang’);</p>
+<p>4. 配置主(master)<br>vim ./my.cnf   #修改或添加：<br>server-id=1<br>log-bin=mysql-bin<br>两个可选参数（2选1）：<br>binlog-do-db=ocean        #需要同步的库【多个库之间用，分隔】<br>binlog-ignore-db=ocean    #忽略不同步的库<br>修改配置文件后，重启mysql<br>pid=<code>ps uax |grep mysql.sock |grep -v grep |awk &#39;{print $2}&#39;</code> ; kill $pid; cd /usr/local/mysql_2/bin/; ./mysqld_safe –defaults-file=../my.cnf –user=mysql &amp;</p>
+<p>Master 授权给Slave<br>grant replication slave on <em>.</em> to ‘ocean’@’192.168.9.10’ identified by ‘ocean’;<br>flush tables with read lock;  #锁住表，防止数据写入,slave配置完成后记得解锁<br>flush privileges;             #刷新<br>show master status;           #一定要记住前两列的内容，一会会用到<br>mysql&gt; show master status;<br>+———————-+———-+————–+——————+<br>| File                 | Position | Binlog_Do_DB | Binlog_Ignore_DB |<br>+———————-+———-+————–+——————+<br>| mysql-bin-log.000028 |      330 | mysql        |                  |<br>+———————-+———-+————–+——————+<br>1 row in set (0.00 sec)</p>
+<p>5. 设置从(slave)<br>vim my.cnf  #修改或增加<br>server-id = 2 #这个数值不能和主一样<br>可选参数：<br>replicate-do-db=ocean,ocean2 和 replicate-ignore-db=ocean,ocean2 #意义同主的那两个可选参数<br>service mysqld restart<br>拷贝主的db1库数据到从：<br>然后导出主的mysql库数据然后导入给slave mysql<br>mysqldump -uroot -p mysql &gt; ocean.sql<br>在salve 中将数据导入到新创建的数据库中<br>mysql -uroot -p -e “create database ocean”; mysql -uroot -p  ocean &lt; ocean.sql</p>
+<p>mysql -uroot -p  #登陆Slave的mysql<br>slave stop;</p>
+<p>change master to master_host=’192.168.9.9’, master_port=3306 ,master_user=’ocean’,<br>master_password=’ocean’, master_log_file=’mysql-bin-log.000028’, master_log_pos=330;</p>
+<p>slave start;</p>
+<p>Master上： mysql -uroot -p -e “unlock tables”<br>Slave查看从的状态:mysql&gt; show slave status\G<br><strong><strong><strong><strong><strong><strong><em>*</em></strong></strong></strong></strong></strong></strong> 1. row <strong><strong><strong><strong><strong><strong><em>*</em></strong></strong></strong></strong></strong></strong><br>               Slave_IO_State: Waiting for master to send event<br>                  Master_Host: 192.168.9.9<br>                  Master_User: ocean<br>                  Master_Port: 3306<br>                Connect_Retry: 60<br>              Master_Log_File: mysql-bin-log.000028<br>          Read_Master_Log_Pos: 330<br>               Relay_Log_File: mysqld-relay-bin.000002<br>                Relay_Log_Pos: 255<br>        Relay_Master_Log_File: mysql-bin-log.000028<br>           Slave_IO_Running: Yes<br>         Slave_SQL_Running: Yes<br>              Replicate_Do_DB: ocean<br>          Replicate_Ignore_DB:<br>           Replicate_Do_Table:<br>       Replicate_Ignore_Table:<br>      Replicate_Wild_Do_Table:<br>  Replicate_Wild_Ignore_Table:<br>                   Last_Errno: 0<br>                   Last_Error:<br>                 Skip_Counter: 0<br>                 …..</p>
+<p>6. 测试主从<br>在Master中ocean数据库中插入一条记录：<br>mysql&gt;use ocean;<br>mysql&gt;insert into test1 values(2,’lisi’);<br>在slave中查看oceanDB是否有新纪录生成。</p>
+<p>建议: MySQL主从机制比较脆弱，谨慎操作。如果重启master，务必要先把slave停掉，也就是说需要在slave上去执行 slave stop 命令，然后再去重启master的mysql服务，否则很有可能就会中断了。当然重启完后，还需要把slave给开启 slave start. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/11/03/mysql-replication/" data-id="ciq4n5jb400687xo9oetwl734" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-puppet-nginx-module-write" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/21/puppet-nginx-module-write/" class="article-date">
+  <time datetime="2014-10-21T04:02:48.000Z" itemprop="datePublished">2014-10-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Puppet/">Puppet</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/21/puppet-nginx-module-write/">Puppet Nginx module write</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>搞puppet也有三几天了，一些概念还不是很清晰。很多时候实验未成功，都是概念没有理清楚、文档没有看全。别的就先不说了，先来安装一个nginx 来试一下吧。</p>
+<p>1、编写nginx模块<br>接下来我们先采动创建模块信息来完成Nginx的部署：需要创建模块录，虚拟主机采件<br>的式进管理。创建模块的信息需要运如下知识点：<br>资源：yumrepo、package、file、service、cron。<br>模板：nginx.conf.erb。<br>创建模块时建议创建README件，接下来对模块的使与安装进详细说明。 </p>
+<p>2、创建模块录，代码如下：<br>1</p>
+<p>#mkdir -p /etc/puppet/modules/nginx/{manifests,templates,files,tests}</p>
+<p>3、创建模块主配置件，代码如下： </p>
+<p>#cat /etc/puppet/modules/nginx/manifests/init.pp</p>
+<h1 id="Class_3A_nginx"><a href="#Class_3A_nginx" class="headerlink" title="Class: nginx"></a>Class: nginx</h1><p>#</p>
+<p>#Install nginx.<br>#</p>
+<p>#Parameters:</p>
+<h1 id="*__24nginx_user-_Defaults_to__u2018nginx_u2019"><a href="#*__24nginx_user-_Defaults_to__u2018nginx_u2019" class="headerlink" title="* $nginx_user. Defaults to ‘nginx’."></a>* $nginx_user. Defaults to ‘nginx’.</h1><h1 id="*_worker_processes-_Defaults_to__26lt_3B__25_3D_processorcount__25_26gt_3B"><a href="#*_worker_processes-_Defaults_to__26lt_3B__25_3D_processorcount__25_26gt_3B" class="headerlink" title="* worker_processes. Defaults to &lt; %= processorcount %&gt;."></a>* worker_processes. Defaults to &lt; %= processorcount %&gt;.</h1><p>#</p>
+<p>#Create config directories :</p>
+<h1 id="*_/etc/nginx/conf-d_for_sites_includes"><a href="#*_/etc/nginx/conf-d_for_sites_includes" class="headerlink" title="* /etc/nginx/conf.d for sites includes"></a>* /etc/nginx/conf.d for sites includes</h1><p>#</p>
+<p>#Templates:</p>
+<h1 id="nginx-conf-erb__3D_26gt_3B_/etc/nginx/nginx-conf"><a href="#nginx-conf-erb__3D_26gt_3B_/etc/nginx/nginx-conf" class="headerlink" title="- nginx.conf.erb =&gt; /etc/nginx/nginx.conf"></a>- nginx.conf.erb =&gt; /etc/nginx/nginx.conf</h1><p>#</p>
+<p>class nginx {<br>$real_nginx_user = $nginx_user ? { ‘’ =&gt; ‘nginx’, default =&gt; $nginx_user }<br>$nginx_conf      = “/etc/nginx/conf.d”<br>$nginx_logrote   = “/etc/nginx/conf.d/nginx_logrote.sh”<br>yumrepo { “nginx”:<br>descr    =&gt; “nginx repo”,<br>baseurl  =&gt; “<a href="http://nginx.org/packages/centos/\$releasever/\$basearch/" target="_blank" rel="external">http://nginx.org/packages/centos/\$releasever/\$basearch/</a>“,<br>gpgcheck =&gt; “0”,<br>enabled  =&gt; “1”;<br>}<br>package { “nginx”:<br>ensure        =&gt; installed,<br>require       =&gt; Yumrepo[“nginx”],<br>allow_virtual =&gt; false;<br>}<br>service { ‘nginx’:<br>ensure     =&gt; running,<br>enable     =&gt; true,<br>hasrestart =&gt; true,<br>hasstatus  =&gt; true,<br>subscribe  =&gt; File[“nginx.conf”],<br>}<br>file { ‘nginx.conf’:<br>ensure   =&gt; present,<br>mode     =&gt; 644,<br>owner    =&gt; root,<br>group    =&gt; root,<br>path     =&gt; ‘/etc/nginx/nginx.conf’,<br>content  =&gt; template(“nginx/nginx.conf.erb”),<br>notify   =&gt; Exec[“reload-nginx”],<br>require  =&gt; Package[“nginx”],<br>}<br>file { “$nginx_conf”:<br>ensure   =&gt; directory,<br>recurse  =&gt; true,<br>force    =&gt; true,</p>
+<p>#purge    =&gt; true,<br>source   =&gt; “puppet:///modules/nginx/conf.d”,<br>notify   =&gt; Exec[“reload-nginx”],<br>require  =&gt; Package[“nginx”],<br>}<br>file { “$nginx_logrote”:<br>ensure   =&gt; file,<br>mode     =&gt; 755,<br>owner    =&gt; root,<br>group    =&gt; root,<br>source   =&gt; “puppet:///modules/nginx/nginx_logrote.sh”,<br>}<br>cron { ‘nginx_logrote_cron’:<br>command  =&gt; “/bin/bash {$nginx_logrote} &gt; /dev/null 2&gt;&amp;1”,<br>user     =&gt; root,<br>minute   =&gt; ‘0’,<br>hour     =&gt; ‘0’,<br>}<br>exec { ‘reload-nginx’:<br>command     =&gt; “/etc/init.d/nginx reload”,<br>refreshonly =&gt; true,<br>}<br>}</p>
+<p>以上代码中定义了：<br>变量，将nginx户、虚拟主机录及志件定义为变量，便在该作域内引。<br>yumrepo资源，使yumrepo定义Nginx软件包来源，Puppet会在yum软件源中创建<br>nginx.repo件。<br>以上代码中定义了：<br>File资源，nginx.conf采模块的式实现，配置件中部分参数便使facts或变量进传递。志件与虚拟主机件采件同步的式实现，并保持录的致性，以避免虚拟主机删除后 不同步的问题。且还使notify属性触发exec进reload动作。<br>service资源，定义Nginx服务的状态，默认随开机启动，puppet agent运时每次检测Nginx服<br>务是否运等。该资源依赖package资源Nginx软件包的安装。<br>cron资源，定义志清除脚本定时运。每天零点采root进志切割。<br>exec资源，定义Nginx服务的reload命令为资源，便虚拟主机变更时进加载。 </p>
+<p>4、创建nginx主配置件：<br>我们定义节选核的nginx.conf配置件，其中的nginx进程个数由facts传递，与服务器线程数相<br>同。具体代码如下:</p>
+<h1 id="cat_/etc/puppet/modules/nginx/templates/nginx-conf-erb"><a href="#cat_/etc/puppet/modules/nginx/templates/nginx-conf-erb" class="headerlink" title="cat /etc/puppet/modules/nginx/templates/nginx.conf.erb"></a>cat /etc/puppet/modules/nginx/templates/nginx.conf.erb</h1><p>user &lt; %= real_nginx_user %&gt;;<br>worker_processes &lt; %= processorcount %&gt;;<br>error_log /var/log/nginx/error.log notice;<br>pid /var/run/nginx.pid;<br>events {<br>use epoll;<br>worker_connections 51200;<br>}<br>http {<br>include /etc/nginx/mime.types;<br>default_type application/octet-stream;<br>charset utf-8;<br>log_format main ‘$remote_addr - $remote_user [$time_local] “$request” ‘<br>                ‘$status $body_bytes_sent “$http_referer” ‘<br>                 ‘“$http_user_agent” “$http_x_forwarded_for”‘;<br>access_log /var/log/nginx/access.log main;<br>server_names_hash_bucket_size 128;<br>client_header_buffer_size 32k;<br>large_client_header_buffers 4 32k;<br>client_body_buffer_size 8m; #256k<br>sendfile on;</p>
+<p>#timeouts<br>keepalive_timeout 0;</p>
+<p>#TCP Options<br>tcp_nopush on;<br>tcp_nodelay on;<br>client_max_body_size 50m;<br>include /etc/nginx/conf.d/*.conf;<br>}</p>
+<p>4、创建虚拟主机录及件。<br>对所有的虚拟主机进录同步管理，创建agent.domain.com虚拟主机，定义其内容如下： </p>
+<h1 id="mkdir_-p_/etc/puppet/files/nginx/conf-d__23_vim_/etc/puppet/files/nginx/conf-d/agent1-jeffery-com-conf_server__7B"><a href="#mkdir_-p_/etc/puppet/files/nginx/conf-d__23_vim_/etc/puppet/files/nginx/conf-d/agent1-jeffery-com-conf_server__7B" class="headerlink" title="mkdir -p /etc/puppet/files/nginx/conf.d # vim /etc/puppet/files/nginx/conf.d/agent1.jeffery.com.conf server {"></a>mkdir -p /etc/puppet/files/nginx/conf.d # vim /etc/puppet/files/nginx/conf.d/agent1.jeffery.com.conf server {</h1><pre><code>listen 80;
+server_name agent1.jeffery.com
+root        /var/www/html/agent1.jeffery.com;
+location    /nginx_status {
+stub_status on;
+access_log off;
+</code></pre><p>}<br>}</p>
+<p>5、创建志轮循脚本，具体如下： </p>
+<h1 id="cat_/etc/puppet/modules/nginx/files/nginx_logrote-sh"><a href="#cat_/etc/puppet/modules/nginx/files/nginx_logrote-sh" class="headerlink" title="cat /etc/puppet/modules/nginx/files/nginx_logrote.sh"></a>cat /etc/puppet/modules/nginx/files/nginx_logrote.sh</h1><p>#!/bin/bash</p>
+<h1 id="This_script_run_at_00_3A00"><a href="#This_script_run_at_00_3A00" class="headerlink" title="This script run at 00:00"></a>This script run at 00:00</h1><h1 id="The_Nginx_logs_path"><a href="#The_Nginx_logs_path" class="headerlink" title="The Nginx logs path"></a>The Nginx logs path</h1><p>logs_path=”/var/log/nginx/“<br>PIDFILE=/var/run/nginx.pid<br>ACCESS_LOG=”${logs<em>path}$(date -d “yesterday” +”%Y”)/$(date -d “yesterday” +”%m”)/access</em>$(date -d “yesterday” ERROR_LOG=”${logs<em>path}$(date -d “yesterday” +”%Y”)/$(date -d “yesterday” +”%m”)/error</em>$(date -d “yesterday” mkdir -p ${logs_path}$(date -d “yesterday” +”%Y”)/$(date -d “yesterday” +”%m”)/<br>mv ${logs_path}access.log $ACCESS_LOG<br>mv ${logs_path}error.log $ERROR_LOG<br>kill -USR1 <code>cat $PIDFILE</code></p>
+<p>#gzip<br>/bin/gzip -9 $ACCESS_LOG<br>/bin/gzip -9 $ERROR_LOG</p>
+<p>#rm<br>find ${logs_path} -name “*.log.gz” -mtime +7|xargs rm –f</p>
+<p>6、设置同步主机、模块</p>
+<h1 id="cat_/etc/puppet/manifests/site-pp"><a href="#cat_/etc/puppet/manifests/site-pp" class="headerlink" title="cat /etc/puppet/manifests/site.pp"></a>cat /etc/puppet/manifests/site.pp</h1><p>$fileserver = “master.jeffery.com”<br>import  “nodes/cnc/*.pp”</p>
+<p>#import ‘/etc/puppet/manifests/nodes/cnc/agent1.jeffery.com.pp’</p>
+<h1 id="cat_/etc/puppet/manifests/nodes/cnc/agent1-jeffery-com-pp"><a href="#cat_/etc/puppet/manifests/nodes/cnc/agent1-jeffery-com-pp" class="headerlink" title="cat /etc/puppet/manifests/nodes/cnc/agent1.jeffery.com.pp"></a>cat /etc/puppet/manifests/nodes/cnc/agent1.jeffery.com.pp</h1><p>node ‘agent1.jeffery.com’ {<br>    include  nginx</p>
+<pre><code>#include httpd
+#include  memcached
+</code></pre><p>}</p>
+<p>7、在客户端运puppet命令可以看到Finished完成的提，具体如下：<br>notice: Finished catalog run in 18.76 seconds<br>这时我们可以看到/etc/nginx/conf.d录已经同步了志切割件与虚拟主机agent的配置件，并<br>且Nginx服务已启动。<br>到这我们已经完成了编写nginx模块，并在客户端成功进应。整个过程不是常复杂，<br>在编写时只需要知道每个步骤及其实现的功能就可以轻松完成。 </p>
+<p>二、接下来看如何利官Forge提供的nginx模块实现Nginx部署。<br>编写模块并不像我们想象中的那么复杂，并且灵活可定制。当然也可以使Puppetlabs官Forge上所提供的nginx模块来实现。使时只需要参考模块 录下的README件即可。</p>
+<p>1、使命令puppet modules查找模块，代码如下： </p>
+<p>#puppet module search nginx # puppet module search nginx<br>Notice: Searching <a href="https://forgeapi.puppetlabs.com" target="_blank" rel="external">https://forgeapi.puppetlabs.com</a> …<br>NAME                    DESCRIPTION                                            AUTHOR            KEYWORDS<br>jfryman-nginx           Puppet NGINX management module                         @jfryman          nginx http proxy rack<br>puppetlabs-nginx        Puppet NGINX management module<br>…</p>
+<p>2、可以看到许多通过官验证的模块，在这我们采官Puppetlabs的nginx模块进安装，代码<br>如下： </p>
+<h1 id="puppet_module_install_puppetlabs-nginx"><a href="#puppet_module_install_puppetlabs-nginx" class="headerlink" title="puppet module install puppetlabs-nginx"></a>puppet module install puppetlabs-nginx</h1><p>Notice: Preparing to install into /etc/puppet/modules …<br>Notice: Downloading from <a href="https://forgeapi.puppetlabs.com" target="_blank" rel="external">https://forgeapi.puppetlabs.com</a> …<br>Notice: Installing – do not interrupt …<br>/etc/puppet/modules<br>└─┬ puppetlabs-nginx (v99.99.99)<br>  └── puppetlabs-stdlib (v4.3.2)</p>
+<p>安装完成后，可以看到在modules录下多出两个模块：stdlib与nginx。</p>
+<p>stdlib是puppet提供的函数 库。</p>
+<p>nginx模块使了此函数库的函数。</p>
+<p>查看nginx模块内容如下： </p>
+<h1 id="ll_-th_modules/nginx"><a href="#ll_-th_modules/nginx" class="headerlink" title="ll -th modules/nginx"></a>ll -th modules/nginx</h1><p>total 32K<br>-r–r–r– 1 root root 2.6K May  2 02:36 metadata.json<br>-r–r–r– 1 root root  369 May  2 02:35 Modulefile<br>drwxr-xr-x 4 root root 4.0K Apr 22 08:10 manifests<br>drwxr-xr-x 4 root root 4.0K Apr 22 08:10 templates<br>drwxr-xr-x 2 root root 4.0K Apr 22 08:10 tests<br>-r–r–r– 1 root root  665 Sep  5  2013 README.markdown<br>-r–r–r– 1 root root 2.5K Sep  5  2013 ChangeLog<br>-r–r–r– 1 root root    0 Sep  5  2013 README<br>-r–r–r– 1 root root  523 Sep  4  2013 LICENSE</p>
+<h1 id="u67E5_u770B_u5B89_u88C5_u6A21_u5757"><a href="#u67E5_u770B_u5B89_u88C5_u6A21_u5757" class="headerlink" title="查看安装模块"></a>查看安装模块</h1><h1 id="puppet_module_list"><a href="#puppet_module_list" class="headerlink" title="puppet  module list"></a>puppet  module list</h1><p>#puppet 卸载模块</p>
+<h1 id="puppet_module_install_puppetlabs-nginx__23__u6216_u76F4_u63A5_u5C06_u8FD9_u4E2A_u76EE_u5F55_u5E72_u6389"><a href="#puppet_module_install_puppetlabs-nginx__23__u6216_u76F4_u63A5_u5C06_u8FD9_u4E2A_u76EE_u5F55_u5E72_u6389" class="headerlink" title="puppet module install puppetlabs-nginx    # 或直接将这个目录干掉"></a>puppet module install puppetlabs-nginx    # 或直接将这个目录干掉</h1><p>3、客户端安装同上，更多内容请查看 README 文档</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/10/21/puppet-nginx-module-write/" data-id="ciq4n5j9d004u7xo9bfuoncnk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Puppet/">Puppet</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mysql-basic-common-summary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/20/mysql-basic-common-summary/" class="article-date">
+  <time datetime="2014-10-20T08:48:10.000Z" itemprop="datePublished">2014-10-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/20/mysql-basic-common-summary/">MYSQL 常用总结【基础】</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>文章是之前总结的，还不是很完善。对于新手来说也许有一些帮助吧。</p>
+<p>文章难免会出现一些错误，请大家指出。</p>
+<p>Mysql 忘记root密码<br>在/etc/my.cfg [mysqld]下面添加<br>skip-grant-tables<br>或是<br>skip-grant</p>
+<p>重启MySQL<br>use mysql;<br>UPDATE user SET Password = password ( ‘new-password’ ) WHERE User = ‘root’ ;<br>mysql flush privileges;<br>将my.cfg文件修改回来 ，重启MySQL即可。</p>
+<p>二、在启动Mysql服务器时加上参数–skip-grant-tables来跳过授权表的验证<br>    (./safe_mysqld –skip-grant-tables &amp;)，这样我们就可以直接登陆Mysql服务器，<br>    然后再修改root用户的口令，重启Mysql就可以用新口令登陆了。</p>
+<p>添加环境变量<br>PATH=$PATH:/usr/local/mysql/bin  加入到/etc/profile中</p>
+<p>只需本机使用Mysql服务<br>在启动时还可以加上–skip-networking参数使Mysql不监听任何TCP/IP连接<br>(./safe_mysqld –skip-networking &amp;)，增加安全性。（非常推荐）</p>
+<p>查看支持的存储引擎<br> mysql&gt; show engines;<br>+————+———+————————————————————+————–+——+————+<br>| Engine     | Support | Comment                                                    | Transactions | XA   | Savepoints |<br>+————+———+————————————————————+————–+——+————+<br>| MRG_MYISAM | YES     | Collection of identical MyISAM tables                      | NO           | NO   | NO         |<br>| CSV        | YES     | CSV storage engine                                         | NO           | NO   | NO         |<br>| MyISAM     | DEFAULT | Default engine as of MySQL 3.23 with great performance    | NO           | NO   | NO         |<br>| InnoDB     | YES     | Supports transactions, row-level locking, and foreign keys | YES          | YES  | YES        |<br>| MEMORY     | YES     | Hash based, stored in memory, useful for temporary tables  | NO           | NO   | NO         |<br>+————+———+————————————————————+————–+——+————</p>
+<p>查看当前MySQL的默认数据引擎<br>show variables like ‘%engine%’;<br>mysql&gt; show variables like ‘%engine%’;<br>+—————————+——–+<br>| Variable_name             | Value  |<br>+—————————+——–+<br>| engine_condition_pushdown | ON     |<br>| storage_engine            | MyISAM |<br>+—————————+——–+<br>2 rows in set (0.00 sec)</p>
+<p>查看和修改最大连接数<br>  使用MySQL 数据库的站点，当访问连接数过多时，就会出现 “Too many connections” 的错误。<br>  出现这种错误有两种情况，一种是网站访问量实在太大，服务器已经负担不起，此时就应该考虑负载均衡或者其它减少服务器压力的办法。另一种情况就是 MySQL 的最大连接数设置得太小，当访问量稍大就出现连接过多的错误。</p>
+<p>  show variables like ‘%max_connections%’;<br>  要对 mysql 的最大连接数进行修改，只需要在 my.cnf 配置文件里面修改 max_connections 的值，然后重启 mysql 就行。<br>  如果 my.ini 文件中没有找到 max_connections 条目，可自行添加以下条目。</p>
+<p>  max_connections = 220<br>  或是<br>  mysql&gt;set global max_user_connections = 200; [仅本次修改有效]</p>
+<p>实时查看mysql当前连接数<br>前提：对用户和远程主机有授权<br>mysql&gt; grant all on <em>.</em> to root@192.168.9.9 identified by ‘ocean@mx’;<br>Query OK, 0 rows affected (0.00 sec)</p>
+<p>mysql&gt; flush privileges;<br>Query OK, 0 rows affected (0.00 sec)</p>
+<p>[root@OceanV ~]# mysqladmin -uroot -p -h192.168.9.9  processlist<br>Enter password:<br>+—-+——+——————-+—-+———+——+——-+——————+<br>| Id | User | Host              | db | Command | Time | State | Info             |<br>+—-+——+——————-+—-+———+——+——-+——————+<br>| 41 | root | localhost         |    | Sleep   | 13   |       |                  |<br>| 56 | root | 192.168.9.9:45422 |    | Query   | 0    |       | show processlist |<br>+—-+——+——————-+—-+———+——+——-+——————+</p>
+<p>只查看当前连接数(Threads就是连接数）<br>[root@OceanV ~]# mysqladmin -uroot -pocean@mx status<br>Uptime: 4449  Threads: 2  Questions: 18697  Slow queries: 0  Opens: 77  Flush tables: 1  Open tables: 31  Queries per second avg: 4.202<br>或是 show full processlist;<br>mysql&gt; show full processlist;<br>+—-+——+———–+——-+———+——+——-+———————–+<br>| Id | User | Host      | db    | Command | Time | State | Info                  |<br>+—-+——+———–+——-+———+——+——-+———————–+<br>| 41 | root | localhost | NULL  | Query   |    0 | NULL  | show full processlist |<br>| 65 | root | localhost | cacti | Sleep   |    4 |       | NULL                  |<br>| 68 | root | localhost | NULL  | Sleep   |   27 |       | NULL                  |<br>+—-+——+———–+——-+———+——+——-+———————–+<br>3 rows in set (0.00 sec)<br>看一下所有连接进程，注意查看进程等待时间以及所处状态 是否locked<br>如果进程过多，就把进程打印下来，然后查看.<br>mysql -e ‘show full processlist;’ -p &gt; 111<br>查找非locked的进程，一般就是当前执行中卡死，导致后面的进程排队的原因。</p>
+<p>查看MySQL连接数和当前用户Mysql连接数<br>先用管理员身份进入mysql提示符。<br>mysql -uroot -pxxxx<br>mysql &gt;show processlist;         #可以显示前100条连接信息<br>       show full processlist;    #可以显示全部。随便说下，如果用普通账号登录，就只显示这用户的。</p>
+<p>修改MySQL监听端口<br> 1.如果你安装的是系统自带的rpm包的情况：<br> 修改 /etc/my.cnf<br> [mysqld]<br> datadir=/var/lib/mysql<br> port=3300                    #修改成你自己想要的端口<br>  socket=/var/lib/mysql/mysql.sock<br> [mysql.server]<br> user=mysql<br> basedir=/var/lib<br> [safe_mysqld]<br> err-log=/var/log/mysqld.log<br> pid-file=/var/run/mysqld/mysqld.pid<br> 保存退出。<br> 2.如果你安装的是其他源码包或者在同一服务器上安装多个mysqld服务的情况：<br>  同样的配置，找出my.cnf 文件。添加port= 端口号<br> 需要注意的是<br> [client]<br> port            = 3300<br> 这里也要改一下。</p>
+<p>在同一台机器上配置两个MySQL服务（跑两个端口）<br>cd /usr/local/; cp -r mysql mysql_2; cd mysql_2;<br>初始化mysql2: ./scripts/mysql_install_db –user=mysql –datadir=/data/mysql2<br>拷贝配置文件：cp /etc/my.cnf ./my.cnf<br>修改配置文件相关参数：vim my.cnf  #更改port 以及 socket<br>启动：/usr/local/mysql_2/bin/mysqld_safe –defaults-file=/usr/local/mysql_2/my.cnf –user=mysql &amp;<br>若开机启动它，需加入到 /etc/rc.local中</p>
+<p>查看mysql设置参数　　<br>$mysqladmin  -u root -p variables;</p>
+<p>查询参数　　<br>    1) \g  在语句尾，同;<br>　　2) \G  在语句尾，使查询结果以竖形输出<br>　　3) \c  在语句尾，使当前语句不执行</p>
+<p>清屏<br>! clear</p>
+<p>切换mysql命令结尾符<br>dlimeter 特殊符;</p>
+<p>查看当前版本和当前日期<br>此命令要求mysql服务器告诉你它的版本号和当前日期</p>
+<p>mysql select version(),current_date();<br>+——————————-+—————-+<br>| version()                     | current_date() |<br>+——————————-+—————-+<br>| 4.1.7Boco_DC_Group_2004-11-24 | 2008-06-18     |<br>+——————————-+—————-+<br>1 row in set (0.00 sec)</p>
+<p>当前是哪个用户<br>select user();</p>
+<p>查看mysql状态<br>show status;</p>
+<p>修改mysql参数<br>show variables like ‘max_connect%’; set global max_connect_errors = 1000;<br>查看mysql队列 show processlist;</p>
+<p>查看mysql是否在监听端口命令<br>netstat -tl | grep mysql</p>
+<p>开启服务器　　<br>    $/etc/rc.d/init.d/mysqld start<br>　　或<br>　　$mysqld_safe  –user=mysql &amp;<br>停止服务器<br>　　$/etc/rc.d/init.d/mysqld stop<br>　　或<br>　　$mysqladmin  shutdown  -u root -p<br>    或<br>　　/usr/bin/mysqladmin -u root -p shutdown</p>
+<p>赋权　　<br>mysqlgrant all on dbname.* to username@ identified by ‘localhostpassword’<br>刷新权限表　　mysqlflush privileges;</p>
+<p>优化表　　<br>mysqloptimize  table  tblA,tblB;<br>或 [进行优化并检查修复任务]<br>$mysqlcheck  -o  dbname  tblA tblB  tblC   -u root  -p</p>
+<p>对表进行分析　　<br>mysqlanalyze  table  tblA;<br>或<br>$mysqlcheck  -a dbname [tblA  tblB tblC ] -u root -p</p>
+<p>对表进行检查　　<br>mysqlcheck table tblA,tblB,tblC;</p>
+<p>连接服务器　　<br>mysql -u   cnscn<br>　　      -h   192.168.0.1<br>　　      [-D  dbname]<br>　　      [-P  3306]<br>　　 [–protocol=name]    The protocol of connection (tcp,socket,pipe,memory)<br>　　      [-S, –socket=name]  连接所用的套接字文件<br>　　      [–character-sets-dir=name]  字符集所位于的目录<br>　　      [–default-character-set=name]   默认的字符集<br>　　      [-E, –vertical]  垂直地打列出查询输出</p>
+<p>从命令行登录MySQL数据库服务器<br>1.登录使用默认3306端口的MySQL<br>/usr/local/mysql/bin/mysql -u root -p</p>
+<p>2.通过TCP连接管理不同端口的多个MySQL（注意：MySQL4.1以上版本才有此项功能）<br>/usr/local/mysql/bin/mysql -u root -p –protocol=tcp –host=localhost –port=3307</p>
+<p>3.通过socket套接字管理不同端口的多个MySQL<br>/usr/local/mysql/bin/mysql -u root -p –socket=/tmp/mysql3307.sock</p>
+<p>4.通过端口和IP管理不同端口的多个MySQL<br>/usr/local/mysql/bin/mysql -u root -p -P 3306 -h 127.0.0.1</p>
+<p>退出mysql命令：<br>exit（回车） 提示“bye”</p>
+<p>修改登录密码<br>MySQL默认没有密码，安装完毕增加密码的重要性是不言而喻的。<br>usr/bin/mysqladmin -u root password ‘new-password’<br>格式：mysqladmin -u用户名 -p旧密码 password 新密码</p>
+<p>创建数据库　　<br>Mysql&gt;create database dbname;</p>
+<p>显示数据库列表　　<br>mysql&gt;show databases;</p>
+<p>显示数据表列表　　<br>mysql&gt;show tables;</p>
+<p>显示数据表的结构<br>describe 表名;<br>或<br>desc tablesname;</p>
+<p>显示表的创建信息<br>show create table tablesname;</p>
+<p>创建名称为ocean的数据库<br>CREATE DATABASE ocean;<br>DROP tables tablesname;</p>
+<p>将表中记录清空<br>delete from tablesname;</p>
+<p>建表<br>use 库名；create table 表名(字段设定列表)；</p>
+<p>删除名称为ocean的数据库<br>DROP DATABASE ocean;</p>
+<p>选择ocean数据库<br>USE ocean;</p>
+<p>(USE 和 QUIT 命令不需要分号结束。）</p>
+<p>常用sql命令<br>查询 select count(<em>) from mysql.user; select </em> from mysql.db; select * from mysql.db where host like ‘10.0.%’;<br>插入 update db1.t1 set name=’aaa’ where id=1;<br>清空表 truncate table db1.t1;<br>删除表 drop table db1.t1;<br>删除数据库 drop database db1;<br>修复表 repair table tb1 [use frm];</p>
+<p>表操作SQL语句<br>1、显示当前数据库中存在什么表<br>SHOW TABLES;</p>
+<p>2、创建数据库表zhangyan<br>在mysql后粘贴以下SQL语句，存储引擎为MYISAM，字段id为主键、唯一索引<br>。<br>CREATE TABLE <code>zhangyan</code> ( <code>id</code> INT( 5 ) UNSIGNED NOT NULL AUTO_INCREMENT , <code>username</code> VARCHAR( 20 ) NOT NULL , <code>password</code> CHAR( 32 ) NOT NULL , <code>time</code> DATETIME NOT NULL , <code>number</code> FLOAT( 10 ) NOT NULL , <code>content</code> TEXT NOT NULL , PRIMARY KEY ( <code>id</code> ) ) ENGINE = MYISAM ;</p>
+<p>3、查看zhangyan表结构<br>DESCRIBE zhangyan;</p>
+<p>4、从表中检索信息<br>4.1、从zhangyan表中检索所有记录<br>SELECT * FROM zhangyan;</p>
+<p>4.2、从zhangyan表中检索特定的行：字段username等于abc，字段number等于1，按字段id降序排列<br>SELECT * FROM zhangyan WHERE username = abc AND number=1 ORDER BY id DESC;</p>
+<p>4.3、从zhangyan表中检索指定的字段：username和password<br>SELECT username, password FROM zhangyan;</p>
+<p>4.4、从zhangyan表中检索出唯一的不重复记录<br>SELECT DISTINCT username FROM zhangyan;</p>
+<p>5、插入信息到zhangyan表<br>INSERT INTO zhangyan (id, username, password, time, number, content) VALUES (, abc, 123456,<br>2007-08-06 14:32:12, 23.41, hello world);</p>
+<p>6、更新zhangyan表中的指定信息<br>UPDATE zhangyan SET content = hello china WHERE username = abc;</p>
+<p>7、删除zhangyan表中的指定信息<br>DELETE FROM zhangyan WHERE id = 1;</p>
+<p>8、清空zhangyan表<br>DELETE FROM zhangyan;</p>
+<p>9、删除zhangyan表<br>DROP TABLE zhangyan;</p>
+<p>10、更改表结构，将zhangyan表username字段的字段类型改为CHAR(25)<br>ALTER TABLE zhangyan CHANGE username username CHAR(25);</p>
+<p>11、将当前目录下的mysql.sql导入数据库<br>SOURCE ./mysql.sql;</p>
+<p>12、MySQL中将字符串aaa批量替换为bbb的SQL语句<br>UPDATE表名SET字段名=REPLACE(字段名,aaa,bbb);</p>
+<p>13、修复损坏的表<br>用root帐号从命令行登录MySQL：　　<br>mysql-uroot-p<br>选定数据库名（本例中的数据库名为student）：use  student;<br>修复损坏的表（本例中要修复的表为smis_user_student）：　　repair tables mis_user_student;udent;</p>
+<p>一个建库和建表以及插入数据的实例<br>drop database if exists school; //如果存在SCHOOL则删除<br>create database school; //建立库SCHOOL<br>use school; //打开库SCHOOL<br>create table subject //建立表<br>(<br>id int(3) auto_increment not null primary key,<br>name char(10) not null<br>); //建表结束<br>//以下为插入字段<br>insert into subject(name) values(‘语文’);<br>insert into subject(name) values(‘数学’);<br>insert into subject(name) values(‘英语’);</p>
+<p>create table student //建立表<br>(<br>id int(4) auto_increment not null primary key;<br>no char(4) not null,<br>name char(10) not null,<br>); //建表结束<br>//以下为插入字段<br>insert into student(no,name) values(‘0001’,’张三’);<br>insert into student(no,name) values(‘0002’,’李四’);</p>
+<p>create table grade //建立表<br>(<br>student_no char(4) not null,<br>subject_id int(3) not null,<br>score int(3) not null default 0 null,<br>primary key(student_no,subject_id);<br>); //建表结束<br>我们这里建立的grade表student_no参考student的no字段，subject_id参考subject的id字段 它们存在约束关系，<br>我们给grade表添加两个外键：<br>subject_id字段：<br>alter table grade add foreign key(subject_id) refrences subject(id) on delete cascade on update cascade;<br>student_no字段：<br>alter table grade add foreign key(student_no) refrences student(no) on delete cascade on update cascade;<br>这个时候会报错，因为我们没有把student表中的no设为索引，前一句没有问题是因为subject的id是主键，已经是索引了<br>我们给student的no添加索引<br>alter table student add index(no);<br>然后我们再<br>alter table grade add foreign key(student_no) refrences student(no);<br>这样就OK了</p>
+<p>其他一些操作：<br>添加主键： alter table 表名 add primary key(列名)<br>删除主键： alter table 表名 drop primary key;<br>给某列改名： alter table 表名 change 列名 属性列表 比如alter table student change id no char(4)<br>添加某列：<br>1 在表的最前面添加列 比如给student表添加id属性 放在表的最前面<br>alter table student add id int(4) not null auto_increment primary key first;<br>2 在表的某个列后加列 比如给student表添加id属性 放在列no的最前面<br>alter table student add a int(11) afer no;<br>删除某列： alter table 表名 drop column 列名;<br>更改某列属性 比如修改student no字段属性 alter table student modify no char(4);<br>添加索引：alter table 表名 add index 列名<br>删除索引：alter table 表名 drop index 列名<br>删除外键：alter table 表名 drop foreign key 约束名<br>limit的使用：<br>select <em> from 表名 limit 2;//如果只给定一个参数，它表示返回最大的记录行数目<br>select </em> from 表名 limit 1,3;// 第一个参数指定第一个返回记录行的偏移量，第二个参数指定返回记录行的最大数目</p>
+<p>更改MySQL目录<br>MySQL默认的数据文件存储目录为/var/lib/mysql。假如要把目录移到/home/data下需要进行下面几步：<br>1、home<br>目录下建立data目录<br>cd /home<br>mkdir data<br>2、把MySQL服务进程停掉：<br>mysqladmin -u root -p shutdown<br>3、把/var/lib/mysql整个目录移到/home/data<br>mv /var/lib/mysql　/home/data/<br>这样就把MySQL的数据文件移动到了/home/data/mysql下<br>4、找到my.cnf配置文件<br>如果/etc/目录下没有my.cnf配置文件，请到/usr/share/mysql/下找到*.cnf文件，拷贝其中一个到/etc/并改名为my.cnf)中。命令如下：<br>[root@test1 mysql]# cp /usr/share/mysql/my-medium.cnf　/etc/my.cnf<br>5、编辑MySQL的配置文件/etc/my.cnf<br>为保证MySQL能够正常工作，需要指明mysql.sock文件的产生位置。 修改socket=/var/lib/mysql/mysql.sock一行中等号右边的值为：/home/mysql/mysql.sock 。<br>操作如下：<br>　　 vi　 my.cnf<br>　　 # The MySQL server<br>　　　 [mysqld]<br>　　　 port　　　= 3306<br>　　　#socket　 = /var/lib/mysql/mysql.sock（原内容，为了更稳妥用#注释此行）<br>　　　 socket　 = /home/data/mysql/mysql.sock　　　（加上此行）<br>6、修改MySQL启动脚本/etc/rc.d/init.d/mysql<br>　　最后,需要修改MySQL启动脚本/etc/rc.d/init.d/mysql，把其中datadir=/var/lib/mysql一行中，等号右边的路径改成你现在的实际存放路径：home/data/mysql。<br>　　[root@test1 etc]# vi　/etc/rc.d/init.d/mysql<br>　　#datadir=/var/lib/mysql　　　　（注释此行）<br>　　datadir=/home/data/mysql　　 （加上此行）<br>7、重新启动MySQL服务<br>　　/etc/rc.d/init.d/mysql　start<br>　　如果工作正常移动就成功了，否则对照前面的7步再检查一下。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/10/20/mysql-basic-common-summary/" data-id="ciq4n5jbg006f7xo9gbohu4lg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-faq-puppet-common-issues" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/14/faq-puppet-common-issues/" class="article-date">
+  <time datetime="2014-10-14T03:51:36.000Z" itemprop="datePublished">2014-10-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Puppet/">Puppet</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/14/faq-puppet-common-issues/">FAQ_Puppet: common issue </a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Q1:最近测试3.7.1 的版本出现了一个问题：The package type’s allow_virtual parameter will be changing its default value from false to true in a future release</p>
+<p>A1：</p>
+<p>[root@agent1 ~]# puppet –version<br>3.7.1</p>
+<p>[root@agent1 ~]# puppet agent –test –server master.jeffery.com –noop<br>Info: Retrieving pluginfacts<br>Info: Retrieving plugin<br>Info: Caching catalog for agent1.jeffery.com<br>Warning: The package type’s allow_virtual parameter will be changing its default value from false to true in a future release. If you do not want to allow virtual packages, please explicitly set allow_virtual to false.<br>(at /usr/lib/ruby/site_ruby/1.8/puppet/type/package.rb:430:in `default’)<br>Info: Applying configuration version ‘1413249918’</p>
+<p>Notice: Finished catalog run in 0.11 seconds</p>
+<p>出现一个警告，但不影响执行的结果，有群友说是版本有问题，最终我也不知道是神码问题的。。</p>
+<p>可以在服务器端的 pp文件中的package 中加入 ：allow_virtual =&gt; false, 来解决出现的警告。</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/4C/65/wKiom1Q8naCzHpLMAAECYZl0S3s217.jpg" alt=""></p>
+<p>检查文件的正确性spacer.gif</p>
+<p><img src="http://s3.51cto.com/wyfs02/M00/4C/65/wKiom1Q8nbLzhLqMAABcT7JLibY009.jpg" alt=""></p>
+<p>测试</p>
+<p><img src="http://s3.51cto.com/wyfs02/M01/4C/66/wKioL1Q8niewaYtMAAC2Nf56-04528.jpg" alt=""></p>
+<p>Q2:</p>
+<p>puppet Error 400 on SERVER Permission denied</p>
+<p>Error: /Stage[main]/Ssh::Config/File[/etc/ssh/sshd_config]: Could not evaluate: Error 400 on SERVER: Permission denied - /etc/puppet/modules/ssh/files/sshd_config Could not retrieve file metadata for puppet:///modules/ssh/sshd_config: Error 400 on SERVER: Permission denied - /etc/puppet/modules/ssh/files/sshd_config</p>
+<p>A2: chmod -R ./ssh/files/*</p>
+<p>Q3:</p>
+<p>What causes the error “Could not retrieve catalog from remote server: execution expired” in Puppet</p>
+<p>This can be caused when the load on the Puppet Master server is too high to send compiled catalogs to the agents.<br>Start by checking if any services are using all the available resources, or if the server is under-powered for the requests it is getting. If all agents run at the same time, edit the cron job that controls their run time to spread it out.<br>If all else fails, allowing the agents to take longer to receive the catalog may work. This can be done by adding the configtimeout setting to the puppet.conf file (/etc/puppet/puppet.conf) and increasing the value. It defaults to “2m”, meaning two minutes.</p>
+<p>Q4:</p>
+<p>Error: Could not retrieve catalog from remote server: Connection refused - connect(2)<br>Warning: Not using cache on failed catalog<br>Error: Could not retrieve catalog; skipping run<br>Error: Could not send report: Connection refused - connect(2)</p>
+<p>此错误是没有启动puppet master服务 或是没有绑定主机名/DNS 未得到正确解析</p>
+<p>[14:37:04][root@agent01 ~]$ cat /etc/hosts | grep 192</p>
+<p>#192.168.9.10     master01.ocean.org   master01</p>
+<p>#192.168.9.20     agent01.ocean.org    agent01</p>
+<p>取消注释 再次执行 问题解决</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/10/14/faq-puppet-common-issues/" data-id="ciq4n5jez009m7xo9pw8s4l4u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Puppet/">Puppet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/faq/">faq</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-snmp-items-with-zabbix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/26/snmp-items-with-zabbix/" class="article-date">
+  <time datetime="2014-09-26T08:05:15.000Z" itemprop="datePublished">2014-09-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Zabbix/">Zabbix</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/26/snmp-items-with-zabbix/">[ 译 ] SNMP Items with ZABBIX</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SNMP Items with ZABBIX</p>
+<p>原文：<a href="https://www.zabbix.com/wiki/howto/monitor/snmp/snmp" target="_blank" rel="external">https://www.zabbix.com/wiki/howto/monitor/snmp/snmp</a></p>
+<p>翻译不好的地方，欢迎大家指出. w_0005.gif<br>设备</p>
+<p>Cisco 3750X</p>
+<p>例：系统运行时间</p>
+<pre><code>创建一个新的主机监控项
+
+把监控项添加到主机（System Uptime）
+
+描述:172.16.9.1（设备IP）
+
+类型: SNMPv2 agent
+
+SNMP community: public
+
+SNMP OID: .1.3.6.1.2.1.1.3.0
+
+SNMP port: 161
+
+键: sysUpTimeInstance (必须唯一）
+
+消息类型:数字整型
+
+单位: s
+
+使用乘法: .01
+
+状态: 启用
+
+存储类型: As is
+</code></pre><p>保存监控项然后退到监控主机，对其进行监控</p>
+<p>操作指南：</p>
+<p>查找自己要监控的值或准确的名字：</p>
+<p>[root@zabbix ~]# snmpwalk  -v 2c -c public 172.16.9.1|grep -i ifinoctet<br>IF-MIB::ifInOctets.1 = Counter32: 0<br>IF-MIB::ifInOctets.2 = Counter32: 567083598<br>IF-MIB::ifInOctets.10 = Counter32: 2070652319<br>IF-MIB::ifInOctets.5001 = Counter32: 3481469910<br>IF-MIB::ifInOctets.5002 = Counter32: 1027664073<br>IF-MIB::ifInOctets.5003 = Counter32: 3670716774<br>IF-MIB::ifInOctets.5004 = Counter32: 2533854585<br>IF-MIB::ifInOctets.5005 = Counter32: 1818187102<br>IF-MIB::ifInOctets.5006 = Counter32: 2940283312<br>IF-MIB::ifInOctets.5007 = Counter32: 3354906303<br>IF-MIB::ifInOctets.5008 = Counter32: 723189870<br>IF-MIB::ifInOctets.5009 = Counter32: 2780244569<br>IF-MIB::ifInOctets.5010 = Counter32: 941387180<br>IF-MIB::ifInOctets.5011 = Counter32: 559352509<br>IF-MIB::ifInOctets.5012 = Counter32: 1010474446<br>IF-MIB::ifInOctets.5013 = Counter32: 363032674<br>IF-MIB::ifInOctets.5014 = Counter32: 4357047<br>IF-MIB::ifInOctets.5015 = Counter32: 3049128451<br>IF-MIB::ifInOctets.5016 = Counter32: 1213051<br>IF-MIB::ifInOctets.5017 = Counter32: 0<br>IF-MIB::ifInOctets.5018 = Counter32: 0<br>IF-MIB::ifInOctets.5019 = Counter32: 0<br>IF-MIB::ifInOctets.5020 = Counter32: 0<br>IF-MIB::ifInOctets.5021 = Counter32: 0<br>IF-MIB::ifInOctets.5179 = Counter32: 0<br>IF-MIB::ifInOctets.5182 = Counter32: 0<br>IF-MIB::ifInOctets.10101 = Counter32: 3481469910<br>IF-MIB::ifInOctets.10102 = Counter32: 0<br>IF-MIB::ifInOctets.10103 = Counter32: 0<br>IF-MIB::ifInOctets.10104 = Counter32: 849803<br>IF-MIB::ifInOctets.10105 = Counter32: 4346<br>IF-MIB::ifInOctets.10106 = Counter32: 0<br>IF-MIB::ifInOctets.10107 = Counter32: 0<br>IF-MIB::ifInOctets.10108 = Counter32: 721814320<br>IF-MIB::ifInOctets.10109 = Counter32: 0<br>…..</p>
+<p>查找你想要的OID：</p>
+<p>[root@zabbix ~]# snmpwalk  -v 2c -c public -On 172.16.9.1 ifInOctets.1<br>.1.3.6.1.2.1.2.2.1.10.1 = Counter32: 0</p>
+<p>监控流量</p>
+<p>场景:</p>
+<pre><code>我们想要监控我们网关流出的流量
+
+我们知道这个接口是 GigabitEthernet1/0/1
+
+我们不知道这个 OID 是什么，但是我们知道一些常识。
+</code></pre><p>解决:</p>
+<pre><code>得到我们想要的 OID
+</code></pre><p>[root@zabbix ~]# snmpwalk  -v 2c -c public 172.16.9.1|grep GigabitEthernet1/0/1<br>IF-MIB::ifDescr.10101 = STRING: GigabitEthernet1/0/1<br>IF-MIB::ifDescr.10110 = STRING: GigabitEthernet1/0/10<br>IF-MIB::ifDescr.10111 = STRING: GigabitEthernet1/0/11<br>IF-MIB::ifDescr.10112 = STRING: GigabitEthernet1/0/12<br>IF-MIB::ifDescr.10113 = STRING: GigabitEthernet1/0/13<br>IF-MIB::ifDescr.10114 = STRING: GigabitEthernet1/0/14</p>
+<pre><code>现在我们可以得到OID相同的地方是IfDesscr 让我们试试“in”和“out”在这个接口上
+
+我想“.10101”就是这个接口的结尾
+</code></pre><p>[root@zabbix ~]# snmpwalk  -v 2c -c public 172.16.9.1|egrep -i ‘if(in|out|101)’|less<br>IF-MIB::ifIndex.1 = INTEGER: 1<br>IF-MIB::ifIndex.2 = INTEGER: 2<br>IF-MIB::ifIndex.10 = INTEGER: 10<br>IF-MIB::ifIndex.5001 = INTEGER: 5001<br>IF-MIB::ifIndex.5002 = INTEGER: 5002<br>IF-MIB::ifIndex.5003 = INTEGER: 5003<br>…<br>IF-MIB::ifIndex.10101 = INTEGER: 10101<br>IF-MIB::ifIndex.10102 = INTEGER: 10102<br>IF-MIB::ifIndex.10103 = INTEGER: 10103<br>IF-MIB::ifIndex.10104 = INTEGER: 10104</p>
+<pre><code>上面给出了这个项应该是 ifindex.num
+
+创建一个zabbix 监控项
+</code></pre><p>[root@zabbix ~]# snmpwalk  -v 2c -c zabbix.thtim.com 172.16.9.1 ifInOctets<br>IF-MIB::ifInOctets.1 = Counter32: 0<br>IF-MIB::ifInOctets.2 = Counter32: 567255108<br>IF-MIB::ifInOctets.10 = Counter32: 2075959402<br>IF-MIB::ifInOctets.5001 = Counter32: 3482669485<br>IF-MIB::ifInOctets.5002 = Counter32: 1030509076<br>IF-MIB::ifInOctets.5003 = Counter32: 3673853121<br>…<br>IF-MIB::ifInOctets.10101 = Counter32: 3482669485<br>IF-MIB::ifInOctets.10102 = Counter32: 0<br>IF-MIB::ifInOctets.10103 = Counter32: 0<br>…</p>
+<pre><code>啊哈 “ifInOctets” 和 “ifOutOctets” 与 索引10101 使我们要找的 。
+
+即：ifInOctets.10101
+
+让我来得到数字的OID
+</code></pre><p> 32位：</p>
+<p>[root@zabbix ~]# snmpwalk  -v 2c -c public-On 172.16.9.1 ifInOctets.10101<br>.1.3.6.1.2.1.2.2.1.10.10101 = Counter32: 3482873659<br>[root@zabbix ~]# snmpwalk  -v 2c -c public -On 172.16.9.1 ifOutOctets.10101<br>.1.3.6.1.2.1.2.2.1.16.10101 = Counter32: 4031196606</p>
+<p>64位<br>[root@zabbix ~]# snmpwalk  -v 2c -c pubic -On 172.16.9.1 ifHCInOctets.10101<br>.1.3.6.1.2.1.31.1.1.1.6.10101 = Counter64: 3482962709<br>[root@zabbix ~]# snmpwalk  -v 2c -c pulic -On 172.16.9.1 ifHCOutOctets.10101<br>.1.3.6.1.2.1.31.1.1.1.10.10101 = Counter64: 4031296146</p>
+<p>好了， 现在我们来总结一下整个过程：</p>
+<pre><code>创建一个进接口的监控项
+
+    描述: 172.16.9.1（设备IP）
+
+    SNMP 版本: SNMPv2 agent
+
+    SNMP 团体名称: public
+
+    SNMP OID: .1.3.6.1.2.1.1.3.0
+
+    SNMP port: 161
+
+    键: sysUpTimeInstance (必须唯一）
+
+    消息类型:数字整型
+
+    单位: bps refer to the ZABBIX Manual and forums for more units
+
+    使用乘法: 8
+
+    状态: 启用
+
+    存储类型: Delta Speed per second  # 流量是一个变化的值，我们不想看到是流量的总和
+
+用同样的方法创建一个出接口的监控项
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/09/26/snmp-items-with-zabbix/" data-id="ciq4n5j7400387xo9i5rp9o6h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/snmp/">snmp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-faq-zabbix-solving-template-to-collect-data-and-real-data-deviations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/25/faq-zabbix-solving-template-to-collect-data-and-real-data-deviations/" class="article-date">
+  <time datetime="2014-09-25T02:33:10.000Z" itemprop="datePublished">2014-09-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Zabbix/">Zabbix</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/25/faq-zabbix-solving-template-to-collect-data-and-real-data-deviations/">FAQ_Zabbix:解决模板收集到的数据和真实数据有偏差</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前不久定制了一个Sanfor的模板，后发现 发现内存图形呈现的数据太不靠谱了。和真是数据相差近千倍。</p>
+<p>使用snmpwalk  抓取数据后发现单位是kb ， 靠懵了和 交换、路由的单位不太一样<br><img src="http://s3.51cto.com/wyfs02/M02/4A/27/wKiom1QjfUGzPcgeAAFPOTcEBcw312.jpg" alt=""></p>
+<p>查看了一下官方手册 ，在 item 有一个选项是  Use custom multiplier     可以转换单位</p>
+<p><a href="https://www.zabbix.com/documentation/2.0/manual/config/items/item" target="_blank" rel="external">https://www.zabbix.com/documentation/2.0/manual/config/items/item</a><br><img src="http://s3.51cto.com/wyfs02/M00/4A/29/wKioL1QjfbXhaSkrAAStm-Oc1sw592.jpg" alt=""></p>
+<p>遂将，item 的这个选项启用<br><img src="http://s3.51cto.com/wyfs02/M02/4A/29/wKioL1QjfkujBmfXAAEFUOhR2IA589.jpg" alt=""></p>
+<p>收工，现在数据正常了<br><img src="http://s3.51cto.com/wyfs02/M01/4A/27/wKiom1QjfrmCiVrCAALVX5uzXVc168.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/09/25/faq-zabbix-solving-template-to-collect-data-and-real-data-deviations/" data-id="ciq4n5jew009i7xo92uxlzpik" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/faq/">faq</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-site-data-backup-of-rsync-mirrors-program" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/16/site-data-backup-of-rsync-mirrors-program/" class="article-date">
+  <time datetime="2014-09-16T09:58:35.000Z" itemprop="datePublished">2014-09-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/16/site-data-backup-of-rsync-mirrors-program/">数据备份 之网站镜像方案 sersync</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>网站镜像方案:sersync &amp; rsync</p>
+<p>spacer.gif</p>
+<p>一、需要软件:sersync、rsync<br>sersync 访问网址:<a href="http://code.google.com/p/sersync/" target="_blank" rel="external">http://code.google.com/p/sersync/</a></p>
+<p>二、试验环境<br>主服务器（内容发布服务器）：Node1 172.16.7.30                  需要安装软件：sersync、rsync<br>同步目标服务器：         Node2 172.16.7.81                   需要安装软件：rsync [默认都已经安装好]</p>
+<p>三、实施</p>
+<p>主服务器配置：<br> 3.1、解压sersync压缩包</p>
+<p>tar zxf sersync2.5_32bit_binary_stable_final.tar.gz</p>
+<p>mv GNU_Linux-x86/ /usr/local/rsync</p>
+<p>[root@localhost rsync]# pwd</p>
+<p>/usr/local/rsync</p>
+<p>[root@localhost rsync]# ls</p>
+<p>confxml.xml  sersync2</p>
+<p>2.2、编辑config.xml文件，修改如下信息</p>
+<p><img src="http://s3.51cto.com/wyfs02/M01/49/A8/wKiom1QYCMaQyahdAACe-qC_n7U698.jpg" alt=""></p>
+<p>说明信息：<br>表明将主服务器的本地 /backup 路径下的文件，同步到远程服务器172.16.7.30上的test_rsync模块上。<br>crontab附图：显示每600毫秒同步（下图是config.xml中内容，不需要修改）<br><img src="http://s3.51cto.com/wyfs02/M00/49/AA/wKioL1QYCOyCC6NAAACTm7slE-4171.jpg" alt=""></p>
+<p>2.3、在主服务器上开启sersync守护进程，使sersync在后台运行，开启实时同步。<br>./sersync2  -d<br><img src="http://s3.51cto.com/wyfs02/M02/49/AA/wKioL1QYCQDAXTekAAIof4MpWjk405.jpg" alt=""><br>以上信息表明已经同步！</p>
+<p>1、同步目标服务器配置：<br>在Node2上新建文件/etc/rsyncd.conf ，编辑如下</p>
+<p>vim /etc/rsyncd.conf  [默认没有]</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/49/A8/wKiom1QYCROjZ-D-AAFAlns7FcU603.jpg" alt=""></p>
+<p>具体解释：<br>（1）将同步过来的文件放入path指定的路径/backupl。<br>（2）如果有多台从服务器，则在每台都需要进行类似的rsync配置。<br>配置好之后，开启rsync守护进程rsync –daemon</p>
+<p>四、测试查看是否内容同步<br>4.1、先在主服务器/backup目录下创建一个test.txt<br>[root@localhost rsync]# echo “jeffery”&gt; /backup/test.txt  </p>
+<p>4.2、然后到目标服务器查看同步目录的变化，发现已经同步。<br><img src="http://s3.51cto.com/wyfs02/M00/49/AA/wKioL1QYCTiwXEjeAAA5Kl-O3HI763.jpg" alt=""></p>
+<p>tailf /var/log/rsyncd.log<br><img src="http://s3.51cto.com/wyfs02/M01/49/AA/wKioL1QYCVCB56tNAADP-Y5WGkM975.jpg" alt=""></p>
+<p>注意:<br>如果在从服务器增加文件,主服务器不会被同步.该技术是单向性的.</p>
+<p>Windows 安装cwRsync</p>
+<p>下载地址<a href="https://www.itefix.net/download/cwRsync_5.3.0_Free.zip" target="_blank" rel="external">https://www.itefix.net/download/cwRsync_5.3.0_Free.zip</a></p>
+<p>这里我放到了c:/cwRsync<br>备份保存路径 c:/backup</p>
+<p>将软件包解压放到C:\cwrsync 找到rsync.exe 以管理员身份运行就好了</p>
+<p>执行下面命令可以看到如下信息表示同步成</p>
+<p><img src="http://s3.51cto.com/wyfs02/M01/49/A8/wKiom1QYCVzzTVhkAAD2f-Bwjlo293.jpg" alt=""></p>
+<p>这表示把服务器test_rsync指定的目录 同步到本地c盘的backup目录了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/09/16/site-data-backup-of-rsync-mirrors-program/" data-id="ciq4n5j7a003d7xo9jtgqyhtg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rsync/">rsync</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Apache/">Apache</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Auto-ops/">Auto ops</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CouchBase/">CouchBase</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HA/">HA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Highcharts/">Highcharts</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LVS/">LVS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Oracle/">Oracle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Puppet/">Puppet</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomcat/">Tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Zabbix/">Zabbix</a><span class="category-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ceph/">Ceph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debian/">Debian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exsi/">Exsi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTID/">GTID</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kernel/">Kernel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kickstart/">Kickstart</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LB/">LB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LVS/">LVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lnmp/">Lnmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/">Log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Proxy/">Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Puppet/">Puppet</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Re/">Re</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZK/">ZK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coredump/">coredump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/couchbase/">couchbase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diy/">diy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expect/">expect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facter/">facter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/faq/">faq</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/highcharts/">highcharts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idrac/">idrac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iso/">iso</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lvm/">lvm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rewrite/">rewrite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsync/">rsync</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsyslog/">rsyslog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snmp/">snmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strace/">strace</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudo/">sudo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Ceph/" style="font-size: 10.91px;">Ceph</a> <a href="/tags/Debian/" style="font-size: 10px;">Debian</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Exsi/" style="font-size: 10px;">Exsi</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GTID/" style="font-size: 10.91px;">GTID</a> <a href="/tags/Kernel/" style="font-size: 10.91px;">Kernel</a> <a href="/tags/Kickstart/" style="font-size: 10px;">Kickstart</a> <a href="/tags/LB/" style="font-size: 10px;">LB</a> <a href="/tags/LVS/" style="font-size: 10px;">LVS</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lnmp/" style="font-size: 10px;">Lnmp</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/MongoDB/" style="font-size: 11.82px;">MongoDB</a> <a href="/tags/Mysql/" style="font-size: 19.09px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.36px;">Nginx</a> <a href="/tags/NoSQL/" style="font-size: 12.73px;">NoSQL</a> <a href="/tags/Oracle/" style="font-size: 11.82px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.91px;">PHP</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/Puppet/" style="font-size: 14.55px;">Puppet</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RAC/" style="font-size: 10.91px;">RAC</a> <a href="/tags/Re/" style="font-size: 11.82px;">Re</a> <a href="/tags/ZK/" style="font-size: 10px;">ZK</a> <a href="/tags/Zabbix/" style="font-size: 18.18px;">Zabbix</a> <a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/coredump/" style="font-size: 10px;">coredump</a> <a href="/tags/couchbase/" style="font-size: 10px;">couchbase</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/diy/" style="font-size: 10px;">diy</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/expect/" style="font-size: 10px;">expect</a> <a href="/tags/facter/" style="font-size: 10px;">facter</a> <a href="/tags/faq/" style="font-size: 17.27px;">faq</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/highcharts/" style="font-size: 10px;">highcharts</a> <a href="/tags/idrac/" style="font-size: 10px;">idrac</a> <a href="/tags/iso/" style="font-size: 10px;">iso</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lvm/" style="font-size: 10px;">lvm</a> <a href="/tags/pip/" style="font-size: 12.73px;">pip</a> <a href="/tags/redis/" style="font-size: 15.45px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/rsyslog/" style="font-size: 10px;">rsyslog</a> <a href="/tags/snmp/" style="font-size: 10px;">snmp</a> <a href="/tags/strace/" style="font-size: 10px;">strace</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/tomcat/" style="font-size: 13.64px;">tomcat</a> <a href="/tags/vim/" style="font-size: 10.91px;">vim</a> <a href="/tags/web/" style="font-size: 12.73px;">web</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/zookeeper/" style="font-size: 12.73px;">zookeeper</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/12/839/">Linux 下使用 strace 诊断疑难杂症</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/">MySQL mysqldump 数据导出详解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/24/Python_Re_module_learn/">Python Re module learn</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/22/Python正则表达式操作指南/">Python正则表达式操作指南</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/18/Hello_Kafka/">Hello Kafka</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jeffrey Su<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

@@ -1,578 +1,697 @@
-
- <!DOCTYPE HTML>
-<html lang="default">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   
-    <title>Suzf Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="Jeffrey Su">
-    
-    <meta name="description" content="Suzf linux tech blog">
-    
-    
-    
-    
-    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
-    
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
-    
-    <link rel="icon" href="/img/favicon.ico">
-    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  <title>Suzf Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Suzf linux tech blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Suzf Blog">
+<meta property="og:url" content="http://blog.suzf.net/index.html">
+<meta property="og:site_name" content="Suzf Blog">
+<meta property="og:description" content="Suzf linux tech blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Suzf Blog">
+<meta name="twitter:description" content="Suzf linux tech blog">
+  
+    <link rel="alternative" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
 
 </head>
-
-  <body>
-    <header>
-        <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
-				<h2 class="blog-motto">Life is short, We need smile.</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-
-                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
-                        <li><a title="Let's High!!!" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>High一下</a> </li>
-
-                    <li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:blog.suzf.net">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-
-    </header>
-    <div id="container">
-      <div id="main">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/05/12/839/" title="Linux 下使用 strace 诊断疑难杂症" itemprop="url">
-  
-    <h1 itemprop="name">Linux 下使用 strace 诊断疑难杂症</h1>
-    
-     
-       <p itemprop="description" >Strace是什么？strace是一个用来跟踪系统调用的简易工具。它最简单的用途就是跟踪一个程序整个生命周期里所有的系统调用，并把调用参数和返回值以文本的方式输出。当然它还可以做更多的事情：strace可以过筛选出特定的系统调用。strace可以记录系统调用的次数，时间，成功和失</p>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Suzf Blog</a>
+      </h1>
       
-    
-    <time datetime="2016-05-12T03:51:28.000Z" itemprop="datePublished">2016-05-12</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/" title="MySQL mysqldump 数据导出详解" itemprop="url">
-  
-    <h1 itemprop="name">MySQL mysqldump 数据导出详解</h1>
-    
-     
-       <p itemprop="description" >介绍在日常维护工作当中经常会需要对数据进行导出操作，而mysqldump是导出数据过程中使用非常频繁的一个工具；它自带的功能参数非常多，文章中会列举出一些常用的操作，在文章末尾会将所有的参数详细说明列出来。
-语法：默认不带参数的导出，导出文本内容大概如下：创建数据库判断语句-删除</p>
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Life is short, We need smile.</a>
+        </h2>
       
-    
-    <time datetime="2016-04-27T13:27:53.000Z" itemprop="datePublished">2016-04-27</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/24/Python_Re_module_learn/" title="Python Re module learn" itemprop="url">
-  
-    <h1 itemprop="name">Python Re module learn</h1>
-    
-     
-       <p itemprop="description" >上篇文章 Python正则表达式操作指南 已经对正则表达式做出了详细的介绍。下面只对 re 模块做出简要的说明。
-元字符说明
-.    匹配除换行符以外的任意字符^    匹配字符串的开始$    匹配字符串的结束[]   用来匹配一个指定的字符类别？   对于前一个字符字符重复</p>
-      
-    
-    <time datetime="2016-04-24T09:15:46.000Z" itemprop="datePublished">2016-04-24</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/22/Python正则表达式操作指南/" title="Python正则表达式操作指南" itemprop="url">
-  
-    <h1 itemprop="name">Python正则表达式操作指南</h1>
-    
-     
-       <p itemprop="description" >摘要本文是通过Python的 re 模块来使用正则表达式的一个入门教程，和库参考手册的对应章节相比，更为浅显易懂、循序渐进。
-简介 Python 自1.5版本起增加了re 模块，它提供 Perl 风格的正则表达式模式。Python 1.5之前版本则是通过 regex 模块提供 E</p>
-      
-    
-    <time datetime="2016-04-22T04:53:10.000Z" itemprop="datePublished">2016-04-22</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/18/Hello_Kafka/" title="Hello Kafka" itemprop="url">
-  
-    <h1 itemprop="name">Hello Kafka</h1>
-    
-     
-           <p itemprop="description" >Kafka Setup
-Kafka 是一种高吞吐的分布式发布订阅消息系统，能够替代传统的消息队列用于解耦合数据处理，缓存未处理消息等，同时具有更高的吞吐率，支持分区、多副本、冗余，因此被广泛用于大规模消息数据处理应用。Kafka 支持Java 及多种其它语言客户端，可与Hadoo</p>
-        
-    
-    <time datetime="2016-04-18T06:11:46.000Z" itemprop="datePublished">2016-04-18</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/14/[译]_Moving_a_Volume_Group_to_Another_System/" title="[译] Moving a Volume Group to Another System" itemprop="url">
-  
-    <h1 itemprop="name">[译] Moving a Volume Group to Another System</h1>
-    
-     
-       <p itemprop="description" >您可以将整个LVM卷组移动到另一个系统。建议您在执行此操作时使用 vgexport 和 vgimport 命令。
-vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。vgimport：在执行vgexport命令使其禁用之后，再次使机器可以访问卷组。
-一个系统卷组移动到</p>
-      
-    
-    <time datetime="2016-04-14T07:21:56.000Z" itemprop="datePublished">2016-04-14</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/14/dokuwiki_重置管理员密码/" title="dokuwiki 重置管理员密码" itemprop="url">
-  
-    <h1 itemprop="name">dokuwiki 重置管理员密码</h1>
-    
-     
-       <p itemprop="description" >一直觉得如果写成系列的技术文章，用 wp 显得有点力不从心。最近 GitBook 也是不错的。翻到一年多前，茫然想起自己曾经耍过 DokuWiki, 那么便拿出来耍耍吧。毕竟时间太久远了。自己设置的密码已经抛在脑后了。也懒得想了，重置密码吧。简单粗暴有疗效。
-后期会在网站中考虑 </p>
-      
-    
-    <time datetime="2016-04-14T05:58:11.000Z" itemprop="datePublished">2016-04-14</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/13/密码散列安全/" title="密码散列安全" itemprop="url">
-  
-    <h1 itemprop="name">密码散列安全</h1>
-    
-     
-       <p itemprop="description" >节选自 PHP manual
-相关链接  Wooyun
-本部分解释使用散列函数对密码进行安全处理背后的原因， 以及如何有效的进行密码散列处理。
-
-
-
- 为什么需要把应用程序中用户的密码进行散列化？ 
- 为何诸如 md5 和 sha1 这样的常见散列函数不适合用在密码保护场景？ 
-</p>
-      
-    
-    <time datetime="2016-04-13T09:00:09.000Z" itemprop="datePublished">2016-04-13</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/06/Tcpdump_notes/" title="Tcpdump notes" itemprop="url">
-  
-    <h1 itemprop="name">Tcpdump notes</h1>
-    
-     
-       <p itemprop="description" >tcpdump 是一个运行在命令行下的嗅探工具。它允许用户拦截和显示发送或收到过网络连接到该计算机的TCP/IP和其他数据包。tcpdump 是一个在BSD许可证下发布[2]的自由软件。
-tcpdump 适用于大多数的类Unix系统 操作系统：包括Linux、Solaris、BS</p>
-      
-    
-    <time datetime="2016-04-06T09:16:32.000Z" itemprop="datePublished">2016-04-06</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/04/06/MySQL__特性分析__InnoDB_transaction_history/" title="MySQL  特性分析  InnoDB transaction history" itemprop="url">
-  
-    <h1 itemprop="name">MySQL  特性分析  InnoDB transaction history</h1>
-    
-     
-       <p itemprop="description" >## 背景在写压力负载比较重的MySQL实例上，InnoDB可能积累了较长的没有被purge掉的transaction history，导致实例性能的衰减，或者空闲空间被耗尽，下面就来看看它是怎么产生的，或者有没有什么方法来减轻，避免这样的问题出现。## InnoDB purge</p>
-      
-    
-    <time datetime="2016-04-06T04:56:57.000Z" itemprop="datePublished">2016-04-06</time>
-  </a>
-</section>
-
-
-  <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
-
-</div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
-
-  
-<div class="categorieslist">
-	<p class="asidetitle">Categories</p>
-		<ul>
-		
-			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
-		
-			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
-		
-			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
-		
-			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
-		
-			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
-		
-			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
-		
-			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
-		
-			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
-		
-			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
-		
-			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
-		
-		</ul>
-</div>
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
-		
-			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
-		
-			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
-		
-			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
-		
-			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
-		
-			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
-		
-		</ul>
-</div>
-
-
-</aside>
-</div>
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello, I&#39;m a linuser. <br/>
-			This is my blog, share with you. ^_^</p>
-	</section>
-	 
-	<div class="social-font clearfix">
-		
-		
-		
-		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
-		
-		
-		
-	</div>
-    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
-<!--		
-		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
-		
-        -->
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-    }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
-</script>
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.suzf.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-839" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/12/839/" class="article-date">
+  <time datetime="2016-05-12T03:51:28.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/839/">Linux 下使用 strace 诊断疑难杂症</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Strace是什么？<br>strace是一个用来跟踪系统调用的简易工具。它最简单的用途就是跟踪一个程序整个生命周期里所有的系统调用，并把调用参数和返回值以文本的方式输出。<br>当然它还可以做更多的事情：<br>strace可以过筛选出特定的系统调用。<br>strace可以记录系统调用的次数，时间，成功和失败的次数。<br>strace可以跟踪发给进程的信号。<br>strace可以通过pid附加到任何正在运行的进程上。<br>strace类似其他Unix系统上的truss，或者Sun’s Dtrace</p>
+<p>这个简单而又强大的工具几乎在所有的Linux操作系统上可用，并且可被用来调试大量的程序。
+        
+          <p class="article-more-link">
+            <a href="/2016/05/12/839/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/05/12/839/" data-id="ciq4n5jkc00dl7xo9qsj99bga" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/debug/">debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/strace/">strace</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-MySQL_mysqldump_数据导出详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/" class="article-date">
+  <time datetime="2016-04-27T13:27:53.000Z" itemprop="datePublished">2016-04-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/27/MySQL_mysqldump_数据导出详解/">MySQL mysqldump 数据导出详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>介绍<br>在日常维护工作当中经常会需要对数据进行导出操作，而mysqldump是导出数据过程中使用非常频繁的一个工具；它自带的功能参数非常多，文章中会列举出一些常用的操作，在文章末尾会将所有的参数详细说明列出来。</p>
+<p>语法：<br>默认不带参数的导出，导出文本内容大概如下：创建数据库判断语句-删除表-创建表-锁表-禁用索引-插入数据-启用索引-解锁表。</p>
+<p><pre class="lang:default decode:true ">Usage: mysqldump [OPTIONS] database [tables]<br>OR     mysqldump [OPTIONS] –databases [OPTIONS] DB1 [DB2 DB3…]<br>OR     mysqldump [OPTIONS] –all-databases [OPTIONS]</pre>
+        
+          <p class="article-more-link">
+            <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/04/27/MySQL_mysqldump_数据导出详解/" data-id="ciq4n5ji600c87xo9khkzxjrs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-Python_Re_module_learn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/24/Python_Re_module_learn/" class="article-date">
+  <time datetime="2016-04-24T09:15:46.000Z" itemprop="datePublished">2016-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/24/Python_Re_module_learn/">Python Re module learn</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上篇文章 <a href="http://suzf.net/thread-0422-806.html">Python正则表达式操作指南 </a>已经对正则表达式做出了详细的介绍。<br>下面只对 re 模块做出简要的说明。</p>
+<p>元字符说明</p>
+<p><pre class="lang:default decode:true ">.    匹配除换行符以外的任意字符<br>^    匹配字符串的开始<br>$    匹配字符串的结束<br>[]   用来匹配一个指定的字符类别<br>？   对于前一个字符字符重复0次到1次</p>
+<ul>
+<li>对于前一个字符重复0次到无穷次<br>{}   对于前一个字符重复m次<br>{m，n} 对前一个字符重复为m到n次<br>\d   匹配数字，相当于[0-9]<br>\D   匹配任何非数字字符，相当于[^0-9]<br>\s   匹配任意的空白符，相当于[ fv]<br>\S   匹配任何非空白字符，相当于[^ fv]<br>\w   匹配任何字母数字字符，相当于[a-zA-Z0-9<em>]<br>\W   匹配任何非字母数字字符，相当于[^a-zA-Z0-9</em>]<br>\b   匹配单词的开始或结束</pre>
+        
+          <p class="article-more-link">
+            <a href="/2016/04/24/Python_Re_module_learn/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/04/24/Python_Re_module_learn/" data-id="ciq4n5jhb00bq7xo9rboqiew2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Re/">Re</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-Python正则表达式操作指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/22/Python正则表达式操作指南/" class="article-date">
+  <time datetime="2016-04-22T04:53:10.000Z" itemprop="datePublished">2016-04-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
 
-  </body>
- </html>
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/22/Python正则表达式操作指南/">Python正则表达式操作指南</a>
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong> 摘要</strong><br>本文是通过Python的 re 模块来使用正则表达式的一个入门教程，和库参考手册的对应章节相比，更为浅显易懂、循序渐进。</p>
+<h3 id="u7B80_u4ECB"><a href="#u7B80_u4ECB" class="headerlink" title="简介"></a><span class="mw-headline">简介 </span></h3><p>Python 自1.5版本起增加了re 模块，它提供 Perl 风格的正则表达式模式。Python 1.5之前版本则是通过 regex 模块提供 Emacs 风格的模式。Emacs 风格模式可读性稍差些，而且功能也不强，因此编写新代码时尽量不要再使用 regex 模块，当然偶尔你还是可能在老代码里发现其踪影。<br>就其本质而言，正则表达式（或 RE）是一种小型的、高度专业化的编程语言，（在Python中）它内嵌在Python中，并通过 re 模块实现。使用这个小型语言，你可以为想要匹配的相应字符串集指定规则；该字符串集可能包含英文语句、e-mail地址、TeX命令或任何你想搞定的东 西。然后你可以问诸如“这个字符串匹配该模式吗？”或“在这个字符串中是否有部分匹配该模式呢？”。你也可以使用 RE 以各种方式来修改或分割字符串。<br>正则表达式模式被编译成一系列的字节码，然后由用 C 编写的匹配引擎执行。在高级用法中，也许还要仔细留意引擎是如何执行给定 RE ，如何以特定方式编写 RE 以令生产的字节码运行速度更快。本文并不涉及优化，因为那要求你已充分掌握了匹配引擎的内部机制。<br>正则表达式语言相对小型和受限（功能有限），因此并非所有字符串处理都能用正则表达式完成。当然也有些任务可以用正则表达式完成，不过最终表达式会变得异 常复杂。碰到这些情形时，编写 Python 代码进行处理可能反而更好；尽管 Python 代码比一个精巧的正则表达式要慢些，但它更易理解。</p>
+<p>&nbsp;</p>
+<h3 id="u7B80_u5355_u6A21_u5F0F"><a href="#u7B80_u5355_u6A21_u5F0F" class="headerlink" title="简单模式"></a><span class="mw-headline">简单模式 </span></h3><p>我们将从最简单的正则表达式学习开始。由于正则表达式常用于字符串操作，那我们就从最常见的任务：字符匹配 下手。<br>有关正则表达式底层的计算机科学上的详细解释（确定性和非确定性有限自动机），你可以查阅编写编译器相关的任何教科书。</p>
+<p>&nbsp;</p>
+<h4 id="u5B57_u7B26_u5339_u914D"><a href="#u5B57_u7B26_u5339_u914D" class="headerlink" title="字符匹配"></a><span class="mw-headline"> 字符匹配 </span></h4><p>大多数字母和字符一般都会和自身匹配。例如，正则表达式 test 会和字符串“test”完全匹配。（你也可以使用大小写不敏感模式，它还能让这个 RE 匹配“Test”或“TEST”；稍后会有更多解释。）</p>
+<p>这个规则当然会有例外；有些字符比较特殊，它们和自身并不匹配，而是会表明应和一些特殊的东西匹配，或者它们会影响到 RE 其它部分的重复次数。本文很大篇幅专门讨论了各种元字符及其作用。</p>
+<p>这里有一个元字符的完整列表；其含义会在本指南余下部分进行讨论。
+        
+          <p class="article-more-link">
+            <a href="/2016/04/22/Python正则表达式操作指南/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/04/22/Python正则表达式操作指南/" data-id="ciq4n5jgz00bg7xo9cfc0lyup" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Re/">Re</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Hello_Kafka" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/18/Hello_Kafka/" class="article-date">
+  <time datetime="2016-04-18T06:11:46.000Z" itemprop="datePublished">2016-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/18/Hello_Kafka/">Hello Kafka</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Kafka Setup</p>
+<p>Kafka 是一种高吞吐的分布式发布订阅消息系统，能够替代传统的消息队列用于解耦合数据处理，缓存未处理消息等，同时具有更高的吞吐率，支持分区、多副本、冗余，因此被广泛用于大规模消息数据处理应用。Kafka 支持Java 及多种其它语言客户端，可与Hadoop、Storm、Spark等其它大数据工具结合使用。</p>
+<p>本教程主要介绍Kafka 在Centos 6上的安装和使用，包括功能验证和集群的简单配置。</p>
+<p>kafka docs &amp; download<br>– <a href="http://kafka.apache.org/documentation.html" target="_blank" rel="external">http://kafka.apache.org/documentation.html</a><br>– <a href="http://kafka.apache.org/downloads.html" target="_blank" rel="external">http://kafka.apache.org/downloads.html</a></p>
+<p>1. 安装 zk &amp; java<br>请参考 <a href="http://suzf.net/thread-0329-671.html" target="_blank" rel="external">[译] zookeeper 入门教程</a></p>
+<p>2. 运行zk<br>bin/zkServer.sh  start</p>
+<p>3. 安装 kafka<br>下载 kafka 并配置</p>
+<p><pre class="lang:default decode:true">wget <a href="http://apache.fayea.com/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz" target="_blank" rel="external">http://apache.fayea.com/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz</a><br>tar xf kafka_2.11-0.9.0.1.tgz<br>mv kafka_2.11-0.9.0.1 /usr/loca/kafka</pre><br>配置 server.properties 文件中的 zookeeper.connect，设置为 2 中的IP 和端口<br>创建多 broker</p>
+<p><pre class="lang:default decode:true">@_@[11:59:56][root@suzf.net kafka]#diff -ruN config/server.properties  config/server-1.properties |grep “^[-+@]”<br>— config/server.properties  2016-02-12 08:37:25.000000000 +0800<br>+++ config/server-1.properties  2016-04-18 11:54:34.011797645 +0800<br>@@ -17,14 +17,14 @@<br>-broker.id=0<br>+broker.id=1<br>-#port=9092<br>+port=9093<br>@@ -57,7 +57,7 @@<br>-log.dirs=/tmp/kafka-logs<br>+log.dirs=/tmp/kafka-logs-1</pre><br>4. 运行 kafka</p>
+<p><pre class="lang:default decode:true">bin/kafka-server-start.sh  -daemon config/server.properties<br>bin/kafka-server-start.sh  -daemon config/server-1.properties</pre><br>停止</p>
+<p><pre class="lang:default decode:true">bin/kafka-server-stop.sh<br>pkill -9 -f config/server.properties</pre><br>5. 创建Topic<br>创建一个名为“test”只有一个分区，只有一个副本的Topic：</p>
+<p><pre class="lang:default decode:true">bin/kafka-topics.sh –create –zookeeper localhost:2181 \<br>–replication-factor 1 –partitions 1 –topic lucy<br>Created topic “lucy”.</pre><br>如果你用的是Kafka 8.x之前版本，请用以下的命令创建topic</p>
+<p><pre class="lang:default decode:true">bin/kafka-create-topic.sh –zookeeper  localhost:2181 \<br>–replica 1 –partition 1 –topic lucy</pre><br>运行list topic命令，可以看到Topic列表</p>
+<p><pre class="lang:default decode:true">bin/kafka-topics.sh –describe  –zookeeper localhost:2181<br>Topic:lucy  PartitionCount:1  ReplicationFactor:1 Configs:<br>Topic: lucy Partition: 0  Leader: 1 Replicas: 1 Isr: 1</pre><br>6. 发送消息<br>kafka自带的一个命令行客户端，运行后可以输入消息，kafka会将其发送到kafka进群进行消息消费。默认情况下，每一行数据被作为一个消息进行发送。<br>接下来我们运行producer试试</p>
+<p><pre class="lang:default decode:true">^_^[12:02:21][root@suzf.net kafka]#bin/kafka-console-producer.sh –broker-list localhost:9092 –topic lucy<br>Hello Kafka<br>My name is jeffrey<br>This is test on lab.suzf.net</pre><br>7. 启动消费者(consumer)<br>上面我们通过kafka自带的命令行输入了消息，那么我们现在启动消费者看看是否会接收到。</p>
+<p><pre class="lang:default decode:true">@_@[12:03:22][root@suzf.net kafka]#bin/kafka-console-consumer.sh  –zookeeper localhost:2181 –topic lucy –from-beginning<br>Hello Kafka<br>My name is jeffrey<br>This is test on lab.suzf.net<br>^CProcessed a total of 3 messages</pre><br>可以看到消费者已经对我们上面输入的数据进行处理了.</p>
+<ol>
+<li>删除无用的topic<br><pre class="lang:default decode:true">bin/kafka-topics.sh –delete –zookeeper localhost:2181 –topic test<br>Topic test is already marked for deletion.</pre></li>
+</ol>
+<p>bin/kafka-topics.sh –list –zookeeper localhost:2181<br>lucy<br>test - marked for deletion<br>并没有真正删除，如果要真正删除,配置 delete.topic.enable=true.</p>
+<p>配置文件在kafka/config目录</p>
+<p><pre class="lang:default decode:true ">vim config/server.properties</pre></p>
+<h1 id="Whether_topic_deletion_should_be_allowed-_Requires_kafka__26gt_3B_3D_0-8-2"><a href="#Whether_topic_deletion_should_be_allowed-_Requires_kafka__26gt_3B_3D_0-8-2" class="headerlink" title="Whether topic deletion should be allowed. Requires kafka &gt;= 0.8.2"></a>Whether topic deletion should be allowed. Requires kafka &gt;= 0.8.2</h1><p>delete.topic.enable=true</p>
+<h1 id="bin/kafka-topics-sh__u2013create__u2013zookeeper_localhost_3A2181__5C"><a href="#bin/kafka-topics-sh__u2013create__u2013zookeeper_localhost_3A2181__5C" class="headerlink" title="bin/kafka-topics.sh –create –zookeeper localhost:2181 \"></a>bin/kafka-topics.sh –create –zookeeper localhost:2181 \</h1><p>–replication-factor 1 –partitions 1 –topic test2<br>Created topic “test2”.</p>
+<h1 id="bin/kafka-topics-sh__u2013list__u2013zookeeper_localhost_3A2181"><a href="#bin/kafka-topics-sh__u2013list__u2013zookeeper_localhost_3A2181" class="headerlink" title="bin/kafka-topics.sh –list –zookeeper localhost:2181"></a>bin/kafka-topics.sh –list –zookeeper localhost:2181</h1><p>lucy<br>test - marked for deletion<br>test2</p>
+<h1 id="bin/kafka-topics-sh__u2013delete__u2013zookeeper_localhost_3A2181__u2013topic_test2"><a href="#bin/kafka-topics-sh__u2013delete__u2013zookeeper_localhost_3A2181__u2013topic_test2" class="headerlink" title="bin/kafka-topics.sh –delete –zookeeper localhost:2181 –topic test2"></a>bin/kafka-topics.sh –delete –zookeeper localhost:2181 –topic test2</h1><p>Topic test2 is marked for deletion.<br>Note: This will have no impact if delete.topic.enable is not set to true.<br>^_^[13:55:46][root@suzf.net kafka]#  bin/kafka-topics.sh –list –zookeeper localhost:2181<br>lucy<br>test - marked for deletion<br>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/04/18/Hello_Kafka/" data-id="ciq4n5jjm00d27xo90u5s9cgc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-[译]_Moving_a_Volume_Group_to_Another_System" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/14/[译]_Moving_a_Volume_Group_to_Another_System/" class="article-date">
+  <time datetime="2016-04-14T07:21:56.000Z" itemprop="datePublished">2016-04-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/14/[译]_Moving_a_Volume_Group_to_Another_System/">[译] Moving a Volume Group to Another System</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>您可以将整个LVM卷组移动到另一个系统。建议您在执行此操作时使用 vgexport 和 vgimport 命令。</p>
+<p>vgexport：使非活动卷组无法访问系统，它允许你分离物理卷。<br>vgimport：在执行vgexport命令使其禁用之后，再次使机器可以访问卷组。</p>
+<p>一个系统卷组移动到另一个系统，请执行下列步骤：
+        
+          <p class="article-more-link">
+            <a href="/2016/04/14/[译]_Moving_a_Volume_Group_to_Another_System/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/04/14/[译]_Moving_a_Volume_Group_to_Another_System/" data-id="ciq4n5jg100al7xo9p3j7vpu7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lvm/">lvm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-dokuwiki_重置管理员密码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/14/dokuwiki_重置管理员密码/" class="article-date">
+  <time datetime="2016-04-14T05:58:11.000Z" itemprop="datePublished">2016-04-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/14/dokuwiki_重置管理员密码/">dokuwiki 重置管理员密码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一直觉得如果写成系列的技术文章，用 wp 显得有点力不从心。最近 <a href="https://www.gitbook.com/">GitBook</a> 也是不错的。<br>翻到一年多前，茫然想起自己曾经耍过 <a href="https://www.dokuwiki.org/">DokuWiki</a>, 那么便拿出来耍耍吧。毕竟时间太久远了。<br>自己设置的密码已经抛在脑后了。也懒得想了，重置密码吧。简单粗暴有疗效。</p>
+<p>后期会在网站中考虑 加入 wiki 或者 gitbooks, 欢迎小伙伴们前来围观。
+        
+          <p class="article-more-link">
+            <a href="/2016/04/14/dokuwiki_重置管理员密码/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/04/14/dokuwiki_重置管理员密码/" data-id="ciq4n5jfd00a17xo97ousserm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wiki/">wiki</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-密码散列安全" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/13/密码散列安全/" class="article-date">
+  <time datetime="2016-04-13T09:00:09.000Z" itemprop="datePublished">2016-04-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/13/密码散列安全/">密码散列安全</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>节选自<a href="http://php.net/manual/zh/faq.passwords.php"> PHP manual</a></p>
+<p>相关链接 <a href="http://drops.wooyun.org/papers/1066"> Wooyun</a></p>
+<p>本部分解释使用散列函数对密码进行安全处理背后的原因， 以及如何有效的进行密码散列处理。</p>
+<div class="qandaset">
+
+<ol>
+<li><a href="http://php.net/manual/zh/faq.passwords.php#faq.passwords.hashing"> 为什么需要把应用程序中用户的密码进行散列化？ </a></li>
+<li><a href="http://php.net/manual/zh/faq.passwords.php#faq.passwords.fasthash"> 为何诸如 md5 和 sha1 这样的常见散列函数不适合用在密码保护场景？ </a></li>
+<li><a href="http://php.net/manual/zh/faq.passwords.php#faq.passwords.bestpractice"> 如果不建议使用常用散列函数保护密码， 那么我应该如何对密码进行散列处理？ </a></li>
+<li><a href="http://php.net/manual/zh/faq.passwords.php#faq.passwords.salt"> “盐”是什么？ </a></li>
+<li><a href="http://php.net/manual/zh/faq.passwords.php#faq.password.storing-salts"> 我应该如何保存“盐”？ </a><br></div>
+        
+          <p class="article-more-link">
+            <a href="/2016/04/13/密码散列安全/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/04/13/密码散列安全/" data-id="ciq4n5j3y00097xo9c154y9mw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Tcpdump_notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/06/Tcpdump_notes/" class="article-date">
+  <time datetime="2016-04-06T09:16:32.000Z" itemprop="datePublished">2016-04-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/06/Tcpdump_notes/">Tcpdump notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>tcpdump</strong> 是一个运行在<a href="https://zh.wikipedia.org/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C" title="命令行">命令行</a>下的<a href="https://zh.wikipedia.org/wiki/%E5%97%85%E6%8E%A2" title="嗅探">嗅探</a>工具。它允许用户拦截和显示发送或收到过<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C" title="网络">网络</a>连接到该计算机的<a href="https://zh.wikipedia.org/wiki/TCP/IP" title="TCP/IP">TCP/IP</a>和其他<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%8C%85" title="数据包">数据包</a>。tcpdump 是一个在<a href="https://zh.wikipedia.org/wiki/BSD%E8%AE%B8%E5%8F%AF%E8%AF%81" title="BSD许可证">BSD许可证</a>下发布<sup id="cite_ref-2" class="reference"><a href="https://zh.wikipedia.org/wiki/Tcpdump#cite_note-2">[2]</a></sup>的<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%94%B1%E8%BD%AF%E4%BB%B6" title="自由软件">自由软件</a>。</p>
+<p>tcpdump 适用于大多数的<a href="https://zh.wikipedia.org/wiki/%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F" title="类Unix系统">类Unix系统</a> <a href="https://zh.wikipedia.org/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F" title="操作系统">操作系统</a>：包括<a href="https://zh.wikipedia.org/wiki/Linux" title="Linux">Linux</a>、<a href="https://zh.wikipedia.org/wiki/Solaris" title="Solaris">Solaris</a>、<a href="https://zh.wikipedia.org/wiki/BSD" title="BSD">BSD</a>、<a href="https://zh.wikipedia.org/wiki/Mac_OS_X" title="Mac OS X">Mac OS X</a>、<a href="https://zh.wikipedia.org/wiki/HP-UX" title="HP-UX">HP-UX</a>和<a href="https://zh.wikipedia.org/wiki/AIX" title="AIX">AIX</a> 等等。在这些系统中，tcpdump 需要使用<a href="https://zh.wikipedia.org/w/index.php?title=Libpcap&amp;action=edit&amp;redlink=1" title="Libpcap（页面不存在）">libpcap</a>这个捕捉数据的<a href="https://zh.wikipedia.org/wiki/%E5%BA%93" title="库">库</a>。其在<a href="https://zh.wikipedia.org/wiki/Microsoft_Windows" title="Microsoft Windows">Windows</a>下的版本称为<a href="https://zh.wikipedia.org/w/index.php?title=WinDump&amp;action=edit&amp;redlink=1" title="WinDump（页面不存在）">WinDump</a>；它需要<a href="https://zh.wikipedia.org/w/index.php?title=WinPcap&amp;action=edit&amp;redlink=1" title="WinPcap（页面不存在）">WinPcap</a>驱动，相当于在<a href="https://zh.wikipedia.org/wiki/Linux" title="Linux">Linux</a>平台下的<a href="https://zh.wikipedia.org/w/index.php?title=Libpcap&amp;action=edit&amp;redlink=1" title="Libpcap（页面不存在）">libpcap</a>.</p>
+<h2 id="u7528_u9014"><a href="#u7528_u9014" class="headerlink" title="用途"></a><span id=".E7.94.A8.E9.80.94" class="mw-headline">用途</span></h2><p>tcpdump能够分析网络行为，性能和应用产生或接收网络流量。它支持针对网络层、协议、主机、网络或端口的过滤，并提供and、or、not等逻辑语句来帮助你去掉无用的信息，从而使用户能够进一步找出问题的根源。
+        
+          <p class="article-more-link">
+            <a href="/2016/04/06/Tcpdump_notes/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/04/06/Tcpdump_notes/" data-id="ciq4n5jg800au7xo9x3sfdcwd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcpdump/">tcpdump</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MySQL__特性分析__InnoDB_transaction_history" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/06/MySQL__特性分析__InnoDB_transaction_history/" class="article-date">
+  <time datetime="2016-04-06T04:56:57.000Z" itemprop="datePublished">2016-04-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/06/MySQL__特性分析__InnoDB_transaction_history/">MySQL  特性分析  InnoDB transaction history</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="content typo"><section class="post"><br><br>## 背景<br><br>在写压力负载比较重的MySQL实例上，InnoDB可能积累了较长的没有被purge掉的transaction history，导致实例性能的衰减，或者空闲空间被耗尽，下面就来看看它是怎么产生的，或者有没有什么方法来减轻，避免这样的问题出现。<br><br>## InnoDB purge 概要<br><br>InnoDB是一个事务引擎，实现了MVCC特性，也就是在存储引擎里对行数据保存了多个版本。在对行数据进行delete或者update更改时，行数据的前映像会保留一段时间，直到可以被删除的时候。<br><br>在大部分OLTP负载情况下，前映像会在数据操作完成后的数秒钟内被删除掉，但在一些情况下，假设存在一些持续很长时间的事务需要看到数据的前映像，那么老版本的数据就会被保留相当长一段时间。
+        
+          <p class="article-more-link">
+            <a href="/2016/04/06/MySQL__特性分析__InnoDB_transaction_history/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/04/06/MySQL__特性分析__InnoDB_transaction_history/" data-id="ciq4n5jib00cb7xo9p0u5qy34" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Apache/">Apache</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Auto-ops/">Auto ops</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CouchBase/">CouchBase</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HA/">HA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Highcharts/">Highcharts</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LVS/">LVS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Oracle/">Oracle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Puppet/">Puppet</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomcat/">Tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Zabbix/">Zabbix</a><span class="category-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ceph/">Ceph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debian/">Debian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exsi/">Exsi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTID/">GTID</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kernel/">Kernel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kickstart/">Kickstart</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LB/">LB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LVS/">LVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lnmp/">Lnmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/">Log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Proxy/">Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Puppet/">Puppet</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Re/">Re</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZK/">ZK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coredump/">coredump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/couchbase/">couchbase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diy/">diy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expect/">expect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facter/">facter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/faq/">faq</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/highcharts/">highcharts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idrac/">idrac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iso/">iso</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lvm/">lvm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rewrite/">rewrite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsync/">rsync</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsyslog/">rsyslog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snmp/">snmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strace/">strace</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudo/">sudo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Ceph/" style="font-size: 10.91px;">Ceph</a> <a href="/tags/Debian/" style="font-size: 10px;">Debian</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Exsi/" style="font-size: 10px;">Exsi</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GTID/" style="font-size: 10.91px;">GTID</a> <a href="/tags/Kernel/" style="font-size: 10.91px;">Kernel</a> <a href="/tags/Kickstart/" style="font-size: 10px;">Kickstart</a> <a href="/tags/LB/" style="font-size: 10px;">LB</a> <a href="/tags/LVS/" style="font-size: 10px;">LVS</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lnmp/" style="font-size: 10px;">Lnmp</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/MongoDB/" style="font-size: 11.82px;">MongoDB</a> <a href="/tags/Mysql/" style="font-size: 19.09px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.36px;">Nginx</a> <a href="/tags/NoSQL/" style="font-size: 12.73px;">NoSQL</a> <a href="/tags/Oracle/" style="font-size: 11.82px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.91px;">PHP</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/Puppet/" style="font-size: 14.55px;">Puppet</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RAC/" style="font-size: 10.91px;">RAC</a> <a href="/tags/Re/" style="font-size: 11.82px;">Re</a> <a href="/tags/ZK/" style="font-size: 10px;">ZK</a> <a href="/tags/Zabbix/" style="font-size: 18.18px;">Zabbix</a> <a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/coredump/" style="font-size: 10px;">coredump</a> <a href="/tags/couchbase/" style="font-size: 10px;">couchbase</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/diy/" style="font-size: 10px;">diy</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/expect/" style="font-size: 10px;">expect</a> <a href="/tags/facter/" style="font-size: 10px;">facter</a> <a href="/tags/faq/" style="font-size: 17.27px;">faq</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/highcharts/" style="font-size: 10px;">highcharts</a> <a href="/tags/idrac/" style="font-size: 10px;">idrac</a> <a href="/tags/iso/" style="font-size: 10px;">iso</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lvm/" style="font-size: 10px;">lvm</a> <a href="/tags/pip/" style="font-size: 12.73px;">pip</a> <a href="/tags/redis/" style="font-size: 15.45px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/rsyslog/" style="font-size: 10px;">rsyslog</a> <a href="/tags/snmp/" style="font-size: 10px;">snmp</a> <a href="/tags/strace/" style="font-size: 10px;">strace</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/tomcat/" style="font-size: 13.64px;">tomcat</a> <a href="/tags/vim/" style="font-size: 10.91px;">vim</a> <a href="/tags/web/" style="font-size: 12.73px;">web</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/zookeeper/" style="font-size: 12.73px;">zookeeper</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/12/839/">Linux 下使用 strace 诊断疑难杂症</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/">MySQL mysqldump 数据导出详解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/24/Python_Re_module_learn/">Python Re module learn</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/22/Python正则表达式操作指南/">Python正则表达式操作指南</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/18/Hello_Kafka/">Hello Kafka</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jeffrey Su<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

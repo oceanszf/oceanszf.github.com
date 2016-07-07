@@ -1,246 +1,102 @@
-
- <!DOCTYPE HTML>
-<html lang="default">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   
-    <title>IPython 使用教程 | Suzf Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="Jeffrey Su">
-    
-    <meta name="description" content="IPython是一种基于Python的交互式解释器。相较于原生的Python Shell，IPython提供了更为强大的编辑和交互功能，并行计算。IPython拥有一套复杂的并行和分配计算结构。IPython使得各种并行应用能够交互式的被开发、执行、调试和监控。因此IPython中的“I”代表“交互">
-    
-    
-    
-    
-    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
-    
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
-    
-    <link rel="icon" href="/img/favicon.ico">
-    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  <title>IPython 使用教程 | Suzf Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="IPython是一种基于Python的交互式解释器。相较于原生的Python Shell，IPython提供了更为强大的编辑和交互功能，并行计算。IPython拥有一套复杂的并行和分配计算结构。IPython使得各种并行应用能够交互式的被开发、执行、调试和监控。因此IPython中的“I”代表“交互”。   单指令流多数据流
+   多指令流多数据流   消息传递接口
+   任务并行   数据并行&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPython 使用教程">
+<meta property="og:url" content="http://blog.suzf.net/2015/10/18/ipython/index.html">
+<meta property="og:site_name" content="Suzf Blog">
+<meta property="og:description" content="IPython是一种基于Python的交互式解释器。相较于原生的Python Shell，IPython提供了更为强大的编辑和交互功能，并行计算。IPython拥有一套复杂的并行和分配计算结构。IPython使得各种并行应用能够交互式的被开发、执行、调试和监控。因此IPython中的“I”代表“交互”。   单指令流多数据流
+   多指令流多数据流   消息传递接口
+   任务并行   数据并行&amp;">
+<meta property="og:updated_time" content="2016-01-13T07:17:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IPython 使用教程">
+<meta name="twitter:description" content="IPython是一种基于Python的交互式解释器。相较于原生的Python Shell，IPython提供了更为强大的编辑和交互功能，并行计算。IPython拥有一套复杂的并行和分配计算结构。IPython使得各种并行应用能够交互式的被开发、执行、调试和监控。因此IPython中的“I”代表“交互”。   单指令流多数据流
+   多指令流多数据流   消息传递接口
+   任务并行   数据并行&amp;">
+  
+    <link rel="alternative" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
 
 </head>
-
-  <body>
-    <header>
-      <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
-				<h2 class="blog-motto">Life is short, We need smile.</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-
-                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
-                        <li><a title="Let's High!!!" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>High一下</a> </li>
-
-                    <li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:blog.suzf.net">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/10/18/ipython/" title="IPython 使用教程" itemprop="url">IPython 使用教程</a>
-  </h1>
-  <p class="article-author">By
-    
-      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
-    </p>
-  <p class="article-time">
-    <time datetime="2015-10-18T03:08:03.000Z" itemprop="datePublished">2015-10-18</time>
-    Updated:<time datetime="2016-01-13T07:17:03.000Z" itemprop="dateModified">2016-01-13</time>
-    
-  </p>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Suzf Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Life is short, We need smile.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.suzf.net"></form>
+      </div>
+    </div>
+  </div>
 </header>
-	<div class="article-content">
-		
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-		</div>
-		
-		<div id="mw-content-text" class="mw-content-ltr" dir="ltr" lang="zh-CN"><br><br><strong>IPython</strong>是一种基于Python的交互式解释器。相较于原生的Python Shell，IPython提供了更为强大的编辑和交互功能，<span id=".E5.B9.B6.E8.A1.8C.E8.AE.A1.E7.AE.97" class="mw-headline">并行计算。</span><br><br></div><br>IPython拥有一套复杂的并行和分配计算结构。IPython使得各种并行应用能够交互式的被开发、执行、调试和监控。因此IPython中的“I”代表“交互”。<br><br><em>   <a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81" title="单指令流多数据流" target="_blank" rel="external">单指令流多数据流</a>
+      <div class="outer">
+        <section id="main"><article id="post-ipython" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/18/ipython/" class="article-date">
+  <time datetime="2015-10-18T03:08:03.000Z" itemprop="datePublished">2015-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      IPython 使用教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div id="mw-content-text" class="mw-content-ltr" dir="ltr" lang="zh-CN"><br><br><strong>IPython</strong>是一种基于Python的交互式解释器。相较于原生的Python Shell，IPython提供了更为强大的编辑和交互功能，<span id=".E5.B9.B6.E8.A1.8C.E8.AE.A1.E7.AE.97" class="mw-headline">并行计算。</span><br><br></div><br>IPython拥有一套复杂的并行和分配计算结构。IPython使得各种并行应用能够交互式的被开发、执行、调试和监控。因此IPython中的“I”代表“交互”。<br><br><em>   <a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81" title="单指令流多数据流" target="_blank" rel="external">单指令流多数据流</a>
 </em>   <a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81" title="多指令流多数据流" target="_blank" rel="external">多指令流多数据流</a><br><em>   <a href="https://zh.wikipedia.org/w/index.php?title=%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%8E%A5%E5%8F%A3&amp;action=edit&amp;redlink=1" title="消息传递接口（页面不存在）" target="_blank" rel="external">消息传递接口</a>
 </em>   <a href="https://zh.wikipedia.org/wiki/%E4%BB%BB%E5%8A%A1%E5%B9%B6%E8%A1%8C" title="任务并行" target="_blank" rel="external">任务并行</a><br><em>   <a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C" title="数据并行" target="_blank" rel="external">数据并行</a><br>&nbsp;<br><br><a href="http://ipython.org/ipython-doc/stable/index.html" target="_blank" rel="external">官方文档</a><br><br><strong>ipython 安装</strong><br>yum install python-pip<br>pip install ipython<br><br>源码安装过程：
 </em> 下载合适的软件包。<br><em> 解压缩。
@@ -249,331 +105,143 @@
 
    -n 阻止运行源文件代码时<strong>name</strong>变量被设为”<strong>main</strong>”。这会防止<br><br><div class="highlight-python"><br><div class="highlight"><br><pre>if <strong>name</strong> == “<strong>main</strong>“:<br></pre><br></div><br></div><br>块中的代码被执行<br><em>   -i 源文件就在当前IPython的名字空间下运行而不是在一个新的名字空间中。如果你需要源代码可以使用在交互式session中定义的变量就会很有用。
 
-</em>   -p 使用Python的profiler模块运行并分析源代码。使用该选项代码不会运行在当前名字空间。<br></div><br><div id="id8" class="section"><br><br>### 宏<br><br>宏允许用户为一段代码定义一个名字，这样你可以在以后使用这个名字来运行这段代码。就象在magic关键字edit中提到的，列表切片法也适用于宏定义。假设有一个历史记录如下:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [3]: hist<br>1: l = []<br>2:<br>for i in l:<br>print i<br></pre><br></div><br></div><br>你可以这样来定义一个宏：<br>&gt; <div>In [4]: macro print_l 2 Macro <code>&lt;span class=&quot;pre&quot;&gt;print_l&lt;/span&gt;</code> created. To execute, type its name (without quotes). Macro contents: for i in l: print i</div><br>运行宏:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [5]: print_l<br>Out[5]: Executing Macro…<br></pre><br></div><br></div><br>在这里，列表l是空的，所以没有东西被输出。但这其实是一个很强大的功能，我们可以赋予列表l某些实际值，再次运行宏就会看到不同的结果:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [6]: l = range(5)<br><br>In [7]: print_l<br>Out[7]: Executing Macro…<br>0<br>1<br>2<br>3<br>4<br></pre><br></div><br></div><br>当运行一个宏时就好象你重新输入了一遍包含在宏print_1中的代码。它还可以使用新定义的变量l。由于Python语法中没有宏结构（也许永远也不会有），在一个交互式shell中它更显得是一个有用的特性。<br><br></div><br></div><br><div id="profiles" class="section"><br><br>## 环境（Profiles）<br><br>就象早前提到的那样，IPython安装了多个配置文件用于不同的环境。配置文件的命名规则是ipythonrc-。要使用特定的配置启动IPython，需要这样<br><div class="highlight-python"><br><div class="highlight"><br><pre><span class="n">ipython</span> <span class="o">-</span><span class="n">p</span><br></pre><br></div><br></div><br>一个创建你自己环境的方法是在$HOME/.ipython目录下创建一个IPython配置文件，名字就叫做ipythonrc- ，这里是你想要的环境的名字。如果你同时进行好几个项目，而这些项目又用到互不相同的特殊的库，这时候每个项目都有自己的环境就很有用了。你可以为每个项 目建立一个配置文件，然后在每个配置文件中import该项目中经常用到的模块。<br><br></div><br><div id="shell" class="section"><br><br>## 使用操作系统的Shell<br><br>使用默认的IPython配置文件，有几个Unix Shell命令（当然，是在Unix系统上），cd，pwd和ls都能象在bash下一样工作。运行其它的shell命令需要在命令前加!或!!。使用magic关键字%sc和%sx可以捕捉shell命令的输出。<br><br>pysh环境可以被用来替换掉shell。使用-p pysh参数启动的IPython，可以接受并执行用户$PATH中的所有命令，同时还可以使用所有的Python模块，Python关键字和内置函数。 例如，我想要创建500个目录，命名规则是从d_0_d到d_500<em>d（译注：呵呵，作者这里犯了个小小的计算错误，你能看出来吗），我可以使用-p pysh启动IPython，然后就象这样:<br><div class="highlight-python"><br><div class="highlight"><br><pre>jjones@cerberus[foo]|2&gt; for i in range(500):<br>|.&gt; mkdir d</pre></div></div></em>${i}_d<br>|.&gt;<br><br></div><br><br>这就会创建500个目录:<br><div class="highlight-python"><br><div class="highlight"><br><pre>jjones@cerberus[foo]|8&gt; ls -d d* | wc -l<br>500<br></pre><br></div><br></div><br>注意这里混合了Python的range函数和Unix的mkdir命令。<br><br>注意，虽然ipython -p pysh提供了一个强大的shell替代品，但它缺少正确的job控制。在运行某个很耗时的任务时按下Ctrl-z将会停止IPython session而不是那个子进程。<br><br><br><div id="id9" class="section"><br><br>## 问题和方法<br><br>虽然作为标准Python shell的替换，IPython总的来说很完美。还是有两个问题给我带来了一些麻烦。感谢IPython的开发者，这两个问题都可以通过配置来解决，每个配置都有清晰的文档。<br><br>第一个问题是关于颜色的。在我的一个系统上，我使用的是一个白色背景的xterm。当我使用?和??查询一个对象或模块的信息时，对象的定义会被显 示，但看起来好象那些参数丢失了。那是因为在构造函数中的的参数默认显示为白色。我的解决办法是在IPython shell中输入colors LightBG。<br><br>第二个问题是关于自动缩进和代码粘贴的。如果autoindent被启用，IPython会对我粘贴的已排好缩进的代码再次应用缩进。例如下面的代码:<br><div class="highlight-python"><br><div class="highlight"><br><pre>for i in range(10):<br>for j in range(10):<br>for k in range(10):<br>pass<br></pre><br></div><br></div><br>会变成:<br><div class="highlight-python"><br><div class="highlight"><br><pre>for i in range(10):<br>for j in range(10):<br>for k in range(10):<br>pass<br></pre><br></div><br></div><br>在这里它并不是个问题，因为在它自身中缩进都保持一致。在其它一些情况下（例子一下子举不出来了），可能会成为真正的问题。可以使用magic关键 字autoindent来开关自动缩进，告诉IPython不要添加多余的缩进──就象在vim中设置粘贴set paste一样。<br><br></div><br><div id="id10" class="section"><br><br>## 结论<br><br>IPython 并不是囗囗性的，也不是完全创新的。Tab自动补全，历史记录搜索，配置环境，配置文件等都早已在其它shells中存在有些年头了。Python拥有各 种级别的自省能力也有一段时间了。但IPython把来自成熟的Unix shell，标准Python shell以及Python语言中的一些最强大的功能整合到了一起。产生出了一个强大的令人难以置信的性能增强工具，我想我会很乐意在接下来的几年中一直 使用它。套用阿基米德的话来说，给我一个强大而又灵活的文本编辑器（vim），一个交互式shell（IPython）以及一个语言（Python），我 就能撬动整个世界。<br><br></div>  
-	</div>
-		<footer class="article-footer clearfix">
+</em>   -p 使用Python的profiler模块运行并分析源代码。使用该选项代码不会运行在当前名字空间。<br></div><br><div id="id8" class="section"><br><br>### 宏<br><br>宏允许用户为一段代码定义一个名字，这样你可以在以后使用这个名字来运行这段代码。就象在magic关键字edit中提到的，列表切片法也适用于宏定义。假设有一个历史记录如下:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [3]: hist<br>1: l = []<br>2:<br>for i in l:<br>print i<br></pre><br></div><br></div><br>你可以这样来定义一个宏：<br>&gt; <div>In [4]: macro print_l 2 Macro <code>&lt;span class=&quot;pre&quot;&gt;print_l&lt;/span&gt;</code> created. To execute, type its name (without quotes). Macro contents: for i in l: print i</div><br>运行宏:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [5]: print_l<br>Out[5]: Executing Macro…<br></pre><br></div><br></div><br>在这里，列表l是空的，所以没有东西被输出。但这其实是一个很强大的功能，我们可以赋予列表l某些实际值，再次运行宏就会看到不同的结果:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [6]: l = range(5)<br><br>In [7]: print_l<br>Out[7]: Executing Macro…<br>0<br>1<br>2<br>3<br>4<br></pre><br></div><br></div><br>当运行一个宏时就好象你重新输入了一遍包含在宏print_1中的代码。它还可以使用新定义的变量l。由于Python语法中没有宏结构（也许永远也不会有），在一个交互式shell中它更显得是一个有用的特性。<br><br></div><br></div><br><div id="profiles" class="section"><br><br>## 环境（Profiles）<br><br>就象早前提到的那样，IPython安装了多个配置文件用于不同的环境。配置文件的命名规则是ipythonrc-。要使用特定的配置启动IPython，需要这样<br><div class="highlight-python"><br><div class="highlight"><br><pre><span class="n">ipython</span> <span class="o">-</span><span class="n">p</span><br></pre><br></div><br></div><br>一个创建你自己环境的方法是在$HOME/.ipython目录下创建一个IPython配置文件，名字就叫做ipythonrc- ，这里是你想要的环境的名字。如果你同时进行好几个项目，而这些项目又用到互不相同的特殊的库，这时候每个项目都有自己的环境就很有用了。你可以为每个项 目建立一个配置文件，然后在每个配置文件中import该项目中经常用到的模块。<br><br></div><br><div id="shell" class="section"><br><br>## 使用操作系统的Shell<br><br>使用默认的IPython配置文件，有几个Unix Shell命令（当然，是在Unix系统上），cd，pwd和ls都能象在bash下一样工作。运行其它的shell命令需要在命令前加!或!!。使用magic关键字%sc和%sx可以捕捉shell命令的输出。<br><br>pysh环境可以被用来替换掉shell。使用-p pysh参数启动的IPython，可以接受并执行用户$PATH中的所有命令，同时还可以使用所有的Python模块，Python关键字和内置函数。 例如，我想要创建500个目录，命名规则是从d_0_d到d_500<em>d（译注：呵呵，作者这里犯了个小小的计算错误，你能看出来吗），我可以使用-p pysh启动IPython，然后就象这样:<br><div class="highlight-python"><br><div class="highlight"><br><pre>jjones@cerberus[foo]|2&gt; for i in range(500):<br>|.&gt; mkdir d</pre></div></div></em>${i}_d<br>|.&gt;<br><br></div><br><br>这就会创建500个目录:<br><div class="highlight-python"><br><div class="highlight"><br><pre>jjones@cerberus[foo]|8&gt; ls -d d* | wc -l<br>500<br></pre><br></div><br></div><br>注意这里混合了Python的range函数和Unix的mkdir命令。<br><br>注意，虽然ipython -p pysh提供了一个强大的shell替代品，但它缺少正确的job控制。在运行某个很耗时的任务时按下Ctrl-z将会停止IPython session而不是那个子进程。<br><br><br><div id="id9" class="section"><br><br>## 问题和方法<br><br>虽然作为标准Python shell的替换，IPython总的来说很完美。还是有两个问题给我带来了一些麻烦。感谢IPython的开发者，这两个问题都可以通过配置来解决，每个配置都有清晰的文档。<br><br>第一个问题是关于颜色的。在我的一个系统上，我使用的是一个白色背景的xterm。当我使用?和??查询一个对象或模块的信息时，对象的定义会被显 示，但看起来好象那些参数丢失了。那是因为在构造函数中的的参数默认显示为白色。我的解决办法是在IPython shell中输入colors LightBG。<br><br>第二个问题是关于自动缩进和代码粘贴的。如果autoindent被启用，IPython会对我粘贴的已排好缩进的代码再次应用缩进。例如下面的代码:<br><div class="highlight-python"><br><div class="highlight"><br><pre>for i in range(10):<br>for j in range(10):<br>for k in range(10):<br>pass<br></pre><br></div><br></div><br>会变成:<br><div class="highlight-python"><br><div class="highlight"><br><pre>for i in range(10):<br>for j in range(10):<br>for k in range(10):<br>pass<br></pre><br></div><br></div><br>在这里它并不是个问题，因为在它自身中缩进都保持一致。在其它一些情况下（例子一下子举不出来了），可能会成为真正的问题。可以使用magic关键 字autoindent来开关自动缩进，告诉IPython不要添加多余的缩进──就象在vim中设置粘贴set paste一样。<br><br></div><br><div id="id10" class="section"><br><br>## 结论<br><br>IPython 并不是囗囗性的，也不是完全创新的。Tab自动补全，历史记录搜索，配置环境，配置文件等都早已在其它shells中存在有些年头了。Python拥有各 种级别的自省能力也有一段时间了。但IPython把来自成熟的Unix shell，标准Python shell以及Python语言中的一些最强大的功能整合到了一起。产生出了一个强大的令人难以置信的性能增强工具，我想我会很乐意在接下来的几年中一直 使用它。套用阿基米德的话来说，给我一个强大而又灵活的文本编辑器（vim），一个交互式shell（IPython）以及一个语言（Python），我 就能撬动整个世界。<br><br></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2015/10/18/ipython/" data-id="ciq4n5jcm007q7xo92b4za48p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
-  <div class="article-tags">
+    </footer>
+  </div>
   
-  <span></span> <a href="/tags/Python/">Python</a>
-  </div>
-
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Python/">Python</a>
-</div>
-
-
-
-<div class="article-share" id="share">
-
-  <div data-url="http://blog.suzf.net/2015/10/18/ipython/" data-title="IPython 使用教程 | Suzf Blog" data-tsina="null" class="share clearfix">
-  </div>
-
-</div>
-</footer>   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2015/10/19/what-is-couchbase-server/" title="What is Couchbase Server">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  What is Couchbase Server</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2015/10/13/mongodb-basic-query/"  title="MongoDB 基本查询">
- <strong>NEXT:</strong><br/> 
- <span>MongoDB 基本查询
-</span>
-</a>
-</div>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/19/what-is-couchbase-server/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          What is Couchbase Server
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/13/mongodb-basic-query/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MongoDB 基本查询</div>
+    </a>
+  
 </nav>
 
-	
-<section class="comment">
-	<div class="ds-thread"></div>
-</section>
-
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
   
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Apache/">Apache</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Auto-ops/">Auto ops</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CouchBase/">CouchBase</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HA/">HA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Highcharts/">Highcharts</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LVS/">LVS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Oracle/">Oracle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Puppet/">Puppet</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomcat/">Tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Zabbix/">Zabbix</a><span class="category-list-count">13</span></li></ul>
+    </div>
   </div>
 
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
-
   
-<div class="categorieslist">
-	<p class="asidetitle">Categories</p>
-		<ul>
-		
-			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
-		
-			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
-		
-			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
-		
-			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
-		
-			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
-		
-			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
-		
-			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
-		
-			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
-		
-			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
-		
-			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
-		
-		</ul>
-</div>
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
-		
-			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
-		
-			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
-		
-			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
-		
-			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
-		
-			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
-		
-		</ul>
-</div>
-
-
-</aside>
-</div>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ceph/">Ceph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debian/">Debian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exsi/">Exsi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTID/">GTID</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kernel/">Kernel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kickstart/">Kickstart</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LB/">LB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LVS/">LVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lnmp/">Lnmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/">Log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Proxy/">Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Puppet/">Puppet</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Re/">Re</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZK/">ZK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coredump/">coredump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/couchbase/">couchbase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diy/">diy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expect/">expect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facter/">facter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/faq/">faq</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/highcharts/">highcharts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idrac/">idrac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iso/">iso</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lvm/">lvm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rewrite/">rewrite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsync/">rsync</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsyslog/">rsyslog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snmp/">snmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strace/">strace</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudo/">sudo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a><span class="tag-list-count">4</span></li></ul>
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello, I&#39;m a linuser. <br/>
-			This is my blog, share with you. ^_^</p>
-	</section>
-	 
-	<div class="social-font clearfix">
-		
-		
-		
-		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
-		
-		
-		
-	</div>
-    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
-<!--		
-		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
-		
-        -->
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Ceph/" style="font-size: 10.91px;">Ceph</a> <a href="/tags/Debian/" style="font-size: 10px;">Debian</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Exsi/" style="font-size: 10px;">Exsi</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GTID/" style="font-size: 10.91px;">GTID</a> <a href="/tags/Kernel/" style="font-size: 10.91px;">Kernel</a> <a href="/tags/Kickstart/" style="font-size: 10px;">Kickstart</a> <a href="/tags/LB/" style="font-size: 10px;">LB</a> <a href="/tags/LVS/" style="font-size: 10px;">LVS</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lnmp/" style="font-size: 10px;">Lnmp</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/MongoDB/" style="font-size: 11.82px;">MongoDB</a> <a href="/tags/Mysql/" style="font-size: 19.09px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.36px;">Nginx</a> <a href="/tags/NoSQL/" style="font-size: 12.73px;">NoSQL</a> <a href="/tags/Oracle/" style="font-size: 11.82px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.91px;">PHP</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/Puppet/" style="font-size: 14.55px;">Puppet</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RAC/" style="font-size: 10.91px;">RAC</a> <a href="/tags/Re/" style="font-size: 11.82px;">Re</a> <a href="/tags/ZK/" style="font-size: 10px;">ZK</a> <a href="/tags/Zabbix/" style="font-size: 18.18px;">Zabbix</a> <a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/coredump/" style="font-size: 10px;">coredump</a> <a href="/tags/couchbase/" style="font-size: 10px;">couchbase</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/diy/" style="font-size: 10px;">diy</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/expect/" style="font-size: 10px;">expect</a> <a href="/tags/facter/" style="font-size: 10px;">facter</a> <a href="/tags/faq/" style="font-size: 17.27px;">faq</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/highcharts/" style="font-size: 10px;">highcharts</a> <a href="/tags/idrac/" style="font-size: 10px;">idrac</a> <a href="/tags/iso/" style="font-size: 10px;">iso</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lvm/" style="font-size: 10px;">lvm</a> <a href="/tags/pip/" style="font-size: 12.73px;">pip</a> <a href="/tags/redis/" style="font-size: 15.45px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/rsyslog/" style="font-size: 10px;">rsyslog</a> <a href="/tags/snmp/" style="font-size: 10px;">snmp</a> <a href="/tags/strace/" style="font-size: 10px;">strace</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/tomcat/" style="font-size: 13.64px;">tomcat</a> <a href="/tags/vim/" style="font-size: 10.91px;">vim</a> <a href="/tags/web/" style="font-size: 12.73px;">web</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/zookeeper/" style="font-size: 12.73px;">zookeeper</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
         
-    }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
-</script>
+          <li>
+            <a href="/2016/05/12/839/">Linux 下使用 strace 诊断疑难杂症</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/">MySQL mysqldump 数据导出详解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/24/Python_Re_module_learn/">Python Re module learn</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/22/Python正则表达式操作指南/">Python正则表达式操作指南</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/18/Hello_Kafka/">Hello Kafka</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      h  = $('article h2')
-      ah = $('article h2'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  if(ah.length==0){
-    t.css('display','none');
-  }else{
-    c.click(function(){
-      ta.css('display', 'block').addClass('fadeIn');
-    });
-    o.click(function(){
-      ta.css('display', 'none');
-    });
-    $(window).scroll(function(){
-      ta.css("top",Math.max(140,320-$(this).scrollTop()));
-    });
-  };
-});
-</script>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jeffrey Su<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
-  });
-});     
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"Comment"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script> 
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 
+<script src="/js/script.js" type="text/javascript"></script>
 
-
-
-  </body>
+  </div>
+</body>
 </html>
-

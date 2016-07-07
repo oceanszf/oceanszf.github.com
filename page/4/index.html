@@ -1,574 +1,807 @@
-
- <!DOCTYPE HTML>
-<html lang="default">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   
-    <title>Suzf Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="Jeffrey Su">
-    
-    <meta name="description" content="Suzf linux tech blog">
-    
-    
-    
-    
-    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
-    
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
-    
-    <link rel="icon" href="/img/favicon.ico">
-    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  <title>Suzf Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Suzf linux tech blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Suzf Blog">
+<meta property="og:url" content="http://blog.suzf.net/page/4/index.html">
+<meta property="og:site_name" content="Suzf Blog">
+<meta property="og:description" content="Suzf linux tech blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Suzf Blog">
+<meta name="twitter:description" content="Suzf linux tech blog">
+  
+    <link rel="alternative" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
 
 </head>
-
-  <body>
-    <header>
-        <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
-				<h2 class="blog-motto">Life is short, We need smile.</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-
-                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
-                        <li><a title="Let's High!!!" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>High一下</a> </li>
-
-                    <li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:blog.suzf.net">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-
-    </header>
-    <div id="container">
-      <div id="main">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/02/03/ZooKeeper_概述/" title="ZooKeeper 概述" itemprop="url">
-  
-    <h1 itemprop="name">ZooKeeper 概述</h1>
-    
-     
-           <p itemprop="description" >1. ZooKeeper概述hadoop的一个子项目，是对Google分布式同步系统 chubby 的开源实现。针对大型分布式系统的可靠协调系统。包括 配置维护，名字服务，分布式同步，组服务 等在内的功能。目标： 封装复杂，易出错的关键服务，将简单的易用的接口和性能高效，稳定的协</p>
-        
-    
-    <time datetime="2016-02-03T03:39:32.000Z" itemprop="datePublished">2016-02-03</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/02/02/How-to-create-restore-a-slave-using-GTID-replication-in-MySQL-5.6/" title="How to create restore a slave using GTID replication in MySQL 5.6" itemprop="url">
-  
-    <h1 itemprop="name">How to create restore a slave using GTID replication in MySQL 5.6</h1>
-    
-     
-           <p itemprop="description" >在 Mysql 5.6 中，里面有许多新的特性；我个人认为其中最有用的是在复制中支持 全局 事物 ID。这篇文章不是用来介绍什么是GTID，关于它的工作原理这里有很多文章介绍：  http://dev.mysql.com/doc/refman/5.6/en/replication</p>
-        
-    
-    <time datetime="2016-02-02T09:02:33.000Z" itemprop="datePublished">2016-02-02</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/02/02/Python_爬取中文网页乱码的通用解决办法/" title="Python 爬取中文网页乱码的通用解决办法" itemprop="url">
-  
-    <h1 itemprop="name">Python 爬取中文网页乱码的通用解决办法</h1>
-    
-     
-           <p itemprop="description" >由于网页编码不统一，我们会遇到各式各样的网页编码格式。
-那么问题来了，由于编码格式不统一，爬取的中文信息往往是不尽任意的， 那么如何处理它呢？
-ENV: Python 2.7.x
-如何取得网页的编码，用chardet库最方便(https://pypi.python.org/pyp</p>
-        
-    
-    <time datetime="2016-02-02T03:51:27.000Z" itemprop="datePublished">2016-02-02</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/02/01/Debian_Fedora_common_commands_Management_Pack/" title="Debian Fedora常用命令管理包" itemprop="url">
-  
-    <h1 itemprop="name">Debian Fedora常用命令管理包</h1>
-    
-     
-           <p itemprop="description" >对大家推荐很好使用的Debian Fedora命令系统，像让大家对Debian Fedora命令系统有所了解，然后对Debian Fedora命令统全面讲解介绍，Debian Fedora 的包管理命令。
-=== Debian Fedora 中dpkg命令 ===dpkg -i </p>
-        
-    
-    <time datetime="2016-02-01T02:16:33.000Z" itemprop="datePublished">2016-02-01</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/02/01/how-to-rechange-debian-system-root-password/" title="How-to rechange debian system root password" itemprop="url">
-  
-    <h1 itemprop="name">How-to rechange debian system root password</h1>
-    
-     
-           <p itemprop="description" >Debian Linux 系统忘记密码怎么办?看到很多人老在论坛里面问这个问题，有的人给的答案也不多。特拿出来，随便当笔记用。
-对于一些版本的OS（如RedHat）来说，编辑grub，在后面加上“single”即可进入单用户模式。但是对于debian来说，这种方式是无效的，因为d</p>
-        
-    
-    <time datetime="2016-02-01T02:13:07.000Z" itemprop="datePublished">2016-02-01</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/02/01/linux-curl-and-wget/" title="Linux curl and wget" itemprop="url">
-  
-    <h1 itemprop="name">Linux curl and wget</h1>
-    
-     
-           <p itemprop="description" >1、curl（文件传输工具）
-常用参数如下：
--c，–cookie-jar：将cookie写入到文件
--b，–cookie：从文件中读取cookie
--C，–continue-at：断点续传
--d，–data：http post方式传送数据
--D，–dump-header：把he</p>
-        
-    
-    <time datetime="2016-02-01T01:53:35.000Z" itemprop="datePublished">2016-02-01</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/01/28/python-file-operations/" title="python-file-operations" itemprop="url">
-  
-    <h1 itemprop="name">python-file-operations</h1>
-    
-     
-           <p itemprop="description" >Split big file12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#!/usr/bin/env python# -*- enco</p>
-        
-    
-    <time datetime="2016-01-28T06:27:12.000Z" itemprop="datePublished">2016-01-28</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/01/26/python-sendmail-examples/" title="Python sendmail examples" itemprop="url">
-  
-    <h1 itemprop="name">Python sendmail examples</h1>
-    
-     
-           <p itemprop="description" >send attchment email123456789101112131415161718192021222324252627282930#!/usr/bin/env pythonfrom email.mime.text import MIMETextfrom email.m</p>
-        
-    
-    <time datetime="2016-01-26T08:36:02.000Z" itemprop="datePublished">2016-01-26</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/01/13/hello-world/" title="Hello World" itemprop="url">
-  
-    <h1 itemprop="name">Hello World</h1>
-    
-     
-           <p itemprop="description" >Welcome to here! This is your very first post. 
-building   I has migrated my wp blog articles on Jan 13, 2016.   The old and the new will be</p>
-        
-    
-    <time datetime="2016-01-13T01:00:00.000Z" itemprop="datePublished">2016-01-13</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/" title="pip-faq: Error -5 while decompressing data: incomplete or truncated stream" itemprop="url">
-  
-    <h1 itemprop="name">pip-faq: Error -5 while decompressing data: incomplete or truncated stream</h1>
-    
-     
-           <p itemprop="description" >在我执行 pip install flask-bootstrap 出现了一个这样的错误– error: Error -5 while decompressing data: incomplete or truncated stream
-安装/卸载其他包是正常的。唯独管理flask</p>
-        
-    
-    <time datetime="2015-12-30T08:04:51.000Z" itemprop="datePublished">2015-12-30</time>
-  </a>
-</section>
-
-
-  <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
-  </nav>
-
-</div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
-
-  
-<div class="categorieslist">
-	<p class="asidetitle">Categories</p>
-		<ul>
-		
-			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
-		
-			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
-		
-			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
-		
-			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
-		
-			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
-		
-			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
-		
-			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
-		
-			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
-		
-			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
-		
-			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
-		
-		</ul>
-</div>
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
-		
-			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
-		
-			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
-		
-			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
-		
-			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
-		
-			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
-		
-		</ul>
-</div>
-
-
-</aside>
-</div>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Suzf Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Life is short, We need smile.</a>
+        </h2>
+      
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello, I&#39;m a linuser. <br/>
-			This is my blog, share with you. ^_^</p>
-	</section>
-	 
-	<div class="social-font clearfix">
-		
-		
-		
-		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
-		
-		
-		
-	</div>
-    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
-<!--		
-		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
-		
-        -->
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.suzf.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-ZooKeeper_概述" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/03/ZooKeeper_概述/" class="article-date">
+  <time datetime="2016-02-03T03:39:32.000Z" itemprop="datePublished">2016-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/03/ZooKeeper_概述/">ZooKeeper 概述</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-_ZooKeeper_u6982_u8FF0"><a href="#1-_ZooKeeper_u6982_u8FF0" class="headerlink" title="1. ZooKeeper概述"></a>1. ZooKeeper概述</h2><p>hadoop的一个子项目，是对Google分布式同步系统 chubby 的开源实现。<br>针对大型分布式系统的可靠协调系统。包括 配置维护，名字服务，分布式同步，组服务 等在内的功能。<br>目标： 封装复杂，易出错的关键服务，将简单的易用的接口和性能高效，稳定的协同工作系统提供给用户。</p>
+<h2 id="2-_ZK_u7684_u8BBE_u8BA1_u76EE_u6807"><a href="#2-_ZK_u7684_u8BBE_u8BA1_u76EE_u6807" class="headerlink" title="2. ZK的设计目标"></a>2. ZK的设计目标</h2><ul>
+<li>最终一致性</li>
+<li>可靠性</li>
+<li>实时性</li>
+<li>等待无关</li>
+<li>原子性  ： 更新只能是成功或失败</li>
+<li>顺序性</li>
+</ul>
+<h2 id="3-_ZK_u6570_u636E_u6A21_u578B"><a href="#3-_ZK_u6570_u636E_u6A21_u578B" class="headerlink" title="3. ZK数据模型"></a>3. ZK数据模型</h2><p>ZK实际上是一个小型的分布式文件系统，其维护一个层次化的树结构。树节点znode，用于存储数据(小数据文件，不能超过1M)。<br>ZK对数据的访问是原子性的，客户端每次读取都获取znode的全部数据，同样，ZK只提供覆盖和删除操作，不支持部分更新。<br>客户端通过文件路径访问znode（路径名师unicode字符串）。</p>
+<p>属性：</p>
+<ul>
+<li>3.1   层次化目录结构</li>
+<li>3.2   Ephemeral (短暂的)</li>
+<li>3.3    Sequence  (序列)</li>
+<li>3.4    Watch       (监控器)</li>
+</ul>
+<h2 id="4-_ZK_u5DE5_u4F5C_u539F_u7406"><a href="#4-_ZK_u5DE5_u4F5C_u539F_u7406" class="headerlink" title="4. ZK工作原理"></a>4. ZK工作原理</h2><p>从编程的角度，ZK设计类似于windows下的注册表，有名称，树结构，键值对的关系，看做一个树形结构的数据库，分布不同的机器做名称管理。</p>
+<p>ZK分为客户端和服务端。客户端值连接到整个ZK服务的某个服务器上。客户端使用并维护一个TCP连接，通过这个连接发送请求，接受响应，获取观察的时间以及发送心跳。</p>
+<p><a href="http://suzf.net/wp-content/uploads/2016/02/zk.jpg" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/02/zk.jpg" alt="zk"></a></p>
+<p>图：Zookeeper 系统模型图</p>
+<p>工作模式： 启动集群后，多个zk server在工作前会选出一个Leader，在接下去的工作中，这个leader死了，剩下的服务器会知道这个leader死掉了，活着的ZK server会继续选出一个Leader，选举出Leader的目的是为了保证数据的一致性。</p>
+<p>Watch  ： 客户端在每个znode节点上设置一个watch。如果znode节点有变更，watch就会被触发，watch所属的客户端就会接收通知。如果客户端和 所连接的ZK服务器断开连接时，其他客户端也会收到一个通知，也就是说一个ZK服务端可以对应多个客户端。</p>
+<h2 id="5-_ZK_u5B9E_u73B0_u673A_u5236"><a href="#5-_ZK_u5B9E_u73B0_u673A_u5236" class="headerlink" title="5. ZK实现机制"></a>5. ZK实现机制</h2><ul>
+<li>5.1 单机模式           一台zk服务器，适合测试用，不保证高可靠和靠性能</li>
+<li>5.2 复制模式           ZK只需确保znode树的每次修改都被复制到机器的大部分机器上，这样就可以在部分机器故障时快速恢复ZK服务。<blockquote>
+<p><em>a. 选举Leader:  一个Leader，其余都是Follower</em></p>
+<p><em>b. 原子性广播:</em></p>
+<p><em>所有的写请求都先被转发到Leader上，Leader将更新操作广播到Follower。当大多数成员持久化存储这个更新后，Leader提交更新，并 回复客户端写操作成功。 Leader失效，会选一个新leader。以前的leader恢复，将变成一个Follower。这个选举过程非常快，不会影响性能。集群所有的机器正 在更新内存数据到znode树前，都会在本地硬盘保存一个备份。读请求可被任何一个机器响应，读过程实际上对内存的查找过程是非常方便，快速的。</em></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="6-_ZK_u7684_u7279_u6027"><a href="#6-_ZK_u7684_u7279_u6027" class="headerlink" title="6. ZK的特性"></a>6. ZK的特性</h2><ul>
+<li>6.1  Paxos算法 ,ZK的灵魂</li>
+<li><p>6.2  会话<br>客户端连接到ZK服务器时，建立一个会话(Session). 会话有一个有效时间，在这个时间范围内没有收到任何请求，会话则过期。过期的会话无法重新打开，所创建的短暂性的节点也被删除。真实的系统环境，可以靠 ping请求保持会话的有效性。</p>
+</li>
+<li><p>6.3  版本号：乐观加锁的机制，使客户端能够检测出对节点的修改冲突。</p>
+</li>
+<li>6.4 监控 ：节点发送变化，watch机制可以让客户端得到通知。<br>要实现watch机制必须实现 org.apache.zookeeper.Watcher的接口。如下：<pre class="csharpcode"><span class="kwrd">public</span> <span class="kwrd">void</span> process(WatchedEvent <span class="kwrd">event</span>)
+{
+<span class="kwrd">try</span>
+{
+    Stat stat = zooKeeper.exists(nodePath,<span class="kwrd">false</span>);
+    <span class="kwrd">if</span>(stat != <span class="kwrd">null</span>)
+    {
+        zooKeeper.delete(nodePath,-1);
     }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
-</script>
+}
+<span class="kwrd">catch</span>(KeeperException e)
+{
+    e.printStackTrace();
+}
+<span class="kwrd">catch</span>(InterruptedException e)
+{
+    e.printStackTrace();
+}
+}</pre>
+
+</li>
+</ul>
+<p><del>~EOF</del>~~</p>
+<p>来源： <a href="http://www.wangyuxiong.com/archives/51895" target="_blank" rel="external">互联网</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/02/03/ZooKeeper_概述/" data-id="ciq4n5jg400ap7xo9511kg7v0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ZK/">ZK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zookeeper/">zookeeper</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-How-to-create-restore-a-slave-using-GTID-replication-in-MySQL-5.6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/02/How-to-create-restore-a-slave-using-GTID-replication-in-MySQL-5.6/" class="article-date">
+  <time datetime="2016-02-02T09:02:33.000Z" itemprop="datePublished">2016-02-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/02/How-to-create-restore-a-slave-using-GTID-replication-in-MySQL-5.6/">How to create restore a slave using GTID replication in MySQL 5.6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在 Mysql 5.6 中，里面有许多新的特性；我个人认为其中最有用的是在复制中支持 全局 事物 ID。<br>这篇文章不是用来介绍什么是GTID，关于它的工作原理这里有很多文章介绍：<br>  <a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-concepts.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-concepts.html</a></p>
+<p>这里值得一提的是，如果你想GTID支持log_slave_updates，需要启用从服务器和考虑到性能的影响。</p>
+<p>还有，这篇文章更趋向于实用，我们将要看到如何使用 GTID 创建/恢复 新的slaves 从 master上。</p>
+<p>如何创建一个新的 slave 节点<br>我们不需要知道的现在二进制日志和位置，当GTID启用的时候想，这些事不需要的。<br>相反，我们需要知道哪个GTID出现在master上并且在slave上设置。 MySQL与GTID相关的两个全局变量是：</p>
+<p>gtid_executed：它包含了集合中的所有事务记录在二进制日志<br>gtid_purged：它包含从二进制日志中删除所有事务记录的集合</p>
+<p>所以，现在，这个过程是这样的：<br>在master上做一个备份并记录 gtid_executed 的值<br>在slave上恢复备份并将 gtid_purged 设置成master上gtid_executed 的值</p>
+<p>新的mysqldump 可以为我们做这些工作。让我们来看看如何在master上备份的并且在slave 上恢复它来建立一个新的 Replication Server的一个例子。<br>master &gt; show global variables like ‘gtid_executed’;<br>+—————+——————————————-+<br>| Variable_name | Value                                     |<br>+—————+——————————————-+<br>| gtid_executed | 9a511b7b-7059-11e2-9a24-08002762b8af:1-13 |<br>+—————+——————————————-+<br>master &gt; show global variables like ‘gtid_purged’;<br>+—————+——————————————+<br>| Variable_name | Value                                    |<br>+—————+——————————————+<br>| gtid_purged   | 9a511b7b-7059-11e2-9a24-08002762b8af:1-2 |<br>+—————+——————————————+</p>
+<p>现在我们可以使用mysqldump 备份master:</p>
+<h1 id="mysqldump__u2013all-databases__u2013single-transaction__u2013triggers__u2013routines__u2013host_3D127-0-0-1__u2013port_3D18675__u2013user_3Dmsandbox__u2013password_3Dmsandbox__26gt_3B_dump-sql"><a href="#mysqldump__u2013all-databases__u2013single-transaction__u2013triggers__u2013routines__u2013host_3D127-0-0-1__u2013port_3D18675__u2013user_3Dmsandbox__u2013password_3Dmsandbox__26gt_3B_dump-sql" class="headerlink" title="mysqldump –all-databases –single-transaction –triggers –routines –host=127.0.0.1 –port=18675 –user=msandbox –password=msandbox &gt; dump.sql"></a>mysqldump –all-databases –single-transaction –triggers –routines –host=127.0.0.1 –port=18675 –user=msandbox –password=msandbox &gt; dump.sql</h1><p>生成的备份文件将包括以下信息：</p>
+<h1 id="grep_PURGED_dump-sql"><a href="#grep_PURGED_dump-sql" class="headerlink" title="grep PURGED dump.sql"></a>grep PURGED dump.sql</h1><p>SET @@GLOBAL.GTID_PURGED=’9a511b7b-7059-11e2-9a24-08002762b8af:1-13’;</p>
+<p>因此，在slave上进行数据恢复的时候，它将设置GTID_PURGED为master上GTID_EXECUTED的值。<br>所以现在，我们需要恢复转储和启动复制：<br>slave1 &gt; show global variables like ‘gtid_executed’;<br>+—————+——-+<br>| Variable_name | Value |<br>+—————+——-+<br>| gtid_executed |       |<br>+—————+——-+<br>slave1 &gt; show global variables like ‘gtid_purged’;<br>+—————+——-+<br>| Variable_name | Value |<br>+—————+——-+<br>| gtid_purged   |       |<br>+—————+——-+<br>slave1 &gt; slave1&gt; source test.sql;<br>[…]<br>slave1 &gt; show global variables like ‘gtid_executed’;<br>+—————+——————————————-+<br>| Variable_name | Value                                     |<br>+—————+——————————————-+<br>| gtid_executed | 9a511b7b-7059-11e2-9a24-08002762b8af:1-13 |<br>+—————+——————————————-+<br>slave1 &gt; show global variables like ‘gtid_purged’;<br>+—————+——————————————-+<br>| Variable_name | Value                                     |<br>+—————+——————————————-+<br>| gtid_purged   | 9a511b7b-7059-11e2-9a24-08002762b8af:1-13 |<br>+—————+——————————————-+</p>
+<p>最后一步是用GTID的自动配置方法配置slave：<br>slave1 &gt; CHANGE MASTER TO MASTER_HOST=”127.0.0.1”, MASTER_USER=”msandbox”, MASTER_PASSWORD=”msandbox”, MASTER_PORT=18675, MASTER_AUTO_POSITION = 1;</p>
+<p>如何用快速的方法修复有问题的slave<br>让我们想象一下，我们的slave节点已经停止了好几天，并master二进制日志已被清除。这就是我们得到的错误：<br>Slave_IO_Running: No<br>Slave_SQL_Running: Yes<br>Last_IO_Error: Got fatal error 1236 from master when reading data from binary log: ‘The slave is connecting using CHANGE MASTER TO MASTER_AUTO_POSITION = 1, but the master has purged binary logs containing GTIDs that the slave requires.’</p>
+<p>所以，让我们试着去解决它。首先，我们有一个不太好快速的方法，即，一点到另一点 GTID 在二进制日志中。首先，我们得得到 GTID_EXECUTED 在master上：<br>master &gt; show global variables like ‘GTID_EXECUTED’;<br>+—————+——————————————-+<br>| Variable_name | Value                                     |<br>+—————+——————————————-+<br>| gtid_executed | 9a511b7b-7059-11e2-9a24-08002762b8af:1-14 |<br>+—————+——————————————-+</p>
+<p>我们在slave上设置它<br>slave&gt; set global GTID_EXECUTED=”9a511b7b-7059-11e2-9a24-08002762b8af:1-14”<br>ERROR 1238 (HY000): Variable ‘gtid_executed’ is a read only variable</p>
+<p>错误！ 记住，我们从master上得到 GTID_EXECUTED 的值，之后子在slave上设置 GTID_PURGED<br>slave1 &gt; set global GTID_PURGED=”9a511b7b-7059-11e2-9a24-08002762b8af:1-14”;<br>ERROR 1840 (HY000): GTID_PURGED can only be set when GTID_EXECUTED is empty.</p>
+<p>错误又出现了，GTID_EXECUTED 应该是空的在改变 GTID_PURGED 前，但是我们不能改变它使用 SET,<br>因为这是一个只读的变量。 这里唯一的方法是使用 reset master(是的，在slave节点上)<br>slave1&gt; reset master;<br>slave1 &gt; show global variables like ‘GTID_EXECUTED’;<br>+—————+——-+<br>| Variable_name | Value |<br>+—————+——-+<br>| gtid_executed |       |<br>+—————+——-+<br>slave1 &gt; set global GTID_PURGED=”9a511b7b-7059-11e2-9a24-08002762b8af:1-14”;<br>slave1&gt; start slave io_thread;<br>slave1&gt; show slave status\G<br>[…]<br>Slave_IO_Running: Yes<br>Slave_SQL_Running: Yes<br>[…]</p>
+<p>现在，如果你没有见到类似的错误[primary/unique key duplication]，你可以使用 pt-table-checksum 和 pt-table-sync 来检查数据库的完整性。</p>
+<p>如何使用一个好的方法修复slave节点 话费时间稍长<br>好的方法是使用mysqldump 再次在master上备份数据。<br>我们执行在master上执行dump并且在slave上恢复，就像上面看到的那样。<br>slave1 [localhost] {msandbox} ((none)) &gt; source test.sql;<br>[…]<br>ERROR 1840 (HY000): GTID_PURGED can only be set when GTID_EXECUTED is empty.<br>[…]</p>
+<p>哦！这里很值得一提的是这种错误信息可以消失在执行完命令之后。<br>因为恢复数据的过程需要继续。 谨慎些。</p>
+<p>同样的错误 同样的解决方法<br>slave1&gt; reset master;<br>slave1&gt; source test.sql;<br>slave1&gt; start slave;<br>slave1&gt; show slave status\G<br>[…]<br>Slave_IO_Running: Yes<br>Slave_SQL_Running: Yes<br>[…]</p>
+<p>结论<br>我们需要改变我们的思想在新的 GTID 下。现在二进制日志和位置信息已经不再我们的考虑范围之内了。<br>gtid_executed和gtid_purged是我们的新朋友。新版本Xtrabackup都全力支持GTID的。您可以查看下面的文章：</p>
+<p><a href="https://www.percona.com/blog/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/" target="_blank" rel="external">https://www.percona.com/blog/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/02/02/How-to-create-restore-a-slave-using-GTID-replication-in-MySQL-5.6/" data-id="ciq4n5jji00cz7xo90efesszo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-Python_爬取中文网页乱码的通用解决办法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/02/Python_爬取中文网页乱码的通用解决办法/" class="article-date">
+  <time datetime="2016-02-02T03:51:27.000Z" itemprop="datePublished">2016-02-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/02/Python_爬取中文网页乱码的通用解决办法/">Python 爬取中文网页乱码的通用解决办法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于网页编码不统一，我们会遇到各式各样的网页编码格式。</p>
+<p>那么问题来了，由于编码格式不统一，爬取的中文信息往往是不尽任意的， 那么如何处理它呢？</p>
+<p>ENV: Python 2.7.x</p>
+<p>如何取得网页的编码，用chardet库最方便(<a href="https://pypi.python.org/pypi/chardet/" target="_blank" rel="external">https://pypi.python.<wbr>org/pypi/chardet/)。</a></p>
+<h1 id="pip_install_chardet"><a href="#pip_install_chardet" class="headerlink" title="pip install chardet"></a>pip install chardet</h1><p><pre class="lang:default decode:true ">#!/usr/bin/env python</pre></p>
+<h1 id="encoding_3Autf-8"><a href="#encoding_3Autf-8" class="headerlink" title="encoding:utf-8"></a>encoding:utf-8</h1><p>import chardet<br>import urllib2</p>
+<p>line = “<a href="http://suzf.net" target="_blank" rel="external">http://suzf.net</a>“<br>html_old = urllib2.urlopen(line, timeout=30).read()</p>
+<p>mychar = chardet.detect(html_old)</p>
+<p>coding = mychar[‘encoding’]<br>print coding</p>
+<p>if coding == ‘utf-8’ or coding == ‘UTF-8’:<br>    html = html_old<br>elif coding == ‘gbk’ or coding == ‘GBK’:<br>    html = html_old.decode(‘gbk’, ‘ignore’).encode(‘utf-8’)<br>elif coding == ‘gb2312’:<br>    html = html_old.decode(‘gb2312’, ‘ignore’).encode(‘utf-8’)</p>
+<p>print html<br><br>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/02/02/Python_爬取中文网页乱码的通用解决办法/" data-id="ciq4n5jh300bk7xo937y1ep3c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-Debian_Fedora_common_commands_Management_Pack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/01/Debian_Fedora_common_commands_Management_Pack/" class="article-date">
+  <time datetime="2016-02-01T02:16:33.000Z" itemprop="datePublished">2016-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
 
-  </body>
- </html>
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/01/Debian_Fedora_common_commands_Management_Pack/">Debian Fedora常用命令管理包</a>
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div>
+
+<p>对大家推荐很好使用的Debian Fedora命令系统，像让大家对Debian Fedora命令系统有所了解，然后对Debian Fedora命令统全面讲解介绍，Debian Fedora 的包管理命令。</p>
+<p><strong>=== Debian Fedora 中dpkg命令 ===</strong><br>dpkg -i –install<em> dpkg –install w3m_0.5.2-2+b1_i386.deb<span class="Apple-converted-space"> </span><br>dpkg -r –remove</em> dpkg –remove w3m<br>dpkg -P –purge<em> dpkg –purge w3m<br>dpkg -l –list</em> 列出当前系统里安装好的包名<br>dpkg -L –listfiles<em> 列出已经安装好的包的文件</em> dpkg -L w3m<br>dpkg -s –status<em> 包的状态表示</em> dpkg –status w3m<br>dpkg -S –search<em> 查看一个系统文件归属于哪个包</em> dpkg –search /etc/ucf.conf<br>dpkg -c –contents<em> 显示包里内容</em> dpkg -c w3m_0.5.2-2+b1_i386.deb<br>dpkg –unpack<em> 解压包<br>dpkg –configure</em> 配置包<br>dpkg -R –recursive* 递归处理文件夹内的内容</p>
+<p><strong>=== Debian Fedora 中apt-get命令 ===</strong><br>apt-get install <em> 安装一个包<br>apt-get remove </em> 删除一个包<br>apt-get update<em> 更新APT-GET数据库<br>apt-get dist-upgrade</em> 从APT-GET数据库里,所有组件更新到最新状态<br>apt-get upgrade* 更新一个包</p>
+<p><strong>=== Debian Fedora 中apt-cache命令 ===</strong><br>apt-cache show<em> 显示一个包的信息<br>apt-cache showpkg</em> 显示一个包的详细信息<br>apt-cache depends<em> 显示当前包的依赖信息<br>apt-cache search</em> 通过一个关键字,去查询含有这个关键字的包</p>
+<p><strong>=== Debian Fedora 中aptitude命令 ===</strong><br>这是一个CUI工具,可以人机交互的操作.<br>所以,没有具体的参数,选项.<br>里面还有扫雷游戏,真的很好玩.</p>
+<p><strong>===Debian Fedora 中 rpm命令 ===</strong>rpm -i –install w3m_aa.rpm<em> 安装一个RPM包<br>rpm -F –freshen w3m_aa.rpm</em> 如果已经安装过的包,进行更新<br>rpm -U –upgrade w3m_aa.rpm<em> 如果没安装,就安装;如果已经安装,就更新;这个比较常用<br>rpm -e w3m</em> 删除一个已经安装的包<br>rpm -h<em> 显示安装进度条, 一般和其它安装选项一起使用<br>rpm -v </em> 显示详细信息<br>rpm –nodeps<em> 无视依赖,强制安装/删除<br>rpm –force</em> 强制执行安装,更新<br>rpm -qa<em> 显示所有已经安装的包名<br>rpm -qi w3m</em> 显示已经安装好的包的信息<br>rpm -ql w3m<em> 显示已经安装好的包的所有文件<br>rpm -qc w3m</em> 显示已经安装好的包的设定文件; 这个比较有用<br>rpm -qd w3m<em> 显示已经安装好的包的相关文档 就是/usr/share/doc下有哪些相关文件<br>rpm -q –changelog w3m</em> 显示包的版本变化履历,注意,-q –changelog 这是一个命令, 不是同义词.<br>rpm -qpi w3m_aa.rpm <em> 显示rpm包的信息<br>rpm -qpl w3m_aa.rpm</em> 显示rpm包里所包含的文件<br>rpm2cpio w3m_aa.rpm | cpio -id<em> 把RPM里的文件释放到当前文件夹下面<br>rpm -V w3m</em> 对于已经安装好的包的系统文件,进行更新检查.如有变化,会有提示<br>S:大小变化了.<br>5:MD5检查,就是内容变化了.<br>M:Permitt,变化了<br>U:User变了<br>G:Group变了<br>T:更改时间有变化</p>
+<p><strong>=== Debian Fedora 中yum 命令===</strong><br>/etc/yum.conf<br>/etc/yum.repos.d/<br>yumdownloader –source w3m<em> 下载包的源代码<br>yum check-update</em> 查看系统里所有可更新的包<br>yum update<em> 所有可更新的包进行更新<br>yum clean all</em> clean : 清除CACHE里的数据,参数 all 表示所有种别的cache全部删除<br>yum insatll w3m<em> 安装包<br>yum update w3m</em> 在线更新包,如果原来没有安装的话,不会安装.<br>yum remove w3m<em> 删除包w3m<br>yum list</em> 列出所有包的安装与否信息及已经安装的版本<br>yum list w3m<em> 列出指定包的安装与否及版本信息<br>yum info w3m</em> 打出指定的包的相关信息<br>yum groupinstall prg-group<em> 安装一组程序,比如 “Chinese Support”<br>yum grouplist</em> 显示可用的 程序组<br>yum gorupinfo prg-group<em> 显示程序组的信息,并显示里面包含的所有包名<br>yum search keyword</em> 显示包含keyword 的包名</p>
+<p></p></div><p></p>
+<p><div></div></p>
+<p><div></div></p>
+<div>
+
+<h1 id="Debian__u5FEB_u901F_u53C2_u8003_u624B_u518C"><a href="#Debian__u5FEB_u901F_u53C2_u8003_u624B_u518C" class="headerlink" title="Debian 快速参考手册"></a>Debian 快速参考手册</h1><p></p></div><p></p>
+<p><div><a href="http://qref.sourceforge.net/Debian/quick-reference/index.zh-cn.html#contents" target="_blank" rel="external">http://qref.sourceforge.net/Debian/quick-reference/index.zh-cn.html#contents</a></div></p>
+<p><div></div></p>
+<div>
+
+<h1 id="The_Debian_GNU/Linux_FAQ"><a href="#The_Debian_GNU/Linux_FAQ" class="headerlink" title="The Debian GNU/Linux FAQ"></a>The Debian GNU/Linux FAQ</h1><p><a href="https://www.debian.org/doc/manuals/debian-faq/index.zh-cn.html#contents" target="_blank" rel="external">https://www.debian.org/doc/manuals/debian-faq/index.zh-cn.html#contents</a></p></div><br><br>&nbsp;<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/02/01/Debian_Fedora_common_commands_Management_Pack/" data-id="ciq4n5jjy00db7xo9qaqythn7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debian/">Debian</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-how-to-rechange-debian-system-root-password" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/01/how-to-rechange-debian-system-root-password/" class="article-date">
+  <time datetime="2016-02-01T02:13:07.000Z" itemprop="datePublished">2016-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/01/how-to-rechange-debian-system-root-password/">How-to rechange debian system root password</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Debian Linux 系统忘记密码怎么办?<br>看到很多人老在论坛里面问这个问题，有的人给的答案也不多。特拿出来，随便当笔记用。</p>
+<p>对于一些版本的OS（如RedHat）来说，编辑grub，在后面加上“single”即可进入单用户模式。<br>但是对于debian来说，这种方式是无效的，因为debian进入单用户模式也需要你输入root用户的密码。</p>
+<p>1.在grub选项菜单’Debian GNU/Linux,…(recovery mode)’，按e进入编辑模式</p>
+<p>2.编辑kernel那行最后面的 ro single 改成 rw single init=/bin/bash，按 b / F10 执行重启</p>
+<p>3.进入后执行下列命令</p>
+<p>如果有 lvm , 可将卷组 激活后在挂载</p>
+<h1 id="sudo_lvscan__23_u67E5_u770B_u5377_u7EC4_u6FC0_u6D3B_u72B6_u6001_uFF0C_u53CA_u5377_u7EC4_u4E2D_u6709_u54EA_u4E9B_u903B_u8F91_u5377_u3002"><a href="#sudo_lvscan__23_u67E5_u770B_u5377_u7EC4_u6FC0_u6D3B_u72B6_u6001_uFF0C_u53CA_u5377_u7EC4_u4E2D_u6709_u54EA_u4E9B_u903B_u8F91_u5377_u3002" class="headerlink" title="sudo lvscan                           #查看卷组激活状态，及卷组中有哪些逻辑卷。"></a>sudo lvscan                           #查看卷组激活状态，及卷组中有哪些逻辑卷。</h1><p>ACTIVE            ‘/dev/vol1/opt’ [16.50 GiB] inherit<br>ACTIVE            ‘/dev/vol1/usr’ [1.91 GiB] inherit<br>… …</p>
+<h1 id="sudo_vgchange_-ay_/dev/vol1__23__u6FC0_u6D3B_u5377_u7EC4"><a href="#sudo_vgchange_-ay_/dev/vol1__23__u6FC0_u6D3B_u5377_u7EC4" class="headerlink" title="sudo vgchange -ay /dev/vol1           # 激活卷组"></a>sudo vgchange -ay /dev/vol1           # 激活卷组</h1><p>… …</p>
+<p>root@(none)# mount -a</p>
+<p>root@(none)# passwd root</p>
+<p>root@(none)# reboot</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/02/01/how-to-rechange-debian-system-root-password/" data-id="ciq4n5jdb008b7xo91knmh69c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-curl-and-wget" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/01/linux-curl-and-wget/" class="article-date">
+  <time datetime="2016-02-01T01:53:35.000Z" itemprop="datePublished">2016-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/01/linux-curl-and-wget/">Linux curl and wget</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、curl（文件传输工具）</p>
+<p>常用参数如下：</p>
+<p>-c，–cookie-jar：将cookie写入到文件</p>
+<p>-b，–cookie：从文件中读取cookie</p>
+<p>-C，–continue-at：断点续传</p>
+<p>-d，–data：http post方式传送数据</p>
+<p>-D，–dump-header：把header信息写入到文件</p>
+<p>-F，–from：模拟http表达提交数据</p>
+<p>-s，–slient：减少输出信息</p>
+<p>-o，–output：将信息输出到文件</p>
+<p>-O，–remote-name：按照服务器上的文件名，存在本地</p>
+<p>–l，–head：仅返回头部信息</p>
+<p>-u，–user[user:pass]：设置http认证用户和密码</p>
+<p>-T，–upload-file：上传文件</p>
+<p>-e，–referer：指定引用地址</p>
+<p>-x，–proxy：指定代理服务器地址和端口</p>
+<p>-w，–write-out：输出指定格式内容</p>
+<p>–retry：重试次数</p>
+<p>–connect-timeout：指定尝试连接的最大时间/s</p>
+<p>使用示例：</p>
+<p>例1：抓取页面到指定文件，如果有乱码可以使用iconv转码</p>
+<h1 id="curl_-o_baidu-html_www-baidu-com"><a href="#curl_-o_baidu-html_www-baidu-com" class="headerlink" title="curl -o baidu.html www.baidu.com"></a>curl -o baidu.html www.baidu.com</h1><h1 id="curl__u2013s__u2013o_baidu-html_www-baidu-com__7Ciconv_-f_utf-8__23_u51CF_u5C11_u8F93_u51FA_u4FE1_u606F"><a href="#curl__u2013s__u2013o_baidu-html_www-baidu-com__7Ciconv_-f_utf-8__23_u51CF_u5C11_u8F93_u51FA_u4FE1_u606F" class="headerlink" title="curl –s –o baidu.html www.baidu.com |iconv -f utf-8  #减少输出信息"></a>curl –s –o baidu.html www.baidu.com |iconv -f utf-8  #减少输出信息</h1><p>例2：模拟浏览器头（user-agent）</p>
+<h1 id="curl_-A__u201CMozilla/4-0__28compatible_3BMSIE_6-0_3B_Windows_NT_5-0_29_u201D_www-baidu-com"><a href="#curl_-A__u201CMozilla/4-0__28compatible_3BMSIE_6-0_3B_Windows_NT_5-0_29_u201D_www-baidu-com" class="headerlink" title="curl -A “Mozilla/4.0 (compatible;MSIE 6.0; Windows NT 5.0)” www.baidu.com"></a>curl -A “Mozilla/4.0 (compatible;MSIE 6.0; Windows NT 5.0)” www.baidu.com</h1><p>例3：处理重定向页面</p>
+<h1 id="curl__u2013L_http_3A//192-168-1-100/301-php__23_u9ED8_u8BA4curl_u662F_u4E0D_u5904_u7406_u91CD_u5B9A_u5411"><a href="#curl__u2013L_http_3A//192-168-1-100/301-php__23_u9ED8_u8BA4curl_u662F_u4E0D_u5904_u7406_u91CD_u5B9A_u5411" class="headerlink" title="curl –L http://192.168.1.100/301.php   #默认curl是不处理重定向"></a>curl –L <a href="http://192.168.1.100/301.php" target="_blank" rel="external">http://192.168.1.100/301.php</a>   #默认curl是不处理重定向</h1><p>例4：模拟用户登陆，保存cookie信息到cookies.txt文件，再使用cookie登陆</p>
+<h1 id="curl_-c_-/cookies-txt_-F_NAME_3Duser_-F_PWD_3D*URL__23NAME_u548CPWD_u662F_u8868_u5355_u5C5E_u6027_u4E0D_u540C_uFF0C_u6BCF_u4E2A_u7F51_u7AD9_u57FA_u672C_u90FD_u4E0D_u540C"><a href="#curl_-c_-/cookies-txt_-F_NAME_3Duser_-F_PWD_3D*URL__23NAME_u548CPWD_u662F_u8868_u5355_u5C5E_u6027_u4E0D_u540C_uFF0C_u6BCF_u4E2A_u7F51_u7AD9_u57FA_u672C_u90FD_u4E0D_u540C" class="headerlink" title="curl -c ./cookies.txt -F NAME=user -F PWD=*URL            #NAME和PWD是表单属性不同，每个网站基本都不同"></a>curl -c ./cookies.txt -F NAME=user -F PWD=<em>*</em>URL            #NAME和PWD是表单属性不同，每个网站基本都不同</h1><h1 id="curl_-b_-/cookies-txt__u2013o_URL"><a href="#curl_-b_-/cookies-txt__u2013o_URL" class="headerlink" title="curl -b ./cookies.txt –o URL"></a>curl -b ./cookies.txt –o URL</h1><p>例5：获取HTTP响应头headers</p>
+<h1 id="curl_-I_http_3A//www-baidu-com"><a href="#curl_-I_http_3A//www-baidu-com" class="headerlink" title="curl -I http://www.baidu.com"></a>curl -I <a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a></h1><h1 id="curl_-D_-/header-txt_http_3A//www-baidu-com__23_u5C06headers_u4FDD_u5B58_u5230_u6587_u4EF6_u4E2D"><a href="#curl_-D_-/header-txt_http_3A//www-baidu-com__23_u5C06headers_u4FDD_u5B58_u5230_u6587_u4EF6_u4E2D" class="headerlink" title="curl -D ./header.txt http://www.baidu.com   #将headers保存到文件中"></a>curl -D ./header.txt <a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>   #将headers保存到文件中</h1><p>例6：访问HTTP认证页面</p>
+<h1 id="curl__u2013u_user_3Apass_URL"><a href="#curl__u2013u_user_3Apass_URL" class="headerlink" title="curl –u user:pass URL"></a>curl –u user:pass URL</h1><p>例7：通过ftp上传和下载文件</p>
+<h1 id="curl_-T_filename_ftp_3A//user_3Apass@ip/docs__23_u4E0A_u4F20"><a href="#curl_-T_filename_ftp_3A//user_3Apass@ip/docs__23_u4E0A_u4F20" class="headerlink" title="curl -T filename ftp://user:pass@ip/docs  #上传"></a>curl -T filename ftp://user:pass@ip/docs  #上传</h1><h1 id="curl_-O_ftp_3A//user_3Apass@ip/filename__23_u4E0B_u8F7D"><a href="#curl_-O_ftp_3A//user_3Apass@ip/filename__23_u4E0B_u8F7D" class="headerlink" title="curl -O ftp://user:pass@ip/filename   #下载"></a>curl -O ftp://user:pass@ip/filename   #下载</h1><p>博客：<a href="http://lizhenliang.blog.51cto.com" target="_blank" rel="external">http://lizhenliang.blog.51cto.com</a></p>
+<p>2、wget（文件下载工具）</p>
+<p>常用参数如下：</p>
+<p>2.1 启动参数</p>
+<p>-V，–version：显示版本号</p>
+<p>-h，–help：查看帮助</p>
+<p>-b，–background：启动后转入后台执行</p>
+<p>2.2 日志记录和输入文件参数</p>
+<p>-o，–output-file=file：把记录写到file文件中</p>
+<p>-a，–append-output=file：把记录追加到file文件中</p>
+<p>-i，–input-file=file：从file读取url来下载</p>
+<p>2.3 下载参数</p>
+<p>-bind-address=address：指定本地使用地址</p>
+<p>-t，-tries=number：设置最大尝试连接次数</p>
+<p>-c，-continue：接着下载没有下载完的文件</p>
+<p>-O，-output-document=file：将下载内容写入到file文件中</p>
+<p>-spider：不下载文件</p>
+<p>-T，-timeout=sec：设置响应超时时间</p>
+<p>-w，-wait=sec：两次尝试之间间隔时间</p>
+<p>–limit-rate=rate：限制下载速率</p>
+<p>-progress=type：设置进度条</p>
+<p>2.4 目录参数</p>
+<p>-P，-directory-prefix=prefix：将文件保存到指定目录</p>
+<p>2.5 HTTP参数</p>
+<p>-http-user=user：设置http用户名</p>
+<p>-http-passwd=pass：设置http密码</p>
+<p>-U，–user-agent=agent：伪装代理</p>
+<p>-no-http-keep-alive：关闭http活动链接，变成永久链接</p>
+<p>-cookies=off：不使用cookies</p>
+<p>-load-cookies=file：在开始会话前从file文件加载cookies</p>
+<p>-save-cookies=file：在会话结束将cookies保存到file文件</p>
+<p>2.6 FTP参数</p>
+<p>-passive-ftp：默认值，使用被动模式</p>
+<p>-active-ftp：使用主动模式</p>
+<p>2.7 递归下载排除参数</p>
+<p>-A，–accept=list：分号分割被下载扩展名的列表</p>
+<p>-R，–reject=list：分号分割不被下载扩展名的列表</p>
+<p>-D，–domains=list：分号分割被下载域的列表</p>
+<p>–exclude-domains=list：分号分割不被下载域的列表</p>
+<p>使用示例：</p>
+<p>例1：下载单个文件到当前目录下，也可以-P指定下载目录</p>
+<h1 id="wgethttp_3A//nginx-org/download/nginx-1-8-0-tar-gz"><a href="#wgethttp_3A//nginx-org/download/nginx-1-8-0-tar-gz" class="headerlink" title="wgethttp://nginx.org/download/nginx-1.8.0.tar.gz"></a>wget<a href="http://nginx.org/download/nginx-1.8.0.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.8.0.tar.gz</a></h1><p>例2：对于网络不稳定的用户可以使用-c和–tries参数，保证下载完成</p>
+<h1 id="wget__u2013tries_3D20_-c_http_3A//nginx-org/download/nginx-1-8-0-tar-gz"><a href="#wget__u2013tries_3D20_-c_http_3A//nginx-org/download/nginx-1-8-0-tar-gz" class="headerlink" title="wget –tries=20 -c http://nginx.org/download/nginx-1.8.0.tar.gz"></a>wget –tries=20 -c <a href="http://nginx.org/download/nginx-1.8.0.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.8.0.tar.gz</a></h1><p>例3：下载大的文件时，我们可以放到后台去下载，这时会生成wget-log文件来保存下载进度</p>
+<h1 id="wget_-b_http_3A//nginx-org/download/nginx-1-8-0-tar-gz"><a href="#wget_-b_http_3A//nginx-org/download/nginx-1-8-0-tar-gz" class="headerlink" title="wget -b http://nginx.org/download/nginx-1.8.0.tar.gz"></a>wget -b <a href="http://nginx.org/download/nginx-1.8.0.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.8.0.tar.gz</a></h1><p>例4：可以利用—spider参数判断网址是否有效</p>
+<h1 id="wget__u2013spider_http_3A//nginx-org/download/nginx-1-8-0-tar-gz"><a href="#wget__u2013spider_http_3A//nginx-org/download/nginx-1-8-0-tar-gz" class="headerlink" title="wget –spider http://nginx.org/download/nginx-1.8.0.tar.gz"></a>wget –spider <a href="http://nginx.org/download/nginx-1.8.0.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.8.0.tar.gz</a></h1><p>例5：自动从多个链接下载文件</p>
+<h1 id="cat_url_list-txt__23_u5148_u521B_u5EFA_u4E00_u4E2AURL_u6587_u4EF6"><a href="#cat_url_list-txt__23_u5148_u521B_u5EFA_u4E00_u4E2AURL_u6587_u4EF6" class="headerlink" title="cat url_list.txt   #先创建一个URL文件"></a>cat url_list.txt   #先创建一个URL文件</h1><p><a href="http://nginx.org/download/nginx-1.8.0.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.8.0.tar.gz</a></p>
+<p><a href="http://nginx.org/download/nginx-1.6.3.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.6.3.tar.gz</a></p>
+<h1 id="wget_-i_url_list-txt"><a href="#wget_-i_url_list-txt" class="headerlink" title="wget -i url_list.txt"></a>wget -i url_list.txt</h1><p>例6：限制下载速度</p>
+<h1 id="wget__u2013limit-rate_3D1m_http_3A//nginx-org/download/nginx-1-8-0-tar-gz"><a href="#wget__u2013limit-rate_3D1m_http_3A//nginx-org/download/nginx-1-8-0-tar-gz" class="headerlink" title="wget –limit-rate=1m http://nginx.org/download/nginx-1.8.0.tar.gz"></a>wget –limit-rate=1m <a href="http://nginx.org/download/nginx-1.8.0.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.8.0.tar.gz</a></h1><p>例7：登陆ftp下载文件</p>
+<h1 id="wget__u2013ftp-user_3Duser__u2013ftp-password_3Dpass_ftp_3A//ip/filename"><a href="#wget__u2013ftp-user_3Duser__u2013ftp-password_3Dpass_ftp_3A//ip/filename" class="headerlink" title="wget –ftp-user=user –ftp-password=pass ftp://ip/filename"></a>wget –ftp-user=user –ftp-password=pass ftp://ip/filename</h1><p>来源： <a href="http://lizhenliang.blog.51cto.com/7876557/1650663" target="_blank" rel="external">互联网</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/02/01/linux-curl-and-wget/" data-id="ciq4n5jc200747xo9484nzgz1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-file-operations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/28/python-file-operations/" class="article-date">
+  <time datetime="2016-01-28T06:27:12.000Z" itemprop="datePublished">2016-01-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/28/python-file-operations/">python-file-operations</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Split_big_file"><a href="#Split_big_file" class="headerlink" title="Split big file"></a>Split big file</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- encoding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> optparse <span class="keyword">import</span> OptionParser</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split</span><span class="params">(fromfile, todir, chunksize)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(todir):</span><br><span class="line">        os.mkdir(todir)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> fname <span class="keyword">in</span> os.listdir(todir):</span><br><span class="line">            os.remove(os.path.join(todir, fname))</span><br><span class="line"></span><br><span class="line">    partnum = <span class="number">0</span></span><br><span class="line">    inputfile = open(fromfile, <span class="string">'rb'</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        chunk = inputfile.read(chunksize)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> chunk:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        partnum += <span class="number">1</span></span><br><span class="line">        filename = os.path.join(todir, fromfile + (<span class="string">'_%04d'</span> % partnum))</span><br><span class="line">        fileobj = open(filename, <span class="string">'wb'</span>)</span><br><span class="line">        fileobj.write(chunk)</span><br><span class="line">        fileobj.close()</span><br><span class="line">    <span class="keyword">return</span> partnum</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    parser = OptionParser()</span><br><span class="line">    parser.add_option(</span><br><span class="line">        <span class="string">"-f"</span>, <span class="string">"--filename"</span>, dest=<span class="string">"fromfile"</span>, default=<span class="string">'None'</span>, help=<span class="string">"Split filename"</span>)</span><br><span class="line">    parser.add_option(<span class="string">"-d"</span>, <span class="string">"--store-directory"</span>, dest=<span class="string">"todir"</span>,</span><br><span class="line">                      default=<span class="string">'None'</span>, help=<span class="string">"store parts file directory"</span>)</span><br><span class="line">    parser.add_option(<span class="string">"-s"</span>, <span class="string">"--size"</span>, dest=<span class="string">"chunksize"</span>, default=<span class="string">'70'</span>, type=int help=<span class="string">"chunk size Mb"</span>)</span><br><span class="line">    </span><br><span class="line">    (options, args) = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    fromfile = options.fromfile</span><br><span class="line">    todir = options.todir</span><br><span class="line">    chunksize = int(options.chunksize) * <span class="number">1024</span> * <span class="number">1024</span></span><br><span class="line"></span><br><span class="line">    absfrom, absto = map(os.path.abspath, [fromfile, todir])</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Splitting'</span>, absfrom, <span class="string">'to'</span>, absto, <span class="string">'by'</span>, chunksize</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        parts = split(fromfile, todir, chunksize)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Error during split:'</span> + (sys.exc_info()[<span class="number">0</span>], sys.exc_info()[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">'split finished:'</span>, parts, <span class="string">'parts are in'</span>, absto)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/01/28/python-file-operations/" data-id="ciq4n5j8s004f7xo94yuem4vl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-sendmail-examples" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/26/python-sendmail-examples/" class="article-date">
+  <time datetime="2016-01-26T08:36:02.000Z" itemprop="datePublished">2016-01-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/26/python-sendmail-examples/">Python sendmail examples</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="send_attchment_email"><a href="#send_attchment_email" class="headerlink" title="send attchment email"></a>send attchment email</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msg = MIMEMultipart()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">filename = <span class="string">'/root/bigfile'</span></span><br><span class="line">att1 = MIMEText(open(filename, <span class="string">'rb'</span>).read(), <span class="string">'base64'</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">att1[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span></span><br><span class="line">att1[<span class="string">"Content-Disposition"</span>] = <span class="string">'attachment; filename=filename'</span></span><br><span class="line">msg.attach(att1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msg[<span class="string">'to'</span>] = <span class="string">'xxx@qq.com'</span></span><br><span class="line">msg[<span class="string">'from'</span>] = <span class="string">'robot@suzf.net'</span></span><br><span class="line">msg[<span class="string">'subject'</span>] = <span class="string">'hello world'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    server = smtplib.SMTP()</span><br><span class="line">    server.connect(<span class="string">'localhost'</span>)</span><br><span class="line">    <span class="comment">#server.connect('smtp.exmail.qq.com')</span></span><br><span class="line">    <span class="comment">#server.login('smtp_user','smtp_pwd')</span></span><br><span class="line">    server.sendmail(msg[<span class="string">'from'</span>], msg[<span class="string">'to'</span>],msg.as_string())</span><br><span class="line">    server.quit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">except</span> Exception, e:</span><br><span class="line">    <span class="keyword">print</span> str(e)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/01/26/python-sendmail-examples/" data-id="ciq4n5j8b003z7xo9qy1r2egv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/13/hello-world/" class="article-date">
+  <time datetime="2016-01-13T01:00:00.000Z" itemprop="datePublished">2016-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/13/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://blog.suzf.net">here</a>! This is your very first post. </p>
+<h2 id="building"><a href="#building" class="headerlink" title="building"></a>building</h2><p>   I has migrated my <a href="http://suzf.net" target="_blank" rel="external">wp blog articles</a> on Jan 13, 2016.<br>   The old and the new will be synced update.<br>   You can choose the one you like.</p>
+<p>   Thanks you for supporting for me. ^<em>__</em>^</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2016/01/13/hello-world/" data-id="ciq4n5jeo009d7xo9kifoybg1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/" class="article-date">
+  <time datetime="2015-12-30T08:04:51.000Z" itemprop="datePublished">2015-12-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/">pip-faq: Error -5 while decompressing data: incomplete or truncated stream</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在我执行 <code>pip install flask-bootstrap</code> 出现了一个这样的错误<br>– error: Error -5 while decompressing data: incomplete or truncated stream</p>
+<p>安装/卸载其他包是正常的。唯独管理flask-bootstrap 出现了这样的错误。</p>
+<p>版本信息：</p>
+<p>#pip –version<br>pip 7.1.2 from /usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg (python 2.7)</p>
+<p>#python –version<br>Python 2.7.3</p>
+<p>完整的报错信息是：</p>
+<p><pre class="lang:default decode:true ">^_^[15:36:31][root@master01 ~]#pip install flask-bootstrap<br>Collecting flask-bootstrap<br>Exception:<br>Traceback (most recent call last):<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/basecommand.py”, line 211, in main<br>    status = self.run(options, args)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/commands/install.py”, line 294, in run<br>    requirement_set.prepare_files(finder)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_set.py”, line 334, in prepare_files<br>    functools.partial(self._prepare_file, finder))<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_set.py”, line 321, in _walk_req_to_install<br>    more_reqs = handler(req_to_install)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_set.py”, line 461, in _prepare_file<br>    req_to_install.populate_link(finder, self.upgrade)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/req/req_install.py”, line 250, in populate_link<br>    self.link = finder.find_requirement(self, upgrade)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 486, in find_requirement<br>    all_versions = self._find_all_versions(req.name)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 404, in _find_all_versions<br>    index_locations = self._get_index_urls_locations(project_name)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 378, in _get_index_urls_locations<br>    page = self._get_page(main_index_url)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 818, in _get_page<br>    return HTMLPage.get_page(link, session=self.session)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/index.py”, line 928, in get_page<br>    “Cache-Control”: “max-age=600”,<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/requests/sessions.py”, line 477, in get<br>    return self.request(‘GET’, url, <strong>kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/download.py”, line 373, in request<br>    return super(PipSession, self).request(method, url, *args, </strong>kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/requests/sessions.py”, line 465, in request<br>    resp = self.send(prep, <strong>send_kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/requests/sessions.py”, line 573, in send<br>    r = adapter.send(request, </strong>kwargs)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/adapter.py”, line 36, in send<br>    cached_response = self.controller.cached_request(request)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/controller.py”, line 102, in cached_request<br>    resp = self.serializer.loads(request, self.cache.get(cache_url))<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/serialize.py”, line 108, in loads<br>    return getattr(self, “_loads_v{0}”.format(ver))(request, data)<br>  File “/usr/local/lib/python2.7/site-packages/pip-7.1.2-py2.7.egg/pip/_vendor/cachecontrol/serialize.py”, line 164, in _loads_v2<br>    cached = json.loads(zlib.decompress(data).decode(“utf8”))<br>error: Error -5 while decompressing data: incomplete or truncated stream</pre><br>原来在PIP的本地缓存损坏了（在我这里的环境中，默认情况下在 ~/.cache/pip）。<br>我测试了一下，试图执行 <code>pip install --no-cache-dir flask-bootstrap</code>,它工作了。<br>为了确认这是高速缓存，我执行：</p>
+<p>pip uninstall flask-bootstrap<br>rm -rf ~/.cache/pip/*`<br>pip install flask-bootstrap</p>
+<p>这次它成功了，而它之前总是失败。<br>我不知道该这个问题是否跟缓存的问题有关。但我的猜测是，PIP被中断下载导致缓存数据被破坏。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2015/12/30/pip-faq-error-5-while-decompressing-data-incomplete-or-truncated-stream/" data-id="ciq4n5ja1005h7xo9f9pbx5xi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/faq/">faq</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pip/">pip</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Apache/">Apache</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Auto-ops/">Auto ops</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CouchBase/">CouchBase</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HA/">HA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Highcharts/">Highcharts</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LVS/">LVS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Oracle/">Oracle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Puppet/">Puppet</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomcat/">Tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Zabbix/">Zabbix</a><span class="category-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ceph/">Ceph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debian/">Debian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exsi/">Exsi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTID/">GTID</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kernel/">Kernel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kickstart/">Kickstart</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LB/">LB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LVS/">LVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lnmp/">Lnmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/">Log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Proxy/">Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Puppet/">Puppet</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Re/">Re</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZK/">ZK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coredump/">coredump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/couchbase/">couchbase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diy/">diy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expect/">expect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facter/">facter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/faq/">faq</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/highcharts/">highcharts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idrac/">idrac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iso/">iso</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lvm/">lvm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rewrite/">rewrite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsync/">rsync</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsyslog/">rsyslog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snmp/">snmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strace/">strace</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudo/">sudo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Ceph/" style="font-size: 10.91px;">Ceph</a> <a href="/tags/Debian/" style="font-size: 10px;">Debian</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Exsi/" style="font-size: 10px;">Exsi</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GTID/" style="font-size: 10.91px;">GTID</a> <a href="/tags/Kernel/" style="font-size: 10.91px;">Kernel</a> <a href="/tags/Kickstart/" style="font-size: 10px;">Kickstart</a> <a href="/tags/LB/" style="font-size: 10px;">LB</a> <a href="/tags/LVS/" style="font-size: 10px;">LVS</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lnmp/" style="font-size: 10px;">Lnmp</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/MongoDB/" style="font-size: 11.82px;">MongoDB</a> <a href="/tags/Mysql/" style="font-size: 19.09px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.36px;">Nginx</a> <a href="/tags/NoSQL/" style="font-size: 12.73px;">NoSQL</a> <a href="/tags/Oracle/" style="font-size: 11.82px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.91px;">PHP</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/Puppet/" style="font-size: 14.55px;">Puppet</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RAC/" style="font-size: 10.91px;">RAC</a> <a href="/tags/Re/" style="font-size: 11.82px;">Re</a> <a href="/tags/ZK/" style="font-size: 10px;">ZK</a> <a href="/tags/Zabbix/" style="font-size: 18.18px;">Zabbix</a> <a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/coredump/" style="font-size: 10px;">coredump</a> <a href="/tags/couchbase/" style="font-size: 10px;">couchbase</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/diy/" style="font-size: 10px;">diy</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/expect/" style="font-size: 10px;">expect</a> <a href="/tags/facter/" style="font-size: 10px;">facter</a> <a href="/tags/faq/" style="font-size: 17.27px;">faq</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/highcharts/" style="font-size: 10px;">highcharts</a> <a href="/tags/idrac/" style="font-size: 10px;">idrac</a> <a href="/tags/iso/" style="font-size: 10px;">iso</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lvm/" style="font-size: 10px;">lvm</a> <a href="/tags/pip/" style="font-size: 12.73px;">pip</a> <a href="/tags/redis/" style="font-size: 15.45px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/rsyslog/" style="font-size: 10px;">rsyslog</a> <a href="/tags/snmp/" style="font-size: 10px;">snmp</a> <a href="/tags/strace/" style="font-size: 10px;">strace</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/tomcat/" style="font-size: 13.64px;">tomcat</a> <a href="/tags/vim/" style="font-size: 10.91px;">vim</a> <a href="/tags/web/" style="font-size: 12.73px;">web</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/zookeeper/" style="font-size: 12.73px;">zookeeper</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/12/839/">Linux 下使用 strace 诊断疑难杂症</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/">MySQL mysqldump 数据导出详解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/24/Python_Re_module_learn/">Python Re module learn</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/22/Python正则表达式操作指南/">Python正则表达式操作指南</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/18/Hello_Kafka/">Hello Kafka</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jeffrey Su<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

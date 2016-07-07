@@ -1,569 +1,1276 @@
-
- <!DOCTYPE HTML>
-<html lang="default">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   
-    <title>Suzf Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
-    
-    <meta name="author" content="Jeffrey Su">
-    
-    <meta name="description" content="Suzf linux tech blog">
-    
-    
-    
-    
-    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
-    
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
-    
-    <link rel="icon" href="/img/favicon.ico">
-    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  <title>Suzf Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Suzf linux tech blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Suzf Blog">
+<meta property="og:url" content="http://blog.suzf.net/page/12/index.html">
+<meta property="og:site_name" content="Suzf Blog">
+<meta property="og:description" content="Suzf linux tech blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Suzf Blog">
+<meta name="twitter:description" content="Suzf linux tech blog">
+  
+    <link rel="alternative" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
 
 </head>
-
-  <body>
-    <header>
-        <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
-				<h2 class="blog-motto">Life is short, We need smile.</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-
-                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
-                        <li><a title="Let's High!!!" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>High一下</a> </li>
-
-                    <li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:blog.suzf.net">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-
-    </header>
-    <div id="container">
-      <div id="main">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/07/loganalyzer-log-analysis-and-syslog-log-analysis-system/" title="日志分析之LogAnalyzer+Rsyslog日志分析系统全" itemprop="url">
-  
-    <h1 itemprop="name">日志分析之LogAnalyzer+Rsyslog日志分析系统全</h1>
-    
-     
-           <p itemprop="description" >一、简介
-LogAnalyzer 是一款syslog日志和其他网络事件数据的Web前端。它提供了对日志的简单浏览、搜索、基本分析和一些图表报告的功能。数据可以从数据库或一般的 syslog文本文件中获取，所以LogAnalyzer不需要改变现有的记录架构。基于当前的日志数据，它可</p>
-        
-    
-    <time datetime="2014-08-07T06:22:56.000Z" itemprop="datePublished">2014-08-07</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/07/kickstart-the-custom-password-for-the-root/" title="Kickstart之为root自定义密码" itemprop="url">
-  
-    <h1 itemprop="name">Kickstart之为root自定义密码</h1>
-    
-     
-           <p itemprop="description" >linux kickstart之中root的密码可以使用明文，也可以使用加密过的值rootpw –iscrypted $1$BYSimLw0$I515yLiKzudlwkIskBqQE1
-就是读取加密后的值，但是这个值是怎么生成的呢？这与linux系统的密码shadow一样，生成</p>
-        
-    
-    <time datetime="2014-08-07T05:31:57.000Z" itemprop="datePublished">2014-08-07</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/06/http-returns-a-status-code-explanation/" title="HTTP 返回状态代码详解" itemprop="url">
-  
-    <h1 itemprop="name">HTTP 返回状态代码详解</h1>
-    
-     
-           <p itemprop="description" >一、HTTP状态码
-如果某项请求发送到您的服务器要求显示您网站上的某个网页（例如，用户通过浏览器访问您的网页或 Googlebot 抓取网页时），服务器将会返回 HTTP 状态代码以响应请求。
-此状态代码提供关于请求状态的信息， 告诉 Googlebot 关于您的网站和请求的网页</p>
-        
-    
-    <time datetime="2014-08-06T03:18:31.000Z" itemprop="datePublished">2014-08-06</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/06/DIY-streamline-automatically-install-CentOS-ISO/" title="DIY精简CentOS自动安装ISO" itemprop="url">
-  
-    <h1 itemprop="name">DIY精简CentOS自动安装ISO</h1>
-    
-     
-           <p itemprop="description" >俗话说一瘦遮三丑，一胖全没有。原生的系统过于庞大和臃肿，工作中有很多组件和安装包根本是用不到的，只安装我们需要的组件，并实现自动安装，这样在产线批量布署服务器的时候，显的效率非常高。a.在VM安装linux系统b.安装定制工具anaconda repodata createrep</p>
-        
-    
-    <time datetime="2014-08-06T03:09:30.000Z" itemprop="datePublished">2014-08-06</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/08/01/zabbix-agent-setup-on-windows/" title="Zabbix 之windows下安装agent" itemprop="url">
-  
-    <h1 itemprop="name">Zabbix 之windows下安装agent</h1>
-    
-     
-           <p itemprop="description" >1.下载windows版zabbix-agent-2.2.5并解压  http://www.zabbix.com/downloads/2.2.5/zabbix_agents_2.2.5.win.zip  解压后有两个目录bin和conf，其中bin中又有两个目录win32和 wi</p>
-        
-    
-    <time datetime="2014-08-01T06:01:19.000Z" itemprop="datePublished">2014-08-01</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/07/28/nginx-rewrite/" title="Nginx之rewrite简述" itemprop="url">
-  
-    <h1 itemprop="name">Nginx之rewrite简述</h1>
-    
-     
-           <p itemprop="description" >1、添加nginx第三方yum源cat &amp;gt; /etc/yum.repos.d/nginx.repo &amp;lt;&amp;lt;EOF[nginx]name=nginx repobaseurl=http://nginx.org/packages/centos/$releasever/$</p>
-        
-    
-    <time datetime="2014-07-28T09:47:29.000Z" itemprop="datePublished">2014-07-28</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/07/28/jdk-and-tomcat-setup/" title="JDK_Tomcat  安装" itemprop="url">
-  
-    <h1 itemprop="name">JDK_Tomcat  安装</h1>
-    
-     
-           <p itemprop="description" >####JDK 安装####这里版本选择为  jdk-6u33-linux-x64.bin1.上传安装文件至默认路径
-2.对安装文件授予执行权限 chmod +x  jdk-6u33-linux-x64.bin
-3.执行安装 ./jdk-6u33-linux-x64.bin mv</p>
-        
-    
-    <time datetime="2014-07-28T09:35:00.000Z" itemprop="datePublished">2014-07-28</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/07/25/zabbix-monitoring-oracle-performance/" title="Zabbix之监控Oracle性能" itemprop="url">
-  
-    <h1 itemprop="name">Zabbix之监控Oracle性能</h1>
-    
-     
-           <p itemprop="description" >Orabbix 是一个用来监控 Oracle 数据库实例的 Zabbix 插件。
-下载地址：http://www.smartmarmot.com/product/orabbix/download/
-官方参考：http://www.smartmarmot.com/wiki/inde</p>
-        
-    
-    <time datetime="2014-07-25T07:52:16.000Z" itemprop="datePublished">2014-07-25</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/07/25/apache-working-mode-and-switch/" title="Apache的工作模式及切换" itemprop="url">
-  
-    <h1 itemprop="name">Apache的工作模式及切换</h1>
-    
-     
-           <p itemprop="description" >prefork的工作原理及配置　　如果不用“–with-mpm”显式指定某种MPM，prefork就是Unix平台上缺省的MPM。它所采用的预派生子进程方式也是Apache 1.3中采用的模式。prefork本身并没有使用到线程，2.0版使用它是为了与1.3版保持兼容性；另一方面</p>
-        
-    
-    <time datetime="2014-07-25T06:10:00.000Z" itemprop="datePublished">2014-07-25</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/07/24/zabbix-monitoring-mysql-performance/" title="Zabbix之监控Mysql性能" itemprop="url">
-  
-    <h1 itemprop="name">Zabbix之监控Mysql性能</h1>
-    
-     
-           <p itemprop="description" >Zabbix还可以监控mysql slow queries,mysql version,uptime,alive等。下面通过Zabbix Graphs实时查看的SQL语句操作情况和mysql发送接收的字节数。1.Zabbix官方提供的监控mysql的模板Template App </p>
-        
-    
-    <time datetime="2014-07-24T11:59:07.000Z" itemprop="datePublished">2014-07-24</time>
-  </a>
-</section>
-
-
-  <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
-  </nav>
-
-</div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
-
-  
-<div class="categorieslist">
-	<p class="asidetitle">Categories</p>
-		<ul>
-		
-			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
-		
-			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
-		
-			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
-		
-			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
-		
-			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
-		
-			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
-		
-			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
-		
-			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
-		
-			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
-		
-			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
-		
-			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-		
-			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
-		
-			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
-		
-		</ul>
-</div>
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-		
-			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
-		
-			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
-		
-			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
-		
-			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
-		
-			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
-		
-			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
-		
-			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
-		
-			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
-		
-		</ul>
-</div>
-
-
-</aside>
-</div>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Suzf Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Life is short, We need smile.</a>
+        </h2>
+      
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello, I&#39;m a linuser. <br/>
-			This is my blog, share with you. ^_^</p>
-	</section>
-	 
-	<div class="social-font clearfix">
-		
-		
-		
-		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
-		
-		
-		
-	</div>
-    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
-<!--		
-		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
-		
-        -->
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-    }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-});
-</script>
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.suzf.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-loganalyzer-log-analysis-and-syslog-log-analysis-system" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/07/loganalyzer-log-analysis-and-syslog-log-analysis-system/" class="article-date">
+  <time datetime="2014-08-07T06:22:56.000Z" itemprop="datePublished">2014-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/07/loganalyzer-log-analysis-and-syslog-log-analysis-system/">日志分析之LogAnalyzer+Rsyslog日志分析系统全</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、简介</p>
+<p>LogAnalyzer 是一款syslog日志和其他网络事件数据的Web前端。它提供了对日志的简单浏览、搜索、基本分析和一些图表报告的功能。数据可以从数据库或一般的 syslog文本文件中获取，所以LogAnalyzer不需要改变现有的记录架构。基于当前的日志数据，它可以处理syslog日志消息，Windows事件日志记录，支持故障排除，使用户能够快速查找日志数据中看出问题的解决方案。</p>
+<p>LogAnalyzer 获取客户端日志会有两种保存模式，一种是直接读取客户端/var/log/目录下的日志并保存到服务端该目录下，一种是读取后保存到日志服务器数据库中，推荐使用后者。</p>
+<p>LogAnalyzer 采用php开发，所以日志服务器需要php的运行环境，本文采用LAMP。</p>
+<p>二、系统环境</p>
+<p>Rsyslog Server OS：CentOS 6.5</p>
+<p>Rsyslog Server IP：172.16.8.91</p>
+<p>Rsyslog Ver：rsyslog-5.8.10-8.el6.x86_64</p>
+<p>LogAnalyzer Ver：LogAnalyzer 3.6.0</p>
+<p>Rsyslog Client OS：RHEL 6.5</p>
+<p>Rsyslog Client IP：172.16.7.81</p>
+<p>Rsyslog Client OS：Win 2008R2</p>
+<p>Rsyslog Client IP：172.16.7.110</p>
+<p>防火墙已关闭/iptables: Firewall is not running.</p>
+<pre><code>注：这里若要开启iptables服务增加系统安全性
+
+ 服务端需添加rsyslog UDP 514端口以及loganalyzer TCP 80端口通过规则
+
+ iptables -A INPUT -p udp --dport 514 -j ACCEPT
+
+ iptables -P OUTPUT ACCEPT
+
+ iptables -A INPUT -p TCP --dport 80 -j ACCEPT
+
+ 客户端只需添加OUTPUT通过规则
+
+ iptables -P OUTPUT ACCEPT
+
+ 从规则可见，rsyslog server端为被动获取数据，client端为主动发送数据
+
+ 关闭iptables的朋友可以无视。。
+</code></pre><p>SELINUX=disabled</p>
+<p>同步时间</p>
+<p>ntpdate tiger.sina.com.cn</p>
+<p>三、安装并设置LAMP</p>
+<p>3.1安装LAMP </p>
+<p>yum -y install httpd mysql<em> php</em></p>
+<p>3.2 启动服务并加入开机启动</p>
+<p>启动Apache</p>
+<p>etc/init.d/httpd start</p>
+<p>chkconfig httpd on</p>
+<p>启动数据库</p>
+<p>/etc/init.d/mysqld start</p>
+<p>chkconfig mysqld on</p>
+<p>3.3 设置MySQL root 密码</p>
+<p> mysqladmin -uroot password ‘xxxxxx’</p>
+<p>四.主服务端配置rsyslog</p>
+<p>4.1 rsyslog server【CentOS6 默认logsoft 为rsyslog】</p>
+<p>yum install rsyslog rsyslog-mysql -y</p>
+<p>注：rsyslog-mysql为rsyslog将日志传送到mysql数据库的一个模块，这里必须安装</p>
+<p>4.2 创建Syslog数据库</p>
+<p>cd /usr/share/doc/rsyslog-mysql-5.8.10/</p>
+<p>mysql -uroot -p &lt; createDB.sql</p>
+<p>注：这里导入数据库操作其实博主最后研究了下，就是创建了Syslog库并在该库中创建了两张空表</p>
+<p>+————————+</p>
+<p>| Tables_in_Syslog     |</p>
+<p>+————————+</p>
+<p>| SystemEvents        | </p>
+<p>| SystemEventsProperties | </p>
+<p>+————————+</p>
+<p>4.3 创建rsyslog用户在mysql下的相关权限</p>
+<p>mysql -uroot -p</p>
+<p>mysql&gt; grant all privileges on Syslog.* to rsyslog@localhost identified by “xxxxxx”;</p>
+<p>mysql&gt; flush privileges;</p>
+<p>mysql&gt; exit</p>
+<p>4.4 配置服务端支持rsyslog-mysql模块，并开启UDP服务端口获取网内其他LINUX系统日志</p>
+<p>UDP 方式</p>
+<h1 id="vi_/etc/rsyslog-conf"><a href="#vi_/etc/rsyslog-conf" class="headerlink" title="vi /etc/rsyslog.conf"></a>vi /etc/rsyslog.conf</h1><p>在#### MODULES ####下添加这两行</p>
+<hr>
+<p>$ModLoad ommysql.so</p>
+<p><em>.</em> :ommysql:localhost,Syslog,rsyslog,xxxxxx</p>
+<hr>
+<p>注:localhost表示本地主机，Syslog为数据库名，rsyslog为数据库的用户，xxxxxx为该用户密码</p>
+<p>取消下面三行注释</p>
+<hr>
+<p>$ModLoad immark</p>
+<p>$ModLoad imudp</p>
+<p>$UDPServerRun 514</p>
+<hr>
+<p>取消下面三行注释</p>
+<p>TCP方式</p>
+<h1 id="Provides_TCP_syslog_reception"><a href="#Provides_TCP_syslog_reception" class="headerlink" title="Provides TCP syslog reception"></a>Provides TCP syslog reception</h1><p>$ModLoad imtcp</p>
+<p>$InputTCPServerRun 514</p>
+<p>重启服务：</p>
+<p>/etc/init.d/rsyslog restart</p>
+<p>五、Linux客户端配置</p>
+<p>5.1 检查rsyslog 是否安装</p>
+<p>rpm -qa|grep rsyslog</p>
+<p>yum install rsyslog -y</p>
+<p>5.2 配置rsyslog 客户端发送本地日志到服务端</p>
+<p>vi /etc/rsyslog.conf</p>
+<p>末尾追加：</p>
+<p><em>.</em>  @@172.16.7.91:514 </p>
+<p>注:172.16.7.91 为日志服务器端IP地址</p>
+<p>   @@ 基于TCP模式</p>
+<p>   @  基于UDP模式</p>
+<p>5.3 重启服务：</p>
+<p> /etc/init.d/rsyslog restart</p>
+<p>5.4 编辑/etc/bashrc，将客户端执行的所有命令写入系统日志/var/log/messages中。</p>
+<p>vi /etc/bashrc    #在文件尾部增加一行</p>
+<p>export PROMPT_COMMAND=’{ msg=$(history 1 | { read x y; echo $y; });logger “[euid=$(whoami)]”:$(who am i):[<code>pwd</code>]”$msg”; }’</p>
+<p>设置其生效</p>
+<p>source /etc/bashrc</p>
+<p>客户端配置完毕。</p>
+<p>六、测试Rsyslog Server是否可以正常接受Client端日志</p>
+<p>Client 端测试：<br><img src="http://s3.51cto.com/wyfs02/M01/44/DF/wKiom1PjF_ySjsNWAAEQGwqWaMk792.jpg" alt=""></p>
+<p>Server 端侦测：<br><img src="http://s3.51cto.com/wyfs02/M01/44/DF/wKioL1PjGSzRvc-sAAKj5jlkYEU434.jpg" alt=""></p>
+<p>说明接收正常，包括你重启机器的一些Log都可以查看到。</p>
+<p>七.安装loganalyzer</p>
+<p>wget <a href="http://download.adiscon.com/loganalyzer/loganalyzer-3.6.0.tar.gz" target="_blank" rel="external">http://download.adiscon.com/loganalyzer/loganalyzer-3.6.0.tar.gz</a></p>
+<p>tar zxf loganalyzer-3.6.0.tar.gz</p>
+<p>cd loganalyzer-3.6.0</p>
+<p>mkdir -p /var/www/html/loganalyzer</p>
+<p>复制loganalyzer源代码到loganalyzer目录</p>
+<p>cp -r src/* /var/www/html/loganalyzer</p>
+<p>cp -r contrib/* /var/www/html/loganalyzer</p>
+<p>chown -R daemon.daemon /var/www/html/loganalyzer</p>
+<p>通过web向导安装loganalyzer前，必须先执行以下两个脚本</p>
+<p>cd /var/www/html/loganalyzer</p>
+<p>sh configure.sh</p>
+<p>sh secure.sh</p>
+<p>chmod 666 config.php</p>
+<p>注：该脚本实际上是创建该目录下的config.php，并配置该文件权限。</p>
+<p>在浏览器输入网址，进入安装向导</p>
+<p><a href="http://172.16.7.91/loganalyzer" target="_blank" rel="external">http://172.16.7.91/loganalyzer</a></p>
+<p>提示没有主配置文件，点击here利用向导生成<br><img src="http://s3.51cto.com/wyfs02/M02/44/DF/wKiom1PjGCbD8NiuAACQIMkh-Ww425.jpg" alt=""></p>
+<p>点击NEXT<br><img src="http://s3.51cto.com/wyfs02/M01/44/DF/wKioL1PjGU7iT8kKAACFkUQwV2I169.jpg" alt=""><br><img src="http://s3.51cto.com/wyfs02/M00/44/DF/wKiom1PjGEKxZEyOAAC9953O4xE164.jpg" alt=""></p>
+<p>按照如图输入配置，点击NEXT：<br><img src="http://s3.51cto.com/wyfs02/M02/44/E0/wKioL1PjGW2ALnqNAAHQmL4mbfc791.jpg" alt=""></p>
+<p>注：点击NEXT时若报错，后台执行如下命令后继续<br>ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock</p>
+<p>开始写入数据库，NEXT<br><img src="http://s3.51cto.com/wyfs02/M02/44/DF/wKiom1PjGGGi0oNEAAE5FxrhTzo908.jpg" alt=""></p>
+<p>提示写入成功，NEXT<br><img src="http://s3.51cto.com/wyfs02/M01/44/E0/wKioL1PjGYzSXQ1xAAC4vcTlHnU670.jpg" alt=""></p>
+<p>设置管理员账户，配置完毕NEXT<br><img src="http://s3.51cto.com/wyfs02/M02/44/E0/wKioL1PjGZmBdViyAAEgOHSv7LM642.jpg" alt=""></p>
+<p>设置监控日志保存到mysql数据库中，按照如图配置后NEXT<br><img src="http://s3.51cto.com/wyfs02/M01/44/E0/wKioL1PjGbbxJx1CAAFtgRg6I0U074.jpg" alt=""></p>
+<p>注意：完成上述操作之后先不要点击Next,之后执行下序操作<br><img src="http://s3.51cto.com/wyfs02/M00/44/E0/wKioL1PjGdDhwjSZAAHrzLzi1Zs196.jpg" alt=""></p>
+<p>这里的database tablesname是SystemEvents如果写错 会报下面这个错误：<br><img src="http://s3.51cto.com/wyfs02/M02/44/E0/wKioL1PjGeLRdC0KAAM-36tvpXY011.jpg" alt=""></p>
+<p>完成配置,FINISH<br><img src="http://s3.51cto.com/wyfs02/M02/44/E0/wKioL1PjGfGBWhrhAACPsFR0j-Q544.jpg" alt=""></p>
+<p><img src="http://s3.51cto.com/wyfs02/M00/44/E0/wKioL1PjGf-TvzBjAARIAQ_MeIs458.jpg" alt=""></p>
+<p>八、Windows客户端配置</p>
+<p>8.1.下载evtsys</p>
+<p><a href="http://eventlog-to-syslog.googlecode.com/files/Evtsys_4.4.3_64-Bit.zip" target="_blank" rel="external">http://eventlog-to-syslog.googlecode.com/files/Evtsys_4.4.3_64-Bit.zip</a></p>
+<p>8.2.解压文件将包内64-Bit文件夹下的所有文件复制C:\Windows\System32下</p>
+<p>8.3.开启evtsys服务</p>
+<p>运行- cmd</p>
+<p>cd c:\Windows\System32</p>
+<p>evtsys -i -h 192.168.7.11 -p 514</p>
+<p>net start “eventlog to syslog”</p>
+<p>手工启动服务, 或者使用命令：net start “eventlog to syslog”启动服务 </p>
+<p>如果多机器部署的话，可以将上述三个命令写到批处理中自动执行<br><img src="http://s3.51cto.com/wyfs02/M02/44/E0/wKiom1PjGsui1XGMAACyGUMAL1g415.jpg" alt=""></p>
+<p>初次安装可能会提示<br><img src="http://s3.51cto.com/wyfs02/M02/44/E0/wKiom1PjGvzQ6ISPAACtw5rBbic546.jpg" alt=""></p>
+<p>如果要卸载evtsys,则：<br>net stop “eventlog to syslog</p>
+<p>evtsys -u</p>
+<p>8.4.验证效果</p>
+<p>如图：<br><img src="http://s3.51cto.com/wyfs02/M02/44/E0/wKioL1PjGg_Dmx_4AAJzXbqONHg380.jpg" alt=""></p>
+<p>FAQ:</p>
+<p>F1:若出现</p>
+<p><img src="http://s3.51cto.com/wyfs02/M01/44/E0/wKioL1PjGiexfP_xAAIjvP2HfbQ121.jpg" alt=""></p>
+<p>yum install php-gd* -y </p>
+<p>/etc/init.d/httpd restart</p>
+<p>源码包安装 http 重新编译</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/08/07/loganalyzer-log-analysis-and-syslog-log-analysis-system/" data-id="ciq4n5jbq006q7xo9o7ybnh6u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rsyslog/">rsyslog</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-kickstart-the-custom-password-for-the-root" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/07/kickstart-the-custom-password-for-the-root/" class="article-date">
+  <time datetime="2014-08-07T05:31:57.000Z" itemprop="datePublished">2014-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Auto-ops/">Auto ops</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/07/kickstart-the-custom-password-for-the-root/">Kickstart之为root自定义密码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>linux kickstart之中root的密码可以使用明文，也可以使用加密过的值<br>rootpw –iscrypted $1$BYSimLw0$I515yLiKzudlwkIskBqQE1</p>
+<p>就是读取加密后的值，但是这个值是怎么生成的呢？<br>这与linux系统的密码shadow一样，生成方法如下：<br>perl -e ‘print crypt (“jeffery”,q($1$VSmile07)),”\n”‘<br><img src="http://s3.51cto.com/wyfs02/M00/44/DA/wKioL1PjD5rTXDB_AABV14j96UI895.jpg" alt=""></p>
+<h1 id="u5176_u4E2DJeffery__u662F_u4E3A_u8981_u7ED9_u7528_u6237_u8BBE_u7F6E_u7684_u5BC6_u7801_uFF0C_241_24VSmile07_u5B57_u7B26_u4E32_u662F_u81EA_u5B9A_u4E49_u5B57_u7B26_u4E32_uFF0Cshadow_u91CC_u4E00_u822C_u7528_241_24_u540E_u9762_u8DDF8_u4E2A_u5B57_u7B26_u8FD9_u79CD_u683C_u5F0F_u3002"><a href="#u5176_u4E2DJeffery__u662F_u4E3A_u8981_u7ED9_u7528_u6237_u8BBE_u7F6E_u7684_u5BC6_u7801_uFF0C_241_24VSmile07_u5B57_u7B26_u4E32_u662F_u81EA_u5B9A_u4E49_u5B57_u7B26_u4E32_uFF0Cshadow_u91CC_u4E00_u822C_u7528_241_24_u540E_u9762_u8DDF8_u4E2A_u5B57_u7B26_u8FD9_u79CD_u683C_u5F0F_u3002" class="headerlink" title="其中Jeffery 是为要给用户设置的密码，$1$VSmile07字符串是自定义字符串，shadow里一般用$1$后面跟8个字符这种格式。"></a>其中Jeffery 是为要给用户设置的密码，$1$VSmile07字符串是自定义字符串，shadow里一般用$1$后面跟8个字符这种格式。</h1><p>生成的密码串样式如下：<br>$1$VSmile07$KXKn1fJznUJeTRLQx7duB/</p>
+<p>中间有个$,前面算salt,后面的加密值,合在一起叫hash<br>crypt 本身默认用des算法<br>如果salt以$1$开头就使用md5算法</p>
+<p>des算法命令如下：<br>perl -e ‘print crypt (“jeffery”,”/g”),”\n”‘</p>
+<p><img src="http://s3.51cto.com/wyfs02/M01/44/DA/wKiom1PjDpOSdyhMAABHowcFOXU454.jpg" alt=""></p>
+<p>生成的密码串样式如下：<br>/gtivxtepbAM6</p>
+<p>综上，如果你想设置自定义密码为”jefferypass-007”<br>则这样可以得到：<br><img src="http://s3.51cto.com/wyfs02/M02/44/DA/wKiom1PjDqGjAoi6AABdxWLki84966.jpg" alt=""></p>
+<p> perl -e ‘print crypt(“jefferypass-007”,q($1$BYJeffery)),”\n”‘</p>
+<p>你的密码为： $1$BYJeffer$lwi40dGdfhoenhqrSxwNG/<br>这里的$1$BYJeffer 是自定义字符串。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/08/07/kickstart-the-custom-password-for-the-root/" data-id="ciq4n5jc500777xo9gxsorpxn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kickstart/">Kickstart</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-http-returns-a-status-code-explanation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/06/http-returns-a-status-code-explanation/" class="article-date">
+  <time datetime="2014-08-06T03:18:31.000Z" itemprop="datePublished">2014-08-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/06/http-returns-a-status-code-explanation/">HTTP 返回状态代码详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、HTTP状态码</p>
+<p>如果某项请求发送到您的服务器要求显示您网站上的某个网页（例如，用户通过浏览器访问您的网页或 Googlebot 抓取网页时），服务器将会返回 HTTP 状态代码以响应请求。</p>
+<p>此状态代码提供关于请求状态的信息， 告诉 Googlebot 关于您的网站和请求的网页的信息。</p>
+<p>一些常见的状态代码包括：<br>    200 – 服务器成功返回网页<br>    404 – 请求的网页不存在<br>    503 – 服务器暂时不可用</p>
+<p>下面提供 HTTP 状态代码的完整列表。 点击链接可了解详情。 您也可以访问有关 HTTP 状态代码的 W3C 网页以获得更多信息。</p>
+<p>1xx：请求收到，继续处理<br>2xx：操作成功收到，分析、接受<br>3xx：完成此请求必须进一步处理<br>4xx：请求包含一个错误语法或不能完成<br>5xx：服务器执行一个完全有效请求失败</p>
+<p>1xx（临时响应）<br>表示临时响应并需要请求者继续执行操作的状态代码。</p>
+<p>代码            说明<br>100（继续）    请求者应当继续提出请求。 服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。<br>101（切换协议）    请求者已要求服务器切换协议，服务器已确认并准备切换。</p>
+<p>2xx（成功）<br>表示服务器成功处理了请求的状态代码。</p>
+<p>代码             说明<br>200（成功）    服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。 如果针对您的 robots.txt 文件显示此状态，则表示 Googlebot 已成功检索到该文件。<br>201（已创建）    请求成功并且服务器创建了新的资源。<br>202（已接受）    服务器已接受请求，但尚未处理。<br>203（非授权信息）    服务器已成功处理了请求，但返回的信息可能来自另一来源。<br>204（无内容）    服务器成功处理了请求，但没有返回任何内容。<br>205（重置内容）    服务器成功处理了请求，但没有返回任何内容。 与 204 响应不同，此响应要求请求者重置文档视图（例如，清除表单内容以输入新内容）。<br>206（部分内容）    服务器成功处理了部分 GET 请求。</p>
+<p>3xx（重定向）<br>要完成请求，需要进一步操作。 通常，这些状态代码用来重定向。 Google 建议您在每次请求中使用重定向不要超过 5 次。 您可以使用网站管理员工具查看一下 Googlebot 在抓取重定向网页时是否遇到问题。 诊断下的网 络抓取页面列出了由于重定向错误而导致 Googlebot 无法抓取的网址。</p>
+<p>代码            说明<br>300（多种选择）    针对请求，服务器可执行多种操作。 服务器可根据请求者（用户代理）选择一项操作，或提供操作列表供请求者选择。<br>301（永久移动）    请求的网页已永久移动到新位置。 服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。 您应使用此代码告诉 Googlebot 某个网页或网站已永久移动到新位置。<br>302（暂时移动）    服 务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。 此代码与响应 GET 或 HEAD 请求的 301 代码类似，会自动将请求者转到不同的位置，但您不应使用此代码来告诉 Googlebot 某个网页或网站已经移动，因为 Googlebot 会继续抓取原有位置并编入索引。<br>303（查看其他位置）    请求者应当对不同的位置使用单独的 GET 请求来检索响应时，服务器返回此代码。 对于除 HEAD 之外的所有请求，服务器会自动转到其他位置。<br>304（未修改）    自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。如果网页自请求者上次请求后再也没有更改 过，您应当将服务器配置为返回此响应（称为 If-Modified-Since HTTP 标头）。 由于服务器可以告诉 Googlebot 自从上次抓取后网页没有更改过，因此可节省带宽和开销</p>
+<p>。<br>305（使用代理）    请求者只能使用代理访问请求的网页。 如果服务器返回此响应，还表示请求者应使用代理。<br>307（暂时重定向）    服 务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。 此代码与响应 GET 和 HEAD 请求的 301 代码类似，会自动将请求者转到不同的位置，但您不应使用此代码来告诉 Googlebot 某个页面或网站已经移动，因为 Googlebot 会继续抓取原有位置并编入索引。</p>
+<p>4xx（请求错误）<br>这些状态代码表示请求可能出错，妨碍了服务器的处理。</p>
+<p>代码            说明<br>400（错误请求）    服务器不理解请求的语法。<br>401（未授权）    请求要求身份验证。 对于需要登录的网页，服务器可能返回此响应。<br>403（禁止）    服务器拒绝请求。 如果您看到 Googlebot 在尝试抓取您网站上的有效网页时收到此状态代码（可以在 Google 网站管理员工具诊 断下的网络抓取页面上看到此信息），可能是您的服务器或主机拒绝 Googlebot 访问。<br>404（未找到）    服务器找不到请求的网页。 例如，如果请求服务器上不存在的网页，服务器通常会返回此代码。如果您的网站上没有 robots.txt 文件，而您在 Google 网站管理员工具”诊断”标签的 robots.txt 页上看到此状态，那么这是正确的状态。 但是，如果您有 robots.txt 文件而又看到此状态，则说明您的 robots.txt 文件可能命名错误或位于错误的位置 （该文件应当位于顶级域名，名为 robots.txt）。</p>
+<p>如果您看到有关 Googlebot 尝试抓取的网址的此状态（在”诊断”标签的 HTTP 错误页上），则表示 Googlebot 追踪的可能是另一个页面的无效链接（是旧链接或输入有误的链接）。<br>405（禁用的方法）    禁用请求中指定的方法。<br>406（不可接受）    无法使用请求的内容特性响应请求的网页。<br>407（需要代理授权）    此状态代码与 401（未授权）类似，但指定请求者应当授权使用代理。 如果服务器返回此响应，还会指明请求者应当使用的代理。<br>408（请求超时）    服务器等候请求时发生超时。<br>409（冲突）    服务器在完成请求时发生冲突。 服务器必须在响应中包含有关冲突的信息。 服务器在响应与前一个请求相冲突的 PUT 请求时可能会返回此代码，同时会附上两个请求的差异列表。<br>410（已删除）    如果请求的资源已永久删除，服务器就会返回此响应。 该代码与 404（未找到）代码相似，但在资源以前存在而现在不存在的情况下，有时会用来替代 404 代码。 如果资源已永久删除，您应当使用 301 指定资源的新位置。<br>411（需要有效长度）    服务器不接受不含有效内容长度标头字段的请求。<br>412（未满足前提条件）    服务器未满足请求者在请求中设置的其中一个前提条件。<br>413（请求实体过大）    服务器无法处理请求，因为请求实体过大，超出服务器的处理能力。<br>414（请求的 URI 过长）    请求的 URI（通常为网址）过长，服务器无法处理。<br>415（不支持的媒体类型）    请求的格式不受请求页面的支持。<br>416（请求范围不符合要求）    如果页面无法提供请求的范围，则服务器会返回此状态代码。<br>417（未满足期望要求）    服务器未满足”期望”请求标头字段的要求。</p>
+<p>5xx（服务器错误）<br>这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错。</p>
+<p>代码            说明<br>500（服务器内部错误）    服务器遇到错误，无法完成请求。<br>501（尚未实施）    服务器不具备完成请求的功能。 例如，服务器无法识别请求方法时可能会返回此代码。<br>502（错误网关）    服务器充当网关或代理，从上游服务器收到无效响应。<br>503（服务不可用）    服务器目前无法使用（由于超载或停机维护）。 通常，这只是暂时状态。<br>504（网关超时）    服务器充当网关或代理，但没有及时从上游服务器收到请求。<br>505（HTTP 版本不受支持）    服务器不支持请求中所用的 HTTP 协议版本。</p>
+<p>英文版：<br>100：Continue<br>101：Switching Protocols<br>102：Processing</p>
+<p>200：OK<br>201：Created<br>202：Accepted<br>203：Non-Authoriative Information<br>204：No Content<br>205：Reset Content<br>206：Partial Content<br>207：Multi-Status</p>
+<p>300：Multiple Choices<br>301：Moved Permanently<br>302：Found<br>303：See Other<br>304：Not Modified<br>305：Use Proxy<br>306：(Unused)<br>307：Temporary Redirect</p>
+<p>400：Bad Request<br>401：Unauthorized<br>402：Payment Granted<br>403：Forbidden<br>404：File Not Found<br>405：Method Not Allowed<br>406：Not Acceptable<br>407：Proxy Authentication Required<br>408：Request Time-out<br>409：Conflict<br>410：Gone<br>411：Length Required<br>412：Precondition Failed<br>413：Request Entity Too Large<br>414：Request-URI Too Large<br>415：Unsupported Media Type<br>416：Requested range not satisfiable<br>417：Expectation Failed<br>422：Unprocessable Entity<br>423：Locked<br>424：Failed Dependency</p>
+<p>500：Internal Server Error<br>501：Not Implemented<br>502：Bad Gateway<br>503：Service Unavailable<br>504：Gateway Timeout<br>505：HTTP Version Not Supported<br>507：Insufficient Storage</p>
+<p>200号状态码</p>
+<p>220.181.32.30 - - [02/Sep/2008:00:01:23 +0800] “GET /article/0572/72570.shtml HTTP/1.1” 200 28361 “-“ “Baiduspider+(+<a href="http://www.baidu.com/search/spider.htm" target="_blank" rel="external">http://www.baidu.com/search/spider.htm</a>)”</p>
+<p>服务器日志中的200表示使用GET传递方式网页72570.shtml下载成功。即：当用户或爬虫程序向网站服务器发出浏览请求时，服务器返回 HTTP 数据流里包含某种状态码，200响应号即状态码中的一种，表示本网页被成功下载。</p>
+<p>301号状态码</p>
+<p>220.181.32.30 - - [02/Sep/2008:00:01:31 +0800] “GET /my/view.php?aid=14183 HTTP/1.1” 301 - “-“ “Baiduspider+(+<a href="http://www.baidu.com/search/spider.htm" target="_blank" rel="external">http://www.baidu.com/search/spider.htm</a>)”</p>
+<p>服务器日志中的301表示使用GET传递方式动态网页aid=14183成功跳转。即：当用户或爬虫程序向网站服务器发出浏览请求时，服务器返回 HTTP 数据流包含某种状态码，301 重定向即状态码中的一种，表示本网页永久性转移到另一个地址。实际操作中我们可以将多个域名指向同一个网址，这也是搜索引擎唯一认可的一种网站转向的方 式。</p>
+<p>二、404状态码<br>220.181.32.30 - - [02/Sep/2008:00:01:51 +0800] “GET /writing HTTP/1.1” 404 4459 “-“ “Baiduspider+(+<a href="http://www.baidu.com/search/spider.htm" target="_blank" rel="external">http://www.baidu.com/search/spider.htm</a>)”</p>
+<p>出现404状态码就证 明有URL地址的网页浏览不到。很多时候由于网站的改版，使很多旧版网站url地址失效。这是你需要建立404状态页来保证你网站通畅，能够达到一种回路 的效果。切记404状态页需要单独设计，不能直接在服务器端直接跳转回首页。否则，搜索引擎会大量抓取网站首页失误当成404页处理。</p>
+<p>对HTTP404状态码的深度理解</p>
+<p>HTTP 404 错误意味着链接指向的网页不存在，即原始网页的URL失效，这种情况经常会发生，很难避免，比如说：网页URL生成规则改变、网页文件更名或移动位置、导 入链接拼写错误等，导致原来的URL地址无法访问；当Web 服务器接到类似请求时，会返回一个404 状态码，告诉浏览器要请求的资源并不存在。但是，Web服务器默认的404错误页面，无论Apache还是IIS，均十分简陋、呆板且对用户不友好，无法 给用户提供必要的信息以获取更多线索，无疑这会造成用户的流失。</p>
+<p>因此，很多网站均使用自定义404错误的方式以提供用户体验避免用户流失。一般而言，自定义404页面通用的做法是在页面中放置网站快速导航链接、搜索框以及网站提供的特色服务，这样可以有效的帮助用户访问站点并获取需要的信息。</p>
+<p>HTTP404对SEO的影响</p>
+<p>自 定义404错误页面是提供用户体验的很好的做法，但在应用过程中往往并未注意到对搜索引擎的影响，譬如：错误的服务器端配置导致返回“200”状态码或自 定义404错误页面使用Meta Refresh导致返回“302”状态码。正确设置的自定义404错误页面，不仅应当能够正确地显示，同时，应该返回“404”错误代码，而不是 “200”或“302”。虽然对访问的用户而言，HTTP状态码究竟是“404”还是“200”来说并没有什么区别，但对搜索引擎而言，这则是相当重要 的。</p>
+<p>1.自定义404错误页返回“200”状态码</p>
+<p>当搜索引擎蜘蛛在请求某个URL地址得到“404”状态回应时，即知道该 URL地址已经失效，便不再索引该网页，并向数据中心反馈将该URL地址表示的网页从索引数据库中删除，当然，删除过程有可能需要很长时间；而当搜索引擎 得到“200”状态回应时，则会认为该url地址是有效的，便会去索引，并会将其收录到索引数据库，这样的结果便是这两个不同的url地址具有完全相同的 内容：自定义404错误页面的内容，这会导致出现复制网页问题。对搜索引擎而言，特别是Google，不但很难获得信任指数TrustRank，也会大大 降低Google对网站质量的评定。</p>
+<p>在使用Google Sitemap，当提交XML格式网站地图文件时，谷歌管理员工具会验证网站的身份以确保是网站合法的管理者。验证方式有两种：上传指定名称的html页 到网站根目录或者在网页meta区域添加一个标识身份的meta标签。通常是使用上传html网页的方式，但谷歌管理员工具却提示网站根目录下找不到这个 网页，这是一个很可怕的问题。</p>
+<p>2.自定义404错误页使用Meta Refresh返回“302”状态码</p>
+<p>常常看到许多网站的 自定义404错误页面采取类似这样的形式：首先显示一段错误信息，然后，通过Meta Refresh将页面跳转到网站首页、网页地图或其他类似页。根据具体实现方式不同，这类404页面可能返回“200”状态码，也可能返回“302”，但 不论哪种，从SEO技术角度看，均不是一种合适的选择。</p>
+<p>对“200”状态的情况我们上面已经谈过，那么，当404页面返回“302”时，搜 索引擎会怎么对待呢?从理论上说，对“302”错误，搜索引擎认为该网页是存在的，只不过临时改变了地址，仍然会索引收录该页，这样，同样会出现类似于 “200”状态码时的重复文本问题；其次，以谷歌为代表的主流搜索引擎对302重定向的适用范围要求越来越严格，这类不当使用302重定向的情况存在很大 的风险。</p>
+<p>确保自定义404错误页面能够返回“404”状态码</p>
+<p>在自定义404错误页面设置完毕后，一定要检查一下其是不是能够正确地返回“404”状态码。可以使用Server Header检查工具，输入一个不存在网页的url，查看一下HTTP Header的返回情况，确信其返回的是“404 Not found”。</p>
+<p>传送门：<a href="http://justcoding.iteye.com/blog/833058" target="_blank" rel="external">http://justcoding.iteye.com/blog/833058</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/08/06/http-returns-a-status-code-explanation/" data-id="ciq4n5jcv007w7xo9m4qk5kwq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
 
 
+  
+    <article id="post-DIY-streamline-automatically-install-CentOS-ISO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/06/DIY-streamline-automatically-install-CentOS-ISO/" class="article-date">
+  <time datetime="2014-08-06T03:09:30.000Z" itemprop="datePublished">2014-08-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Auto-ops/">Auto ops</a>
+  </div>
 
-  </body>
- </html>
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/06/DIY-streamline-automatically-install-CentOS-ISO/">DIY精简CentOS自动安装ISO</a>
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>俗话说一瘦遮三丑，一胖全没有。原生的系统过于庞大和臃肿，工作中有很多组件和安装包根本是用不到的，只安装我们需要的组件，并实现自动安装，这样在产线批量布署服务器的时候，显的效率非常高。<br>a.在VM安装linux系统<br>b.安装定制工具anaconda repodata createrepo mkisofs<br>c.关联太多采用yum安装 定制过程需要产生comps.xml文件以及生成iso</p>
+<p>1、定制安装系统，选择常用的组件<br>2、安装制作发行版所需的基本软件包<br>yum install -y createrepo genisoimage</p>
+<p>#genisoimage 提供/usr/bin/mkisofs 命令用于重新生成iso</p>
+<p>3、生成安装系统所需的rpm文件列表<br>awk ‘/Installing/{print $2}’ install.log |sed ‘s/^[0-9]*://g’ &gt;/root/packages.list</p>
+<p>#生成后，需要仔细看该文件，一般会在某些文件开始部分如“1：”这样的字符，需要删除这些字符，否在后面执行copy动作会报错</p>
+<p>4、创建定制工作目录<br>mkdir -p /mnt/cdrom<br>mkdir -p /data/OS<br>mount /dev/cdrom /mnt/cdrom<br>rsync -a –exclude=Packages /mnt/cdrom/* /data/OS   #将源系统镜像除packages目录所有文件拷贝到/data/OS<br>mkdir /data/OS/Packages</p>
+<p>查看是否有.discinfo文件，如果没有将光盘里的文件拷贝到/data/OS;若无此文件安装的时候将会出现disk not found.</p>
+<p>5、复制精简后的RPM包<br>vi /data/cprmps.sh           #创建自动复制RPM包脚本</p>
+<p>#!/bin/bash</p>
+<p>DEBUG=0</p>
+<p>CentOS_DVD=/mnt/cdrom</p>
+<p>ALL_RPMS_DIR=/mnt/cdrom/Packages</p>
+<p>KOS_RPMS_DIR=/data/OS/Packages</p>
+<p>packages_list=/root/packages.list</p>
+<p>number_of_packages=<code>cat $packages_list | wc -l</code></p>
+<p>i=1</p>
+<pre><code>while [ $i -le $number_of_packages ] ; do
+
+    line=`head -n $i $packages_list | tail -n -1`
+
+    name=`echo $line | awk &apos;{print $1}&apos;`
+
+    version=`echo $line | awk &apos;{print $3}&apos; | cut -f 2 -d :`
+
+if [ $DEBUG -eq &quot;1&quot; ] ; then
+
+    echo $i: $line
+
+    echo $name
+
+    echo $version
+
+fi
+
+if [ $DEBUG -eq &quot;1&quot; ] ; then
+
+    ls $ALL_RPMS_DIR/$name-$version*
+
+    if [ $? -ne 0 ] ; then
+
+        echo &quot;cp $ALL_RPMS_DIR/$name-$version* &quot;
+
+    fi
+
+    else
+
+        echo &quot;cp $ALL_RPMS_DIR/$name-$version* $KOS_RPMS_DIR/&quot;
+
+        cp $ALL_RPMS_DIR/$name-$version* $KOS_RPMS_DIR/
+
+    # in case the copy failed
+
+    if [ $? -ne 0 ] ; then
+
+        echo &quot;cp $ALL_RPMS_DIR/$name-$version* &quot;
+
+        cp $ALL_RPMS_DIR/$name* $KOS_RPMS_DIR/
+
+    fi
+
+fi
+</code></pre><p>i=<code>expr $i + 1</code></p>
+<p>done</p>
+<p>#执行脚本</p>
+<p>sh  /data/cprmps.sh</p>
+<p>6、配置kickstart脚本</p>
+<p>ks文件主要分为三个部分</p>
+<p>a、系统安装及配置<br>b、自定义安装准备（%post –nochroot）<br>c、用户自定义安装（%post）</p>
+<p>系统安装及配置一般写在ks.cfg文件最前面，定义系统安装设置，以%post –nochroot为结束标志，接着是用户自定义安装准备部分，以“%post –nochroot”作为开始，以“%post”作为结束，</p>
+<p>自定义安装部分以“%post”作为开始。<br>一般方便可以直接由root下面的anaconda-ks.cfg修改</p>
+<p>vi /data/OS/isolinux/jeffery.cfg</p>
+<p>#platform=x86, AMD64, or Intel EM64T</p>
+<p>#version=DEVEL</p>
+<h1 id="Firewall_configuration"><a href="#Firewall_configuration" class="headerlink" title="Firewall configuration"></a>Firewall configuration</h1><p>firewall –disabled</p>
+<h1 id="Install_OS_instead_of_upgrade"><a href="#Install_OS_instead_of_upgrade" class="headerlink" title="Install OS instead of upgrade"></a>Install OS instead of upgrade</h1><p>install</p>
+<h1 id="Use_network_installation"><a href="#Use_network_installation" class="headerlink" title="Use network installation"></a>Use network installation</h1><p>cdrom</p>
+<h1 id="Root_password_jeffery"><a href="#Root_password_jeffery" class="headerlink" title="Root password jeffery"></a>Root password jeffery</h1><p>rootpw –iscrypted  $1$HaJb7jcC$Hg.5DlmP2uheGxf88BdQ3. </p>
+<h1 id="System_authorization_information"><a href="#System_authorization_information" class="headerlink" title="System authorization information"></a>System authorization information</h1><p>auth  –useshadow  –passalgo=md5</p>
+<h1 id="Use_graphical_install"><a href="#Use_graphical_install" class="headerlink" title="Use graphical install"></a>Use graphical install</h1><p>#graphical</p>
+<h1 id="Use_text_mode_install"><a href="#Use_text_mode_install" class="headerlink" title="Use text mode install"></a>Use text mode install</h1><p>text</p>
+<p>firstboot –disable</p>
+<h1 id="System_keyboard"><a href="#System_keyboard" class="headerlink" title="System keyboard"></a>System keyboard</h1><p>keyboard us</p>
+<h1 id="System_language"><a href="#System_language" class="headerlink" title="System language"></a>System language</h1><p>lang en_US</p>
+<h1 id="SELinux_configuration"><a href="#SELinux_configuration" class="headerlink" title="SELinux configuration"></a>SELinux configuration</h1><p>selinux –disabled</p>
+<h1 id="Installation_logging_level"><a href="#Installation_logging_level" class="headerlink" title="Installation logging level"></a>Installation logging level</h1><p>logging –level=info</p>
+<h1 id="Reboot_after_installation"><a href="#Reboot_after_installation" class="headerlink" title="Reboot after installation"></a>Reboot after installation</h1><p>reboot</p>
+<h1 id="System_timezone"><a href="#System_timezone" class="headerlink" title="System timezone"></a>System timezone</h1><p>timezone  Asia/Shanghai</p>
+<h1 id="Network_information"><a href="#Network_information" class="headerlink" title="Network information"></a>Network information</h1><p>network  –bootproto=dhcp –device=eth0 –onboot=on</p>
+<h1 id="System_bootloader_configuration"><a href="#System_bootloader_configuration" class="headerlink" title="System bootloader configuration"></a>System bootloader configuration</h1><p>bootloader –location=mbr</p>
+<h1 id="Clear_the_Master_Boot_Record"><a href="#Clear_the_Master_Boot_Record" class="headerlink" title="Clear the Master Boot Record"></a>Clear the Master Boot Record</h1><p>zerombr</p>
+<h1 id="Partition_clearing_information"><a href="#Partition_clearing_information" class="headerlink" title="Partition clearing information"></a>Partition clearing information</h1><p>clearpart –all –initlabel</p>
+<h1 id="Disk_partitioning_information"><a href="#Disk_partitioning_information" class="headerlink" title="Disk partitioning information"></a>Disk partitioning information</h1><p>part /boot –fstype=”ext4” –size=100</p>
+<p>part swap –fstype=”swap” –size=1500</p>
+<p>part / –fstype=”ext4” –grow –size=1</p>
+<p>%packages</p>
+<p>@security-tools</p>
+<p>aide</p>
+<p>amtu</p>
+<p>hmaccalc</p>
+<p>openscap</p>
+<p>openscap-utils</p>
+<p>tpm-tools</p>
+<p>trousers</p>
+<p>%end</p>
+<p>7、生成仓库文件comps.xml<br>cd /data/OS<br>createrepo -g repodata/*-comps.xml /data/OS/</p>
+<p>8、让系统从kickstart配置启动安装</p>
+<p>vi /data/OS/isolinux/isolinux.cfg</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/44/61/wKioL1PhmhnC1d8dAALXD6j0ECs095.jpg" alt=""></p>
+<p>自定义启动界面<br>在isolinux里面有三个文件和自定义安装界面有关<br>boot.msg是定义启动界面如何显示<br>isolinux.cfg决定如何处理用户的输入，并执行对应的安装过程<br>splash.lss是启动界面的背景图片 </p>
+<p>9、生成ISO文件<br>cd /data/OS</p>
+<p>mkisofs -o /root/Jeffery_CentOS.6.5_x86.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table  -joliet-long  -R -J -v -T /data/OS/</p>
+<p>如果出现下面 基本上就定制成功了<br><img src="http://s3.51cto.com/wyfs02/M01/44/61/wKiom1PhmRKxLTJmAAGei6U3_jo059.jpg" alt=""></p>
+<p>10、生成MD5检验码<br><img src="http://s3.51cto.com/wyfs02/M00/44/61/wKiom1PhmTqC_FGaAABhkM8EsJg076.jpg" alt=""></p>
+<p>11、测试</p>
+<p>新建一台机器 使用定制的iso<br><img src="http://s3.51cto.com/wyfs02/M00/44/61/wKiom1PhmUnS46CPAABpqFMokok955.jpg" alt=""></p>
+<p>FAQ：<br><img src="http://s3.51cto.com/wyfs02/M02/44/61/wKioL1Phmm2QWcWVAACb7k62Ylk815.jpg" alt=""></p>
+<p>要把光盘中的“.discinfo”文件拷贝过来，如果没有拷贝此文件，在用光盘安装时<br>会提示如下错误：“The CentOS CD was not found in any of your CDROM drives.<br>Please insert the CentOS CD and press OK to retry.”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/08/06/DIY-streamline-automatically-install-CentOS-ISO/" data-id="ciq4n5jk500df7xo98lnh8mvv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diy/">diy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iso/">iso</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-zabbix-agent-setup-on-windows" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/01/zabbix-agent-setup-on-windows/" class="article-date">
+  <time datetime="2014-08-01T06:01:19.000Z" itemprop="datePublished">2014-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Zabbix/">Zabbix</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/01/zabbix-agent-setup-on-windows/">Zabbix 之windows下安装agent</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.下载windows版zabbix-agent-2.2.5并解压<br>  <a href="http://www.zabbix.com/downloads/2.2.5/zabbix_agents_2.2.5.win.zip" target="_blank" rel="external">http://www.zabbix.com/downloads/2.2.5/zabbix_agents_2.2.5.win.zip</a><br>  解压后有两个目录bin和conf，其中bin中又有两个目录win32和 win64,分别对应windows 32位和64位系统，请根据实际情况将相应目录拷贝到某个磁盘下（我的是64位系统，拷贝win64到C:/下，并重命名为zabbix）,然后将另一个conf目录中的配置文件zabbix_agentd.conf也拷贝到c:/zabbix目录下，这样该目录下共有4个文件，分别 为：zabbix_sender.exe zabbix_get.exe  zabbix_agentd.exe  zabbix_agentd.conf</p>
+<p>修改配置文件zabbix_agentd.conf：<br>Server=192.168.8.81               zabbix_ser/zabbix_proxy IP地址</p>
+<p>ServerActive=192.168.8.81:10051<br>Hostname=Zabbix_windows           本地主机名/IP</p>
+<p>2.注册zabbix agent服务<br>  2.1 运行cmd进入windows命令行控制台<br>  2.2 运行c:\zabbix\zabbix_agentd.exe -c c:\zabbix\conf\zabbix_agentd.conf -i<br>      注：-c表示配置文件路径 -i表示安装<br>      <img src="http://s3.51cto.com/wyfs02/M01/43/7E/wKiom1PbUYrxitMGAAEAHesOMPw706.jpg" alt=""></p>
+<p>3.在命令行运行services.msc进入windows服务控制台，找到zabbix_agent服务，右键启动即可</p>
+<p>测试出现入下信息 则安装正确</p>
+<pre><code>![](http://s3.51cto.com/wyfs02/M00/43/81/wKioL1PbWSLzz1Q6AADMxbioe3o472.jpghttp://)
+
+netstat -an|findstr 10050 查看运行状态
+</code></pre><p>4.卸载zabbix agent<br>  4.1 运行cmd进入windows命令行控制台<br>  4.2 运行c:\zabbix\zabbix_agentd.exe -c c:\zabbix\zabbix_agentd.conf -d<br>      注：-c表示配置文件路径 -d表示卸载</p>
+<p>注意：关于agent的配置文件，请参考Linux配置进行修改</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/08/01/zabbix-agent-setup-on-windows/" data-id="ciq4n5j5k001p7xo9saery21a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-nginx-rewrite" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/28/nginx-rewrite/" class="article-date">
+  <time datetime="2014-07-28T09:47:29.000Z" itemprop="datePublished">2014-07-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/28/nginx-rewrite/">Nginx之rewrite简述</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、添加nginx第三方yum源<br>cat &gt; /etc/yum.repos.d/nginx.repo &lt;&lt;EOF<br>[nginx]<br>name=nginx repo<br>baseurl=<a href="http://nginx.org/packages/centos/$releasever/$basearch/" target="_blank" rel="external">http://nginx.org/packages/centos/$releasever/$basearch/</a><br>enabled=1<br>gpgcheck=0<br>EOF</p>
+<p>2、接下来就可以用yum来安装nginx了<br>yum install nginx -y</p>
+<p>3、 新建rewrite规则<br>[root@test ~]# cat /etc/nginx/conf.d/test.conf<br>upstream app_test {<br>    server   127.0.0.1:8080 weight=1 max_fails=2 fail_timeout=30s;<br>    }</p>
+<pre><code>server {
+    listen       80;
+    server_name   jeffery.com;
+    rewrite ^/$   http://jeffery.com/index.jsp permanent;
+
+    location / {
+     root   html;
+     index index.jsp index.php index.html index.htm;
+     proxy_set_header Host  $host;
+     proxy_set_header X-Real-IP $remote_addr;
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+     proxy_pass http://app_test;
+}
+</code></pre><p>  }</p>
+<p>接下来就可以通过80端口来访问tomcat应用了<br>可能你会问 为什么不直接修改server.xml文件中的端口号呢？<br>在现实 生活中tomcat可能会交予多人来维护，Linux默认不通用户无法开启1024一下端</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/07/28/nginx-rewrite/" data-id="ciq4n5jah005w7xo9rj47quca" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rewrite/">rewrite</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jdk-and-tomcat-setup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/28/jdk-and-tomcat-setup/" class="article-date">
+  <time datetime="2014-07-28T09:35:00.000Z" itemprop="datePublished">2014-07-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tomcat/">Tomcat</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/28/jdk-and-tomcat-setup/">JDK_Tomcat  安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####JDK 安装####<br>这里版本选择为  jdk-6u33-linux-x64.bin<br>1.上传安装文件至默认路径</p>
+<p>2.对安装文件授予执行权限<br> chmod +x  jdk-6u33-linux-x64.bin</p>
+<p>3.执行安装<br> ./jdk-6u33-linux-x64.bin<br> mv jdk1.6.0_33 /usr/local<br> ln -s jdk1.6.0_33 java</p>
+<p>4.配置环境变量 在/etc/profile后追加即可<br>JAVA_HOME=/usr/local/java<br>JRE_HOME=/usr/local/java/jre<br>CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib<br>PATH=$JAVA_HOME/bin:$PATH<br>export PATH CLASSPATH JAVA_HOME</p>
+<p>   source  /etc/profile   # 使修改的配置文件生效</p>
+<p>5.检测java 是否成功安装<br>[root@p2ptest ~]# java -version<br>java version “1.6.0_33”<br>Java(TM) SE Runtime Environment (build 1.6.0_33-b04)<br>Java HotSpot(TM) 64-Bit Server VM (build 20.8-b03, mixed mode)</p>
+<p>####安装Tomcat####<br>1.解压文件<br>  tar zxf apache-tomcat-7.0.2.tar.gz -C /usr/local<br>  mv apache-tomcat-7.0.2 tomcat</p>
+<p>2.vi /usr/local/tomcat/bin/catalina.sh 添加<br> JAVA_OPTS=”-Xms1024m -Xmx1024m -Xss1024K -XX:PermSize=128m -XX:MaxPermSize=256m”</p>
+<p> 配置文件： /usr/local/tomcat/conf/server.xml</p>
+<p> 日志输出： /usr/local/tomcat/logs/catalina.out</p>
+<p> 连接串：/usr/local/tomcat/conf/context.xml</p>
+<pre><code>    &lt;resource name=&quot;jdbc/myoracle&quot; auth=&quot;Container&quot;   
+
+    type=&quot;javax.sql.DataSource&quot; driverClassName=&quot;oracle.jdbc.OracleDriver&quot;   
+
+    url=&quot;jdbc:oracle:thin:@127.0.0.1:1521:mysid&quot; username=&quot;scott&quot;   
+
+    password=&quot;tiger&quot; maxActive=&quot;20&quot; maxIdle=&quot;10&quot; maxWait=&apos;&apos;-1&quot;&gt;&lt;/resource&gt;  
+
+部分参数解释：
+
+                          name--------------------jdbc/myoracle中myoracle为你要连接的数据库的名字。
+
+                           driverClassName----JDBC驱动类的完整的名称；
+
+                           maxActive---------------同时能够从连接池中被分配的可用实例的最大数
+
+                           maxIdle------------------可以同时闲置在连接池中的连接的最大数；
+
+                           maxWait------------------最大超时时间，以毫秒计；
+
+                           password----------------用户密码；
+
+                           url--------------------------到JDBC的URL连接,最后面的mysid为你安装时数据库实例的名称；
+
+                           username---------------用户名称
+
+                           validationQuery--------用来查询池中空闲的连接。
+</code></pre><p>   或是修改这个文件/usr/local/tomcat/webapps/project_name/WEB-INF/classes/conf/jdbc.properties</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/07/28/jdk-and-tomcat-setup/" data-id="ciq4n5jci007m7xo9zg0rwdm4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-zabbix-monitoring-oracle-performance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/25/zabbix-monitoring-oracle-performance/" class="article-date">
+  <time datetime="2014-07-25T07:52:16.000Z" itemprop="datePublished">2014-07-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Zabbix/">Zabbix</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/25/zabbix-monitoring-oracle-performance/">Zabbix之监控Oracle性能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Orabbix 是一个用来监控 Oracle 数据库实例的 Zabbix 插件。</p>
+<p>下载地址：<a href="http://www.smartmarmot.com/product/orabbix/download/" target="_blank" rel="external">http://www.smartmarmot.com/product/orabbix/download/</a></p>
+<p>官方参考：<a href="http://www.smartmarmot.com/wiki/index.php/Orabbix" target="_blank" rel="external">http://www.smartmarmot.com/wiki/index.php/Orabbix</a></p>
+<p>Orabbix插件的安装与配置</p>
+<p>确保安装jdk环境，java version查看</p>
+<p>[root@localhost ~]# java -version</p>
+<p>java version “1.6.0_28”</p>
+<p>OpenJDK Runtime Environment (IcedTea6 1.13.0pre) (rhel-1.66.1.13.0.el6-x86_64)</p>
+<p>OpenJDK 64-Bit Server VM (build 23.25-b01, mixed mode)</p>
+<p>1. 在/opt目录下新建一个orabbix目录：</p>
+<p> [root@oracle orabbix]#mkdir -p /opt/orabbix </p>
+<p>（建议在此目录下，如果放置其他目录稍后需要更改orabbix的启动文件orabbix,启动文件默认写在opt/orabbix目录下 ）</p>
+<p> 2. 解压安装文件</p>
+<p>unzip orabbix-1.2.3.zip -d /opt/orabbix</p>
+<p>3. 赋予权限</p>
+<p>chmod -R a+x orabbix/</p>
+<p>4. 通过/opt/orabbix/conf/config.props.sample文件创建一个config.props文件：</p>
+<p> cp/opt/orabbix/conf/config.props.sample /opt/orabbix/conf/config.props</p>
+<p>5.  编辑orabbix配置文件,具体如下</p>
+<p>vi confi/config.props</p>
+<p>#comma separed list of Zabbix servers</p>
+<p>#ZabbixServerList=ZabbixServer1,ZabbixServer2</p>
+<p>ZabbixServerList=ZabbixServer1</p>
+<p>#(zabbixserver的名字，下行中address和port都引用到了这个名字，所以下面两行的前缀名字要与这里的名字保持一致)</p>
+<p>#ZabbixServer1.Address=IP_ADDRESS_OF_ZABBIX_SERVER</p>
+<p>#ZabbixServer1.Port=PORT_OF_ZABBIX_SERVER</p>
+<p>ZabbixServer1.Address=172.16.7.30</p>
+<p>ZabbixServer1.Port=10051</p>
+<p>#ZabbixServer2.Address=IP_ADDRESS_OF_ZABBIX_SERVER</p>
+<p>#ZabbixServer2.Port=PORT_OF_ZABBIX_SERVER</p>
+<p>#pidFile</p>
+<p>OrabbixDaemon.PidFile=./logs/orabbix.pid</p>
+<p>#frequency of item’s refresh</p>
+<p>OrabbixDaemon.Sleep=300</p>
+<p>#MaxThreadNumber should be &gt;= than the number of your databases</p>
+<p>OrabbixDaemon.MaxThreadNumber=100</p>
+<p>#put here your databases in a comma separated list</p>
+<p>#DatabaseList=DB1,DB2,DB3</p>
+<p>DatabaseList=DB1</p>
+<p>#（名称可随意定义，但要与下文保持一致，切记要与监控的主机名称保持一致）</p>
+<p>#Configuration of Connection pool</p>
+<p>#if not specified Orabbis is going to use default values (hardcoded)</p>
+<p>#Maximum number of active connection inside pool</p>
+<p>DatabaseList.MaxActive=10</p>
+<p>#The maximum number of milliseconds that the pool will wait</p>
+<p>#(when there are no available connections) for a connection to be returned</p>
+<p>#before throwing an exception, or &lt; = 0 to wait indefinitely.</p>
+<p>DatabaseList.MaxWait=100</p>
+<p>DatabaseList.MaxIdle=1</p>
+<p>#define here your connection string for each database</p>
+<p>#DB1.Url=jdbc:oracle:thin:@server.domain.example.com:<listener_port>:DB1</listener_port></p>
+<p>DB1.Url=jdbc:oracle:thin:@172.16.7.10:1521:LC</p>
+<p>##确保有jdk环境，因为这里是通过JDBC连接的,LC为数据库实例名称</p>
+<p>DB1.User=ZABBIX      #DB的用户和密码并赋予权限，如下文（这里直接用dba权限用户）</p>
+<p>DB1.Password=jeffery   </p>
+<p>#Those values are optionals if not specified Orabbix is going to use the gener</p>
+<p>al values</p>
+<p>DB1.MaxActive=10</p>
+<p>DB1.MaxWait=100</p>
+<p>DB1.MaxIdle=1</p>
+<p>DB1.QueryListFile=./conf/query.props</p>
+<p>#注销未无效的DB链接</p>
+<p>#DB2.Url=jdbc:oracle:thin:@server2.domain.example.com:<listener_port>:DB2</listener_port></p>
+<p>#DB2.User=zabbix</p>
+<p>#DB2.Password=zabbix_password</p>
+<p>#DB2.QueryListFile=./conf/query.props</p>
+<p>#DB3.Url=jdbc:oracle:thin:@server3.domain.example.com:<listener_port>:DB3</listener_port></p>
+<p>#DB3.User=zabbix</p>
+<p>#DB3.Password=zabbix_password</p>
+<p>#DB3.QueryListFile=./conf/query.props</p>
+<p>6.  创建Oracle账户，并赋予权限</p>
+<pre><code>A.创建表空间
+</code></pre><p>CREATE TABLESPACE “ZABBIX” DATAFILE </p>
+<p>‘/opt/oracle/product/11.2.0/dbs/zabbix01.dbf’ SIZE 100M</p>
+<p>AUTOEXTEND ON NEXT 524288000 MAXSIZE 32767M</p>
+<p>LOGGING ONLINE PERMANENT BLOCKSIZE 8192</p>
+<p>EXTENT MANAGEMENT LOCAL AUTOALLOCATE SEGMENT SPACE MANAGEMENT AUTO;</p>
+<p>   B.创建用户并赋予权限</p>
+<p>CREATE USER ZABBIX IDENTIFIED BY “jeffery” DEFAULT TABLESPACE ZABBIX TEMPORARY TABLESPACE TEMP PROFILE DEFAULT ACCOUNT UNLOCK;</p>
+<p>alter   user   ZABBIX   quota   unlimited   on   ZABBIX; </p>
+<p>GRANT CONNECT TO ZABBIX;</p>
+<p>GRANT RESOURCE TO ZABBIX;</p>
+<p>ALTER USER ZABBIX DEFAULT ROLE ALL;</p>
+<p>GRANT SELECT ANY TABLE TO ZABBIX;</p>
+<p>GRANT CREATE SESSION TO ZABBIX;</p>
+<p>GRANT SELECT ANY DICTIONARY TO ZABBIX;</p>
+<p>GRANT UNLIMITED TABLESPACE  TO ZABBIX;</p>
+<p>GRANT SELECT ANY DICTIONARY TO ZABBIX;</p>
+<p>   C.11g数据库还需要执行下面操作</p>
+<p>exec dbms_network_acl_admin.create_acl(acl  =&gt; ‘resolve.xml’,description =&gt;’resolve acl’, principal =&gt;’ZABBIX’,  is_grant =&gt; true, privilege =&gt;’resolve’);</p>
+<p>exec  dbms_network_acl_admin.assign_acl(acl=&gt; ‘resolve.xml’, host  =&gt;’*’);</p>
+<p>commit;</p>
+<p>select utl_inaddr.get_host_name(‘127.0.0.1’) from dual;</p>
+<p>7. 创建orabbix启动文件</p>
+<p> cp /opt/orabbix/init.d/orabbix  /etc/init.d/orabbix</p>
+<p> chmod +x /etc/init.d/orabbix</p>
+<p> chmod +x  /opt/orabbix/run.sh</p>
+<p> chkconfig –add  orabbix</p>
+<p> chkconfig  –level 345 orabbix on</p>
+<p>8. 到此，安装配置完成，则通过web页面访问直接导入模块即可</p>
+<p>Template 存放路径在现在文件的template目录中<br>Orabbix_export_full.xml        全部导入（图表 监控项 触发器）<br>Orabbix_export_graphs.xml       图表<br>Orabbix_export_items.xml        监控项<br>Orabbix_export_triggers.xml     触发器</p>
+<p>选中Orabbix_export_full.xml直接导入，则可以直接在主机中链接到模版就可以使用全部功能了（主机名称一定要与配置中的 DatabaseList=DB1保持一致）！</p>
+<p><img src="http://s3.51cto.com/wyfs02/M00/41/47/wKioL1PSCwWQuzN9AABZia9mBmc321.jpg" alt=""></p>
+<p>关联模板</p>
+<p><img src="http://s3.51cto.com/wyfs02/M00/41/47/wKioL1PSDczSl4RHAACJZXEvFSA019.jpg" alt=""></p>
+<p>9. 启动orabbix 看是否能收集到Oracle数据库信息</p>
+<p>   出现如下信息那么就配置成功了</p>
+<p>[root@localhost ~]# tailf /opt/orabbix/logs/orabbix.log </p>
+<p> 2014-07-19 21:17:09,982 [pool-1-thread-57] INFO  Orabbix - Done with dbJob on database DB1 QueryList elapsed time 126 ms</p>
+<p> 2014-07-19 21:18:09,881 [pool-1-thread-58] INFO  Orabbix - Done with dbJob on database DB1 QueryList elapsed time 5 ms</p>
+<p> 2014-07-19 21:20:09,917 [pool-1-thread-60] INFO  Orabbix - Done with dbJob on database DB1 QueryList elapsed time 16 ms</p>
+<p> 常见问题：</p>
+<p>若config.props文件未配置，或是配置了错误，无法通过配置的信息正确连进Oracle数据库的，会出现以下错误信息</p>
+<p>[root@zabbix orabbix]# /etc/init.d/orabbix start</p>
+<p>Starting Orabbix service:</p>
+<p>[root@zabbix orabbix]# Stopping</p>
+<p>java.lang.Exception: ERROR on main - Connections is empty</p>
+<pre><code>atcom.smartmarmot.orabbix.Orabbixmon.run(Orabbixmon.java:101)
+
+atcom.smartmarmot.orabbix.bootstrap.main(bootstrap.java:50)
+</code></pre><p>可查看log信息判断解决</p>
+<p>[root@oracle orabbix]# tail -f /opt/orabbix/logs/orabbix.log</p>
+<p>上图：</p>
+<p><img src="http://s3.51cto.com/wyfs02/M01/41/47/wKioL1PSDd7BF5XnAAMhkZZZ50Q533.jpg" alt=""></p>
+<p>参考文档：<a href="http://www.smartmarmot.com/wiki/index.php/Orabbix" target="_blank" rel="external">http://www.smartmarmot.com/wiki/index.php/Orabbix</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/07/25/zabbix-monitoring-oracle-performance/" data-id="ciq4n5j4i000r7xo9p2e17wob" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-apache-working-mode-and-switch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/25/apache-working-mode-and-switch/" class="article-date">
+  <time datetime="2014-07-25T06:10:00.000Z" itemprop="datePublished">2014-07-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Apache/">Apache</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/25/apache-working-mode-and-switch/">Apache的工作模式及切换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>prefork的工作原理及配置<br>　　如果不用“–with-mpm”显式指定某种MPM，prefork就是Unix平台上缺省的MPM。它所采用的预派生子进程方式也是Apache 1.3中采用的模式。prefork本身并没有使用到线程，2.0版使用它是为了与1.3版保持兼容性；另一方面，prefork用单独的子进程来处理不同的请求，进程之间是彼此独立的，这也使其成为最稳定的MPM之一。</p>
+<p>　　若使用prefork，在make编译和make install安装后，使用“httpd -l”来确定当前使用的MPM，应该会看到prefork.c（如果看到worker.c说明使用的是worker MPM，依此类推）。再查看缺省生成的httpd.conf配置文件，里面包含如下配置段：</p>
+<ifmodule prefork.c=""><br><br>StartServers 5<br><br>MinSpareServers 5<br><br>MaxSpareServers 10<br><br>MaxClients 150<br><br>MaxRequestsPerChild 0<br><br></ifmodule>
+
+<p>　　prefork的工作原理是，控制进程在最初建立“StartServers”个子进程后，为了满足MinSpareServers设置的需要创建一 个进程，等待一秒钟，继续创建两个，再等待一秒钟，继续创建四个……如此按指数级增加创建的进程数，最多达到每秒32个，直到满足 MinSpareServers设置的值为止。这就是预派生（prefork）的由来。这种模式可以不必在请求到来时再产生新的进程，从而减小了系统开销 以增加性能。</p>
+<p>　　MaxSpareServers设置了最大的空闲进程数，如果空闲进程数大于这个值，Apache会自动kill掉一些多余进程。这个值不要设得过 大，但如果设的值比MinSpareServers小，Apache会自动把其调整为MinSpareServers+1。如果站点负载较大，可考虑同时 加大MinSpareServers和MaxSpareServers。</p>
+<p>　　MaxRequestsPerChild设置的是每个子进程可处理的请求数。每个子进程在处理了“MaxRequestsPerChild”个请求后 将自动销毁。0意味着无限，即子进程永不销毁。虽然缺省设为0可以使每个子进程处理更多的请求，但如果设成非零值也有两点重要的好处：</p>
+<p>　　◆ 可防止意外的内存泄漏；</p>
+<p>　　◆ 在服务器负载下降的时侯会自动减少子进程数。</p>
+<p>　　因此，可根据服务器的负载来调整这个值。个人认为10000左右比较合适。</p>
+<p>　　MaxClients是这些指令中最为重要的一个，设定的是Apache可以同时处理的请求，是对Apache性能影响最大的参数。其缺省值150是 远远不够的，如果请求总数已达到这个值（可通过ps -ef|grep http|wc -l来确认），那么后面的请求就要排队，直到某个已处理请求完毕。这就是系统资源还剩下很多而HTTP访问却很慢的主要原因。系统管理员可以根据硬件配置 和负载情况来动态调整这个值。虽然理论上这个值越大，可以处理的请求就越多，但Apache默认的限制不能大于256。如果把这个值设为大于256，那么 Apache将无法起动。事实上，256对于负载稍重的站点也是不够的。在Apache 1.3中，这是个硬限制。如果要加大这个值，必须在“configure”前手工修改的源代码树下的src/include/httpd.h中查找 256，就会发现“#define HARD_SERVER_LIMIT 256”这行。把256改为要增大的值（如4000），然后重新编译Apache即可。在Apache 2.0中新加入了ServerLimit指令，使得无须重编译Apache就可以加大MaxClients。下面是prefork配置段：</p>
+<ifmodule prefork.c=""><br><br>StartServers 10<br><br>MinSpareServers 10<br><br>MaxSpareServers 15<br><br>ServerLimit 2000<br><br>MaxClients 1000<br><br>MaxRequestsPerChild 10000<br><br></ifmodule>
+
+<p>　　上述配置中，ServerLimit的最大值是2000，对于大多数站点已经足够。如果一定要再加大这个数值，对位于源代码树下server/mpm/prefork/prefork.c中以下两行做相应修改即可：</p>
+<p>#define DEFAULT_SERVER_LIMIT 256</p>
+<p>#define MAX_SERVER_LIMIT 2000</p>
+<p>worker的工作原理及配置</p>
+<p>　　相对于prefork，worker是2.0 版中全新的支持多线程和多进程混合模型的MPM。由于使用线程来处理，所以可以处理相对海量的请求，而系统资源的开销要小于基于进程的服务器。但 是，worker也使用了多进程，每个进程又生成多个线程，以获得基于进程服务器的稳定性。这种MPM的工作方式将是Apache 2.0的发展趋势。</p>
+<p>　　在configure -with-mpm=worker后，进行make编译、make install安装。在缺省生成的httpd.conf中有以下配置段：</p>
+<ifmodule worker.c=""><br><br>StartServers 2<br><br>MaxClients 150<br><br>MinSpareThreads 25<br><br>MaxSpareThreads 75<br><br>ThreadsPerChild 25<br><br>MaxRequestsPerChild 0<br><br></ifmodule>
+
+<p>　　worker的工作原理是，由主控制进程生成“StartServers”个子进程，每个子进程中包含固定的ThreadsPerChild线程数， 各个线程独立地处理请求。同样，为了不在请求到来时再生成线程，MinSpareThreads和MaxSpareThreads设置了最少和最多的空闲 线程数；而MaxClients设置了所有子进程中的线程总数。如果现有子进程中的线程总数不能满足负载，控制进程将派生新的子进程。</p>
+<p>　　MinSpareThreads和MaxSpareThreads的最大缺省值分别是75和250。这两个参数对Apache的性能影响并不大，可以按照实际情况相应调节。</p>
+<p>　　ThreadsPerChild是worker MPM中与性能相关最密切的指令。ThreadsPerChild的最大缺省值是64，如果负载较大，64也是不够的。这时要显式使用 ThreadLimit指令，它的最大缺省值是20000。上述两个值位于源码树server/mpm/worker/worker.c中的以下两行：</p>
+<p>#define DEFAULT_THREAD_LIMIT 64</p>
+<p>#define MAX_THREAD_LIMIT 20000</p>
+<p>　　这两行对应着ThreadsPerChild和ThreadLimit的限制数。最好在configure之前就把64改成所希望的值。注意，不要把这两个值设得太高，超过系统的处理能力，从而因Apache不起动使系统很不稳定。</p>
+<p>　　Worker模式下所能同时处理的请求总数是由子进程总数乘以ThreadsPerChild值决定的，应该大于等于MaxClients。如果负载 很大，现有的子进程数不能满足时，控制进程会派生新的子进程。默认最大的子进程总数是16，加大时也需要显式声明ServerLimit（最大值是 20000）。这两个值位于源码树server/mpm/worker/worker.c中的以下两行：</p>
+<p>#define DEFAULT_SERVER_LIMIT 16</p>
+<p>#define MAX_SERVER_LIMIT 20000</p>
+<p>　　需要注意的是，如果显式声明了ServerLimit，那么它乘以ThreadsPerChild的值必须大于等于MaxClients，而且 MaxClients必须是ThreadsPerChild的整数倍，否则Apache将会自动调节到一个相应值（可能是个非期望值）。下面是 worker配置段：</p>
+<ifmodule worker.c=""><br><br>StartServers 3<br><br>MaxClients 2000<br><br>ServerLimit 25<br><br>MinSpareThreads 50<br><br>MaxSpareThreads 200<br><br>ThreadLimit 200<br><br>ThreadsPerChild 100<br><br>MaxRequestsPerChild 0<br><br></ifmodule>
+
+<p>　　通过上面的叙述，可以了解到Apache 2.0中prefork和worker这两个重要MPM的工作原理，并可根据实际情况来配置Apache相关的核心参数，以获得最大的性能和稳定性。</p>
+<p>如何切换apache2的prefork和worker模式</p>
+<p>  问题</p>
+<p>　　在Prima/Plesk/Virtuozzo上，apache都使用了系统自带的httpd-2.0.5x的rpm包</p>
+<p>　　在redhat linux上，默认使用的是prefork模式，而不是worker模式</p>
+<p>　　如何在二者间切换？</p>
+<p> 解决方案</p>
+<p>　　Apache HTTP服务器被设计为一个强大的、灵活的能够在多种平台以及不同环境下工作的服务器。</p>
+<p>　　不同的平台和不同的环境经常产生不同的需求，或是为了达到同样的最佳效果而采用不同的方法。</p>
+<p>　　Apache凭借它的模块化设计很好的适应了大量不同的环境。</p>
+<p>　　这一设计使得网站管理员能够在编译时和运行时凭借载入不同的模块来决定服务器的不同附加功能。</p>
+<p>　　Apache2.0将这种模块化的设计延伸到了web服务器的基础功能上。</p>
+<p>　　这个版本带有多路处理模块(MPM)的选择以处理网络端口绑定、</p>
+<p>　　接受请求并指派子进程来处理这些请求。</p>
+<p>　　比如，需要更好伸缩性的可以选择象worker或event这样线程化的MPM，</p>
+<p>　　而需要更好的稳定性和兼容性以适应一些旧的软件可以用prefork 。</p>
+<p>　　在Redhat Linux的主要版本as4上，apache版本为httpd-2.0.5x，</p>
+<p>　　默认为prefork模式，主要是考虑到稳定性的原因。</p>
+<p>　　要切换到worker模式，则需要登录到linux上，进行如下操作：</p>
+<p>　　进入/usr/sbin目录</p>
+<p>　　cd /usr/sbin</p>
+<p>　　将当前的prefork模式启动文件改名</p>
+<p>　　mv httpd httpd.prefork</p>
+<p>　　将worker模式的启动文件改名</p>
+<p>　　mv httpd.worker httpd</p>
+<p>　　修改配置文件vi /etc/httpd/conf/httpd.conf</p>
+<p>　　找到里边的如下一段，可适当修改负载等参数：</p>
+<p>　 StartServers 5<br>  ThreadLimit 200<br>  ServerLimit 50<br>  MaxClients 2000<br>  MinSpareThreads 25<br>  MaxSpareThreads 200<br>  ThreadsPerChild 100<br>  MaxRequestsPerChild 50</p>
+<p>　　重新启动服务</p>
+<p>　　/etc/init.d/httpd restart</p>
+<p>　　即可换成worker方式启动apache2</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/07/25/apache-working-mode-and-switch/" data-id="ciq4n5jfo00aa7xo9lilbv4yw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apache/">Apache</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-zabbix-monitoring-mysql-performance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/24/zabbix-monitoring-mysql-performance/" class="article-date">
+  <time datetime="2014-07-24T11:59:07.000Z" itemprop="datePublished">2014-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Zabbix/">Zabbix</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/24/zabbix-monitoring-mysql-performance/">Zabbix之监控Mysql性能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Zabbix还可以监控mysql slow queries,mysql version,uptime,alive等。下面通过Zabbix Graphs实时查看的SQL语句操作情况和mysql发送接收的字节数。<br>1.Zabbix官方提供的监控mysql的模板Template App MySQL,可以看到相关的Items和key。</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/46/56/wKiom1PxzESQxRm3AAQZvp-HspU325.jpg" alt=""></p>
+<p>2. 把该模板Template App MySQL Link到相关的主机上面,发现Item的Status是不可用的，因为key的值是通过Mysql用户查看”show global status”信息或者用mysqladmin命令查看status或extended-status的信息而取的值。</p>
+<p>mysql&gt; show global status;</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/46/56/wKiom1PxzFyCnHWIAAFSPC-iApg860.jpg" alt=""></p>
+<p>mysql&gt; show status;</p>
+<p>3.创建只读 账户zabbix</p>
+<p>mysql&gt;  insert into mysql.user(Host,User,Password)values(“localhost”,”zabbix”,password(“yourpasswd”));</p>
+<p>mysql&gt; update mysql.user set  Select_priv=”Y” where user=”zabbix” and HOST=”localhost”;</p>
+<p>mysql&gt;flush privileges;</p>
+<h1 id="mysqladmin_-uzabbix_-p_status"><a href="#mysqladmin_-uzabbix_-p_status" class="headerlink" title="mysqladmin  -uzabbix -p status"></a>mysqladmin  -uzabbix -p status</h1><p>Uptime: 3023456  Threads: 16  Questions: 941201  Slow queries: 0  Opens: 491  Flush tables: 1  Open tables: 90  Queries per second avg: 0.311</p>
+<p>4.结合官方提供的key编写Shell脚本，从数据库中取出Items的key的值。</p>
+<h1 id="cat_/usr/local/zabbix/scripts/checkmysqlperformance-sh"><a href="#cat_/usr/local/zabbix/scripts/checkmysqlperformance-sh" class="headerlink" title="cat /usr/local/zabbix/scripts/checkmysqlperformance.sh"></a>cat /usr/local/zabbix/scripts/checkmysqlperformance.sh</h1><p>#!/bin/sh</p>
+<p>#Modified by Jeffery Aug,18 2014<br>MYSQL_SOCK=”/var/lib/mysql/mysql.sock”</p>
+<p>#MYSQL_PWD=<code>cat /var/lib/mysql/3306/.mysqlpassword</code><br>MYSQL_PWD=yourpasswd</p>
+<p>ARGS=1</p>
+<p>if [ $# -ne “$ARGS” ];then<br>    echo “Please input one arguement:”<br>fi</p>
+<p>case $1 in<br>    Uptime)<br>        result=<code>mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK status|cut -f2 -d&quot;:&quot;|cut -f1 -d&quot;T&quot;</code><br>        echo $result<br>        ;;</p>
+<pre><code>Com_update)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_update&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+</code></pre><p>   Slow_queries)<br>        result=<code>mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK status |cut -f5 -d&quot;:&quot;|cut -f1 -d&quot;O&quot;</code><br>        echo $result<br>        ;;</p>
+<pre><code>Com_select)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_select&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Com_rollback)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_rollback&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Questions)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK status|cut -f4 -d&quot;:&quot;|cut -f1 -d&quot;S&quot;`
+    echo $result
+    ;;
+
+Com_insert)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_insert&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Com_delete)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_delete&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Com_commit)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_commit&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Bytes_sent)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Bytes_sent&quot; |cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Bytes_received)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Bytes_received&quot; |cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+Com_begin)
+    result=`mysqladmin -uzabbix -p${MYSQL_PWD} -S $MYSQL_SOCK extended-status |grep -w &quot;Com_begin&quot;|cut -d&quot;|&quot; -f3`
+    echo $result
+    ;;
+
+    *)
+    echo &quot;Usage:$0(Uptime|Com_update|Slow_queries|Com_select|Com_rollback|Questions)&quot;
+    ;;
+</code></pre><p>esac</p>
+<p>4.在Zabbix_agentd.conf里面添加UserParameter，格式如下，对于Zabbix来说，脚本其实就是一个插件。    </p>
+<h1 id="cat_/usr/local/zabbix/etc/zabbix_agentd-conf_7C_grep_-v__u201C_5E_24_7C_5E_23_u201D"><a href="#cat_/usr/local/zabbix/etc/zabbix_agentd-conf_7C_grep_-v__u201C_5E_24_7C_5E_23_u201D" class="headerlink" title="cat /usr/local/zabbix/etc/zabbix_agentd.conf| grep -v “^$|^#”"></a>cat /usr/local/zabbix/etc/zabbix_agentd.conf| grep -v “^$|^#”</h1><p>LogFile=/tmp/zabbix_agentd.log</p>
+<p>Server=172.16.9.38</p>
+<p>ServerActive=172.16.9.38:10051</p>
+<p>Hostname=172.16.9.26</p>
+<p>UnsafeUserParameters=1</p>
+<p>UserParameter=mysql.version,mysql -V</p>
+<p>UserParameter=mysql.ping,mysqladmin -uzabbix -p\7h@6npqQlaX -S /var/lib/mysql/mysql.sock ping | grep -c alive</p>
+<p>UserParameter=mysql.status[*],/usr/local/zabbix/scripts/checkmysqlperformance.sh $1</p>
+<p>5.重启agentd服务器</p>
+<p>/etc/init.d/zabbix_agentd restart</p>
+<p>6.然后在zabbix server用zabbix_get就可以取到key的值。</p>
+<h1 id="/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BUptime_5D"><a href="#/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BUptime_5D" class="headerlink" title="/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Uptime]"></a>/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Uptime]</h1><p>3386849</p>
+<h1 id="/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BCom_select_5D"><a href="#/usr/local/zabbix/bin/zabbix_get_-s_172-16-9-26_-p10050_-k_mysql-status_5BCom_select_5D" class="headerlink" title="/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Com_select]"></a>/usr/local/zabbix/bin/zabbix_get -s 172.16.9.26 -p10050 -k mysql.status[Com_select]</h1><p>275188</p>
+<p>6.在zabbix前端可以实时查看SQL语句每秒钟的操作次数。</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/46/56/wKiom1PxzG-TwcMrAAW79eCRKos634.jpg" alt=""></p>
+<p>7.在zabbix前端可以实时查看mysql发送接收的字节数。其中bytes received表示从所有客户端接收到的字节数，bytes sent表示发送给所有客户端的字节数。<br><img src="http://s3.51cto.com/wyfs02/M02/46/58/wKioL1PxzZnANp3gAAQPSv1iD3I116.jpg" alt=""></p>
+<p>   总结：<br>   1)把该脚本放到要监控的服务器上面（Modify mysql user and password），修改UserParameter的参数并重启agentd,Link官方提供的Template App MySQL模板即可。<br>   2)我这里是测试环境用的是新创建的只读账户zabbix，线上服务器安全期间可以给mysql用户授权readonly权限。</p>
+<p>   3)根据实际的需求，除了监控上述监控项之外，还可以监控mysql processlist,Innodb等。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.suzf.net/2014/07/24/zabbix-monitoring-mysql-performance/" data-id="ciq4n5j5400197xo9pz5loaid" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zabbix/">Zabbix</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Apache/">Apache</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Auto-ops/">Auto ops</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CouchBase/">CouchBase</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HA/">HA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Highcharts/">Highcharts</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LVS/">LVS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Oracle/">Oracle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Puppet/">Puppet</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomcat/">Tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Zabbix/">Zabbix</a><span class="category-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ceph/">Ceph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debian/">Debian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exsi/">Exsi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTID/">GTID</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kernel/">Kernel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kickstart/">Kickstart</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LB/">LB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LVS/">LVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lnmp/">Lnmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/">Log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Proxy/">Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Puppet/">Puppet</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Re/">Re</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZK/">ZK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coredump/">coredump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/couchbase/">couchbase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diy/">diy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expect/">expect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facter/">facter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/faq/">faq</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/highcharts/">highcharts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idrac/">idrac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iso/">iso</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lvm/">lvm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rewrite/">rewrite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsync/">rsync</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsyslog/">rsyslog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snmp/">snmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strace/">strace</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudo/">sudo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Ceph/" style="font-size: 10.91px;">Ceph</a> <a href="/tags/Debian/" style="font-size: 10px;">Debian</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Exsi/" style="font-size: 10px;">Exsi</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GTID/" style="font-size: 10.91px;">GTID</a> <a href="/tags/Kernel/" style="font-size: 10.91px;">Kernel</a> <a href="/tags/Kickstart/" style="font-size: 10px;">Kickstart</a> <a href="/tags/LB/" style="font-size: 10px;">LB</a> <a href="/tags/LVS/" style="font-size: 10px;">LVS</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lnmp/" style="font-size: 10px;">Lnmp</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/MongoDB/" style="font-size: 11.82px;">MongoDB</a> <a href="/tags/Mysql/" style="font-size: 19.09px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.36px;">Nginx</a> <a href="/tags/NoSQL/" style="font-size: 12.73px;">NoSQL</a> <a href="/tags/Oracle/" style="font-size: 11.82px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.91px;">PHP</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/Puppet/" style="font-size: 14.55px;">Puppet</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RAC/" style="font-size: 10.91px;">RAC</a> <a href="/tags/Re/" style="font-size: 11.82px;">Re</a> <a href="/tags/ZK/" style="font-size: 10px;">ZK</a> <a href="/tags/Zabbix/" style="font-size: 18.18px;">Zabbix</a> <a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/coredump/" style="font-size: 10px;">coredump</a> <a href="/tags/couchbase/" style="font-size: 10px;">couchbase</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/diy/" style="font-size: 10px;">diy</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/expect/" style="font-size: 10px;">expect</a> <a href="/tags/facter/" style="font-size: 10px;">facter</a> <a href="/tags/faq/" style="font-size: 17.27px;">faq</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/highcharts/" style="font-size: 10px;">highcharts</a> <a href="/tags/idrac/" style="font-size: 10px;">idrac</a> <a href="/tags/iso/" style="font-size: 10px;">iso</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lvm/" style="font-size: 10px;">lvm</a> <a href="/tags/pip/" style="font-size: 12.73px;">pip</a> <a href="/tags/redis/" style="font-size: 15.45px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/rsyslog/" style="font-size: 10px;">rsyslog</a> <a href="/tags/snmp/" style="font-size: 10px;">snmp</a> <a href="/tags/strace/" style="font-size: 10px;">strace</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/tomcat/" style="font-size: 13.64px;">tomcat</a> <a href="/tags/vim/" style="font-size: 10.91px;">vim</a> <a href="/tags/web/" style="font-size: 12.73px;">web</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/zookeeper/" style="font-size: 12.73px;">zookeeper</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/05/12/839/">Linux 下使用 strace 诊断疑难杂症</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/">MySQL mysqldump 数据导出详解</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/24/Python_Re_module_learn/">Python Re module learn</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/22/Python正则表达式操作指南/">Python正则表达式操作指南</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/18/Hello_Kafka/">Hello Kafka</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jeffrey Su<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
