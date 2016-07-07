@@ -142,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/07/05/linux-web-server-site-failure-analysis-commonly-used-commands/" data-id="ciq4n5jby006z7xo9u6hajmuq" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2015/07/05/linux-web-server-site-failure-analysis-commonly-used-commands/" data-id="ciqcd6lqq006zclo9i8yzfmu5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CMD/">CMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -190,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/07/01/xiao-ming-is-gone-he-had-lived-in-Beijing-brutally/" data-id="ciq4n5j5q001s7xo9e9nuaxv3" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2015/07/01/xiao-ming-is-gone-he-had-lived-in-Beijing-brutally/" data-id="ciqcd6lke001sclo9yn0xjyul" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Life/">Life</a></li></ul>
@@ -240,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/06/12/faq-flask-attributeerror-module-object-has-no-attribute-autoescape/" data-id="ciq4n5jf3009q7xo97iwgqaij" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2015/06/12/faq-flask-attributeerror-module-object-has-no-attribute-autoescape/" data-id="ciqcd6lu9009qclo9g0z9lowr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/faq/">faq</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pip/">pip</a></li></ul>
@@ -302,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/06/11/python-pip-simple-instructions/" data-id="ciq4n5j8f00427xo9pp4bxs2g" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2015/06/11/python-pip-simple-instructions/" data-id="ciqcd6lna0042clo9id3f6uh5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pip/">pip</a></li></ul>
@@ -354,7 +354,7 @@
 <p>添加如下内容,防止被作为垃圾邮件<br>set from = “robot@suzf.net”<br>set use_from = yes<br>set envelope_from = “yes”<br>set realname = “Robot”</p>
 <p>FAQ:<br>通常来说目前主流的邮箱支持的邮箱附件仅在 百兆之内 [ qq 单个邮件附件为 70M]。</p>
 <p>#echo “mutt test” |mutt username@domain.name -s “test”   -a “/root/xxx.tar.gz”<br>postdrop: warning: uid=0: File too large<br>sendmail: fatal: root(0): message file too big<br>Error sending message, child exited 75 (Deferred.).<br>Could not send the message.</p>
-<p>#查看日志<br>Jan 25 15:43:08 xxx postfix/smtp[26575]: 9DB3A1160C2: to=<a href="/&#x6d;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#120;&#120;&#x78;&#x78;&#x78;&#x78;&#120;&#x78;&#120;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;">&#120;&#120;&#x78;&#x78;&#x78;&#x78;&#120;&#x78;&#120;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;</a>, relay=mx3.qq.com[184.105.206.32]:25, delay=9.8, delays=3.6/0.29/5.9/0, dsn=5.3.4, status=bounced (message size 92650110 exceeds size limit 73400320 of server mx3.qq.com[184.105.206.32])</p>
+<p>#查看日志<br>Jan 25 15:43:08 xxx postfix/smtp[26575]: 9DB3A1160C2: to=<a href="/&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#120;&#x78;&#120;&#x78;&#120;&#120;&#x78;&#x78;&#120;&#x40;&#113;&#113;&#46;&#x63;&#111;&#x6d;">&#120;&#x78;&#120;&#x78;&#120;&#120;&#x78;&#x78;&#120;&#x40;&#113;&#113;&#46;&#x63;&#111;&#x6d;</a>, relay=mx3.qq.com[184.105.206.32]:25, delay=9.8, delays=3.6/0.29/5.9/0, dsn=5.3.4, status=bounced (message size 92650110 exceeds size limit 73400320 of server mx3.qq.com[184.105.206.32])</p>
 <p>方案：<br>修改main.cf里面的message_size_limit参数，调大点。<br>如果里面没有，自己手工加一个。单位是字节，如果不懂用法，man 5 postconf找到这个参数的说明<br>eg: 修改成如下大小即可（1G）<br>postconf -e “message_size_limit = 1024000000”<br>postconf -e “mailbox_size_limit = 1024000000”</p>
 <p>再次发送邮件可以收到邮件了， So cool!</p>
 <p>注：发送邮件略慢，需要等待一分钟或者更长才能发送成功(可做定时备份)</p>
@@ -362,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/06/01/use_mutt_sendmail_with_attachment/" data-id="ciq4n5j6d002l7xo93j8bhd7f" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2015/06/01/use_mutt_sendmail_with_attachment/" data-id="ciqcd6llb002lclo9iwayftvp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
@@ -426,7 +426,7 @@ file { &quot;/etc/ntp.conf&quot;:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/05/26/puppet-drawing-module-into-a-dependency-graph/" data-id="ciq4n5j9m00537xo9mde3nol6" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2015/05/26/puppet-drawing-module-into-a-dependency-graph/" data-id="ciqcd6lo60053clo9xmep8y0m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Puppet/">Puppet</a></li></ul>
@@ -484,7 +484,7 @@ file { &quot;/etc/ntp.conf&quot;:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/05/16/web-faq-tcp-time-wait-bucket-table-overflow/" data-id="ciq4n5j6300297xo90f7ce8u9" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2015/05/16/web-faq-tcp-time-wait-bucket-table-overflow/" data-id="ciqcd6lku0029clo9kgj4xw16" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/faq/">faq</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -548,7 +548,7 @@ binlog format : http://dev.mysql.com/doc/refman/5.6/en/replication-options-binar
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/05/16/warning-unsafe-statement-written-to-the-binary-log-using-statement-format-since-binlog-format-statement-insert-on-duplicate-key-update-on-a-table-with-more-than-one-unique-key-is-unsafe-state/" data-id="ciq4n5j69002g7xo9zmocb7bf" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2015/05/16/warning-unsafe-statement-written-to-the-binary-log-using-statement-format-since-binlog-format-statement-insert-on-duplicate-key-update-on-a-table-with-more-than-one-unique-key-is-unsafe-state/" data-id="ciqcd6ll4002gclo9636hg5jo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/faq/">faq</a></li></ul>
@@ -673,7 +673,7 @@ binlog format : http://dev.mysql.com/doc/refman/5.6/en/replication-options-binar
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/03/18/puppet-set-up-dashboard-success-version/" data-id="ciq4n5j9a004r7xo9fc4evfg3" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2015/03/18/puppet-set-up-dashboard-success-version/" data-id="ciqcd6lnw004rclo9s1ltgi1c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Puppet/">Puppet</a></li></ul>
@@ -732,7 +732,7 @@ binlog format : http://dev.mysql.com/doc/refman/5.6/en/replication-options-binar
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2014/12/25/puppet-facter/" data-id="ciq4n5j9i004y7xo9j27hmflr" class="article-share-link">Share</a>
+      <a data-url="http://blog.suzf.net/2014/12/25/puppet-facter/" data-id="ciqcd6lo3004yclo9gmgxc8q6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Puppet/">Puppet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/facter/">facter</a></li></ul>
