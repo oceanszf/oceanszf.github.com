@@ -1,888 +1,577 @@
-<!DOCTYPE html>
-<html>
+
+ <!DOCTYPE HTML>
+<html lang="default">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   
-  <title>Suzf Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Suzf linux tech blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Suzf Blog">
-<meta property="og:url" content="http://blog.suzf.net/page/5/index.html">
-<meta property="og:site_name" content="Suzf Blog">
-<meta property="og:description" content="Suzf linux tech blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Suzf Blog">
-<meta name="twitter:description" content="Suzf linux tech blog">
-  
-    <link rel="alternative" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  
+    <title>Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Suzf linux tech blog">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
 </head>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Suzf Blog</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Life is short, We need smile.</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+
+  <body>
+    <header>
+        <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main">
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/12/28/how-to-compile-vim-with-lua/" title="How-to compile vim with lua" itemprop="url">
+  
+    <h1 itemprop="name">How-to compile vim with lua</h1>
+    
+     
+           <p itemprop="description" >vim 重新编译支持lua
+安装依赖包yum install ncurses lua lua-devel readline -y
+安装LuaJitluajit不在centos的官方repo里面，我们需要编译安装;wget http://luajit.org/download/Lu</p>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.suzf.net"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-how-to-compile-vim-with-lua" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/28/how-to-compile-vim-with-lua/" class="article-date">
-  <time datetime="2015-12-28T08:35:44.000Z" itemprop="datePublished">2015-12-28</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/28/how-to-compile-vim-with-lua/">How-to compile vim with lua</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>vim 重新编译支持lua</p>
-<p>安装依赖包<br>yum install ncurses lua lua-devel readline -y</p>
-<p>安装LuaJit<br>luajit不在centos的官方repo里面，我们需要编译安装;<br>wget <a href="http://luajit.org/download/LuaJIT-2.0.4.tar.gz" target="_blank" rel="external">http://luajit.org/download/LuaJIT-2.0.4.tar.gz</a><br>tar -xzvf LuaJIT-2.0.4.tar.gz<br>cd LuaJIT-2.0.4<br>make &amp;&amp; make install</p>
-<p>下载源码<br>wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2<br>tar xzvf vim-7.4.tar.bz2<br>cd vim74</p>
-<p>编译<br>vim的编译其实很简单，就configure -&gt; make -&gt; make install 这样的流程。<br>但是要添加 Lua支持，就有一些麻烦了。<br>configure的配置大概是这样的：<br>./configure –prefix=/usr/local/vim74 –with-features=huge –with-luajit –enable-luainterp=yes –enable-fail-if-missing</p>
-<h1 id="u5982_u679C_u4F60_u7684_u673A_u5668_u6CA1_u6709_u5B89_u88C5lua__u548Cluajit_u7684_u8BDD_u4F1A_u5728_u68C0_u67E5lua_u652F_u6301_u90A3_u91CC_u4E2D_u65AD_u4E86_u3002"><a href="#u5982_u679C_u4F60_u7684_u673A_u5668_u6CA1_u6709_u5B89_u88C5lua__u548Cluajit_u7684_u8BDD_u4F1A_u5728_u68C0_u67E5lua_u652F_u6301_u90A3_u91CC_u4E2D_u65AD_u4E86_u3002" class="headerlink" title="如果你的机器没有安装lua 和luajit的话会在检查lua支持那里中断了。"></a>如果你的机器没有安装lua 和luajit的话会在检查lua支持那里中断了。</h1><h1 id="make__26amp_3B_26amp_3B_make_install"><a href="#make__26amp_3B_26amp_3B_make_install" class="headerlink" title="make &amp;&amp; make install"></a>make &amp;&amp; make install</h1><p>运行</p>
-<h1 id="/usr/local/vim74/bin/vim"><a href="#/usr/local/vim74/bin/vim" class="headerlink" title="/usr/local/vim74/bin/vim"></a>/usr/local/vim74/bin/vim</h1><p>/usr/local/vim74/bin/vim: error while loading shared libraries: libluajit-5.1.so.2: cannot open shared object file: No such file or directory</p>
-<h1 id="u663E_u7136_u662F_u5B89_u88C5_u7684luajit_u6709_u95EE_u9898_u3002_u6211_u4EEC_u627E_u4E00_u4E0Bluajit_u8FD9_u4E2A-so_u6587_u4EF6_u5728_u54EA_u91CC"><a href="#u663E_u7136_u662F_u5B89_u88C5_u7684luajit_u6709_u95EE_u9898_u3002_u6211_u4EEC_u627E_u4E00_u4E0Bluajit_u8FD9_u4E2A-so_u6587_u4EF6_u5728_u54EA_u91CC" class="headerlink" title="显然是安装的luajit有问题。我们找一下luajit这个.so文件在哪里"></a>显然是安装的luajit有问题。我们找一下luajit这个.so文件在哪里</h1><h1 id="find_/_-name_libluajit-5-1-so-2"><a href="#find_/_-name_libluajit-5-1-so-2" class="headerlink" title="find / -name libluajit-5.1.so.2"></a>find / -name libluajit-5.1.so.2</h1><p>/usr/local/lib/libluajit-5.1.so.2<br>^C</p>
-<h1 id="u6211_u4EEC_u9700_u8981_u7ED9_u8FD9_u4E2Alibluajit-5-1-so-2_u751F_u6210_u4E00_u4E2A_u8F6F_u94FE_u63A5"><a href="#u6211_u4EEC_u9700_u8981_u7ED9_u8FD9_u4E2Alibluajit-5-1-so-2_u751F_u6210_u4E00_u4E2A_u8F6F_u94FE_u63A5" class="headerlink" title="我们需要给这个libluajit-5.1.so.2生成一个软链接"></a>我们需要给这个libluajit-5.1.so.2生成一个软链接</h1><h1 id="ln_-s_/usr/local/lib/libluajit-5-1-so-2_/lib64/libluajit-5-1-so-2"><a href="#ln_-s_/usr/local/lib/libluajit-5-1-so-2_/lib64/libluajit-5-1-so-2" class="headerlink" title="ln -s /usr/local/lib/libluajit-5.1.so.2 /lib64/libluajit-5.1.so.2"></a>ln -s /usr/local/lib/libluajit-5.1.so.2 /lib64/libluajit-5.1.so.2</h1><p>这样再运行vim就不会有问题了～也有Lua支持了</p>
-<p>#/usr/local/vim74/bin/vim  –version | grep lua<br>+dialog_con      +lua             +rightleft       +windows<br>Linking: gcc   -L/usr/local/lib -Wl,–as-needed -o vim    -lSM -lICE -lXpm -lXt -lX11 -lSM -lICE  -lm -ltinfo -lelf -lnsl  -lselinux  -L/usr/lib -lluajit-5.1</p>
-<p>mv /usr/bin/vim{,.old}<br>cp ~/vim74/src/vim /usr/bin</p>
-<p>Reference：</p>
-<ul>
-<li><a href="http://www.cnblogs.com/spch2008/p/4593370.html" target="_blank" rel="external">http://www.cnblogs.com/spch2008/p/4593370.html</a></li>
-<li><a href="http://blog.wuxu92.com/z-compile-vim-with-lua-support-in-centos-7/" target="_blank" rel="external">http://blog.wuxu92.com/z-compile-vim-with-lua-support-in-centos-7/</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/12/28/how-to-compile-vim-with-lua/" data-id="ciqcd6lti0096clo96nylyjyw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-use-vim-to-build-python-development-ide" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/25/use-vim-to-build-python-development-ide/" class="article-date">
-  <time datetime="2015-12-25T09:10:28.000Z" itemprop="datePublished">2015-12-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/25/use-vim-to-build-python-development-ide/">使用 VIM 打造 Python 开发IDE</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>编程常用的文本编辑器就那么几种常见的, 有人喜欢Vim, 有人喜欢emacs, 也有人喜欢IDE, 例如Pycharm, eclipse等. 今天我们不谈孰优孰劣, 只要适合自己就可以了.</p>
-<p>如果你喜欢VIM, 又希望有IDE常见的功能. 你完全可以将这些功能集成到Vim中. 但是, 对于一个初学者, 或像我一样的懒人, 一个一个的查找并试验配置这些插件未免有些太麻烦. 因此, 本文介绍 spf13-vim, 可以简单的满足我们的需要.</p>
-<p>spf13-vim (<a href="https://github.com/spf13/spf13-vim" target="_blank" rel="external">https://github.com/spf13/spf13-vim</a>). 这东西是一个Vim的集成开发环境，内置集成很多码农们常用的插件，基于bundle的方式非常方便扩展以及更新，是初学者们了解Vim以及精通Vim的一个很好的出发点，极大的降低了Vim使用的门槛.</p>
-<p>1. 安装和升级<br>你应该先安装 vim &amp; git<br>yum install vim git -y</p>
-<p>可以使用 spf13-vim lazy 版安装:<br>curl <a href="https://j.mp/spf13-vim3" target="_blank" rel="external">https://j.mp/spf13-vim3</a> -L &gt; spf13-vim.sh &amp;&amp; sh spf13-vim.sh</p>
-<p>如果需要升级, 则可以切换到spf13-vim安装目录(默认是~/.spf13-vim/), 运行:<br>cd $HOME/.spf13-vim-3<br>git pull<br>vim +BundleInstall! +BundleClean +q</p>
-<p>2. 设置<br>默认的.vimrc文件非常适合编程. 如果你查看.vimrc文件的内容, 你会发现其良好的组织既方便阅读, 又方便学习. 默认的.vimrc文件可以在跨平台系统中使用, 如果你还需要进一步的定制化设置的话, 则可以建立~/.vimrc.local实现.</p>
-<p>3. 插件介绍<br>spf13-vim自带许多插件, 方便我们使用:<br>Vundle<br>Vundle是Vim的插件管理系统, Vundle将vim插件组织在同一目录中, 并可以方便的安装, 升级和删除vim插件.</p>
-<p>NERDTree<br>NERDTree是一个文件浏览器, 在spf13-vim找中可以通过ctrl+e调出.</p>
-<p>ctrlp<br>ctrlp是文件载入插件, 通过ctrlp可以方便的浏览系统中文件并打开. 默认情况下可以通过ctrl+p调出.</p>
-<p>NERDCommenter<br>NERDCommenter可以用来方便的切换代码注释, 默认的快捷键是 , + c + 空格, (‘,’是spf13-vim默认的leader键).</p>
-<p>… …</p>
-<p>4. 定制化<br>添加插件</p>
-<p>如果想添加新的插件, 则可以通过以下命令添加:<br>echo Bundle \’spf13/vim-colors\’ &gt;&gt; ~/.vimrc.bundles.local<br>修改默认设置<br>希望修改默认的设置, 例如修改颜色配置, 则可以通过以下方式:<br>echo colorscheme ir_black  &gt;&gt; ~/.vimrc.local</p>
-<p>更多详细用法日后更新 … …</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/12/25/use-vim-to-build-python-development-ide/" data-id="ciqcd6llh002pclo9i79ccox2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hadoop-single-node-pseudo-distributed-installation-Notes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/" class="article-date">
-  <time datetime="2015-12-24T02:40:45.000Z" itemprop="datePublished">2015-12-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/">Hadoop 单节点_伪分布 安装手记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>实验环境<br>CentOS 6.X<br>Hadoop 2.6.0<br>JDK    1.8.0_65</p>
-<p>目的<br>这篇文档的目的是帮助你快速完成单机上的Hadoop安装与使用以便你对Hadoop分布式文件系统(HDFS)和Map-Reduce框架有所体会，比如在HDFS上运行示例程序或简单作业等。</p>
-<p>先决条件<br>支持平台<br>GNU/Linux是产品开发和运行的平台。 Hadoop已在有2000个节点的GNU/Linux主机组成的集群系统上得到验证。<br>Win32平台是作为开发平台支持的。由于分布式操作尚未在Win32平台上充分测试，所以还不作为一个生产平台被支持。</p>
-<p>安装软件<br>如果你的集群尚未安装所需软件，你得首先安装它们。<br>以 CentOS 为例:</p>
-<h1 id="yum_install_ssh_rsync_-y"><a href="#yum_install_ssh_rsync_-y" class="headerlink" title="yum install ssh rsync -y"></a>yum install ssh rsync -y</h1><h1 id="ssh__u5FC5_u987B_u5B89_u88C5_u5E76_u4E14_u4FDD_u8BC1_sshd_u4E00_u76F4_u8FD0_u884C_uFF0C_u4EE5_u4FBF_u7528Hadoop__u811A_u672C_u7BA1_u7406_u8FDC_u7AEFHadoop_u5B88_u62A4_u8FDB_u7A0B_u3002"><a href="#ssh__u5FC5_u987B_u5B89_u88C5_u5E76_u4E14_u4FDD_u8BC1_sshd_u4E00_u76F4_u8FD0_u884C_uFF0C_u4EE5_u4FBF_u7528Hadoop__u811A_u672C_u7BA1_u7406_u8FDC_u7AEFHadoop_u5B88_u62A4_u8FDB_u7A0B_u3002" class="headerlink" title="ssh 必须安装并且保证 sshd一直运行，以便用Hadoop 脚本管理远端Hadoop守护进程。"></a>ssh 必须安装并且保证 sshd一直运行，以便用Hadoop 脚本管理远端Hadoop守护进程。</h1><p>创建用户</p>
-<h1 id="useradd_-m_hadoop_-s_/bin/bash__23__u521B_u5EFA_u65B0_u7528_u6237hadoop"><a href="#useradd_-m_hadoop_-s_/bin/bash__23__u521B_u5EFA_u65B0_u7528_u6237hadoop" class="headerlink" title="useradd -m hadoop -s /bin/bash   # 创建新用户hadoop"></a>useradd -m hadoop -s /bin/bash   # 创建新用户hadoop</h1><p>Hosts解析</p>
-<h1 id="cat_/etc/hosts_7C_grep_ocean-lab"><a href="#cat_/etc/hosts_7C_grep_ocean-lab" class="headerlink" title="cat /etc/hosts| grep ocean-lab"></a>cat /etc/hosts| grep ocean-lab</h1><p>192.168.9.70     ocean-lab.ocean.org  ocean-lab</p>
-<p>安装jdk<br>JDK – <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>首先安装JAVA环境</p>
-<h1 id="wget__u2013no-cookies__u2013no-check-certificate__u2013header__u201CCookie_3A_gpw_e24_3Dhttp_253A_252F_252Fwww-oracle-com_252F_3B_oraclelicense_3Daccept-securebackup-cookie_u201D__u201Chttp_3A//download-oracle-com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64-rpm_u201C"><a href="#wget__u2013no-cookies__u2013no-check-certificate__u2013header__u201CCookie_3A_gpw_e24_3Dhttp_253A_252F_252Fwww-oracle-com_252F_3B_oraclelicense_3Daccept-securebackup-cookie_u201D__u201Chttp_3A//download-oracle-com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64-rpm_u201C" class="headerlink" title="wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm“"></a>wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “<a href="http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm" target="_blank" rel="external">http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm</a>“</h1><h1 id="rpm_-Uvh_jdk-8u65-linux-x64-rpm"><a href="#rpm_-Uvh_jdk-8u65-linux-x64-rpm" class="headerlink" title="rpm -Uvh jdk-8u65-linux-x64.rpm"></a>rpm -Uvh jdk-8u65-linux-x64.rpm</h1><p>配置 Java</p>
-<h1 id="echo__u201Cexport_JAVA_HOME_3D/usr/java/jdk1-8-0_65_u201D__26gt_3B_26gt_3B_/home/hadoop/-bashrc"><a href="#echo__u201Cexport_JAVA_HOME_3D/usr/java/jdk1-8-0_65_u201D__26gt_3B_26gt_3B_/home/hadoop/-bashrc" class="headerlink" title="echo “export JAVA_HOME=/usr/java/jdk1.8.0_65” &gt;&gt; /home/hadoop/.bashrc"></a>echo “export JAVA_HOME=/usr/java/jdk1.8.0_65” &gt;&gt; /home/hadoop/.bashrc</h1><h1 id="source_/home/hadoop/-bashrc"><a href="#source_/home/hadoop/-bashrc" class="headerlink" title="source /home/hadoop/.bashrc"></a>source /home/hadoop/.bashrc</h1><h1 id="echo__24JAVA_HOME"><a href="#echo__24JAVA_HOME" class="headerlink" title="echo $JAVA_HOME"></a>echo $JAVA_HOME</h1><p>/usr/java/jdk1.8.0_65</p>
-<p>下载安装hadoop<br>为了获取Hadoop的发行版，从Apache的某个镜像服务器上下载最近的 稳定发行版。<br>运行Hadoop集群的准备工作</p>
-<h1 id="wget_http_3A//apache-fayea-com/hadoop/common/hadoop-2-6-0/hadoop-2-6-0-tar-gz"><a href="#wget_http_3A//apache-fayea-com/hadoop/common/hadoop-2-6-0/hadoop-2-6-0-tar-gz" class="headerlink" title="wget http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz"></a>wget <a href="http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz" target="_blank" rel="external">http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz</a></h1><p>解压所下载的Hadoop发行版。编辑 conf/hadoop-env.sh文件，至少需要将JAVA_HOME设置为Java安装根路径。</p>
-<h1 id="tar_xf_hadoop-2-6-0-tar-gz_-C_/usr/local"><a href="#tar_xf_hadoop-2-6-0-tar-gz_-C_/usr/local" class="headerlink" title="tar xf hadoop-2.6.0.tar.gz -C /usr/local"></a>tar xf hadoop-2.6.0.tar.gz -C /usr/local</h1><h4 id="mv_/usr/local/hadoop-2-6-0_/usr/local/hadoop"><a href="#mv_/usr/local/hadoop-2-6-0_/usr/local/hadoop" class="headerlink" title="mv /usr/local/hadoop-2.6.0 /usr/local/hadoop"></a>mv /usr/local/hadoop-2.6.0 /usr/local/hadoop</h4><p>尝试如下命令：</p>
-<h1 id="bin/hadoop"><a href="#bin/hadoop" class="headerlink" title="bin/hadoop"></a>bin/hadoop</h1><p>将会显示hadoop 脚本的使用文档。</p>
-<p>现在你可以用以下<strong>三种支持的模式</strong>中的一种启动Hadoop集群：<br>单机模式<br>伪分布式模式<br>完全分布式模式</p>
-<p><strong>单机模式的操作方法</strong></p>
-<p>默认情况下，Hadoop被配置成以非分布式模式运行的一个独立Java进程。这对调试非常有帮助。<br>现在我们可以执行例子来感受下 Hadoop 的运行。Hadoop 附带了丰富的例子包括 wordcount、terasort、join、grep 等。<br>在此我们选择运行 grep 例子，我们将 input 文件夹中的所有文件作为输入，筛选当中符合正则表达式 dfs[a-z.]+ 的单词并统计出现的次数，最后输出结果到 output 文件夹中。</p>
-<h1 id="mkdir_input"><a href="#mkdir_input" class="headerlink" title="mkdir input"></a>mkdir input</h1><h1 id="cp_conf/*-xml_input"><a href="#cp_conf/*-xml_input" class="headerlink" title="cp conf/*.xml input"></a>cp conf/*.xml input</h1><h1 id="/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_-/input/_-/ouput__u2018dfs_5Ba-z-_5D+_u2019"><a href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_-/input/_-/ouput__u2018dfs_5Ba-z-_5D+_u2019" class="headerlink" title="./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep ./input/ ./ouput ‘dfs[a-z.]+’"></a>./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep ./input/ ./ouput ‘dfs[a-z.]+’</h1><h1 id="cat_output/*"><a href="#cat_output/*" class="headerlink" title="cat output/*"></a>cat output/*</h1><p>若执行成功的话会输出很多作业的相关信息，最后的输出信息如下图所示。作业的结果会输出在指定的 output 文件夹中，通过命令 cat ./output/<em> 查看结果，符合正则的单词 dfsadmin 出现了1次：<br>[10:57:58][hadoop@ocean-lab hadoop-2.6.0]$ cat ./ouput/</em><br>1 dfsadmin</p>
-<p>注意，Hadoop 默认不会覆盖结果文件，因此再次运行上面实例会提示出错，需要先将 ./output 删除。<br>否则会报如下错误<br>INFO jvm.JvmMetrics: Cannot initialize JVM Metrics with processName=JobTracker, sessionId= - already initialized<br>org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/usr/local/hadoop-2.6.0/ouput already exists<br>若出现提示 “INFO metrics.MetricsUtil: Unable to obtain hostName java.net.UnknowHostException”，这需要执行如下命令修改 hosts 文件，为你的主机名增加IP映射：</p>
-<h1 id="cat_/etc/hosts_7C_grep_ocean-lab-1"><a href="#cat_/etc/hosts_7C_grep_ocean-lab-1" class="headerlink" title="cat /etc/hosts| grep ocean-lab"></a>cat /etc/hosts| grep ocean-lab</h1><p>192.168.9.70     ocean-lab.ocean.org  ocean-lab</p>
-<p><strong>伪分布式模式的操作方法</strong></p>
-<p>Hadoop可以在单节点上以所谓的伪分布式模式运行，此时每一个Hadoop守护进程都作为一个独立的Java进程运行。<br>节点既作为 NameNode 也作为 DataNode，同时，读取的是 HDFS 中的文件。</p>
-<p>在设置 Hadoop 伪分布式配置前，我们还需要设置 HADOOP 环境变量，执行如下命令在 ~/.bashrc 中设置</p>
-<h1 id="Hadoop_Environment_Variables"><a href="#Hadoop_Environment_Variables" class="headerlink" title="Hadoop Environment Variables"></a>Hadoop Environment Variables</h1><p>export HADOOP_HOME=/usr/local/hadoop-2.6.0<br>export HADOOP_INSTALL=$HADOOP_HOME<br>export HADOOP_MAPRED_HOME=$HADOOP_HOME<br>export HADOOP_COMMON_HOME=$HADOOP_HOME<br>export HADOOP_HDFS_HOME=$HADOOP_HOME<br>export YARN_HOME=$HADOOP_HOME<br>export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native<br>export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin</p>
-<p>source ~/.bashrc</p>
-<p>配置</p>
-<p>使用如下的 etc/hadoop/core-site.xml</p>
-<p>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;hadoop.tmp.dir&lt;/name&gt;<br>&lt;value&gt;file:/usr/local/hadoop-2.6.0/tmp&lt;/value&gt;<br>&lt;description&gt;Abase for other temporary directories.&lt;/description&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;fs.defaultFS&lt;/name&gt;<br>&lt;value&gt;hdfs://localhost:9000&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
-<p>同样的，修改配置文件 <strong>hdfs-site.xml</strong></p>
-<p>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.replication&lt;/name&gt;<br>&lt;value&gt;1&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;<br>&lt;value&gt;file:/usr/local/hadoop-2.6.0/tmp/dfs/name&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;<br>&lt;value&gt;file:/usr/local/hadoop-2.6.0/tmp/dfs/data&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
-<p>&nbsp;</p>
-<p><strong>关于Hadoop配置项的一点说明</strong></p>
-<p>虽 然只需要配置 fs.defaultFS 和 dfs.replication 就可以运行（官方教程如此），不过若没有配置 hadoop.tmp.dir 参数，则默认使用的临时目录为 /tmp/hadoo-hadoop，而这个目录在重启时有可能被系统清理掉，导致必须重新执行 format 才行。所以我们进行了设置，同时也指定 dfs.namenode.name.dir 和 dfs.datanode.data.dir，否则在接下来的步骤中可能会出错。</p>
-<p>&nbsp;</p>
-<p>免密码ssh设置<br>现在确认能否不输入口令就用ssh登录localhost:</p>
-<h1 id="ssh_localhost_date"><a href="#ssh_localhost_date" class="headerlink" title="ssh localhost date"></a>ssh localhost date</h1><p>如果不输入口令就无法用ssh登陆localhost，执行下面的命令：</p>
-<h1 id="ssh-keygen_-t_dsa_-P__u2018_u2019_-f__7E/-ssh/id_dsa"><a href="#ssh-keygen_-t_dsa_-P__u2018_u2019_-f__7E/-ssh/id_dsa" class="headerlink" title="ssh-keygen -t dsa -P ‘’ -f ~/.ssh/id_dsa"></a>ssh-keygen -t dsa -P ‘’ -f ~/.ssh/id_dsa</h1><h1 id="cat__7E/-ssh/id_dsa-pub__26gt_3B_26gt_3B__7E/-ssh/authorized_keys"><a href="#cat__7E/-ssh/id_dsa-pub__26gt_3B_26gt_3B__7E/-ssh/authorized_keys" class="headerlink" title="cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys"></a>cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</h1><p>#chmod  600 ~/.ssh/authorized_keys</p>
-<p>格式化一个新的分布式文件系统：<br>$ bin/hadoop namenode -format<br>15/12/23 11:30:20 INFO util.GSet: VM type       = 64-bit<br>15/12/23 11:30:20 INFO util.GSet: 0.029999999329447746% max memory 966.7 MB = 297.0 KB<br>15/12/23 11:30:20 INFO util.GSet: capacity      = 2^15 = 32768 entries<br>15/12/23 11:30:20 INFO namenode.NNConf: ACLs enabled? false<br>15/12/23 11:30:20 INFO namenode.NNConf: XAttrs enabled? true<br>15/12/23 11:30:20 INFO namenode.NNConf: Maximum size of an xattr: 16384<br>15/12/23 11:30:20 INFO namenode.FSImage: Allocated new BlockPoolId: BP-823870322-192.168.9.70-1450841420347<br>15/12/23 11:30:20 INFO common.Storage: Storage directory /usr/local/hadoop-2.6.0/tmp/dfs/name has been successfully formatted.<br>15/12/23 11:30:20 INFO namenode.NNStorageRetentionManager: Going to retain 1 images with txid &gt;= 0<br>15/12/23 11:30:20 INFO util.ExitUtil: <strong>Exiting with status 0</strong><br>15/12/23 11:30:20 INFO namenode.NameNode: SHUTDOWN_MSG:<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>SHUTDOWN_MSG: Shutting down NameNode at ocean-lab.ocean.org/192.168.9.70<br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/<br><strong>成功的话，会看到 “successfully formatted” 和 “Exitting with status 0″ 的提示</strong></p>
-<p><strong>注意</strong><br>下次启动 hadoop 时，无需进行 NameNode 的初始化，只需要运行 ./sbin/start-dfs.sh 就可以！</p>
-<p>启动 NameNode 和  DataNode</p>
-<p>$  ./sbin/start-dfs.sh<br>15/12/23 11:37:20 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable<br>Starting namenodes on [localhost]<br>localhost: starting namenode, logging to /usr/local/hadoop-2.6.0/logs/hadoop-hadoop-namenode-ocean-lab.ocean.org.out<br>localhost: starting datanode, logging to /usr/local/hadoop-2.6.0/logs/hadoop-hadoop-datanode-ocean-lab.ocean.org.out<br>Starting secondary namenodes [0.0.0.0]<br>The authenticity of host ‘0.0.0.0 (0.0.0.0)’ can’t be established.<br>RSA key fingerprint is a5:26:42:a0:5f:da:a2:88:52:04:9c:7f:8d:6a:98:9b.<br>Are you sure you want to continue connecting (yes/no)?<strong> yes</strong><br>0.0.0.0: Warning: Permanently added ‘0.0.0.0’ (RSA) to the list of known hosts.<br>0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop-2.6.0/logs/hadoop-hadoop-secondarynamenode-ocean-lab.ocean.org.out<br>15/12/23 11:37:44 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable</p>
-<p>[13:57:08][hadoop@ocean-lab hadoop-2.6.0]$ jps<br>27686 <strong>SecondaryNameNode</strong><br>28455 Jps<br>27501<strong> DataNode</strong><br>27405 <strong>NameNode</strong><br>27006 GetConf</p>
-<p>如果没有进程则说明启动失败 查看日志bebug</p>
-<p>成功启动后，可以访问 Web 界面  <a href="http://oceanszf.blog.51cto.com/50070" target="_blank" rel="external">http://[ip,fqdn]:/50070</a>  查看 NameNode 和 Datanode 信息，还可以在线查看 HDFS 中的文件。</p>
-<p><a href="http://s1.51cto.com/wyfs02/M00/78/52/wKiom1Z6Q3vAlkXcAACeq3_WIqU567.png" target="_blank" rel="external"><img src="http://s1.51cto.com/wyfs02/M00/78/52/wKiom1Z6Q3vAlkXcAACeq3_WIqU567.png" alt="wKiom1Z6Q3vAlkXcAACeq3_WIqU567.png" title="hadoop1.PNG"></a></p>
-<h2 id="u8FD0_u884CHadoop_u4F2A_u5206_u5E03_u5F0F_u5B9E_u4F8B"><a href="#u8FD0_u884CHadoop_u4F2A_u5206_u5E03_u5F0F_u5B9E_u4F8B" class="headerlink" title="运行Hadoop伪分布式实例"></a>运行Hadoop伪分布式实例</h2><p>上面的单机模式，grep 例子读取的是本地数据，伪分布式读取的则是 HDFS 上的数据。</p>
-<p>要使用 HDFS，首先需要在 HDFS 中创建用户目录：</p>
-<h1 id="/bin/hdfs_dfs_-mkdir_-p_/user/hadoop"><a href="#/bin/hdfs_dfs_-mkdir_-p_/user/hadoop" class="headerlink" title="./bin/hdfs dfs -mkdir -p /user/hadoop"></a>./bin/hdfs dfs -mkdir -p /user/hadoop</h1><h1 id="/bin/hadoop_fs_-ls_/user/hadoop"><a href="#/bin/hadoop_fs_-ls_/user/hadoop" class="headerlink" title="./bin/hadoop fs -ls /user/hadoop"></a>./bin/hadoop fs -ls /user/hadoop</h1><p>Found 1 items<br>drwxr-xr-x   - hadoop supergroup          0 2015-12-23 15:03 /user/hadoop/input</p>
-<p>接 着将 ./etc/hadoop 中的 xml 文件作为输入文件复制到分布式文件系统中，即将 /usr/local/hadoop/etc/hadoop 复制到分布式文件系统中的 /user/hadoop/input 中。我们使用的是 hadoop 用户，并且已创建相应的用户目录 /user/hadoop ，因此在命令中就可以使用相对路径如 input，其对应的绝对路径就是 /user/hadoop/input:</p>
-<h1 id="/bin/hdfs_dfs_-mkdir_input"><a href="#/bin/hdfs_dfs_-mkdir_input" class="headerlink" title="./bin/hdfs dfs -mkdir input"></a>./bin/hdfs dfs -mkdir input</h1><h1 id="/bin/hdfs_dfs_-put_-/etc/hadoop/*-xml_input"><a href="#/bin/hdfs_dfs_-put_-/etc/hadoop/*-xml_input" class="headerlink" title="./bin/hdfs dfs -put ./etc/hadoop/*.xml input"></a>./bin/hdfs dfs -put ./etc/hadoop/*.xml input</h1><p>复制完成后，可以通过如下命令查看 HDFS 中的文件列表：</p>
-<h1 id="/bin/hdfs_dfs_-ls_input"><a href="#/bin/hdfs_dfs_-ls_input" class="headerlink" title="./bin/hdfs dfs -ls input"></a>./bin/hdfs dfs -ls input</h1><p>-rw-r–r–   1 hadoop supergroup       4436 2015-12-23 16:46 input/capacity-scheduler.xml<br>-rw-r–r–   1 hadoop supergroup       1180 2015-12-23 16:46 input/core-site.xml<br>-rw-r–r–   1 hadoop supergroup       9683 2015-12-23 16:46 input/hadoop-policy.xml<br>-rw-r–r–   1 hadoop supergroup       1136 2015-12-23 16:46 input/hdfs-site.xml<br>-rw-r–r–   1 hadoop supergroup        620 2015-12-23 16:46 input/httpfs-site.xml<br>-rw-r–r–   1 hadoop supergroup       3523 2015-12-23 16:46 input/kms-acls.xml<br>-rw-r–r–   1 hadoop supergroup       5511 2015-12-23 16:46 input/kms-site.xml<br>-rw-r–r–   1 hadoop supergroup        858 2015-12-23 16:46 input/mapred-site.xml<br>-rw-r–r–   1 hadoop supergroup        690 2015-12-23 16:46 input/yarn-site.xml</p>
-<p>伪分布式运行 MapReduce 作业的方式跟单机模式相同，区别在于伪分布式读取的是HDFS中的文件（可以将单机步骤中创建的本地 input 文件夹，输出结果 output 文件夹都删掉来验证这一点）。</p>
-<h1 id="/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_input_output__u2018dfs_5Ba-z-_5D+_u2019"><a href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_input_output__u2018dfs_5Ba-z-_5D+_u2019" class="headerlink" title="./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep input output ‘dfs[a-z.]+’"></a>./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep input output ‘dfs[a-z.]+’</h1><p>查看运行结果的命令（查看的是位于 HDFS 中的输出结果）：<br>$ ./bin/hdfs dfs -cat output/*<br>1   dfsadmin<br>1   dfs.replication<br>1   dfs.namenode.name.dir<br>1   dfs.datanode.data.dir</p>
-<p>结果如下，注意到刚才我们已经更改了配置文件，所以运行结果不同。<br>Hadoop伪分布式运行grep的结果Hadoop伪分布式运行grep的结果<br>我们也可以将运行结果取回到本地：</p>
-<h1 id="rm_-r_-/output__23__u5148_u5220_u9664_u672C_u5730_u7684_output__u6587_u4EF6_u5939_uFF08_u5982_u679C_u5B58_u5728_uFF09"><a href="#rm_-r_-/output__23__u5148_u5220_u9664_u672C_u5730_u7684_output__u6587_u4EF6_u5939_uFF08_u5982_u679C_u5B58_u5728_uFF09" class="headerlink" title="rm -r ./output    # 先删除本地的 output 文件夹（如果存在）"></a>rm -r ./output    # 先删除本地的 output 文件夹（如果存在）</h1><h1 id="/bin/hdfs_dfs_-get_output_-/output__23__u5C06_HDFS__u4E0A_u7684_output__u6587_u4EF6_u5939_u62F7_u8D1D_u5230_u672C_u673A"><a href="#/bin/hdfs_dfs_-get_output_-/output__23__u5C06_HDFS__u4E0A_u7684_output__u6587_u4EF6_u5939_u62F7_u8D1D_u5230_u672C_u673A" class="headerlink" title="./bin/hdfs dfs -get output ./output     # 将 HDFS 上的 output 文件夹拷贝到本机"></a>./bin/hdfs dfs -get output ./output     # 将 HDFS 上的 output 文件夹拷贝到本机</h1><h1 id="cat_-/output/*"><a href="#cat_-/output/*" class="headerlink" title="cat ./output/*"></a>cat ./output/*</h1><p>1   dfsadmin<br>1   dfs.replication<br>1   dfs.namenode.name.dir<br>1   dfs.datanode.data.dir</p>
-<p>Hadoop 运行程序时，输出目录不能存在，否则会提示错误 “org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory hdfs://localhost:9000/user/hadoop/output already exists” ，因此若要再次执行，需要执行如下命令删除 output 文件夹:</p>
-<h1 id="u5220_u9664_output__u6587_u4EF6_u5939"><a href="#u5220_u9664_output__u6587_u4EF6_u5939" class="headerlink" title="删除 output 文件夹"></a>删除 output 文件夹</h1><p>$./bin/hdfs dfs -rm -r output<br>Deleted output</p>
-<p>运行程序时，输出目录不能存在<br>运行 Hadoop 程序时，为了防止覆盖结果，程序指定的输出目录（如 output）不能存在，否则会提示错误，因此运行前需要先删除输出目录。在实际开发应用程序时，可考虑在程序中加上如下代码，能在每次运行时自动删除输出目录，避免繁琐的命令行操作：<br>Configuration conf = new Configuration();<br>Job job = new Job(conf);<br>/<em> 删除输出目录 </em>/<br>Path outputPath = new Path(args[1]);<br>outputPath.getFileSystem(conf).delete(outputPath, true);</p>
-<p>若要关闭 Hadoop，则运行<br>./sbin/stop-dfs.sh</p>
-<p>启动YARN<br>(伪分布式不启动 YARN 也可以，一般不会影响程序执行)<br>有 的读者可能会疑惑，怎么启动 Hadoop 后，见不到书上所说的 JobTracker 和 TaskTracker，这是因为新版的 Hadoop 使用了新的 MapReduce 框架（MapReduce V2，也称为 YARN，Yet Another Resource Negotiator）。</p>
-<p>YARN 是从 MapReduce 中分离出来的，负责资源管理与任务调度。YARN 运行于 MapReduce 之上，提供了高可用性、高扩展性，YARN 的更多介绍在此不展开，有兴趣的可查阅相关资料。</p>
-<p>上述通过 ./sbin/start-dfs.sh 启动 Hadoop，仅仅是启动了 MapReduce 环境，我们可以启动 YARN ，让 YARN 来负责资源管理与任务调度。</p>
-<p>首先修改配置文件 mapred-site.xml<br>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;mapreduce.framework.name&lt;/name&gt;<br>&lt;value&gt;yarn&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
-<p>接着修改配置文件 yarn-site.xml：<br>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;<br>&lt;value&gt;mapreduce_shuffle&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
-<p>然后就可以启动 YARN 了（需要先执行过 ./sbin/start-dfs.sh）：</p>
-<h1 id="/sbin/start-yarn-sh__23__u542F_u52A8YARN"><a href="#/sbin/start-yarn-sh__23__u542F_u52A8YARN" class="headerlink" title="./sbin/start-yarn.sh                                # 启动YARN"></a>./sbin/start-yarn.sh                                # 启动YARN</h1><h1 id="/sbin/mr-jobhistory-daemon-sh_start_historyserver__23__u5F00_u542F_u5386_u53F2_u670D_u52A1_u5668_uFF0C_u624D_u80FD_u5728Web_u4E2D_u67E5_u770B_u4EFB_u52A1_u8FD0_u884C_u60C5_u51B5"><a href="#/sbin/mr-jobhistory-daemon-sh_start_historyserver__23__u5F00_u542F_u5386_u53F2_u670D_u52A1_u5668_uFF0C_u624D_u80FD_u5728Web_u4E2D_u67E5_u770B_u4EFB_u52A1_u8FD0_u884C_u60C5_u51B5" class="headerlink" title="./sbin/mr-jobhistory-daemon.sh start historyserver  # 开启历史服务器，才能在Web中查看任务运行情况"></a>./sbin/mr-jobhistory-daemon.sh start historyserver  # 开启历史服务器，才能在Web中查看任务运行情况</h1><p>开启后通过 jps 查看，可以看到多了 NodeManager 和 ResourceManager 两个后台进程:</p>
-<p>[09:18:34][hadoop@ocean-lab ~]$ jps<br>27686 SecondaryNameNode<br>6968 ResourceManager<br>7305 Jps<br>7066 NodeManager<br>27501 DataNode<br>27405 NameNode</p>
-<p>启 动 YARN 之后，运行实例的方法还是一样的，仅仅是资源管理方式、任务调度不同。观察日志信息可以发现，不启用 YARN 时，是 “mapred.LocalJobRunner” 在跑任务，启用 YARN 之后，是 “mapred.YARNRunner” 在跑任务。启动 YARN 有个好处是可以通过 Web 界面查看任务的运行情况：<a href="http://[ip,fqdn]:8088/cluster" target="_blank" rel="external">http://[ip,fqdn]:8088/cluster</a></p>
-<p>开启YARN后可以查看任务运行信息开启YARN后可以查看任务运行信息<br>但 YARN 主要是为集群提供更好的资源管理与任务调度，然而这在单机上体现不出价值，反而会使程序跑得稍慢些。因此在单机上是否开启 YARN 就看实际情况了。<br>不启动 YARN 需删掉/重命名 mapred-site.xml<br>否则在该配置文件存在，而未开启 YARN 的情况下，运行程序会提示 “Retrying connect to server: 0.0.0.0/0.0.0.0:8032″ 的错误。</p>
-<p>同样的，关闭 YARN 的脚本如下：</p>
-<h1 id="/sbin/stop-yarn-sh"><a href="#/sbin/stop-yarn-sh" class="headerlink" title="./sbin/stop-yarn.sh"></a>./sbin/stop-yarn.sh</h1><h1 id="/sbin/mr-jobhistory-daemon-sh_stop_historyserver"><a href="#/sbin/mr-jobhistory-daemon-sh_stop_historyserver" class="headerlink" title="./sbin/mr-jobhistory-daemon.sh stop historyserver"></a>./sbin/mr-jobhistory-daemon.sh stop historyserver</h1><p><strong>hadoop 常用命令</strong></p>
-<h1 id="u67E5_u770BHDFS_u6587_u4EF6_u5217_u8868"><a href="#u67E5_u770BHDFS_u6587_u4EF6_u5217_u8868" class="headerlink" title="查看HDFS文件列表"></a>查看HDFS文件列表</h1><p>hadoop fs -ls /usr/local/log/</p>
-<h1 id="u521B_u5EFA_u6587_u4EF6_u76EE_u5F55"><a href="#u521B_u5EFA_u6587_u4EF6_u76EE_u5F55" class="headerlink" title="创建文件目录"></a>创建文件目录</h1><p>hadoop fs -mkdir /usr/local/log/test</p>
-<h1 id="u5220_u9664_u6587_u4EF6"><a href="#u5220_u9664_u6587_u4EF6" class="headerlink" title="删除文件"></a>删除文件</h1><p>/hadoop fs -rm /usr/local/log/07</p>
-<h1 id="u4E0A_u4F20_u4E00_u4E2A_u672C_u673A_u6587_u4EF6_u5230HDFS_u4E2D/usr/local/log/_u76EE_u5F55_u4E0B"><a href="#u4E0A_u4F20_u4E00_u4E2A_u672C_u673A_u6587_u4EF6_u5230HDFS_u4E2D/usr/local/log/_u76EE_u5F55_u4E0B" class="headerlink" title="上传一个本机文件到HDFS中/usr/local/log/目录下"></a>上传一个本机文件到HDFS中/usr/local/log/目录下</h1><p>adoop fs -put /usr/local/src/infobright-4.0.6-0-x86_64-ice.rpm  /usr/local/log/</p>
-<h1 id="u4E0B_u8F7D"><a href="#u4E0B_u8F7D" class="headerlink" title="下载"></a>下载</h1><p>hadoop fs –get /usr/local/log/infobright-4.0.6-0-x86_64-ice.rpm   /usr/local/src/</p>
-<h1 id="u67E5_u770B_u6587_u4EF6"><a href="#u67E5_u770B_u6587_u4EF6" class="headerlink" title="查看文件"></a>查看文件</h1><p>hadoop fs -cat /usr/local/log/zabbix/access.log.zabbix</p>
-<h1 id="u67E5_u770BHDFS_u57FA_u672C_u4F7F_u7528_u60C5_u51B5"><a href="#u67E5_u770BHDFS_u57FA_u672C_u4F7F_u7528_u60C5_u51B5" class="headerlink" title="查看HDFS基本使用情况"></a>查看HDFS基本使用情况</h1><h1 id="hadoop_dfsadmin_-report"><a href="#hadoop_dfsadmin_-report" class="headerlink" title="hadoop dfsadmin -report"></a>hadoop dfsadmin -report</h1><p>DEPRECATED: Use of this script to execute hdfs command is deprecated.<br>Instead use the hdfs command for it.</p>
-<p>Configured Capacity: 29565767680 (27.54 GB)<br>Present Capacity: 17956433920 (16.72 GB)<br>DFS Remaining: 17956405248 (16.72 GB)<br>DFS Used: 28672 (28 KB)<br>DFS Used%: 0.00%<br>Under replicated blocks: 0<br>Blocks with corrupt replicas: 0<br>Missing blocks: 0</p>
-<hr>
-<p>Live datanodes (1):</p>
-<p>Name: 127.0.0.1:50010 (localhost)<br>Hostname: ocean-lab.ocean.org<br>Decommission Status : Normal<br>Configured Capacity: 29565767680 (27.54 GB)<br>DFS Used: 28672 (28 KB)<br>Non DFS Used: 11609333760 (10.81 GB)<br>DFS Remaining: 17956405248 (16.72 GB)<br>DFS Used%: 0.00%<br>DFS Remaining%: 60.73%<br>Configured Cache Capacity: 0 (0 B)<br>Cache Used: 0 (0 B)<br>Cache Remaining: 0 (0 B)<br>Cache Used%: 100.00%<br>Cache Remaining%: 0.00%<br>Xceivers: 1<br>Last contact: Thu Dec 24 09:52:14 CST 2015</p>
-<p>自此，你已经掌握 Hadoop 的配置和基本使用了。</p>
-<p>Reference doc:  <a href="https://hadoop.apache.org/docs/r2.6.0/" target="_blank" rel="external">https://hadoop.apache.org/docs/r2.6.0/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/" data-id="ciqcd6ltx009eclo9exgydi0l" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-why-does-ceph-monitor-db-compaction-fail" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/22/why-does-ceph-monitor-db-compaction-fail/" class="article-date">
-  <time datetime="2015-12-22T08:29:58.000Z" itemprop="datePublished">2015-12-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/22/why-does-ceph-monitor-db-compaction-fail/">How-to deal with Ceph Monitor DB compaction?</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><section class="field_kcs_issue_txt"><strong>Issue</strong></section></p>
-<p>Ceph Monitors DB compaction<br>mon.ceph1 store is getting too big! 48031 MB &gt;= 15360 MB – 62% avail<br>mon.ceph2 store is getting too big! 47424 MB &gt;= 15360 MB – 63% avail<br>mon.ceph3 store is getting too big! 46524 MB &gt;= 15360 MB – 63% avail</p>
-<p>In Three Monitor nodes each one have ~50GB of store.db:<br>du -sch /var/lib/ceph/mon/ceph-ceph1/store.db/<br>47G     /var/lib/ceph/mon/ceph-ceph1/store.db/<br>47G     total</p>
-<p>We’ve set the following in our ceph.conf:<br>[mon]<br>mon compact on start = true<br>Then we restart one of the monitor to trigger the compact process.<br>Noticed that size of store.db increase more (and is still increasing) but it should decrease.</p>
-<p>&nbsp;</p>
-<p><strong>However</strong></p>
-<p>If mon compact on start is set true.</p>
-<p>The larger the database, the longer the compaction would take. there by increasing the time for a node to join cluster / form quorum. &lt;on the procuction, i restart one mon service. it costs more than one hour. It’s soo long! &gt;</p>
-<p>This probably need a review alongside any other existing cluster-level heartbeats/failover process for safety if this approach is selected.</p>
-<p>Clearly we don’t want this on by default, but having the option to turn it on via auto-manage-soft might be nice.</p>
-<p>Note you can also tell a monitor to run compaction on the fly with</p>
-<pre><code>sudo ceph tell mon.{id} compact
-</code></pre><p>&nbsp;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/12/22/why-does-ceph-monitor-db-compaction-fail/" data-id="ciqcd6lki001xclo9cbym45ah" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ceph/">Ceph</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/" class="article-date">
-  <time datetime="2015-12-01T13:34:23.000Z" itemprop="datePublished">2015-12-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Mysql/">Mysql</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/">[译] Repair MySQL 5.6 GTID replication by injecting empty transactions</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在前面文章我提到了两种关于<a href="https://www.percona.com/blog/2013/02/08/how-to-createrestore-a-slave-using-gtid-replication-in-mysql-5-6/" target="_blank" rel="external">如何修复 Mysql 5.6 GTID 主从数据库</a>。<br>我没有提到大家说熟知的方法 - <code>GLOBAL SQL_SLAVE_SKIP_COUNTER = n</code>。原因很简单，如果你使用的是MysqlGTID，它是不工作的。<br>那么问题来了：</p>
-<p><strong>有没有简单的方法跳过这单一事务 ?</strong><br>是的！<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-failover.html#replication-gtids-failover-empty" target="_blank" rel="external">注入空事务</a>。让我们想象一下，从服务器上的复制不工作，因为下面一个错误：</p>
-<p><div></div></p>
-<p><pre class="lang:default decode:true">Last_SQL_Error: Error ‘Duplicate entry ‘4’ for key ‘PRIMARY’’ on query. Default database: ‘test’. Query: ‘insert into t VALUES(NULL,’salazar’)’<br>Retrieved_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-5<br>Executed_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-4</pre><br><br>这里有不同的方法可以找到失败的事务。你可以检查二进制日志，或者你也可以检查<strong>retrieved_gtid_set </strong>和 <strong>executed_gtid_set</strong> 从显示输出的例子中我们可以看出。此从服务器检索到1到5的交易，但只执行了1到4。这意味着交易5是导致问题的一个问题。</p>
-<p>因为在GTID中sql_slave_skip_counter不工作，我们需要找到一种办法来忽视事务。我们可以在GTID中创建空事务以跳过它。</p>
-<p><pre class="lang:default decode:true ">STOP SLAVE;<br>SET GTID_NEXT=”7d72f9b4-8577-11e2-a3d7-080027635ef5:5”;<br>BEGIN; COMMIT;<br>SET GTID_NEXT=”AUTOMATIC”;<br>START SLAVE;<br>[…]<br>Retrieved_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-5<br>Executed_Gtid_Set: 7d72f9b4-8577-11e2-a3d7-080027635ef5:1-5</pre><br>START SLAVE 之后 检查事务5已经在它自己的二进制文件中了，这就意味着它已经执行过了。</p>
-<p>这是一个简单的方法来跳过一些事务，但是，你应该想到主从服务器之间数据不一致。<a href="https://www.percona.com/doc/percona-toolkit/2.2/pt-table-checksum.html" target="_blank" rel="external">pt-table-checksum</a> 在这里可以帮助你，它可以在<a href="https://www.percona.com/software/percona-toolkit" target="_blank" rel="external">Percona Toolkit for mysql</a> 中找到。</p>
-<p>上周我谈及了很多关于GTID的东西在<a href="http://percona-mysql-university-toronto-2013.eventbrite.com/" target="_blank" rel="external">多伦多 Percona Mysql 大学</a>。 它包括MySQL 5.6 gtid 这个新功能的工作概述，可以帮助人们。这是来自该会议的幻灯片。我希望你觉得它有用：<a href="https://www.percona.com/resources/technical-presentations/mysql-56-gtid-nutshell-percona-live-university-toronto" target="_blank" rel="external">MySQL 5.6 GTID in a nutshell
-</a></p>
-<p>原文： <a href="https://www.percona.com/blog/2013/03/26/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/" target="_blank" rel="external">https://www.percona.com/blog/2013/03/26/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/" data-id="ciqcd6lmh003kclo92kjb8j4x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/29/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-6/" class="article-date">
-  <time datetime="2015-11-29T10:24:08.000Z" itemprop="datePublished">2015-11-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/29/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-6/">How To Install ELK Stack (Elasticsearch, Logstash, and Kibana) on CentOS 6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ELK(Elasticsearch + Logstash + Kibana) 是一套开源的日志管理方案<br>Elasticsearch：负责日志检索和分析<br>Logstash：负责日志的收集，处理和储存<br>Kibana：负责日志的可视化</p>
-<p>Logstash: The server component of Logstash that processes incoming logs<br>Elasticsearch: Stores all of the logs<br>Kibana 4: Web interface for searching and visualizing logs, which will be proxied through Nginx<br>Logstash Forwarder: Installed on servers that will send their logs to Logstash, Logstash Forwarder serves as a log forwarding agent that utilizes the lumberjack networking protocol to communicate with Logstash</p>
-<p>Reference：<br>JDK - <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>Elasticsearch - <a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="external">https://www.elastic.co/downloads/elasticsearch</a><br>Logstash - <a href="https://www.elastic.co/downloads/logstash" target="_blank" rel="external">https://www.elastic.co/downloads/logstash</a><br>Kibana - <a href="https://www.elastic.co/downloads/kibana" target="_blank" rel="external">https://www.elastic.co/downloads/kibana</a><br>redis - <a href="http://redis.io/download" target="_blank" rel="external">http://redis.io/download</a></p>
-<p>数据流流向如下<br>Logstash-forwarder—&gt;Logstash—&gt;Elasticsearch—&gt;kibana—&gt;nginx—&gt;客户浏览器<br><a href="http://s2.51cto.com/wyfs02/M00/76/B8/wKiom1ZazrHSbKu-AABA4HuUlBk078.png" target="_blank" rel="external"><img src="http://s2.51cto.com/wyfs02/M00/76/B8/wKiom1ZazrHSbKu-AABA4HuUlBk078.png" alt="" title="elk-infrastructure.png"></a>其中Logstash-forwarder是客户端的日志收集工具将日志发送给服务端Logstash后<br>Logstash通过使用grok匹配规则对日志进行匹配切割<br>然后保存在Elasticsearch中<br>最后通过kibana从Elasticsearch中读取数据并转交给nginx来处理后返回给客户。<br>好了下面就是ELK系统的安装过程了。</p>
-<p>首先安装JAVA环境</p>
-<p><pre class="brush:bash;toolbar:false">wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “<a href="http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm" target="_blank" rel="external">http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm</a>“<br>rpm -Uvh jdk-8u65-linux-x64.rpm</pre><br>或者直接yum安装jdk也行不过要保证安装好对应的版本。</p>
-<p>安装好jdk环境之后需要安装Elasticsearch</p>
-<p><pre class="brush:bash;toolbar:false">rpm –import <a href="http://packages.elastic.co/GPG-KEY-elasticsearch" target="_blank" rel="external">http://packages.elastic.co/GPG-KEY-elasticsearch</a><br>rpm -ivh <a href="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.noarch.rpm" target="_blank" rel="external">https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.noarch.rpm</a></pre><br>修改配置文件如下</p>
-<p><pre class="brush:bash;toolbar:false">grep -v “^.*#|^$” /etc/elasticsearch/elasticsearch.yml<br>network.host: localhost<br>path.data: /data/elasticsearch<br>chown -R elasticsearch:elasticsearch /data/elasticsearch</pre><br>安装Elasticsearch插件</p>
-<p><pre class="brush:bash;toolbar:false">cd /usr/share/elasticsearch/ &amp;&amp;  ./bin/plugin -install mobz/elasticsearch-head &amp;&amp; ./bin/plugin -install lukas-vlcek/bigdesk</pre><br>启动Elasticsearch</p>
-<p><pre class="brush:bash;toolbar:false">service elasticsearch start<br>chkconfig elasticsearch on</pre><br>测试Elasticsearch</p>
-<p><pre class="brush:bash;toolbar:false">curl <a href="http://localhost:9200" target="_blank" rel="external">http://localhost:9200</a><br>{<br>  “status” : 200,<br>  “name” : “Black Goliath”,<br>  “cluster_name” : “elasticsearch”,<br>  “version” : {<br>    “number” : “1.7.2”,<br>    “build_hash” : “e43676b1385b8125d647f593f7202acbd816e8ec”,<br>    “build_timestamp” : “2015-09-14T09:49:53Z”,<br>    “build_snapshot” : false,<br>    “lucene_version” : “4.10.4”<br>  },<br>  “tagline” : “You Know, for Search”<br>}</pre><br>然后开始安装kibana<br>去<a href="https://www.elastic.co/downloads/kibana" target="_blank" rel="external">https://www.elastic.co/downloads/kibana</a> 找合适的版本<br>每个版本下面有这么一行内容一定要注意这些内容Compatible with Elasticsearch x.x – x.x<br>这里选择的是kibana-4.1.3-linux-x64.tar.gz</p>
-<p><pre class="brush:bash;toolbar:false">wget <a href="https://download.elastic.co/kibana/kibana/kibana-4.1.3-linux-x64.tar.gz" target="_blank" rel="external">https://download.elastic.co/kibana/kibana/kibana-4.1.3-linux-x64.tar.gz</a><br>tar xf kibana-4.1.3-linux-x64.tar.gz<br>mv kibana-4.1.3-linux-x64 /usr/local/kibana<br>cd !$<br>grep -v “^.*#|^$” /usr/local/kibana/config/kibana.yml<br>port: 5601<br>host: “localhost”<br>elasticsearch_url: “<a href="http://localhost:9200" target="_blank" rel="external">http://localhost:9200</a>“<br>elasticsearch_preserve_host: true<br>kibana_index: “.kibana”<br>default_app_id: “discover”<br>request_timeout: 300000<br>shard_timeout: 0<br>verify_ssl: true<br>bundled_plugin_ids:</pre></p>
-<ul>
-<li>plugins/dashboard/index</li>
-<li>plugins/discover/index</li>
-<li>plugins/doc/index</li>
-<li>plugins/kibana/index</li>
-<li>plugins/markdown_vis/index</li>
-<li>plugins/metric_vis/index</li>
-<li>plugins/settings/index</li>
-<li>plugins/table_vis/index</li>
-<li>plugins/vis_types/index</li>
-<li>plugins/visualize/index<br>配置文件中指明kibana侦听5601端口并且通过9200端口从elasticsearch里面获取数据</li>
-</ul>
-<p>启动 Kibana<br>nohup /usr/local/kibana/bin/kibana -l /var/log/kibana.log &amp;</p>
-<p>或者也可以看看下面两个脚本</p>
-<p><pre class="brush:bash;toolbar:false">cd /etc/init.d &amp;&amp;  curl -o kibana <a href="https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/fc5025c3fc499ad8262aff34ba7fde8c87ead7c0/kibana-4.x-init" target="_blank" rel="external">https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/fc5025c3fc499ad8262aff34ba7fde8c87ead7c0/kibana-4.x-init</a><br>cd /etc/default &amp;&amp;  curl -o kibana <a href="https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/fc5025c3fc499ad8262aff34ba7fde8c87ead7c0/kibana-4.x-default" target="_blank" rel="external">https://gist.githubusercontent.com/thisismitch/8b15ac909aed214ad04a/raw/fc5025c3fc499ad8262aff34ba7fde8c87ead7c0/kibana-4.x-default</a><br>ln -s /usr/local/kibana /opt/kibana<br>groupadd -g 1005 kibana<br>useradd -u 1005 -g 1005 kibana<br>chown -R kibana:kibana /usr/local/kibana<br>service kibana start<br>chkconfig kibana on</pre><br>安装nginx</p>
-<p><pre class="brush:bash;toolbar:false">yum -y install epel-release<br>yum -y install nginx httpd-tools<br>grep -v “^.*#|^$” /etc/nginx/nginx.conf<br>user              nginx;<br>worker_processes  1;<br>error_log  /var/log/nginx/error.log;<br>pid        /var/run/nginx.pid;<br>events {<br>    worker_connections  1024;<br>}<br>http {<br>    include       /etc/nginx/mime.types;<br>    default_type  application/octet-stream;<br>    log_format main ‘$remote_addr - $remote_user [$time_local] “$request” ‘<br>                    ‘$status $upstream_response_time $request_time $body_bytes_sent ‘<br>                    ‘“$http_referer” “$http_user_agent” “$http_x_forwarded_for” “$request_body” ‘<br>                    ‘$scheme $upstream_addr’;</pre></p>
-<pre><code># 修改日志格式是为了匹配后面的Logstash的grok匹配规则
-access_log  /var/log/nginx/access.log  main;
-sendfile        on;
-keepalive_timeout  65;
-
-include /etc/nginx/conf.d/*.conf;
-</code></pre><p>}</p>
-<p><pre class="brush:bash;toolbar:false">grep -v “^.*#|^$” /etc/nginx/conf.d/kibana.conf<br>server {<br>    listen 80;<br>    server_name ocean-lab.ocean.org;<br>    location / {<br>        proxy_pass <a href="http://localhost:5601" target="_blank" rel="external">http://localhost:5601</a>;<br>        proxy_set_header Upgrade $http_upgrade;<br>        proxy_set_header Connection ‘upgrade’;<br>        proxy_set_header Host $host;<br>        proxy_cache_bypass $http_upgrade;<br>    }<br>}</pre><br>启动nginx</p>
-<p><pre class="brush:bash;toolbar:false">service nginx start<br>chkconfig nginx on</pre><br>之后就需要安装Logstash了</p>
-<p><pre class="brush:bash;toolbar:false">rpm –import <a href="https://packages.elasticsearch.org/GPG-KEY-elasticsearch" target="_blank" rel="external">https://packages.elasticsearch.org/GPG-KEY-elasticsearch</a><br>vi /etc/yum.repos.d/logstash.repo<br>[logstash-1.5]<br>name=Logstash repository for 1.5.x packages<br>baseurl=<a href="http://packages.elasticsearch.org/logstash/1.5/centos" target="_blank" rel="external">http://packages.elasticsearch.org/logstash/1.5/centos</a><br>gpgcheck=1<br>gpgkey=<a href="http://packages.elasticsearch.org/GPG-KEY-elasticsearch" target="_blank" rel="external">http://packages.elasticsearch.org/GPG-KEY-elasticsearch</a><br>enabled=1<br>yum -y install logstash</pre><br>Logstash 安装成功了 但是仍需要配置</p>
-<p>生成 SSL 证书<br>logstash和logstash-forwarder通信需要使用tls证书认证。<br>Logstash Forwarder上面只需公钥logstash需要配置公钥、私钥。<br>在logstash服务器上生成ssl证书。<br>创建ssl证书有两种方式一种指定IP地址一种指定fqdn(dns)。</p>
-<p>1、指定IP地址方式 [本实验使用此种方式]<br>vi /etc/pki/tls/openssl.cnf<br>在[ v3_ca ]下面配置<br>subjectAltName = IP:172.16.7.11</p>
-<h1 id="u5207_u8BB0_u8FD9_u6761_u5F88_u91CD_u8981_u56E0_u4E3Alogstash-forwarder-conf__u8FD8_u9700_u8981__u5982_u679C_u914D_u7F6E_u9519_u8BEF__u5C31_u4F1A_u4E00_u76F4_u65E0_u6CD5_u5B9E_u73B0_u8BA4_u8BC1"><a href="#u5207_u8BB0_u8FD9_u6761_u5F88_u91CD_u8981_u56E0_u4E3Alogstash-forwarder-conf__u8FD8_u9700_u8981__u5982_u679C_u914D_u7F6E_u9519_u8BEF__u5C31_u4F1A_u4E00_u76F4_u65E0_u6CD5_u5B9E_u73B0_u8BA4_u8BC1" class="headerlink" title="切记这条很重要因为logstash-forwarder.conf 还需要 如果配置错误 就会一直无法实现认证"></a>切记这条很重要因为logstash-forwarder.conf 还需要 如果配置错误 就会一直无法实现认证</h1><p>cd /etc/pki/tls<br>openssl req -config /etc/pki/tls/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt</p>
-<h1 id="u6CE8_u610F_u5C06-days_u8BBE_u7F6E_u5927_u70B9_u4EE5_u514D_u8BC1_u4E66_u8FC7_u671F_u3002"><a href="#u6CE8_u610F_u5C06-days_u8BBE_u7F6E_u5927_u70B9_u4EE5_u514D_u8BC1_u4E66_u8FC7_u671F_u3002" class="headerlink" title="注意将-days设置大点以免证书过期。"></a>注意将-days设置大点以免证书过期。</h1><p><strong><em> 如果logstash服务端的IP地址变换了证书不可用了 </em></strong><br>like that:<br>2015/11/29 16:23:48.274974 Failed to tls handshake with 127.0.0.1 x509: certificate is valid for 172.16.7.11, not 127.0.0.1</p>
-<p>2、使用 FQDN 方式<br>不需要修改openssl.cnf文件。<br>cd /etc/pki/tls<br><strong> CN=FQDN </strong><br>openssl req -subj ‘/CN=elk.suzf.net/‘ -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt</p>
-<h1 id="u5C06_elk-suzf-net__u6362_u6210_u4F60_u81EA_u5DF1_u7684_u57DF_u540D_u3002_u540C_u65F6_u5230_u57DF_u540D_u89E3_u6790_u90A3_u6DFB_u52A0_elk-suzf-net__u7684A_u8BB0_u5F55_u3002"><a href="#u5C06_elk-suzf-net__u6362_u6210_u4F60_u81EA_u5DF1_u7684_u57DF_u540D_u3002_u540C_u65F6_u5230_u57DF_u540D_u89E3_u6790_u90A3_u6DFB_u52A0_elk-suzf-net__u7684A_u8BB0_u5F55_u3002" class="headerlink" title="将 elk.suzf.net 换成你自己的域名。同时到域名解析那添加 elk.suzf.net 的A记录。"></a>将 elk.suzf.net 换成你自己的域名。同时到域名解析那添加 elk.suzf.net 的A记录。</h1><p>配置logstash<br>logstash配置文件是以json格式设置参数的<br>配置文件位于/etc/logstash/conf.d目录下配置包括三个部分 输入/输出和过滤器</p>
-<p>首先创建一个01-lumberjack-input.conf文件<br>设置lumberjack输入Logstash-Forwarder使用的协议。</p>
-<p><pre class="brush:bash;toolbar:false">cat /etc/logstash/conf.d/01-lumberjack-input.conf<br>input {<br>  lumberjack {<br>    port =&gt; 5043<br>    type =&gt; “logs”<br>    ssl_certificate =&gt; “/etc/pki/tls/certs/logstash-forwarder.crt”<br>    ssl_key =&gt; “/etc/pki/tls/private/logstash-forwarder.key”<br>  }<br>}</pre><br>再来创建一个02-nginx.conf用于过滤nginx日志</p>
-<p><pre class="brush:bash;toolbar:false">cat /etc/logstash/conf.d/02-nginx.conf<br>filter {<br>  if [type] == “nginx” {<br>    grok {<br>      match =&gt; { “message” =&gt; “%{IPORHOST:clientip} - %{NOTSPACE:remote_user} [%{HTTPDATE:timestamp}] \”(?:%{WORD:method} %{NOTSPACE:request}(?: %{URIPROTO:proto}/%{NUMBER:httpversion})?|%{DATA:rawrequest})\” %{NUMBER:status} (?:%{NUMBER:upstime}|-) %{NUMBER:reqtime} (?:%{NUMBER:size}|-) %{QS:referrer} %{QS:agent} %{QS:xforwardedfor} %{QS:reqbody} %{WORD:scheme} (?:%{IPV4:upstream}(:%{POSINT:port})?|-)” }<br>      add_field =&gt; [ “received_at”, “%{@timestamp}” ]<br>      add_field =&gt; [ “received_from”, “%{host}” ]<br>    }<br>    date {<br>        match =&gt; [ “timestamp” , “dd/MMM/YYYY:HH:mm:ss Z” ]<br>    }<br>   geoip {<br>        source =&gt; “clientip”<br>        add_tag =&gt; [ “geoip” ]<br>        fields =&gt; [“country_name”, “country_code2”,”region_name”, “city_name”, “real_region_name”, “latitude”, “longitude”]<br>        remove_field =&gt; [ “[geoip][longitude]”, “[geoip][latitude]” ]<br>    }<br>  }<br>}</pre><br>这个过滤器会寻找被标记为“nginx”类型Logstash-forwarder定义的的日志尝试使用“grok”来分析传入的nginx日志使之结构化和可查询。<br>type要与logstash-forwarder相匹配。<br>同时注意将nginx日志格式设置成上面的。<br>日志格式不对grok匹配规则要重写。<br>可以通过<a href="http://grokdebug.herokuapp.com/" target="_blank" rel="external">http://grokdebug.herokuapp.com/</a> 在线工具进行调试。多半ELK没数据错误在此处。<br>grok 匹配日志不成功不要往下看了。搞对为止先。<br>同时多看看<a href="http://grokdebug.herokuapp.com/patterns#" target="_blank" rel="external">http://grokdebug.herokuapp.com/patterns#</a>   grok匹配模式对后面写规则匹配很受益的。<br>最后创建一文件来定义输出。</p>
-<p><pre class="brush:bash;toolbar:false">cat  /etc/logstash/conf.d/30-lumberjack-output.conf<br>output {<br>    if “_grokparsefailure” in [tags] {<br>      file { path =&gt; “/var/log/logstash/grokparsefailure-%{type}-%{+YYYY.MM.dd}.log” }<br>    }<br>    elasticsearch {<br>        host =&gt; “127.0.0.1”<br>        protocol =&gt; “http”<br>        index =&gt; “logstash-%{type}-%{+YYYY.MM.dd}”<br>        document_type =&gt; “%{type}”<br>        workers =&gt; 5<br>        template_overwrite =&gt; true<br>    }</pre></p>
-<pre><code>#stdout { codec =&amp;gt;rubydebug }
-</code></pre><p>}<br>定义结构化的日志存储到elasticsearch对于不匹配grok的日志写入到文件。<br>注意后面添加的过滤器文件名要位于01-99之间。因为logstash配置文件有顺序的。<br>在调试时候先不将日志存入到elasticsearch而是标准输出以便排错。<br>同时多看看日志很多错误在日志里有体现也容易定位错误在哪。</p>
-<p>在启动logstash服务之前最好先进行配置文件检测如下</p>
-<p><pre class="brush:bash;toolbar:false">/opt/logstash/bin/logstash –configtest -f /etc/logstash/conf.d/*<br>Configuration OK</pre><br>也可指定文件名检测直到OK才行。不然logstash服务器起不起来。<br>最后就是启动logstash服务了。</p>
-<p><pre class="brush:bash;toolbar:false">service logstash start<br>chkconfig logstash on</pre><br>然后就是配置Logstash-forwarder客户端了。<br>安装logstash-forwarder</p>
-<p><pre class="brush:bash;toolbar:false">wget <a href="https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder-0.4.0-1.x86_64.rpm" target="_blank" rel="external">https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder-0.4.0-1.x86_64.rpm</a><br>rpm -ivh logstash-forwarder-0.4.0-1.x86_64.rpm</pre><br>需要将在安装logstash时候创建的ssl证书的公钥拷贝到每台logstash-forwarder服务器上。<br>scp 172.16.7.11:/etc/pki/tls/certs/logstash-forwarder.crt /etc/pki/tls/certs/</p>
-<p>配置logstash-forwarder</p>
-<p><pre class="brush:bash;toolbar:false">grep -v “^.*#|^$” /etc/logstash-forwarder.conf<br>{<br>  “network”: {<br>    “servers”: [ “172.16.7.11:5043” ],<br>    “ssl ca”: “/etc/pki/tls/certs/logstash-forwarder.crt”,<br>    “timeout”: 15<br>  },<br>  “files”: [<br>    {<br>      “paths”: [<br>        “/var/log/messages”,<br>        “/var/log/secure”<br>       ],<br>      “fields”: { “type”: “syslog” }<br>    },{<br>      “paths”: [<br>        “/var/log/nginx/access.log”<br>      ],<br>      “fields”: { “type”: “nginx” }<br>    }<br>  ]<br>}</pre><br>这也是个json个是的配置文件<br>json格式不对logstash-forwarder服务是启动不起来的<br>service logstash-forwarder start</p>
-<p>连接到 Kibana</p>
-<p>创建index</p>
-<p><a href="http://s1.51cto.com/wyfs02/M00/76/B7/wKioL1Za0R3x5ECsAAL9HfVOBKk815.jpg" target="_blank" rel="external"><img src="http://s1.51cto.com/wyfs02/M00/76/B7/wKioL1Za0R3x5ECsAAL9HfVOBKk815.jpg" alt="" title="ELK1.JPG"></a></p>
-<p>当上面的所有都配置正确的话就可以访问kibana来查看数据了。<br>访问效果如下所示<br><a href="http://s4.51cto.com/wyfs02/M01/76/B7/wKioL1Za0Vnjfp2JAAMaty9BPZw911.jpg" target="_blank" rel="external"><img src="http://s4.51cto.com/wyfs02/M01/76/B7/wKioL1Za0Vnjfp2JAAMaty9BPZw911.jpg" alt="" title="ELK2.JPG"></a>​</p>
-<p>参考文档：</p>
-<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-7" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-7</a></p>
-<p><a href="https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-elk-stack-issues" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-elk-stack-issues</a></p>
-<p><a href="http://xianglinhu.blog.51cto.com/5787032/1716274" target="_blank" rel="external">http://xianglinhu.blog.51cto.com/5787032/1716274</a></p>
-<p><a href="http://www.wklken.me/posts/2015/04/26/elk-for-nginx-log.html" target="_blank" rel="external">http://www.wklken.me/posts/2015/04/26/elk-for-nginx-log.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/11/29/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-6/" data-id="ciqcd6lsw008rclo9n5w6mysx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ELK/">ELK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Log/">Log</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-install-elasticsearch-plugin" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/26/how-to-install-elasticsearch-plugin/" class="article-date">
-  <time datetime="2015-11-26T08:49:22.000Z" itemprop="datePublished">2015-11-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/26/how-to-install-elasticsearch-plugin/">How-to: install elasticsearch plugin</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>elasticsearch 插件</strong></p>
-<p>由于公司内部访问权限控制严格，自己搭建的虚拟机只能通过搭建代理上网</p>
-<p>因为某种限制第一种安装未成功， 所以有了后面的方法。<br>自动安装<br>[11:38:08][root@ocean-lab elasticsearch]$ <strong>./bin/plugin -install mobz/elasticsearch-head</strong><br>-&gt; Installing mobz/elasticsearch-head…<br>Trying <a href="https://github.com/mobz/elasticsearch-head/archive/master.zip" target="_blank" rel="external">https://github.com/mobz/elasticsearch-head/archive/master.zip</a>…<br>Failed to install mobz/elasticsearch-head, reason: failed to download out of all possible locations…, use –verbose to get detailed information</p>
-<p>[11:35:35][root@ocean-lab elasticsearch]$ wget <a href="https://github.com/mobz/elasticsearch-head/archive/master.zip" target="_blank" rel="external">https://github.com/mobz/elasticsearch-head/archive/master.zip</a><br>–2015-11-26 11:35:56–  <a href="https://github.com/mobz/elasticsearch-head/archive/master.zip" target="_blank" rel="external">https://github.com/mobz/elasticsearch-head/archive/master.zip</a><br>Connecting to x.x.9.158:3128… connected.<br>Proxy request sent, awaiting response… 302 Found<br>Location: <a href="https://codeload.github.com/mobz/elasticsearch-head/zip/master" target="_blank" rel="external">https://codeload.github.com/mobz/elasticsearch-head/zip/master</a> [following]<br>–2015-11-26 11:36:05–  <a href="https://codeload.github.com/mobz/elasticsearch-head/zip/master" target="_blank" rel="external">https://codeload.github.com/mobz/elasticsearch-head/zip/master</a><br>Connecting to x.x.9.158:3128… connected.<br>Proxy request sent, awaiting response… 200 OK<br>Length: 899159 (878K) [application/zip]<br>Saving to: “master.zip”</p>
-<p>100%[==================================================<br>2015-11-26 11:36:10 (292 KB/s) - “master.zip” saved [899159/899159]</p>
-<p>手动安装<br>[16:12:12][root@ocean-lab elasticsearch]$ <strong>./bin/plugin –install elasticsearch-head –url file:///usr/share/elasticsearch/plugins/master.zip</strong><br>-&gt; Installing elasticsearch-head…<br>Trying file:/usr/share/elasticsearch/plugins/master.zip…<br>Downloading ………DONE<br>Installed elasticsearch-head into /usr/share/elasticsearch/plugins/head</p>
-<p><strong>Reference</strong>  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-plugins.html#installing" target="_blank" rel="external">elasticsearch-modules-plugins-install</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/11/26/how-to-install-elasticsearch-plugin/" data-id="ciqcd6lsr008nclo96ogxu008" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ceph-single-multi-node-installation-summary" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/25/ceph-single-multi-node-installation-summary/" class="article-date">
-  <time datetime="2015-11-25T14:21:54.000Z" itemprop="datePublished">2015-11-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/25/ceph-single-multi-node-installation-summary/">Ceph 单/多节点 安装小结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>概述</p>
-<p>Docs : <a href="http://docs.ceph.com/docs" target="_blank" rel="external">http://docs.ceph.com/docs</a></p>
-<p>Ceph是一个分布式文件系统，在维持POSIX兼容性的同时加入了复制和容错功能。Ceph最大的特点是分布式的元数据服务器，通过CRUSH（Controlled Replication Under Scalable Hashing）这种拟算法来分配文件的location。Ceph的核心是RADOS（ReliableAutonomic Distributed Object Store)，一个对象集群存储，本身提供对象的高可用、错误检测和修复功能。</p>
-<p>Ceph生态系统架构可以划分为四部分：</p>
-<p>client：客户端（数据用户）。client向外export出一个POSIX文件系统接口，供应用程序调用，并连接mon/mds/osd，进行元数据及数据交互；最原始的client使用FUSE来实现的，现在写到内核里面了，需要编译一个ceph.ko内核模块才能使用。<br>mon：集群监视器，其对应的daemon程序为cmon（Ceph Monitor）。mon监视和管理整个集群，对客户端export出一个网络文件系统，客户端可以通过mount -t ceph monitor_ip:/ mount_point命令来挂载Ceph文件系统。根据官方的说法，3个mon可以保证集群的可靠性。<br>mds：元数据服务器，其对应的daemon程序为cmds（Ceph Metadata Server）。Ceph里可以有多个MDS组成分布式元数据服务器集群，就会涉及到Ceph中动态目录分割来进行负载均衡。<br>osd：对象存储集群，其对应的daemon程序为cosd（Ceph Object StorageDevice）。osd将本地文件系统封装一层，对外提供对象存储的接口，将数据和元数据作为对象存储。这里本地的文件系统可以是ext2/3，但Ceph认为这些文件系统并不能适应osd特殊的访问模式，它们之前自己实现了ebofs，而现在Ceph转用btrfs。</p>
-<p>Ceph支持成百上千甚至更多的节点，以上四个部分最好分布在不同的节点上。当然，对于基本的测试，可以把mon和mds装在一个节点上，也可以把四个部分全都部署在同一个节点上。</p>
-<p><strong>环境</strong></p>
-<p><pre class="lang:default decode:true ">hostname    ip             role           filesystem   release<br>master01    192.168.9.10   mon,mds,osd    xfs          CentOS release 6.7[2.6.32-573.8.1.el6.x86_64]<br>agent01     192.168.9.20   osd,[mon,mds]  xfs          CentOS release 6.7[2.6.32-573.8.1.el6.x86_64]<br>ocean-lab   192.168.9.70   client         xfs          CentOS release 6.7[4.3.0-1.el6.elrepo.x86_64]</pre><br><strong>版本</strong></p>
-<p><pre class="lang:default decode:true ">^_^[16:26:11][root@master01 ~]#ceph -v<br>ceph version 0.80.5 (38b73c67d375a2552d8ed67843c8a65c2c0feba6)</pre><br><strong>Repo</strong></p>
-<p><pre class="lang:default decode:true ">Epel<br>yum install ceph ceph-common python-ceph<br>yum install ceph-fuse        # for client</pre><br><strong>host 解析</strong></p>
-<p><pre class="lang:default decode:true ">192.168.9.10     master01.ocean.org   master01<br>192.168.9.20     agent01.ocean.org    agent01<br>192.168.9.70     ocean-lab.ocean.org  ocean-lab</pre><br><strong>Ceph 配置</strong></p>
-<p><pre class="lang:default decode:true ">^_^[16:26:15][root@master01 ~]#cat /etc/ceph/ceph.conf<br>[global]<br>public network = 192.168.9.0/24<br>pid file = /var/run/ceph/$name.pid<br>auth cluster required = none<br>auth service required = none<br>auth client required = none<br>keyring = /etc/ceph/keyring.$name<br>osd pool default size = 1<br>osd pool default min size = 1<br>osd pool default crush rule = 0<br>osd crush chooseleaf type = 1</pre></p>
-<p>[mon]<br>mon data = /var/lib/ceph/mon/$name<br>mon clock drift allowed = .15<br>keyring = /etc/ceph/keyring.$name</p>
-<p>[mon.0]<br>host = master01<br>mon addr = 192.168.9.10:6789</p>
-<p>[mds]<br>keyring = /etc/ceph/keyring.$name</p>
-<p>[mds.0]<br>host = master01</p>
-<p>[osd]<br>osd data = /ceph/osd$id<br>osd recovery max active = 5<br>osd mkfs type = xfs<br>osd journal = /ceph/osd$id/journal<br>osd journal size = 1000<br>keyring = /etc/ceph/keyring.$name</p>
-<p>[osd.0]<br>host = master01<br>devs = /dev/sdc1</p>
-<p>[osd.1]<br>host = master01<br>devs = /dev/sdc2<br><strong>启动ceph(在mon上执行)</strong></p>
-<p><pre class="lang:default decode:true ">初始化：<br>mkcephfs -a -c /etc/ceph/ceph.conf<br>/etc/init.d/ceph -a start</pre></p>
-<p>执行健康检查<br>ceph health            #也可以使用ceph -s命令查看状态<br>如果返回的是HEALTH_OK，则代表成功！<br><strong>挂载ceph</strong></p>
-<p><pre class="lang:default decode:true">mount<br>升级系统内核<br>kernel 2.6.34以前的版本是没有Module rbd的，把系统内核版本升级到最新<br>rpm –import <a href="http://elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="external">http://elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>rpm -Uvh <a href="http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm" target="_blank" rel="external">http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm</a><br>yum –enablerepo=elrepo-kernel install kernel-ml  -y</pre></p>
-<p>安装完内核后修改/etc/grub.conf配置文件使<br>修改配置文件中的 Default=1 to Default=0</p>
-<p>验证内核支持</p>
-<p>#modprobe -l|grep ceph<br>kernel/fs/ceph/ceph.ko<br>kernel/net/ceph/libceph.ko</p>
-<p>#modprobe  ceph</p>
-<p>机器重启后生效 init 6</p>
-<p>mount -t ceph 192.168.9.10:6789:/ /mnt/ceph<br>[17:07:39][root@ocean-lab ~]$ df -TH<br>Filesystem           Type   Size  Used Avail Use% Mounted on<br>/dev/mapper/vg_oceani-lv_root<br>                     ext4    30G  7.7G   21G  28% /<br>tmpfs                tmpfs  111M     0  111M   0% /dev/shm<br>/dev/sda1            ext4   500M   94M  375M  21% /boot<br>192.168.9.10:/data2  nfs     30G   25G  4.0G  87% /mnt/log<br>192.168.9.10:6789:/  ceph   172G  5.4G  167G   4% /mnt/ceph</p>
-<p>ceph-fuse [未测]<br>mon推荐有至少3个，假如挂掉一个、服务也能正常使用<br>ceph-fuse -m 192.168.9.10:6789,192.168.9.20:6789 /mnt/ceph<br><strong>增加OSD</strong></p>
-<p><pre class="lang:default decode:true ">这里在agent01新增硬盘<br>[15:58:07][root@agent01 ~]$ cat /etc/ceph/ceph.conf<br>[global]<br>public network = 192.168.9.0/24<br>pid file = /var/run/ceph/$name.pid<br>auth cluster required = none<br>auth service required = none<br>auth client required = none<br>keyring = /etc/ceph/keyring.$name<br>osd pool default size = 1<br>osd pool default min size = 1<br>osd pool default crush rule = 0<br>osd crush chooseleaf type = 1</pre></p>
-<p>[mon]<br>mon data = /var/lib/ceph/mon/$name<br>mon clock drift allowed = .15<br>keyring = /etc/ceph/keyring.$name</p>
-<p>[mon.0]<br>host = master01<br>mon addr = 192.168.9.10:6789</p>
-<p>[mds]<br>keyring = /etc/ceph/keyring.$name</p>
-<p>[mds.0]<br>host = master01</p>
-<p>[osd]<br>osd data = /ceph/osd$id<br>osd recovery max active = 5<br>osd mkfs type = xfs<br>osd journal = /ceph/osd$id/journal<br>osd journal size = 1000<br>keyring = /etc/ceph/keyring.$name</p>
-<p>[osd.2]<br>host = agent01<br>devs = /dev/sdc1</p>
-<p>[osd.3]<br>host = agent01<br>devs = /dev/sdc2</p>
-<p>master01 ~ $ cd /etc/ceph; scp keyring.client.admin  agent01:/etc/ceph/<br>以下操作都在新增OSD节点上操作<br>初始化新增osd节点，需要在新增的节点机器上运行，这里在10.2.180.180上运行<br>ceph-osd -i 2 –mkfs –mkkey;<br>ceph-osd -i 3 –mkfs –mkkey;</p>
-<p>加入节点<br>ceph auth add osd.2 osd ‘allow <em>‘ mon ‘allow rwx’ -i /etc/ceph/keyring.osd.2;<br>ceph auth add osd.3 osd ‘allow </em>‘ mon ‘allow rwx’ -i /etc/ceph/keyring.osd.3;<br>ceph osd create #added key for osd.2<br>ceph osd create #added key for osd.3<br>ceph osd rm osd_num    # 删除osd</p>
-<p>/etc/init.d/ceph -a start osd.2 #启动osd.2<br>/etc/init.d/ceph -a start osd.3 #启动osd.3<br>/etc/init.d/ceph -a start osd   #启动所有osd<br>ceph -s #查看状态<br>ceph auth list #能查看所有认证节点<br><strong>增加MDS</strong></p>
-<p><pre class="lang:default decode:true ">增加agent01 MDS到节点<br>将以下配置增加到配置文件，并同步到节点<br>[mds.1]<br>host = agent01<br>以下操作都在新增OSD节点上操作<br>生成key<br>ceph-authtool –create-keyring –gen-key -n mds.1 /etc/ceph/keyring.mds.1<br>加入认证<br>ceph auth add mds.1 osd ‘allow <em>‘ mon ‘allow rwx’ mds ‘allow’ -i /etc/ceph/keyring.mds.1<br>启动新增MDS<br>/etc/init.d/ceph -a start mds.1<br></em></pre><br><em>*增加MON</em></p>
-<p><pre class="lang:default decode:true ">增加agent01 MDS到节点<br>将以下配置增加到配置文件，并同步到节点<br>[mon.1]<br>host = agent01<br>mon addr = 192.168.9.20:6789</pre></p>
-<p>导出key及mon map<br>mkdir /tmp/ceph<br>ceph auth get mon. -o /tmp/ceph/keyring.mon<br>ceph mon getmap -o /tmp/ceph/monmap</p>
-<p>初始化新mon<br>ceph-mon -i 1 –mkfs –monmap /tmp/ceph/monmap –keyring /tmp/ceph/keyring.mon</p>
-<p>启动新mon<br>ceph-mon -i 1 –public-addr 192.168.9.20:6789</p>
-<p>加入quorum votes<br>ceph mon add 1 192.168.9.20:6789<br>至此，Ceph 安装完成。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/11/25/ceph-single-multi-node-installation-summary/" data-id="ciqcd6lus00a7clo9w7emtsmx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ceph/">Ceph</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-csv-example" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/09/python-csv-example/" class="article-date">
-  <time datetime="2015-11-09T08:24:44.000Z" itemprop="datePublished">2015-11-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/09/python-csv-example/">Python CSV 操作实例</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Reference: <a href="https://docs.python.org/2/library/csv.html"> The Python Standard Library CSV</a></p>
-<p><strong>使用 Python 生成csv 文件</strong></p>
-<p><pre class="lang:default decode:true">#!/usr/bin/env python</p>
-<h1 id="coding_3Autf-8"><a href="#coding_3Autf-8" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import csv</p>
-<h1 id="wb_u4E2D_u7684w_u8868_u793A_u5199_u5165_u6A21_u5F0F_uFF0Cb_u662F_u6587_u4EF6_u6A21_u5F0F"><a href="#wb_u4E2D_u7684w_u8868_u793A_u5199_u5165_u6A21_u5F0F_uFF0Cb_u662F_u6587_u4EF6_u6A21_u5F0F" class="headerlink" title="wb中的w表示写入模式，b是文件模式"></a>wb中的w表示写入模式，b是文件模式</h1><p>csv_file = file(‘test.csv’, ‘wb’)<br>writer = csv.writer(csv_file)</p>
-<h1 id="u5199_u5165_u4E00_u884C"><a href="#u5199_u5165_u4E00_u884C" class="headerlink" title="写入一行"></a>写入一行</h1><p>writer.writerow([‘Name’, ‘Age’, ‘Sex’])</p>
-<p>data = [<br>    (‘Lisa’, 18, ‘female’),<br>    (‘jack’, 20, ‘male’),<br>    (‘Danny’, 19, ‘female’),<br>]</p>
-<h1 id="u5199_u5165_u591A_u884C"><a href="#u5199_u5165_u591A_u884C" class="headerlink" title="写入多行"></a>写入多行</h1><p>writer.writerows(data)</p>
-<p>csv_file.close()</p>
-<p>“””<br>spamwriter = csv.writer(csvfile, dialect=’excel’)<br>如果想使生成的CSV 文件可以使excel打开，而不出现乱码 请使用参数：dialect=’excel’<br>这里我生成的 csv 文件没有使用 dialect 参数。 excel用的是 WPS，PY Version 是 2.7<br>“””</pre><br>运行结果</p>
-<p><pre class="lang:default decode:true">^_^[15:43:21][root@master01 ~]#cat test.csv<br>Name,Age,Sex<br>Lisa,18,female<br>jack,20,male<br>Danny,19,female</pre><br><a href="http://suzf.net/wp-content/uploads/2015/11/20151109160321.png"><img src="http://suzf.net/wp-content/uploads/2015/11/20151109160321.png" alt="20151109160321"></a></p>
-        
-          <p class="article-more-link">
-            <a href="/2015/11/09/python-csv-example/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/11/09/python-csv-example/" data-id="ciqcd6lnq004lclo95e20kjp7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-how-to-load-csv-data-into-mysql-use-python" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/09/how-to-load-csv-data-into-mysql-use-python/" class="article-date">
-  <time datetime="2015-11-09T06:51:06.000Z" itemprop="datePublished">2015-11-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/09/how-to-load-csv-data-into-mysql-use-python/">How-to Load CSV data into mysql use Python</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><div class="lemma-summary"></div></p>
-<p><div class="para"><strong>逗号分隔值</strong>（Comma-Separated Values，<strong>CSV</strong>，有时也称为<strong>字符分隔值</strong>，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。纯文本意味着该文件是一个<a href="http://baike.baidu.com/view/263416.htm" target="_blank" rel="external">字符</a>序列，不含必须像二进制数字那样被解读的数据。CSV文件由任意数目的记录组成，记录间以某种换行符分隔；每条记录由<a href="http://baike.baidu.com/view/159839.htm" target="_blank" rel="external">字段</a>组成，字段间的分隔符是其它字符或字符串，最常见的是逗号或<a href="http://baike.baidu.com/view/1138182.htm" target="_blank" rel="external">制表符</a>。通常，所有记录都有完全相同的字段序列。</div></p>
-<p><div class="para">CSV文件格式的通用标准并不存在，但是在RFC 4180中有基础性的描述。使用的字符编码同样没有被指定，但是7-bit<a href="http://baike.baidu.com/view/15482.htm" target="_blank" rel="external">ASCII</a>是最基本的通用编码。</div><br></p>
-<p><div class="para"></div></p>
-<p><div class="para">日常工作中总是需要将采集的数据保存到数据库中对以往数据的对比。下面以MySQL数据为例说明。</div></p>
-<p><div class="para"></div></p>
-<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
-<h1 id="coding_3Autf-8"><a href="#coding_3Autf-8" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><p>import csv<br>import MySQLdb</p>
-<p>conn = MySQLdb.connect(host=’localhost’,<br>                       user=’root’,<br>                       passwd=’’,<br>                       db=’test’)<br>cur = conn.cursor()</p>
-<p>cur.execute(‘DROP TABLE IF EXISTS <code>test_csv</code>;’)<br>create_table = ‘’’<br>  CREATE TABLE <code>test_csv</code> (<br>  <code>id</code> int(11) NOT NULL AUTO_INCREMENT,<br>  <code>col1</code> varchar(50) NOT NULL,<br>  <code>col2</code> varchar(30) DEFAULT NULL,<br>  <code>col3</code> varchar(30) DEFAULT NULL,<br>  <code>col4</code> varchar(30) DEFAULT NULL,<br>  PRIMARY KEY (<code>id</code>)<br>)<br>‘’’</p>
-<p>cur.execute(create_table)</p>
-<p>csv_data = csv.reader(file(‘test.csv’))<br>for row in csv_data:</p>
-<pre><code>#print row
-cur.execute(&apos;INSERT INTO test_csv(col1, col2, col3, col4)&apos;
-            &apos;VALUES(&quot;%s&quot;, &quot;%s&quot;, &quot;%s&quot;, &quot;%s&quot;)&apos;,
-            row)
-</code></pre><h1 id="close_the_connection_to_the_database"><a href="#close_the_connection_to_the_database" class="headerlink" title="close the connection to the database."></a>close the connection to the database.</h1><p>conn.commit()<br>cur.close()<br>conn.close()<br>print “Done”<br>执行结果</p>
-<p><pre class="lang:default decode:true ">mysql&gt;  select * from test_csv;<br>+—-+——+——-+——–+——–+<br>| id | col1 | col2  | col3   | col4   |<br>+—-+——+——-+——–+——–+<br>|  1 | ‘1’  | ‘UE1’ | ‘6295’ | ‘1648’ |<br>|  2 | ‘2’  | ‘UE9’ | ‘9805’ | ‘4542’ |<br>|  3 | ‘3’  | ‘MQ2’ | ‘NONE’ | ‘NONE’ |<br>|  4 | ‘4’  | ‘BD8’ | ‘NONE’ | ‘NONE’ |<br>|  5 | ‘5’  | ‘908’ | ‘1548’ | ‘1099’ |<br>|  6 | ‘6’  | ‘dle’ | ‘1548’ | ‘1098’ |<br>|  7 | ‘7’  | ‘808’ | ‘1548’ | ‘1099’ |<br>|  8 | ‘8’  | ‘108’ | ‘1548’ | ‘1098’ |<br>|  9 | ‘9’  | ‘B08’ | ‘1548’ | ‘1098’ |<br>+—-+——+——-+——–+——–+<br>9 rows in set (0.00 sec)</pre><br>源CSV文件</p>
-<p><pre class="lang:default decode:true ">^_^[14:36:16][root@master01 ~]#cat test.csv<br>1,UE1,6295,1648<br>2,UE9,9805,4542<br>3,MQ2,NONE,NONE<br>4,BD8,NONE,NONE<br>5,908,1548,1099<br>6,dle,1548,1098<br>7,808,1548,1099<br>8,108,1548,1098<br>9,B08,1548,1098</pre><br>&nbsp;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/11/09/how-to-load-csv-data-into-mysql-use-python/" data-id="ciqcd6lsf008fclo9fa4bfk4m" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
-    </nav>
-  
+    <time datetime="2015-12-28T08:35:44.000Z" itemprop="datePublished">2015-12-28</time>
+  </a>
 </section>
-        
-          <aside id="sidebar">
+
+  <section class="post" itemscope itemprop="blogPost">
   
+    <a href="/2015/12/25/use-vim-to-build-python-development-ide/" title="使用 VIM 打造 Python 开发IDE" itemprop="url">
+  
+    <h1 itemprop="name">使用 VIM 打造 Python 开发IDE</h1>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Apache/">Apache</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Auto-ops/">Auto ops</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CouchBase/">CouchBase</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HA/">HA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Highcharts/">Highcharts</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LVS/">LVS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Oracle/">Oracle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Puppet/">Puppet</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomcat/">Tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Zabbix/">Zabbix</a><span class="category-list-count">13</span></li></ul>
-    </div>
-  </div>
+     
+           <p itemprop="description" >编程常用的文本编辑器就那么几种常见的, 有人喜欢Vim, 有人喜欢emacs, 也有人喜欢IDE, 例如Pycharm, eclipse等. 今天我们不谈孰优孰劣, 只要适合自己就可以了.
+如果你喜欢VIM, 又希望有IDE常见的功能. 你完全可以将这些功能集成到Vim中. 但是</p>
+        
+    
+    <time datetime="2015-12-25T09:10:28.000Z" itemprop="datePublished">2015-12-25</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/" title="Hadoop 单节点_伪分布 安装手记" itemprop="url">
+  
+    <h1 itemprop="name">Hadoop 单节点_伪分布 安装手记</h1>
+    
+     
+           <p itemprop="description" >实验环境CentOS 6.XHadoop 2.6.0JDK    1.8.0_65
+目的这篇文档的目的是帮助你快速完成单机上的Hadoop安装与使用以便你对Hadoop分布式文件系统(HDFS)和Map-Reduce框架有所体会，比如在HDFS上运行示例程序或简单作业等。
+先决条</p>
+        
+    
+    <time datetime="2015-12-24T02:40:45.000Z" itemprop="datePublished">2015-12-24</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/12/22/why-does-ceph-monitor-db-compaction-fail/" title="How-to deal with Ceph Monitor DB compaction?" itemprop="url">
+  
+    <h1 itemprop="name">How-to deal with Ceph Monitor DB compaction?</h1>
+    
+     
+           <p itemprop="description" >Issue
+Ceph Monitors DB compactionmon.ceph1 store is getting too big! 48031 MB &amp;gt;= 15360 MB – 62% availmon.ceph2 store is getting too big! </p>
+        
+    
+    <time datetime="2015-12-22T08:29:58.000Z" itemprop="datePublished">2015-12-22</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/12/01/repair-mysql-5-6-gtid-replication-by-injecting-empty-transactions/" title="[译] Repair MySQL 5.6 GTID replication by injecting empty transactions" itemprop="url">
+  
+    <h1 itemprop="name">[译] Repair MySQL 5.6 GTID replication by injecting empty transactions</h1>
+    
+     
+           <p itemprop="description" >在前面文章我提到了两种关于如何修复 Mysql 5.6 GTID 主从数据库。我没有提到大家说熟知的方法 - GLOBAL SQL_SLAVE_SKIP_COUNTER = n。原因很简单，如果你使用的是MysqlGTID，它是不工作的。那么问题来了：
+有没有简单的方法跳过这单一</p>
+        
+    
+    <time datetime="2015-12-01T13:34:23.000Z" itemprop="datePublished">2015-12-01</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/11/29/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-centos-6/" title="How To Install ELK Stack (Elasticsearch, Logstash, and Kibana) on CentOS 6" itemprop="url">
+  
+    <h1 itemprop="name">How To Install ELK Stack (Elasticsearch, Logstash, and Kibana) on CentOS 6</h1>
+    
+     
+           <p itemprop="description" >ELK(Elasticsearch + Logstash + Kibana) 是一套开源的日志管理方案Elasticsearch：负责日志检索和分析Logstash：负责日志的收集，处理和储存Kibana：负责日志的可视化
+Logstash: The server compone</p>
+        
+    
+    <time datetime="2015-11-29T10:24:08.000Z" itemprop="datePublished">2015-11-29</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/11/26/how-to-install-elasticsearch-plugin/" title="How-to: install elasticsearch plugin" itemprop="url">
+  
+    <h1 itemprop="name">How-to: install elasticsearch plugin</h1>
+    
+     
+           <p itemprop="description" >elasticsearch 插件
+由于公司内部访问权限控制严格，自己搭建的虚拟机只能通过搭建代理上网
+因为某种限制第一种安装未成功， 所以有了后面的方法。自动安装[11:38:08][root@ocean-lab elasticsearch]$ ./bin/plugin -ins</p>
+        
+    
+    <time datetime="2015-11-26T08:49:22.000Z" itemprop="datePublished">2015-11-26</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/11/25/ceph-single-multi-node-installation-summary/" title="Ceph 单/多节点 安装小结" itemprop="url">
+  
+    <h1 itemprop="name">Ceph 单/多节点 安装小结</h1>
+    
+     
+           <p itemprop="description" >概述
+Docs : http://docs.ceph.com/docs
+Ceph是一个分布式文件系统，在维持POSIX兼容性的同时加入了复制和容错功能。Ceph最大的特点是分布式的元数据服务器，通过CRUSH（Controlled Replication Under Scalab</p>
+        
+    
+    <time datetime="2015-11-25T14:21:54.000Z" itemprop="datePublished">2015-11-25</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/11/09/python-csv-example/" title="Python CSV 操作实例" itemprop="url">
+  
+    <h1 itemprop="name">Python CSV 操作实例</h1>
+    
+     
+       <p itemprop="description" >Reference:  The Python Standard Library CSV
+使用 Python 生成csv 文件
+#!/usr/bin/env python
+-- coding:utf-8 --import csv
+wb中的w表示写入模式，b是文件模式csv_file</p>
+      
+    
+    <time datetime="2015-11-09T08:24:44.000Z" itemprop="datePublished">2015-11-09</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/11/09/how-to-load-csv-data-into-mysql-use-python/" title="How-to Load CSV data into mysql use Python" itemprop="url">
+  
+    <h1 itemprop="name">How-to Load CSV data into mysql use Python</h1>
+    
+     
+           <p itemprop="description" >逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。纯文本意味着该文件是一个字符序列，不含必须像二进制数字那样被解读的数据。CSV文件由任意数目的记录组成，记录间以某种</p>
+        
+    
+    <time datetime="2015-11-09T06:51:06.000Z" itemprop="datePublished">2015-11-09</time>
+  </a>
+</section>
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ceph/">Ceph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debian/">Debian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exsi/">Exsi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTID/">GTID</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kernel/">Kernel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kickstart/">Kickstart</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LB/">LB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LVS/">LVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lnmp/">Lnmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/">Log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Proxy/">Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Puppet/">Puppet</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Re/">Re</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZK/">ZK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coredump/">coredump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/couchbase/">couchbase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diy/">diy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expect/">expect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facter/">facter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/faq/">faq</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/highcharts/">highcharts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idrac/">idrac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iso/">iso</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lvm/">lvm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rewrite/">rewrite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsync/">rsync</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsyslog/">rsyslog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snmp/">snmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strace/">strace</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudo/">sudo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a><span class="tag-list-count">4</span></li></ul>
-    </div>
-  </div>
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Ceph/" style="font-size: 10.91px;">Ceph</a> <a href="/tags/Debian/" style="font-size: 10px;">Debian</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Exsi/" style="font-size: 10px;">Exsi</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GTID/" style="font-size: 10.91px;">GTID</a> <a href="/tags/Kernel/" style="font-size: 10.91px;">Kernel</a> <a href="/tags/Kickstart/" style="font-size: 10px;">Kickstart</a> <a href="/tags/LB/" style="font-size: 10px;">LB</a> <a href="/tags/LVS/" style="font-size: 10px;">LVS</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lnmp/" style="font-size: 10px;">Lnmp</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/MongoDB/" style="font-size: 11.82px;">MongoDB</a> <a href="/tags/Mysql/" style="font-size: 19.09px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.36px;">Nginx</a> <a href="/tags/NoSQL/" style="font-size: 12.73px;">NoSQL</a> <a href="/tags/Oracle/" style="font-size: 11.82px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.91px;">PHP</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/Puppet/" style="font-size: 14.55px;">Puppet</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RAC/" style="font-size: 10.91px;">RAC</a> <a href="/tags/Re/" style="font-size: 11.82px;">Re</a> <a href="/tags/ZK/" style="font-size: 10px;">ZK</a> <a href="/tags/Zabbix/" style="font-size: 18.18px;">Zabbix</a> <a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/coredump/" style="font-size: 10px;">coredump</a> <a href="/tags/couchbase/" style="font-size: 10px;">couchbase</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/diy/" style="font-size: 10px;">diy</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/expect/" style="font-size: 10px;">expect</a> <a href="/tags/facter/" style="font-size: 10px;">facter</a> <a href="/tags/faq/" style="font-size: 17.27px;">faq</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/highcharts/" style="font-size: 10px;">highcharts</a> <a href="/tags/idrac/" style="font-size: 10px;">idrac</a> <a href="/tags/iso/" style="font-size: 10px;">iso</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lvm/" style="font-size: 10px;">lvm</a> <a href="/tags/pip/" style="font-size: 12.73px;">pip</a> <a href="/tags/redis/" style="font-size: 15.45px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/rsyslog/" style="font-size: 10px;">rsyslog</a> <a href="/tags/snmp/" style="font-size: 10px;">snmp</a> <a href="/tags/strace/" style="font-size: 10px;">strace</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/tomcat/" style="font-size: 13.64px;">tomcat</a> <a href="/tags/vim/" style="font-size: 10.91px;">vim</a> <a href="/tags/web/" style="font-size: 12.73px;">web</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/zookeeper/" style="font-size: 12.73px;">zookeeper</a>
-    </div>
-  </div>
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">10</span></li></ul>
-    </div>
-  </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/05/12/839/">Linux 下使用 strace 诊断疑难杂症</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/">MySQL mysqldump 数据导出详解</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/24/Python_Re_module_learn/">Python Re module learn</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/22/Python正则表达式操作指南/">Python正则表达式操作指南</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/18/Hello_Kafka/">Hello Kafka</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
 </aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 Jeffrey Su<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+</div>
     </div>
-  </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
 
-  </div>
-</body>
-</html>
+
+  </body>
+ </html>
+

@@ -1,1099 +1,590 @@
-<!DOCTYPE html>
-<html>
+
+ <!DOCTYPE HTML>
+<html lang="default">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   
-  <title>Suzf Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Suzf linux tech blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Suzf Blog">
-<meta property="og:url" content="http://blog.suzf.net/page/6/index.html">
-<meta property="og:site_name" content="Suzf Blog">
-<meta property="og:description" content="Suzf linux tech blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Suzf Blog">
-<meta name="twitter:description" content="Suzf linux tech blog">
-  
-    <link rel="alternative" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  
+    <title>Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Suzf linux tech blog">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/oceanszf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
 </head>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Suzf Blog</a>
-      </h1>
+
+  <body>
+    <header>
+        <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main">
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/11/04/python-mysql-python-usage-example/" title="How-to use MySQL-python in Python" itemprop="url">
+  
+    <h1 itemprop="name">How-to use MySQL-python in Python</h1>
+    
+     
+       <p itemprop="description" >对于数据库操作，和 TCP/IP 的三次握手异曲同工之妙，建立连接，执行操作，断开连接。当然这就需要建立连接的工具
+Python连接mysql的方案有oursql、PyMySQL、 myconnpy、MySQL Connector 等，不过本篇说的确是另外一个类库MySQLdb，</p>
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Life is short, We need smile.</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+    
+    <time datetime="2015-11-04T14:30:46.000Z" itemprop="datePublished">2015-11-04</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/11/03/python-mysqldb-test-for-select-count-zero/" title="Python MySQLdb test for select count(*) = zero" itemprop="url">
+  
+    <h1 itemprop="name">Python MySQLdb test for select count(*) = zero</h1>
+    
+     
+           <p itemprop="description" >I use SELECT COUNT(*) FROM db WHERE &amp;lt;expression&amp;gt; to see if a set of records is null. So:
+&amp;gt;&amp;gt;&amp;gt; cnt = c.fetchone()&amp;gt;&amp;gt;&amp;gt; p</p>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.suzf.net"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
+    
+    <time datetime="2015-11-03T13:24:47.000Z" itemprop="datePublished">2015-11-03</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
   
-    <article id="post-python-mysql-python-usage-example" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/04/python-mysql-python-usage-example/" class="article-date">
-  <time datetime="2015-11-04T14:30:46.000Z" itemprop="datePublished">2015-11-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+    <a href="/2015/11/03/importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory/" title="ImportError: libmysqlclient.so.18: cannot open shared object file" itemprop="url">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/04/python-mysql-python-usage-example/">How-to use MySQL-python in Python</a>
-    </h1>
-  
-
-      </header>
+    <h1 itemprop="name">ImportError: libmysqlclient.so.18: cannot open shared object file</h1>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于数据库操作，和 TCP/IP 的三次握手异曲同工之妙，建立连接，执行操作，断开连接。当然这就需要建立连接的工具</p>
-<p>Python连接mysql的方案有oursql、PyMySQL、 myconnpy、MySQL Connector 等，不过本篇说的确是另外一个类库MySQLdb，MySQLdb 是用于Python链接Mysql数据库的接口，它实现了 Python 数据库 API 规范 V2.0，基于 MySQL C API 上建立的。</p>
-<h6 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h6><h6 id="Package_MySQL-python"><a href="#Package_MySQL-python" class="headerlink" title="Package MySQL-python"></a><a href="https://pypi.python.org/pypi/MySQL-python">Package MySQL-python</a></h6><h6 id="MySQLdb_User_u2019s_Guide"><a href="#MySQLdb_User_u2019s_Guide" class="headerlink" title="MySQLdb User’s Guide"></a><a href="http://mysql-python.sourceforge.net/MySQLdb.html">MySQLdb User’s Guide</a></h6>
-        
-          <p class="article-more-link">
-            <a href="/2015/11/04/python-mysql-python-usage-example/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/11/04/python-mysql-python-usage-example/" data-id="ciqcd6lni004bclo9upsxi8y9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+     
+           <p itemprop="description" >MySQL-python (1.2.5)
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-mysqldb-test-for-select-count-zero" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/03/python-mysqldb-test-for-select-count-zero/" class="article-date">
-  <time datetime="2015-11-03T13:24:47.000Z" itemprop="datePublished">2015-11-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/03/python-mysqldb-test-for-select-count-zero/">Python MySQLdb test for select count(*) = zero</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I use SELECT COUNT(*) FROM db WHERE &lt;expression&gt; to see if a set of records is null. So:</p>
-<p><pre class="lang:default decode:true ">&gt;&gt;&gt; cnt = c.fetchone()<br>&gt;&gt;&gt; print cnt<br>(0L,)</pre><br>My question is: how do you test for this condition?<br>I have a number of other ways to accomplish this. Is something like the following possible?</p>
-<p><pre class="lang:default decode:true ">if cnt==(0L,):</pre></p>
-<pre><code># do something&lt;/pre&gt;
-</code></pre><p>fetchone returns a row, which is a sequence of columns.<br>If you want to get the first value in a sequence, you use [0].</p>
-<p>You could instead compare the row to (0,), as you’re suggesting. But as far as I know neither the general DB-API nor the specific MySQLdb library guarantee what kind of sequence a row is; it could be a list, or a custom sequence class. So, relying on the fact that it’s a tuple is probably not a good idea. And, since it’s just as easy to not do so, why not be safe and portable?</p>
-<p>So:</p>
-<p><pre class="lang:default decode:true ">count_row = c.fetchone()<br>count = count_row[0]<br>if count == 0:<br>    do_something()</pre><br>Or, putting it together in one line:</p>
-<p><pre class="lang:default decode:true ">if c.fetchone()[0] == 0:<br>    do_something()</pre><br>source： <a href="http://stackoverflow.com/questions/26024424/python-mysqldb-test-for-select-count-zero" target="_blank" rel="external">stackoverflow</a></p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/11/03/python-mysqldb-test-for-select-count-zero/" data-id="ciqcd6lne0047clo9wbm4ru14" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/">Mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/03/importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory/" class="article-date">
-  <time datetime="2015-11-03T12:33:04.000Z" itemprop="datePublished">2015-11-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/03/importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory/">ImportError: libmysqlclient.so.18: cannot open shared object file</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre class="lang:default decode:true">MySQL-python (1.2.5)
-
-&gt;&gt;&gt; import MySQLdb
+&amp;gt;&amp;gt;&amp;gt; import MySQLdb
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "/usr/local/Python2.7.3/lib/python2.7/site-packages/MySQLdb/__init__.py", line 19, in &lt;module&gt;
-    import _mysql
-ImportError: libmysqlclient.so.18: cannot open shared object file: No such file or directory</pre>
-I.创建软连接 再次导入模块正常
-<pre class="lang:default decode:true  ">[21:21:01][root@suzf.net ~]#ln -s /usr/local/mysql-5.6.26/lib/libmysqlclient.so.18 /usr/lib64/libmysqlclient.so.18
-
-&gt;&gt;&gt; import MySQLdb
-&gt;&gt;&gt;</pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/11/03/importerror-libmysqlclient-so-18-cannot-open-shared-object-file-no-such-file-or-directory/" data-id="ciqcd6lrn007tclo9enu4znxh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-use-smtplib-to-send-mail" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/03/python-use-smtplib-to-send-mail/" class="article-date">
-  <time datetime="2015-11-03T07:30:39.000Z" itemprop="datePublished">2015-11-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+  File &quot;&amp;lt;stdin&amp;gt;&quot;, line 1, in &amp;lt;module&amp;gt;
+  Fil</p>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/03/python-use-smtplib-to-send-mail/">How-to: use Python send mail with To Cc &amp; Bcc</a>
-    </h1>
-  
-
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre class="lang:default decode:true ">#!/usr/bin/python
+    <time datetime="2015-11-03T12:33:04.000Z" itemprop="datePublished">2015-11-03</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/11/03/python-use-smtplib-to-send-mail/" title="How-to: use Python send mail with To Cc &amp; Bcc" itemprop="url">
+  
+    <h1 itemprop="name">How-to: use Python send mail with To Cc &amp; Bcc</h1>
+    
+     
+           <p itemprop="description" >#!/usr/bin/python
 # -*- coding:utf-8 -*-
 
 import smtplib
 from email.mime.text import MIMEText
 
-to = ['zfsu']
-cc = ['zfsu','root']
-bcc = ['jack']
-from_addr = 'root'
-message_subject = "Say Hello"
-message_text = "Hello world"
-message = "From: %s\r\n" % from_addr \
-        + "To: %s\r\n" % ",".join(to) \
-        + "CC: %s\r\n" % ",".join(cc) \
-        + "BCC: %s\r\n" % ",".join(bcc) \
-        + "Subject: %s\r\n" % message_subject \
-        + message_text
-to_addrs = to + cc + bcc
-server = smtplib.SMTP('localhost')
-#server.set_debuglevel(1)
-server.sendmail(from_addr, to_addrs, message)
-server.quit()</pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/11/03/python-use-smtplib-to-send-mail/" data-id="ciqcd6lmx003tclo90rd2czj2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-the-puppet-language-style-guide" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/27/the-puppet-language-style-guide/" class="article-date">
-  <time datetime="2015-10-27T09:28:53.000Z" itemprop="datePublished">2015-10-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Puppet/">Puppet</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+to = [&#39;zfsu&#39;]
+cc = [&#39;zfsu&#39;,&#39;root&#39;]
+bcc = [&#39;ja</p>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/27/the-puppet-language-style-guide/">The Puppet Language Style Guide</a>
-    </h1>
-  
-
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div class="primary-secondary-content"><br><div class="primary-content"><nav id="page-nav" class="in-page"></nav><br><div id="rendered-markdown">Puppet Language Style Guide: Version 2.0.1Puppet: Version 3.7+<br><br>(Note: While the style guide maps to Puppet 3.7, many of its recommendations apply to Puppet 3.0.x and up.)<br><br>## 1. Terminology<br><br>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in <a href="http://www.faqs.org/rfcs/rfc2119.html" target="_blank" rel="external">RFC 2119</a>.<br><br>Unless explicitly called out, everything discussed here applies specifically to Puppet (i.e. Puppet modules, Puppet classes, etc.). To save your eyes and our fingers, ‘Puppet’ will not be appended to every topic discussed.<br><br>## 2. Purpose<br><br>The purpose of this style guide is to promote consistent formatting across modules (from Puppet Labs and the community), which gives users and developers of Puppet modules a common pattern, design, and style to follow. Additionally, consistency in code and module structure makes continued development and contributions easier.<br><br>## 3. Guiding Principles<br><br>We can never cover every possible circumstance you might run into when developing Puppet code or creating a module. Eventually, a judgement call will be necessary. When that happens, keep in mind the following general principles:<br><br>1.  <strong>Readability matters.</strong>If you have to choose between two equally effective alternatives, pick the more readable one. While this is subjective, if you can read your own code three months from now, it’s a great start. In particular, code that generates readable diffs is highly preferred.<br>2.  <strong>Scoping and simplicity are key.</strong>When in doubt, err on the side of simplicity. A module should contain related resources that enable it to accomplish a task. If you describe the function of your module and you find yourself using the word ‘and,’ it’s time to split the module at the ‘and.’ You should have one goal, with all your classes and parameters focused on achieving it.<br>3.  <strong>Your module is a piece of software.</strong>At least, you should treat it that way. When it comes to making decisions, choose the option that is easier to sustain in the long term.<br><br>## 4. Versioning<br><br>Your module must be versioned. We recommend (and use) <a href="http://semver.org/spec/v1.0.0.html" target="_blank" rel="external">SemVer</a>; meaning for a version x.y.z., an increase in x indicates backwards incompatible changes or a complete rewrite, an increase in y indicates the addition of new features, and an increase in z indicates non-breaking bug fixes.<br><br>This style guide is versioned using SemVer.<br><br>## 5. Spacing, Indentation, and Whitespace<br><br>Module manifests:<br><br><em>   Must use two-space soft tabs,
-</em>   Must not use literal tab characters,<br><em>   Must not contain trailing whitespace,
-</em>   Must have trailing commas after all resource attributes and parameter definitions,<br><em>   Should not exceed a 140-character line width,
-</em>   Should leave one empty line between resources, except when using dependency chains, and<br><em>   Should align hash rockets (<code>=&amp;gt;</code>) within blocks of attributes, remembering to arrange hashes for maximum readability first.<br><br>## 6. Quoting
-
-</em>   All strings must be enclosed in single quotes, unless they contain variables or single quotes.<br><em>   Quoting is optional when the string is an enumerable set of options (such as present/absent).
-</em>   All variables must be enclosed in braces when interpolated in a string. For example:<br><strong>Good:</strong><br><br>        “/etc/${file}.conf”<br>        “${::operatingsystem} is not supported by ${module_name}”<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    “/etc/$file.conf”<br>        “$::operatingsystem is not supported by $module_name”<br>    <code>&lt;/pre&gt;
-
-*   Variables standing by themselves should not be quoted, unless they are a resource title. For example:
-    **Good:**
-    &lt;pre&gt;</code>    mode =&gt; $my_mode<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    mode =&gt; “$my_mode”<br>        mode =&gt; “${my_mode}”<br>    <code>&lt;/pre&gt;
-
-*   Double quotes should be used rather than escaping when a string contains single quotes.
-    **Good:**
-    &lt;pre&gt;</code>warning(“Class[‘apache’] parameter purge_vdir is deprecated in favor of purge_configs”)<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>warning(‘Class[\’apache\’] parameter purge_vdir is deprecated in favor of purge_configs’)<br>    <code>&lt;/pre&gt;
-
-    ## 7\. Comments
-
-    You must use hash comments (</code># This is a comment<code>). Comments should explain the **why**, not the **how**, of your code.
-
-    **Good:**
-    &lt;pre&gt;</code># Configures NTP<br>    file { ‘/etc/ntp.conf’: … }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>/<em> Creates file /etc/ntp.conf </em>/<br>    file { ‘/etc/ntp.conf’: … }<br>    <code>&lt;/pre&gt;
-
-    ## 8\. Module Metadata
-
-    Every publicly available module must have metadata defined in the metadata.json file. Your metadata should follow the below format:
-    &lt;pre&gt;</code>    {<br>          “name”: “examplecorp-mymodule”,<br>          “version”: “0.1.0”,<br>          “author”: “Pat”,<br>          “license”: “Apache-2.0”,<br>          “summary”: “A module for a thing”,<br>          “source”: “<a href="https://github.com/examplecorp/examplecorp-mymodule" target="_blank" rel="external">https://github.com/examplecorp/examplecorp-mymodule</a>“,<br>          “project_page”: “<a href="https://github.com/examplecorp/examplecorp-mymodule" target="_blank" rel="external">https://github.com/examplecorp/examplecorp-mymodule</a>“,<br>          “issues_url”: “<a href="https://github.com/examplecorp/examplecorp-mymodules/issues" target="_blank" rel="external">https://github.com/examplecorp/examplecorp-mymodules/issues</a>“,<br>          “tags”: [“things”, “stuff”],<br>          “operatingsystem_support”: [<br>            {<br>              “operatingsystem”:”RedHat”,<br>              “operatingsystemrelease”: [<br>                “5.0”,<br>                “6.0”<br>              ]<br>            },<br>            {<br>              “operatingsystem”: “Ubuntu”,<br>              “operatingsystemrelease”: [<br>                “12.04”,<br>                “10.04”<br>             ]<br>            }<br>          ],<br>          “dependencies”: [<br>            { “name”: “puppetlabs/stdlib”, “version_requirement”: “&gt;= 3.2.0 &lt;5.0.0” },<br>            { “name”: “puppetlabs/firewall”, “version_requirement”: “&gt;= 0.4.0 &lt;5.0.0” },<br>          ]<br>        }<br>    <code>&lt;/pre&gt;
-    A more complete guide to the metadata.json format can be found in the [docs](http://docs.puppetlabs.com/puppet/latest/reference/modules_publishing.html#write-a-metadatajson-file).
-
-    ### 8.1 Dependencies
-
-    Hard dependencies must be declared explicitly in your module’s metadata.json file. Soft dependencies should be called out in the README.md, and must not be enforced as a hard requirement in your metadata.json. A soft dependency is a dependency that is only required in a specific set of use cases. (As an example, see the [rabbitmq module](https://forge.puppetlabs.com/puppetlabs/rabbitmq#module-dependencies).)
-
-    Your hard dependency declarations should not be unbounded.
-
-    ## 9\. Resources
-
-    ### 9.1\. Resource Names
-
-    All resource titles must be quoted. If you are using an array of titles you must quote each title in the array, but cannot quote the array itself.
-
-    **Good:**
-    &lt;pre&gt;</code>    package { ‘openssh’: ensure =&gt; present }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    package { openssh: ensure =&gt; present }<br>    <code>&lt;/pre&gt;
-
-    ### 9.2\. Arrow Alignment
-
-    All of the hash rockets (</code>=&gt;<code>) in a resource’s attribute/value list should be aligned. The hash rockets should be placed one space ahead of the longest attribute name. Nested blocks must be indented by two spaces, and hash rockets within a nested block should be aligned (one space ahead of the longest attribute name).
-
-    **Good:**
-    &lt;pre&gt;</code>    exec { ‘hambone’:<br>          path =&gt; ‘/usr/bin’,<br>          cwd  =&gt; ‘/tmp’,<br>        }<br><br>        exec { ‘test’:<br>          subscribe   =&gt; File[‘/etc/test’],<br>          refreshonly =&gt; true,<br>        }<br><br>        myresource { ‘test’:<br>          ensure =&gt; present,<br>          myhash =&gt; {<br>            ‘myhash_key1’ =&gt; ‘value1’,<br>            ‘key2’        =&gt; ‘value2’,<br>          },<br>        }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    exec { ‘hambone’:<br>          path  =&gt; ‘/usr/bin’,<br>          cwd =&gt; ‘/tmp’,<br>        }<br><br>        exec { ‘test’:<br>          subscribe =&gt; File[‘/etc/test’],<br>          refreshonly =&gt; true,<br>        }<br>    <code>&lt;/pre&gt;
-
-    ### 9.3\. Attribute Ordering
-
-    If a resource declaration includes an</code>ensure<code>attribute, it should be the first attribute specified so a user can quickly see if the resource is being created or deleted.
-
-    **Good:**
-    &lt;pre&gt;</code>    file { ‘/tmp/readme.txt’:<br>          ensure =&gt; file,<br>          owner  =&gt; ‘0’,<br>          group  =&gt; ‘0’,<br>          mode   =&gt; ‘0644’,<br>        }<br>    <code>&lt;/pre&gt;
-
-    ### 9.4\. Resource Arrangement
-
-    Within a manifest, resources should be grouped by logical relationship to each other, rather than by resource type. Semicolons must not be used to declare multiple resources within a set of curly braces.
-
-    **Good:**
-    &lt;pre&gt;</code>    file { ‘/tmp/dir’:<br>          ensure =&gt; directory,<br>        }<br><br>        file { ‘/tmp/dir/a’:<br>          content =&gt; ‘a’,<br>        }<br><br>        file { ‘/tmp/dir2’:<br>          ensure =&gt; directory,<br>        }<br><br>        file { ‘/tmp/dir2/b’:<br>          content =&gt; ‘b’,<br>        }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    file { ‘/tmp/dir’:<br>          ensure =&gt; directory,<br>        }<br><br>        file { ‘/tmp/dir2’:<br>          ensure =&gt; directory,<br>        }<br><br>        file { ‘/tmp/dir/a’:<br>          content =&gt; ‘a’,<br>        }<br><br>        file { ‘/tmp/dir2/b’:<br>          content =&gt; ‘b’,<br>        }<br>    <code>&lt;/pre&gt;
-
-    ### 9.5\. Symbolic Links
-
-    Symbolic links must be declared with an ensure value of</code>ensure =&gt; link<code>and explicitly specify a value for the</code>target<code>attribute. Doing so more explicitly informs the user that a link is being created.
-
-    **Good:**
-    &lt;pre&gt;</code>    file { ‘/var/log/syslog’:<br>          ensure =&gt; link,<br>          target =&gt; ‘/var/log/messages’,<br>        }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    file { ‘/var/log/syslog’:<br>          ensure =&gt; ‘/var/log/messages’,<br>        }<br>    <code>&lt;/pre&gt;
-
-    ### 9.6\. File Modes
-
-*   POSIX numeric notation must be represented as 4 digits.
-*   POSIX symbolic notation must be a string.
-*   You should not use file mode with Windows; instead use the [acl module](https://forge.puppetlabs.com/puppetlabs/acl).
-*   You should use numeric notation whenever possible.
-    **Good:**
-    &lt;pre&gt;</code>  file { ‘/var/log/syslog’:<br>          ensure =&gt; file,<br>          mode   =&gt; ‘0644’,<br>      }<br>    <code>&lt;/pre&gt;
-    **Also Good:**
-    &lt;pre&gt;</code>  file { ‘/var/log/syslog’:<br>          ensure =&gt; file,<br>          mode   =&gt; ‘o-rwx’,<br>      }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    file { ‘/var/log/syslog’:<br>          ensure =&gt; present,<br>          mode   =&gt; 644,<br>        }<br>    <code>&lt;/pre&gt;
-
-    ### 9.7\. Resource Defaults
-
-    Resource defaults should be used in a very controlled manner and should only be declared at the edges of your manifest ecosystem. Specifically, they may be declared:
-
-*   At top scope in site.pp, or
-*   In a class which is guaranteed to never declare or be inherited by a class or define from another module.
-    This is due to the way resource defaults propagate through dynamic scope, which can have unpredictable effects far away from where the default was declared.
-
-    **Good:**
-    &lt;pre&gt;</code>    # /etc/puppetlabs/puppet/manifests/site.pp:<br>        File {<br>          owner =&gt; ‘root’,<br>          group =&gt; ‘0’,<br>          mode  =&gt; ‘0644’,<br>        }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    # /etc/puppetlabs/puppet/modules/apache/manifests/init.pp<br>        File {<br>          owner =&gt; ‘nobody’,<br>          group =&gt; ‘nogroup’,<br>          mode  =&gt; ‘0600’,<br>        }<br><br>        concat { $config_file_path:<br>          notify  =&gt; Class[‘Apache::Service’],<br>          require =&gt; Package[‘httpd’],<br>        }<br>    <code>&lt;/pre&gt;
-
-    ## 10\. Classes and Defines
-
-    ### 10.1\. Separate Files
-
-    All classes and resource type definitions (defines) must be separate files in the</code>manifests<code>directory of the module.
-
-    **Good:**
-    &lt;pre&gt;</code>    # /etc/puppetlabs/puppet/modules/apache/manifests<br><br>        # init.pp<br>          class apache { }<br>        # ssl.pp<br>          class apache::ssl { }<br>        # virtual_host.pp<br>          define apache::virtual_host () { }<br>    <code>&lt;/pre&gt;
-    Separating classes and defines into separate files is functionally identical to declaring them in init.pp, but has the benefit of highlighting the structure of the module and making the function and structure more legible.
-
-    ### 10.2\. Internal Organization of Classes and Defines
-
-    Classes and defines must be structured to accomplish one task. Below is a line-by-line general layout of what lines of code should come first, second, and so on.
-
-1.  First line: Name of class or type.
-2.  Following lines, if applicable: Define parameters.
-3.  Next lines: Should validate* any parameters and fail catalog compilation if any parameters are invalid. (See [ntp](https://github.com/puppetlabs/puppetlabs-ntp/blob/3.3.0/manifests/init.pp#L28-L49) for an example.)
-4.  Next lines, if applicable: Should declare local variables and perform variable munging.
-5.  Next lines: Should declare resource defaults.
-6.  Next lines: Should override resources if necessary.
-    The following example follows the recommended style:
-    &lt;pre&gt;</code>    # init.pp<br>        class myservice (<br>          $service_ensure     = $myservice::params::service_ensure,<br>          $package_list       = $myservice::params::package_list,<br>          $tempfile_contents  = $myservice::params::tempfile_contents,<br>        ) inherits myservice::params {<br><br>          if !($service_ensure in [ ‘running’, ‘stopped’ ]) {<br>            fail(‘ensure parameter must be running or stopped’)<br>          }<br><br>          if !$package_list {<br>            fail(“Module ${module_name} does not support ${::operatingsystem}”)<br>          }<br><br>          # temp file contents cannot contain numbers<br>          case $tempfile_contents {<br>            /\d/: {<br>              $_tempfile_contents = regsubst($tempfile_contents, ‘\d’, ‘’, ‘G’)<br>            }<br>            default: {<br>              $_tempfile_contents = $tempfile_contents<br>            }<br>          }<br><br>          $variable = ‘something’<br><br>          Package { ensure =&gt; present, }<br><br>          File {<br>            owner =&gt; ‘0’,<br>            group =&gt; ‘0’,<br>            mode  =&gt; ‘0644’,<br>         }<br><br>          package { $package_list: }<br><br>          file { “/tmp/${variable}”:<br>            ensure   =&gt; present,<br>            contents =&gt; $_tempfile_contents,<br>          }<br><br>          service { ‘myservice’:<br>            ensure    =&gt; $service_ensure,<br>            hasstatus =&gt; true,<br>          }<br><br>          Package[$package_list] -&gt; Service[‘myservice’]<br>        }<br><br>        # params.pp<br>        class myservice::params {<br>          $service_ensure = ‘running’<br><br>          case $::operatingsystem {<br>            ‘centos’: {<br>              $package_list = ‘myservice-centos-package’<br>            }<br>            ‘solaris’: {<br>              $package_list = [ ‘myservice-solaris-package1’, ‘myservice-solaris-package2’ ]<br>            }<br>            default: {<br>              $package_list = undef<br>            }<br>          }<br>        }<br>    <code>&lt;/pre&gt;
-
-    ### 10.3\. Public and Private
-
-    We recommend that you split your module into public and private classes and defines where possible. Public classes or defines should contain the parts of the module meant to be configured or customized by the user, while private classes should contain things you do not expect the user to change via parameters. Separating into public and private classes/defines helps build reusable and readable code.
-
-    You should help indicate to the user which classes are which by both calling out the public classes in the README and making sure all public classes have complete [comments](https://docs.puppetlabs.com/guides/style_guide.html#comments).
-    &gt; Note: As of stdlib 4.4.0, there is a</code>private<code>function that will cause a failure if a private class is called externally. You can use this to enforce the privacy of private classes.
-
-    ### 10.4\. Chaining Arrow Syntax
-
-    Most of the time, use [relationship metaparameters](https://docs.puppetlabs.com/puppet/latest/reference/lang_relationships.html#relationship-metaparameters) rather than [chaining arrows](https://docs.puppetlabs.com/puppet/latest/reference/lang_relationships.html#chaining-arrows). When you have many [interdependent or order-specific items](https://github.com/puppetlabs/puppetlabs-mysql/blob/3.1.0/manifests/server.pp#L64-L72), chaining syntax may be used. Chaining arrows must be used left to right.
-
-    **Good:**
-    &lt;pre&gt;</code>Package[‘httpd’] -&gt; Service[‘httpd’]<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>Service[‘httpd’] &lt;- Package[‘httpd’]<br>    <code>&lt;/pre&gt;
-
-    ### 10.5\. Nested Classes or Defines
-
-    Classes and defined resource types must not be defined within other classes or defined types. Classes and defines should be declared as close to node scope as possible. If you have a class or define which requires another class or define, graceful failures must be in place if those required classes or defines are not declared elsewhere.
-
-    **Very Bad:**
-    &lt;pre&gt;</code>    class apache {<br>          class ssl { … }<br>        }<br>    <code>&lt;/pre&gt;
-    **Also Very Bad:**
-    &lt;pre&gt;</code>    class apache {<br>          define config() { … }<br>        }<br>    <code>&lt;/pre&gt;
-
-    ### 10.6\. Display Order of Parameters
-
-    In parameterized class and define declarations, required parameters must be listed before optional parameters (i.e., parameters with defaults).
-
-    **Good:**
-    &lt;pre&gt;</code>class dhcp (<br>      $dnsdomain,<br>      $nameservers,<br>      $default_lease_time = 3600,<br>      $max_lease_time     = 86400<br>    ) {}<br><br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    class ntp (<br>          $options   = “iburst”,<br>          $servers,<br>          $multicast = false<br>        ) {}<br>    <code>&lt;/pre&gt;
-
-    ### 10.7 Parameter defaults
-
-    When writing a module that accepts class and define parameters, appropriate defaults should be provided for optional parameters. Establishing good defaults gives the end user the option of not explicitly specifying the parameter when declaring the class or define. Provided defaults should be specified with the parameter and not inside the class/define.
-
-    When creating parameter defaults, you:
-
-*   Must use fully qualified namespace variables when pulling the value from the module params class. This avoids namespace collisions. See [Namespacing Variables](https://docs.puppetlabs.com/guides/style_guide.html#namespacing-variables) for more information.
-*   Should use the</code>_<code>prefix to indicate a scope local variable for maintainability over time.
-    **Good:**
-    &lt;pre&gt;</code>class my_module (<br>      $source = $my_module::params::source,<br>      $config = $my_module::params::config,<br>    ){}<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>class my_module (<br>      $source = undef,<br>    ) {<br>      if $source {<br>        $_source = $source<br>      } else {<br>        $_source = $my_module::params::source<br>      }<br>    }<br>    <code>&lt;/pre&gt;
-
-    ### 10.8 Exported Resources
-
-    Exported resources should be opt-in rather than opt-out. Your module should not be written to use exported resources to function by default unless it is expressly required. When using exported resources, you should name the property</code>collect_exported<code>.
-
-    Exported resources should be exported and collected selectively using a [search expression](https://docs.puppetlabs.com/puppet/3.7/reference/lang_collectors.html#search-expressions), ideally allowing user-defined tags as parameters so tags can be used to selectively collect by environment or custom fact.
-
-    **Good:**
-    &lt;pre&gt;</code>define haproxy::frontend (<br>      $ports            = undef,<br>      $ipaddress        = [$::ipaddress],<br>      $bind             = undef,<br>      $mode             = undef,<br>      $collect_exported = false,<br>      $options          = {<br>        ‘option’  =&gt; [<br>          ‘tcplog’,<br>        ],<br>      },<br>    ) { … }<br>    <code>&lt;/pre&gt;
-
-    ## 11\. Classes
-
-    ### 11.1\. Class Inheritance
-
-    Inheritance can be used within a module, but must not be used across module namespaces. Cross-module dependencies should be satisfied in a more portable way, such as with include statements or relationship declarations.
-
-    **Good:**
-    &lt;pre&gt;</code>    class ssh { … }<br><br>        class ssh::client inherits ssh { … }<br><br>        class ssh::server inherits ssh { … }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    class ssh inherits server { … }<br><br>        class ssh::client inherits workstation { … }<br><br>        class wordpress inherits apache { … }<br>    <code>&lt;/pre&gt;
-    Generally, inheritance should be avoided when alternatives are viable. For example, rather than using inheritance to override relationships in an existing class when stopping a service, consider using a single class with an</code>ensure<code>parameter and conditional relationship declarations. For instance,
-    &lt;pre&gt;</code>    class bluetooth (<br>          $ensure      = ‘present’,<br>          $autoupgrade = false,<br>        ) {<br>           # Validate class parameter inputs. (Fail early and fail hard)<br><br>           if ! ($ensure in [ ‘present’, ‘absent’ ]) {<br>             fail(‘bluetooth ensure parameter must be absent or present’)<br>           }<br><br>           if ! ($autoupgrade in [ true, false ]) {<br>             fail(‘bluetooth autoupgrade parameter must be true or false’)<br>           }<br><br>           # Set local variables based on the desired state<br><br>           if $ensure == ‘present’ {<br>             $service_enable = true<br>             $service_ensure = ‘running’<br>             if $autoupgrade {<br>               $package_ensure = ‘latest’<br>             } else {<br>               $package_ensure = ‘present’<br>             }<br>           } else {<br>             $service_enable = false<br>             $service_ensure = ‘stopped’<br>             $package_ensure = ‘absent’<br>           }<br><br>           # Declare resources without any relationships in this section<br><br>           package { [ ‘bluez-libs’, ‘bluez-utils’]:<br>             ensure =&gt; $package_ensure,<br>           }<br><br>           service { ‘hidd’:<br>             enable         =&gt; $service_enable,<br>             ensure         =&gt; $service_ensure,<br>             status         =&gt; ‘source /etc/init.d/functions; status hidd’,<br>             hasstatus      =&gt; true,<br>             hasrestart     =&gt; true,<br>          }<br><br>          # Finally, declare relations based on desired behavior<br><br>          if $ensure == ‘present’ {<br>            Package[‘bluez-libs’]  -&gt; Package[‘bluez-utils’]<br>            Package[‘bluez-libs’]  ~&gt; Service[‘hidd’]<br>            Package[‘bluez-utils’] ~&gt; Service[‘hidd’]<br>          } else {<br>            Service[‘hidd’]        -&gt; Package[‘bluez-utils’]<br>            Package[‘bluez-utils’] -&gt; Package[‘bluez-libs’]<br>          }<br>        }<br>    <code>&lt;/pre&gt;
-    Remember:
-
-    Class inheritance should only be used for</code>myclass::params<code>parameter defaults. Other use cases can be accomplished through the addition of parameters or conditional logic.
-
-    ### 11.2 A Note About Publicly Available Modules
-
-    When declaring classes in publicly available modules, you should use</code>include<code>,</code>contain<code>, or</code>require<code>rather than class resource declaration. This avoids duplicate class declarations and vendor lock-in.
-
-    ## 12\. Defined Resource Types (Defines)
-
-    ### 12.1\. Uniqueness
-
-    Since defined resource types (defines) can have multiple instances, resource names must have a unique variable to avoid duplicate declarations.
-
-    **Good:**
-    &lt;pre&gt;</code>define apache::listen {<br>      $listen_addr_port = $name<br><br>      # Template uses: $listen_addr_port<br>      concat::fragment { “Listen ${listen_addr_port}”:<br>        ensure  =&gt; present,<br>        target  =&gt; $::apache::ports_file,<br>        content =&gt; template(‘apache/listen.erb’),<br>      }<br>    }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>file { ‘Required VHost directory’:<br>      path   =&gt; ‘/etc/apache/vhost/corpsite’,<br>      ensure =&gt; directory,<br>    }<br>    <code>&lt;/pre&gt;
-
-    ## 13\. Variables
-
-    ### 13.1\. Namespacing Variables
-
-    You must scope all variables except for local or inherited variables. Scope inherited variables, when appropriate, for clarity. You should not mask/shadow inherited variables.
-
-    You should avoid accidental scoping issues by explicitly specifying empty namespaces when using top-scope variables, including facts.
-
-    **Good:**
-    &lt;pre&gt;</code>    $::operatingsystem<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    $operatingsystem<br>    <code>&lt;/pre&gt;
-
-    ### 13.2\. Variable Format
-
-    When defining variables you must only use numbers, lowercase letters, and underscores. You should not use camelCasing, as it introduces inconsistency in style. You must also not use dashes, as they are not syntactically valid.
-
-    **Good:**
-    &lt;pre&gt;</code>$foo_bar<br>    $some_long_variable<br>    $foo_bar123<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>$fooBar<br>    $someLongVariable<br>    $foo-bar123<br>    <code>&lt;/pre&gt;
-
-    ## 14\. Conditionals
-
-    ### 14.1\. Keep Resource Declarations Simple
-
-    We recommend not mixing conditionals with resource declarations. When you use conditionals for data assignment, you should separate conditional code from the resource declarations.
-
-    **Good:**
-    &lt;pre&gt;</code>    $file_mode = $::operatingsystem ? {<br>          ‘debian’ =&gt; ‘0007’,<br>          ‘redhat’ =&gt; ‘0776’,<br>           default =&gt; ‘0700’,<br>        }<br><br>        file { ‘/tmp/readme.txt’:<br>          ensure  =&gt; file,<br>          content =&gt; “Hello World\n”,<br>          mode    =&gt; $file_mode,<br>        }<br>    <code>&lt;/pre&gt;
-    **Bad:**
-    &lt;pre&gt;</code>    file { ‘/tmp/readme.txt’:<br>          ensure  =&gt; file,<br>          content =&gt; “Hello World\n”,<br>          mode    =&gt; $::operatingsystem ? {<br>            ‘debian’ =&gt; ‘0777’,<br>            ‘redhat’ =&gt; ‘0776’,<br>            default  =&gt; ‘0700’,<br>          }<br>        }<br>    <code>&lt;/pre&gt;
-
-    ### 14.2\. Defaults for Case Statements and Selectors
-
-    Case statements must have default cases. If you want the default case to be “do nothing,” you must include it as an explicit</code>default: {}<code>for clarity’s sake.
-
-    Case and selector values must be quoted.
-
-    Selectors should omit default selections only if you explicitly want catalog compilation to fail when no value matches.
-
-    **Good:**
-    &lt;pre&gt;</code>    case $::operatingsystem {<br>          ‘centos’: {<br>            $version = ‘1.2.3’<br>          }<br>          ‘solaris’: {<br>            $version = ‘3.2.1’<br>          }<br>          default: {<br>            fail(“Module ${module_name} is not supported on ${::operatingsystem}”)<br>          }<br>        }<br>    <code>&lt;/pre&gt;
-    When setting the default case, keep in mind that the default case should cause the catalog compilation to fail if the resulting behavior cannot be predicted on the platforms the module was built to be used on.
-
-    ## 15\. Hiera
-
-    You should avoid using calls to Hiera functions in modules meant for public consumption, because not all users have implemented Hiera. Instead, we recommend using parameters that can be overridden with Hiera.
-
-    ## 16\. Examples
-
-    Major use cases for your module should have corresponding example manifests in the module’s /examples directory.
-    &lt;pre&gt;</code>modulepath/apache/examples/{usecase}.pp<br><br>The example manifest should provide a clear example of how to declare the class or defined resource type. The example manifest should also declare any classes required by the corresponding class to ensure <code>puppet apply</code> works in a limited, standalone manner.<br><br>## 17. Module Documentation<br><br>All publicly available modules should include the documentation covered below.<br><br>### 17.1 README<br><br>Your module should have a README in .md (or .markdown) format. READMEs help users of your module get the full benefit of your work. There is a <a href="https://docs.puppetlabs.com/puppet/latest/reference/READMEtemplate.txt" target="_blank" rel="external">Puppet Labs README template</a> available for your use; it can also be obtained by running <code>puppet module generate</code> (available in Puppet 3.6 and above). Using the .md/.markdown format allows your README to be parsed and displayed by both GitHub and the Puppet Forge.<br><br>If you are prolific with your in-code comments, you can use <code>puppet doc</code> up until Puppet 4 is released. If you’re currently using the future parser, you might want to check out <a href="https://github.com/puppetlabs/puppetlabs-strings" target="_blank" rel="external">strings</a>, the replacement for <code>puppet doc</code> that (only) works with the future parser.<br><br>There’s an entire <a href="https://docs.puppetlabs.com/puppet/latest/reference/modules_documentation.html" target="_blank" rel="external">guide</a> to writing a great README, but overall you should:<br><br><em>   Call out what your module does.
-</em>   Note any part of a user’s system the module might impact (e.g. “This module will overwrite everything in animportantfile.conf.”).<br><em>   List all of the classes, defines, types, providers, and parameters the user might need to configure with a brief description, the default values (if any), and what the valid options are.<br><br>### 17.2 CHANGELOG<br><br>Your module should have a CHANGELOG in .md (or .markdown) format. Your CHANGELOG should:
-
-</em>   Have entries for each release.<br><em>   List bugfixes and features included in the release.
-</em>   Specifically call out backwards-incompatible changes<br><br>## 19. Verifying style<br><br>This guide helps development of <a href="http://puppet-lint.com/" target="_blank" rel="external">puppet-lint</a> and <a href="https://github.com/nibalizer/metadata-json-lint" target="_blank" rel="external">metadata-json-lint</a><a href="http://fc09.deviantart.net/fs70/i/2012/232/0/a/welcome_to_the_internet__please_follow_me_by_sharpwriter-d5buwfu.jpg" target="_blank" rel="external">.</a><br><br></div><br>&gt; <a href="https://docs.puppetlabs.com/guides/style_guide.html#content" target="_blank" rel="external">↑ Back to top</a><br></div><br><nav class="main"><br><div id="subCol"><br><br><em>   <a href="https://docs.puppetlabs.com/guides/style_guide.html#" target="_blank" rel="external"> Docs Quick Nav </a><br><br>### Elsewhere in the Docs:<br><br>If this page isn’t quite what you need, you might be looking for one of these:<br><br>#### Using Puppet
-
-</em>   <a href="https://docs.puppetlabs.com/references/latest/type.html" target="_blank" rel="external">Type Reference</a> — Info for every resource type.<br><em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/lang_summary.html" target="_blank" rel="external">Language Reference</a> — How to write Puppet code.
-</em>   <a href="https://docs.puppetlabs.com/learning/" target="_blank" rel="external">Learning Puppet</a> — Guided intro with free VM.<br><em>   <a href="https://docs.puppetlabs.com/windows/" target="_blank" rel="external">Puppet on Windows</a> — Special notes for Windows users.
-</em>   <a href="https://docs.puppetlabs.com/references/latest/man/" target="_blank" rel="external">Man Pages</a> — Docs for Puppet’s CLI tools.<br><br>#### Administering Puppet<br><br><em>   <a href="https://docs.puppetlabs.com/pe/latest/install_basic.html" target="_blank" rel="external">Installing Puppet Enterprise</a>
-</em>   <a href="https://docs.puppetlabs.com/pe/latest/install_upgrading.html" target="_blank" rel="external">Upgrading Puppet Enterprise</a><br><em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/install_pre.html" target="_blank" rel="external">Installing Open Source Puppet</a>
-</em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/upgrade_agent.html" target="_blank" rel="external">Upgrading 3.x to 4.x Agents</a><br><em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/upgrade_server.html" target="_blank" rel="external">Upgrading 3.x to 4.x Server</a>
-</em>   <a href="http://info.puppetlabs.com/download-pe.html" target="_blank" rel="external">Puppet Enterprise Downloads</a><br><br>#### What Are These Variables?<br><br><em>   <a href="https://docs.puppetlabs.com/facter/latest/core_facts.html" target="_blank" rel="external">Facts</a>
-</em>   <a href="https://docs.puppetlabs.com/puppet/latest/reference/lang_facts_and_builtin_vars.html" target="_blank" rel="external">Other Special Variables</a><br></div><br>&nbsp;<br><br>Reference: <a href="https://docs.puppetlabs.com/guides/style_guide.html" target="_blank" rel="external">https://docs.puppetlabs.com/guides/style_guide.html</a><br><br></nav></div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/10/27/the-puppet-language-style-guide/" data-id="ciqcd6llu0033clo90f9hzrxm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Puppet/">Puppet</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-use-python-send-email" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/22/use-python-send-email/" class="article-date">
-  <time datetime="2015-10-22T13:20:42.000Z" itemprop="datePublished">2015-10-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/22/use-python-send-email/">Use Python send mail</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I recommend that you use the standard packages email and smtplib together to send Email. Please look at the following example (reproduced from the <a href="https://docs.python.org/2/library/email-examples.html" target="_blank" rel="external">Python documentation</a>). Notice that if you follow this approach, the “simple” task is indeed simple, and the more complex tasks (like attaching binary objects or sending plain/HTML multipart messages) are accomplished very rapidly.</p>
-<p>Here are a few examples of how to use the <a href="https://docs.python.org/2/library/email.html#module-email" title="email: Package supporting the parsing, manipulating, and generating email messages, including MIME documents." target="_blank" rel="external"><tt class="xref py py-mod docutils literal"><span class="pre">email</span></tt></a> package to read, write, and send simple email messages, as well as more complex MIME messages.</p>
-<p>First, let’s see how to create and send a simple text message:</p>
-<p><pre class="lang:python decode:true "># Import smtplib for the actual sending function<br>import smtplib</pre></p>
-<h1 id="Import_the_email_modules_we_u2019ll_need"><a href="#Import_the_email_modules_we_u2019ll_need" class="headerlink" title="Import the email modules we’ll need"></a>Import the email modules we’ll need</h1><p>from email.mime.text import MIMEText</p>
-<h1 id="Open_a_plain_text_file_for_reading-_For_this_example_2C_assume_that"><a href="#Open_a_plain_text_file_for_reading-_For_this_example_2C_assume_that" class="headerlink" title="Open a plain text file for reading.  For this example, assume that"></a>Open a plain text file for reading.  For this example, assume that</h1><h1 id="the_text_file_contains_only_ASCII_characters"><a href="#the_text_file_contains_only_ASCII_characters" class="headerlink" title="the text file contains only ASCII characters."></a>the text file contains only ASCII characters.</h1><p>fp = open(textfile, ‘rb’)</p>
-<h1 id="Create_a_text/plain_message"><a href="#Create_a_text/plain_message" class="headerlink" title="Create a text/plain message"></a>Create a text/plain message</h1><p>msg = MIMEText(fp.read())<br>fp.close()</p>
-<h1 id="me__3D_3D_the_sender_u2019s_email_address"><a href="#me__3D_3D_the_sender_u2019s_email_address" class="headerlink" title="me == the sender’s email address"></a>me == the sender’s email address</h1><h1 id="you__3D_3D_the_recipient_u2019s_email_address"><a href="#you__3D_3D_the_recipient_u2019s_email_address" class="headerlink" title="you == the recipient’s email address"></a>you == the recipient’s email address</h1><p>msg[‘Subject’] = ‘The contents of %s’ % textfile<br>msg[‘From’] = me<br>msg[‘To’] = you</p>
-<h1 id="Send_the_message_via_our_own_SMTP_server_2C_but_don_u2019t_include_the"><a href="#Send_the_message_via_our_own_SMTP_server_2C_but_don_u2019t_include_the" class="headerlink" title="Send the message via our own SMTP server, but don’t include the"></a>Send the message via our own SMTP server, but don’t include the</h1><h1 id="envelope_header"><a href="#envelope_header" class="headerlink" title="envelope header."></a>envelope header.</h1><p>s = smtplib.SMTP(‘localhost’)<br>s.sendmail(me, [you], msg.as_string())<br>s.quit()<br>For sending email to multiple destinations, you can also follow the example in the Python documentation:</p>
-<p><pre class="lang:python decode:true "># Import smtplib for the actual sending function<br>import smtplib</pre></p>
-<h1 id="Here_are_the_email_package_modules_we_u2019ll_need"><a href="#Here_are_the_email_package_modules_we_u2019ll_need" class="headerlink" title="Here are the email package modules we’ll need"></a>Here are the email package modules we’ll need</h1><p>from email.mime.image import MIMEImage<br>from email.mime.multipart import MIMEMultipart</p>
-<p>COMMASPACE = ‘, ‘</p>
-<h1 id="Create_the_container__28outer_29_email_message"><a href="#Create_the_container__28outer_29_email_message" class="headerlink" title="Create the container (outer) email message."></a>Create the container (outer) email message.</h1><p>msg = MIMEMultipart()<br>msg[‘Subject’] = ‘Our family reunion’</p>
-<h1 id="me__3D_3D_the_sender_u2019s_email_address-1"><a href="#me__3D_3D_the_sender_u2019s_email_address-1" class="headerlink" title="me == the sender’s email address"></a>me == the sender’s email address</h1><h1 id="family__3D_the_list_of_all_recipients_u2019_email_addresses"><a href="#family__3D_the_list_of_all_recipients_u2019_email_addresses" class="headerlink" title="family = the list of all recipients’ email addresses"></a>family = the list of all recipients’ email addresses</h1><p>msg[‘From’] = me<br>msg[‘To’] = COMMASPACE.join(family)<br>msg.preamble = ‘Our family reunion’</p>
-<h1 id="Assume_we_know_that_the_image_files_are_all_in_PNG_format"><a href="#Assume_we_know_that_the_image_files_are_all_in_PNG_format" class="headerlink" title="Assume we know that the image files are all in PNG format"></a>Assume we know that the image files are all in PNG format</h1><p>for file in pngfiles:</p>
-<pre><code># Open the files in binary mode.  Let the MIMEImage class automatically
-# guess the specific image type.
-fp = open(file, &apos;rb&apos;)
-img = MIMEImage(fp.read())
-fp.close()
-msg.attach(img)
-</code></pre><h1 id="Send_the_email_via_our_own_SMTP_server"><a href="#Send_the_email_via_our_own_SMTP_server" class="headerlink" title="Send the email via our own SMTP server."></a>Send the email via our own SMTP server.</h1><p>s = smtplib.SMTP(‘localhost’)<br>s.sendmail(me, family, msg.as_string())<br>s.quit()<br>As you can see, the header To in the MIMEText object must be a string consisting of email addresses separated by commas. On the other hand, the second argument to the sendmail function must be a list of strings (each string is an email address).</p>
-<p>So, if you have three email addresses: person1@example.com, person2@example.com, and person3@example.com, you can do as follows (obvious sections omitted):</p>
-<p>to = [“person1@example.com”, “person2@example.com”, “person3@example.com”]<br>msg[‘To’] = “,”.join(to)<br>s.sendmail(me, to, msg.as_string())</p>
-<p>the “”,””.join(to) part makes a single string out of the list, separated by commas.</p>
-<p>From your questions I gather that you have not gone through the Python tutorial - it is a MUST if you want to get anywhere in Python - the documentation is mostly excellent for the standard library.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/10/22/use-python-send-email/" data-id="ciqcd6llm002vclo94o4zzf8x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-php-acquisition-time-and-system-inconsistencies" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/22/php-acquisition-time-and-system-inconsistencies/" class="article-date">
-  <time datetime="2015-10-22T03:31:01.000Z" itemprop="datePublished">2015-10-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/22/php-acquisition-time-and-system-inconsistencies/">PHP 获取的时间和系统的时间不一致</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述：<br>最近发现自动发送工作日报的那个脚本出现了问题, 发送是大昨天的内容.<br>可能是系统时间或是服务器时间配置不正确,下面开始逐步排查.</p>
-<p><pre class="lang:php decode:true">^<em>^[11:04:26][root@master01 ~]#date<br>Thu Oct 22 11:05:33 CST 2015<br>^</em>^[11:05:33][root@master01 ~]#cat /etc/sysconfig/clock<br>ZONE=”Asia/Shanghai”</p>
-<p>#UTC=true</p>
-<p>#ARC=false</p>
-<p>&lt;?php<br>//date_default_timezone_set(‘UTC’);<br>date_default_timezone_set(‘CST/8.0’);</p>
-<p>$today = date(‘Y-m-d H:i:s’);<br>$yesterday = date(‘Y-m-d H:i:s’,time()-86400);<br>echo “$today\n”;<br>echo “$yesterday”;<br>?&gt;</p>
-<p>^_^[11:06:09][root@master01 ~]#php test.php<br>2015-10-21 23:06:16<br>2015-10-20 23:06:16</p>
-<p>^_^[11:07:35][root@master01 ~]#date -R<br>Thu, 22 Oct 2015 11:10:14 +0800</pre><br>
-        
-          <p class="article-more-link">
-            <a href="/2015/10/22/php-acquisition-time-and-system-inconsistencies/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/10/22/php-acquisition-time-and-system-inconsistencies/" data-id="ciqcd6loz005mclo9vr1ppmwo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-exec-linux-cmd-ways" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/20/python-exec-linux-cmd-ways/" class="article-date">
-  <time datetime="2015-10-20T07:00:56.000Z" itemprop="datePublished">2015-10-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/20/python-exec-linux-cmd-ways/">Python 执行Linux系统命令的N种方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言：<br>很多时候我们会用到python去调用外部工具/命令去实现某种功能。<br><strong>I. os</strong><br><a href="https://docs.python.org/2/library/os.html" target="_blank" rel="external">https://docs.python.org/2/library/os.html</a><br>os.system<br>执行流程<br>system(command) -&gt; exit_status<br>Execute the command (a string) in a subshell.</p>
-<h1 id="os-system_28_29__u662F_u65B0_u8D77_u4E00_u4E2Ashell_u53BB_u5E72_u6D3B_u7684_uFF0C_u5BF9_u7CFB_u7EDF_u7684_u5F00_u9500_u6BD4_u8F83_u5927"><a href="#os-system_28_29__u662F_u65B0_u8D77_u4E00_u4E2Ashell_u53BB_u5E72_u6D3B_u7684_uFF0C_u5BF9_u7CFB_u7EDF_u7684_u5F00_u9500_u6BD4_u8F83_u5927" class="headerlink" title="os.system() 是新起一个shell去干活的，对系统的开销比较大"></a>os.system() 是新起一个shell去干活的，对系统的开销比较大</h1><h1 id="u4EC5_u5728_u4E00_u4E2A_u5B50_u7EC8_u7AEF_u8FD0_u884C_u7CFB_u7EDF_u547D_u4EE4_uFF0C_u800C_u4E0D_u80FD_u83B7_u53D6_u547D_u4EE4_u6267_u884C_u540E_u7684_u8FD4_u56DE_u4FE1_u606F"><a href="#u4EC5_u5728_u4E00_u4E2A_u5B50_u7EC8_u7AEF_u8FD0_u884C_u7CFB_u7EDF_u547D_u4EE4_uFF0C_u800C_u4E0D_u80FD_u83B7_u53D6_u547D_u4EE4_u6267_u884C_u540E_u7684_u8FD4_u56DE_u4FE1_u606F" class="headerlink" title="仅在一个子终端运行系统命令，而不能获取命令执行后的返回信息"></a>仅在一个子终端运行系统命令，而不能获取命令执行后的返回信息</h1><h1 id="u65E0_u6CD5_u63A7_u5236_uFF0C_uFF08_u5982_u679C_u8C03_u7528_u7684_u5916_u90E8_u547D_u4EE4_uFF0C_u6302_u6B7B_u6216_u8005_u6267_u884C_u65F6_u95F4_u5F88_u957F_uFF09_uFF0C_u4E3B_u8FDB_u7A0B_u65E0_u6CD5_u63A7_u5236os-system_28_29_2C__u56E0_u4E3A_u8C03_u7528os-system_28cmd_29__u8C03_u7528_u8FDB_u7A0B_u4F1Ablock_uFF0C_until_os-system_28_29__u81EA_u5DF1_u9000_u51FA"><a href="#u65E0_u6CD5_u63A7_u5236_uFF0C_uFF08_u5982_u679C_u8C03_u7528_u7684_u5916_u90E8_u547D_u4EE4_uFF0C_u6302_u6B7B_u6216_u8005_u6267_u884C_u65F6_u95F4_u5F88_u957F_uFF09_uFF0C_u4E3B_u8FDB_u7A0B_u65E0_u6CD5_u63A7_u5236os-system_28_29_2C__u56E0_u4E3A_u8C03_u7528os-system_28cmd_29__u8C03_u7528_u8FDB_u7A0B_u4F1Ablock_uFF0C_until_os-system_28_29__u81EA_u5DF1_u9000_u51FA" class="headerlink" title="无法控制，（如果调用的外部命令，挂死或者执行时间很长），主进程无法控制os.system(), 因为调用os.system(cmd)  调用进程会block， until os.system() 自己退出"></a>无法控制，（如果调用的外部命令，挂死或者执行时间很长），主进程无法控制os.system(), 因为调用os.system(cmd)  调用进程会block， until os.system() 自己退出</h1><p><pre class="lang:default decode:true ">In [30]: import os</pre></p>
-<p>In [31]: os.system(‘ls *.py’)<br>check_drive_usage.py  diff_file.py  fcSpider.py  fedspider.py  get_host_list.py  test.py  while.py<br>Out[31]: 0<br>os.popen<br>执行流程<br>popen(command [, mode=’r’ [, bufsize]]) -&gt; pipe<br>Open a pipe to/from a command returning a file object.</p>
-<h1 id="u8BE5_u65B9_u6CD5_u4E0D_u4F46_u6267_u884C_u547D_u4EE4_u8FD8_u8FD4_u56DE_u6267_u884C_u540E_u7684_u4FE1_u606F_u5BF9_u8C61"><a href="#u8BE5_u65B9_u6CD5_u4E0D_u4F46_u6267_u884C_u547D_u4EE4_u8FD8_u8FD4_u56DE_u6267_u884C_u540E_u7684_u4FE1_u606F_u5BF9_u8C61" class="headerlink" title="该方法不但执行命令还返回执行后的信息对象"></a>该方法不但执行命令还返回执行后的信息对象</h1><h1 id="u597D_u5904_u5728_u4E8E_uFF1A_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><a href="#u597D_u5904_u5728_u4E8E_uFF1A_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406" class="headerlink" title="好处在于：将返回的结果赋于一变量，便于程序的处理"></a>好处在于：将返回的结果赋于一变量，便于程序的处理</h1><p><pre class="lang:default decode:true">In [32]: py = os.popen(‘ls *py’).readlines()</pre></p>
-<p>In [33]: print py<br>[‘check_drive_usage.py\n’, ‘diff_file.py\n’, ‘fcSpider.py\n’, ‘fedspider.py\n’, ‘get_host_list.py\n’, ‘test.py\n’, ‘while.py\n’]<br>&nbsp;</p>
-<p><strong>II. commands</strong><br><a href="https://docs.python.org/2/library/commands.html" target="_blank" rel="external">https://docs.python.org/2/library/commands.html</a><br>常用的主要有两个方法：getoutput和getstatusoutput</p>
-<p><pre class="lang:default decode:true ">In [40]: import commands</pre></p>
-<p>In [41]: commands.getoutput(‘ls *.py’)<br>Out[41]: ‘check_drive_usage.py\ndiff_file.py\nfcSpider.py\nfedspider.py\nget_host_list.py\ntest.py\nwhile.py’</p>
-<p>In [41]: commands.getstatusoutput(‘ls *py’)<br>Out[41]:<br>(0,<br> ‘check_drive_usage.py\ndiff_file.py\nfcSpider.py\nfedspider.py\nget_host_list.py\ntest.py\nwhile.py’)<br>&nbsp;</p>
-<p><strong>III. subprocess  [ 推荐使用 ]</strong><br><a href="https://docs.python.org/2/library/subprocess.html" target="_blank" rel="external">https://docs.python.org/2/library/subprocess.html</a></p>
-<h1 id="u8FD0_u7528_u5BF9_u7EBF_u7A0B_u7684_u63A7_u5236_u548C_u76D1_u63A7_uFF0C_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406"><a href="#u8FD0_u7528_u5BF9_u7EBF_u7A0B_u7684_u63A7_u5236_u548C_u76D1_u63A7_uFF0C_u5C06_u8FD4_u56DE_u7684_u7ED3_u679C_u8D4B_u4E8E_u4E00_u53D8_u91CF_uFF0C_u4FBF_u4E8E_u7A0B_u5E8F_u7684_u5904_u7406" class="headerlink" title="运用对线程的控制和监控，将返回的结果赋于一变量，便于程序的处理"></a>运用对线程的控制和监控，将返回的结果赋于一变量，便于程序的处理</h1><h1 id="u4F1A_u81EA_u52A8_u5730_u52A0_u8F7D_u7CFB_u7EDF_u73AF_u5883_u53D8_u91CF_u3002"><a href="#u4F1A_u81EA_u52A8_u5730_u52A0_u8F7D_u7CFB_u7EDF_u73AF_u5883_u53D8_u91CF_u3002" class="headerlink" title="会自动地加载系统环境变量。"></a>会自动地加载系统环境变量。</h1><p>subprocess模块主要用于替代以下几个模块函数<br>os.system<br>os.spawn<em><br>os.popen</em><br>popen2.<em><br>commands.</em><br>相对应的subprocess 模块里有 call 函数和 popen 函数 。</p>
-<p>1、subprocess.call<br>call 函数的用法如下：<br>subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False)<br>可以看出，相对于os模块中的函数，这里可以指定的选项更多。</p>
-<p><pre class="lang:default decode:true ">In [64]: import subprocess</pre></p>
-<p>In [65]: subprocess.call(‘ls *py ‘,shell=False)<br>check_drive_usage.py  diff_file.py  fcSpider.py  fedspider.py  get_host_list.py  test.py  while.py<br>Out[65]: 0<br><br>交互式模式下，call 也会有returncode 0 输出，不过在py文件里执行时，ruturn的结果并不会将最后的 0 输出。不过在使用call 函数时，需要注意后面的几个参数:</p>
-<p><pre class="lang:default decode:true ">    开启shell=True是不安全的<br>    Using shell=True can be a security hazard. See the warning under Frequently Used Arguments for details.<br>    Note：<br>    尽量不要启用标准输出和标准错误输出需要管道，call有可能会导致子进程死锁。如需管道时，请使用Popen函数<br>    Do not use stdout=PIPE or stderr=PIPE with this function as that can deadlock based on the child process output volume. Use Popen with the communicate() method when you need pipes.</pre><br>subprocess.call 主要用于替换 os.system ，具体如下：</p>
-<p><pre class="lang:default decode:true ">In [66]: subprocess.call(‘date’)<br>Thu Oct 29 16:02:24 CST 2015<br>Out[66]: 0</pre><br>sub.process.Popen的用法如下：</p>
-<p><pre class="lang:default decode:true">subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)</pre><br>eg:</p>
-<p><pre class="lang:default decode:true ">In [67]: import subprocess</pre></p>
-<p>In [68]: p = subprocess.Popen(‘ls *.py’, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)</p>
-<p>In [69]: print p.stdout.readlines()<br>[‘check_drive_usage.py\n’, ‘diff_file.py\n’, ‘fcSpider.py\n’, ‘fedspider.py\n’, ‘get_host_list.py\n’, ‘test.py\n’, ‘while.py\n’]<br>&nbsp;</p>
-<p>更多内容请移步官网 <a href="https://docs.python.org" target="_blank" rel="external">https://docs.python.org</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/10/20/python-exec-linux-cmd-ways/" data-id="ciqcd6lnn004iclo92v7pw2k1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-what-is-couchbase-server" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/19/what-is-couchbase-server/" class="article-date">
-  <time datetime="2015-10-19T09:04:30.000Z" itemprop="datePublished">2015-10-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CouchBase/">CouchBase</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/19/what-is-couchbase-server/">What is Couchbase Server</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><table class="infobox vevent"></table></p>
-<p><tbody></tbody></p>
-<p><tr></tr></p>
-<p><td colspan="2"><a href="https://en.wikipedia.org/wiki/File:Couchbase_Server_Screenshot.jpg" target="_blank" rel="external"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Couchbase_Server_Screenshot.jpg/300px-Couchbase_Server_Screenshot.jpg" alt="Couchbase Server Screenshot.jpg"></a></td><br></p>
-<p><tr></tr></p>
-<p><th scope="row"><a href="https://en.wikipedia.org/wiki/Software_developer" title="Software developer" target="_blank" rel="external">Developer(s)</a></th></p>
-<p><td><a href="https://en.wikipedia.org/wiki/Couchbase,_Inc." title="Couchbase, Inc." target="_blank" rel="external">Couchbase, Inc.</a></td><br></p>
-<p><tr></tr></p>
-<p><th scope="row"><a href="https://en.wikipedia.org/wiki/Software_release_life_cycle" title="Software release life cycle" target="_blank" rel="external">Stable release</a></th></p>
-<p><td>3.0.3 / March 28, 2015</td><br></p>
-<p><tr></tr></p>
-<p><th scope="row">Written in</th></p>
-<p><td><a href="https://en.wikipedia.org/wiki/C%2B%2B" title="C++" target="_blank" rel="external">C++</a>, <a href="https://en.wikipedia.org/wiki/Erlang_%28programming_language%29" title="Erlang (programming language)" target="_blank" rel="external">Erlang</a>, <a href="https://en.wikipedia.org/wiki/C_%28programming_language%29" title="C (programming language)" target="_blank" rel="external">C</a><sup id="cite_ref-1" class="reference"><a href="https://en.wikipedia.org/wiki/Couchbase_Server#cite_note-1" target="_blank" rel="external">[1]</a></sup></td><br></p>
-<p><tr></tr></p>
-<p><th scope="row"><a href="https://en.wikipedia.org/wiki/Operating_system" title="Operating system" target="_blank" rel="external">Operating system</a></th></p>
-<p><td><a href="https://en.wikipedia.org/wiki/Cross-platform" title="Cross-platform" target="_blank" rel="external">Cross-platform</a></td><br></p>
-<p><tr></tr></p>
-<p><th scope="row"><a href="https://en.wikipedia.org/wiki/List_of_software_categories" title="List of software categories" target="_blank" rel="external">Type</a></th></p>
-<p><td>distributed key-value / document database system</td><br></p>
-<p><tr></tr></p>
-<p><th scope="row"><a href="https://en.wikipedia.org/wiki/Software_license" title="Software license" target="_blank" rel="external">License</a></th></p>
-<p><td><a href="https://en.wikipedia.org/wiki/Apache_License" title="Apache License" target="_blank" rel="external">Apache License</a> (Open Source edition), <a href="https://en.wikipedia.org/wiki/Proprietary_software" title="Proprietary software" target="_blank" rel="external">Proprietary</a> (Free Community edition and Paid Enterprise edition)</td><br></p>
-<p><tr></tr></p>
-<p><th scope="row">Website</th></p>
-<p><td><span class="url"><a href="http://www.couchbase.com/" target="_blank" rel="external">www<wbr>.couchbase<wbr>.com</a></span></td><br><br><br><br><strong>Couchbase Server</strong>, originally known as <strong>Membase</strong>, is an <a href="https://en.wikipedia.org/wiki/Open-source" title="Open-source" target="_blank" rel="external">open-source</a>, distributed (<a href="https://en.wikipedia.org/wiki/Shared-nothing_architecture" title="Shared-nothing architecture" target="_blank" rel="external">shared-nothing architecture</a>) <a href="https://en.wikipedia.org/wiki/NoSQL" title="NoSQL" target="_blank" rel="external">NoSQL</a> <a href="https://en.wikipedia.org/wiki/Document-oriented_database" title="Document-oriented database" target="_blank" rel="external">document-oriented database</a> that is optimized for interactive applications. These applications must serve many <a href="https://en.wikipedia.org/wiki/Concurrent_user" title="Concurrent user" target="_blank" rel="external">concurrent users</a> by creating, storing, retrieving, aggregating, manipulating and presenting data. In support of these kinds of application needs, Couchbase is designed to provide easy-to-scale key-value or document access with low latency and high sustained throughput. It is designed to be <a href="https://en.wikipedia.org/wiki/Cluster_%28computing%29" title="Cluster (computing)" target="_blank" rel="external">clustered</a> from a single machine to very large-scale deployments spanning many machines.</p>
-<p>Couchbase Server provides on-the-wire client protocol compatibility with <a href="https://en.wikipedia.org/wiki/Memcached" title="Memcached" target="_blank" rel="external">memcached</a>,<sup id="cite_ref-2" class="reference"><a href="https://en.wikipedia.org/wiki/Couchbase_Server#cite_note-2" target="_blank" rel="external">[2]</a></sup> but is designed to add disk <a href="https://en.wikipedia.org/wiki/Persistence_%28computer_science%29" title="Persistence (computer science)" target="_blank" rel="external">persistence</a>, <a href="https://en.wikipedia.org/wiki/Data_replication" title="Data replication" target="_blank" rel="external">data replication</a>, live cluster reconfiguration, rebalancing and <a href="https://en.wikipedia.org/wiki/Multitenancy" title="Multitenancy" target="_blank" rel="external">multitenancy</a> with <a href="https://en.wikipedia.org/wiki/Partition_%28database%29" title="Partition (database)" target="_blank" rel="external">data partitioning</a>.</p>
-<p>In the parlance of Eric Brewer’s <a href="https://en.wikipedia.org/wiki/CAP_theorem" title="CAP theorem" target="_blank" rel="external">CAP theorem</a>, Couchbase is a CP type system meaning it provides <a href="https://en.wikipedia.org/wiki/Consistency_%28database_systems%29" title="Consistency (database systems)" target="_blank" rel="external">consistency</a> and <a href="https://en.wikipedia.org/wiki/Network_partitioning" title="Network partitioning" target="_blank" rel="external">partition tolerance</a>. However Couchbase Server can be set up as an AP system with multiple clusters using XDCR (Cross Data Center Replication).</p>
-<div id="toc" class="toc"><br><div id="toctitle"><br><br>## Contents<br><br></div><br></div><br><div id="toc" class="toc"><br><br><em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Product_history" target="_blank" rel="external"><span class="tocnumber">1</span> <span class="toctext">Product history</span></a>
-</em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#High-level_architecture" target="_blank" rel="external"><span class="tocnumber">2</span> <span class="toctext">High-level architecture</span></a><br><br>    <em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Cluster_manager" target="_blank" rel="external"><span class="tocnumber">2.1</span> <span class="toctext">Cluster manager</span></a>
-
-            </em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Replication_and_failover" target="_blank" rel="external"><span class="tocnumber">2.1.1</span> <span class="toctext">Replication and failover</span></a><br><br>        <em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Data_manager" target="_blank" rel="external"><span class="tocnumber">2.2</span> <span class="toctext">Data manager</span></a>
-
-            </em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Data_format" target="_blank" rel="external"><span class="tocnumber">2.2.1</span> <span class="toctext">Data format</span></a><br>        <em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Object-managed_cache" target="_blank" rel="external"><span class="tocnumber">2.2.2</span> <span class="toctext">Object-managed cache</span></a>
-        </em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Storage_engine_design" target="_blank" rel="external"><span class="tocnumber">2.2.3</span> <span class="toctext">Storage engine design</span></a><br><br><em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Performance" target="_blank" rel="external"><span class="tocnumber">3</span> <span class="toctext">Performance</span></a>
-</em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Licensing_and_support" target="_blank" rel="external"><span class="tocnumber">4</span> <span class="toctext">Licensing and support</span></a><br><em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#See_also" target="_blank" rel="external"><span class="tocnumber">5</span> <span class="toctext">See also</span></a>
-</em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#Bibliography" target="_blank" rel="external"><span class="tocnumber">6</span> <span class="toctext">Bibliography</span></a><br><em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#References" target="_blank" rel="external"><span class="tocnumber">7</span> <span class="toctext">References</span></a>
-</em>   <a href="https://en.wikipedia.org/wiki/Couchbase_Server#External_links" target="_blank" rel="external"><span class="tocnumber">8</span> <span class="toctext">External links</span></a><br></div>
-
-<h2 id="Product_history"><a href="#Product_history" class="headerlink" title="Product history"></a><span id="Product_history" class="mw-headline">Product history</span></h2><p>Membase was developed by several leaders of the <a href="https://en.wikipedia.org/wiki/Memcached" title="Memcached" target="_blank" rel="external">memcached</a> project, who had founded a company, NorthScale, to develop a <a href="https://en.wikipedia.org/wiki/Key-value_store" title="Key-value store" target="_blank" rel="external">key-value store</a> with the simplicity, speed, and scalability of memcached, but also provided the storage, persistence and querying capabilities of a database. The original membase source code was contributed by NorthScale, and project co-sponsors <a href="https://en.wikipedia.org/wiki/Zynga" title="Zynga" target="_blank" rel="external">Zynga</a> and <a href="https://en.wikipedia.org/wiki/NHN_%28corporation%29" title="NHN (corporation)" target="_blank" rel="external">NHN</a> to a new project on membase.org in June 2010.</p>
-<p>On February 8, 2011, the Membase project founders and Membase, Inc. announced a merger with CouchOne (a company with many of the principal players behind <a href="https://en.wikipedia.org/wiki/CouchDB" title="CouchDB" target="_blank" rel="external">CouchDB</a>) with an associated project merger. The merged company was called <a href="https://en.wikipedia.org/wiki/Couchbase,_Inc." title="Couchbase, Inc." target="_blank" rel="external">Couchbase, Inc.</a> In January 2012, Couchbase released Couchbase Server 1.8. On December 2012, Couchbase Server 2.0 was released, with new features including a new <a href="https://en.wikipedia.org/wiki/JSON" title="JSON" target="_blank" rel="external">JSON</a> document store, indexing and querying, incremental <a href="https://en.wikipedia.org/wiki/MapReduce" title="MapReduce" target="_blank" rel="external">MapReduce</a> and cross datacenter <a href="https://en.wikipedia.org/wiki/Replication_%28computing%29" title="Replication (computing)" target="_blank" rel="external">replication</a>.<sup id="cite_ref-3" class="reference"><a href="https://en.wikipedia.org/wiki/Couchbase_Server#cite_note-3" target="_blank" rel="external">[3]</a></sup></p>
-<h2 id="High-level_architecture"><a href="#High-level_architecture" class="headerlink" title="High-level architecture"></a><span id="High-level_architecture" class="mw-headline">High-level architecture</span></h2><p>Every Couchbase node is architecturally identical consisting of a data manager and cluster manager component.</p>
-<h3 id="Cluster_manager"><a href="#Cluster_manager" class="headerlink" title="Cluster manager"></a><span id="Cluster_manager" class="mw-headline">Cluster manager</span></h3><p>The <strong>cluster manager</strong> supervises the configuration and behavior of all the servers in a Couchbase cluster. It configures and supervises internode behavior like managing replication streams and rebalancing operations. It also provides metric aggregation and consensus functions for the cluster, and a <a href="https://en.wikipedia.org/wiki/REST" title="REST" target="_blank" rel="external">RESTful</a> cluster management API. The cluster manager is built atop Erlang/OTP, a proven environment for building and operating fault-tolerant distributed systems.</p>
-<h4 id="Replication_and_failover"><a href="#Replication_and_failover" class="headerlink" title="Replication and failover"></a><span id="Replication_and_failover" class="mw-headline">Replication and failover</span></h4><ul>
-<li>Multi-model replication support: Peer-to-peer replication support with underlying architecture supporting master-slave replication</li>
-<li>Configurable replication count: Balance resource utilization with availability requirements</li>
-<li>High-speed failover: Fast failover to replicated items based upon request</li>
-<li>XDCR: Cross Data Centre Replication <sup id="cite_ref-4" class="reference"><a href="https://en.wikipedia.org/wiki/Couchbase_Server#cite_note-4" target="_blank" rel="external">[4]</a></sup></li>
-</ul>
-<h3 id="Data_manager"><a href="#Data_manager" class="headerlink" title="Data manager"></a><span id="Data_manager" class="mw-headline">Data manager</span></h3><p>The <strong>data manager</strong> is responsible for storing and retrieving documents in response to data operations from applications.</p>
-<ul>
-<li><p>Asynchronously writes data to disk after acknowledging write to client. In version 1.7 and later, applications can ensure data is synced to more than one server, while disk writes are still asynchronous.</p>
-<ul>
-<li>Tunables to define item ages that affect when data is persisted.</li>
-</ul>
-</li>
-<li><p>Supports working set greater than a memory quota per “node” or “bucket”</p>
-<ul>
-<li>Tunables to affect how max memory and migration from main-memory to disk is handled.</li>
-</ul>
-</li>
-<li><p>Configurable “tap” interface: External systems can subscribe to filtered data streams supporting, for example, <a href="https://en.wikipedia.org/wiki/Full_text_search" title="Full text search" target="_blank" rel="external">full text search</a> indexing, <a href="https://en.wikipedia.org/wiki/Data_analytics" title="Data analytics" target="_blank" rel="external">data analytics</a> or archiving.<sup id="cite_ref-5" class="reference"><a href="https://en.wikipedia.org/wiki/Couchbase_Server#cite_note-5" target="_blank" rel="external">[5]</a></sup></p>
-</li>
-</ul>
-<h4 id="Data_format"><a href="#Data_format" class="headerlink" title="Data format"></a><span id="Data_format" class="mw-headline">Data format</span></h4><p>A document is the most basic unit of data manipulation in Couchbase Server. Documents are stored in JSON document format with no predefined schemas.</p>
-<h4 id="Object-managed_cache"><a href="#Object-managed_cache" class="headerlink" title="Object-managed cache"></a><span id="Object-managed_cache" class="mw-headline">Object-managed cache</span></h4><p>Couchbase Server includes a built-in multithreaded object-managed cache that implements memcached compatible APIs such as get, set, delete, append, prepend etc.</p>
-<h4 id="Storage_engine_design"><a href="#Storage_engine_design" class="headerlink" title="Storage engine design"></a><span id="Storage_engine_design" class="mw-headline">Storage engine design</span></h4><p>Couchbase Server has a tail-append storage design that is immune to data corruption, <a href="https://en.wikipedia.org/wiki/OOM_killer" title="OOM killer" target="_blank" rel="external">OOM killers</a> or sudden loss of power. <em>[“immune” to sudden loss of power is a claim that would need to be substantiated or documented, since appending to a file could still result in loss of data if power was interrupted in the middle of a disk write operation]</em> Data is written to the data file in an append-only manner, which enables Couchbase to do mostly sequential writes for update, and provide an optimized access patterns for disk I/O.</p>
-<h2 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a><span id="Performance" class="mw-headline">Performance</span></h2><p><a href="https://en.wikipedia.org/wiki/Cisco" title="Cisco" target="_blank" rel="external">Cisco</a> published a benchmark that measures the latency and throughput of Couchbase Server <sup id="cite_ref-6" class="reference"><a href="https://en.wikipedia.org/wiki/Couchbase_Server#cite_note-6" target="_blank" rel="external">[6]</a></sup> with a mixed workload. Another performance benchmark done by <a href="https://en.wikipedia.org/wiki/Altoros" title="Altoros" target="_blank" rel="external">Altoros</a>, compares Couchbase Server with other NoSQL database solutions.<sup id="cite_ref-7" class="reference"><a href="https://en.wikipedia.org/wiki/Couchbase_Server#cite_note-7" target="_blank" rel="external">[7]</a></sup></p>
-<h2 id="Licensing_and_support"><a href="#Licensing_and_support" class="headerlink" title="Licensing and support"></a><span id="Licensing_and_support" class="mw-headline">Licensing and support</span></h2><p>Couchbase Server is a packaged version of Couchbase’s open source technology and is available in two variants: a Community Edition without recent bug fixes as <a href="https://en.wikipedia.org/wiki/Open_Source" title="Open Source" target="_blank" rel="external">Open Source</a> (Apache 2.0 license<sup id="cite_ref-8" class="reference"><a href="https://en.wikipedia.org/wiki/Couchbase_Server#cite_note-8" target="_blank" rel="external">[8]</a></sup>) distribution, and an Enterprise Edition for commercial use.<sup id="cite_ref-9" class="reference"><a href="https://en.wikipedia.org/wiki/Couchbase_Server#cite_note-9" target="_blank" rel="external">[9]</a></sup></p>
-<p>Couchbase Server builds are available for Ubuntu, Debian, Red Hat, Windows and Mac OS X platforms.</p>
-<h2 id="See_also"><a href="#See_also" class="headerlink" title="See also"></a><span id="See_also" class="mw-headline">See also</span></h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Aerospike_database" title="Aerospike database" target="_blank" rel="external">Aerospike</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Memcached" title="Memcached" target="_blank" rel="external">Memcached</a></li>
-<li><a href="https://en.wikipedia.org/wiki/MemcacheDB" title="MemcacheDB" target="_blank" rel="external">MemcacheDB</a></li>
-<li><a href="https://en.wikipedia.org/wiki/NoSQL" title="NoSQL" target="_blank" rel="external">NoSQL</a></li>
-<li><a href="https://en.wikipedia.org/wiki/N1QL" title="N1QL" target="_blank" rel="external">N1QL</a></li>
-</ul>
-<h2 id="Bibliography"><a href="#Bibliography" class="headerlink" title="Bibliography"></a><span id="Bibliography" class="mw-headline">Bibliography</span></h2><ul>
-<li><cite class="citation book">Brown, MC (June 22, 2012). <em>Getting Started with Couchbase Server (1st edition)</em>. O’Reilly Media. p. 88. <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number" title="International Standard Book Number" target="_blank" rel="external">ISBN</a> <a href="https://en.wikipedia.org/wiki/Special:BookSources/978-1449331061" title="Special:BookSources/978-1449331061" target="_blank" rel="external">978-1449331061</a>.</cite></li>
-<li><cite class="citation web"><a href="http://gigaom.com/cloud/balancing-oracle-and-open-source-at-orbitz/" target="_blank" rel="external">“Balancing Oracle and open source at Orbitz”</a>. <a href="https://en.wikipedia.org/wiki/GigaOM" title="GigaOM" target="_blank" rel="external">GigaOM</a>. 21 September 2012.</cite></li>
-</ul>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a><span id="References" class="mw-headline">References</span></h2><div class="reflist"></div><br>&nbsp;<br><br><em>   <span class="reference-text"><cite class="citation web"><a href="http://damienkatz.net/2013/01/the_unreasonable_effectiveness_of_c.html" target="_blank" rel="external">“The Unreasonable Effectiveness of C”</a>. Damien Katz. 2013-01-08<span class="reference-accessdate">. Retrieved <span class="nowrap">2013-06-04</span></span>.</cite></span>
-</em>   <span class="reference-text"><cite class="citation web"><a href="http://code.google.com/p/memcached/wiki/NewProtocols" target="_blank" rel="external">“NewProtocols - memcached - Klingon - Memcached - Google Project Hosting”</a>. Code.google.com. 2011-08-22<span class="reference-accessdate">. Retrieved <span class="nowrap">2013-06-04</span></span>.</cite></span><br><em>   <span class="reference-text"><cite class="citation web"><a href="http://www.zdnet.com/couchbase-2-0-released-implements-json-document-store-7000008649/" target="_blank" rel="external">“Couchbase 2.0 released; implements JSON document store”</a>. <a href="https://en.wikipedia.org/wiki/ZDNet" title="ZDNet" target="_blank" rel="external">ZDNet</a>. 12 December 2012.</cite></span>
-</em>   <span class="reference-text"><a href="http://www.couchbase.com/wiki/display/couchbase/XDCR+Protocol" target="_blank" rel="external">http://www.couchbase.com/wiki/display/couchbase/XDCR+Protocol</a></span><br><em>   <span class="reference-text"><a href="http://blog.couchbase.com/want-know-what-your-memcached-servers-are-doing-tap-them" target="_blank" rel="external">Want to know what your memcached servers are doing? Tap them.</a></span>
-</em>   <span class="reference-text"><cite class="citation web"><a href="http://www.cisco.com/en/US/prod/collateral/switches/ps9441/ps9670/white_paper_c11-708169.pdf" target="_blank" rel="external">“Cisco and Solarflare Achieve Dramatic Latency Reduction for Interactive Web Applications with Couchbase, a NoSQL Database”</a> (PDF). <a href="https://en.wikipedia.org/wiki/Cisco_Systems" title="Cisco Systems" target="_blank" rel="external">Cisco Systems</a><span class="reference-accessdate">. Retrieved <span class="nowrap">2013-06-04</span></span>.</cite></span><br><em>   <span class="reference-text"><cite class="citation web"><a href="http://www.couchbase.com/nosql-resources/presentations/benchmarking-couchbase%5B2%5D.html" target="_blank" rel="external">“Benchmarking Couchbase”</a>. Couchbase. 2012-10-30<span class="reference-accessdate">. Retrieved <span class="nowrap">2015-03-04</span></span>.</cite></span>
-</em>   <span class="reference-text"><cite class="citation web"><a href="http://www.couchbase.com/couchbase-open-source-project" target="_blank" rel="external">“Couchbase Open Source Project”</a>.</cite></span><br><div class="reflist"><br><br>1.  <span class="reference-text"><cite class="citation web"><a href="http://www.couchbase.com/couchbase-server/editions" target="_blank" rel="external">“Couchbase Server Editions”</a>. <a href="https://en.wikipedia.org/wiki/Couchbase" title="Couchbase" target="_blank" rel="external">Couchbase</a>.</cite></span><br></div>
-
-<h2 id="External_links"><a href="#External_links" class="headerlink" title="External links"></a><span id="External_links" class="mw-headline">External links</span></h2><ul>
-<li><span class="official website"><span class="url"><a href="http://www.couchbase.com" target="_blank" rel="external">Official website</a></span></span></li>
-<li><a href="https://twitter.com/couchbase/" target="_blank" rel="external">Couchbase Twitter page</a></li>
-<li><a href="http://blog.couchbase.com/" target="_blank" rel="external">Couchbase Blog page</a></li>
-<li><a href="http://www.couchbase.com/events" target="_blank" rel="external">Couchbase Events page</a></li>
-<li><a href="http://www.couchbase.com/develop" target="_blank" rel="external">Couchbase Developer SDK’s</a></li>
-<li><a href="http://www.couchbase.com/docs/" target="_blank" rel="external">Couchbase Documentation</a></li>
-<li>Trans from: <a href="https://en.wikipedia.org/wiki/Couchbase_Server" target="_blank" rel="external">https://en.wikipedia.org/wiki/Couchbase_Server</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/10/19/what-is-couchbase-server/" data-id="ciqcd6lko0022clo91uz13a51" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NoSQL/">NoSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/couchbase/">couchbase</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ipython" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/18/ipython/" class="article-date">
-  <time datetime="2015-10-18T03:08:03.000Z" itemprop="datePublished">2015-10-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Python/">Python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/18/ipython/">IPython 使用教程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div id="mw-content-text" class="mw-content-ltr" dir="ltr" lang="zh-CN"><br><br><strong>IPython</strong>是一种基于Python的交互式解释器。相较于原生的Python Shell，IPython提供了更为强大的编辑和交互功能，<span id=".E5.B9.B6.E8.A1.8C.E8.AE.A1.E7.AE.97" class="mw-headline">并行计算。</span><br><br></div><br>IPython拥有一套复杂的并行和分配计算结构。IPython使得各种并行应用能够交互式的被开发、执行、调试和监控。因此IPython中的“I”代表“交互”。<br><br><em>   <a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81" title="单指令流多数据流" target="_blank" rel="external">单指令流多数据流</a>
-</em>   <a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81" title="多指令流多数据流" target="_blank" rel="external">多指令流多数据流</a><br><em>   <a href="https://zh.wikipedia.org/w/index.php?title=%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%8E%A5%E5%8F%A3&amp;action=edit&amp;redlink=1" title="消息传递接口（页面不存在）" target="_blank" rel="external">消息传递接口</a>
-</em>   <a href="https://zh.wikipedia.org/wiki/%E4%BB%BB%E5%8A%A1%E5%B9%B6%E8%A1%8C" title="任务并行" target="_blank" rel="external">任务并行</a><br><em>   <a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C" title="数据并行" target="_blank" rel="external">数据并行</a><br>&nbsp;<br><br><a href="http://ipython.org/ipython-doc/stable/index.html" target="_blank" rel="external">官方文档</a><br><br><strong>ipython 安装</strong><br>yum install python-pip<br>pip install ipython<br><br>源码安装过程：
-</em> 下载合适的软件包。<br><em> 解压缩。
-</em> 运行python setup.py install<br><br><strong>使用</strong><br>python -m IPython / ipython<br><br><strong>特性</strong><br><div id="magic" class="section"><br><br>### Magic<br><br>IPython有一些”magic”关键字:<br><div class="highlight-python"><br><div class="highlight"><br><pre>%Exit, %Pprint, %Quit, %alias, %autocall, %autoindent, %automagic,<br>%bookmark, %cd, %color_info, %colors, %config, %dhist, %dirs, %ed,<br>%edit, %env, %hist, %logoff, %logon, %logstart, %logstate, %lsmagic,<br>%macro, %magic, %p, %page, %pdb, %pdef, %pdoc, %pfile, %pinfo, %popd,<br>%profile, %prun, %psource, %pushd, %pwd, %r, %rehash, %rehashx, %reset,<br>%run, %runlog, %save, %sc, %sx, %system_verbose, %unalias, %who,<br>%who_ls, %whos, %xmode<br></pre><br></div><br></div><br>IPython 会检查传给它的命令是否包含magic关键字。如果命令是一个magic关键字，IPython就自己来处理。如果不是magic关键字，就交给 Python（标准解释器）去处理。如果automagic打开（默认），你不需要在magic关键字前加%符号。相反，如果automagic是关闭 的，则%是必须的。在命令提示符下输入命令magic就会显示所有magic关键字列表以及它们的简短的用法说明。良好的文档对于一个软件的任何一部分来 说都是重要的，从在线IPython用户手册到内嵌文档（%magic），IPython当然不会在这方面有所缺失。<br><br></div><br><div id="id3" class="section"><br><div id="magic" class="section"></div><br><div id="tab" class="section"><br><br>### Tab自动补全<br><br>IPython一个非常强大的功能是tab自动补全。如果你对Python很了解，可能会想，标准Python交互式解释器也可以tab自动补全啊。<br><br>标准Python交互式解释器和IPython都支持“普通”自动补全和菜单补全。使用自动补全，你要先输入一个匹配模型，然后按Tab键。如果是“普通”自动补全模式（默认），Tab后会：<br><br><em>   匹配模型按最大匹配展开。
-</em>   列出所有匹配的结果。<br>例如:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [1]: import os<br>In [2]: os.po<br>os.popen os.popen2 os.popen3 os.popen4<br>In [2]: os.popen<br></pre><br></div><br></div><br>输入os.po然后按Tab键，os.po被展开成os.popen（就象在In [2]:提示符显示的那样），并显示os所有以po开头的模块，类和函数，它们是popen，popen2， popen3和popen4。<br><br><dl class="docutils"><dt>菜单补全稍有不同。关闭默认Tab补全，使用菜单补全，你需要修改配置文件$HOME/.ipython/ipythonrc。注释掉：</dt><dd>readline_parse_and_bind tab: complete</dd><dt>取消注释:</dt><dd>readline_parse_and_bind tab: menu-complete</dd></dl>不同于“普通”自动补全的显示当前命令所有匹配列表，菜单补全会随着你每按一次Tab键而循环显示匹配列表中的项目。例如:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [1]: import os<br>In [2]: os.po<br></pre><br></div><br></div><br>结果是：<br>&gt; <div>In [3]: os.popen</div><br>接下来每次按Tab键就会循环显示匹配列表中的其它项目：popen2，popen3，popen4，最后回到po。菜单补全模式下查看所有匹配列表的快捷键是Ctrl-L:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [2]: os.po<br>os.popen os.popen2 os.popen3 os.popen4<br>In [2]: os.po<br></pre><br></div><br></div><br></div><br><div id="id4" class="section"><br><br>### 自省<br><br>Python有几个内置的函数用于自省。IPython不仅可以调用所有标准Python函数，对于那些Python shell内置函数同样适用。典型的使用标准Python shell进行自省是使用内置的dir()函数:<br><div class="highlight-python"><br><div class="highlight"><br><pre class="">In [3]: import subprocess<br><br>In [4]: dir(subprocess.call)<br>Out[4]:<br>[‘<strong>call</strong>‘,<br> ‘<strong>class</strong>‘,<br> ‘<strong>closure</strong>‘,<br> ‘<strong>code</strong>‘,<br> ‘<strong>defaults</strong>‘,<br> ‘<strong>delattr</strong>‘,<br> ‘<strong>dict</strong>‘,<br> ‘<strong>doc</strong>‘,<br> ‘<strong>format</strong>‘,<br> ‘<strong>get</strong>‘,<br> ‘<strong>getattribute</strong>‘,<br> ‘<strong>globals</strong>‘,<br> ‘<strong>hash</strong>‘,<br> ‘<strong>init</strong>‘,<br> ‘<strong>module</strong>‘,<br> ‘<strong>name</strong>‘,<br> ‘<strong>new</strong>‘,<br> ‘<strong>reduce</strong>‘,<br> ‘<strong>reduce_ex</strong>‘,<br> ‘<strong>repr</strong>‘,<br> ‘<strong>setattr</strong>‘,<br> ‘<strong>sizeof</strong>‘,<br> ‘<strong>str</strong>‘,<br> ‘<strong>subclasshook</strong>‘,<br> ‘func_closure’,<br> ‘func_code’,<br> ‘func_defaults’,<br> ‘func_dict’,<br> ‘func_doc’,<br> ‘func_globals’,<br> ‘func_name’]<br></pre><br></div><br></div><br>嗯，非常棒。事实上非常实用。几年来我一直这么做，对此非常满意。这是一个漂亮的列表，包含了 SimpleXMLRPCServer.SimpleXMLRPCServer的所有方法，类，模块等等。因为dir()是一个内置函数，在 IPython中也能很好的使用它们。但是IPython的操作符?和??功能还要强大:<br><div class="highlight-python"><br><div class="highlight"><br><pre class="">In [8]: ? subprocess.call<br>Signature: subprocess.call(<em>popenargs, **kwargs)<br>Docstring:<br>Run command with arguments.  Wait for command to complete, then<br>return the returncode attribute.<br><br>The arguments are the same as for the Popen constructor.  Example:<br><br>retcode = call([“ls”, “-l”])<br>File:      /usr/local/Python2.7.3/lib/python2.7/subprocess.py<br>Type:      function<br></em></pre><br></div><br></div><br>? 操作符会截断长的字符串。相反，?? 不会截断长字符串，如果有源代码的话还会以语法高亮形式显示它们。<br><br></div><br><div id="id5" class="section"><br><br>### 历史<br><br>当你在IPython shell下交互的输入了大量命令，语句等等，就象这样:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [1]: a = 1<br><br>In [2]: b = 2<br><br>In [3]: c = 3<br><br>In [4]: d = {}<br><br>In [5]: e = []<br><br>In [6]: for i in range(20):<br>…: e.append(i)<br>…: d[i] = b<br>…:<br></pre><br></div><br></div><br>你可以快速查看那些输入的历史记录:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [7]: hist<br>1: a = 1<br>2: b = 2<br>3: c = 3<br>4: d = {}<br>5: e = []<br>6:<br>for i in range(20):<br>e.append(i)<br>d[i] = b<br></pre><br></div><br></div><br>要去掉历史记录中的序号（这里是1至6），使用命令hist -n:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [8]: hist -n<br>a = 1<br>b = 2<br>c = 3<br>d = {}<br>e = []<br>for i in range(20):<br>e.append(i)<br>d[i] = b<br></pre><br></div><br></div><br>这样你就可以方便的将代码复制到一个文本编辑器中。要在历史记录中搜索，可以先输入一个匹配模型，然后按Ctrl-P。找到一个匹配后，继续按Ctrl-P会向后搜索再上一个匹配，Ctrl-N则是向前搜索最近的匹配。<br><br></div><br></div><br><div id="id6" class="section"><br><br>## 编辑<br><br>当在Python提示符下试验一个想法时，经常需要通过编辑器修改源代码（甚至是反复修改）。在IPython下输入edit就会根据环境变 量$EDITOR调用相应的编辑器。如果$EDITOR为空，则会调用vi（Unix）或记事本（Windows）。要回到IPython提示符，直接退 出编辑器即可。如果是保存并退出编辑器，输入编辑器的代码会在当前名字空间下被自动执行。如果你不想这样，使用edit -x。如果要再次编辑上次最后编辑的代码，使用edit -p。在上一个特性里，我提到使用hist -n可以很容易的将代码拷贝到编辑器。一个更简单的方法是edit加Python列表的切片（slice）语法。假定hist输出如下:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [29]: hist<br>1 : a = 1<br>2 : b = 2<br>3 : c = 3<br>4 : d = {}<br>5 : e = []<br>6 :<br>for i in range(20):<br>e.append(i)<br>d[i] = b<br><br>7 : %hist<br></pre><br></div><br></div><br>现在要将第4，5，6句代码导出到编辑器，只要输入：<br>&gt; <div>edit 4:7</div><br><div id="debugger" class="section"><br><br>### Debugger接口<br><br>IPython 的另一特性是它与Python debugger的接口。在IPython shell下输入magic关键字pdb就会在产生一个异常时自动开关debugging功能。在自动pdb呼叫启用的情况下，当Python遇到一个未 处理的异常时Python debugger就会自动启动。你在debugger中的当前行就是异常发生的那一行。IPython的作者说有时候当他需要在某行代码处debug时， 他会在开始debug的地方放一个表达式1/0。启用pdb，在IPython中运行代码。当解释器处理到1/0那一行时，就会产生一个 ZeroDivisionError异常，然后他就在指定的代码处被带到一个debugging session中了。<br><br></div><br><div id="id7" class="section"><br><br>### 运行<br><br>有时候当你在一个交互式shell中时，如果可以运行某个源文件中的内容将会很有用。运行magic关键字run带一个源文件名就可以在 IPython解释器中运行一个文件了（例如run &lt;源文件&gt; &lt;运行源文件所需参数&gt;）。参数主要有以下这些：
-
-   -n 阻止运行源文件代码时<strong>name</strong>变量被设为”<strong>main</strong>”。这会防止<br><br><div class="highlight-python"><br><div class="highlight"><br><pre>if <strong>name</strong> == “<strong>main</strong>“:<br></pre><br></div><br></div><br>块中的代码被执行<br><em>   -i 源文件就在当前IPython的名字空间下运行而不是在一个新的名字空间中。如果你需要源代码可以使用在交互式session中定义的变量就会很有用。
-
-</em>   -p 使用Python的profiler模块运行并分析源代码。使用该选项代码不会运行在当前名字空间。<br></div><br><div id="id8" class="section"><br><br>### 宏<br><br>宏允许用户为一段代码定义一个名字，这样你可以在以后使用这个名字来运行这段代码。就象在magic关键字edit中提到的，列表切片法也适用于宏定义。假设有一个历史记录如下:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [3]: hist<br>1: l = []<br>2:<br>for i in l:<br>print i<br></pre><br></div><br></div><br>你可以这样来定义一个宏：<br>&gt; <div>In [4]: macro print_l 2 Macro <code>&lt;span class=&quot;pre&quot;&gt;print_l&lt;/span&gt;</code> created. To execute, type its name (without quotes). Macro contents: for i in l: print i</div><br>运行宏:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [5]: print_l<br>Out[5]: Executing Macro…<br></pre><br></div><br></div><br>在这里，列表l是空的，所以没有东西被输出。但这其实是一个很强大的功能，我们可以赋予列表l某些实际值，再次运行宏就会看到不同的结果:<br><div class="highlight-python"><br><div class="highlight"><br><pre>In [6]: l = range(5)<br><br>In [7]: print_l<br>Out[7]: Executing Macro…<br>0<br>1<br>2<br>3<br>4<br></pre><br></div><br></div><br>当运行一个宏时就好象你重新输入了一遍包含在宏print_1中的代码。它还可以使用新定义的变量l。由于Python语法中没有宏结构（也许永远也不会有），在一个交互式shell中它更显得是一个有用的特性。<br><br></div><br></div><br><div id="profiles" class="section"><br><br>## 环境（Profiles）<br><br>就象早前提到的那样，IPython安装了多个配置文件用于不同的环境。配置文件的命名规则是ipythonrc-。要使用特定的配置启动IPython，需要这样<br><div class="highlight-python"><br><div class="highlight"><br><pre><span class="n">ipython</span> <span class="o">-</span><span class="n">p</span><br></pre><br></div><br></div><br>一个创建你自己环境的方法是在$HOME/.ipython目录下创建一个IPython配置文件，名字就叫做ipythonrc- ，这里是你想要的环境的名字。如果你同时进行好几个项目，而这些项目又用到互不相同的特殊的库，这时候每个项目都有自己的环境就很有用了。你可以为每个项 目建立一个配置文件，然后在每个配置文件中import该项目中经常用到的模块。<br><br></div><br><div id="shell" class="section"><br><br>## 使用操作系统的Shell<br><br>使用默认的IPython配置文件，有几个Unix Shell命令（当然，是在Unix系统上），cd，pwd和ls都能象在bash下一样工作。运行其它的shell命令需要在命令前加!或!!。使用magic关键字%sc和%sx可以捕捉shell命令的输出。<br><br>pysh环境可以被用来替换掉shell。使用-p pysh参数启动的IPython，可以接受并执行用户$PATH中的所有命令，同时还可以使用所有的Python模块，Python关键字和内置函数。 例如，我想要创建500个目录，命名规则是从d_0_d到d_500<em>d（译注：呵呵，作者这里犯了个小小的计算错误，你能看出来吗），我可以使用-p pysh启动IPython，然后就象这样:<br><div class="highlight-python"><br><div class="highlight"><br><pre>jjones@cerberus[foo]|2&gt; for i in range(500):<br>|.&gt; mkdir d</pre></div></div></em>${i}_d<br>|.&gt;<br><br></div><br><br>这就会创建500个目录:<br><div class="highlight-python"><br><div class="highlight"><br><pre>jjones@cerberus[foo]|8&gt; ls -d d* | wc -l<br>500<br></pre><br></div><br></div><br>注意这里混合了Python的range函数和Unix的mkdir命令。<br><br>注意，虽然ipython -p pysh提供了一个强大的shell替代品，但它缺少正确的job控制。在运行某个很耗时的任务时按下Ctrl-z将会停止IPython session而不是那个子进程。<br><br><br><div id="id9" class="section"><br><br>## 问题和方法<br><br>虽然作为标准Python shell的替换，IPython总的来说很完美。还是有两个问题给我带来了一些麻烦。感谢IPython的开发者，这两个问题都可以通过配置来解决，每个配置都有清晰的文档。<br><br>第一个问题是关于颜色的。在我的一个系统上，我使用的是一个白色背景的xterm。当我使用?和??查询一个对象或模块的信息时，对象的定义会被显 示，但看起来好象那些参数丢失了。那是因为在构造函数中的的参数默认显示为白色。我的解决办法是在IPython shell中输入colors LightBG。<br><br>第二个问题是关于自动缩进和代码粘贴的。如果autoindent被启用，IPython会对我粘贴的已排好缩进的代码再次应用缩进。例如下面的代码:<br><div class="highlight-python"><br><div class="highlight"><br><pre>for i in range(10):<br>for j in range(10):<br>for k in range(10):<br>pass<br></pre><br></div><br></div><br>会变成:<br><div class="highlight-python"><br><div class="highlight"><br><pre>for i in range(10):<br>for j in range(10):<br>for k in range(10):<br>pass<br></pre><br></div><br></div><br>在这里它并不是个问题，因为在它自身中缩进都保持一致。在其它一些情况下（例子一下子举不出来了），可能会成为真正的问题。可以使用magic关键 字autoindent来开关自动缩进，告诉IPython不要添加多余的缩进──就象在vim中设置粘贴set paste一样。<br><br></div><br><div id="id10" class="section"><br><br>## 结论<br><br>IPython 并不是囗囗性的，也不是完全创新的。Tab自动补全，历史记录搜索，配置环境，配置文件等都早已在其它shells中存在有些年头了。Python拥有各 种级别的自省能力也有一段时间了。但IPython把来自成熟的Unix shell，标准Python shell以及Python语言中的一些最强大的功能整合到了一起。产生出了一个强大的令人难以置信的性能增强工具，我想我会很乐意在接下来的几年中一直 使用它。套用阿基米德的话来说，给我一个强大而又灵活的文本编辑器（vim），一个交互式shell（IPython）以及一个语言（Python），我 就能撬动整个世界。<br><br></div>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://blog.suzf.net/2015/10/18/ipython/" data-id="ciqcd6lrj007qclo9hkxyyad0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
-    </nav>
-  
+    <time datetime="2015-11-03T07:30:39.000Z" itemprop="datePublished">2015-11-03</time>
+  </a>
 </section>
-        
-          <aside id="sidebar">
+
+  <section class="post" itemscope itemprop="blogPost">
   
+    <a href="/2015/10/27/the-puppet-language-style-guide/" title="The Puppet Language Style Guide" itemprop="url">
+  
+    <h1 itemprop="name">The Puppet Language Style Guide</h1>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Apache/">Apache</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Auto-ops/">Auto ops</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CouchBase/">CouchBase</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HA/">HA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hardware/">Hardware</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Highcharts/">Highcharts</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LVS/">LVS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Oracle/">Oracle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Puppet/">Puppet</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomcat/">Tomcat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Zabbix/">Zabbix</a><span class="category-list-count">13</span></li></ul>
-    </div>
-  </div>
+     
+           <p itemprop="description" >Puppet Language Style Guide: Version 2.0.1Puppet: Version 3.7+(Note: While the style guide maps to Puppet 3.7, many of its recommendations a</p>
+        
+    
+    <time datetime="2015-10-27T09:28:53.000Z" itemprop="datePublished">2015-10-27</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/10/22/use-python-send-email/" title="Use Python send mail" itemprop="url">
+  
+    <h1 itemprop="name">Use Python send mail</h1>
+    
+     
+           <p itemprop="description" >I recommend that you use the standard packages email and smtplib together to send Email. Please look at the following example (reproduced fr</p>
+        
+    
+    <time datetime="2015-10-22T13:20:42.000Z" itemprop="datePublished">2015-10-22</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/10/22/php-acquisition-time-and-system-inconsistencies/" title="PHP 获取的时间和系统的时间不一致" itemprop="url">
+  
+    <h1 itemprop="name">PHP 获取的时间和系统的时间不一致</h1>
+    
+     
+       <p itemprop="description" >问题描述：最近发现自动发送工作日报的那个脚本出现了问题, 发送是大昨天的内容.可能是系统时间或是服务器时间配置不正确,下面开始逐步排查.
+^^[11:04:26][root@master01 ~]#dateThu Oct 22 11:05:33 CST 2015^^[11:05:</p>
+      
+    
+    <time datetime="2015-10-22T03:31:01.000Z" itemprop="datePublished">2015-10-22</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/10/20/python-exec-linux-cmd-ways/" title="Python 执行Linux系统命令的N种方法" itemprop="url">
+  
+    <h1 itemprop="name">Python 执行Linux系统命令的N种方法</h1>
+    
+     
+           <p itemprop="description" >前言：很多时候我们会用到python去调用外部工具/命令去实现某种功能。I. oshttps://docs.python.org/2/library/os.htmlos.system执行流程system(command) -&amp;gt; exit_statusExecute the </p>
+        
+    
+    <time datetime="2015-10-20T07:00:56.000Z" itemprop="datePublished">2015-10-20</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/10/19/what-is-couchbase-server/" title="What is Couchbase Server" itemprop="url">
+  
+    <h1 itemprop="name">What is Couchbase Server</h1>
+    
+     
+           <p itemprop="description" >Developer(s)
+Couchbase, Inc.
+
+Stable release
+3.0.3 / March 28, 2015
+
+Written in
+C++, Erlang, C[1]
+
+Operating system
+Cross-platform
+
+Type
+dis</p>
+        
+    
+    <time datetime="2015-10-19T09:04:30.000Z" itemprop="datePublished">2015-10-19</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2015/10/18/ipython/" title="IPython 使用教程" itemprop="url">
+  
+    <h1 itemprop="name">IPython 使用教程</h1>
+    
+     
+           <p itemprop="description" >IPython是一种基于Python的交互式解释器。相较于原生的Python Shell，IPython提供了更为强大的编辑和交互功能，并行计算。IPython拥有一套复杂的并行和分配计算结构。IPython使得各种并行应用能够交互式的被开发、执行、调试和监控。因此IPython</p>
+        
+    
+    <time datetime="2015-10-18T03:08:03.000Z" itemprop="datePublished">2015-10-18</time>
+  </a>
+</section>
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/">Apache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMD/">CMD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ceph/">Ceph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debian/">Debian</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK/">ELK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exsi/">Exsi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GTID/">GTID</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kernel/">Kernel</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kickstart/">Kickstart</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LB/">LB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LVS/">LVS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life/">Life</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lnmp/">Lnmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Log/">Log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/">Mysql</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Proxy/">Proxy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Puppet/">Puppet</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAC/">RAC</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Re/">Re</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZK/">ZK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Zabbix/">Zabbix</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bug/">bug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coredump/">coredump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/couchbase/">couchbase</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debug/">debug</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diy/">diy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/">elasticsearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expect/">expect</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facter/">facter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/faq/">faq</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/highcharts/">highcharts</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idrac/">idrac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iso/">iso</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lvm/">lvm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pip/">pip</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rewrite/">rewrite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsync/">rsync</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsyslog/">rsyslog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snmp/">snmp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/strace/">strace</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sudo/">sudo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/">zookeeper</a><span class="tag-list-count">4</span></li></ul>
-    </div>
-  </div>
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/Ceph/" style="font-size: 10.91px;">Ceph</a> <a href="/tags/Debian/" style="font-size: 10px;">Debian</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Exsi/" style="font-size: 10px;">Exsi</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GTID/" style="font-size: 10.91px;">GTID</a> <a href="/tags/Kernel/" style="font-size: 10.91px;">Kernel</a> <a href="/tags/Kickstart/" style="font-size: 10px;">Kickstart</a> <a href="/tags/LB/" style="font-size: 10px;">LB</a> <a href="/tags/LVS/" style="font-size: 10px;">LVS</a> <a href="/tags/Life/" style="font-size: 10px;">Life</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Lnmp/" style="font-size: 10px;">Lnmp</a> <a href="/tags/Log/" style="font-size: 10px;">Log</a> <a href="/tags/MongoDB/" style="font-size: 11.82px;">MongoDB</a> <a href="/tags/Mysql/" style="font-size: 19.09px;">Mysql</a> <a href="/tags/Nginx/" style="font-size: 16.36px;">Nginx</a> <a href="/tags/NoSQL/" style="font-size: 12.73px;">NoSQL</a> <a href="/tags/Oracle/" style="font-size: 11.82px;">Oracle</a> <a href="/tags/PHP/" style="font-size: 10.91px;">PHP</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/Puppet/" style="font-size: 14.55px;">Puppet</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/RAC/" style="font-size: 10.91px;">RAC</a> <a href="/tags/Re/" style="font-size: 11.82px;">Re</a> <a href="/tags/ZK/" style="font-size: 10px;">ZK</a> <a href="/tags/Zabbix/" style="font-size: 18.18px;">Zabbix</a> <a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/coredump/" style="font-size: 10px;">coredump</a> <a href="/tags/couchbase/" style="font-size: 10px;">couchbase</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/diy/" style="font-size: 10px;">diy</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/expect/" style="font-size: 10px;">expect</a> <a href="/tags/facter/" style="font-size: 10px;">facter</a> <a href="/tags/faq/" style="font-size: 17.27px;">faq</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/highcharts/" style="font-size: 10px;">highcharts</a> <a href="/tags/idrac/" style="font-size: 10px;">idrac</a> <a href="/tags/iso/" style="font-size: 10px;">iso</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/lvm/" style="font-size: 10px;">lvm</a> <a href="/tags/pip/" style="font-size: 12.73px;">pip</a> <a href="/tags/redis/" style="font-size: 15.45px;">redis</a> <a href="/tags/rewrite/" style="font-size: 10px;">rewrite</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/rsyslog/" style="font-size: 10px;">rsyslog</a> <a href="/tags/snmp/" style="font-size: 10px;">snmp</a> <a href="/tags/strace/" style="font-size: 10px;">strace</a> <a href="/tags/sudo/" style="font-size: 10px;">sudo</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/tomcat/" style="font-size: 13.64px;">tomcat</a> <a href="/tags/vim/" style="font-size: 10.91px;">vim</a> <a href="/tags/web/" style="font-size: 12.73px;">web</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/zookeeper/" style="font-size: 12.73px;">zookeeper</a>
-    </div>
-  </div>
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">10</span></li></ul>
-    </div>
-  </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/05/12/839/">Linux 下使用 strace 诊断疑难杂症</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/27/MySQL_mysqldump_数据导出详解/">MySQL mysqldump 数据导出详解</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/24/Python_Re_module_learn/">Python Re module learn</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/22/Python正则表达式操作指南/">Python正则表达式操作指南</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/18/Hello_Kafka/">Hello Kafka</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
 </aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 Jeffrey Su<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+</div>
     </div>
-  </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
 
-  </div>
-</body>
-</html>
+
+  </body>
+ </html>
+
