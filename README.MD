@@ -1,1 +1,1 @@
-hello github pages
+HELLO GITHUB PAGES
