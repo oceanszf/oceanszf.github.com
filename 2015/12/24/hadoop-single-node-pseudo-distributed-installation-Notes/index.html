@@ -1,0 +1,656 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hadoop 单节点_伪分布 安装手记 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="实验环境CentOS 6.XHadoop 2.6.0JDK    1.8.0_65
+目的这篇文档的目的是帮助你快速完成单机上的Hadoop安装与使用以便你对Hadoop分布式文件系统(HDFS)和Map-Reduce框架有所体会，比如在HDFS上运行示例程序或简单作业等。
+先决条件支持平台GNU/L">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/suzf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/" title="Hadoop 单节点_伪分布 安装手记" itemprop="url">Hadoop 单节点_伪分布 安装手记</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-12-24T02:40:45.000Z" itemprop="datePublished">2015-12-24</time>
+    Updated:<time datetime="2016-01-13T06:45:32.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_install_ssh_rsync_-y"><span class="toc-number">1.</span> <span class="toc-text">yum install ssh rsync -y</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssh__u5FC5_u987B_u5B89_u88C5_u5E76_u4E14_u4FDD_u8BC1_sshd_u4E00_u76F4_u8FD0_u884C_uFF0C_u4EE5_u4FBF_u7528Hadoop__u811A_u672C_u7BA1_u7406_u8FDC_u7AEFHadoop_u5B88_u62A4_u8FDB_u7A0B_u3002"><span class="toc-number">2.</span> <span class="toc-text">ssh 必须安装并且保证 sshd一直运行，以便用Hadoop 脚本管理远端Hadoop守护进程。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useradd_-m_hadoop_-s_/bin/bash__23__u521B_u5EFA_u65B0_u7528_u6237hadoop"><span class="toc-number">3.</span> <span class="toc-text">useradd -m hadoop -s /bin/bash   # 创建新用户hadoop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/hosts_7C_grep_ocean-lab"><span class="toc-number">4.</span> <span class="toc-text">cat /etc/hosts| grep ocean-lab</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget__u2013no-cookies__u2013no-check-certificate__u2013header__u201CCookie_3A_gpw_e24_3Dhttp_253A_252F_252Fwww-oracle-com_252F_3B_oraclelicense_3Daccept-securebackup-cookie_u201D__u201Chttp_3A//download-oracle-com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64-rpm_u201C"><span class="toc-number">5.</span> <span class="toc-text">wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm“</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rpm_-Uvh_jdk-8u65-linux-x64-rpm"><span class="toc-number">6.</span> <span class="toc-text">rpm -Uvh jdk-8u65-linux-x64.rpm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201Cexport_JAVA_HOME_3D/usr/java/jdk1-8-0_65_u201D__26gt_3B_26gt_3B_/home/hadoop/-bashrc"><span class="toc-number">7.</span> <span class="toc-text">echo “export JAVA_HOME=/usr/java/jdk1.8.0_65” >> /home/hadoop/.bashrc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#source_/home/hadoop/-bashrc"><span class="toc-number">8.</span> <span class="toc-text">source /home/hadoop/.bashrc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__24JAVA_HOME"><span class="toc-number">9.</span> <span class="toc-text">echo $JAVA_HOME</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget_http_3A//apache-fayea-com/hadoop/common/hadoop-2-6-0/hadoop-2-6-0-tar-gz"><span class="toc-number">10.</span> <span class="toc-text">wget http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xf_hadoop-2-6-0-tar-gz_-C_/usr/local"><span class="toc-number">11.</span> <span class="toc-text">tar xf hadoop-2.6.0.tar.gz -C /usr/local</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mv_/usr/local/hadoop-2-6-0_/usr/local/hadoop"><span class="toc-number">11.0.0.1.</span> <span class="toc-text">mv /usr/local/hadoop-2.6.0 /usr/local/hadoop</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bin/hadoop"><span class="toc-number">12.</span> <span class="toc-text">bin/hadoop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mkdir_input"><span class="toc-number">13.</span> <span class="toc-text">mkdir input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_conf/*-xml_input"><span class="toc-number">14.</span> <span class="toc-text">cp conf/*.xml input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_-/input/_-/ouput__u2018dfs_5Ba-z-_5D+_u2019"><span class="toc-number">15.</span> <span class="toc-text">./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep ./input/ ./ouput ‘dfs[a-z.]+’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_output/*"><span class="toc-number">16.</span> <span class="toc-text">cat output/*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/hosts_7C_grep_ocean-lab-1"><span class="toc-number">17.</span> <span class="toc-text">cat /etc/hosts| grep ocean-lab</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hadoop_Environment_Variables"><span class="toc-number">18.</span> <span class="toc-text">Hadoop Environment Variables</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssh_localhost_date"><span class="toc-number">19.</span> <span class="toc-text">ssh localhost date</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssh-keygen_-t_dsa_-P__u2018_u2019_-f__7E/-ssh/id_dsa"><span class="toc-number">20.</span> <span class="toc-text">ssh-keygen -t dsa -P ‘’ -f ~/.ssh/id_dsa</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat__7E/-ssh/id_dsa-pub__26gt_3B_26gt_3B__7E/-ssh/authorized_keys"><span class="toc-number">21.</span> <span class="toc-text">cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#u8FD0_u884CHadoop_u4F2A_u5206_u5E03_u5F0F_u5B9E_u4F8B"><span class="toc-number">21.1.</span> <span class="toc-text">运行Hadoop伪分布式实例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-mkdir_-p_/user/hadoop"><span class="toc-number">22.</span> <span class="toc-text">./bin/hdfs dfs -mkdir -p /user/hadoop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hadoop_fs_-ls_/user/hadoop"><span class="toc-number">23.</span> <span class="toc-text">./bin/hadoop fs -ls /user/hadoop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-mkdir_input"><span class="toc-number">24.</span> <span class="toc-text">./bin/hdfs dfs -mkdir input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-put_-/etc/hadoop/*-xml_input"><span class="toc-number">25.</span> <span class="toc-text">./bin/hdfs dfs -put ./etc/hadoop/*.xml input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-ls_input"><span class="toc-number">26.</span> <span class="toc-text">./bin/hdfs dfs -ls input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_input_output__u2018dfs_5Ba-z-_5D+_u2019"><span class="toc-number">27.</span> <span class="toc-text">./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep input output ‘dfs[a-z.]+’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rm_-r_-/output__23__u5148_u5220_u9664_u672C_u5730_u7684_output__u6587_u4EF6_u5939_uFF08_u5982_u679C_u5B58_u5728_uFF09"><span class="toc-number">28.</span> <span class="toc-text">rm -r ./output    # 先删除本地的 output 文件夹（如果存在）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-get_output_-/output__23__u5C06_HDFS__u4E0A_u7684_output__u6587_u4EF6_u5939_u62F7_u8D1D_u5230_u672C_u673A"><span class="toc-number">29.</span> <span class="toc-text">./bin/hdfs dfs -get output ./output     # 将 HDFS 上的 output 文件夹拷贝到本机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_-/output/*"><span class="toc-number">30.</span> <span class="toc-text">cat ./output/*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5220_u9664_output__u6587_u4EF6_u5939"><span class="toc-number">31.</span> <span class="toc-text">删除 output 文件夹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/sbin/start-yarn-sh__23__u542F_u52A8YARN"><span class="toc-number">32.</span> <span class="toc-text">./sbin/start-yarn.sh                                # 启动YARN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/sbin/mr-jobhistory-daemon-sh_start_historyserver__23__u5F00_u542F_u5386_u53F2_u670D_u52A1_u5668_uFF0C_u624D_u80FD_u5728Web_u4E2D_u67E5_u770B_u4EFB_u52A1_u8FD0_u884C_u60C5_u51B5"><span class="toc-number">33.</span> <span class="toc-text">./sbin/mr-jobhistory-daemon.sh start historyserver  # 开启历史服务器，才能在Web中查看任务运行情况</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/sbin/stop-yarn-sh"><span class="toc-number">34.</span> <span class="toc-text">./sbin/stop-yarn.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/sbin/mr-jobhistory-daemon-sh_stop_historyserver"><span class="toc-number">35.</span> <span class="toc-text">./sbin/mr-jobhistory-daemon.sh stop historyserver</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u67E5_u770BHDFS_u6587_u4EF6_u5217_u8868"><span class="toc-number">36.</span> <span class="toc-text">查看HDFS文件列表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u6587_u4EF6_u76EE_u5F55"><span class="toc-number">37.</span> <span class="toc-text">创建文件目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5220_u9664_u6587_u4EF6"><span class="toc-number">38.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4E0A_u4F20_u4E00_u4E2A_u672C_u673A_u6587_u4EF6_u5230HDFS_u4E2D/usr/local/log/_u76EE_u5F55_u4E0B"><span class="toc-number">39.</span> <span class="toc-text">上传一个本机文件到HDFS中/usr/local/log/目录下</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4E0B_u8F7D"><span class="toc-number">40.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u67E5_u770B_u6587_u4EF6"><span class="toc-number">41.</span> <span class="toc-text">查看文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u67E5_u770BHDFS_u57FA_u672C_u4F7F_u7528_u60C5_u51B5"><span class="toc-number">42.</span> <span class="toc-text">查看HDFS基本使用情况</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hadoop_dfsadmin_-report"><span class="toc-number">43.</span> <span class="toc-text">hadoop dfsadmin -report</span></a></li></ol>
+		</div>
+		
+		<p>实验环境<br>CentOS 6.X<br>Hadoop 2.6.0<br>JDK    1.8.0_65</p>
+<p>目的<br>这篇文档的目的是帮助你快速完成单机上的Hadoop安装与使用以便你对Hadoop分布式文件系统(HDFS)和Map-Reduce框架有所体会，比如在HDFS上运行示例程序或简单作业等。</p>
+<p>先决条件<br>支持平台<br>GNU/Linux是产品开发和运行的平台。 Hadoop已在有2000个节点的GNU/Linux主机组成的集群系统上得到验证。<br>Win32平台是作为开发平台支持的。由于分布式操作尚未在Win32平台上充分测试，所以还不作为一个生产平台被支持。</p>
+<p>安装软件<br>如果你的集群尚未安装所需软件，你得首先安装它们。<br>以 CentOS 为例:</p>
+<h1 id="yum_install_ssh_rsync_-y"><a href="#yum_install_ssh_rsync_-y" class="headerlink" title="yum install ssh rsync -y"></a>yum install ssh rsync -y</h1><h1 id="ssh__u5FC5_u987B_u5B89_u88C5_u5E76_u4E14_u4FDD_u8BC1_sshd_u4E00_u76F4_u8FD0_u884C_uFF0C_u4EE5_u4FBF_u7528Hadoop__u811A_u672C_u7BA1_u7406_u8FDC_u7AEFHadoop_u5B88_u62A4_u8FDB_u7A0B_u3002"><a href="#ssh__u5FC5_u987B_u5B89_u88C5_u5E76_u4E14_u4FDD_u8BC1_sshd_u4E00_u76F4_u8FD0_u884C_uFF0C_u4EE5_u4FBF_u7528Hadoop__u811A_u672C_u7BA1_u7406_u8FDC_u7AEFHadoop_u5B88_u62A4_u8FDB_u7A0B_u3002" class="headerlink" title="ssh 必须安装并且保证 sshd一直运行，以便用Hadoop 脚本管理远端Hadoop守护进程。"></a>ssh 必须安装并且保证 sshd一直运行，以便用Hadoop 脚本管理远端Hadoop守护进程。</h1><p>创建用户</p>
+<h1 id="useradd_-m_hadoop_-s_/bin/bash__23__u521B_u5EFA_u65B0_u7528_u6237hadoop"><a href="#useradd_-m_hadoop_-s_/bin/bash__23__u521B_u5EFA_u65B0_u7528_u6237hadoop" class="headerlink" title="useradd -m hadoop -s /bin/bash   # 创建新用户hadoop"></a>useradd -m hadoop -s /bin/bash   # 创建新用户hadoop</h1><p>Hosts解析</p>
+<h1 id="cat_/etc/hosts_7C_grep_ocean-lab"><a href="#cat_/etc/hosts_7C_grep_ocean-lab" class="headerlink" title="cat /etc/hosts| grep ocean-lab"></a>cat /etc/hosts| grep ocean-lab</h1><p>192.168.9.70     ocean-lab.ocean.org  ocean-lab</p>
+<p>安装jdk<br>JDK – <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br>首先安装JAVA环境</p>
+<h1 id="wget__u2013no-cookies__u2013no-check-certificate__u2013header__u201CCookie_3A_gpw_e24_3Dhttp_253A_252F_252Fwww-oracle-com_252F_3B_oraclelicense_3Daccept-securebackup-cookie_u201D__u201Chttp_3A//download-oracle-com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64-rpm_u201C"><a href="#wget__u2013no-cookies__u2013no-check-certificate__u2013header__u201CCookie_3A_gpw_e24_3Dhttp_253A_252F_252Fwww-oracle-com_252F_3B_oraclelicense_3Daccept-securebackup-cookie_u201D__u201Chttp_3A//download-oracle-com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64-rpm_u201C" class="headerlink" title="wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm“"></a>wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “<a href="http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm" target="_blank" rel="external">http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm</a>“</h1><h1 id="rpm_-Uvh_jdk-8u65-linux-x64-rpm"><a href="#rpm_-Uvh_jdk-8u65-linux-x64-rpm" class="headerlink" title="rpm -Uvh jdk-8u65-linux-x64.rpm"></a>rpm -Uvh jdk-8u65-linux-x64.rpm</h1><p>配置 Java</p>
+<h1 id="echo__u201Cexport_JAVA_HOME_3D/usr/java/jdk1-8-0_65_u201D__26gt_3B_26gt_3B_/home/hadoop/-bashrc"><a href="#echo__u201Cexport_JAVA_HOME_3D/usr/java/jdk1-8-0_65_u201D__26gt_3B_26gt_3B_/home/hadoop/-bashrc" class="headerlink" title="echo “export JAVA_HOME=/usr/java/jdk1.8.0_65” &gt;&gt; /home/hadoop/.bashrc"></a>echo “export JAVA_HOME=/usr/java/jdk1.8.0_65” &gt;&gt; /home/hadoop/.bashrc</h1><h1 id="source_/home/hadoop/-bashrc"><a href="#source_/home/hadoop/-bashrc" class="headerlink" title="source /home/hadoop/.bashrc"></a>source /home/hadoop/.bashrc</h1><h1 id="echo__24JAVA_HOME"><a href="#echo__24JAVA_HOME" class="headerlink" title="echo $JAVA_HOME"></a>echo $JAVA_HOME</h1><p>/usr/java/jdk1.8.0_65</p>
+<p>下载安装hadoop<br>为了获取Hadoop的发行版，从Apache的某个镜像服务器上下载最近的 稳定发行版。<br>运行Hadoop集群的准备工作</p>
+<h1 id="wget_http_3A//apache-fayea-com/hadoop/common/hadoop-2-6-0/hadoop-2-6-0-tar-gz"><a href="#wget_http_3A//apache-fayea-com/hadoop/common/hadoop-2-6-0/hadoop-2-6-0-tar-gz" class="headerlink" title="wget http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz"></a>wget <a href="http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz" target="_blank" rel="external">http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz</a></h1><p>解压所下载的Hadoop发行版。编辑 conf/hadoop-env.sh文件，至少需要将JAVA_HOME设置为Java安装根路径。</p>
+<h1 id="tar_xf_hadoop-2-6-0-tar-gz_-C_/usr/local"><a href="#tar_xf_hadoop-2-6-0-tar-gz_-C_/usr/local" class="headerlink" title="tar xf hadoop-2.6.0.tar.gz -C /usr/local"></a>tar xf hadoop-2.6.0.tar.gz -C /usr/local</h1><h4 id="mv_/usr/local/hadoop-2-6-0_/usr/local/hadoop"><a href="#mv_/usr/local/hadoop-2-6-0_/usr/local/hadoop" class="headerlink" title="mv /usr/local/hadoop-2.6.0 /usr/local/hadoop"></a>mv /usr/local/hadoop-2.6.0 /usr/local/hadoop</h4><p>尝试如下命令：</p>
+<h1 id="bin/hadoop"><a href="#bin/hadoop" class="headerlink" title="bin/hadoop"></a>bin/hadoop</h1><p>将会显示hadoop 脚本的使用文档。</p>
+<p>现在你可以用以下<strong>三种支持的模式</strong>中的一种启动Hadoop集群：<br>单机模式<br>伪分布式模式<br>完全分布式模式</p>
+<p><strong>单机模式的操作方法</strong></p>
+<p>默认情况下，Hadoop被配置成以非分布式模式运行的一个独立Java进程。这对调试非常有帮助。<br>现在我们可以执行例子来感受下 Hadoop 的运行。Hadoop 附带了丰富的例子包括 wordcount、terasort、join、grep 等。<br>在此我们选择运行 grep 例子，我们将 input 文件夹中的所有文件作为输入，筛选当中符合正则表达式 dfs[a-z.]+ 的单词并统计出现的次数，最后输出结果到 output 文件夹中。</p>
+<h1 id="mkdir_input"><a href="#mkdir_input" class="headerlink" title="mkdir input"></a>mkdir input</h1><h1 id="cp_conf/*-xml_input"><a href="#cp_conf/*-xml_input" class="headerlink" title="cp conf/*.xml input"></a>cp conf/*.xml input</h1><h1 id="/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_-/input/_-/ouput__u2018dfs_5Ba-z-_5D+_u2019"><a href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_-/input/_-/ouput__u2018dfs_5Ba-z-_5D+_u2019" class="headerlink" title="./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep ./input/ ./ouput ‘dfs[a-z.]+’"></a>./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep ./input/ ./ouput ‘dfs[a-z.]+’</h1><h1 id="cat_output/*"><a href="#cat_output/*" class="headerlink" title="cat output/*"></a>cat output/*</h1><p>若执行成功的话会输出很多作业的相关信息，最后的输出信息如下图所示。作业的结果会输出在指定的 output 文件夹中，通过命令 cat ./output/<em> 查看结果，符合正则的单词 dfsadmin 出现了1次：<br>[10:57:58][hadoop@ocean-lab hadoop-2.6.0]$ cat ./ouput/</em><br>1 dfsadmin</p>
+<p>注意，Hadoop 默认不会覆盖结果文件，因此再次运行上面实例会提示出错，需要先将 ./output 删除。<br>否则会报如下错误<br>INFO jvm.JvmMetrics: Cannot initialize JVM Metrics with processName=JobTracker, sessionId= - already initialized<br>org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/usr/local/hadoop-2.6.0/ouput already exists<br>若出现提示 “INFO metrics.MetricsUtil: Unable to obtain hostName java.net.UnknowHostException”，这需要执行如下命令修改 hosts 文件，为你的主机名增加IP映射：</p>
+<h1 id="cat_/etc/hosts_7C_grep_ocean-lab-1"><a href="#cat_/etc/hosts_7C_grep_ocean-lab-1" class="headerlink" title="cat /etc/hosts| grep ocean-lab"></a>cat /etc/hosts| grep ocean-lab</h1><p>192.168.9.70     ocean-lab.ocean.org  ocean-lab</p>
+<p><strong>伪分布式模式的操作方法</strong></p>
+<p>Hadoop可以在单节点上以所谓的伪分布式模式运行，此时每一个Hadoop守护进程都作为一个独立的Java进程运行。<br>节点既作为 NameNode 也作为 DataNode，同时，读取的是 HDFS 中的文件。</p>
+<p>在设置 Hadoop 伪分布式配置前，我们还需要设置 HADOOP 环境变量，执行如下命令在 ~/.bashrc 中设置</p>
+<h1 id="Hadoop_Environment_Variables"><a href="#Hadoop_Environment_Variables" class="headerlink" title="Hadoop Environment Variables"></a>Hadoop Environment Variables</h1><p>export HADOOP_HOME=/usr/local/hadoop-2.6.0<br>export HADOOP_INSTALL=$HADOOP_HOME<br>export HADOOP_MAPRED_HOME=$HADOOP_HOME<br>export HADOOP_COMMON_HOME=$HADOOP_HOME<br>export HADOOP_HDFS_HOME=$HADOOP_HOME<br>export YARN_HOME=$HADOOP_HOME<br>export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native<br>export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin</p>
+<p>source ~/.bashrc</p>
+<p>配置</p>
+<p>使用如下的 etc/hadoop/core-site.xml</p>
+<p>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;hadoop.tmp.dir&lt;/name&gt;<br>&lt;value&gt;file:/usr/local/hadoop-2.6.0/tmp&lt;/value&gt;<br>&lt;description&gt;Abase for other temporary directories.&lt;/description&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;fs.defaultFS&lt;/name&gt;<br>&lt;value&gt;hdfs://localhost:9000&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
+<p>同样的，修改配置文件 <strong>hdfs-site.xml</strong></p>
+<p>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.replication&lt;/name&gt;<br>&lt;value&gt;1&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;<br>&lt;value&gt;file:/usr/local/hadoop-2.6.0/tmp/dfs/name&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;<br>&lt;value&gt;file:/usr/local/hadoop-2.6.0/tmp/dfs/data&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
+<p>&nbsp;</p>
+<p><strong>关于Hadoop配置项的一点说明</strong></p>
+<p>虽 然只需要配置 fs.defaultFS 和 dfs.replication 就可以运行（官方教程如此），不过若没有配置 hadoop.tmp.dir 参数，则默认使用的临时目录为 /tmp/hadoo-hadoop，而这个目录在重启时有可能被系统清理掉，导致必须重新执行 format 才行。所以我们进行了设置，同时也指定 dfs.namenode.name.dir 和 dfs.datanode.data.dir，否则在接下来的步骤中可能会出错。</p>
+<p>&nbsp;</p>
+<p>免密码ssh设置<br>现在确认能否不输入口令就用ssh登录localhost:</p>
+<h1 id="ssh_localhost_date"><a href="#ssh_localhost_date" class="headerlink" title="ssh localhost date"></a>ssh localhost date</h1><p>如果不输入口令就无法用ssh登陆localhost，执行下面的命令：</p>
+<h1 id="ssh-keygen_-t_dsa_-P__u2018_u2019_-f__7E/-ssh/id_dsa"><a href="#ssh-keygen_-t_dsa_-P__u2018_u2019_-f__7E/-ssh/id_dsa" class="headerlink" title="ssh-keygen -t dsa -P ‘’ -f ~/.ssh/id_dsa"></a>ssh-keygen -t dsa -P ‘’ -f ~/.ssh/id_dsa</h1><h1 id="cat__7E/-ssh/id_dsa-pub__26gt_3B_26gt_3B__7E/-ssh/authorized_keys"><a href="#cat__7E/-ssh/id_dsa-pub__26gt_3B_26gt_3B__7E/-ssh/authorized_keys" class="headerlink" title="cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys"></a>cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</h1><p>#chmod  600 ~/.ssh/authorized_keys</p>
+<p>格式化一个新的分布式文件系统：<br>$ bin/hadoop namenode -format<br>15/12/23 11:30:20 INFO util.GSet: VM type       = 64-bit<br>15/12/23 11:30:20 INFO util.GSet: 0.029999999329447746% max memory 966.7 MB = 297.0 KB<br>15/12/23 11:30:20 INFO util.GSet: capacity      = 2^15 = 32768 entries<br>15/12/23 11:30:20 INFO namenode.NNConf: ACLs enabled? false<br>15/12/23 11:30:20 INFO namenode.NNConf: XAttrs enabled? true<br>15/12/23 11:30:20 INFO namenode.NNConf: Maximum size of an xattr: 16384<br>15/12/23 11:30:20 INFO namenode.FSImage: Allocated new BlockPoolId: BP-823870322-192.168.9.70-1450841420347<br>15/12/23 11:30:20 INFO common.Storage: Storage directory /usr/local/hadoop-2.6.0/tmp/dfs/name has been successfully formatted.<br>15/12/23 11:30:20 INFO namenode.NNStorageRetentionManager: Going to retain 1 images with txid &gt;= 0<br>15/12/23 11:30:20 INFO util.ExitUtil: <strong>Exiting with status 0</strong><br>15/12/23 11:30:20 INFO namenode.NameNode: SHUTDOWN_MSG:<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>SHUTDOWN_MSG: Shutting down NameNode at ocean-lab.ocean.org/192.168.9.70<br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/<br><strong>成功的话，会看到 “successfully formatted” 和 “Exitting with status 0″ 的提示</strong></p>
+<p><strong>注意</strong><br>下次启动 hadoop 时，无需进行 NameNode 的初始化，只需要运行 ./sbin/start-dfs.sh 就可以！</p>
+<p>启动 NameNode 和  DataNode</p>
+<p>$  ./sbin/start-dfs.sh<br>15/12/23 11:37:20 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable<br>Starting namenodes on [localhost]<br>localhost: starting namenode, logging to /usr/local/hadoop-2.6.0/logs/hadoop-hadoop-namenode-ocean-lab.ocean.org.out<br>localhost: starting datanode, logging to /usr/local/hadoop-2.6.0/logs/hadoop-hadoop-datanode-ocean-lab.ocean.org.out<br>Starting secondary namenodes [0.0.0.0]<br>The authenticity of host ‘0.0.0.0 (0.0.0.0)’ can’t be established.<br>RSA key fingerprint is a5:26:42:a0:5f:da:a2:88:52:04:9c:7f:8d:6a:98:9b.<br>Are you sure you want to continue connecting (yes/no)?<strong> yes</strong><br>0.0.0.0: Warning: Permanently added ‘0.0.0.0’ (RSA) to the list of known hosts.<br>0.0.0.0: starting secondarynamenode, logging to /usr/local/hadoop-2.6.0/logs/hadoop-hadoop-secondarynamenode-ocean-lab.ocean.org.out<br>15/12/23 11:37:44 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable</p>
+<p>[13:57:08][hadoop@ocean-lab hadoop-2.6.0]$ jps<br>27686 <strong>SecondaryNameNode</strong><br>28455 Jps<br>27501<strong> DataNode</strong><br>27405 <strong>NameNode</strong><br>27006 GetConf</p>
+<p>如果没有进程则说明启动失败 查看日志bebug</p>
+<p>成功启动后，可以访问 Web 界面  <a href="http://oceanszf.blog.51cto.com/50070" target="_blank" rel="external">http://[ip,fqdn]:/50070</a>  查看 NameNode 和 Datanode 信息，还可以在线查看 HDFS 中的文件。</p>
+<p><a href="http://s1.51cto.com/wyfs02/M00/78/52/wKiom1Z6Q3vAlkXcAACeq3_WIqU567.png" target="_blank" rel="external"><img src="http://s1.51cto.com/wyfs02/M00/78/52/wKiom1Z6Q3vAlkXcAACeq3_WIqU567.png" alt="wKiom1Z6Q3vAlkXcAACeq3_WIqU567.png" title="hadoop1.PNG"></a></p>
+<h2 id="u8FD0_u884CHadoop_u4F2A_u5206_u5E03_u5F0F_u5B9E_u4F8B"><a href="#u8FD0_u884CHadoop_u4F2A_u5206_u5E03_u5F0F_u5B9E_u4F8B" class="headerlink" title="运行Hadoop伪分布式实例"></a>运行Hadoop伪分布式实例</h2><p>上面的单机模式，grep 例子读取的是本地数据，伪分布式读取的则是 HDFS 上的数据。</p>
+<p>要使用 HDFS，首先需要在 HDFS 中创建用户目录：</p>
+<h1 id="/bin/hdfs_dfs_-mkdir_-p_/user/hadoop"><a href="#/bin/hdfs_dfs_-mkdir_-p_/user/hadoop" class="headerlink" title="./bin/hdfs dfs -mkdir -p /user/hadoop"></a>./bin/hdfs dfs -mkdir -p /user/hadoop</h1><h1 id="/bin/hadoop_fs_-ls_/user/hadoop"><a href="#/bin/hadoop_fs_-ls_/user/hadoop" class="headerlink" title="./bin/hadoop fs -ls /user/hadoop"></a>./bin/hadoop fs -ls /user/hadoop</h1><p>Found 1 items<br>drwxr-xr-x   - hadoop supergroup          0 2015-12-23 15:03 /user/hadoop/input</p>
+<p>接 着将 ./etc/hadoop 中的 xml 文件作为输入文件复制到分布式文件系统中，即将 /usr/local/hadoop/etc/hadoop 复制到分布式文件系统中的 /user/hadoop/input 中。我们使用的是 hadoop 用户，并且已创建相应的用户目录 /user/hadoop ，因此在命令中就可以使用相对路径如 input，其对应的绝对路径就是 /user/hadoop/input:</p>
+<h1 id="/bin/hdfs_dfs_-mkdir_input"><a href="#/bin/hdfs_dfs_-mkdir_input" class="headerlink" title="./bin/hdfs dfs -mkdir input"></a>./bin/hdfs dfs -mkdir input</h1><h1 id="/bin/hdfs_dfs_-put_-/etc/hadoop/*-xml_input"><a href="#/bin/hdfs_dfs_-put_-/etc/hadoop/*-xml_input" class="headerlink" title="./bin/hdfs dfs -put ./etc/hadoop/*.xml input"></a>./bin/hdfs dfs -put ./etc/hadoop/*.xml input</h1><p>复制完成后，可以通过如下命令查看 HDFS 中的文件列表：</p>
+<h1 id="/bin/hdfs_dfs_-ls_input"><a href="#/bin/hdfs_dfs_-ls_input" class="headerlink" title="./bin/hdfs dfs -ls input"></a>./bin/hdfs dfs -ls input</h1><p>-rw-r–r–   1 hadoop supergroup       4436 2015-12-23 16:46 input/capacity-scheduler.xml<br>-rw-r–r–   1 hadoop supergroup       1180 2015-12-23 16:46 input/core-site.xml<br>-rw-r–r–   1 hadoop supergroup       9683 2015-12-23 16:46 input/hadoop-policy.xml<br>-rw-r–r–   1 hadoop supergroup       1136 2015-12-23 16:46 input/hdfs-site.xml<br>-rw-r–r–   1 hadoop supergroup        620 2015-12-23 16:46 input/httpfs-site.xml<br>-rw-r–r–   1 hadoop supergroup       3523 2015-12-23 16:46 input/kms-acls.xml<br>-rw-r–r–   1 hadoop supergroup       5511 2015-12-23 16:46 input/kms-site.xml<br>-rw-r–r–   1 hadoop supergroup        858 2015-12-23 16:46 input/mapred-site.xml<br>-rw-r–r–   1 hadoop supergroup        690 2015-12-23 16:46 input/yarn-site.xml</p>
+<p>伪分布式运行 MapReduce 作业的方式跟单机模式相同，区别在于伪分布式读取的是HDFS中的文件（可以将单机步骤中创建的本地 input 文件夹，输出结果 output 文件夹都删掉来验证这一点）。</p>
+<h1 id="/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_input_output__u2018dfs_5Ba-z-_5D+_u2019"><a href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_input_output__u2018dfs_5Ba-z-_5D+_u2019" class="headerlink" title="./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep input output ‘dfs[a-z.]+’"></a>./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep input output ‘dfs[a-z.]+’</h1><p>查看运行结果的命令（查看的是位于 HDFS 中的输出结果）：<br>$ ./bin/hdfs dfs -cat output/*<br>1   dfsadmin<br>1   dfs.replication<br>1   dfs.namenode.name.dir<br>1   dfs.datanode.data.dir</p>
+<p>结果如下，注意到刚才我们已经更改了配置文件，所以运行结果不同。<br>Hadoop伪分布式运行grep的结果Hadoop伪分布式运行grep的结果<br>我们也可以将运行结果取回到本地：</p>
+<h1 id="rm_-r_-/output__23__u5148_u5220_u9664_u672C_u5730_u7684_output__u6587_u4EF6_u5939_uFF08_u5982_u679C_u5B58_u5728_uFF09"><a href="#rm_-r_-/output__23__u5148_u5220_u9664_u672C_u5730_u7684_output__u6587_u4EF6_u5939_uFF08_u5982_u679C_u5B58_u5728_uFF09" class="headerlink" title="rm -r ./output    # 先删除本地的 output 文件夹（如果存在）"></a>rm -r ./output    # 先删除本地的 output 文件夹（如果存在）</h1><h1 id="/bin/hdfs_dfs_-get_output_-/output__23__u5C06_HDFS__u4E0A_u7684_output__u6587_u4EF6_u5939_u62F7_u8D1D_u5230_u672C_u673A"><a href="#/bin/hdfs_dfs_-get_output_-/output__23__u5C06_HDFS__u4E0A_u7684_output__u6587_u4EF6_u5939_u62F7_u8D1D_u5230_u672C_u673A" class="headerlink" title="./bin/hdfs dfs -get output ./output     # 将 HDFS 上的 output 文件夹拷贝到本机"></a>./bin/hdfs dfs -get output ./output     # 将 HDFS 上的 output 文件夹拷贝到本机</h1><h1 id="cat_-/output/*"><a href="#cat_-/output/*" class="headerlink" title="cat ./output/*"></a>cat ./output/*</h1><p>1   dfsadmin<br>1   dfs.replication<br>1   dfs.namenode.name.dir<br>1   dfs.datanode.data.dir</p>
+<p>Hadoop 运行程序时，输出目录不能存在，否则会提示错误 “org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory hdfs://localhost:9000/user/hadoop/output already exists” ，因此若要再次执行，需要执行如下命令删除 output 文件夹:</p>
+<h1 id="u5220_u9664_output__u6587_u4EF6_u5939"><a href="#u5220_u9664_output__u6587_u4EF6_u5939" class="headerlink" title="删除 output 文件夹"></a>删除 output 文件夹</h1><p>$./bin/hdfs dfs -rm -r output<br>Deleted output</p>
+<p>运行程序时，输出目录不能存在<br>运行 Hadoop 程序时，为了防止覆盖结果，程序指定的输出目录（如 output）不能存在，否则会提示错误，因此运行前需要先删除输出目录。在实际开发应用程序时，可考虑在程序中加上如下代码，能在每次运行时自动删除输出目录，避免繁琐的命令行操作：<br>Configuration conf = new Configuration();<br>Job job = new Job(conf);<br>/<em> 删除输出目录 </em>/<br>Path outputPath = new Path(args[1]);<br>outputPath.getFileSystem(conf).delete(outputPath, true);</p>
+<p>若要关闭 Hadoop，则运行<br>./sbin/stop-dfs.sh</p>
+<p>启动YARN<br>(伪分布式不启动 YARN 也可以，一般不会影响程序执行)<br>有 的读者可能会疑惑，怎么启动 Hadoop 后，见不到书上所说的 JobTracker 和 TaskTracker，这是因为新版的 Hadoop 使用了新的 MapReduce 框架（MapReduce V2，也称为 YARN，Yet Another Resource Negotiator）。</p>
+<p>YARN 是从 MapReduce 中分离出来的，负责资源管理与任务调度。YARN 运行于 MapReduce 之上，提供了高可用性、高扩展性，YARN 的更多介绍在此不展开，有兴趣的可查阅相关资料。</p>
+<p>上述通过 ./sbin/start-dfs.sh 启动 Hadoop，仅仅是启动了 MapReduce 环境，我们可以启动 YARN ，让 YARN 来负责资源管理与任务调度。</p>
+<p>首先修改配置文件 mapred-site.xml<br>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;mapreduce.framework.name&lt;/name&gt;<br>&lt;value&gt;yarn&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
+<p>接着修改配置文件 yarn-site.xml：<br>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;<br>&lt;value&gt;mapreduce_shuffle&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;</p>
+<p>然后就可以启动 YARN 了（需要先执行过 ./sbin/start-dfs.sh）：</p>
+<h1 id="/sbin/start-yarn-sh__23__u542F_u52A8YARN"><a href="#/sbin/start-yarn-sh__23__u542F_u52A8YARN" class="headerlink" title="./sbin/start-yarn.sh                                # 启动YARN"></a>./sbin/start-yarn.sh                                # 启动YARN</h1><h1 id="/sbin/mr-jobhistory-daemon-sh_start_historyserver__23__u5F00_u542F_u5386_u53F2_u670D_u52A1_u5668_uFF0C_u624D_u80FD_u5728Web_u4E2D_u67E5_u770B_u4EFB_u52A1_u8FD0_u884C_u60C5_u51B5"><a href="#/sbin/mr-jobhistory-daemon-sh_start_historyserver__23__u5F00_u542F_u5386_u53F2_u670D_u52A1_u5668_uFF0C_u624D_u80FD_u5728Web_u4E2D_u67E5_u770B_u4EFB_u52A1_u8FD0_u884C_u60C5_u51B5" class="headerlink" title="./sbin/mr-jobhistory-daemon.sh start historyserver  # 开启历史服务器，才能在Web中查看任务运行情况"></a>./sbin/mr-jobhistory-daemon.sh start historyserver  # 开启历史服务器，才能在Web中查看任务运行情况</h1><p>开启后通过 jps 查看，可以看到多了 NodeManager 和 ResourceManager 两个后台进程:</p>
+<p>[09:18:34][hadoop@ocean-lab ~]$ jps<br>27686 SecondaryNameNode<br>6968 ResourceManager<br>7305 Jps<br>7066 NodeManager<br>27501 DataNode<br>27405 NameNode</p>
+<p>启 动 YARN 之后，运行实例的方法还是一样的，仅仅是资源管理方式、任务调度不同。观察日志信息可以发现，不启用 YARN 时，是 “mapred.LocalJobRunner” 在跑任务，启用 YARN 之后，是 “mapred.YARNRunner” 在跑任务。启动 YARN 有个好处是可以通过 Web 界面查看任务的运行情况：<a href="http://[ip,fqdn]:8088/cluster" target="_blank" rel="external">http://[ip,fqdn]:8088/cluster</a></p>
+<p>开启YARN后可以查看任务运行信息开启YARN后可以查看任务运行信息<br>但 YARN 主要是为集群提供更好的资源管理与任务调度，然而这在单机上体现不出价值，反而会使程序跑得稍慢些。因此在单机上是否开启 YARN 就看实际情况了。<br>不启动 YARN 需删掉/重命名 mapred-site.xml<br>否则在该配置文件存在，而未开启 YARN 的情况下，运行程序会提示 “Retrying connect to server: 0.0.0.0/0.0.0.0:8032″ 的错误。</p>
+<p>同样的，关闭 YARN 的脚本如下：</p>
+<h1 id="/sbin/stop-yarn-sh"><a href="#/sbin/stop-yarn-sh" class="headerlink" title="./sbin/stop-yarn.sh"></a>./sbin/stop-yarn.sh</h1><h1 id="/sbin/mr-jobhistory-daemon-sh_stop_historyserver"><a href="#/sbin/mr-jobhistory-daemon-sh_stop_historyserver" class="headerlink" title="./sbin/mr-jobhistory-daemon.sh stop historyserver"></a>./sbin/mr-jobhistory-daemon.sh stop historyserver</h1><p><strong>hadoop 常用命令</strong></p>
+<h1 id="u67E5_u770BHDFS_u6587_u4EF6_u5217_u8868"><a href="#u67E5_u770BHDFS_u6587_u4EF6_u5217_u8868" class="headerlink" title="查看HDFS文件列表"></a>查看HDFS文件列表</h1><p>hadoop fs -ls /usr/local/log/</p>
+<h1 id="u521B_u5EFA_u6587_u4EF6_u76EE_u5F55"><a href="#u521B_u5EFA_u6587_u4EF6_u76EE_u5F55" class="headerlink" title="创建文件目录"></a>创建文件目录</h1><p>hadoop fs -mkdir /usr/local/log/test</p>
+<h1 id="u5220_u9664_u6587_u4EF6"><a href="#u5220_u9664_u6587_u4EF6" class="headerlink" title="删除文件"></a>删除文件</h1><p>/hadoop fs -rm /usr/local/log/07</p>
+<h1 id="u4E0A_u4F20_u4E00_u4E2A_u672C_u673A_u6587_u4EF6_u5230HDFS_u4E2D/usr/local/log/_u76EE_u5F55_u4E0B"><a href="#u4E0A_u4F20_u4E00_u4E2A_u672C_u673A_u6587_u4EF6_u5230HDFS_u4E2D/usr/local/log/_u76EE_u5F55_u4E0B" class="headerlink" title="上传一个本机文件到HDFS中/usr/local/log/目录下"></a>上传一个本机文件到HDFS中/usr/local/log/目录下</h1><p>adoop fs -put /usr/local/src/infobright-4.0.6-0-x86_64-ice.rpm  /usr/local/log/</p>
+<h1 id="u4E0B_u8F7D"><a href="#u4E0B_u8F7D" class="headerlink" title="下载"></a>下载</h1><p>hadoop fs –get /usr/local/log/infobright-4.0.6-0-x86_64-ice.rpm   /usr/local/src/</p>
+<h1 id="u67E5_u770B_u6587_u4EF6"><a href="#u67E5_u770B_u6587_u4EF6" class="headerlink" title="查看文件"></a>查看文件</h1><p>hadoop fs -cat /usr/local/log/zabbix/access.log.zabbix</p>
+<h1 id="u67E5_u770BHDFS_u57FA_u672C_u4F7F_u7528_u60C5_u51B5"><a href="#u67E5_u770BHDFS_u57FA_u672C_u4F7F_u7528_u60C5_u51B5" class="headerlink" title="查看HDFS基本使用情况"></a>查看HDFS基本使用情况</h1><h1 id="hadoop_dfsadmin_-report"><a href="#hadoop_dfsadmin_-report" class="headerlink" title="hadoop dfsadmin -report"></a>hadoop dfsadmin -report</h1><p>DEPRECATED: Use of this script to execute hdfs command is deprecated.<br>Instead use the hdfs command for it.</p>
+<p>Configured Capacity: 29565767680 (27.54 GB)<br>Present Capacity: 17956433920 (16.72 GB)<br>DFS Remaining: 17956405248 (16.72 GB)<br>DFS Used: 28672 (28 KB)<br>DFS Used%: 0.00%<br>Under replicated blocks: 0<br>Blocks with corrupt replicas: 0<br>Missing blocks: 0</p>
+<hr>
+<p>Live datanodes (1):</p>
+<p>Name: 127.0.0.1:50010 (localhost)<br>Hostname: ocean-lab.ocean.org<br>Decommission Status : Normal<br>Configured Capacity: 29565767680 (27.54 GB)<br>DFS Used: 28672 (28 KB)<br>Non DFS Used: 11609333760 (10.81 GB)<br>DFS Remaining: 17956405248 (16.72 GB)<br>DFS Used%: 0.00%<br>DFS Remaining%: 60.73%<br>Configured Cache Capacity: 0 (0 B)<br>Cache Used: 0 (0 B)<br>Cache Remaining: 0 (0 B)<br>Cache Used%: 100.00%<br>Cache Remaining%: 0.00%<br>Xceivers: 1<br>Last contact: Thu Dec 24 09:52:14 CST 2015</p>
+<p>自此，你已经掌握 Hadoop 的配置和基本使用了。</p>
+<p>Reference doc:  <a href="https://hadoop.apache.org/docs/r2.6.0/" target="_blank" rel="external">https://hadoop.apache.org/docs/r2.6.0/</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hadoop/">hadoop</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2015/12/24/hadoop-single-node-pseudo-distributed-installation-Notes/" data-title="Hadoop 单节点_伪分布 安装手记 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/12/25/use-vim-to-build-python-development-ide/" title="使用 VIM 打造 Python 开发IDE">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  使用 VIM 打造 Python 开发IDE</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/12/22/why-does-ceph-monitor-db-compaction-fail/"  title="How-to deal with Ceph Monitor DB compaction?">
+ <strong>NEXT:</strong><br/> 
+ <span>How-to deal with Ceph Monitor DB compaction?
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_install_ssh_rsync_-y"><span class="toc-number">1.</span> <span class="toc-text">yum install ssh rsync -y</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssh__u5FC5_u987B_u5B89_u88C5_u5E76_u4E14_u4FDD_u8BC1_sshd_u4E00_u76F4_u8FD0_u884C_uFF0C_u4EE5_u4FBF_u7528Hadoop__u811A_u672C_u7BA1_u7406_u8FDC_u7AEFHadoop_u5B88_u62A4_u8FDB_u7A0B_u3002"><span class="toc-number">2.</span> <span class="toc-text">ssh 必须安装并且保证 sshd一直运行，以便用Hadoop 脚本管理远端Hadoop守护进程。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useradd_-m_hadoop_-s_/bin/bash__23__u521B_u5EFA_u65B0_u7528_u6237hadoop"><span class="toc-number">3.</span> <span class="toc-text">useradd -m hadoop -s /bin/bash   # 创建新用户hadoop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/hosts_7C_grep_ocean-lab"><span class="toc-number">4.</span> <span class="toc-text">cat /etc/hosts| grep ocean-lab</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget__u2013no-cookies__u2013no-check-certificate__u2013header__u201CCookie_3A_gpw_e24_3Dhttp_253A_252F_252Fwww-oracle-com_252F_3B_oraclelicense_3Daccept-securebackup-cookie_u201D__u201Chttp_3A//download-oracle-com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64-rpm_u201C"><span class="toc-number">5.</span> <span class="toc-text">wget –no-cookies –no-check-certificate –header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm“</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rpm_-Uvh_jdk-8u65-linux-x64-rpm"><span class="toc-number">6.</span> <span class="toc-text">rpm -Uvh jdk-8u65-linux-x64.rpm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201Cexport_JAVA_HOME_3D/usr/java/jdk1-8-0_65_u201D__26gt_3B_26gt_3B_/home/hadoop/-bashrc"><span class="toc-number">7.</span> <span class="toc-text">echo “export JAVA_HOME=/usr/java/jdk1.8.0_65” >> /home/hadoop/.bashrc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#source_/home/hadoop/-bashrc"><span class="toc-number">8.</span> <span class="toc-text">source /home/hadoop/.bashrc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__24JAVA_HOME"><span class="toc-number">9.</span> <span class="toc-text">echo $JAVA_HOME</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget_http_3A//apache-fayea-com/hadoop/common/hadoop-2-6-0/hadoop-2-6-0-tar-gz"><span class="toc-number">10.</span> <span class="toc-text">wget http://apache.fayea.com/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xf_hadoop-2-6-0-tar-gz_-C_/usr/local"><span class="toc-number">11.</span> <span class="toc-text">tar xf hadoop-2.6.0.tar.gz -C /usr/local</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mv_/usr/local/hadoop-2-6-0_/usr/local/hadoop"><span class="toc-number">11.0.0.1.</span> <span class="toc-text">mv /usr/local/hadoop-2.6.0 /usr/local/hadoop</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bin/hadoop"><span class="toc-number">12.</span> <span class="toc-text">bin/hadoop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mkdir_input"><span class="toc-number">13.</span> <span class="toc-text">mkdir input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_conf/*-xml_input"><span class="toc-number">14.</span> <span class="toc-text">cp conf/*.xml input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_-/input/_-/ouput__u2018dfs_5Ba-z-_5D+_u2019"><span class="toc-number">15.</span> <span class="toc-text">./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep ./input/ ./ouput ‘dfs[a-z.]+’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_output/*"><span class="toc-number">16.</span> <span class="toc-text">cat output/*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/hosts_7C_grep_ocean-lab-1"><span class="toc-number">17.</span> <span class="toc-text">cat /etc/hosts| grep ocean-lab</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hadoop_Environment_Variables"><span class="toc-number">18.</span> <span class="toc-text">Hadoop Environment Variables</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssh_localhost_date"><span class="toc-number">19.</span> <span class="toc-text">ssh localhost date</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssh-keygen_-t_dsa_-P__u2018_u2019_-f__7E/-ssh/id_dsa"><span class="toc-number">20.</span> <span class="toc-text">ssh-keygen -t dsa -P ‘’ -f ~/.ssh/id_dsa</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat__7E/-ssh/id_dsa-pub__26gt_3B_26gt_3B__7E/-ssh/authorized_keys"><span class="toc-number">21.</span> <span class="toc-text">cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#u8FD0_u884CHadoop_u4F2A_u5206_u5E03_u5F0F_u5B9E_u4F8B"><span class="toc-number">21.1.</span> <span class="toc-text">运行Hadoop伪分布式实例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-mkdir_-p_/user/hadoop"><span class="toc-number">22.</span> <span class="toc-text">./bin/hdfs dfs -mkdir -p /user/hadoop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hadoop_fs_-ls_/user/hadoop"><span class="toc-number">23.</span> <span class="toc-text">./bin/hadoop fs -ls /user/hadoop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-mkdir_input"><span class="toc-number">24.</span> <span class="toc-text">./bin/hdfs dfs -mkdir input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-put_-/etc/hadoop/*-xml_input"><span class="toc-number">25.</span> <span class="toc-text">./bin/hdfs dfs -put ./etc/hadoop/*.xml input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-ls_input"><span class="toc-number">26.</span> <span class="toc-text">./bin/hdfs dfs -ls input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hadoop_jar_-/share/hadoop/mapreduce/hadoop-mapreduce-examples-2-6-0-jar_grep_input_output__u2018dfs_5Ba-z-_5D+_u2019"><span class="toc-number">27.</span> <span class="toc-text">./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar grep input output ‘dfs[a-z.]+’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rm_-r_-/output__23__u5148_u5220_u9664_u672C_u5730_u7684_output__u6587_u4EF6_u5939_uFF08_u5982_u679C_u5B58_u5728_uFF09"><span class="toc-number">28.</span> <span class="toc-text">rm -r ./output    # 先删除本地的 output 文件夹（如果存在）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bin/hdfs_dfs_-get_output_-/output__23__u5C06_HDFS__u4E0A_u7684_output__u6587_u4EF6_u5939_u62F7_u8D1D_u5230_u672C_u673A"><span class="toc-number">29.</span> <span class="toc-text">./bin/hdfs dfs -get output ./output     # 将 HDFS 上的 output 文件夹拷贝到本机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_-/output/*"><span class="toc-number">30.</span> <span class="toc-text">cat ./output/*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5220_u9664_output__u6587_u4EF6_u5939"><span class="toc-number">31.</span> <span class="toc-text">删除 output 文件夹</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/sbin/start-yarn-sh__23__u542F_u52A8YARN"><span class="toc-number">32.</span> <span class="toc-text">./sbin/start-yarn.sh                                # 启动YARN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/sbin/mr-jobhistory-daemon-sh_start_historyserver__23__u5F00_u542F_u5386_u53F2_u670D_u52A1_u5668_uFF0C_u624D_u80FD_u5728Web_u4E2D_u67E5_u770B_u4EFB_u52A1_u8FD0_u884C_u60C5_u51B5"><span class="toc-number">33.</span> <span class="toc-text">./sbin/mr-jobhistory-daemon.sh start historyserver  # 开启历史服务器，才能在Web中查看任务运行情况</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/sbin/stop-yarn-sh"><span class="toc-number">34.</span> <span class="toc-text">./sbin/stop-yarn.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/sbin/mr-jobhistory-daemon-sh_stop_historyserver"><span class="toc-number">35.</span> <span class="toc-text">./sbin/mr-jobhistory-daemon.sh stop historyserver</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u67E5_u770BHDFS_u6587_u4EF6_u5217_u8868"><span class="toc-number">36.</span> <span class="toc-text">查看HDFS文件列表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u6587_u4EF6_u76EE_u5F55"><span class="toc-number">37.</span> <span class="toc-text">创建文件目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5220_u9664_u6587_u4EF6"><span class="toc-number">38.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4E0A_u4F20_u4E00_u4E2A_u672C_u673A_u6587_u4EF6_u5230HDFS_u4E2D/usr/local/log/_u76EE_u5F55_u4E0B"><span class="toc-number">39.</span> <span class="toc-text">上传一个本机文件到HDFS中/usr/local/log/目录下</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4E0B_u8F7D"><span class="toc-number">40.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u67E5_u770B_u6587_u4EF6"><span class="toc-number">41.</span> <span class="toc-text">查看文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u67E5_u770BHDFS_u57FA_u672C_u4F7F_u7528_u60C5_u51B5"><span class="toc-number">42.</span> <span class="toc-text">查看HDFS基本使用情况</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hadoop_dfsadmin_-report"><span class="toc-number">43.</span> <span class="toc-text">hadoop dfsadmin -report</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,625 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Puppet Nginx module write | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="搞puppet也有三几天了，一些概念还不是很清晰。很多时候实验未成功，都是概念没有理清楚、文档没有看全。别的就先不说了，先来安装一个nginx 来试一下吧。
+1、编写nginx模块接下来我们先采动创建模块信息来完成Nginx的部署：需要创建模块录，虚拟主机采件的式进管理。创建模块的信息需要运如下知识">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/suzf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/10/21/puppet-nginx-module-write/" title="Puppet Nginx module write" itemprop="url">Puppet Nginx module write</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-10-21T04:02:48.000Z" itemprop="datePublished">2014-10-21</time>
+    Updated:<time datetime="2016-01-13T07:11:51.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Class_3A_nginx"><span class="toc-number">1.</span> <span class="toc-text">Class: nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#*__24nginx_user-_Defaults_to__u2018nginx_u2019"><span class="toc-number">2.</span> <span class="toc-text">* $nginx_user. Defaults to ‘nginx’.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#*_worker_processes-_Defaults_to__26lt_3B__25_3D_processorcount__25_26gt_3B"><span class="toc-number">3.</span> <span class="toc-text">* worker_processes. Defaults to < %= processorcount %>.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#*_/etc/nginx/conf-d_for_sites_includes"><span class="toc-number">4.</span> <span class="toc-text">* /etc/nginx/conf.d for sites includes</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx-conf-erb__3D_26gt_3B_/etc/nginx/nginx-conf"><span class="toc-number">5.</span> <span class="toc-text">- nginx.conf.erb => /etc/nginx/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/puppet/modules/nginx/templates/nginx-conf-erb"><span class="toc-number">6.</span> <span class="toc-text">cat /etc/puppet/modules/nginx/templates/nginx.conf.erb</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mkdir_-p_/etc/puppet/files/nginx/conf-d__23_vim_/etc/puppet/files/nginx/conf-d/agent1-jeffery-com-conf_server__7B"><span class="toc-number">7.</span> <span class="toc-text">mkdir -p /etc/puppet/files/nginx/conf.d # vim /etc/puppet/files/nginx/conf.d/agent1.jeffery.com.conf server {</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/puppet/modules/nginx/files/nginx_logrote-sh"><span class="toc-number">8.</span> <span class="toc-text">cat /etc/puppet/modules/nginx/files/nginx_logrote.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#This_script_run_at_00_3A00"><span class="toc-number">9.</span> <span class="toc-text">This script run at 00:00</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The_Nginx_logs_path"><span class="toc-number">10.</span> <span class="toc-text">The Nginx logs path</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/puppet/manifests/site-pp"><span class="toc-number">11.</span> <span class="toc-text">cat /etc/puppet/manifests/site.pp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/puppet/manifests/nodes/cnc/agent1-jeffery-com-pp"><span class="toc-number">12.</span> <span class="toc-text">cat /etc/puppet/manifests/nodes/cnc/agent1.jeffery.com.pp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#puppet_module_install_puppetlabs-nginx"><span class="toc-number">13.</span> <span class="toc-text">puppet module install puppetlabs-nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ll_-th_modules/nginx"><span class="toc-number">14.</span> <span class="toc-text">ll -th modules/nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u67E5_u770B_u5B89_u88C5_u6A21_u5757"><span class="toc-number">15.</span> <span class="toc-text">查看安装模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#puppet_module_list"><span class="toc-number">16.</span> <span class="toc-text">puppet  module list</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#puppet_module_install_puppetlabs-nginx__23__u6216_u76F4_u63A5_u5C06_u8FD9_u4E2A_u76EE_u5F55_u5E72_u6389"><span class="toc-number">17.</span> <span class="toc-text">puppet module install puppetlabs-nginx    # 或直接将这个目录干掉</span></a></li></ol>
+		</div>
+		
+		<p>搞puppet也有三几天了，一些概念还不是很清晰。很多时候实验未成功，都是概念没有理清楚、文档没有看全。别的就先不说了，先来安装一个nginx 来试一下吧。</p>
+<p>1、编写nginx模块<br>接下来我们先采动创建模块信息来完成Nginx的部署：需要创建模块录，虚拟主机采件<br>的式进管理。创建模块的信息需要运如下知识点：<br>资源：yumrepo、package、file、service、cron。<br>模板：nginx.conf.erb。<br>创建模块时建议创建README件，接下来对模块的使与安装进详细说明。 </p>
+<p>2、创建模块录，代码如下：<br>1</p>
+<p>#mkdir -p /etc/puppet/modules/nginx/{manifests,templates,files,tests}</p>
+<p>3、创建模块主配置件，代码如下： </p>
+<p>#cat /etc/puppet/modules/nginx/manifests/init.pp</p>
+<h1 id="Class_3A_nginx"><a href="#Class_3A_nginx" class="headerlink" title="Class: nginx"></a>Class: nginx</h1><p>#</p>
+<p>#Install nginx.<br>#</p>
+<p>#Parameters:</p>
+<h1 id="*__24nginx_user-_Defaults_to__u2018nginx_u2019"><a href="#*__24nginx_user-_Defaults_to__u2018nginx_u2019" class="headerlink" title="* $nginx_user. Defaults to ‘nginx’."></a>* $nginx_user. Defaults to ‘nginx’.</h1><h1 id="*_worker_processes-_Defaults_to__26lt_3B__25_3D_processorcount__25_26gt_3B"><a href="#*_worker_processes-_Defaults_to__26lt_3B__25_3D_processorcount__25_26gt_3B" class="headerlink" title="* worker_processes. Defaults to &lt; %= processorcount %&gt;."></a>* worker_processes. Defaults to &lt; %= processorcount %&gt;.</h1><p>#</p>
+<p>#Create config directories :</p>
+<h1 id="*_/etc/nginx/conf-d_for_sites_includes"><a href="#*_/etc/nginx/conf-d_for_sites_includes" class="headerlink" title="* /etc/nginx/conf.d for sites includes"></a>* /etc/nginx/conf.d for sites includes</h1><p>#</p>
+<p>#Templates:</p>
+<h1 id="nginx-conf-erb__3D_26gt_3B_/etc/nginx/nginx-conf"><a href="#nginx-conf-erb__3D_26gt_3B_/etc/nginx/nginx-conf" class="headerlink" title="- nginx.conf.erb =&gt; /etc/nginx/nginx.conf"></a>- nginx.conf.erb =&gt; /etc/nginx/nginx.conf</h1><p>#</p>
+<p>class nginx {<br>$real_nginx_user = $nginx_user ? { ‘’ =&gt; ‘nginx’, default =&gt; $nginx_user }<br>$nginx_conf      = “/etc/nginx/conf.d”<br>$nginx_logrote   = “/etc/nginx/conf.d/nginx_logrote.sh”<br>yumrepo { “nginx”:<br>descr    =&gt; “nginx repo”,<br>baseurl  =&gt; “<a href="http://nginx.org/packages/centos/\$releasever/\$basearch/" target="_blank" rel="external">http://nginx.org/packages/centos/\$releasever/\$basearch/</a>“,<br>gpgcheck =&gt; “0”,<br>enabled  =&gt; “1”;<br>}<br>package { “nginx”:<br>ensure        =&gt; installed,<br>require       =&gt; Yumrepo[“nginx”],<br>allow_virtual =&gt; false;<br>}<br>service { ‘nginx’:<br>ensure     =&gt; running,<br>enable     =&gt; true,<br>hasrestart =&gt; true,<br>hasstatus  =&gt; true,<br>subscribe  =&gt; File[“nginx.conf”],<br>}<br>file { ‘nginx.conf’:<br>ensure   =&gt; present,<br>mode     =&gt; 644,<br>owner    =&gt; root,<br>group    =&gt; root,<br>path     =&gt; ‘/etc/nginx/nginx.conf’,<br>content  =&gt; template(“nginx/nginx.conf.erb”),<br>notify   =&gt; Exec[“reload-nginx”],<br>require  =&gt; Package[“nginx”],<br>}<br>file { “$nginx_conf”:<br>ensure   =&gt; directory,<br>recurse  =&gt; true,<br>force    =&gt; true,</p>
+<p>#purge    =&gt; true,<br>source   =&gt; “puppet:///modules/nginx/conf.d”,<br>notify   =&gt; Exec[“reload-nginx”],<br>require  =&gt; Package[“nginx”],<br>}<br>file { “$nginx_logrote”:<br>ensure   =&gt; file,<br>mode     =&gt; 755,<br>owner    =&gt; root,<br>group    =&gt; root,<br>source   =&gt; “puppet:///modules/nginx/nginx_logrote.sh”,<br>}<br>cron { ‘nginx_logrote_cron’:<br>command  =&gt; “/bin/bash {$nginx_logrote} &gt; /dev/null 2&gt;&amp;1”,<br>user     =&gt; root,<br>minute   =&gt; ‘0’,<br>hour     =&gt; ‘0’,<br>}<br>exec { ‘reload-nginx’:<br>command     =&gt; “/etc/init.d/nginx reload”,<br>refreshonly =&gt; true,<br>}<br>}</p>
+<p>以上代码中定义了：<br>变量，将nginx户、虚拟主机录及志件定义为变量，便在该作域内引。<br>yumrepo资源，使yumrepo定义Nginx软件包来源，Puppet会在yum软件源中创建<br>nginx.repo件。<br>以上代码中定义了：<br>File资源，nginx.conf采模块的式实现，配置件中部分参数便使facts或变量进传递。志件与虚拟主机件采件同步的式实现，并保持录的致性，以避免虚拟主机删除后 不同步的问题。且还使notify属性触发exec进reload动作。<br>service资源，定义Nginx服务的状态，默认随开机启动，puppet agent运时每次检测Nginx服<br>务是否运等。该资源依赖package资源Nginx软件包的安装。<br>cron资源，定义志清除脚本定时运。每天零点采root进志切割。<br>exec资源，定义Nginx服务的reload命令为资源，便虚拟主机变更时进加载。 </p>
+<p>4、创建nginx主配置件：<br>我们定义节选核的nginx.conf配置件，其中的nginx进程个数由facts传递，与服务器线程数相<br>同。具体代码如下:</p>
+<h1 id="cat_/etc/puppet/modules/nginx/templates/nginx-conf-erb"><a href="#cat_/etc/puppet/modules/nginx/templates/nginx-conf-erb" class="headerlink" title="cat /etc/puppet/modules/nginx/templates/nginx.conf.erb"></a>cat /etc/puppet/modules/nginx/templates/nginx.conf.erb</h1><p>user &lt; %= real_nginx_user %&gt;;<br>worker_processes &lt; %= processorcount %&gt;;<br>error_log /var/log/nginx/error.log notice;<br>pid /var/run/nginx.pid;<br>events {<br>use epoll;<br>worker_connections 51200;<br>}<br>http {<br>include /etc/nginx/mime.types;<br>default_type application/octet-stream;<br>charset utf-8;<br>log_format main ‘$remote_addr - $remote_user [$time_local] “$request” ‘<br>                ‘$status $body_bytes_sent “$http_referer” ‘<br>                 ‘“$http_user_agent” “$http_x_forwarded_for”‘;<br>access_log /var/log/nginx/access.log main;<br>server_names_hash_bucket_size 128;<br>client_header_buffer_size 32k;<br>large_client_header_buffers 4 32k;<br>client_body_buffer_size 8m; #256k<br>sendfile on;</p>
+<p>#timeouts<br>keepalive_timeout 0;</p>
+<p>#TCP Options<br>tcp_nopush on;<br>tcp_nodelay on;<br>client_max_body_size 50m;<br>include /etc/nginx/conf.d/*.conf;<br>}</p>
+<p>4、创建虚拟主机录及件。<br>对所有的虚拟主机进录同步管理，创建agent.domain.com虚拟主机，定义其内容如下： </p>
+<h1 id="mkdir_-p_/etc/puppet/files/nginx/conf-d__23_vim_/etc/puppet/files/nginx/conf-d/agent1-jeffery-com-conf_server__7B"><a href="#mkdir_-p_/etc/puppet/files/nginx/conf-d__23_vim_/etc/puppet/files/nginx/conf-d/agent1-jeffery-com-conf_server__7B" class="headerlink" title="mkdir -p /etc/puppet/files/nginx/conf.d # vim /etc/puppet/files/nginx/conf.d/agent1.jeffery.com.conf server {"></a>mkdir -p /etc/puppet/files/nginx/conf.d # vim /etc/puppet/files/nginx/conf.d/agent1.jeffery.com.conf server {</h1><pre><code>listen 80;
+server_name agent1.jeffery.com
+root        /var/www/html/agent1.jeffery.com;
+location    /nginx_status {
+stub_status on;
+access_log off;
+</code></pre><p>}<br>}</p>
+<p>5、创建志轮循脚本，具体如下： </p>
+<h1 id="cat_/etc/puppet/modules/nginx/files/nginx_logrote-sh"><a href="#cat_/etc/puppet/modules/nginx/files/nginx_logrote-sh" class="headerlink" title="cat /etc/puppet/modules/nginx/files/nginx_logrote.sh"></a>cat /etc/puppet/modules/nginx/files/nginx_logrote.sh</h1><p>#!/bin/bash</p>
+<h1 id="This_script_run_at_00_3A00"><a href="#This_script_run_at_00_3A00" class="headerlink" title="This script run at 00:00"></a>This script run at 00:00</h1><h1 id="The_Nginx_logs_path"><a href="#The_Nginx_logs_path" class="headerlink" title="The Nginx logs path"></a>The Nginx logs path</h1><p>logs_path=”/var/log/nginx/“<br>PIDFILE=/var/run/nginx.pid<br>ACCESS_LOG=”${logs<em>path}$(date -d “yesterday” +”%Y”)/$(date -d “yesterday” +”%m”)/access</em>$(date -d “yesterday” ERROR_LOG=”${logs<em>path}$(date -d “yesterday” +”%Y”)/$(date -d “yesterday” +”%m”)/error</em>$(date -d “yesterday” mkdir -p ${logs_path}$(date -d “yesterday” +”%Y”)/$(date -d “yesterday” +”%m”)/<br>mv ${logs_path}access.log $ACCESS_LOG<br>mv ${logs_path}error.log $ERROR_LOG<br>kill -USR1 <code>cat $PIDFILE</code></p>
+<p>#gzip<br>/bin/gzip -9 $ACCESS_LOG<br>/bin/gzip -9 $ERROR_LOG</p>
+<p>#rm<br>find ${logs_path} -name “*.log.gz” -mtime +7|xargs rm –f</p>
+<p>6、设置同步主机、模块</p>
+<h1 id="cat_/etc/puppet/manifests/site-pp"><a href="#cat_/etc/puppet/manifests/site-pp" class="headerlink" title="cat /etc/puppet/manifests/site.pp"></a>cat /etc/puppet/manifests/site.pp</h1><p>$fileserver = “master.jeffery.com”<br>import  “nodes/cnc/*.pp”</p>
+<p>#import ‘/etc/puppet/manifests/nodes/cnc/agent1.jeffery.com.pp’</p>
+<h1 id="cat_/etc/puppet/manifests/nodes/cnc/agent1-jeffery-com-pp"><a href="#cat_/etc/puppet/manifests/nodes/cnc/agent1-jeffery-com-pp" class="headerlink" title="cat /etc/puppet/manifests/nodes/cnc/agent1.jeffery.com.pp"></a>cat /etc/puppet/manifests/nodes/cnc/agent1.jeffery.com.pp</h1><p>node ‘agent1.jeffery.com’ {<br>    include  nginx</p>
+<pre><code>#include httpd
+#include  memcached
+</code></pre><p>}</p>
+<p>7、在客户端运puppet命令可以看到Finished完成的提，具体如下：<br>notice: Finished catalog run in 18.76 seconds<br>这时我们可以看到/etc/nginx/conf.d录已经同步了志切割件与虚拟主机agent的配置件，并<br>且Nginx服务已启动。<br>到这我们已经完成了编写nginx模块，并在客户端成功进应。整个过程不是常复杂，<br>在编写时只需要知道每个步骤及其实现的功能就可以轻松完成。 </p>
+<p>二、接下来看如何利官Forge提供的nginx模块实现Nginx部署。<br>编写模块并不像我们想象中的那么复杂，并且灵活可定制。当然也可以使Puppetlabs官Forge上所提供的nginx模块来实现。使时只需要参考模块 录下的README件即可。</p>
+<p>1、使命令puppet modules查找模块，代码如下： </p>
+<p>#puppet module search nginx # puppet module search nginx<br>Notice: Searching <a href="https://forgeapi.puppetlabs.com" target="_blank" rel="external">https://forgeapi.puppetlabs.com</a> …<br>NAME                    DESCRIPTION                                            AUTHOR            KEYWORDS<br>jfryman-nginx           Puppet NGINX management module                         @jfryman          nginx http proxy rack<br>puppetlabs-nginx        Puppet NGINX management module<br>…</p>
+<p>2、可以看到许多通过官验证的模块，在这我们采官Puppetlabs的nginx模块进安装，代码<br>如下： </p>
+<h1 id="puppet_module_install_puppetlabs-nginx"><a href="#puppet_module_install_puppetlabs-nginx" class="headerlink" title="puppet module install puppetlabs-nginx"></a>puppet module install puppetlabs-nginx</h1><p>Notice: Preparing to install into /etc/puppet/modules …<br>Notice: Downloading from <a href="https://forgeapi.puppetlabs.com" target="_blank" rel="external">https://forgeapi.puppetlabs.com</a> …<br>Notice: Installing – do not interrupt …<br>/etc/puppet/modules<br>└─┬ puppetlabs-nginx (v99.99.99)<br>  └── puppetlabs-stdlib (v4.3.2)</p>
+<p>安装完成后，可以看到在modules录下多出两个模块：stdlib与nginx。</p>
+<p>stdlib是puppet提供的函数 库。</p>
+<p>nginx模块使了此函数库的函数。</p>
+<p>查看nginx模块内容如下： </p>
+<h1 id="ll_-th_modules/nginx"><a href="#ll_-th_modules/nginx" class="headerlink" title="ll -th modules/nginx"></a>ll -th modules/nginx</h1><p>total 32K<br>-r–r–r– 1 root root 2.6K May  2 02:36 metadata.json<br>-r–r–r– 1 root root  369 May  2 02:35 Modulefile<br>drwxr-xr-x 4 root root 4.0K Apr 22 08:10 manifests<br>drwxr-xr-x 4 root root 4.0K Apr 22 08:10 templates<br>drwxr-xr-x 2 root root 4.0K Apr 22 08:10 tests<br>-r–r–r– 1 root root  665 Sep  5  2013 README.markdown<br>-r–r–r– 1 root root 2.5K Sep  5  2013 ChangeLog<br>-r–r–r– 1 root root    0 Sep  5  2013 README<br>-r–r–r– 1 root root  523 Sep  4  2013 LICENSE</p>
+<h1 id="u67E5_u770B_u5B89_u88C5_u6A21_u5757"><a href="#u67E5_u770B_u5B89_u88C5_u6A21_u5757" class="headerlink" title="查看安装模块"></a>查看安装模块</h1><h1 id="puppet_module_list"><a href="#puppet_module_list" class="headerlink" title="puppet  module list"></a>puppet  module list</h1><p>#puppet 卸载模块</p>
+<h1 id="puppet_module_install_puppetlabs-nginx__23__u6216_u76F4_u63A5_u5C06_u8FD9_u4E2A_u76EE_u5F55_u5E72_u6389"><a href="#puppet_module_install_puppetlabs-nginx__23__u6216_u76F4_u63A5_u5C06_u8FD9_u4E2A_u76EE_u5F55_u5E72_u6389" class="headerlink" title="puppet module install puppetlabs-nginx    # 或直接将这个目录干掉"></a>puppet module install puppetlabs-nginx    # 或直接将这个目录干掉</h1><p>3、客户端安装同上，更多内容请查看 README 文档</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Nginx/">Nginx</a><a href="/tags/Puppet/">Puppet</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Puppet/">Puppet</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2014/10/21/puppet-nginx-module-write/" data-title="Puppet Nginx module write | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/11/03/mysql-replication/" title="Mysql之replication初探">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Mysql之replication初探</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/10/20/mysql-basic-common-summary/"  title="MYSQL 常用总结【基础】">
+ <strong>NEXT:</strong><br/> 
+ <span>MYSQL 常用总结【基础】
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Class_3A_nginx"><span class="toc-number">1.</span> <span class="toc-text">Class: nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#*__24nginx_user-_Defaults_to__u2018nginx_u2019"><span class="toc-number">2.</span> <span class="toc-text">* $nginx_user. Defaults to ‘nginx’.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#*_worker_processes-_Defaults_to__26lt_3B__25_3D_processorcount__25_26gt_3B"><span class="toc-number">3.</span> <span class="toc-text">* worker_processes. Defaults to < %= processorcount %>.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#*_/etc/nginx/conf-d_for_sites_includes"><span class="toc-number">4.</span> <span class="toc-text">* /etc/nginx/conf.d for sites includes</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nginx-conf-erb__3D_26gt_3B_/etc/nginx/nginx-conf"><span class="toc-number">5.</span> <span class="toc-text">- nginx.conf.erb => /etc/nginx/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/puppet/modules/nginx/templates/nginx-conf-erb"><span class="toc-number">6.</span> <span class="toc-text">cat /etc/puppet/modules/nginx/templates/nginx.conf.erb</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mkdir_-p_/etc/puppet/files/nginx/conf-d__23_vim_/etc/puppet/files/nginx/conf-d/agent1-jeffery-com-conf_server__7B"><span class="toc-number">7.</span> <span class="toc-text">mkdir -p /etc/puppet/files/nginx/conf.d # vim /etc/puppet/files/nginx/conf.d/agent1.jeffery.com.conf server {</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/puppet/modules/nginx/files/nginx_logrote-sh"><span class="toc-number">8.</span> <span class="toc-text">cat /etc/puppet/modules/nginx/files/nginx_logrote.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#This_script_run_at_00_3A00"><span class="toc-number">9.</span> <span class="toc-text">This script run at 00:00</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The_Nginx_logs_path"><span class="toc-number">10.</span> <span class="toc-text">The Nginx logs path</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/puppet/manifests/site-pp"><span class="toc-number">11.</span> <span class="toc-text">cat /etc/puppet/manifests/site.pp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat_/etc/puppet/manifests/nodes/cnc/agent1-jeffery-com-pp"><span class="toc-number">12.</span> <span class="toc-text">cat /etc/puppet/manifests/nodes/cnc/agent1.jeffery.com.pp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#puppet_module_install_puppetlabs-nginx"><span class="toc-number">13.</span> <span class="toc-text">puppet module install puppetlabs-nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ll_-th_modules/nginx"><span class="toc-number">14.</span> <span class="toc-text">ll -th modules/nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u67E5_u770B_u5B89_u88C5_u6A21_u5757"><span class="toc-number">15.</span> <span class="toc-text">查看安装模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#puppet_module_list"><span class="toc-number">16.</span> <span class="toc-text">puppet  module list</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#puppet_module_install_puppetlabs-nginx__23__u6216_u76F4_u63A5_u5C06_u8FD9_u4E2A_u76EE_u5F55_u5E72_u6389"><span class="toc-number">17.</span> <span class="toc-text">puppet module install puppetlabs-nginx    # 或直接将这个目录干掉</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

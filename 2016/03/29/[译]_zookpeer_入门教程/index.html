@@ -1,0 +1,622 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>[译] zookpeer 入门教程 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="入门：分布式应用程序协调服务 ZooKeeper本文档包含的信息来帮助你的ZooKeeper快速入门。它是在开发人员希望能够尝试一下主要目的，并包含安装简单说明一个ZooKeeper的服务器，几个命令，以验证它是否正在运行，一个简单的编程示例。最后，为了方便，还有更多的关于安装复杂，几节，例如运行复">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/suzf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/29/[译]_zookpeer_入门教程/" title="[译] zookpeer 入门教程" itemprop="url">[译] zookpeer 入门教程</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-03-29T07:19:33.000Z" itemprop="datePublished">2016-03-29</time>
+    Updated:<time datetime="2016-03-31T06:27:01.000Z" itemprop="dateModified">2016-03-31</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u5165_u95E8_uFF1A_u5206_u5E03_u5F0F_u5E94_u7528_u7A0B_u5E8F_u534F_u8C03_u670D_u52A1_ZooKeeper"><span class="toc-number">1.</span> <span class="toc-text">入门：分布式应用程序协调服务 ZooKeeper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5148_u51B3_u6761_u4EF6"><span class="toc-number">2.</span> <span class="toc-text">先决条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E0B_u8F7D"><span class="toc-number">3.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Standalone__u6A21_u5F0F_u4E0B_u64CD_u4F5C"><span class="toc-number">4.</span> <span class="toc-text">Standalone 模式下操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u7BA1_u7406_ZooKeeper__u5B58_u50A8"><span class="toc-number">5.</span> <span class="toc-text">管理 ZooKeeper 存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u8FDE_u63A5_ZooKeeper"><span class="toc-number">6.</span> <span class="toc-text">连接 ZooKeeper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZooKeeper__u7F16_u7A0B"><span class="toc-number">7.</span> <span class="toc-text">ZooKeeper 编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZooKeeper_Replicated"><span class="toc-number">8.</span> <span class="toc-text">ZooKeeper Replicated</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5176_u4ED6_u64CD_u4F5C"><span class="toc-number">9.</span> <span class="toc-text">其他操作</span></a></li></ol>
+		</div>
+		
+		<h3 id="u5165_u95E8_uFF1A_u5206_u5E03_u5F0F_u5E94_u7528_u7A0B_u5E8F_u534F_u8C03_u670D_u52A1_ZooKeeper"><a href="#u5165_u95E8_uFF1A_u5206_u5E03_u5F0F_u5E94_u7528_u7A0B_u5E8F_u534F_u8C03_u670D_u52A1_ZooKeeper" class="headerlink" title="入门：分布式应用程序协调服务 ZooKeeper"></a>入门：分布式应用程序协调服务 ZooKeeper</h3><p>本文档包含的信息来帮助你的ZooKeeper快速入门。它是在开发人员希望能够尝试一下主要目的，并包含安装简单说明一个ZooKeeper的服务器，几个命令，以验证它是否正在运行，一个简单的编程示例。最后，为了方便，还有更多的关于安装复杂，几节，例如运行复制的部署和优化事务日志。然而，对于商业部署的完整说明，请参阅的<a href="http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html" target="_blank" rel="external">ZooKeeper管理员指南</a>。</p>
+<h3 id="u5148_u51B3_u6761_u4EF6"><a href="#u5148_u51B3_u6761_u4EF6" class="headerlink" title="先决条件"></a>先决条件</h3><p>见管理员指南中的<a href="http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html#sc_systemReq" target="_blank" rel="external">系统要求</a>。</p>
+<h3 id="u4E0B_u8F7D"><a href="#u4E0B_u8F7D" class="headerlink" title="下载"></a>下载</h3><p>从Apache下载镜像下载最近的<a href="http://zookeeper.apache.org/releases.html" target="_blank" rel="external">稳定版本</a> ，从而得到 ZooKeeper 程序。</p>
+<h3 id="Standalone__u6A21_u5F0F_u4E0B_u64CD_u4F5C"><a href="#Standalone__u6A21_u5F0F_u4E0B_u64CD_u4F5C" class="headerlink" title="Standalone 模式下操作"></a>Standalone 模式下操作</h3><p>设置在独立模式&lt; standalone &gt;下的ZooKeeper服务器很简单。服务器被包含在一个单一的JAR文件中，所以安装包括创建一个新的配置。</p>
+<p>一旦你下载一个稳定ZooKeeper的版本 解压它并进入解压的根路径<br>要启动的ZooKeeper你需要一个配置文件。下面是一个示例, 新建文件  conf/zoo.cfg：</p>
+<p><pre class="lang:default decode:true ">tickTime=2000<br>dataDir=/var/lib/zookeeper<br>clientPort=2181</pre><br>这个文件可以叫任何一个名字，但是一般我们更喜欢 设置为  conf/zoo.cfg. 我们需要将 dataDir 的值 设置为一个指定的目录，一开始这个是空的。<br>下面是每个参数的含义：<br>tickTime：基本事件单元，以毫秒为单位。它用来指示心跳，最小的 session 过期时间为两倍的 tickTime. 。<br>dataDir：存储内存中数据库快照的位置，如果不设置参数，更新事务日志将被存储到默认位置。<br>clientPort：监听客户端连接的端口</p>
+<p>现在你可以创建文件并且启动它了<br>bin/zkServer.sh start</p>
+<p>ZooKeeper 日志使用 log4j – 更多详细信息请查看编程指南的 <a href="http://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html#Logging" target="_blank" rel="external">日志</a> 部分。 你将会看到日志出现在控制台&lt; 默认 &gt; 日志文件依赖于log4j 的配置文件。</p>
+<p>上面所述的是如何使 ZooKeeper 运行在单点模式下。这里没有复制，所以如果 ZooKeeper 进程出现错误，服务将不可用。这是一个不错的开发解决方案，但是如果想要使 ZooKeeper 运行在复制模式下，请参见 <a href="http://zookeeper.apache.org/doc/trunk/zookeeperStarted.html#sc_RunningReplicatedZooKeeper" target="_blank" rel="external">Running Replicated ZooKeeper</a>.</p>
+<h3 id="u7BA1_u7406_ZooKeeper__u5B58_u50A8"><a href="#u7BA1_u7406_ZooKeeper__u5B58_u50A8" class="headerlink" title="管理 ZooKeeper 存储"></a>管理 ZooKeeper 存储</h3><p>对于长期运行在生产环境的 ZooKeeper 来说 存储必须外部管理（dataDir &amp;&amp; logs）。获取更多信息见 <a href="http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html#sc_maintenance" target="_blank" rel="external">维护部分</a>。</p>
+<h3 id="u8FDE_u63A5_ZooKeeper"><a href="#u8FDE_u63A5_ZooKeeper" class="headerlink" title="连接 ZooKeeper"></a>连接 ZooKeeper</h3><p>一旦 ZooKeeper 运行起来，你会有很多种方式连接它：</p>
+<ul>
+<li>Java:<br>bin/zkCli.sh -server 127.0.0.1:2181<br>这样是你的操作变得简单，想文件操作一样。</li>
+<li>C:  C: compile cli_mt (multi-threaded) or cli_st (single-threaded) by running make     cli_mt or make cli_st in the src/c subdirectory in the ZooKeeper sources. See the     README contained within src/c for full details<br>You can run the program from src/c using:<br>LD_LIBRARY_PATH=. cli_mt 127.0.0.1:2181<br>or<br>LD_LIBRARY_PATH=. cli_st 127.0.0.1:2181<br>它会给你在ZooKeeper上提供一个简单的shell执行文件操作。<br>一旦你成功连接，你将会看到类似下面的信息：<br><pre class="lang:default decode:true ">Connecting to localhost:2181<br>log4j:WARN No appenders could be found for logger (org.apache.zookeeper.ZooKeeper).<br>log4j:WARN Please initialize the log4j system properly.<br>Welcome to ZooKeeper!<br>JLine support is enabled<br>[zkshell: 0]</pre><br>在shell中，在客户端键入 <code>help</code> 可以得到帮助信息：<br><pre class="lang:default decode:true">[zkshell: 0] help<br>ZooKeeper host:port cmd args<pre><code>get path [watch]
+ls path [watch]
+set path data [version]
+delquota [-n|-b] path
+quit
+printwatches on|off
+create path data acl
+stat path [watch]
+listquota path
+history
+setAcl path acl
+getAcl path
+sync path
+redo cmdno
+addauth scheme auth
+delete path [version]
+deleteall path
+setquota -n|-b val path&lt;/pre&gt;
+</code></pre>在这里，你可以键入一些简单的命令来感受这个简单的命令行界面。首先，从list 命令开始 ，如ls：<br><pre class="lang:default decode:true ">[zkshell: 8] ls /<br>[zookeeper]</pre><br>接下来，执行 <code>create /zk_test my_data</code> 创建一个新的 znode。这个新创建的znode 和字符串”my_data”是关联的。你应该可以看到：<br><pre class="lang:default decode:true ">[zkshell: 9] create /zk_test my_data<br>Created /zk_test</pre><br>发出另一个 <code>ls /</code> 命令查看目录：<br><pre class="lang:default decode:true ">[zkshell: 11] ls /<br>[zookeeper, zk_test]</pre><br>请注意，zk_test 目录现在已经创建完成了。<br>接下来，执行 get 命令来验证数据与其关联的znode:<br><pre class="lang:default decode:true ">[zkshell: 12] get /zk_test<br>my_data<br>cZxid = 5<br>ctime = Fri Jun 05 13:57:06 PDT 2009<br>mZxid = 5<br>mtime = Fri Jun 05 13:57:06 PDT 2009<br>pZxid = 5<br>cversion = 0<br>dataVersion = 0<br>aclVersion = 0<br>ephemeralOwner = 0<br>dataLength = 7<br>numChildren = 0</pre><br>我们可以使用 set 命令来修改与zk_test相关的数据：<br><pre class="lang:default decode:true">[zkshell: 14] set /zk_test junk<br>cZxid = 5<br>ctime = Fri Jun 05 13:57:06 PDT 2009<br>mZxid = 6<br>mtime = Fri Jun 05 14:01:52 PDT 2009<br>pZxid = 5<br>cversion = 0<br>dataVersion = 1<br>aclVersion = 0<br>ephemeralOwner = 0<br>dataLength = 4<br>numChildren = 0<br>[zkshell: 15] get /zk_test<br>junk<br>cZxid = 5<br>ctime = Fri Jun 05 13:57:06 PDT 2009<br>mZxid = 6<br>mtime = Fri Jun 05 14:01:52 PDT 2009<br>pZxid = 5<br>cversion = 0<br>dataVersion = 1<br>aclVersion = 0<br>ephemeralOwner = 0<br>dataLength = 4<br>numChildren = 0</pre><br>（请注意，我们在更新完数据之后通过get得到了它有变动）<br>最后，让我们删除我们之前创建的znode:<br><pre class="lang:default decode:true ">[zkshell: 16] delete /zk_test<br>[zkshell: 17] ls /<br>[zookeeper]<br>[zkshell: 18]</pre><br>到此为止吧。如果要获取更多信息，继续本文档的其余部分和 <a href="http://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html" target="_blank" rel="external">程序员指南</a>。</pre></li>
+</ul>
+<h3 id="ZooKeeper__u7F16_u7A0B"><a href="#ZooKeeper__u7F16_u7A0B" class="headerlink" title="ZooKeeper 编程"></a>ZooKeeper 编程</h3><p>ZooKeeper提供了 Java 和 C 两种程序语言接口。它们功能上是等价的。但是C接口有两种变种存在：单线程和多线程。这些只有在如何完成消息循环是不同的。欲了解更多信息，请参阅的<a href="http://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html" target="_blank" rel="external">ZooKeeper程序员指南中的编程示例</a>使用不同的API的示例代码。</p>
+<h3 id="ZooKeeper_Replicated"><a href="#ZooKeeper_Replicated" class="headerlink" title="ZooKeeper Replicated"></a>ZooKeeper Replicated</h3><p>在开发和测试模式下，将ZooKeeper运行在独立模式下便于评估。但是在生产模式下，你应该讲ZooKeeper运行在 replicated 模式下。对于相同的应用程序来说，一组运行在replicated 的机器被称作 quorum。所有在 quorum 中的机器都有相同配置文件。</p>
+<blockquote>
+<p>注意：</p>
+<p>对于复制模式来说，至少需要三台机器，这里强烈建议你有奇数台机器。如果你只有两台机器，那么你可能会出现这种情况，如果其中一个出现故障，在有些情况下没有足够的机器来形成多数quorum。两个服务器比单个服务器还不稳定，因为当有故障时它们都指向错误。<br>这里在复制模式下需要的 cong/zoo.cfg 文件与在单节点模式下很相近，但是这里有些不同。<br>请看下面的例子：</p>
+<p><pre class="lang:default decode:true ">tickTime=2000<br>dataDir=/var/lib/zookeeper<br>clientPort=2181<br>initLimit=5<br>syncLimit=2<br>server.1=zoo1:2888:3888<br>server.2=zoo2:2888:3888<br>server.3=zoo3:2888:3888</pre><br>新的条目<br>initLimit 在心跳连接中，允许followers连接leader和与leader同步数据的时间。如果zookeeper管理的数据比较大，可以增加此值。<br>syncLimit 在心跳连接中，允许followers同步zookeeper数据的时间。如果followers与leader长久失去连接，它将被丢弃。</p>
+</blockquote>
+<p>有了这两个关于超时的参数，你可以使用tickTime确定时间单元。在这个例子中，initLimit 的超时是 5 ticks &lt;2000 毫秒 一 tick &gt;,或者是10 秒。</p>
+<p>表单中的 <code>server.x</code> 列出了组成 ZooKeeper 服务的机器。当服务启动的时候，它通过查找数据目录中的文件身份识别码来识别它是哪台服务器。这个文件有包含了以ASCII码 编码的服务器编号。</p>
+<p>最后，注意每个服务器名称后的两个端口号：”2888”和”3888”。同行使用当前端口连接到其他节点。这样的连接测试是必要的，这样对等体可以进行通信，例如，在更新的顺序一致中。更具体地说，ZooKeeper的服务器使用此端口将follower连接到leader。当一个新的leader出现，follower打开一个TCP连接，使用此端口连接到leader。因为默认leader选举也采用TCP，我们目前需要的其他端口用来leader的选举。这就是在server条目的第二端口。</p>
+<blockquote>
+<p>注意：</p>
+<p>如果你现在单机上测试集群伪分布。在本地主机该服务器的配置文件中的每个server.X 中指定服务器名与唯一的 quorum &amp; leader 选举端口(如：2888:3888, 2889:3889, 2890:3890 )。当然，独立的dataDirs和不同的客户端端口也是必要的（在上面的复制例如，在一个单一的本地主机上运行，你仍然有三个配置文件）。</p>
+<p>请注意，在一台机器上设置的集群伪分布不会产生任何冗余。如果出了什么错误造成机器不能正常提供服务，所有的ZooKeeper服务将下线。完全冗余需要每个服务器都有它自己的机器。它必须是一个完全独立的物理服务器。在同一台物理主机上的多个虚拟机仍然容易受到威胁。<br>&nbsp;</p>
+</blockquote>
+<h3 id="u5176_u4ED6_u64CD_u4F5C"><a href="#u5176_u4ED6_u64CD_u4F5C" class="headerlink" title="其他操作"></a>其他操作</h3><p>这里仍有一些其他配置参数可以大大提升性能：</p>
+<p>有一个专门的事务日志目录是很重要的可以在更新的时候降低延迟。在默认情况下，在同一目录存放 data snapshots 和 myid 文件.这个 dataLogDir 参数表示不同的目录用于事务日志。</p>
+<p>待定： … …</p>
+<p>原文：<a href="http://zookeeper.apache.org/doc/trunk/zookeeperStarted.html" target="_blank" rel="external">ZooKeeper Getting Started Guide</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/zookeeper/">zookeeper</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/03/29/[译]_zookpeer_入门教程/" data-title="[译] zookpeer 入门教程 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/29/[译]__zookeeper_配置文件详解/" title="[译]  zookeeper 配置文件详解">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  [译]  zookeeper 配置文件详解</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/03/23/zookeeper_工作原理/"  title="zookeeper 工作原理">
+ <strong>NEXT:</strong><br/> 
+ <span>zookeeper 工作原理
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#u5165_u95E8_uFF1A_u5206_u5E03_u5F0F_u5E94_u7528_u7A0B_u5E8F_u534F_u8C03_u670D_u52A1_ZooKeeper"><span class="toc-number">1.</span> <span class="toc-text">入门：分布式应用程序协调服务 ZooKeeper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5148_u51B3_u6761_u4EF6"><span class="toc-number">2.</span> <span class="toc-text">先决条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u4E0B_u8F7D"><span class="toc-number">3.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Standalone__u6A21_u5F0F_u4E0B_u64CD_u4F5C"><span class="toc-number">4.</span> <span class="toc-text">Standalone 模式下操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u7BA1_u7406_ZooKeeper__u5B58_u50A8"><span class="toc-number">5.</span> <span class="toc-text">管理 ZooKeeper 存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u8FDE_u63A5_ZooKeeper"><span class="toc-number">6.</span> <span class="toc-text">连接 ZooKeeper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZooKeeper__u7F16_u7A0B"><span class="toc-number">7.</span> <span class="toc-text">ZooKeeper 编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZooKeeper_Replicated"><span class="toc-number">8.</span> <span class="toc-text">ZooKeeper Replicated</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5176_u4ED6_u64CD_u4F5C"><span class="toc-number">9.</span> <span class="toc-text">其他操作</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

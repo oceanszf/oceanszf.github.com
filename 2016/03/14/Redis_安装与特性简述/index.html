@@ -1,0 +1,616 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Redis 安装与特性简述 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Redis&amp;lt; Remote Dictionary Server  &amp;gt;作为NoSQL数据库的一种应用，响应速度和命中率上还是比较高效的。项目中需要用集中式可横向扩展的缓存框架，做了一点调研，即便redis、memcached存在效率上的差异（具体比较参考http://timyang.net">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/suzf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/14/Redis_安装与特性简述/" title="Redis 安装与特性简述" itemprop="url">Redis 安装与特性简述</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-03-14T09:51:57.000Z" itemprop="datePublished">2016-03-14</time>
+    Updated:<time datetime="2016-03-31T05:38:36.000Z" itemprop="dateModified">2016-03-31</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#make_test"><span class="toc-number">1.</span> <span class="toc-text">make test</span></a></li></ol>
+		</div>
+		
+		<p>Redis&lt; Remote Dictionary Server  &gt;作为NoSQL数据库的一种应用，响应速度和命中率上还是比较高效的。<br>项目中需要用集中式可横向扩展的缓存框架，做了一点调研，即便redis、memcached存在效率上的差异（具体比较参考<a href="http://timyang.net/data/mcdb-tt-redis/），但其实都能满足目前项目的需求；但是redis还是比较风骚的，支持链表和集合操作，支持正则表达式查找key，目前项目缓存的结果大多是链表，如果链表新增或者修改数据的话，redis就体现出了极大的优势（memcached只能重新加载链表，redis可以对链表新增或者修改）" target="_blank" rel="external">http://timyang.net/data/mcdb-tt-redis/），但其实都能满足目前项目的需求；但是redis还是比较风骚的，支持链表和集合操作，支持正则表达式查找key，目前项目缓存的结果大多是链表，如果链表新增或者修改数据的话，redis就体现出了极大的优势（memcached只能重新加载链表，redis可以对链表新增或者修改）</a></p>
+<p>到目前为止Redis 支持的数据类型如下：</p>
+<p>– 字符串类型<br>– 散列类型<br>– 列表类型<br>– 集合类型<br>– 有序集合类型</p>
+<p><strong>1. Redis 安装</strong><br>== Redis 源码安装<br>– 参照源码 README<br>– 默认端口 6379</p>
+<p><strong><em> 安装redis之前先要确认系统已经安装了GCC和libc库 </em></strong></p>
+<p>wget <a href="http://download.redis.io/releases/redis-3.0.7.tar.gz" target="_blank" rel="external">http://download.redis.io/releases/redis-3.0.7.tar.gz</a><br>tar xf redis-3.0.7.tar.gz<br>cd redis-3.0.7<br>make</p>
+<h1 id="make_test"><a href="#make_test" class="headerlink" title="make test"></a>make test</h1><p>make PREFIX=/usr/local/redis install</p>
+<p>== 可执行命令<br>redis-server    Redis服务系统<br>redis-cli       Redis一个客户端管理工具<br>redis-benchmark 用来检测redis性能<br>redis-check-aof &amp; redis-check-dump 用来处理损坏的数据文件<br>redis-sentinel -&gt; redis-server   &lt; soft link &gt;</p>
+<p>cd utils<br>./install_server.sh</p>
+<p>^_^[15:50:34][root@master01 utils]#bash install_server.sh<br>Welcome to the redis service installer<br>This script will help you easily set up a running redis server</p>
+<p>Please select the redis port for this instance: [6379] 1111<br>Please select the redis config file name [/etc/redis/1111.conf]<br>Selected default - /etc/redis/1111.conf<br>Please select the redis log file name [/var/log/redis_1111.log]<br>Selected default - /var/log/redis_1111.log<br>Please select the data directory for this instance [/var/lib/redis/1111]<br>Selected default - /var/lib/redis/1111<br>Please select the redis executable path [/usr/sbin/redis-server] /usr/local/redis/bin/redis-server<br>Selected config:<br>Port           : 1111<br>Config file    : /etc/redis/1111.conf<br>Log file       : /var/log/redis_1111.log<br>Data dir       : /var/lib/redis/1111<br>Executable     : /usr/local/redis/bin/redis-server<br>Cli Executable : /usr/bin/redis-cli<br>Is this ok? Then press ENTER to go on or Ctrl-C to abort.<br>Copied /tmp/1111.conf =&gt; /etc/init.d/redis_1111<br>Installing service…<br>Successfully added to chkconfig!<br>Successfully added to runlevels 345!<br>Starting Redis server…<br>Installation successful!</p>
+<p><strong>2. 系统配置</strong><br>设置内存分配策略（可选，根据服务器的实际情况进行设置）<br>/proc/sys/vm/overcommit_memory<br>可选值：0、1、2。<br>0， 表示内核将检查是否有足够的可用内存供应用进程使用；如果有足够的可用内存，内存申请允许；否则，内存申请失败，并把错误返回给应用进程。<br>1， 表示内核允许分配所有的物理内存，而不管当前的内存状态如何。<br>2， 表示内核允许分配超过所有物理内存和交换空间总和的内存</p>
+<p>值得注意的一点是，redis在dump数据的时候，会fork出一个子进程，理论上child进程所占用的内存和parent是一样的，比如parent占用的内存为8G，这个时候也要同样分配8G的内存给child,如果内存无法负担，往往会造成redis服务器的down机或者IO负载过高，效率下降。所以这里比较优化的内存分配策略应该设置为 1（表示内核允许分配所有的物理内存，而不管当前的内存状态如何）</p>
+<p>防火墙开启redis端口</p>
+<p>加入端口配置<br>iptables -A INPUT -m state –state NEW -m tcp -p tcp –dport 1111 -j ACCEPT  # &lt; redis instance port &gt;</p>
+<p>写入配置文件<br>iptables-save &gt; /etc/sysconfig/iptables</p>
+<p><strong>3. 启动redis服务</strong><br>/etc/init.d/redis_1111  start</p>
+<p><strong>4. 测试redis</strong></p>
+<p>#redis-cli  -p 1111<br>redis 127.0.0.1:1111&gt; set name suzf.net<br>OK<br>redis 127.0.0.1:1111&gt; get name<br>“suzf.net”</p>
+<p>客户端连接验证</p>
+<p>#redis-cli -p 1111 ping<br>PONG</p>
+<p><strong>5. 关闭redis服务</strong><br>停止Redis<br>/etc/init.d/redis_1111  stop</p>
+<p>关闭指定端口的redis-server<br>redis-cli -p 1111 shutdown</p>
+<p>redis服务关闭后，缓存数据会自动dump到硬盘上，硬盘地址为redis.conf中的配置项dbfilename dump.rdb所设定<br>强制备份数据到磁盘，使用如下命令</p>
+<p>redis-cli save<br>redis-cli -p 111 save（指定端口）</p>
+<p><strong>6. Redis 常用命令</strong><br>info #查看server版本内存使用连接等信息</p>
+<p>client list #获取客户连接列表</p>
+<p>client kill 127.0.0.1:33441 #终止某个客户端连接</p>
+<p>dbsize #当前保存key的数量</p>
+<p>save #立即保存数据到硬盘</p>
+<p>bgsave #异步保存数据到硬盘</p>
+<p>flushdb #当前库中移除所有key</p>
+<p>flushall #移除所有key从所有库中</p>
+<p>lastsave #获取上次成功保存到硬盘的unix时间戳</p>
+<p>monitor #实时监测服务器接收到的请求</p>
+<p>slowlog len #查询慢查询日志条数</p>
+<p>slowlog get #返回所有的慢查询日志，最大值取决于slowlog-max-len配置</p>
+<p>slowlog get 2 #打印两条慢查询日志</p>
+<p>slowlog reset #清空慢查询日志信息</p>
+<p><strong>7. Redis与Mongodb 多数据库 区别</strong></p>
+<p>redis数据库</p>
+<p>redis的数据库个数，在配置文件中设定死了，并且名称是不允许改的。<br>databases 16     //默认16个数据库</p>
+<p>这16个数据库编号是0-15，如果没有切换数据库的话，默认是0号数据库.</p>
+<p><pre class="lang:default decode:true ">    #redis-cli<br>    redis 127.0.0.1:6379&gt; set test 111<br>    OK<br>    redis 127.0.0.1:6379&gt; select 1<br>    OK<br>    redis 127.0.0.1:6379[1]&gt; set test 222<br>    OK<br>    redis 127.0.0.1:6379[1]&gt; get test<br>    “222”<br>    redis 127.0.0.1:6379[1]&gt; select 0<br>    OK<br>    redis 127.0.0.1:6379&gt; get test<br>    “111”<br>    redis 127.0.0.1:6379&gt;</pre><br>数据库间相同的key,相互不受影响。</p>
+<p>mongodb数据库<br>mongodb非常像关系型数据库，与redis不同的是，mongodb不用事先定义多少个数据库，数据库名也是自定义的。限制比redis少。</p>
+<p><pre class="lang:default decode:true ">    #mongo<br>    MongoDB shell version: 2.4.14<br>    connecting to: test<br>    &gt; use Fern     // 如果数据库不存在会自动创建<br>    switched to db Fern</pre><br>&nbsp;</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/NoSQL/">NoSQL</a><a href="/tags/redis/">redis</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Redis/">Redis</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/03/14/Redis_安装与特性简述/" data-title="Redis 安装与特性简述 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/14/Redis_监控技巧/" title="Redis 监控技巧">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Redis 监控技巧</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/03/10/Python_time_模块简述/"  title="Python time 模块简述">
+ <strong>NEXT:</strong><br/> 
+ <span>Python time 模块简述
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#make_test"><span class="toc-number">1.</span> <span class="toc-text">make test</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

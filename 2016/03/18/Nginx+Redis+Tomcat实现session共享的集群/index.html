@@ -1,0 +1,781 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Nginx+Redis+Tomcat实现session共享的集群 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="Nginx 作为目前最流行的开源反向代理HTTP Server，用于实现资源缓存、web server负载均衡等功能，由于其轻量级、高性能、高可靠等特点在互联网项目中有着非常普遍的应用，相关概念网上有丰富的介绍。分布式web server集群部署后需要实现session共享，针对 tomcat 服务器的实现方案多种多样，比如 tomcat cluster session 广播、nginx IP hash策略、nginx sticky module等方案，本文主要介绍了使用 redis 服务器进行 session 统一存储管理的共享方案。
+使 用Nginx作为Tomcat的负载平衡器，Tomcat的会话Session数据存储在Redis，能够实现0当机的7×24运营效果。因为将会话存储 在Redis中，因此Nginx就不必配置成stick粘粘某个Tomcat方式，这样才能真正实现后台多个Tomcat负载平衡，用户请求能够发往任何 一个tomcat主机，当我们需要部署新应用代码时，只要停止任何一台tomcat，所有当前在线用户都会导向到运行中的tomcat实例，因为会话数据 被序列化到Redis，在线用户不会受到影响，一旦停掉的tomcat实例上线，另外其他重复部署过程。">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/suzf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/Nginx+Redis+Tomcat实现session共享的集群/" title="Nginx+Redis+Tomcat实现session共享的集群" itemprop="url">Nginx+Redis+Tomcat实现session共享的集群</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-03-18T06:56:32.000Z" itemprop="datePublished">2016-03-18</time>
+    Updated:<time datetime="2016-03-31T12:50:15.000Z" itemprop="dateModified">2016-03-31</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#make_test"><span class="toc-number">1.</span> <span class="toc-text">make test</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rpm_-ivh_jdk-7u79-linux-x64-rpm"><span class="toc-number">2.</span> <span class="toc-text">rpm -ivh jdk-7u79-linux-x64.rpm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat__26gt_3B_/etc/profile-d/java-sh__26lt_3B_26lt_3B_EOF"><span class="toc-number">3.</span> <span class="toc-text">cat > /etc/profile.d/java.sh << EOF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget_-c_curl_-s__26quot_3Bhttps_3A//tomcat-apache-org/download-70-cgi_26quot_3B__7C_awk_-F_26_2339_3B_26quot_3B_26_2339_3B__26_2339_3B/apache_5C-tomcat_5C-7-*-tar-gz/_7Bprint__242_3Bexit_7D_26_2339_3B"><span class="toc-number">4.</span> <span class="toc-text">wget -c curl -s "https://tomcat.apache.org/download-70.cgi" | awk -F'"' '/apache\-tomcat\-7.*.tar.gz/{print $2;exit}'</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xf_apache-tomcat-7-*-tar-gz_-C_/usr/local/"><span class="toc-number">5.</span> <span class="toc-text">tar xf apache-tomcat-7.*.tar.gz -C /usr/local/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ln_-sv_/usr/local/apache-tomcat-7-*_/usr/local/tomcat"><span class="toc-number">6.</span> <span class="toc-text">ln -sv /usr/local/apache-tomcat-7.* /usr/local/tomcat</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat__26gt_3B_/etc/profile-d/tomcat-sh__26lt_3B_26lt_3B_EOF"><span class="toc-number">7.</span> <span class="toc-text">cat > /etc/profile.d/tomcat.sh << EOF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#source_/etc/profile-d/java-sh"><span class="toc-number">8.</span> <span class="toc-text">source /etc/profile.d/java.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#source_/etc/profile-d/tomcat-sh"><span class="toc-number">9.</span> <span class="toc-text">source /etc/profile.d/tomcat.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#catalina-sh_version"><span class="toc-number">10.</span> <span class="toc-text">catalina.sh version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#grep_-v__u201C_5E_24_7C_5E-*_23_u201D_/etc/nginx/nginx-conf"><span class="toc-number">11.</span> <span class="toc-text">grep -v “^$|^.*#”  /etc/nginx/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gradle_build_-x_test_copyJars"><span class="toc-number">12.</span> <span class="toc-text">gradle build -x test copyJars</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mkdir_/tmp/jar"><span class="toc-number">13.</span> <span class="toc-text">mkdir /tmp/jar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_-a_build/libs/-jar_/tmp/jar/__26amp_3B_26amp_3B_cp_-a_dist/-jar_/tmp/jar/"><span class="toc-number">14.</span> <span class="toc-text">cp -a build/libs/.jar /tmp/jar/ && cp -a dist/.jar /tmp/jar/</span></a></li></ol>
+		</div>
+		
+		<p>Nginx 作为目前最流行的开源反向代理HTTP Server，用于实现资源缓存、web server负载均衡等功能，由于其轻量级、高性能、高可靠等特点在互联网项目中有着非常普遍的应用，相关概念网上有丰富的介绍。分布式web server集群部署后需要实现session共享，针对 tomcat 服务器的实现方案多种多样，比如 tomcat cluster session 广播、nginx IP hash策略、nginx sticky module等方案，本文主要介绍了使用 redis 服务器进行 session 统一存储管理的共享方案。</p>
+<p>使 用Nginx作为Tomcat的负载平衡器，Tomcat的会话Session数据存储在Redis，能够实现0当机的7×24运营效果。因为将会话存储 在Redis中，因此Nginx就不必配置成stick粘粘某个Tomcat方式，这样才能真正实现后台多个Tomcat负载平衡，用户请求能够发往任何 一个tomcat主机，当我们需要部署新应用代码时，只要停止任何一台tomcat，所有当前在线用户都会导向到运行中的tomcat实例，因为会话数据 被序列化到Redis，在线用户不会受到影响，一旦停掉的tomcat实例上线，另外其他重复部署过程。<a id="more"></a></p>
+<p><a href="http://suzf.net/wp-content/uploads/2016/03/frame-20160121153429_41249.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/03/frame-20160121153429_41249.png" alt="frame-20160121153429_41249"></a><br><strong>实验环境</strong></p>
+<p><pre class="lang:default decode:true">      IP            Roles               port</pre></p>
+<p>node1 192.168.9.10  nginx,redis,tomcat  80,1111,8080</p>
+<p>node2 192.168.9.70  tomcat              8080<br><strong>软件工具包</strong><br>apache-tomcat-7.0.68.tar<br>redis-3.0.7.tar<br>jdk-7u79-linux-x64.rpm<br>nginx-1.0.15-12.el6.x86_64.rpm</p>
+<p><strong>tomcat需要的jar包</strong><br>commons-logging-1.1.3.jar<br>commons-pool2-2.2.jar<br>jedis-2.5.2.jar<br>tomcat-juli.jar<br>tomcat-redis-session-manage-tomcat7.jar<br><strong>安装redis</strong></p>
+<ol>
+<li>Redis 安装<br>== Redis 源码安装<br>— 参照源码 README<br>— 默认端口 6379</li>
+</ol>
+<p><strong><em> 安装redis之前先要确认系统已经安装了GCC和libc库 </em></strong></p>
+<p><pre class="lang:default decode:true ">wget <a href="http://download.redis.io/releases/redis-3.0.7.tar.gz" target="_blank" rel="external">http://download.redis.io/releases/redis-3.0.7.tar.gz</a><br>tar xf redis-3.0.7.tar.gz<br>cd redis-3.0.7<br>make</pre></p>
+<h1 id="make_test"><a href="#make_test" class="headerlink" title="make test"></a>make test</h1><p>make PREFIX=/usr/local/redis install<br>&nbsp;</p>
+<p>== 可执行命令</p>
+<p><pre class="lang:default decode:true ">redis-server    Redis服务系统<br>redis-cli       Redis一个客户端管理工具<br>redis-benchmark 用来检测redis性能<br>redis-check-aof &amp; redis-check-dump 用来处理损坏的数据文件<br>redis-sentinel -&gt; redis-server   &lt; soft link &gt;</pre></p>
+<p>cd utils<br>./install_server.sh</p>
+<p>^_^[15:50:34][root@master01 utils]#bash install_server.sh<br>Welcome to the redis service installer<br>This script will help you easily set up a running redis server</p>
+<p>Please select the redis port for this instance: [6379] 1111<br>Please select the redis config file name [/etc/redis/1111.conf]<br>Selected default – /etc/redis/1111.conf<br>Please select the redis log file name [/var/log/redis_1111.log]<br>Selected default – /var/log/redis_1111.log<br>Please select the data directory for this instance [/var/lib/redis/1111]<br>Selected default – /var/lib/redis/1111<br>Please select the redis executable path [/usr/sbin/redis-server] /usr/local/redis/bin/redis-server<br>Selected config:<br>Port           : 1111<br>Config file    : /etc/redis/1111.conf<br>Log file       : /var/log/redis_1111.log<br>Data dir       : /var/lib/redis/1111<br>Executable     : /usr/local/redis/bin/redis-server<br>Cli Executable : /usr/bin/redis-cli<br>Is this ok? Then press ENTER to go on or Ctrl-C to abort.<br>Copied /tmp/1111.conf =&gt; /etc/init.d/redis_1111<br>Installing service…<br>Successfully added to chkconfig!<br>Successfully added to runlevels 345!<br>Starting Redis server…<br>Installation successful!<br>&nbsp;</p>
+<p>Redis 系统配置</p>
+<p><pre class="lang:default decode:true">echo “vm.overcommit_memory = 1” &gt;&gt; /etc/sysctl.conf<br>sysctl vm.overcommit_memory=1<br>echo 511 &gt; /proc/sys/net/core/somaxconn</pre><br>启动服务</p>
+<p>/etc/init.d/redis_1111 start</p>
+<p>配置文件可以用默认的配置，从服务器上配置文文件打开slavefo 加上主服务器的ip和端口，还有其他的参数如日志和dump.rdb保存路径可以适当修改</p>
+<p>FAQ:</p>
+<p>make时如果有类似如下报错：<br>Selecting a non-default memory allocator when building Redis is done by setting<br>the <code>[MALLOC](https://www.baidu.com/s?wd=MALLOC&amp;amp;tn=44039180_cpr&amp;amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1YLPvnvnHIWuHTYnvPWP1mL0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1csP1RvnjcdPHnYP1nzPjDzPW6)</code> environment variable. Redis is compiled and linked against libc<br><a href="https://www.baidu.com/s?wd=malloc&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1YLPvnvnHIWuHTYnvPWP1mL0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1csP1RvnjcdPHnYP1nzPjDzPW6" target="_blank" rel="external">malloc</a> by default, with the exception of je<a href="https://www.baidu.com/s?wd=malloc&amp;tn=44039180_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1YLPvnvnHIWuHTYnvPWP1mL0ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1csP1RvnjcdPHnYP1nzPjDzPW6" target="_blank" rel="external">malloc</a> being the default on Linux<br>systems. This default was picked because jemalloc has proven to have fewer<br>fragmentation problems than libc malloc.</p>
+<p>make MALLOC=libc<br><strong>安装 JDK and Tomcat</strong></p>
+<p><pre class="lang:default decode:true"># wget -c –header “Cookie: oraclelicense=accept-securebackup-cookie” <code>curl -s http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html | awk -F&#39;&quot;&#39; &#39;/jdk\-7.*\-linux\-x64.rpm/{print $12;exit}&#39;</code></pre></p>
+<h1 id="rpm_-ivh_jdk-7u79-linux-x64-rpm"><a href="#rpm_-ivh_jdk-7u79-linux-x64-rpm" class="headerlink" title="rpm -ivh jdk-7u79-linux-x64.rpm"></a>rpm -ivh jdk-7u79-linux-x64.rpm</h1><h1 id="cat__26gt_3B_/etc/profile-d/java-sh__26lt_3B_26lt_3B_EOF"><a href="#cat__26gt_3B_/etc/profile-d/java-sh__26lt_3B_26lt_3B_EOF" class="headerlink" title="cat &gt; /etc/profile.d/java.sh &lt;&lt; EOF"></a>cat &gt; /etc/profile.d/java.sh &lt;&lt; EOF</h1><p>JAVA_HOME=/usr/java/latest</p>
+<p>PATH=\$JAVA_HOME/bin:\$PATH</p>
+<p>export JAVA_HOME PATH</p>
+<p>EOF</p>
+<h1 id="wget_-c_curl_-s__26quot_3Bhttps_3A//tomcat-apache-org/download-70-cgi_26quot_3B__7C_awk_-F_26_2339_3B_26quot_3B_26_2339_3B__26_2339_3B/apache_5C-tomcat_5C-7-*-tar-gz/_7Bprint__242_3Bexit_7D_26_2339_3B"><a href="#wget_-c_curl_-s__26quot_3Bhttps_3A//tomcat-apache-org/download-70-cgi_26quot_3B__7C_awk_-F_26_2339_3B_26quot_3B_26_2339_3B__26_2339_3B/apache_5C-tomcat_5C-7-*-tar-gz/_7Bprint__242_3Bexit_7D_26_2339_3B" class="headerlink" title="wget -c curl -s &quot;https://tomcat.apache.org/download-70.cgi&quot; | awk -F&#39;&quot;&#39; &#39;/apache\-tomcat\-7.*.tar.gz/{print $2;exit}&#39;"></a>wget -c <code>curl -s &quot;https://tomcat.apache.org/download-70.cgi&quot; | awk -F&#39;&quot;&#39; &#39;/apache\-tomcat\-7.*.tar.gz/{print $2;exit}&#39;</code></h1><h1 id="tar_xf_apache-tomcat-7-*-tar-gz_-C_/usr/local/"><a href="#tar_xf_apache-tomcat-7-*-tar-gz_-C_/usr/local/" class="headerlink" title="tar xf apache-tomcat-7.*.tar.gz -C /usr/local/"></a>tar xf apache-tomcat-7.*.tar.gz -C /usr/local/</h1><h1 id="ln_-sv_/usr/local/apache-tomcat-7-*_/usr/local/tomcat"><a href="#ln_-sv_/usr/local/apache-tomcat-7-*_/usr/local/tomcat" class="headerlink" title="ln -sv /usr/local/apache-tomcat-7.* /usr/local/tomcat"></a>ln -sv /usr/local/apache-tomcat-7.* /usr/local/tomcat</h1><h1 id="cat__26gt_3B_/etc/profile-d/tomcat-sh__26lt_3B_26lt_3B_EOF"><a href="#cat__26gt_3B_/etc/profile-d/tomcat-sh__26lt_3B_26lt_3B_EOF" class="headerlink" title="cat &gt; /etc/profile.d/tomcat.sh &lt;&lt; EOF"></a>cat &gt; /etc/profile.d/tomcat.sh &lt;&lt; EOF</h1><p>export CATALINA_HOME=/usr/local/tomcat</p>
+<p>export PATH=\$CATALINA_HOME/bin:\$PATH</p>
+<p>EOF</p>
+<h1 id="source_/etc/profile-d/java-sh"><a href="#source_/etc/profile-d/java-sh" class="headerlink" title="source /etc/profile.d/java.sh"></a>source /etc/profile.d/java.sh</h1><h1 id="source_/etc/profile-d/tomcat-sh"><a href="#source_/etc/profile-d/tomcat-sh" class="headerlink" title="source /etc/profile.d/tomcat.sh"></a>source /etc/profile.d/tomcat.sh</h1><h1 id="catalina-sh_version"><a href="#catalina-sh_version" class="headerlink" title="catalina.sh version"></a>catalina.sh version</h1><p>Using CATALINA_BASE:   /usr/local/tomcat</p>
+<p>Using CATALINA_HOME:   /usr/local/tomcat</p>
+<p>Using CATALINA_TMPDIR: /usr/local/tomcat/temp</p>
+<p>Using JRE_HOME:        /usr/java/latest</p>
+<p>Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar</p>
+<p>Server version: Apache Tomcat/7.0.68</p>
+<p>Server built:   Feb 8 2016 20:25:54 UTC</p>
+<p>Server number:  7.0.68.0</p>
+<p>OS Name:        Linux</p>
+<p>OS Version:     2.6.32-573.8.1.el6.x86_64</p>
+<p>Architecture:   amd64</p>
+<p>JVM Version:    1.7.0_79-b15</p>
+<p>JVM Vendor:     Oracle Corporation<br>&nbsp;</p>
+<p><strong><em> 将jar包全都拷进tomcat lib目录下 </em></strong></p>
+<p><pre class="lang:default decode:true ">^<em>^[14:43:41][root@master01 lib]#pwd<br>/usr/local/tomcat/lib<br>^</em>^[14:44:47][root@master01 lib]#ls -lth | tail -5<br>-rw-r–r– 1 root root  61K Nov 13 15:18 commons-logging-1.1.3.jar<br>-rw-r–r– 1 root root 106K Nov 13 15:18 commons-pool2-2.2.jar<br>-rw-r–r– 1 root root 308K Nov 13 15:18 jedis-2.5.2.jar<br>-rw-r–r– 1 root root  74K Nov 13 15:18 tomcat-juli.jar<br>-rw-r–r– 1 root root  20K Nov 13 15:18 tomcat-redis-session-manage-tomcat7.jar</pre><br>修改conf目录下context.xml配置文件，session共享保存设置<br>在&lt;Context&gt;标签中</p>
+<p><pre class="lang:default decode:true ">&lt;Valve className=”com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve” /&gt;<br>&lt;Manager className=”com.orangefunction.tomcat.redissessions.RedisSessionManager”<br>host=”192.168.9.10”<br>port=”1111”<br>database=”0”<br>maxInactiveInterval=”60”/&gt;</pre><br>添加测试页</p>
+<p><pre class="lang:default decode:true ">vim webapps/ROOT/test.jsp</pre></p>
+<p>&lt;%@ page language=”java” %&gt;</p>
+<p>&lt;html&gt;</p>
+<p>  &lt;head&gt;&lt;title&gt;TomcatI&lt;/title&gt;&lt;/head&gt;</p>
+<p>  &lt;body&gt;</p>
+<pre><code>&amp;lt;h1&amp;gt;&amp;lt;font color=&quot;green&quot;&amp;gt;TomcatI.suzf.net&amp;lt;/font&amp;gt;&amp;lt;/h1&amp;gt;
+
+&amp;lt;table align=&quot;centre&quot; border=&quot;1&quot;&amp;gt;
+
+  &amp;lt;tr&amp;gt;
+
+    &amp;lt;td&amp;gt;Session ID&amp;lt;/td&amp;gt;
+
+&amp;lt;% session.setAttribute(&quot;tomcat.suzf.net&quot;,&quot;tomcat.suzf.net&quot;); %&amp;gt;
+
+    &amp;lt;td&amp;gt;&amp;lt;%= session.getId() %&amp;gt;&amp;lt;/td&amp;gt;
+
+  &amp;lt;/tr&amp;gt;
+
+  &amp;lt;tr&amp;gt;
+
+    &amp;lt;td&amp;gt;Created on&amp;lt;/td&amp;gt;
+
+    &amp;lt;td&amp;gt;&amp;lt;%= session.getCreationTime() %&amp;gt;&amp;lt;/td&amp;gt;
+
+ &amp;lt;/tr&amp;gt;
+
+&amp;lt;/table&amp;gt;
+</code></pre><p>  &lt;/body&gt;</p>
+<p>&lt;/html&gt;<br>将tomcat目录拷贝到其他tomcat服务器<br>将测试页代码 Titile 和 color 修改下，以作区分。</p>
+<p><strong>Nginx安装</strong></p>
+<p><pre class="lang:default decode:true ">yum install nginx -y </pre></p>
+<p>Nginx 相关配置</p>
+<h1 id="grep_-v__u201C_5E_24_7C_5E-*_23_u201D_/etc/nginx/nginx-conf"><a href="#grep_-v__u201C_5E_24_7C_5E-*_23_u201D_/etc/nginx/nginx-conf" class="headerlink" title="grep -v “^$|^.*#”  /etc/nginx/nginx.conf"></a>grep -v “^$|^.*#”  /etc/nginx/nginx.conf</h1><p>user              nginx;<br>worker_processes  1;<br>error_log  /var/log/nginx/error.log;<br>pid        /var/run/nginx.pid;</p>
+<p>events {</p>
+<pre><code>worker_connections  1024;
+</code></pre><p>}</p>
+<p>http {</p>
+<pre><code>include       /etc/nginx/mime.types;
+default_type  application/octet-stream;
+log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;
+
+                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;
+
+                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;
+
+upstream suzf-net-tomcat {
+
+   server 192.168.9.10:8080;
+   server 192.168.9.70:8080;
+
+}
+
+server {
+
+    listen 80;
+    server_name tomcat.suzf.net;
+
+    location / {
+
+         index   index.jsp index.html index.htm;
+         proxy_pass http://suzf-net-tomcat;
+         proxy_redirect off;
+         proxy_set_header Host $host;
+         proxy_set_header X-Real-IP $remote_addr;
+         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    }
+
+}
+
+access_log  /var/log/nginx/access.log  main;
+sendfile        on;
+server_tokens   off;
+keepalive_timeout  65;
+
+include /etc/nginx/conf.d/*.conf;
+</code></pre><p>}<br>&nbsp;</p>
+<p>检测nginx 配置文件 &amp; 重载配置文件</p>
+<p><pre class="lang:default decode:true">#/etc/init.d/nginx configtest </pre></p>
+<p>nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</p>
+<p>nginx: configuration file /etc/nginx/nginx.conf test is successful</p>
+<p>#/etc/init.d/nginx  reload</p>
+<p>Reloading nginx:                                           [  OK  ]<br><strong>浏览器验证：</strong></p>
+<p><a href="http://suzf.net/wp-content/uploads/2016/03/tom1-20160318130409.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/03/tom1-20160318130409.png" alt="tom1-20160318130409"></a></p>
+<p><a href="http://suzf.net/wp-content/uploads/2016/03/tom2-20160318130451.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/03/tom2-20160318130451.png" alt="tom2-20160318130451"></a></p>
+<p>&nbsp;</p>
+<p><strong> 查看Redis 数据</strong></p>
+<p><a href="http://suzf.net/wp-content/uploads/2016/03/redis-20160318130539.png" target="_blank" rel="external"><img src="http://suzf.net/wp-content/uploads/2016/03/redis-20160318130539.png" alt="redis-20160318130539"></a></p>
+<p>&nbsp;</p>
+<p><strong>通过 tomcat-redis-session-manager  自动获取tomcat 所需 jar 包  </strong></p>
+<p><strong>*</strong> 未测 <strong>* </strong></p>
+<p>tomcat-redis-session-manager 是一个用来将 Tomcat 的 Session 数据存储在 Redis 库中的项目。</p>
+<p>官网：<a href="https://github.com/jcoleman/tomcat-redis-session-manager" target="_blank" rel="external">https://github.com/jcoleman/tomcat-redis-session-manager</a></p>
+<p><strong><em> 由于源码构建基于 gradle，请先配置 gradle 环境。</em></strong></p>
+<p><pre class="lang:default decode:true">wget <a href="https://downloads.gradle.org/distributions/gradle-2.10-all.zip" target="_blank" rel="external">https://downloads.gradle.org/distributions/gradle-2.10-all.zip</a></pre></p>
+<p>unzip -q gradle-2.10-all.zip -d /usr/local/</p>
+<p>ln -sv /usr/local/gradle-2.10 /usr/local/gradle</p>
+<p>#echo “export PATH=/usr/local/gradle/bin:\$PATH” &gt; /etc/profile.d/gradle2.10.sh</p>
+<p>#source /etc/profile.d/gradle2.10.sh<br>&nbsp;</p>
+<p>安装 tomcat-redis-session-manager</p>
+<p><pre class="lang:default decode:true">git clone <a href="https://github.com/jcoleman/tomcat-redis-session-manager.git" target="_blank" rel="external">https://github.com/jcoleman/tomcat-redis-session-manager.git</a></pre></p>
+<p>cd tomcat-redis-session-manager/</p>
+<p>mv build.gradle build.gradle.bak</p>
+<p>vim build.gradle</p>
+<p>#diff -ruN build.gradle*</p>
+<p>— build.gradle 2016-01-04 07:07:59.000000000 +0800</p>
+<p>+++ build.gradle.old 2016-03-18 10:48:15.620704187 +0800</p>
+<p>@@ -44,13 +44,8 @@</p>
+<p>   archives sourcesJar</p>
+<p> }</p>
+<p>-//signing {</p>
+<p>-//  sign configurations.archives</p>
+<p>-//}</p>
+<p>-</p>
+<p>-task copyJars(type: Copy) {</p>
+<ul>
+<li><p>from configurations.runtime</p>
+</li>
+<li><p>into ‘dist’  </p>
+</li>
+</ul>
+<p>+signing {</p>
+<ul>
+<li><p>sign configurations.archives</p>
+<p>}</p>
+<p>uploadArchives {</p>
+</li>
+</ul>
+<p>@@ -58,9 +53,9 @@</p>
+<pre><code>mavenDeployer {
+
+  beforeDeployment { MavenDeployment deployment -&amp;gt; signing.signPom(deployment) }
+</code></pre><ul>
+<li><p>//repository(url: “<a href="https://oss.sonatype.org/service/local/staging/deploy/maven2/" target="_blank" rel="external">https://oss.sonatype.org/service/local/staging/deploy/maven2/</a>“) {</p>
+</li>
+<li><p>//  authentication(userName: sonatypeUsername, password: sonatypePassword)</p>
+</li>
+<li><p>//}</p>
+</li>
+</ul>
+<ul>
+<li><p>repository(url: “<a href="https://oss.sonatype.org/service/local/staging/deploy/maven2/" target="_blank" rel="external">https://oss.sonatype.org/service/local/staging/deploy/maven2/</a>“) {</p>
+</li>
+<li><p>authentication(userName: sonatypeUsername, password: sonatypePassword)</p>
+</li>
+<li><p>}</p>
+<p>//repository(url: “<a href="https://oss.sonatype.org/content/repositories/snapshots" target="_blank" rel="external">https://oss.sonatype.org/content/repositories/snapshots</a>“) {</p>
+<p>//  authentication(userName: sonatypeUsername, password: sonatypePassword)</p>
+<p>//}</p>
+</li>
+</ul>
+<p>@@ -101,4 +96,4 @@</p>
+<pre><code>  }
+
+}
+</code></pre><p>   }</p>
+<p>-}</p>
+<p>\ No newline at end of file</p>
+<p>+}</p>
+<h1 id="gradle_build_-x_test_copyJars"><a href="#gradle_build_-x_test_copyJars" class="headerlink" title="gradle build -x test copyJars"></a>gradle build -x test copyJars</h1><h1 id="mkdir_/tmp/jar"><a href="#mkdir_/tmp/jar" class="headerlink" title="mkdir /tmp/jar"></a>mkdir /tmp/jar</h1><h1 id="cp_-a_build/libs/-jar_/tmp/jar/__26amp_3B_26amp_3B_cp_-a_dist/-jar_/tmp/jar/"><a href="#cp_-a_build/libs/-jar_/tmp/jar/__26amp_3B_26amp_3B_cp_-a_dist/-jar_/tmp/jar/" class="headerlink" title="cp -a build/libs/.jar /tmp/jar/ &amp;&amp; cp -a dist/.jar /tmp/jar/"></a>cp -a build/libs/<em>.jar /tmp/jar/ &amp;&amp; cp -a dist/</em>.jar /tmp/jar/</h1><p>最后将 jar 包 分发到tomcat 项目中</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Nginx/">Nginx</a><a href="/tags/redis/">redis</a><a href="/tags/tomcat/">tomcat</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Redis/">Redis</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2016/03/18/Nginx+Redis+Tomcat实现session共享的集群/" data-title="Nginx+Redis+Tomcat实现session共享的集群 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/03/21/Redis_常用命令总结/" title="Redis 常用命令总结">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Redis 常用命令总结</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/03/17/redis-sentinel-test/"  title="Redis Sentinel Test">
+ <strong>NEXT:</strong><br/> 
+ <span>Redis Sentinel Test
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#make_test"><span class="toc-number">1.</span> <span class="toc-text">make test</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rpm_-ivh_jdk-7u79-linux-x64-rpm"><span class="toc-number">2.</span> <span class="toc-text">rpm -ivh jdk-7u79-linux-x64.rpm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat__26gt_3B_/etc/profile-d/java-sh__26lt_3B_26lt_3B_EOF"><span class="toc-number">3.</span> <span class="toc-text">cat > /etc/profile.d/java.sh << EOF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wget_-c_curl_-s__26quot_3Bhttps_3A//tomcat-apache-org/download-70-cgi_26quot_3B__7C_awk_-F_26_2339_3B_26quot_3B_26_2339_3B__26_2339_3B/apache_5C-tomcat_5C-7-*-tar-gz/_7Bprint__242_3Bexit_7D_26_2339_3B"><span class="toc-number">4.</span> <span class="toc-text">wget -c curl -s "https://tomcat.apache.org/download-70.cgi" | awk -F'"' '/apache\-tomcat\-7.*.tar.gz/{print $2;exit}'</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xf_apache-tomcat-7-*-tar-gz_-C_/usr/local/"><span class="toc-number">5.</span> <span class="toc-text">tar xf apache-tomcat-7.*.tar.gz -C /usr/local/</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ln_-sv_/usr/local/apache-tomcat-7-*_/usr/local/tomcat"><span class="toc-number">6.</span> <span class="toc-text">ln -sv /usr/local/apache-tomcat-7.* /usr/local/tomcat</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cat__26gt_3B_/etc/profile-d/tomcat-sh__26lt_3B_26lt_3B_EOF"><span class="toc-number">7.</span> <span class="toc-text">cat > /etc/profile.d/tomcat.sh << EOF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#source_/etc/profile-d/java-sh"><span class="toc-number">8.</span> <span class="toc-text">source /etc/profile.d/java.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#source_/etc/profile-d/tomcat-sh"><span class="toc-number">9.</span> <span class="toc-text">source /etc/profile.d/tomcat.sh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#catalina-sh_version"><span class="toc-number">10.</span> <span class="toc-text">catalina.sh version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#grep_-v__u201C_5E_24_7C_5E-*_23_u201D_/etc/nginx/nginx-conf"><span class="toc-number">11.</span> <span class="toc-text">grep -v “^$|^.*#”  /etc/nginx/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gradle_build_-x_test_copyJars"><span class="toc-number">12.</span> <span class="toc-text">gradle build -x test copyJars</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mkdir_/tmp/jar"><span class="toc-number">13.</span> <span class="toc-text">mkdir /tmp/jar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_-a_build/libs/-jar_/tmp/jar/__26amp_3B_26amp_3B_cp_-a_dist/-jar_/tmp/jar/"><span class="toc-number">14.</span> <span class="toc-text">cp -a build/libs/.jar /tmp/jar/ && cp -a dist/.jar /tmp/jar/</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

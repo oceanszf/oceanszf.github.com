@@ -1,0 +1,687 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>DIY精简CentOS自动安装ISO | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="俗话说一瘦遮三丑，一胖全没有。原生的系统过于庞大和臃肿，工作中有很多组件和安装包根本是用不到的，只安装我们需要的组件，并实现自动安装，这样在产线批量布署服务器的时候，显的效率非常高。a.在VM安装linux系统b.安装定制工具anaconda repodata createrepo mkisofsc">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/suzf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/06/DIY-streamline-automatically-install-CentOS-ISO/" title="DIY精简CentOS自动安装ISO" itemprop="url">DIY精简CentOS自动安装ISO</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-08-06T03:09:30.000Z" itemprop="datePublished">2014-08-06</time>
+    Updated:<time datetime="2016-01-13T07:14:34.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Firewall_configuration"><span class="toc-number">1.</span> <span class="toc-text">Firewall configuration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Install_OS_instead_of_upgrade"><span class="toc-number">2.</span> <span class="toc-text">Install OS instead of upgrade</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Use_network_installation"><span class="toc-number">3.</span> <span class="toc-text">Use network installation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Root_password_jeffery"><span class="toc-number">4.</span> <span class="toc-text">Root password jeffery</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_authorization_information"><span class="toc-number">5.</span> <span class="toc-text">System authorization information</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Use_graphical_install"><span class="toc-number">6.</span> <span class="toc-text">Use graphical install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Use_text_mode_install"><span class="toc-number">7.</span> <span class="toc-text">Use text mode install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_keyboard"><span class="toc-number">8.</span> <span class="toc-text">System keyboard</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_language"><span class="toc-number">9.</span> <span class="toc-text">System language</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SELinux_configuration"><span class="toc-number">10.</span> <span class="toc-text">SELinux configuration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Installation_logging_level"><span class="toc-number">11.</span> <span class="toc-text">Installation logging level</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reboot_after_installation"><span class="toc-number">12.</span> <span class="toc-text">Reboot after installation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_timezone"><span class="toc-number">13.</span> <span class="toc-text">System timezone</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Network_information"><span class="toc-number">14.</span> <span class="toc-text">Network information</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_bootloader_configuration"><span class="toc-number">15.</span> <span class="toc-text">System bootloader configuration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Clear_the_Master_Boot_Record"><span class="toc-number">16.</span> <span class="toc-text">Clear the Master Boot Record</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Partition_clearing_information"><span class="toc-number">17.</span> <span class="toc-text">Partition clearing information</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Disk_partitioning_information"><span class="toc-number">18.</span> <span class="toc-text">Disk partitioning information</span></a></li></ol>
+		</div>
+		
+		<p>俗话说一瘦遮三丑，一胖全没有。原生的系统过于庞大和臃肿，工作中有很多组件和安装包根本是用不到的，只安装我们需要的组件，并实现自动安装，这样在产线批量布署服务器的时候，显的效率非常高。<br>a.在VM安装linux系统<br>b.安装定制工具anaconda repodata createrepo mkisofs<br>c.关联太多采用yum安装 定制过程需要产生comps.xml文件以及生成iso</p>
+<p>1、定制安装系统，选择常用的组件<br>2、安装制作发行版所需的基本软件包<br>yum install -y createrepo genisoimage</p>
+<p>#genisoimage 提供/usr/bin/mkisofs 命令用于重新生成iso</p>
+<p>3、生成安装系统所需的rpm文件列表<br>awk ‘/Installing/{print $2}’ install.log |sed ‘s/^[0-9]*://g’ &gt;/root/packages.list</p>
+<p>#生成后，需要仔细看该文件，一般会在某些文件开始部分如“1：”这样的字符，需要删除这些字符，否在后面执行copy动作会报错</p>
+<p>4、创建定制工作目录<br>mkdir -p /mnt/cdrom<br>mkdir -p /data/OS<br>mount /dev/cdrom /mnt/cdrom<br>rsync -a –exclude=Packages /mnt/cdrom/* /data/OS   #将源系统镜像除packages目录所有文件拷贝到/data/OS<br>mkdir /data/OS/Packages</p>
+<p>查看是否有.discinfo文件，如果没有将光盘里的文件拷贝到/data/OS;若无此文件安装的时候将会出现disk not found.</p>
+<p>5、复制精简后的RPM包<br>vi /data/cprmps.sh           #创建自动复制RPM包脚本</p>
+<p>#!/bin/bash</p>
+<p>DEBUG=0</p>
+<p>CentOS_DVD=/mnt/cdrom</p>
+<p>ALL_RPMS_DIR=/mnt/cdrom/Packages</p>
+<p>KOS_RPMS_DIR=/data/OS/Packages</p>
+<p>packages_list=/root/packages.list</p>
+<p>number_of_packages=<code>cat $packages_list | wc -l</code></p>
+<p>i=1</p>
+<pre><code>while [ $i -le $number_of_packages ] ; do
+
+    line=`head -n $i $packages_list | tail -n -1`
+
+    name=`echo $line | awk &apos;{print $1}&apos;`
+
+    version=`echo $line | awk &apos;{print $3}&apos; | cut -f 2 -d :`
+
+if [ $DEBUG -eq &quot;1&quot; ] ; then
+
+    echo $i: $line
+
+    echo $name
+
+    echo $version
+
+fi
+
+if [ $DEBUG -eq &quot;1&quot; ] ; then
+
+    ls $ALL_RPMS_DIR/$name-$version*
+
+    if [ $? -ne 0 ] ; then
+
+        echo &quot;cp $ALL_RPMS_DIR/$name-$version* &quot;
+
+    fi
+
+    else
+
+        echo &quot;cp $ALL_RPMS_DIR/$name-$version* $KOS_RPMS_DIR/&quot;
+
+        cp $ALL_RPMS_DIR/$name-$version* $KOS_RPMS_DIR/
+
+    # in case the copy failed
+
+    if [ $? -ne 0 ] ; then
+
+        echo &quot;cp $ALL_RPMS_DIR/$name-$version* &quot;
+
+        cp $ALL_RPMS_DIR/$name* $KOS_RPMS_DIR/
+
+    fi
+
+fi
+</code></pre><p>i=<code>expr $i + 1</code></p>
+<p>done</p>
+<p>#执行脚本</p>
+<p>sh  /data/cprmps.sh</p>
+<p>6、配置kickstart脚本</p>
+<p>ks文件主要分为三个部分</p>
+<p>a、系统安装及配置<br>b、自定义安装准备（%post –nochroot）<br>c、用户自定义安装（%post）</p>
+<p>系统安装及配置一般写在ks.cfg文件最前面，定义系统安装设置，以%post –nochroot为结束标志，接着是用户自定义安装准备部分，以“%post –nochroot”作为开始，以“%post”作为结束，</p>
+<p>自定义安装部分以“%post”作为开始。<br>一般方便可以直接由root下面的anaconda-ks.cfg修改</p>
+<p>vi /data/OS/isolinux/jeffery.cfg</p>
+<p>#platform=x86, AMD64, or Intel EM64T</p>
+<p>#version=DEVEL</p>
+<h1 id="Firewall_configuration"><a href="#Firewall_configuration" class="headerlink" title="Firewall configuration"></a>Firewall configuration</h1><p>firewall –disabled</p>
+<h1 id="Install_OS_instead_of_upgrade"><a href="#Install_OS_instead_of_upgrade" class="headerlink" title="Install OS instead of upgrade"></a>Install OS instead of upgrade</h1><p>install</p>
+<h1 id="Use_network_installation"><a href="#Use_network_installation" class="headerlink" title="Use network installation"></a>Use network installation</h1><p>cdrom</p>
+<h1 id="Root_password_jeffery"><a href="#Root_password_jeffery" class="headerlink" title="Root password jeffery"></a>Root password jeffery</h1><p>rootpw –iscrypted  $1$HaJb7jcC$Hg.5DlmP2uheGxf88BdQ3. </p>
+<h1 id="System_authorization_information"><a href="#System_authorization_information" class="headerlink" title="System authorization information"></a>System authorization information</h1><p>auth  –useshadow  –passalgo=md5</p>
+<h1 id="Use_graphical_install"><a href="#Use_graphical_install" class="headerlink" title="Use graphical install"></a>Use graphical install</h1><p>#graphical</p>
+<h1 id="Use_text_mode_install"><a href="#Use_text_mode_install" class="headerlink" title="Use text mode install"></a>Use text mode install</h1><p>text</p>
+<p>firstboot –disable</p>
+<h1 id="System_keyboard"><a href="#System_keyboard" class="headerlink" title="System keyboard"></a>System keyboard</h1><p>keyboard us</p>
+<h1 id="System_language"><a href="#System_language" class="headerlink" title="System language"></a>System language</h1><p>lang en_US</p>
+<h1 id="SELinux_configuration"><a href="#SELinux_configuration" class="headerlink" title="SELinux configuration"></a>SELinux configuration</h1><p>selinux –disabled</p>
+<h1 id="Installation_logging_level"><a href="#Installation_logging_level" class="headerlink" title="Installation logging level"></a>Installation logging level</h1><p>logging –level=info</p>
+<h1 id="Reboot_after_installation"><a href="#Reboot_after_installation" class="headerlink" title="Reboot after installation"></a>Reboot after installation</h1><p>reboot</p>
+<h1 id="System_timezone"><a href="#System_timezone" class="headerlink" title="System timezone"></a>System timezone</h1><p>timezone  Asia/Shanghai</p>
+<h1 id="Network_information"><a href="#Network_information" class="headerlink" title="Network information"></a>Network information</h1><p>network  –bootproto=dhcp –device=eth0 –onboot=on</p>
+<h1 id="System_bootloader_configuration"><a href="#System_bootloader_configuration" class="headerlink" title="System bootloader configuration"></a>System bootloader configuration</h1><p>bootloader –location=mbr</p>
+<h1 id="Clear_the_Master_Boot_Record"><a href="#Clear_the_Master_Boot_Record" class="headerlink" title="Clear the Master Boot Record"></a>Clear the Master Boot Record</h1><p>zerombr</p>
+<h1 id="Partition_clearing_information"><a href="#Partition_clearing_information" class="headerlink" title="Partition clearing information"></a>Partition clearing information</h1><p>clearpart –all –initlabel</p>
+<h1 id="Disk_partitioning_information"><a href="#Disk_partitioning_information" class="headerlink" title="Disk partitioning information"></a>Disk partitioning information</h1><p>part /boot –fstype=”ext4” –size=100</p>
+<p>part swap –fstype=”swap” –size=1500</p>
+<p>part / –fstype=”ext4” –grow –size=1</p>
+<p>%packages</p>
+<p>@security-tools</p>
+<p>aide</p>
+<p>amtu</p>
+<p>hmaccalc</p>
+<p>openscap</p>
+<p>openscap-utils</p>
+<p>tpm-tools</p>
+<p>trousers</p>
+<p>%end</p>
+<p>7、生成仓库文件comps.xml<br>cd /data/OS<br>createrepo -g repodata/*-comps.xml /data/OS/</p>
+<p>8、让系统从kickstart配置启动安装</p>
+<p>vi /data/OS/isolinux/isolinux.cfg</p>
+<p><img src="http://s3.51cto.com/wyfs02/M02/44/61/wKioL1PhmhnC1d8dAALXD6j0ECs095.jpg" alt=""></p>
+<p>自定义启动界面<br>在isolinux里面有三个文件和自定义安装界面有关<br>boot.msg是定义启动界面如何显示<br>isolinux.cfg决定如何处理用户的输入，并执行对应的安装过程<br>splash.lss是启动界面的背景图片 </p>
+<p>9、生成ISO文件<br>cd /data/OS</p>
+<p>mkisofs -o /root/Jeffery_CentOS.6.5_x86.iso -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table  -joliet-long  -R -J -v -T /data/OS/</p>
+<p>如果出现下面 基本上就定制成功了<br><img src="http://s3.51cto.com/wyfs02/M01/44/61/wKiom1PhmRKxLTJmAAGei6U3_jo059.jpg" alt=""></p>
+<p>10、生成MD5检验码<br><img src="http://s3.51cto.com/wyfs02/M00/44/61/wKiom1PhmTqC_FGaAABhkM8EsJg076.jpg" alt=""></p>
+<p>11、测试</p>
+<p>新建一台机器 使用定制的iso<br><img src="http://s3.51cto.com/wyfs02/M00/44/61/wKiom1PhmUnS46CPAABpqFMokok955.jpg" alt=""></p>
+<p>FAQ：<br><img src="http://s3.51cto.com/wyfs02/M02/44/61/wKioL1Phmm2QWcWVAACb7k62Ylk815.jpg" alt=""></p>
+<p>要把光盘中的“.discinfo”文件拷贝过来，如果没有拷贝此文件，在用光盘安装时<br>会提示如下错误：“The CentOS CD was not found in any of your CDROM drives.<br>Please insert the CentOS CD and press OK to retry.”</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/diy/">diy</a><a href="/tags/iso/">iso</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Auto-ops/">Auto ops</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2014/08/06/DIY-streamline-automatically-install-CentOS-ISO/" data-title="DIY精简CentOS自动安装ISO | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/08/06/http-returns-a-status-code-explanation/" title="HTTP 返回状态代码详解">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  HTTP 返回状态代码详解</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/08/01/zabbix-agent-setup-on-windows/"  title="Zabbix 之windows下安装agent">
+ <strong>NEXT:</strong><br/> 
+ <span>Zabbix 之windows下安装agent
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Firewall_configuration"><span class="toc-number">1.</span> <span class="toc-text">Firewall configuration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Install_OS_instead_of_upgrade"><span class="toc-number">2.</span> <span class="toc-text">Install OS instead of upgrade</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Use_network_installation"><span class="toc-number">3.</span> <span class="toc-text">Use network installation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Root_password_jeffery"><span class="toc-number">4.</span> <span class="toc-text">Root password jeffery</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_authorization_information"><span class="toc-number">5.</span> <span class="toc-text">System authorization information</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Use_graphical_install"><span class="toc-number">6.</span> <span class="toc-text">Use graphical install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Use_text_mode_install"><span class="toc-number">7.</span> <span class="toc-text">Use text mode install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_keyboard"><span class="toc-number">8.</span> <span class="toc-text">System keyboard</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_language"><span class="toc-number">9.</span> <span class="toc-text">System language</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SELinux_configuration"><span class="toc-number">10.</span> <span class="toc-text">SELinux configuration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Installation_logging_level"><span class="toc-number">11.</span> <span class="toc-text">Installation logging level</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reboot_after_installation"><span class="toc-number">12.</span> <span class="toc-text">Reboot after installation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_timezone"><span class="toc-number">13.</span> <span class="toc-text">System timezone</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Network_information"><span class="toc-number">14.</span> <span class="toc-text">Network information</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#System_bootloader_configuration"><span class="toc-number">15.</span> <span class="toc-text">System bootloader configuration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Clear_the_Master_Boot_Record"><span class="toc-number">16.</span> <span class="toc-text">Clear the Master Boot Record</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Partition_clearing_information"><span class="toc-number">17.</span> <span class="toc-text">Partition clearing information</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Disk_partitioning_information"><span class="toc-number">18.</span> <span class="toc-text">Disk partitioning information</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

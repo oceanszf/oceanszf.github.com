@@ -1,0 +1,617 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>LNMP之源码自定义安装 | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="LNMP代表的就是：Linux系统下Nginx+MySQL+PHP这种网站服务器架构。
+Linux是一类Unix计算机操作系统的统称，是目前最流行的免费操作系统。代表版本有：debian、centos、ubuntu、fedora、gentoo等。Nginx是一个高性能的HTTP和反向代理服务器，也是">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/suzf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/18/lnmp-sourcecode-setup/" title="LNMP之源码自定义安装" itemprop="url">LNMP之源码自定义安装</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-08-18T15:11:49.000Z" itemprop="datePublished">2014-08-18</time>
+    Updated:<time datetime="2016-01-13T07:35:18.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xvf_pcre-8-31-tar-gz"><span class="toc-number">1.</span> <span class="toc-text">tar xvf pcre-8.31.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_pcre-8-31"><span class="toc-number">2.</span> <span class="toc-text">cd pcre-8.31</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/configure__26amp_3B_26amp_3B_make__26amp_3B_26amp_3B_make_install"><span class="toc-number">3.</span> <span class="toc-text">./configure && make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_install_openssl_openssl-devel"><span class="toc-number">4.</span> <span class="toc-text">yum -y install openssl openssl-devel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#groupadd_www"><span class="toc-number">5.</span> <span class="toc-text">groupadd www</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useradd_-g_www_www"><span class="toc-number">6.</span> <span class="toc-text">useradd -g www www</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xf_nginx-1-4-4-tar-gz"><span class="toc-number">7.</span> <span class="toc-text">tar xf nginx-1.4.4.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_nginx-1-4-4"><span class="toc-number">8.</span> <span class="toc-text">cd nginx-1.4.4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/configure__5C"><span class="toc-number">9.</span> <span class="toc-text">./configure \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make__26amp_3B_26amp_3B_make_install"><span class="toc-number">10.</span> <span class="toc-text">make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/nginx/sbin/nginx"><span class="toc-number">11.</span> <span class="toc-text">/usr/local/nginx/sbin/nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#netstat_-tnlp__7Cgrep__3A80"><span class="toc-number">12.</span> <span class="toc-text">netstat -tnlp |grep :80</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#elinks_-dump_http_3A//localhost"><span class="toc-number">13.</span> <span class="toc-text">elinks -dump http://localhost</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201C/usr/local/nginx/sbin/nginx_u201D__26gt_3B_26gt_3B_/etc/rc-local"><span class="toc-number">14.</span> <span class="toc-text">echo “/usr/local/nginx/sbin/nginx” >> /etc/rc.local</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_install_libjpeg_libjpeg-devel_libpng_libpng-devel_freetype_freetype-devel__5C"><span class="toc-number">15.</span> <span class="toc-text">yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make__26amp_3B_26amp_3B_make_install-1"><span class="toc-number">16.</span> <span class="toc-text">make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_/usr/local/php/etc/php-fpm-conf-default_/usr/local/php/etc/php-fpm-conf"><span class="toc-number">17.</span> <span class="toc-text">cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/local/php/etc/php-fpm-conf"><span class="toc-number">18.</span> <span class="toc-text">vim /usr/local/php/etc/php-fpm.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_php-ini-production_/usr/local/php/lib/php-ini"><span class="toc-number">19.</span> <span class="toc-text">cp php.ini-production /usr/local/php/lib/php.ini</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/local/nginx/conf/nginx-conf"><span class="toc-number">20.</span> <span class="toc-text">vim /usr/local/nginx/conf/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rm_-rf_/usr/local/nginx/conf/fastcgi_params"><span class="toc-number">21.</span> <span class="toc-text">rm -rf /usr/local/nginx/conf/fastcgi_params</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#killall_nginx_3B_/usr/local/nginx/sbin/nginx"><span class="toc-number">22.</span> <span class="toc-text">killall nginx; /usr/local/nginx/sbin/nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/init-d/php-fpm_restart"><span class="toc-number">23.</span> <span class="toc-text">/etc/init.d/php-fpm restart</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#netstat_-tnlp__7Cgrep__3A80-1"><span class="toc-number">24.</span> <span class="toc-text">netstat -tnlp |grep :80</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#netstat_-tnlp__7Cgrep__3A9000"><span class="toc-number">25.</span> <span class="toc-text">netstat -tnlp |grep :9000</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_remove_mysql_mysql-server_cmake"><span class="toc-number">26.</span> <span class="toc-text">yum -y remove mysql mysql-server cmake</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rm_-rf_/etc/my-cnf"><span class="toc-number">27.</span> <span class="toc-text">rm -rf /etc/my.cnf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_groupinstall__u201CDevelopment_tools_u201D"><span class="toc-number">28.</span> <span class="toc-text">yum -y groupinstall “Development tools”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_install_ncurses_ncurses-devel_openssl-devel_bison_gcc_gcc-c++_make"><span class="toc-number">29.</span> <span class="toc-text">yum -y install ncurses ncurses-devel openssl-devel bison gcc gcc-c++ make</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xvf_cmake-2-8-10-2-tar-gz"><span class="toc-number">30.</span> <span class="toc-text">tar xvf cmake-2.8.10.2.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_cmake-2-8-10-2"><span class="toc-number">31.</span> <span class="toc-text">cd cmake-2.8.10.2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bootstrap"><span class="toc-number">32.</span> <span class="toc-text">./bootstrap</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make"><span class="toc-number">33.</span> <span class="toc-text">make</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make_install"><span class="toc-number">34.</span> <span class="toc-text">make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cmake_-version"><span class="toc-number">35.</span> <span class="toc-text">cmake -version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#groupadd_mysql"><span class="toc-number">36.</span> <span class="toc-text">groupadd mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useradd_-M_-g_mysql_-s_/sbin/nologin_mysql"><span class="toc-number">37.</span> <span class="toc-text">useradd -M -g mysql -s /sbin/nologin mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xvf_mysql-5-5-33-tar-gz"><span class="toc-number">38.</span> <span class="toc-text">tar xvf mysql-5.5.33.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_mysql-5-5-33"><span class="toc-number">39.</span> <span class="toc-text">cd mysql-5.5.33</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cmake__5C"><span class="toc-number">40.</span> <span class="toc-text">cmake \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make-1"><span class="toc-number">41.</span> <span class="toc-text">make</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make_install-1"><span class="toc-number">42.</span> <span class="toc-text">make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/local/mysql"><span class="toc-number">43.</span> <span class="toc-text">cd /usr/local/mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chown_-R_mysql_3Amysql"><span class="toc-number">44.</span> <span class="toc-text">chown -R mysql:mysql .</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/scripts/mysql_install_db__u2013user_3Dmysql__u2013basedir_3D/usr/local/mysql/__u2013datadir_3D/usr/local/mysql/data"><span class="toc-number">45.</span> <span class="toc-text">./scripts/mysql_install_db –user=mysql –basedir=/usr/local/mysql/ –datadir=/usr/local/mysql/data</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_support-files/my-huge-cnf_/etc/my-cnf_mysql5-5"><span class="toc-number">46.</span> <span class="toc-text">cp support-files/my-huge.cnf /etc/my.cnf         mysql5.5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_support-files/my-default-cnf_/etc/my-cnf_mysql5-6"><span class="toc-number">47.</span> <span class="toc-text">cp support-files/my-default.cnf  /etc/my.cnf     mysql5.6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_support-files/mysql-server_/etc/rc-d/init-d/mysqld"><span class="toc-number">48.</span> <span class="toc-text">cp support-files/mysql.server /etc/rc.d/init.d/mysqld</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chmod_755_/etc/rc-d/init-d/mysqld"><span class="toc-number">49.</span> <span class="toc-text">chmod 755 /etc/rc.d/init.d/mysqld</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chkconfig__u2013add_mysqld"><span class="toc-number">50.</span> <span class="toc-text">chkconfig –add mysqld</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chkconfig_mysqld_on"><span class="toc-number">51.</span> <span class="toc-text">chkconfig mysqld on</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#service_mysqld_start"><span class="toc-number">52.</span> <span class="toc-text">service mysqld start</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201Cexport_PATH_3D_24PATH_3A/usr/local/mysql/bin_u201D__26gt_3B_26gt_3B_/etc/profile"><span class="toc-number">53.</span> <span class="toc-text">echo “export PATH=$PATH:/usr/local/mysql/bin” >> /etc/profile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#source_/etc/profile"><span class="toc-number">54.</span> <span class="toc-text">source /etc/profile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysqladmin_-uroot_password__u2018jeffery_u2019"><span class="toc-number">55.</span> <span class="toc-text">mysqladmin -uroot password ‘jeffery’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql"><span class="toc-number">56.</span> <span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql_-uroot_-pjeffery"><span class="toc-number">57.</span> <span class="toc-text">mysql -uroot -pjeffery</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rm_-rf_*"><span class="toc-number">58.</span> <span class="toc-text">rm -rf *</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_index-php"><span class="toc-number">59.</span> <span class="toc-text">vim index.php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_index2-php"><span class="toc-number">60.</span> <span class="toc-text">vim index2.php</span></a></li></ol>
+		</div>
+		
+		<p>LNMP代表的就是：Linux系统下Nginx+MySQL+PHP这种网站服务器架构。</p>
+<p>Linux是一类Unix计算机操作系统的统称，是目前最流行的免费操作系统。代表版本有：debian、centos、ubuntu、fedora、gentoo等。<br>Nginx是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP代理服务器。<br>Mysql是一个小型关系型数据库管理系统。<br>PHP是一种在服务器端执行的嵌入HTML文档的脚本语言。<br>这四种软件均为免费开源软件，组合到一起，成为一个免费、高效、扩展性强的网站服务系统。</p>
+<p>方案一：  主机A Nginx(FastCGI)  +  PHP(php-fpm) + MySQL  </p>
+<p>方案二：  主机A Nginx(FastCGI)   +    主机B PHP(php-fpm)   +   主机C MySQL<br>                静态页面.html         PHP动态程序                    数据库       </p>
+<p>注：建议Nginx和php运行在同一台主机上</p>
+<p>nginx-1.4.4.tar.gz<br>php-5.4.5.tar.gz</p>
+<p>cmake-2.8.10.2.tar.gz<br>mysql-5.5.33.tar.gz</p>
+<p>一、安装Nginx<br>1. pcre： 支持正则表达式，地址重写rewrite</p>
+<h1 id="tar_xvf_pcre-8-31-tar-gz"><a href="#tar_xvf_pcre-8-31-tar-gz" class="headerlink" title="tar xvf pcre-8.31.tar.gz"></a>tar xvf pcre-8.31.tar.gz</h1><h1 id="cd_pcre-8-31"><a href="#cd_pcre-8-31" class="headerlink" title="cd pcre-8.31"></a>cd pcre-8.31</h1><h1 id="/configure__26amp_3B_26amp_3B_make__26amp_3B_26amp_3B_make_install"><a href="#/configure__26amp_3B_26amp_3B_make__26amp_3B_26amp_3B_make_install" class="headerlink" title="./configure &amp;&amp; make &amp;&amp; make install"></a>./configure &amp;&amp; make &amp;&amp; make install</h1><p>2. Nginx</p>
+<h1 id="yum_-y_install_openssl_openssl-devel"><a href="#yum_-y_install_openssl_openssl-devel" class="headerlink" title="yum -y install openssl openssl-devel"></a>yum -y install openssl openssl-devel</h1><h1 id="groupadd_www"><a href="#groupadd_www" class="headerlink" title="groupadd www"></a>groupadd www</h1><h1 id="useradd_-g_www_www"><a href="#useradd_-g_www_www" class="headerlink" title="useradd -g www www"></a>useradd -g www www</h1><h1 id="tar_xf_nginx-1-4-4-tar-gz"><a href="#tar_xf_nginx-1-4-4-tar-gz" class="headerlink" title="tar xf nginx-1.4.4.tar.gz"></a>tar xf nginx-1.4.4.tar.gz</h1><h1 id="cd_nginx-1-4-4"><a href="#cd_nginx-1-4-4" class="headerlink" title="cd nginx-1.4.4"></a>cd nginx-1.4.4</h1><h1 id="/configure__5C"><a href="#/configure__5C" class="headerlink" title="./configure \"></a>./configure \</h1><p>–prefix=/usr/local/nginx \<br>–user=www \<br>–group=www \<br>–with-http_ssl_module \<br>–with-http_flv_module \<br>–with-http_stub_status_module \<br>–with-http_gzip_static_module \<br>–with-pcre=pcre源程序目录</p>
+<h1 id="make__26amp_3B_26amp_3B_make_install"><a href="#make__26amp_3B_26amp_3B_make_install" class="headerlink" title="make &amp;&amp; make install"></a>make &amp;&amp; make install</h1><h1 id="/usr/local/nginx/sbin/nginx"><a href="#/usr/local/nginx/sbin/nginx" class="headerlink" title="/usr/local/nginx/sbin/nginx"></a>/usr/local/nginx/sbin/nginx</h1><h1 id="netstat_-tnlp__7Cgrep__3A80"><a href="#netstat_-tnlp__7Cgrep__3A80" class="headerlink" title="netstat -tnlp |grep :80"></a>netstat -tnlp |grep :80</h1><p>tcp        0      0 0.0.0.0:80                  0.0.0.0:*                   LISTEN      11051/nginx</p>
+<h1 id="elinks_-dump_http_3A//localhost"><a href="#elinks_-dump_http_3A//localhost" class="headerlink" title="elinks -dump http://localhost"></a>elinks -dump <a href="http://localhost" target="_blank" rel="external">http://localhost</a></h1><pre><code>Welcome to nginx!
+</code></pre><h1 id="echo__u201C/usr/local/nginx/sbin/nginx_u201D__26gt_3B_26gt_3B_/etc/rc-local"><a href="#echo__u201C/usr/local/nginx/sbin/nginx_u201D__26gt_3B_26gt_3B_/etc/rc-local" class="headerlink" title="echo “/usr/local/nginx/sbin/nginx” &gt;&gt; /etc/rc.local"></a>echo “/usr/local/nginx/sbin/nginx” &gt;&gt; /etc/rc.local</h1><p>二、安装PHP<br>1. 以php-fpm的方式安装php</p>
+<h1 id="yum_-y_install_libjpeg_libjpeg-devel_libpng_libpng-devel_freetype_freetype-devel__5C"><a href="#yum_-y_install_libjpeg_libjpeg-devel_libpng_libpng-devel_freetype_freetype-devel__5C" class="headerlink" title="yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel \"></a>yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel \</h1><p>libxml2 libxml2-devel libcurl libcurl-devel libxslt-devel</p>
+<p>#tar zxf php-5.4.5.tar.gz</p>
+<p>#./configure \<br>–prefix=/usr/local/php \<br>–with-curl \<br>–with-freetype-dir \<br>–with-gd \<br>–with-gettext \<br>–with-iconv-dir \<br>–with-jpeg-dir \<br>–with-kerberos \<br>–with-libdir=lib64 \<br>–with-libxml-dir \<br>–with-mysql \<br>–with-mysqli \<br>–with-openssl \<br>–with-pcre-regex \<br>–with-pdo-mysql \<br>–with-pdo-sqlite \<br>–with-pear \<br>–with-png-dir \<br>–with-xmlrpc \<br>–with-xsl \<br>–with-zlib \<br>–enable-fpm \<br>–enable-bcmath \<br>–enable-libxml \<br>–enable-inline-optimization \<br>–enable-gd-native-ttf \<br>–enable-mbregex \<br>–enable-mbstring \<br>–enable-opcache \<br>–enable-pcntl \<br>–enable-shmop \<br>–enable-soap \<br>–enable-sockets \<br>–enable-sysvsem \<br>–enable-xml \<br>–enable-zip</p>
+<h1 id="make__26amp_3B_26amp_3B_make_install-1"><a href="#make__26amp_3B_26amp_3B_make_install-1" class="headerlink" title="make &amp;&amp; make install"></a>make &amp;&amp; make install</h1><p>2. php-fpm配置文件</p>
+<h1 id="cp_/usr/local/php/etc/php-fpm-conf-default_/usr/local/php/etc/php-fpm-conf"><a href="#cp_/usr/local/php/etc/php-fpm-conf-default_/usr/local/php/etc/php-fpm-conf" class="headerlink" title="cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf"></a>cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf</h1><h1 id="vim_/usr/local/php/etc/php-fpm-conf"><a href="#vim_/usr/local/php/etc/php-fpm-conf" class="headerlink" title="vim /usr/local/php/etc/php-fpm.conf"></a>vim /usr/local/php/etc/php-fpm.conf</h1><p>pid = run/php-fpm.pid</p>
+<p>3. php主配置文件</p>
+<h1 id="cp_php-ini-production_/usr/local/php/lib/php-ini"><a href="#cp_php-ini-production_/usr/local/php/lib/php-ini" class="headerlink" title="cp php.ini-production /usr/local/php/lib/php.ini"></a>cp php.ini-production /usr/local/php/lib/php.ini</h1><p>4. 添加到init启动<br>[root@Jeffery php-5.4.5]# cp sapi/fpm/init.d.php-fpm /etc/rc.d/init.d/php-fpm<br>[root@Jeffery php-5.4.5]# chmod a+x /etc/rc.d/init.d/php-fpm<br>[root@Jeffery php-5.4.5]# chkconfig –add php-fpm<br>[root@Jeffery php-5.4.5]# chkconfig php-fpm on<br>[root@Jeffery php-5.4.5]# service php-fpm start<br>Starting php-fpm  done</p>
+<p>三、整合Nginx和PHP<br>1. Nginx启用Fastcgi</p>
+<h1 id="vim_/usr/local/nginx/conf/nginx-conf"><a href="#vim_/usr/local/nginx/conf/nginx-conf" class="headerlink" title="vim /usr/local/nginx/conf/nginx.conf"></a>vim /usr/local/nginx/conf/nginx.conf</h1><p>启用：<br>location / {<br>            root   html;<br>            index  index.php index.html index.htm;<br>        }</p>
+<p>去掉以下行的注释：<br>location ~ .php$ {<br>            root                   html;<br>            fastcgi_pass       127.0.0.1:9000;<br>            fastcgi_index      index.php;<br>            fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;<br>            include                fastcgi_params;<br>        }</p>
+<p>2. fastcgi模块参数文件</p>
+<h1 id="rm_-rf_/usr/local/nginx/conf/fastcgi_params"><a href="#rm_-rf_/usr/local/nginx/conf/fastcgi_params" class="headerlink" title="rm -rf /usr/local/nginx/conf/fastcgi_params"></a>rm -rf /usr/local/nginx/conf/fastcgi_params</h1><p>[root@tianyun ~]# vim /usr/local/nginx/conf/fastcgi_params<br>fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;<br>fastcgi_param  SERVER_SOFTWARE    nginx;<br>fastcgi_param  QUERY_STRING       $query_string;<br>fastcgi_param  REQUEST_METHOD     $request_method;<br>fastcgi_param  CONTENT_TYPE       $content_type;<br>fastcgi_param  CONTENT_LENGTH     $content_length;<br>fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;<br>fastcgi_param  SCRIPT_NAME        $fastcgi_script_name;<br>fastcgi_param  REQUEST_URI        $request_uri;<br>fastcgi_param  DOCUMENT_URI       $document_uri;<br>fastcgi_param  DOCUMENT_ROOT      $document_root;<br>fastcgi_param  SERVER_PROTOCOL    $server_protocol;<br>fastcgi_param  REMOTE_ADDR        $remote_addr;<br>fastcgi_param  REMOTE_PORT        $remote_port;<br>fastcgi_param  SERVER_ADDR        $server_addr;<br>fastcgi_param  SERVER_PORT        $server_port;<br>fastcgi_param  SERVER_NAME        $server_name;</p>
+<p>3. 最终确认并重启</p>
+<h1 id="killall_nginx_3B_/usr/local/nginx/sbin/nginx"><a href="#killall_nginx_3B_/usr/local/nginx/sbin/nginx" class="headerlink" title="killall nginx; /usr/local/nginx/sbin/nginx"></a>killall nginx; /usr/local/nginx/sbin/nginx</h1><h1 id="/etc/init-d/php-fpm_restart"><a href="#/etc/init-d/php-fpm_restart" class="headerlink" title="/etc/init.d/php-fpm restart"></a>/etc/init.d/php-fpm restart</h1><h1 id="netstat_-tnlp__7Cgrep__3A80-1"><a href="#netstat_-tnlp__7Cgrep__3A80-1" class="headerlink" title="netstat -tnlp |grep :80"></a>netstat -tnlp |grep :80</h1><p>tcp        0      0 0.0.0.0:80                  0.0.0.0:*        LISTEN      17947/nginx         </p>
+<h1 id="netstat_-tnlp__7Cgrep__3A9000"><a href="#netstat_-tnlp__7Cgrep__3A9000" class="headerlink" title="netstat -tnlp |grep :9000"></a>netstat -tnlp |grep :9000</h1><p>tcp        0      0 127.0.0.1:9000              0.0.0.0:*        LISTEN      17961/php-fpm   </p>
+<p>三、安装Mysql</p>
+<h1 id="yum_-y_remove_mysql_mysql-server_cmake"><a href="#yum_-y_remove_mysql_mysql-server_cmake" class="headerlink" title="yum -y remove mysql mysql-server cmake"></a>yum -y remove mysql mysql-server cmake</h1><h1 id="rm_-rf_/etc/my-cnf"><a href="#rm_-rf_/etc/my-cnf" class="headerlink" title="rm -rf /etc/my.cnf"></a>rm -rf /etc/my.cnf</h1><h1 id="yum_-y_groupinstall__u201CDevelopment_tools_u201D"><a href="#yum_-y_groupinstall__u201CDevelopment_tools_u201D" class="headerlink" title="yum -y groupinstall “Development tools”"></a>yum -y groupinstall “Development tools”</h1><h1 id="yum_-y_install_ncurses_ncurses-devel_openssl-devel_bison_gcc_gcc-c++_make"><a href="#yum_-y_install_ncurses_ncurses-devel_openssl-devel_bison_gcc_gcc-c++_make" class="headerlink" title="yum -y install ncurses ncurses-devel openssl-devel bison gcc gcc-c++ make"></a>yum -y install ncurses ncurses-devel openssl-devel bison gcc gcc-c++ make</h1><p>Cmake:</p>
+<h1 id="tar_xvf_cmake-2-8-10-2-tar-gz"><a href="#tar_xvf_cmake-2-8-10-2-tar-gz" class="headerlink" title="tar xvf cmake-2.8.10.2.tar.gz"></a>tar xvf cmake-2.8.10.2.tar.gz</h1><h1 id="cd_cmake-2-8-10-2"><a href="#cd_cmake-2-8-10-2" class="headerlink" title="cd cmake-2.8.10.2"></a>cd cmake-2.8.10.2</h1><h1 id="/bootstrap"><a href="#/bootstrap" class="headerlink" title="./bootstrap"></a>./bootstrap</h1><h1 id="make"><a href="#make" class="headerlink" title="make"></a>make</h1><h1 id="make_install"><a href="#make_install" class="headerlink" title="make install"></a>make install</h1><h1 id="cmake_-version"><a href="#cmake_-version" class="headerlink" title="cmake -version"></a>cmake -version</h1><p>MySQL:</p>
+<h1 id="groupadd_mysql"><a href="#groupadd_mysql" class="headerlink" title="groupadd mysql"></a>groupadd mysql</h1><h1 id="useradd_-M_-g_mysql_-s_/sbin/nologin_mysql"><a href="#useradd_-M_-g_mysql_-s_/sbin/nologin_mysql" class="headerlink" title="useradd -M -g mysql -s /sbin/nologin mysql"></a>useradd -M -g mysql -s /sbin/nologin mysql</h1><h1 id="tar_xvf_mysql-5-5-33-tar-gz"><a href="#tar_xvf_mysql-5-5-33-tar-gz" class="headerlink" title="tar xvf mysql-5.5.33.tar.gz"></a>tar xvf mysql-5.5.33.tar.gz</h1><h1 id="cd_mysql-5-5-33"><a href="#cd_mysql-5-5-33" class="headerlink" title="cd mysql-5.5.33"></a>cd mysql-5.5.33</h1><h1 id="cmake__5C"><a href="#cmake__5C" class="headerlink" title="cmake \"></a>cmake \</h1><p>-DCMAKE_INSTALL_PREFIX=/usr/local/mysql \<br>-DSYSCONFDIR=/etc \<br>-DMYSQL_DATADIR=/usr/local/mysql/data \<br>-DINSTALL_MANDIR=/usr/share/man \<br>-DMYSQL_TCP_PORT=3306 \<br>-DMYSQL_UNIX_ADDR=/tmp/mysql.sock \<br>-DDEFAULT_CHARSET=utf8 \<br>-DEXTRA_CHARSETS=all \<br>-DDEFAULT_COLLATION=utf8_general_ci \<br>-DWITH_READLINE=1 \<br>-DWITH_SSL=system \<br>-DWITH_EMBEDDED_SERVER=1 \<br>-DENABLED_LOCAL_INFILE=1 \<br>-DWITH_INNOBASE_STORAGE_ENGINE=1<br>-DWITH_BLACKHOLE_STORAGE_ENGINE=1</p>
+<h1 id="make-1"><a href="#make-1" class="headerlink" title="make"></a>make</h1><h1 id="make_install-1"><a href="#make_install-1" class="headerlink" title="make install"></a>make install</h1><p>＝＝＝MySQL初始化<br>1. 初始化</p>
+<h1 id="cd_/usr/local/mysql"><a href="#cd_/usr/local/mysql" class="headerlink" title="cd /usr/local/mysql"></a>cd /usr/local/mysql</h1><h1 id="chown_-R_mysql_3Amysql"><a href="#chown_-R_mysql_3Amysql" class="headerlink" title="chown -R mysql:mysql ."></a>chown -R mysql:mysql .</h1><h1 id="/scripts/mysql_install_db__u2013user_3Dmysql__u2013basedir_3D/usr/local/mysql/__u2013datadir_3D/usr/local/mysql/data"><a href="#/scripts/mysql_install_db__u2013user_3Dmysql__u2013basedir_3D/usr/local/mysql/__u2013datadir_3D/usr/local/mysql/data" class="headerlink" title="./scripts/mysql_install_db –user=mysql –basedir=/usr/local/mysql/ –datadir=/usr/local/mysql/data"></a>./scripts/mysql_install_db –user=mysql –basedir=/usr/local/mysql/ –datadir=/usr/local/mysql/data</h1><p>2. 生成MySQL主配置文件</p>
+<h1 id="cp_support-files/my-huge-cnf_/etc/my-cnf_mysql5-5"><a href="#cp_support-files/my-huge-cnf_/etc/my-cnf_mysql5-5" class="headerlink" title="cp support-files/my-huge.cnf /etc/my.cnf         mysql5.5"></a>cp support-files/my-huge.cnf /etc/my.cnf         mysql5.5</h1><h1 id="cp_support-files/my-default-cnf_/etc/my-cnf_mysql5-6"><a href="#cp_support-files/my-default-cnf_/etc/my-cnf_mysql5-6" class="headerlink" title="cp support-files/my-default.cnf  /etc/my.cnf     mysql5.6"></a>cp support-files/my-default.cnf  /etc/my.cnf     mysql5.6</h1><p>3. 生成MySQL Sys V脚本</p>
+<h1 id="cp_support-files/mysql-server_/etc/rc-d/init-d/mysqld"><a href="#cp_support-files/mysql-server_/etc/rc-d/init-d/mysqld" class="headerlink" title="cp support-files/mysql.server /etc/rc.d/init.d/mysqld"></a>cp support-files/mysql.server /etc/rc.d/init.d/mysqld</h1><h1 id="chmod_755_/etc/rc-d/init-d/mysqld"><a href="#chmod_755_/etc/rc-d/init-d/mysqld" class="headerlink" title="chmod 755 /etc/rc.d/init.d/mysqld"></a>chmod 755 /etc/rc.d/init.d/mysqld</h1><h1 id="chkconfig__u2013add_mysqld"><a href="#chkconfig__u2013add_mysqld" class="headerlink" title="chkconfig –add mysqld"></a>chkconfig –add mysqld</h1><h1 id="chkconfig_mysqld_on"><a href="#chkconfig_mysqld_on" class="headerlink" title="chkconfig mysqld on"></a>chkconfig mysqld on</h1><h1 id="service_mysqld_start"><a href="#service_mysqld_start" class="headerlink" title="service mysqld start"></a>service mysqld start</h1><p>4. 配置MySQL环境变量</p>
+<h1 id="echo__u201Cexport_PATH_3D_24PATH_3A/usr/local/mysql/bin_u201D__26gt_3B_26gt_3B_/etc/profile"><a href="#echo__u201Cexport_PATH_3D_24PATH_3A/usr/local/mysql/bin_u201D__26gt_3B_26gt_3B_/etc/profile" class="headerlink" title="echo “export PATH=$PATH:/usr/local/mysql/bin” &gt;&gt; /etc/profile"></a>echo “export PATH=$PATH:/usr/local/mysql/bin” &gt;&gt; /etc/profile</h1><h1 id="source_/etc/profile"><a href="#source_/etc/profile" class="headerlink" title="source /etc/profile"></a>source /etc/profile</h1><p>5. 登录MySQL：</p>
+<h1 id="mysqladmin_-uroot_password__u2018jeffery_u2019"><a href="#mysqladmin_-uroot_password__u2018jeffery_u2019" class="headerlink" title="mysqladmin -uroot password ‘jeffery’"></a>mysqladmin -uroot password ‘jeffery’</h1><h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><p>ERROR 1045 (28000): Access denied for user ‘root’@’localhost’ (using password: NO)</p>
+<h1 id="mysql_-uroot_-pjeffery"><a href="#mysql_-uroot_-pjeffery" class="headerlink" title="mysql -uroot -pjeffery"></a>mysql -uroot -pjeffery</h1><p>mysql&gt; show databases;<br>+——————–+<br>| Database           |<br>+——————–+<br>| information_schema |<br>| mysql              |<br>| performance_schema |<br>| test               |<br>+——————–+<br>4 rows in set (0.00 sec)</p>
+<p>五、上传php动态网站测试<br>1. 测试php文件能否执行</p>
+<p>#cd /usr/local/nginx/html/</p>
+<h1 id="rm_-rf_*"><a href="#rm_-rf_*" class="headerlink" title="rm -rf *"></a>rm -rf *</h1><h1 id="vim_index-php"><a href="#vim_index-php" class="headerlink" title="vim index.php"></a>vim index.php</h1><p>&lt; ?php<br>phpinfo();<br>?&gt;</p>
+<p>2. 测试php连接MySQL是否正常</p>
+<h1 id="vim_index2-php"><a href="#vim_index2-php" class="headerlink" title="vim index2.php"></a>vim index2.php</h1><p>&lt; ?php<br>$link=mysql_connect(‘172.16.7.20’,’root’,’jeffery’);<br>if ($link)<br>              echo “Successfuly”;<br>else<br>              echo “Faile”;<br>mysql_close();<br>?&gt;</p>
+<p>3. 测试Discuz</p>
+<p>略</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Lnmp/">Lnmp</a><a href="/tags/web/">web</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Web/">Web</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2014/08/18/lnmp-sourcecode-setup/" data-title="LNMP之源码自定义安装 | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/08/22/zabbix-monitoring-of-nginx-status-information/" title="Zabbix之监控Nginx状态信息">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Zabbix之监控Nginx状态信息</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/08/18/nginx-upstream-example/"  title="nginx-upstream-example">
+ <strong>NEXT:</strong><br/> 
+ <span>nginx-upstream-example
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xvf_pcre-8-31-tar-gz"><span class="toc-number">1.</span> <span class="toc-text">tar xvf pcre-8.31.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_pcre-8-31"><span class="toc-number">2.</span> <span class="toc-text">cd pcre-8.31</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/configure__26amp_3B_26amp_3B_make__26amp_3B_26amp_3B_make_install"><span class="toc-number">3.</span> <span class="toc-text">./configure && make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_install_openssl_openssl-devel"><span class="toc-number">4.</span> <span class="toc-text">yum -y install openssl openssl-devel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#groupadd_www"><span class="toc-number">5.</span> <span class="toc-text">groupadd www</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useradd_-g_www_www"><span class="toc-number">6.</span> <span class="toc-text">useradd -g www www</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xf_nginx-1-4-4-tar-gz"><span class="toc-number">7.</span> <span class="toc-text">tar xf nginx-1.4.4.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_nginx-1-4-4"><span class="toc-number">8.</span> <span class="toc-text">cd nginx-1.4.4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/configure__5C"><span class="toc-number">9.</span> <span class="toc-text">./configure \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make__26amp_3B_26amp_3B_make_install"><span class="toc-number">10.</span> <span class="toc-text">make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/usr/local/nginx/sbin/nginx"><span class="toc-number">11.</span> <span class="toc-text">/usr/local/nginx/sbin/nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#netstat_-tnlp__7Cgrep__3A80"><span class="toc-number">12.</span> <span class="toc-text">netstat -tnlp |grep :80</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#elinks_-dump_http_3A//localhost"><span class="toc-number">13.</span> <span class="toc-text">elinks -dump http://localhost</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201C/usr/local/nginx/sbin/nginx_u201D__26gt_3B_26gt_3B_/etc/rc-local"><span class="toc-number">14.</span> <span class="toc-text">echo “/usr/local/nginx/sbin/nginx” >> /etc/rc.local</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_install_libjpeg_libjpeg-devel_libpng_libpng-devel_freetype_freetype-devel__5C"><span class="toc-number">15.</span> <span class="toc-text">yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make__26amp_3B_26amp_3B_make_install-1"><span class="toc-number">16.</span> <span class="toc-text">make && make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_/usr/local/php/etc/php-fpm-conf-default_/usr/local/php/etc/php-fpm-conf"><span class="toc-number">17.</span> <span class="toc-text">cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/local/php/etc/php-fpm-conf"><span class="toc-number">18.</span> <span class="toc-text">vim /usr/local/php/etc/php-fpm.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_php-ini-production_/usr/local/php/lib/php-ini"><span class="toc-number">19.</span> <span class="toc-text">cp php.ini-production /usr/local/php/lib/php.ini</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_/usr/local/nginx/conf/nginx-conf"><span class="toc-number">20.</span> <span class="toc-text">vim /usr/local/nginx/conf/nginx.conf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rm_-rf_/usr/local/nginx/conf/fastcgi_params"><span class="toc-number">21.</span> <span class="toc-text">rm -rf /usr/local/nginx/conf/fastcgi_params</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#killall_nginx_3B_/usr/local/nginx/sbin/nginx"><span class="toc-number">22.</span> <span class="toc-text">killall nginx; /usr/local/nginx/sbin/nginx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/etc/init-d/php-fpm_restart"><span class="toc-number">23.</span> <span class="toc-text">/etc/init.d/php-fpm restart</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#netstat_-tnlp__7Cgrep__3A80-1"><span class="toc-number">24.</span> <span class="toc-text">netstat -tnlp |grep :80</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#netstat_-tnlp__7Cgrep__3A9000"><span class="toc-number">25.</span> <span class="toc-text">netstat -tnlp |grep :9000</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_remove_mysql_mysql-server_cmake"><span class="toc-number">26.</span> <span class="toc-text">yum -y remove mysql mysql-server cmake</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rm_-rf_/etc/my-cnf"><span class="toc-number">27.</span> <span class="toc-text">rm -rf /etc/my.cnf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_groupinstall__u201CDevelopment_tools_u201D"><span class="toc-number">28.</span> <span class="toc-text">yum -y groupinstall “Development tools”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yum_-y_install_ncurses_ncurses-devel_openssl-devel_bison_gcc_gcc-c++_make"><span class="toc-number">29.</span> <span class="toc-text">yum -y install ncurses ncurses-devel openssl-devel bison gcc gcc-c++ make</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xvf_cmake-2-8-10-2-tar-gz"><span class="toc-number">30.</span> <span class="toc-text">tar xvf cmake-2.8.10.2.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_cmake-2-8-10-2"><span class="toc-number">31.</span> <span class="toc-text">cd cmake-2.8.10.2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/bootstrap"><span class="toc-number">32.</span> <span class="toc-text">./bootstrap</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make"><span class="toc-number">33.</span> <span class="toc-text">make</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make_install"><span class="toc-number">34.</span> <span class="toc-text">make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cmake_-version"><span class="toc-number">35.</span> <span class="toc-text">cmake -version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#groupadd_mysql"><span class="toc-number">36.</span> <span class="toc-text">groupadd mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useradd_-M_-g_mysql_-s_/sbin/nologin_mysql"><span class="toc-number">37.</span> <span class="toc-text">useradd -M -g mysql -s /sbin/nologin mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar_xvf_mysql-5-5-33-tar-gz"><span class="toc-number">38.</span> <span class="toc-text">tar xvf mysql-5.5.33.tar.gz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_mysql-5-5-33"><span class="toc-number">39.</span> <span class="toc-text">cd mysql-5.5.33</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cmake__5C"><span class="toc-number">40.</span> <span class="toc-text">cmake \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make-1"><span class="toc-number">41.</span> <span class="toc-text">make</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make_install-1"><span class="toc-number">42.</span> <span class="toc-text">make install</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cd_/usr/local/mysql"><span class="toc-number">43.</span> <span class="toc-text">cd /usr/local/mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chown_-R_mysql_3Amysql"><span class="toc-number">44.</span> <span class="toc-text">chown -R mysql:mysql .</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#/scripts/mysql_install_db__u2013user_3Dmysql__u2013basedir_3D/usr/local/mysql/__u2013datadir_3D/usr/local/mysql/data"><span class="toc-number">45.</span> <span class="toc-text">./scripts/mysql_install_db –user=mysql –basedir=/usr/local/mysql/ –datadir=/usr/local/mysql/data</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_support-files/my-huge-cnf_/etc/my-cnf_mysql5-5"><span class="toc-number">46.</span> <span class="toc-text">cp support-files/my-huge.cnf /etc/my.cnf         mysql5.5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_support-files/my-default-cnf_/etc/my-cnf_mysql5-6"><span class="toc-number">47.</span> <span class="toc-text">cp support-files/my-default.cnf  /etc/my.cnf     mysql5.6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cp_support-files/mysql-server_/etc/rc-d/init-d/mysqld"><span class="toc-number">48.</span> <span class="toc-text">cp support-files/mysql.server /etc/rc.d/init.d/mysqld</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chmod_755_/etc/rc-d/init-d/mysqld"><span class="toc-number">49.</span> <span class="toc-text">chmod 755 /etc/rc.d/init.d/mysqld</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chkconfig__u2013add_mysqld"><span class="toc-number">50.</span> <span class="toc-text">chkconfig –add mysqld</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#chkconfig_mysqld_on"><span class="toc-number">51.</span> <span class="toc-text">chkconfig mysqld on</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#service_mysqld_start"><span class="toc-number">52.</span> <span class="toc-text">service mysqld start</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#echo__u201Cexport_PATH_3D_24PATH_3A/usr/local/mysql/bin_u201D__26gt_3B_26gt_3B_/etc/profile"><span class="toc-number">53.</span> <span class="toc-text">echo “export PATH=$PATH:/usr/local/mysql/bin” >> /etc/profile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#source_/etc/profile"><span class="toc-number">54.</span> <span class="toc-text">source /etc/profile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysqladmin_-uroot_password__u2018jeffery_u2019"><span class="toc-number">55.</span> <span class="toc-text">mysqladmin -uroot password ‘jeffery’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql"><span class="toc-number">56.</span> <span class="toc-text">mysql</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql_-uroot_-pjeffery"><span class="toc-number">57.</span> <span class="toc-text">mysql -uroot -pjeffery</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rm_-rf_*"><span class="toc-number">58.</span> <span class="toc-text">rm -rf *</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_index-php"><span class="toc-number">59.</span> <span class="toc-text">vim index.php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim_index2-php"><span class="toc-number">60.</span> <span class="toc-text">vim index2.php</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+

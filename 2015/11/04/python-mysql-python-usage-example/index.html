@@ -1,0 +1,731 @@
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>How-to use MySQL-python in Python | Suzf Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jeffrey Su">
+    
+    <meta name="description" content="对于数据库操作，和 TCP/IP 的三次握手异曲同工之妙，建立连接，执行操作，断开连接。当然这就需要建立连接的工具
+Python连接mysql的方案有oursql、PyMySQL、 myconnpy、MySQL Connector 等，不过本篇说的确是另外一个类库MySQLdb，MySQLdb 是用于Python链接Mysql数据库的接口，它实现了 Python 数据库 API 规范 V2.0，基于 MySQL C API 上建立的。
+ReferencePackage MySQL-pythonMySQLdb User’s Guide">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Suzf Blog" type="application/atom+xml">
+    
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+    <link rel="icon" href="/img/favicon.ico">
+    <a href="https://github.com/suzf" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Suzf Blog" title="Suzf Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Suzf Blog">Suzf Blog</a></h1>
+				<h2 class="blog-motto">Life is short, We need smile.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+
+                        <li><a href="http://blog.suzf.net/atom.xml">Rss</a></li>
+                        <li><a title="Let's High!!!" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+                    <li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:blog.suzf.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/04/python-mysql-python-usage-example/" title="How-to use MySQL-python in Python" itemprop="url">How-to use MySQL-python in Python</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://blog.suzf.net" title="Jeffrey Su">Jeffrey Su</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-11-04T14:30:46.000Z" itemprop="datePublished">2015-11-04</time>
+    Updated:<time datetime="2016-01-13T07:17:03.000Z" itemprop="dateModified">2016-01-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#Reference"><span class="toc-number">1.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Package_MySQL-python"><span class="toc-number">2.</span> <span class="toc-text">Package MySQL-python</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#MySQLdb_User_u2019s_Guide"><span class="toc-number">3.</span> <span class="toc-text">MySQLdb User’s Guide</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8-1"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8-2"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u63D2_u5165_u4E00_u6761_u8BB0_u5F55"><span class="toc-number"></span> <span class="toc-text">插入一条记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8-3"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-1"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-1"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-1"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u63D2_u5165_u4E00_u6761_u8BB0_u5F55-1"><span class="toc-number"></span> <span class="toc-text">插入一条记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8-4"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-2"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-2"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-2"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u83B7_u53D6_u8BB0_u5F55_u6761_u6570"><span class="toc-number"></span> <span class="toc-text">获取记录条数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-3"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-3"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-3"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u90A3_u4E2A_u67E5_u8BE2_uFF0C_u8FD9_u91CC_u7528_u7684_u662Fselect_u8BED_u53E5"><span class="toc-number"></span> <span class="toc-text">执行那个查询，这里用的是select语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cur-rowcount_u83B7_u53D6_u7ED3_u679C_u96C6_u7684_u6761_u6570"><span class="toc-number"></span> <span class="toc-text">使用cur.rowcount获取结果集的条数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-4"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-4"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-4"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u83B7_u53D6_u8FDE_u63A5_u4E0A_u7684_u5B57_u5178cursor_uFF0C_u6CE8_u610F_u83B7_u53D6_u7684_u65B9_u6CD5_uFF0C"><span class="toc-number"></span> <span class="toc-text">获取连接上的字典cursor，注意获取的方法，</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6BCF_u4E00_u4E2Acursor_u5176_u5B9E_u90FD_u662Fcursor_u7684_u5B50_u7C7B"><span class="toc-number"></span> <span class="toc-text">每一个cursor其实都是cursor的子类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u8BED_u53E5_u4E0D_u53D8"><span class="toc-number"></span> <span class="toc-text">执行语句不变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u83B7_u53D6_u6570_u636E_u65B9_u6CD5_u4E0D_u53D8"><span class="toc-number"></span> <span class="toc-text">获取数据方法不变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u904D_u5386_u6570_u636E_u4E5F_u4E0D_u53D8_uFF08_u6BD4_u4E0A_u4E00_u4E2A_u66F4_u76F4_u63A5_u4E00_u70B9_uFF09"><span class="toc-number"></span> <span class="toc-text">遍历数据也不变（比上一个更直接一点）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-5"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-5"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-5"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6211_u4EEC_u770B_u5230_uFF0C_u8FD9_u91CC_u53EF_u4EE5_u901A_u8FC7_u5199_u4E00_u4E2A_u53EF_u4EE5_u7EC4_u88C5_u7684sql_u8BED_u53E5_u6765_u8FDB_u884C"><span class="toc-number"></span> <span class="toc-text">我们看到，这里可以通过写一个可以组装的sql语句来进行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cur-rowcount_u83B7_u53D6_u5F71_u54CD_u4E86_u591A_u5C11_u884C"><span class="toc-number"></span> <span class="toc-text">使用cur.rowcount获取影响了多少行</span></a>
+		</div>
+		
+		<p>对于数据库操作，和 TCP/IP 的三次握手异曲同工之妙，建立连接，执行操作，断开连接。当然这就需要建立连接的工具</p>
+<p>Python连接mysql的方案有oursql、PyMySQL、 myconnpy、MySQL Connector 等，不过本篇说的确是另外一个类库MySQLdb，MySQLdb 是用于Python链接Mysql数据库的接口，它实现了 Python 数据库 API 规范 V2.0，基于 MySQL C API 上建立的。</p>
+<h6 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h6><h6 id="Package_MySQL-python"><a href="#Package_MySQL-python" class="headerlink" title="Package MySQL-python"></a><a href="https://pypi.python.org/pypi/MySQL-python" target="_blank" rel="external">Package MySQL-python</a></h6><h6 id="MySQLdb_User_u2019s_Guide"><a href="#MySQLdb_User_u2019s_Guide" class="headerlink" title="MySQLdb User’s Guide"></a><a href="http://mysql-python.sourceforge.net/MySQLdb.html" target="_blank" rel="external">MySQLdb User’s Guide</a></h6><a id="more"></a>
+<p><strong>安装</strong></p>
+<p><pre class="lang:default decode:true">yum install Mysql-python -y</pre></p>
+<p>pip install Mysql-python</p>
+<p>源码解压缩进入主目录执行 python setup.py install<br><strong>使用</strong></p>
+<p><strong>1. 数据库的连接</strong></p>
+<p>MySQLdb提供了connect方法用来和数据库建立连接,接收数个参数,返回连接对象：<br>conn=MySQLdb.connect(host=”hostname”,user=”username”,passwd=”password”,db=”dbname”,charset=”utf8”)</p>
+<p>比较常用的参数包括:<br>host:数据库主机名.默认是用本地主机<br>user:数据库登陆名.默认是当前用户<br>passwd:数据库登陆的秘密.默认为空<br>db:要使用的数据库名.没有默认值<br>port:MySQL服务使用的TCP端口.默认是3306<br>charset:数据库编码<br>然后,这个连接对象也提供了对事务操作的支持,标准的方法:<br>commit() 提交<br>rollback() 回滚</p>
+<p><pre class="lang:default decode:true ">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8"><a href="#coding_3Dutf-8" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<p>try:<br>    conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<pre><code># 使用cursor()方法获取操作游标
+cur=conn.cursor()
+
+# 选择数据库
+conn.select_db(&apos;test&apos;)
+
+# 使用execute方法执行SQL语句
+cur.execute(&quot;SELECT VERSION()&quot;)
+
+# 使用 fetchone() 方法获取一条数据库。
+data = cur.fetchone()
+print &quot;Database version : %s &quot; % data
+
+# 关闭连接
+conn.commit()
+cur.close()
+conn.close()
+</code></pre><p>except MySQLdb.Error,e:<br>     print “Mysql Error %d: %s” % (e.args[0], e.args[1])<br><br>执行结果</p>
+<p><pre class="lang:default decode:true ">Database version : 5.1.73</pre><br><strong>2. cursor方法执行与返回值</strong></p>
+<p>cursor方法提供两类操作：<br>1.执行命令<br>2.接收返回值<br>cursor用来执行命令的方法</p>
+<p>#用来执行存储过程,接收的参数为存储过程名和参数列表,返回值为受影响的行数<br>callproc(self, procname, args)</p>
+<p>#执行单条sql语句,接收的参数为sql语句本身和使用的参数列表,返回值为受影响的行数<br>execute(self, query, args)</p>
+<p>#执行单挑sql语句,但是重复执行参数列表里的参数,返回值为受影响的行数<br>executemany(self, query, args)</p>
+<p>#移动到下一个结果集<br>nextset(self)<br>cursor用来接收返回值的方法</p>
+<p>#接收全部的返回结果行.<br>fetchall(self)</p>
+<p>#接收size条返回结果行.如果size的值大于返回的结果行的数量,则会返回cursor.arraysize条数据<br>fetchmany(self, size=None)</p>
+<p>#返回一条结果行<br>fetchone(self)</p>
+<p>#移动指针到某一行.如果mode=’relative’,则表示从当前所在行移动value条,如果mode=’absolute’,则表示从结果集的第一行移动value条<br>scroll(self, value, mode=’relative’)</p>
+<p>#这是一个只读属性，并返回执行execute()方法后影响的行数<br>rowcount</p>
+<p><strong>3.  数据库操作</strong></p>
+<p><strong>a.创建表</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8-1"><a href="#coding_3Dutf-8-1" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<p>try:<br>    conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<pre><code># 使用cursor()方法获取操作游标
+
+cur=conn.cursor()
+# 选择数据库
+conn.select_db(&apos;test&apos;)
+
+# 如果数据表已经存在使用 execute() 方法删除表。
+cur.execute(&quot;DROP TABLE IF EXISTS stu_info&quot;)
+
+# 创建数据表SQL语句
+sql = &quot;&quot;&quot;CREATE TABLE stu_info (
+         `id` int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+         `name` CHAR(20) NOT NULL,
+         `age` INT,
+         `sex` CHAR(6))&quot;&quot;&quot;
+cur.execute(sql)
+
+conn.commit()
+cur.close()
+conn.close()
+</code></pre><p>except MySQLdb.Error,e:<br>     print “Mysql Error %d: %s” % (e.args[0], e.args[1])<br><br><strong>b. 插入数据</strong></p>
+<p><strong> 添加单行记录</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8-2"><a href="#coding_3Dutf-8-2" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5"><a href="#u521B_u5EFA_u8FDE_u63A5" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur=conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93"><a href="#u9009_u62E9_u6570_u636E_u5E93" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u63D2_u5165_u4E00_u6761_u8BB0_u5F55"><a href="#u63D2_u5165_u4E00_u6761_u8BB0_u5F55" class="headerlink" title="插入一条记录"></a>插入一条记录</h1><p>sql = “insert into stu_info(name,age,sex) values(%s,%s,%s)”<br>cur.execute(sql,(‘Lisa’,18,’female’))</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br><strong>添加多行记录</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8-3"><a href="#coding_3Dutf-8-3" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-1"><a href="#u521B_u5EFA_u8FDE_u63A5-1" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn = MySQLdb.connect(host=’localhost’, user=’root’, passwd=’’, port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-1"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-1" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur = conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-1"><a href="#u9009_u62E9_u6570_u636E_u5E93-1" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u63D2_u5165_u4E00_u6761_u8BB0_u5F55-1"><a href="#u63D2_u5165_u4E00_u6761_u8BB0_u5F55-1" class="headerlink" title="插入一条记录"></a>插入一条记录</h1><p>sql = “insert into stu_info(name, age, sex) values(%s, %s, %s)”<br>cur.executemany(sql, [<br>    (‘jack’, 20, ‘male’),<br>    (‘Danny’, 19, ‘female’),<br>    ])</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br>executemany()方法可以一次插入多条值，执行单挑sql语句,但是重复执行参数列表里的参数,返回值为受影响的行数。</p>
+<p><strong>c. 查询数据</strong></p>
+<p><pre class="lang:default decode:true">#!/usr/bin/env python</pre></p>
+<h1 id="coding_3Dutf-8-4"><a href="#coding_3Dutf-8-4" class="headerlink" title="-- coding=utf-8 --"></a>-<em>- coding=utf-8 -</em>-</h1><p>import MySQLdb</p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-2"><a href="#u521B_u5EFA_u8FDE_u63A5-2" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn = MySQLdb.connect(host=’localhost’, user=’root’, passwd=’’, port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-2"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-2" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur = conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-2"><a href="#u9009_u62E9_u6570_u636E_u5E93-2" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u83B7_u53D6_u8BB0_u5F55_u6761_u6570"><a href="#u83B7_u53D6_u8BB0_u5F55_u6761_u6570" class="headerlink" title="获取记录条数"></a>获取记录条数</h1><p>rec_count = cur.execute(“select * from stu_info”)<br>print “There have %s records” % rec_count</p>
+<p>#打印表中的数据</p>
+<p>#rows = cur.fetchmany(rec_count)<br>rows = cur.fetchall()<br>for row in rows:<br>    print row</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br>执行结果</p>
+<p><pre class="lang:default decode:true ">There have 3 records<br>(1L, ‘Lisa’, 18L, ‘female’)<br>(2L, ‘jack’, 20L, ‘male’)<br>(3L, ‘Danny’, 19L, ‘female’)</pre><br>上面的代码，用来将所有的结果取出，不过打印的时候是每行一个元祖打印，现在我们使用方法，取出其中的单个数据：</p>
+<p><pre class="lang:default decode:true">import MySQLdb</pre></p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-3"><a href="#u521B_u5EFA_u8FDE_u63A5-3" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-3"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-3" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur=conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-3"><a href="#u9009_u62E9_u6570_u636E_u5E93-3" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u6267_u884C_u90A3_u4E2A_u67E5_u8BE2_uFF0C_u8FD9_u91CC_u7528_u7684_u662Fselect_u8BED_u53E5"><a href="#u6267_u884C_u90A3_u4E2A_u67E5_u8BE2_uFF0C_u8FD9_u91CC_u7528_u7684_u662Fselect_u8BED_u53E5" class="headerlink" title="执行那个查询，这里用的是select语句"></a>执行那个查询，这里用的是select语句</h1><p>cur.execute(“select * from stu_info”)</p>
+<h1 id="u4F7F_u7528cur-rowcount_u83B7_u53D6_u7ED3_u679C_u96C6_u7684_u6761_u6570"><a href="#u4F7F_u7528cur-rowcount_u83B7_u53D6_u7ED3_u679C_u96C6_u7684_u6761_u6570" class="headerlink" title="使用cur.rowcount获取结果集的条数"></a>使用cur.rowcount获取结果集的条数</h1><p>numrows = int(cur.rowcount)<br>for i in range(numrows):<br>  row = cur.fetchone()<br>  print str(row[0]) + “,” + row[1] + “,” + str(row[2]) + “,” + row[3]</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br>执行结果</p>
+<p><pre class="lang:default decode:true">1,Lisa,18,female<br>2,jack,20,male<br>3,Danny,19,female</pre><br>&nbsp;</p>
+<p>使用字典cursor取得结果集（可以使用表字段名字访问值）</p>
+<p><pre class="lang:default decode:true">import MySQLdb</pre></p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-4"><a href="#u521B_u5EFA_u8FDE_u63A5-4" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-4"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-4" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur=conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-4"><a href="#u9009_u62E9_u6570_u636E_u5E93-4" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u83B7_u53D6_u8FDE_u63A5_u4E0A_u7684_u5B57_u5178cursor_uFF0C_u6CE8_u610F_u83B7_u53D6_u7684_u65B9_u6CD5_uFF0C"><a href="#u83B7_u53D6_u8FDE_u63A5_u4E0A_u7684_u5B57_u5178cursor_uFF0C_u6CE8_u610F_u83B7_u53D6_u7684_u65B9_u6CD5_uFF0C" class="headerlink" title="获取连接上的字典cursor，注意获取的方法，"></a>获取连接上的字典cursor，注意获取的方法，</h1><h1 id="u6BCF_u4E00_u4E2Acursor_u5176_u5B9E_u90FD_u662Fcursor_u7684_u5B50_u7C7B"><a href="#u6BCF_u4E00_u4E2Acursor_u5176_u5B9E_u90FD_u662Fcursor_u7684_u5B50_u7C7B" class="headerlink" title="每一个cursor其实都是cursor的子类"></a>每一个cursor其实都是cursor的子类</h1><p>cur = conn.cursor(MySQLdb.cursors.DictCursor)</p>
+<h1 id="u6267_u884C_u8BED_u53E5_u4E0D_u53D8"><a href="#u6267_u884C_u8BED_u53E5_u4E0D_u53D8" class="headerlink" title="执行语句不变"></a>执行语句不变</h1><p>cur.execute(“SELECT * FROM stu_info”)</p>
+<h1 id="u83B7_u53D6_u6570_u636E_u65B9_u6CD5_u4E0D_u53D8"><a href="#u83B7_u53D6_u6570_u636E_u65B9_u6CD5_u4E0D_u53D8" class="headerlink" title="获取数据方法不变"></a>获取数据方法不变</h1><p>rows = cur.fetchall()</p>
+<h1 id="u904D_u5386_u6570_u636E_u4E5F_u4E0D_u53D8_uFF08_u6BD4_u4E0A_u4E00_u4E2A_u66F4_u76F4_u63A5_u4E00_u70B9_uFF09"><a href="#u904D_u5386_u6570_u636E_u4E5F_u4E0D_u53D8_uFF08_u6BD4_u4E0A_u4E00_u4E2A_u66F4_u76F4_u63A5_u4E00_u70B9_uFF09" class="headerlink" title="遍历数据也不变（比上一个更直接一点）"></a>遍历数据也不变（比上一个更直接一点）</h1><p>for row in rows:</p>
+<pre><code># 这里，可以使用键值对的方法，由键名字来获取数据
+print &quot;%s %s %s&quot; % (str(row[&quot;id&quot;]), row[&quot;name&quot;], str(row[&quot;age&quot;]))
+</code></pre><p>conn.commit()<br>cur.close()<br>conn.close()<br>执行结果：</p>
+<p><pre class="lang:default decode:true">1 Lisa 18<br>2 jack 20<br>3 Danny 19</pre><br>使用Prepared statements执行查询</p>
+<p><pre class="lang:default decode:true ">import MySQLdb</pre></p>
+<h1 id="u521B_u5EFA_u8FDE_u63A5-5"><a href="#u521B_u5EFA_u8FDE_u63A5-5" class="headerlink" title="创建连接"></a>创建连接</h1><p>conn=MySQLdb.connect(host=’localhost’,user=’root’,passwd=’’,port=3306)</p>
+<h1 id="u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-5"><a href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-5" class="headerlink" title="使用cursor()方法获取操作游标"></a>使用cursor()方法获取操作游标</h1><p>cur=conn.cursor()</p>
+<h1 id="u9009_u62E9_u6570_u636E_u5E93-5"><a href="#u9009_u62E9_u6570_u636E_u5E93-5" class="headerlink" title="选择数据库"></a>选择数据库</h1><p>conn.select_db(‘test’)</p>
+<h1 id="u6211_u4EEC_u770B_u5230_uFF0C_u8FD9_u91CC_u53EF_u4EE5_u901A_u8FC7_u5199_u4E00_u4E2A_u53EF_u4EE5_u7EC4_u88C5_u7684sql_u8BED_u53E5_u6765_u8FDB_u884C"><a href="#u6211_u4EEC_u770B_u5230_uFF0C_u8FD9_u91CC_u53EF_u4EE5_u901A_u8FC7_u5199_u4E00_u4E2A_u53EF_u4EE5_u7EC4_u88C5_u7684sql_u8BED_u53E5_u6765_u8FDB_u884C" class="headerlink" title="我们看到，这里可以通过写一个可以组装的sql语句来进行"></a>我们看到，这里可以通过写一个可以组装的sql语句来进行</h1><p>cur.execute(“UPDATE stu_info SET Name = %s WHERE Id = %s”,<br>    (“cherry”, “3”))</p>
+<h1 id="u4F7F_u7528cur-rowcount_u83B7_u53D6_u5F71_u54CD_u4E86_u591A_u5C11_u884C"><a href="#u4F7F_u7528cur-rowcount_u83B7_u53D6_u5F71_u54CD_u4E86_u591A_u5C11_u884C" class="headerlink" title="使用cur.rowcount获取影响了多少行"></a>使用cur.rowcount获取影响了多少行</h1><p>print “Number of rows updated: %d” % cur.rowcount</p>
+<p>conn.commit()<br>cur.close()<br>conn.close()<br><br>执行结果</p>
+<p><pre class="lang:default decode:true">:&lt;EOF&gt;<br>Number of rows updated: 1</pre></p>
+<p>In [16]:<br><strong>Transaction - 事务</strong></p>
+<p>事务机制可以确保数据一致性。<br>事务应该具有4个属性：原子性、一致性、隔离性、持久性。这四个属性通常称为ACID特性。<br>① 原子性（atomicity）。一个事务是一个不可分割的工作单位，事务中包括的诸操作要么都做，要么都不做。<br>② 一致性（consistency）。事务必须是使数据库从一个一致性状态变到另一个一致性状态。一致性与原子性是密切相关的。<br>③ 隔离性（isolation）。一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。<br>④ 持久性（durability）。持续性也称永久性（permanence），指一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。接下来的其他操作或故障不应该对其有任何影响。</p>
+<p>Python DB API 2.0 的事务提供了两个方法 commit 或 rollback。<br>对于支持事务的数据库， 在Python数据库编程中，当游标建立之时，就自动开始了一个隐形的数据库事务。commit()方法游标的所有更新操作，rollback（）方法回滚当前游标的所有操作。每一个方法都开始了一个新的事务。</p>
+<p><pre class="lang:default decode:true ">import MySQLdb</pre></p>
+<p>try:</p>
+<pre><code># 创建连接
+conn = MySQLdb.connect(
+    host=&apos;localhost&apos;, user=&apos;root&apos;, passwd=&apos;&apos;, port=3306)
+# 使用cursor()方法获取操作游标
+
+cur = conn.cursor()
+# 选择数据库
+conn.select_db(&apos;test&apos;)
+
+# 如果某个数据库支持事务，会自动开启
+# 这里用的是MYSQL，所以会自动开启事务（若是MYISM引擎则不会）
+cur.execute(&quot;UPDATE stu_info SET name = %s WHERE id = %s&quot;,
+               (&quot;tonny&quot;, &quot;1&quot;))
+cur.execute(&quot;UPDATE stu_infos SET name = %s WHERE id = %s&quot;,
+               (&quot;jim&quot;, &quot;2&quot;))
+
+# 事务的特性1、原子性的手动提交
+conn.commit()
+
+cur.close()
+conn.close()
+</code></pre><p>except MySQLdb.Error, e:</p>
+<pre><code># 如果出现了错误，那么可以回滚，就是上面的三条语句要么执行，要么都不执行 [ 存储引擎支持事物 ]
+# 如存储引擎不只是事务[MyISM], 则只提交成功的结果
+conn.rollback()
+print &quot;Error %d: %s&quot; % (e.args[0], e.args[1])&lt;/pre&gt;
+</code></pre><p>执行结果</p>
+<p><pre class="lang:default decode:true ">Error 1146: Table ‘test.stu_infos’ doesn’t exist</pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>未完待续  … ….</strong></p>
+<p>&nbsp;</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Mysql/">Mysql</a><a href="/tags/Python/">Python</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python/">Python</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://blog.suzf.net/2015/11/04/python-mysql-python-usage-example/" data-title="How-to use MySQL-python in Python | Suzf Blog" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/11/09/how-to-load-csv-data-into-mysql-use-python/" title="How-to Load CSV data into mysql use Python">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  How-to Load CSV data into mysql use Python</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/11/03/python-mysqldb-test-for-select-count-zero/"  title="Python MySQLdb test for select count(*) = zero">
+ <strong>NEXT:</strong><br/> 
+ <span>Python MySQLdb test for select count(*) = zero
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#Reference"><span class="toc-number">1.</span> <span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Package_MySQL-python"><span class="toc-number">2.</span> <span class="toc-text">Package MySQL-python</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#MySQLdb_User_u2019s_Guide"><span class="toc-number">3.</span> <span class="toc-text">MySQLdb User’s Guide</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8-1"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8-2"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u63D2_u5165_u4E00_u6761_u8BB0_u5F55"><span class="toc-number"></span> <span class="toc-text">插入一条记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8-3"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-1"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-1"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-1"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u63D2_u5165_u4E00_u6761_u8BB0_u5F55-1"><span class="toc-number"></span> <span class="toc-text">插入一条记录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#coding_3Dutf-8-4"><span class="toc-number"></span> <span class="toc-text">-- coding=utf-8 --</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-2"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-2"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-2"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u83B7_u53D6_u8BB0_u5F55_u6761_u6570"><span class="toc-number"></span> <span class="toc-text">获取记录条数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-3"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-3"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-3"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u90A3_u4E2A_u67E5_u8BE2_uFF0C_u8FD9_u91CC_u7528_u7684_u662Fselect_u8BED_u53E5"><span class="toc-number"></span> <span class="toc-text">执行那个查询，这里用的是select语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cur-rowcount_u83B7_u53D6_u7ED3_u679C_u96C6_u7684_u6761_u6570"><span class="toc-number"></span> <span class="toc-text">使用cur.rowcount获取结果集的条数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-4"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-4"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-4"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u83B7_u53D6_u8FDE_u63A5_u4E0A_u7684_u5B57_u5178cursor_uFF0C_u6CE8_u610F_u83B7_u53D6_u7684_u65B9_u6CD5_uFF0C"><span class="toc-number"></span> <span class="toc-text">获取连接上的字典cursor，注意获取的方法，</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6BCF_u4E00_u4E2Acursor_u5176_u5B9E_u90FD_u662Fcursor_u7684_u5B50_u7C7B"><span class="toc-number"></span> <span class="toc-text">每一个cursor其实都是cursor的子类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6267_u884C_u8BED_u53E5_u4E0D_u53D8"><span class="toc-number"></span> <span class="toc-text">执行语句不变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u83B7_u53D6_u6570_u636E_u65B9_u6CD5_u4E0D_u53D8"><span class="toc-number"></span> <span class="toc-text">获取数据方法不变</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u904D_u5386_u6570_u636E_u4E5F_u4E0D_u53D8_uFF08_u6BD4_u4E0A_u4E00_u4E2A_u66F4_u76F4_u63A5_u4E00_u70B9_uFF09"><span class="toc-number"></span> <span class="toc-text">遍历数据也不变（比上一个更直接一点）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u521B_u5EFA_u8FDE_u63A5-5"><span class="toc-number"></span> <span class="toc-text">创建连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cursor_28_29_u65B9_u6CD5_u83B7_u53D6_u64CD_u4F5C_u6E38_u6807-5"><span class="toc-number"></span> <span class="toc-text">使用cursor()方法获取操作游标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u9009_u62E9_u6570_u636E_u5E93-5"><span class="toc-number"></span> <span class="toc-text">选择数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u6211_u4EEC_u770B_u5230_uFF0C_u8FD9_u91CC_u53EF_u4EE5_u901A_u8FC7_u5199_u4E00_u4E2A_u53EF_u4EE5_u7EC4_u88C5_u7684sql_u8BED_u53E5_u6765_u8FDB_u884C"><span class="toc-number"></span> <span class="toc-text">我们看到，这里可以通过写一个可以组装的sql语句来进行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u4F7F_u7528cur-rowcount_u83B7_u53D6_u5F71_u54CD_u4E86_u591A_u5C11_u884C"><span class="toc-number"></span> <span class="toc-text">使用cur.rowcount获取影响了多少行</span></a>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Auto-ops/" title="Auto ops">Auto ops<sup>3</sup></a></li>
+		
+			<li><a href="/categories/CouchBase/" title="CouchBase">CouchBase<sup>1</sup></a></li>
+		
+			<li><a href="/categories/HA/" title="HA">HA<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Hardware/" title="Hardware">Hardware<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Highcharts/" title="Highcharts">Highcharts<sup>1</sup></a></li>
+		
+			<li><a href="/categories/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Life/" title="Life">Life<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>28</sup></a></li>
+		
+			<li><a href="/categories/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/categories/Mysql/" title="Mysql">Mysql<sup>10</sup></a></li>
+		
+			<li><a href="/categories/Nginx/" title="Nginx">Nginx<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Oracle/" title="Oracle">Oracle<sup>2</sup></a></li>
+		
+			<li><a href="/categories/PHP/" title="PHP">PHP<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Puppet/" title="Puppet">Puppet<sup>6</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>23</sup></a></li>
+		
+			<li><a href="/categories/Redis/" title="Redis">Redis<sup>7</sup></a></li>
+		
+			<li><a href="/categories/Shell/" title="Shell">Shell<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Web/" title="Web">Web<sup>5</sup></a></li>
+		
+			<li><a href="/categories/Zabbix/" title="Zabbix">Zabbix<sup>13</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CMD/" title="CMD">CMD<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Ceph/" title="Ceph">Ceph<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Debian/" title="Debian">Debian<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ELK/" title="ELK">ELK<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Exsi/" title="Exsi">Exsi<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Flask/" title="Flask">Flask<sup>1</sup></a></li>
+		
+			<li><a href="/tags/GTID/" title="GTID">GTID<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kernel/" title="Kernel">Kernel<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Kickstart/" title="Kickstart">Kickstart<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LB/" title="LB">LB<sup>1</sup></a></li>
+		
+			<li><a href="/tags/LVS/" title="LVS">LVS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Life/" title="Life">Life<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Lnmp/" title="Lnmp">Lnmp<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Log/" title="Log">Log<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MongoDB/" title="MongoDB">MongoDB<sup>3</sup></a></li>
+		
+			<li><a href="/tags/Mysql/" title="Mysql">Mysql<sup>15</sup></a></li>
+		
+			<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>8</sup></a></li>
+		
+			<li><a href="/tags/NoSQL/" title="NoSQL">NoSQL<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m a linuser. <br/>
+			This is my blog, share with you. ^_^</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		
+		
+		<a href="https://github.com/oceanszf" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+    <p class="copyright">Copyright © 2016 <a href="http://suzf.net" target="_blank" title="SUZF.NET">SUZF.NET</a> All Rights Reserved.
+<!--		
+		<a href="http://blog.suzf.net" target="_blank" title="Jeffrey Su">Jeffrey Su</a>
+		
+        -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Comment"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+  </body>
+</html>
+
